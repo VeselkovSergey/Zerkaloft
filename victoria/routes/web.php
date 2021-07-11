@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,45 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'home'], function(){
+
+    Route::get('/', [Controllers\HomeController::class, 'index'])
+//        ->middleware('permissions:home-page,index')
+        ->name('home-page');
+});
+
+Route::group(['prefix' => 'auth'], function(){
+
+    Route::group(['prefix' => 'registration'], function(){
+
+        Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'RegistrationPage'])
+            ->name('registration-page');
+    });
+
+    Route::group(['prefix' => 'login'], function(){
+
+        Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'LoginPage'])
+            ->name('login-page');
+    });
+
+    Route::group(['prefix' => 'logout'], function(){
+
+        Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'Logout'])
+            ->name('logout');
+    });
+
+    Route::group(['prefix' => 'password-recovery'], function(){
+
+        Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryPage'])
+            ->name('password-recovery-page');
+    });
+});
+
+Route::group(['prefix' => 'test'], function(){
+
+    Route::get('/', [Controllers\TestController::class, 'index'])
+        ->name('test');
+
 });
