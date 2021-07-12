@@ -30,20 +30,20 @@
 
 
         <style>
-            .menu-container::-webkit-scrollbar {
-                width: 12px;               /* width of the entire scrollbar */
-            }
+            /*.menu-container::-webkit-scrollbar {*/
+            /*    width: 12px;               !* width of the entire scrollbar *!*/
+            /*}*/
 
-            .menu-container::-webkit-scrollbar-track {
-                background: #a4a4a4;        /* color of the tracking area */
-            }
+            /*.menu-container::-webkit-scrollbar-track {*/
+            /*    background: #a4a4a4;        !* color of the tracking area *!*/
+            /*}*/
 
-            .menu-container::-webkit-scrollbar-thumb {
-                background-color: #606060;    /* color of the scroll thumb */
-            }
-            .menu-container::-webkit-scrollbar-thumb:hover {
-                background-color: #818181;    /* color of the scroll thumb */
-            }
+            /*.menu-container::-webkit-scrollbar-thumb {*/
+            /*    background-color: #606060;    !* color of the scroll thumb *!*/
+            /*}*/
+            /*.menu-container::-webkit-scrollbar-thumb:hover {*/
+            /*    background-color: #818181;    !* color of the scroll thumb *!*/
+            /*}*/
             /*.menu:hover>.menu-container {*/
             /*    display: block;*/
             /*}*/

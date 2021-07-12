@@ -108,6 +108,23 @@
     .expander-menu-category {
         transition: transform 100ms;
     }
+
+
+    ::-webkit-scrollbar {
+        width: 12px;               /* width of the entire scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #a4a4a4;        /* color of the tracking area */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #606060;    /* color of the scroll thumb */
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #818181;    /* color of the scroll thumb */
+    }
+
 </style>
 
 <style>

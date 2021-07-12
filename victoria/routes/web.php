@@ -31,6 +31,9 @@ Route::group(['prefix' => 'auth'], function(){
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'RegistrationPage'])
             ->name('registration-page');
+
+        Route::post('/', [Controllers\Authorization\AuthorizationController::class, 'Registration'])
+            ->name('registration');
     });
 
     Route::group(['prefix' => 'login'], function(){

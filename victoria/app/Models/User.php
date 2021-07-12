@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'type_user',
         'email',
         'password',
     ];
@@ -40,4 +40,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function PasswordGenerate($length = 12): string
+    {
+
+        if(!is_int($length)) {
+            $length = 12;
+        }
+
+        if($length < 1) {
+            $length = 12;
+        }
+
+        $pass = '';
+        $possible_characters = 'abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ23456789!*#^$';
+
+        while($length--) {
+            $pass .= $possible_characters[rand(0 , mb_strlen($possible_characters)-1)];
+        }
+
+        return $pass;
+    }
 }

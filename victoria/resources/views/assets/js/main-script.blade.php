@@ -179,11 +179,20 @@
     });
 
 
-    function Ajax(url, method) {
+    function Ajax(url, method, formDataRAW) {
         return new Promise(function(resolve, reject) {
-
+            let formData = new FormData();
             if ( typeof(method) === "undefined" || method === null ) {
                 method = 'get';
+            }
+
+            if ( typeof(formDataRAW) === "undefined" || formDataRAW === null ) {
+                formDataRAW = {};
+            } else {
+                Object.keys(formDataRAW).forEach((key) => {
+
+                    formData.append(key, formDataRAW[key]);
+                })
             }
 
             var xhr = new XMLHttpRequest();
@@ -203,15 +212,54 @@
                 reject(new Error("Network Error"));
             };
 
-            xhr.send();
+            xhr.send(formData);
         });
     }
 
-    {{--Ajax("{{route('test')}}")--}}
-    {{--    .then(--}}
-    {{--        response => console.log(`Fulfilled: ${response}`),--}}
-    {{--        error => console.log(`Rejected: ${error}`)--}}
-    {{--    );--}}
+    function changeRadioEffect(type) {
+        if (type) {
+            document.body.querySelector('.radio-effect').style.marginLeft = '50%';
+            document.body.querySelector('.juridical_user_input').classList.add('show-el');
+            document.body.querySelector('.juridical_user_input').classList.remove('hide-el');
+            document.body.querySelector('.physical_user_input').classList.remove('show-el');
+            document.body.querySelector('.physical_user_input').classList.add('hide-el');
+        } else {
+            document.body.querySelector('.radio-effect').style.marginLeft = '5px';
+            document.body.querySelector('.physical_user_input').classList.add('show-el');
+            document.body.querySelector('.physical_user_input').classList.remove('hide-el');
+            document.body.querySelector('.juridical_user_input').classList.remove('show-el');
+            document.body.querySelector('.juridical_user_input').classList.add('hide-el');
+        }
+    }
+
+    function NewUser() {
+        let physical_user = document.getElementById('physical_user');
+        let juridical_user = document.getElementById('juridical_user');
+
+        let dataRAW = [];
+        let data = [];
+        if (physical_user.checked && !juridical_user.checked) {
+            data['type_user'] = 'physical_user';
+            dataRAW = document.body.querySelectorAll('.physical_user_input input');
+        } else if (!physical_user.checked && juridical_user.checked) {
+            data['type_user'] = 'juridical_user';
+            dataRAW = document.body.querySelectorAll('.juridical_user_input input');
+        }
+
+        dataRAW.forEach((el) => {
+            data[el.id] = el.value;
+        })
+
+        Ajax("{{route('registration')}}", 'post', data).then((response) => {
+            //console.log(response);
+        });
+    }
+
+    function RegistrationPage() {
+        Ajax("{{route('registration-page')}}").then((response) => {
+            ShowModal(response);
+        });
+    }
 
 </script>
 
