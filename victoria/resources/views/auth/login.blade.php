@@ -9,7 +9,7 @@
 
         <div style="padding: 10px;">
             <label for="password" style="display: block;">Пароль</label>
-            <input id="password" type="text" placeholder="Пароль">
+            <input id="password" type="password" placeholder="Пароль">
         </div>
 
         <div style="display: flex;">
