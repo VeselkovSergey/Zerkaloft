@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 's-vesel94@yandex.ru'),
+            'password' => env('MAIL_PASSWORD', 'NfrfzCexrf2302'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 's-vesel94@yandex.ru'),
+        'name' => env('MAIL_FROM_NAME', 'no_replay'),
     ],
 
     /*
