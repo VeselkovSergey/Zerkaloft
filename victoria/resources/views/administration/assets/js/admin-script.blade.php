@@ -200,7 +200,7 @@
 
             xhr.onload = function() {
                 if (this.status == 200) {
-                    resolve(this.response);
+                    resolve(JSON.parse(this.response));
                 } else {
                     var error = new Error(this.statusText);
                     error.code = this.status;
@@ -279,6 +279,41 @@
     let elements = document.querySelectorAll('.smooth-block');
     for (let elm of elements) {
         observer.observe(elm);
+    }
+
+    /**
+     * Проверка и сбор данных из формы
+     */
+    function getDataFormContainer(container, validate) {
+        if (validInputEmpty(container) || !!!validate) {
+            let data = [];
+            document.body.querySelectorAll('.' + container + ' input').forEach((el) => {
+                data[el.id] = el.value;
+            });
+            return data;
+        } else {
+            return ['No valid date'];
+        }
+    }
+
+    function validInputEmpty(container) {
+        let validate = true;
+        document.body.querySelectorAll('.' + container + ' .need-validate').forEach((el) => {
+            let strValue = el.value;
+            if (strValue === '' || strValue === null || strValue === undefined) {
+                validate = false;
+            }
+        });
+        return validate;
+    }
+
+    function ShowFlashMessage(msg) {
+        let containerFlashMessage = document.body.querySelector('.flash-message');
+        containerFlashMessage.innerHTML = msg;
+        containerFlashMessage.classList.add('show-el');
+        setTimeout(() => {
+            containerFlashMessage.classList.remove('show-el');
+        }, 1500);
     }
 
 </script>

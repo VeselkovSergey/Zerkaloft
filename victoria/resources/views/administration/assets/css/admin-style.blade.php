@@ -159,6 +159,32 @@
         }
     }
 
+    .flash-message {
+        text-align: center;
+        padding: 5px;
+        position: absolute;
+        width: 100%;
+        display: none;
+    }
+
+    .flash-message-error{
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .flash-message-info{
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+    }
+
+    .flash-message-success{
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
 
 
 </style>

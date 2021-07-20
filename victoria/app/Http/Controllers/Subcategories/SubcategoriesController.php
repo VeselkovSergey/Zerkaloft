@@ -4,16 +4,25 @@
 namespace App\Http\Controllers\Subcategories;
 
 
+use App\Models\Categories;
+use App\Models\Subcategories;
+
 class SubcategoriesController
 {
     public function SubcategoriesAdminPage()
     {
-        return view('administration.subcategories.index');
+        $allSubCategories = Subcategories::all();
+        return view('administration.subcategories.index', [
+            'allSubCategories' => $allSubCategories
+        ]);
     }
 
     public function CreateSubcategoryAdminPage()
     {
-        return view('administration.subcategories.create');
+        $allCategories = Categories::all();
+        return view('administration.subcategories.create', [
+            'allCategories' => $allCategories
+        ]);
     }
 
     public function EditSubcategoryAdminPage()

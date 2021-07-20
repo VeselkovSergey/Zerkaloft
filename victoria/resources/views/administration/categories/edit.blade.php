@@ -2,24 +2,29 @@
 
 @section('content')
 
-    <div style="display: flex; flex-direction: column; width: 100%;">
+    <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
 
-        <div style="padding: 10px; width: 100%;">
-            <label for="category_name" style="display: block; width: 100%;">Название категории</label>
-            <input id="category_name" type="text" style="width: 100%;">
+        <div style="padding: 10px; width: 100%; display: none;">
+            <label for="category_name" style="display: block; width: 100%;">ID категории</label>
+            <input class="need-validate" id="category_id" type="text" style="width: 100%;" value="{{$category->id}}">
         </div>
 
         <div style="padding: 10px; width: 100%;">
+            <label for="category_name" style="display: block; width: 100%;">Название категории</label>
+            <input class="need-validate" id="category_name" type="text" style="width: 100%;" value="{{$category->title}}">
+        </div>
+
+        <div style="padding: 10px; width: 100%; display: none;">
             <label for="category_seo" style="display: block; width: 100%;">SEO</label>
             <input id="category_seo" type="text" style="width: 100%;">
         </div>
 
         <div style="padding: 10px; width: 100%;">
-            <button style="width: 100%;">Создать</button>
+            <button class="save-category-btn container-btn" style="width: 100%;">Сохранить</button>
         </div>
 
         <div style="padding: 10px; width: 100%;">
-            <button style="width: 100%;">Удалить</button>
+            <button class="delete-category-btn container-btn" style="width: 100%;">Удалить</button>
         </div>
 
     </div>
@@ -27,5 +32,52 @@
 @stop
 
 @section('js')
+
+    <script>
+
+        document.body.querySelector('.save-category-btn').addEventListener('click', () => {
+            let dataForm = getDataFormContainer('container-create-category');
+
+            let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
+            editAndDeleteCategoryBtn.forEach((btn) => {
+                btn.classList.add('hide-el');
+            });
+
+            Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
+                if (response.status) {
+                    ShowFlashMessage(response.message);
+                } else {
+                    ShowFlashMessage(response.message);
+                }
+                editAndDeleteCategoryBtn.forEach((btn) => {
+                    btn.classList.remove('hide-el');
+                });
+            });
+        });
+
+        document.body.querySelector('.delete-category-btn').addEventListener('click', () => {
+            let dataForm = getDataFormContainer('container-create-category');
+
+            let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
+            editAndDeleteCategoryBtn.forEach((btn) => {
+                btn.classList.add('hide-el');
+            });
+
+            Ajax("{{route('delete-category-admin')}}", 'post', dataForm).then((response) => {
+                if (response.status) {
+                    ShowFlashMessage(response.message);
+                    setTimeout(() => {
+                        location.href = "{{route('categories-admin-page')}}";
+                    }, 1500);
+                } else {
+                    ShowFlashMessage(response.message);
+                    editAndDeleteCategoryBtn.forEach((btn) => {
+                        btn.classList.remove('hide-el');
+                    });
+                }
+            });
+        });
+
+    </script>
 
 @stop

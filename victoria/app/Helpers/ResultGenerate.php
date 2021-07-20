@@ -12,7 +12,7 @@ class ResultGenerate
      * @param string $message
      * @return bool|string
      */
-    public static function Success(array|object $object = [], bool $status = true, string $message = 'Успешно!'): bool|string
+    public static function Success(string $message = 'Успешно!', $object = [], bool $status = true)
     {
         return json_encode((object)[
             'status' => $status,
@@ -21,7 +21,7 @@ class ResultGenerate
         ]);
     }
 
-    public static function Error(string $message = 'Ошибка!', array|object $object = [], bool $status = false): bool|string
+    public static function Error(string $message = 'Ошибка!', $object = [], bool $status = false)
     {
         return json_encode((object)[
             'status' => $status,
