@@ -33,7 +33,10 @@ class Files
     public static function GetFile(Request $request)
     {
         $file = FilesDB::find($request->file_id);
-        $filePath = Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name);
-        return response($filePath)->header('Content-type',$file->type);
+        if ($file) {
+            $filePath = Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name);
+            return response($filePath)->header('Content-type',$file->type);
+        }
+        return abort(404);
     }
 }
