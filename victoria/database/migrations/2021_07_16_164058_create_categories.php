@@ -16,6 +16,7 @@ class CreateCategories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('Название категории');
+            $table->string('img')->comment('Файлы картинки');
         });
     }
 

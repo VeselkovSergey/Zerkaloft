@@ -134,3 +134,15 @@ Route::group(['prefix' => 'test'], function(){
         ->name('test');
 
 });
+
+
+
+Route::group(['prefix' => 'files'], function(){
+
+    Route::get('/{file_id}', [\App\Helpers\Files::class, 'GetFile'])
+        ->name('files');
+
+    Route::get('/', [Controllers\TestController::class, 'index'])
+        ->name('test');
+
+});

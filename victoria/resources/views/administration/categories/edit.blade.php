@@ -2,6 +2,23 @@
 
 @section('content')
 
+    <style>
+        .category-img-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #category_img {
+            display: none;
+        }
+    </style>
+
     <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
 
         <div style="padding: 10px; width: 100%; display: none;">
@@ -13,6 +30,15 @@
             <label for="category_name" style="display: block; width: 100%;">Название категории</label>
             <input class="need-validate" id="category_name" type="text" style="width: 100%;" value="{{$category->title}}">
         </div>
+
+        @foreach(unserialize($category->img) as $img)
+
+            <div style="padding: 10px; width: 100%;">
+                <label class="category-img-label" for="category_img" style="max-width: 300px; max-height: 300px; background-image: url('{{route('files', $img)}}')"></label>
+                <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
+            </div>
+
+        @endforeach
 
         <div style="padding: 10px; width: 100%; display: none;">
             <label for="category_seo" style="display: block; width: 100%;">SEO</label>
@@ -34,6 +60,18 @@
 @section('js')
 
     <script>
+
+        document.getElementById('category_img').addEventListener('input', (event) => {
+            let fileReader = new FileReader();
+            fileReader.addEventListener("load", () => {
+                console.log(event)
+                let labelCategoryImg = document.querySelector(".category-img-label");
+                labelCategoryImg.innerHTML = '';
+                labelCategoryImg.style.border = '';
+                labelCategoryImg.style.backgroundImage = "url(" + fileReader.result + ")";
+            }, false);
+            fileReader.readAsDataURL(event.target.files[0]);
+        });
 
         document.body.querySelector('.save-category-btn').addEventListener('click', () => {
             let dataForm = getDataFormContainer('container-create-category');

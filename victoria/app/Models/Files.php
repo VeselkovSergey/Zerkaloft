@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Categories extends Model
+class Files extends Model
 {
     use HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
-        'title',
-        'img',
+        'hash_name',
+        'original_name',
+        'extension',
+        'type',
+        'disk',
+        'path',
     ];
 }

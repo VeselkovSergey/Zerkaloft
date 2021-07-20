@@ -187,7 +187,6 @@
                 formDataRAW = {};
             } else {
                 Object.keys(formDataRAW).forEach((key) => {
-
                     formData.append(key, formDataRAW[key]);
                 })
             }
@@ -197,7 +196,12 @@
 
             xhr.onload = function() {
                 if (this.status == 200) {
-                    resolve(this.response);
+                    try {
+                        resolve(JSON.parse(this.response));
+                    } catch (e) {
+                        resolve(this.response);
+                    }
+
                 } else {
                     var error = new Error(this.statusText);
                     error.code = this.status;
