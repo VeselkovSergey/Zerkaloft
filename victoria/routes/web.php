@@ -40,6 +40,9 @@ Route::group(['prefix' => 'auth'], function(){
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'LoginPage'])
             ->name('login-page');
+
+        Route::post('/', [Controllers\Authorization\AuthorizationController::class, 'Login'])
+            ->name('login');
     });
 
     Route::group(['prefix' => 'logout'], function(){

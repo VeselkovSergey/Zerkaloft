@@ -155,28 +155,25 @@
         })
     });
 
-    document.body.querySelector('.container-profile').addEventListener('click', (el) => {
-        ShowLoader();
-        Ajax("{{route('login-page')}}").then((response) => {
-            ShowModal(response);
-            HideLoader();
-        });
+    {{--document.body.querySelector('.container-profile').addEventListener('click', (el) => {--}}
+    {{--    ShowLoader();--}}
+    {{--    Ajax("{{!\Illuminate\Support\Facades\Auth::check() ? route('login-page') : route('logout')}}").then((response) => {--}}
+    {{--        @if(\Illuminate\Support\Facades\Auth::check())--}}
+    {{--        location.reload();--}}
+    {{--        @else--}}
+    {{--        ShowModal(response);--}}
+    {{--        @endif--}}
+    {{--        HideLoader();--}}
+    {{--    });--}}
+    {{--});--}}
+
+    document.body.querySelector('.modal-close-button').addEventListener('click', (el) => {
+        HideModal();
     });
 
-    document.body.querySelector('.modal').addEventListener('click', (el) => {
-        el.stopPropagation();
-        if (document.body.querySelector('.modal').classList.contains('show-el')) {
-            document.body.querySelector('.modal').classList.remove('show-el');
-            document.body.querySelector('.modal').classList.add('hide-el');
-        } else {
-            document.body.querySelector('.modal').classList.add('show-el');
-            document.body.querySelector('.modal').classList.remove('hide-el');
-        }
-    });
-
-    document.body.querySelector('.window-modal').addEventListener('click', (el) => {
-        el.stopPropagation();
-    });
+    // document.body.querySelector('.window-modal').addEventListener('click', (el) => {
+    //     el.stopPropagation();
+    // });
 
 
     function Ajax(url, method, formDataRAW) {
@@ -257,6 +254,43 @@
 
     function RegistrationPage() {
         Ajax("{{route('registration-page')}}").then((response) => {
+            ShowModal(response);
+        });
+    }
+
+    function LoginPage() {
+        Ajax("{{route('login-page')}}").then((response) => {
+            ShowModal(response);
+        });
+    }
+
+    function Logout() {
+        Ajax("{{route('logout')}}").then((response) => {
+            location.reload();
+        });
+    }
+
+    function Login() {
+        let login = document.getElementById('login').value;
+        let password = document.getElementById('password').value;
+
+        if(login === '' || password === '') {
+            console.log('Заполните все поля')
+            return false;
+        }
+
+        Ajax("{{route('login')}}", 'post', {login: login, password: password}).then((response) => {
+            response = JSON.parse(response);
+            if (response.status) {
+                location.reload();
+            } else {
+                // view error msg
+            }
+        });
+    }
+
+    function PasswordRecoveryPage() {
+        Ajax("{{route('password-recovery-page')}}").then((response) => {
             ShowModal(response);
         });
     }

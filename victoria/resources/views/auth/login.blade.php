@@ -14,10 +14,10 @@
 
         <div style="display: flex;">
             <div style="padding: 10px;">
-                <button>Войти</button>
+                <button onclick="Login();">Войти</button>
             </div>
-            <div style="display: flex; align-items: center;">
-                <a href="{{route('password-recovery-page')}}">Забыли пароль?</a>
+            <div style="padding: 10px;">
+                <button onclick="PasswordRecoveryPage();">Забыли пароль?</button>
             </div>
         </div>
 

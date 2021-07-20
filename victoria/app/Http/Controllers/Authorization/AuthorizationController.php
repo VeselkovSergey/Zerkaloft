@@ -9,23 +9,40 @@ use App\Models\User;
 use App\Models\UserJuridicals;
 use App\Models\UserPhysicals;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthorizationController
 {
     public function LoginPage(Request $request)
     {
-        return view('auth.login');
+        if (!Auth::user()) {
+            return view('auth.login');
+        }
+        return ResultGenerate::Error('Вы уже авторизованы!');
     }
 
     public function Login(Request $request)
     {
-        dd('Login');
+        $user = User::where('email', $request->login)->first();
+
+        if (!$user) {
+            return ResultGenerate::Error('Пользователь не найден!');
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return ResultGenerate::Error('Не верный пароль!');
+        }
+
+        Auth::login($user);
+        $request->session()->regenerate();
+        return ResultGenerate::Success('Вы авторизовались в системе!');
     }
 
     public function Logout(Request $request)
     {
-        dd('Logout');
+        Auth::logout();
+        return ResultGenerate::Success('Вы вышли из системы!');
     }
 
     public function RegistrationPage(Request $request)
