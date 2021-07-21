@@ -109,6 +109,10 @@ class ProductsController
 
     public function ProductPage(Request $request)
     {
+        $product = Products::where('semantic_url', $request->product_semantic_url)->firstOrFail();
+        return view('catalog.product', [
+            'product' => $product,
+        ]);
         dd($request->all(), $request->category_semantic_url, $request->product_semantic_url);
     }
 }

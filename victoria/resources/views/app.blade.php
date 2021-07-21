@@ -61,11 +61,11 @@
 
         <nav style="position: absolute; top: 150px; left: 25px; width: 13%; box-shadow: 0 0 10px rgb(0 0 0 / 75%); padding: 25px;">
             <div>
-                @foreach(\App\Models\Categories::all() as $catgegory)
+                @foreach(\App\Models\Categories::all() as $category)
 
                     <div class="menu-category-container" style="padding: 3px; position: relative;">
                         <div class="title-category-container" style="background-color: #00aff2;">
-                            <div class="menu-category" style="/*border: 1px solid black;*/ padding: 3px; cursor: pointer; border-radius: 3px;">{{$catgegory->title}}</div>
+                            <div class="menu-category" style="/*border: 1px solid black;*/ padding: 3px; cursor: pointer; border-radius: 3px;">{{$category->title}}</div>
                             <div class="expander-menu-category" style="position: absolute; top: 11px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -73,8 +73,9 @@
                             </div>
                         </div>
                         <div class="children-category hide-el">
-                            @foreach(\App\Models\Subcategories::where('category_id', $catgegory->id)->get() as $subcategory)
+                            @foreach(\App\Models\Subcategories::where('category_id', $category->id)->get() as $subcategory)
                                 <div style="padding: 3px; position: relative;" class="menu-subcategory-container">
+
                                     <div class="title-subcategory-container" style="background-color: #fff200;">
                                         <div class="menu-subcategory" style="/*border: 1px solid black;*/ padding: 3px; cursor: pointer; border-radius: 3px;">{{$subcategory->title}}</div>
                                         <div class="expander-menu-subcategory" style="position: absolute; top: 11px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">

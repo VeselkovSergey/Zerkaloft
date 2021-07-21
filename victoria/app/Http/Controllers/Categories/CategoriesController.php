@@ -113,7 +113,7 @@ class CategoriesController
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
         $subcategories = $category->Subcategories;
-        return view('category.index', [
+        return view('catalog.category', [
             'category' => $category,
             'subcategories' => $subcategories
         ]);

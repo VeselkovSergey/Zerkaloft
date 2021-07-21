@@ -3,9 +3,28 @@
 @section('content')
 
     <div style="padding: 25px 0;">
-        <div class="carousel" style="width: 80%; margin: auto; margin-bottom: 25px; overflow: hidden; /*border: 1px solid black;*/ border-radius: 15px; position: relative;">
+        <div class="carousel" style="display: none; width: 80%; margin: auto; margin-bottom: 25px; overflow: hidden; /*border: 1px solid black;*/ border-radius: 15px; position: relative;">
 
-
+            <style>
+                .btn-slider {
+                    opacity: 25%;
+                    cursor: pointer;
+                }
+                .btn-slider:hover {
+                    opacity: 100%;
+                    transition: opacity 200ms ease-out;
+                }
+                .carousel-container {
+                    position: relative;
+                    height: 350px;
+                }
+                .carousel-container>.img-carousel {
+                    display: none;
+                }
+                .carousel-container>.active {
+                        display: flex;
+                }
+            </style>
 
             <div class="carousel-container" style="box-shadow: 0 0 10px rgb(0 0 0 / 75%); border-radius: 15px;">
 {{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
@@ -53,29 +72,31 @@
         </style>
 
         <div style="display: flex; flex-wrap: wrap; width: 100%;">
-            @foreach(\App\Models\Categories::all() as $category)
+{{--            @foreach($subcategories as $subcategory)--}}
+{{--                <div style="width: 100%">--}}
+{{--                    <div style="font-size: 30px; margin-left: 5%;">--}}
+{{--                        {{$subcategory->title}}--}}
+{{--                    </div>--}}
+{{--                    <div style="display: flex; flex-wrap: wrap; width: 100%;">--}}
+{{--                        @foreach($subcategory->Products as $product)--}}
 
-                @foreach(unserialize($category->img) as $img)
+{{--                            <div class="smooth-block" style="width: 48%;margin: 1%;/* border: 1px solid black; */border-radius: 15px;box-shadow: 0 0 10px rgb(0 0 0 / 75%);position: relative;">--}}
+{{--                                <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}">--}}
+{{--                                    @foreach(unserialize($product->img) as $img)--}}
+{{--                                        <img style="width: 100%; height: 350px; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">--}}
+{{--                                    @endforeach--}}
+{{--                                    <div class="title-category" style="background-color: rgba(0, 0, 0, 0.5);width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;position: absolute;top: 0;">--}}
+{{--                                        <div style="color: white; font-size: 40px;">--}}
+{{--                                            {{$product->title}}--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
 
-                    <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); position: relative;">
-                        <a href="{{route('category', $category->semantic_url)}}">
-                            <img style="width: 100%; height: 350px; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
-                            <div class="title-category" style="background-color: rgba(0, 0, 0, 0.5);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
-                                <div style="color: white; font-size: 40px;">
-                                    {{$category->title}}
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                @endforeach
-
-            @endforeach
-{{--            @for($i = 0; $i < 10; $i++)--}}
-{{--                <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%);">--}}
-{{--                    <img style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
 {{--                </div>--}}
-{{--            @endfor--}}
+{{--            @endforeach--}}
         </div>
 
     </div>

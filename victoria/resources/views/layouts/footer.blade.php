@@ -1,16 +1,5 @@
 <div style=" padding-top: 10px; background-color: #ec407a; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
 
-    <style>
-        footer a {
-            color: #000;
-            text-decoration: none
-        }
-        footer a:hover {
-            color: #1976d2;
-            text-decoration: none
-        }
-    </style>
-
     <div style="width: 33.33%; padding-left: 25%;">
         <a href="#" style="display: block;">О компании</a>
         <a href="#" style="display: block;">О нас</a>
