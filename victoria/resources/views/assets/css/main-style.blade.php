@@ -112,21 +112,21 @@
         transition: transform 100ms;
     }
 
-    .menu-category-container:hover .menu-subcategory-container{
-        display: block!important;
-    }
+    /*.menu-category-container:hover .menu-subcategory-container{*/
+    /*    display: block!important;*/
+    /*}*/
 
-    .menu-category-container:hover .expander-menu-category{
-        transform: rotate(0.25turn) !important;
-    }
+    /*.menu-category-container:hover .expander-menu-category{*/
+    /*    transform: rotate(0.25turn) !important;*/
+    /*}*/
 
-    .menu-subcategory-container:hover .menu-product{
-        display: block!important;
-    }
+    /*.menu-subcategory-container:hover .menu-product{*/
+    /*    display: block!important;*/
+    /*}*/
 
-    .menu-subcategory-container:hover .expander-menu-subcategory{
-        transform: rotate(0.25turn) !important;
-    }
+    /*.menu-subcategory-container:hover .expander-menu-subcategory{*/
+    /*    transform: rotate(0.25turn) !important;*/
+    /*}*/
 
     ::-webkit-scrollbar {
         width: 12px;               /* width of the entire scrollbar */
