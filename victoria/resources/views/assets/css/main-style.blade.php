@@ -95,6 +95,14 @@
         transition: opacity 2s;
     }
 
+    .smooth-block>.title-category {
+        opacity: 0;
+        transition: opacity .3s;
+    }
+
+    .smooth-block:hover>.title-category {
+        opacity: 1;
+    }
 
     .show-el {
         display: block!important;
