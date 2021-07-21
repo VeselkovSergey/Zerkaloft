@@ -2,23 +2,6 @@
 
 @section('content')
 
-    <style>
-        .category-img-label {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 300px;
-            height: 200px;
-            cursor: pointer;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        #category_img {
-            display: none;
-        }
-    </style>
-
     <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
 
         <div style="padding: 10px; width: 100%;">
@@ -51,7 +34,6 @@
         document.getElementById('category_img').addEventListener('input', (event) => {
             let fileReader = new FileReader();
             fileReader.addEventListener("load", () => {
-                console.log(event)
                 let labelCategoryImg = document.querySelector(".category-img-label");
                 labelCategoryImg.innerHTML = '';
                 labelCategoryImg.style.border = '';
@@ -64,7 +46,7 @@
             let dataForm = getDataFormContainer('container-create-category');
 
             let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
-            //createCategoryBtn.classList.add('hide-el');
+            createCategoryBtn.classList.add('hide-el');
 
             Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
@@ -74,7 +56,7 @@
                     }, 1500);
                 } else {
                     ShowFlashMessage(response.message);
-                    //createCategoryBtn.classList.remove('hide-el');
+                    createCategoryBtn.classList.remove('hide-el');
                 }
             });
         });
