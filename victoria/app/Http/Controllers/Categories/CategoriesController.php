@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Categories;
 
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
+use App\Helpers\StringHelper;
 use App\Models\Categories;
 use App\Models\Subcategories;
 use http\Url;
@@ -51,6 +52,10 @@ class CategoriesController
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
+        if (Categories::where('semantic_url', StringHelper::TransliterateURL($request->category_name))->first()) {
+            return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
+        }
+
         $saveFiles = [];
         foreach ($request->allFiles() as $file) {
             if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
@@ -68,6 +73,7 @@ class CategoriesController
             if ($categoryFind) {
                 $fields['title'] = $request->category_name;
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $categoryFind->img;
+                $fields['semantic_url'] = StringHelper::TransliterateURL($request->category_name);
                 $categoryUpdate = $categoryFind->update($fields);
                 if ($categoryUpdate) {
                     return ResultGenerate::Success('Категория обновлена успешно!');
@@ -79,6 +85,7 @@ class CategoriesController
         } else {
             $fields['title'] = $request->category_name;
             $fields['img'] = $serializeImgArray;
+            $fields['semantic_url'] = StringHelper::TransliterateURL($request->category_name);
             $category = Categories::create($fields);
             if ($category) {
                 return ResultGenerate::Success('Категория создана успешно!');
@@ -93,13 +100,23 @@ class CategoriesController
     public function DeleteCategory(Request $request)
     {
         $deleteCategory = Categories::find($request->category_id);
-        if ($deleteCategory->SubCategories->count() !== 0) {
+        if ($deleteCategory->Subcategories->count() !== 0) {
             return ResultGenerate::Error('Ошибка! На категорию ссылаются подкатегории!');
         }
         if ($deleteCategory->delete()) {
             return ResultGenerate::Success('Категория успешно удалена!');
         }
         return ResultGenerate::Error('Ошибка удаления категории!');
+    }
+
+    public function CategoryPage(Request $request)
+    {
+        $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
+        $subcategories = $category->Subcategories;
+        return view('category.index', [
+            'category' => $category,
+            'subcategories' => $subcategories
+        ]);
     }
 
 }

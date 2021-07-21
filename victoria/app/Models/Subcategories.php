@@ -18,6 +18,7 @@ class Subcategories extends Model
         'title',
         'category_id',
         'img',
+        'semantic_url',
     ];
 
     public function Category()

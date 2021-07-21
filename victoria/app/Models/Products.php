@@ -18,6 +18,7 @@ class Products extends Model
         'title',
         'subcategory_id',
         'img',
+        'semantic_url',
     ];
 
     public function Subcategory()

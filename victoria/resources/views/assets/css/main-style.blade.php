@@ -95,12 +95,12 @@
         transition: opacity 2s;
     }
 
-    .smooth-block>.title-category {
+    .smooth-block>a>.title-category {
         opacity: 0;
         transition: opacity .3s;
     }
 
-    .smooth-block:hover>.title-category {
+    .smooth-block:hover>a>.title-category {
         opacity: 1;
     }
 

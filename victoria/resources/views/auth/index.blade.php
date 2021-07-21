@@ -74,7 +74,7 @@
         <div style="display: flex; flex-wrap: wrap; width: 100%;">
             @for($i = 0; $i < 10; $i++)
                 <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%);">
-                    <img style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">
+                    <img style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="Тестовое изображение {{$i}}">
                 </div>
             @endfor
         </div>

@@ -25,6 +25,8 @@ Route::group(['prefix' => 'home'], function(){
         ->name('home-page');
 });
 
+
+
 Route::group(['prefix' => 'auth'], function(){
 
     Route::group(['prefix' => 'registration'], function(){
@@ -145,4 +147,15 @@ Route::group(['prefix' => 'files'], function(){
     Route::get('/', [Controllers\TestController::class, 'index'])
         ->name('test');
 
+});
+
+Route::group(['prefix' => 'catalog'], function(){
+
+    Route::get('/{category_semantic_url}', [App\Http\Controllers\Categories\CategoriesController::class, 'CategoryPage'])
+//        ->middleware('permissions:home-page,index')
+        ->name('category');
+
+    Route::get('/{category_semantic_url}/{subcategory_semantic_url}/{product_semantic_url}', [App\Http\Controllers\Products\ProductsController::class, 'ProductPage'])
+//        ->middleware('permissions:home-page,index')
+        ->name('product');
 });

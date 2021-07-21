@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Products;
 
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
+use App\Helpers\StringHelper;
 use App\Models\Products;
 use App\Models\Subcategories;
 use Illuminate\Http\Request;
@@ -57,6 +58,10 @@ class ProductsController
             return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
         }
 
+        if (Products::where('semantic_url', StringHelper::TransliterateURL($request->product_name))->first()) {
+            return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
+        }
+
         $saveFiles = [];
         foreach ($request->allFiles() as $file) {
             if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
@@ -69,12 +74,15 @@ class ProductsController
 
         $serializeImgArray = serialize($saveFiles);
 
+        $productFind = Products::find($request->product_id);
+
         if (isset($request->product_id)) {
             $productFind = Products::find($request->product_id);
             if ($productFind) {
                 $fields['title'] = $request->product_name;
                 $fields['subcategory_id'] = $request->product_parent;
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
+                $fields['semantic_url'] = StringHelper::TransliterateURL($request->product_name);
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
                     return ResultGenerate::Success('Продукт обновлен успешно!');
@@ -87,6 +95,7 @@ class ProductsController
             $fields['title'] = $request->product_name;
             $fields['subcategory_id'] = $request->product_parent;
             $fields['img'] = $serializeImgArray;
+            $fields['semantic_url'] = StringHelper::TransliterateURL($request->product_name);
             $product = Products::create($fields);
             if ($product) {
                 return ResultGenerate::Success('Продукт создан успешно!');
@@ -96,5 +105,10 @@ class ProductsController
 
         return ResultGenerate::Error('Не предвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
+    }
+
+    public function ProductPage(Request $request)
+    {
+        dd($request->all(), $request->category_semantic_url, $request->product_semantic_url);
     }
 }

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Subcategories;
 
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
+use App\Helpers\StringHelper;
 use App\Models\Categories;
 use App\Models\Subcategories;
 use Illuminate\Http\Request;
@@ -18,9 +19,9 @@ class SubcategoriesController
 
     public function SubcategoriesAdminPage()
     {
-        $allSubCategories = Subcategories::all();
+        $allSubcategories = Subcategories::all();
         return view('administration.subcategories.index', [
-            'allSubCategories' => $allSubCategories
+            'allSubcategories' => $allSubcategories
         ]);
     }
 
@@ -58,6 +59,10 @@ class SubcategoriesController
             return ResultGenerate::Error('Ошибка! Выберите категорию!');
         }
 
+        if (Subcategories::where('semantic_url', StringHelper::TransliterateURL($request->subcategory_name))->first()) {
+            return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
+        }
+
         $saveFiles = [];
         foreach ($request->allFiles() as $file) {
             if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
@@ -76,6 +81,7 @@ class SubcategoriesController
                 $fields['title'] = $request->subcategory_name;
                 $fields['category_id'] = $request->subcategory_parent;
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $subcategoryFind->img;
+                $fields['semantic_url'] = StringHelper::TransliterateURL($request->subcategory_name);
                 $subcategoryUpdate = $subcategoryFind->update($fields);
                 if ($subcategoryUpdate) {
                     return ResultGenerate::Success('Подкатегория обновлена успешно!');
@@ -88,6 +94,7 @@ class SubcategoriesController
             $fields['title'] = $request->subcategory_name;
             $fields['category_id'] = $request->subcategory_parent;
             $fields['img'] = $serializeImgArray;
+            $fields['semantic_url'] = StringHelper::TransliterateURL($request->subcategory_name);
             $subcategory = Subcategories::create($fields);
             if ($subcategory) {
                 return ResultGenerate::Success('Подкатегория создана успешно!');

@@ -17,9 +17,9 @@
 
             </div>
 
-            @if(sizeof($allSubCategories))
+            @if(sizeof($allSubcategories))
 
-                @foreach($allSubCategories as $subcategory)
+                @foreach($allSubcategories as $subcategory)
 
                     <div style="display: flex; padding: 5px; border: 1px solid black; margin: 5px; justify-content: space-between;">
 
