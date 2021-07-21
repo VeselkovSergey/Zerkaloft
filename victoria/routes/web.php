@@ -113,7 +113,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('create', [Controllers\Products\ProductsController::class, 'CreateProductAdminPage'])
             ->name('create-product-admin-page');
 
-        Route::get('edit', [Controllers\Products\ProductsController::class, 'EditProductAdminPage'])
+        Route::get('edit/{product_id}', [Controllers\Products\ProductsController::class, 'EditProductAdminPage'])
             ->name('edit-product-admin-page');
 
         Route::post('save', [Controllers\Products\ProductsController::class, 'SaveProduct'])

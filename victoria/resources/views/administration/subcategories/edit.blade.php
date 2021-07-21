@@ -35,7 +35,7 @@
 
                 @if(sizeof($allCategories))
 
-                    <option disabled selected value="">Выберите категорию</option>
+                    <option disabled >Выберите категорию</option>
 
                     @foreach($allCategories as $category)
 

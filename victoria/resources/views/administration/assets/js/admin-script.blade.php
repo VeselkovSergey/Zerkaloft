@@ -291,7 +291,7 @@
     function getDataFormContainer(container, validate) {
         if (validInputEmpty(container) || !!!validate) {
             let data = [];
-            document.body.querySelectorAll('.' + container + ' input, select').forEach((el) => {
+            document.body.querySelectorAll('.' + container + ' input, .' + container + ' select').forEach((el) => {
                 if (el.type === 'file') {
                     for (let i = 0; i < el.files.length; i++) {
                         data[el.id + '-' + i] = el.files[i];
@@ -299,19 +299,7 @@
                 } else {
                     data[el.id] = el.value;
                 }
-
             });
-            // document.body.querySelectorAll('.' + container + ' select, input').forEach((el) => {
-            //     console.log(el.value)
-            //     // if (el.type === 'file') {
-            //     //     for (let i = 0; i < el.files.length; i++) {
-            //     //         data[el.id + '-' + i] = el.files[i];
-            //     //     }
-            //     // } else {
-            //     //     data[el.id] = el.value;
-            //     // }
-            //
-            // });
             return data;
         } else {
             return ['No valid date'];

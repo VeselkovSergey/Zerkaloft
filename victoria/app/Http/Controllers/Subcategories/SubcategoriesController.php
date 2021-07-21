@@ -75,7 +75,7 @@ class SubcategoriesController
             if ($subcategoryFind) {
                 $fields['title'] = $request->subcategory_name;
                 $fields['category_id'] = $request->subcategory_parent;
-                $fields['img'] = $serializeImgArray;
+                $fields['img'] = $request->allFiles() ? $serializeImgArray : $subcategoryFind->img;
                 $subcategoryUpdate = $subcategoryFind->update($fields);
                 if ($subcategoryUpdate) {
                     return ResultGenerate::Success('Подкатегория обновлена успешно!');

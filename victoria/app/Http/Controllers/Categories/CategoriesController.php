@@ -60,13 +60,14 @@ class CategoriesController
                 return ResultGenerate::Error('Ошибка! Не верный формат файла!');
             }
         }
+
         $serializeImgArray = serialize($saveFiles);
 
         if (isset($request->category_id)) {
             $categoryFind = Categories::find($request->category_id);
             if ($categoryFind) {
                 $fields['title'] = $request->category_name;
-                $fields['img'] = $serializeImgArray;
+                $fields['img'] = $request->allFiles() ? $serializeImgArray : $categoryFind->img;
                 $categoryUpdate = $categoryFind->update($fields);
                 if ($categoryUpdate) {
                     return ResultGenerate::Success('Категория обновлена успешно!');
