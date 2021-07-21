@@ -44,13 +44,7 @@
 
         </div>
 
-        <style>
-            .smooth-block:hover {
-                transform: scale(1.05);
-                cursor: pointer;
-                transition: transform .3s;
-            }
-        </style>
+
 
         <div style="display: flex; flex-wrap: wrap; width: 100%;">
             @foreach(\App\Models\Categories::all() as $category)
@@ -59,7 +53,7 @@
 
                     <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); position: relative;">
                         <a href="{{route('category', $category->semantic_url)}}">
-                            <img style="width: 100%; height: 350px; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
+                            <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
                             <div class="title-category" style="background-color: rgba(0, 0, 0, 0.5);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
                                 <div style="color: white; font-size: 40px;">
                                     {{$category->title}}

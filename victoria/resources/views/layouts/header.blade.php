@@ -4,74 +4,74 @@
         <div class="logo"></div>
     </a>
 
-    <div class="menu-mobile" style="/*display: flex;*/ display: none; justify-content: center; align-items: center; padding: 0 32px;">
+{{--    <div class="menu-mobile" style="/*display: flex;*/ display: none; justify-content: center; align-items: center; padding: 0 32px;">--}}
 
-        <div class="menu-btn" style="line-height: 1;">
-            <svg style="border: 2px solid; border-radius: 4px; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            <div style="width: 100%; text-align: center; font-size: 14px;">
-                Меню
-            </div>
-        </div>
+{{--        <div class="menu-btn" style="line-height: 1;">--}}
+{{--            <svg style="border: 2px solid; border-radius: 4px; cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">--}}
+{{--                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>--}}
+{{--            </svg>--}}
+{{--            <div style="width: 100%; text-align: center; font-size: 14px;">--}}
+{{--                Меню--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
 
-        <style>
-            /*.menu-container::-webkit-scrollbar {*/
-            /*    width: 12px;               !* width of the entire scrollbar *!*/
-            /*}*/
+{{--        <style>--}}
+{{--            /*.menu-container::-webkit-scrollbar {*/--}}
+{{--            /*    width: 12px;               !* width of the entire scrollbar *!*/--}}
+{{--            /*}*/--}}
 
-            /*.menu-container::-webkit-scrollbar-track {*/
-            /*    background: #a4a4a4;        !* color of the tracking area *!*/
-            /*}*/
+{{--            /*.menu-container::-webkit-scrollbar-track {*/--}}
+{{--            /*    background: #a4a4a4;        !* color of the tracking area *!*/--}}
+{{--            /*}*/--}}
 
-            /*.menu-container::-webkit-scrollbar-thumb {*/
-            /*    background-color: #606060;    !* color of the scroll thumb *!*/
-            /*}*/
-            /*.menu-container::-webkit-scrollbar-thumb:hover {*/
-            /*    background-color: #818181;    !* color of the scroll thumb *!*/
-            /*}*/
-            /*.menu:hover>.menu-container {*/
-            /*    display: block;*/
-            /*}*/
-            .menu-btn:active {
-                transform: scale(1.05);
-            }
-            .menu-container {
-                display: none;
-            }
-            .menu-container a {
-                color: #000;
-                text-decoration: none;
-            }
-            .menu-container a:hover {
-                color: #e91e63;
-                text-decoration: none;
-            }
-        </style>
+{{--            /*.menu-container::-webkit-scrollbar-thumb {*/--}}
+{{--            /*    background-color: #606060;    !* color of the scroll thumb *!*/--}}
+{{--            /*}*/--}}
+{{--            /*.menu-container::-webkit-scrollbar-thumb:hover {*/--}}
+{{--            /*    background-color: #818181;    !* color of the scroll thumb *!*/--}}
+{{--            /*}*/--}}
+{{--            /*.menu:hover>.menu-container {*/--}}
+{{--            /*    display: block;*/--}}
+{{--            /*}*/--}}
+{{--            .menu-btn:active {--}}
+{{--                transform: scale(1.05);--}}
+{{--            }--}}
+{{--            .menu-container {--}}
+{{--                display: none;--}}
+{{--            }--}}
+{{--            .menu-container a {--}}
+{{--                color: #000;--}}
+{{--                text-decoration: none;--}}
+{{--            }--}}
+{{--            .menu-container a:hover {--}}
+{{--                color: #e91e63;--}}
+{{--                text-decoration: none;--}}
+{{--            }--}}
+{{--        </style>--}}
 
-        <div class="menu-container" style="box-shadow: 0 0 35px rgb(0 0 0); position: absolute; width: 60%; height: 350px; background-color: #c3c3c3; top: 110px; left: 20%; overflow: auto;">
-            <div style="padding: 15px 30px; display: flex; flex-wrap: wrap;">
+{{--        <div class="menu-container" style="box-shadow: 0 0 35px rgb(0 0 0); position: absolute; width: 60%; height: 350px; background-color: #c3c3c3; top: 110px; left: 20%; overflow: auto;">--}}
+{{--            <div style="padding: 15px 30px; display: flex; flex-wrap: wrap;">--}}
 
-                @for($i = 0; $i < 10; $i++)
-                    <div style="width: 25%; padding-bottom: 15px;">
+{{--                @for($i = 0; $i < 10; $i++)--}}
+{{--                    <div style="width: 25%; padding-bottom: 15px;">--}}
 
-                        <div style="font-weight: bold;">Печатная реклама</div>
-                        <div style="padding-left: 15px;">
-                            <a href="#" style="display: block;">Визитки</a>
-                            <a href="#" style="display: block;">Листовки</a>
-                            <a href="#" style="display: block;">Буклеты</a>
-                            <a href="#" style="display: block;">Брошюры</a>
-                        </div>
+{{--                        <div style="font-weight: bold;">Печатная реклама</div>--}}
+{{--                        <div style="padding-left: 15px;">--}}
+{{--                            <a href="#" style="display: block;">Визитки</a>--}}
+{{--                            <a href="#" style="display: block;">Листовки</a>--}}
+{{--                            <a href="#" style="display: block;">Буклеты</a>--}}
+{{--                            <a href="#" style="display: block;">Брошюры</a>--}}
+{{--                        </div>--}}
 
-                    </div>
-                @endfor
+{{--                    </div>--}}
+{{--                @endfor--}}
 
-            </div>
-        </div>
+{{--            </div>--}}
+{{--        </div>--}}
 
-    </div>
+{{--    </div>--}}
 
     <div style="margin: auto; width: 100%;">
         <div style="position: relative; top: 10px;">
@@ -86,23 +86,6 @@
                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                 </svg>
             </div>
-
-            <style>
-                .fast-menu>a:not(:first-child) {
-                    border-left: 1px solid black;
-                }
-                .fast-menu>a {
-                     margin-top: 5px;
-                     padding: 0 10px;
-                     cursor: pointer;
-
-                    color: #000;
-                    text-decoration: none;
-                }
-                .fast-menu>a:hover {
-                    color: #fff200;
-                }
-            </style>
 
             <div class="fast-menu" style="display: flex; justify-content: center;">
                 <a href="#" style="display: block;">Услуги</a>

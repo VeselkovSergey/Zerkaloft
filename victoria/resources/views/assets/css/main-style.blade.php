@@ -238,3 +238,34 @@
         text-decoration: none
     }
 </style>
+
+<style>
+    .fast-menu>a:not(:first-child) {
+        border-left: 1px solid black;
+    }
+    .fast-menu>a {
+        margin-top: 5px;
+        padding: 0 10px;
+        cursor: pointer;
+
+        color: #000;
+        text-decoration: none;
+    }
+    .fast-menu>a:hover {
+        color: #fff200;
+    }
+</style>
+
+<style>
+    .smooth-block:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+        transition: transform .3s;
+    }
+
+    .category-img-main {
+        width: 100%;
+        height: 350px;
+        border-radius: 15px;
+    }
+</style>
