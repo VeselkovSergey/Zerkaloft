@@ -200,7 +200,11 @@
 
             xhr.onload = function() {
                 if (this.status == 200) {
-                    resolve(JSON.parse(this.response));
+                    try {
+                        resolve(JSON.parse(this.response));
+                    } catch {
+                        resolve(this.response);
+                    }
                 } else {
                     var error = new Error(this.statusText);
                     error.code = this.status;
@@ -287,7 +291,7 @@
     function getDataFormContainer(container, validate) {
         if (validInputEmpty(container) || !!!validate) {
             let data = [];
-            document.body.querySelectorAll('.' + container + ' input').forEach((el) => {
+            document.body.querySelectorAll('.' + container + ' input, select').forEach((el) => {
                 if (el.type === 'file') {
                     for (let i = 0; i < el.files.length; i++) {
                         data[el.id + '-' + i] = el.files[i];
@@ -297,6 +301,17 @@
                 }
 
             });
+            // document.body.querySelectorAll('.' + container + ' select, input').forEach((el) => {
+            //     console.log(el.value)
+            //     // if (el.type === 'file') {
+            //     //     for (let i = 0; i < el.files.length; i++) {
+            //     //         data[el.id + '-' + i] = el.files[i];
+            //     //     }
+            //     // } else {
+            //     //     data[el.id] = el.value;
+            //     // }
+            //
+            // });
             return data;
         } else {
             return ['No valid date'];

@@ -5,7 +5,7 @@
     <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
 
         <div style="padding: 10px; width: 100%; display: none;">
-            <label for="category_name" style="display: block; width: 100%;">ID категории</label>
+            <label for="category_id" style="display: block; width: 100%;">ID категории</label>
             <input class="need-validate" id="category_id" type="text" style="width: 100%;" value="{{$category->id}}">
         </div>
 

@@ -95,7 +95,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('create', [Controllers\Subcategories\SubcategoriesController::class, 'CreateSubcategoryAdminPage'])
             ->name('create-subcategory-admin-page');
 
-        Route::get('edit/{subcategories_id}', [Controllers\Subcategories\SubcategoriesController::class, 'EditSubcategoryAdminPage'])
+        Route::get('edit/{subcategory_id}', [Controllers\Subcategories\SubcategoriesController::class, 'EditSubcategoryAdminPage'])
             ->name('edit-subcategory-admin-page');
 
         Route::post('save', [Controllers\Subcategories\SubcategoriesController::class, 'SaveSubcategory'])

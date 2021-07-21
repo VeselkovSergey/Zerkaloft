@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Categories;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Models\Categories;
+use App\Models\Subcategories;
 use http\Url;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Storage;
 class CategoriesController
 {
 
-    public $storagePath = 'img/category';
-    public $storageDriver = 'local';
+    public string $storagePath = 'img/category';
+    public string $storageDriver = 'local';
 
     public function CategoriesAdminPage()
     {
@@ -42,7 +43,7 @@ class CategoriesController
 
     public function SaveCategory(Request $request)
     {
-        if (empty($request->allFiles())) {
+        if (empty($request->allFiles()) && !isset($request->category_id)) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
@@ -84,12 +85,16 @@ class CategoriesController
             return ResultGenerate::Error('Ошибка создания категории!');
         }
 
+        return ResultGenerate::Error('Не предвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
     }
 
     public function DeleteCategory(Request $request)
     {
         $deleteCategory = Categories::find($request->category_id);
+        if ($deleteCategory->SubCategories->count() !== 0) {
+            return ResultGenerate::Error('Ошибка! На категорию ссылаются подкатегории!');
+        }
         if ($deleteCategory->delete()) {
             return ResultGenerate::Success('Категория успешно удалена!');
         }

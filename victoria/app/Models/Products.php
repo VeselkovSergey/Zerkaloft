@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Categories extends Model
+class Products extends Model
 {
     use HasFactory, Notifiable;
 
@@ -16,11 +16,12 @@ class Categories extends Model
 
     protected $fillable = [
         'title',
+        'subcategory_id',
         'img',
     ];
 
-    public function SubCategories()
+    public function Subcategory()
     {
-        return $this->hasMany(Subcategories::class, 'category_id', 'id');
+        return $this->hasOne(Categories::class, 'id', 'subcategory_id');
     }
 }

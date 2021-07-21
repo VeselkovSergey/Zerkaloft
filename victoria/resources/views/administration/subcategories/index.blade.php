@@ -25,7 +25,7 @@
 
                         <div data-subcategory-id="{{$subcategory->id}}">{{$subcategory->title}}</div>
                         <div>
-                            <a style="width: 100%;" href="{{route('edit-category-admin-page', $subcategory->id)}}">Редактировать</a>
+                            <a style="width: 100%;" href="{{route('edit-subcategory-admin-page', $subcategory->id)}}">Редактировать</a>
                         </div>
 
                     </div>
@@ -35,7 +35,7 @@
             @else
 
                 <div style="display: flex; padding: 5px; border: 1px solid black; margin: 5px; justify-content: space-between;">
-                    Нет подкатегории!
+                    Нет подкатегорий!
                 </div>
 
             @endif
