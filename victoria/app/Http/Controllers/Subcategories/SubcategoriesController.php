@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 
 namespace App\Http\Controllers\Subcategories;
@@ -47,19 +47,32 @@ class SubcategoriesController
 
     public function SaveSubcategory(Request $request)
     {
-        if (empty($request->allFiles()) && !isset($request->subcategory_id)) {
+        $subcategoryID = !empty($request->subcategory_id) ? $request->subcategory_id : null;
+        $subcategoryName = !empty($request->subcategory_name) ? $request->subcategory_name : null;
+        $subcategoryParent = !empty($request->subcategory_name) ? $request->subcategory_parent : null;
+        $subcategoryFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
+
+        if (!$subcategoryFiles && !$subcategoryID) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
-        if (strlen($request->subcategory_name) === 0) {
+        if (!$subcategoryName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
-        if (strlen($request->subcategory_parent) === 0) {
+        if (!$subcategoryParent) {
             return ResultGenerate::Error('Ошибка! Выберите категорию!');
         }
 
-        if (Subcategories::where('semantic_url', StringHelper::TransliterateURL($request->subcategory_name))->first()) {
+        $semanticURL = StringHelper::TransliterateURL($subcategoryName);
+
+        $uniqSemanticURL = Categories::where('semantic_url', $semanticURL);
+        if ($subcategoryID) {
+            $uniqSemanticURL->where('id', '!=', $subcategoryID);
+        }
+        $uniqSemanticURL = $uniqSemanticURL->first();
+
+        if ($uniqSemanticURL) {
             return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
         }
 
@@ -75,13 +88,14 @@ class SubcategoriesController
 
         $serializeImgArray = serialize($saveFiles);
 
+        $fields['title'] = $subcategoryName;
+        $fields['category_id'] = $subcategoryParent;
+        $fields['semantic_url'] = $semanticURL;
+
         if (isset($request->subcategory_id)) {
-            $subcategoryFind = Subcategories::find($request->subcategory_id);
+            $subcategoryFind = Subcategories::find($subcategoryID);
             if ($subcategoryFind) {
-                $fields['title'] = $request->subcategory_name;
-                $fields['category_id'] = $request->subcategory_parent;
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $subcategoryFind->img;
-                $fields['semantic_url'] = StringHelper::TransliterateURL($request->subcategory_name);
                 $subcategoryUpdate = $subcategoryFind->update($fields);
                 if ($subcategoryUpdate) {
                     return ResultGenerate::Success('Подкатегория обновлена успешно!');
@@ -91,18 +105,15 @@ class SubcategoriesController
             }
 
         } else {
-            $fields['title'] = $request->subcategory_name;
-            $fields['category_id'] = $request->subcategory_parent;
             $fields['img'] = $serializeImgArray;
-            $fields['semantic_url'] = StringHelper::TransliterateURL($request->subcategory_name);
-            $subcategory = Subcategories::create($fields);
-            if ($subcategory) {
+            $subcategoryCreated = Subcategories::create($fields);
+            if ($subcategoryCreated) {
                 return ResultGenerate::Success('Подкатегория создана успешно!');
             }
             return ResultGenerate::Error('Ошибка создания подкатегории!');
         }
 
-        return ResultGenerate::Error('Не предвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
+        return ResultGenerate::Error('Непредвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
     }
 

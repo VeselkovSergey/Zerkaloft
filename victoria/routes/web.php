@@ -124,6 +124,24 @@ Route::group(['prefix' => 'admin'], function(){
         Route::post('delete', [Controllers\Products\ProductsController::class, 'DeleteProduct'])
             ->name('delete-product-admin');
     });
+
+    Route::group(['prefix' => 'reference-book'], function(){
+
+        Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
+            ->name('reference-book-admin-page');
+
+        Route::get('create', [Controllers\Products\ProductsController::class, 'CreateProductAdminPage'])
+            ->name('create-reference-book-admin-page');
+
+        Route::get('edit/{product_id}', [Controllers\Products\ProductsController::class, 'EditProductAdminPage'])
+            ->name('edit-reference-book-admin-page');
+
+        Route::post('save', [Controllers\Products\ProductsController::class, 'SaveProduct'])
+            ->name('save-reference-book-admin');
+
+        Route::post('delete', [Controllers\Products\ProductsController::class, 'DeleteProduct'])
+            ->name('delete-reference-book-admin');
+    });
 });
 
 Route::group(['prefix' => 'test'], function(){

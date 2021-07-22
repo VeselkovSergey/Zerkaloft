@@ -74,8 +74,6 @@ class ProductsController
 
         $serializeImgArray = serialize($saveFiles);
 
-        $productFind = Products::find($request->product_id);
-
         if (isset($request->product_id)) {
             $productFind = Products::find($request->product_id);
             if ($productFind) {
@@ -103,7 +101,7 @@ class ProductsController
             return ResultGenerate::Error('Ошибка создания продукта!');
         }
 
-        return ResultGenerate::Error('Не предвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
+        return ResultGenerate::Error('Непредвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
     }
 
@@ -113,6 +111,5 @@ class ProductsController
         return view('catalog.product', [
             'product' => $product,
         ]);
-        dd($request->all(), $request->category_semantic_url, $request->product_semantic_url);
     }
 }
