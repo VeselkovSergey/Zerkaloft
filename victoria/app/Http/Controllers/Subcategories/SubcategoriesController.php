@@ -66,7 +66,7 @@ class SubcategoriesController
 
         $semanticURL = StringHelper::TransliterateURL($subcategoryName);
 
-        $uniqSemanticURL = Categories::where('semantic_url', $semanticURL);
+        $uniqSemanticURL = Subcategories::where('semantic_url', $semanticURL);
         if ($subcategoryID) {
             $uniqSemanticURL->where('id', '!=', $subcategoryID);
         }

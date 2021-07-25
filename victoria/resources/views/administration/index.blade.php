@@ -94,8 +94,8 @@
                     </div>
                     <div class="menu-category-detail hide-el">
                         <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                            <a href="{{route('products-admin-page')}}">Все справочники</a>
-                            <a href="{{route('create-product-admin-page')}}">Новый справочник</a>
+                            <a href="{{route('reference-books-admin-page')}}">Все справочники</a>
+                            <a href="{{route('create-reference-book-admin-page')}}">Новый справочник</a>
                         </div>
                     </div>
                 </div>

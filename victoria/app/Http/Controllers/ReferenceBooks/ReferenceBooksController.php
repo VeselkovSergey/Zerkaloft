@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\ReferenceBook;
+namespace App\Http\Controllers\ReferenceBooks;
 
 
 use App\Helpers\ResultGenerate;
@@ -9,19 +9,19 @@ use App\Helpers\StringHelper;
 use App\Models\ReferenceBooks;
 use Illuminate\Http\Request;
 
-class ReferenceBookController
+class ReferenceBooksController
 {
     public function ReferenceBooksAdminPage()
     {
-        $allProducts = ReferenceBooks::all();
-        return view('administration.reference-book.index', [
-            'allProducts' => $allProducts
+        $allReferenceBooks = ReferenceBooks::all();
+        return view('administration.reference-books.index', [
+            'allReferenceBooks' => $allReferenceBooks
         ]);
     }
 
     public function CreateReferenceBookAdminPage()
     {
-        return view('administration.reference-book.create');
+        return view('administration.reference-books.create');
     }
 
     public function EditReferenceBookAdminPage(Request $request)
@@ -30,7 +30,7 @@ class ReferenceBookController
 
         if ($referenceBookID) {
             $referenceBook = ReferenceBooks::findOrFail($referenceBookID);
-            return view('administration.reference-book.edit', [
+            return view('administration.reference-books.edit', [
                 'referenceBook' => $referenceBook
             ]);
         }

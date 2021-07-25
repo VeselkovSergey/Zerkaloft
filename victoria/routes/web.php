@@ -127,19 +127,19 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'reference-book'], function(){
 
-        Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
-            ->name('reference-book-admin-page');
+        Route::get('/', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'ReferenceBooksAdminPage'])
+            ->name('reference-books-admin-page');
 
-        Route::get('create', [Controllers\Products\ProductsController::class, 'CreateProductAdminPage'])
+        Route::get('create', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'CreateReferenceBookAdminPage'])
             ->name('create-reference-book-admin-page');
 
-        Route::get('edit/{product_id}', [Controllers\Products\ProductsController::class, 'EditProductAdminPage'])
+        Route::get('edit/{reference_book_id}', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'EditReferenceBookAdminPage'])
             ->name('edit-reference-book-admin-page');
 
-        Route::post('save', [Controllers\Products\ProductsController::class, 'SaveProduct'])
+        Route::post('save', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'SaveReferenceBook'])
             ->name('save-reference-book-admin');
 
-        Route::post('delete', [Controllers\Products\ProductsController::class, 'DeleteProduct'])
+        Route::post('delete', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'DeleteReferenceBook'])
             ->name('delete-reference-book-admin');
     });
 });
