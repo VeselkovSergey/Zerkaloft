@@ -40,6 +40,16 @@
         </div>
 
         <div style="padding: 10px; width: 100%;">
+            <label for="product_description" style="display: block; width: 100%;">Описание</label>
+            <textarea style="width: 100%;" name="product_description" id="product_description"></textarea>
+        </div>
+
+        <div style="padding: 10px; width: 100%;">
+            <label for="product_price" style="display: block; width: 100%;">Стоимость</label>
+            <input id="product_price" type="text" style="width: 100%;">
+        </div>
+
+        <div style="padding: 10px; width: 100%;">
             <label class="product-img-label" for="product_img" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
             <input id="product_img" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
         </div>
