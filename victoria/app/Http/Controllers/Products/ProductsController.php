@@ -46,9 +46,9 @@ class ProductsController
 
     public function SaveProduct(Request $request)
     {
-        $productID = !empty($request->category_id) ? $request->product_id : null;
-        $productName = !empty($request->category_name) ? $request->product_name : null;
-        $productParent = !empty($request->product_name) ? $request->product_parent : null;
+        $productID = !empty($request->product_id) ? $request->product_id : null;
+        $productName = !empty($request->product_name) ? $request->product_name : null;
+        $productParent = !empty($request->product_parent) ? $request->product_parent : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
 
         if (!$productFiles && !$productID) {
