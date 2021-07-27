@@ -46,19 +46,33 @@ class ProductsController
 
     public function SaveProduct(Request $request)
     {
-        if (empty($request->allFiles()) && !isset($request->product_id)) {
+        $productID = !empty($request->category_id) ? $request->product_id : null;
+        $productName = !empty($request->category_name) ? $request->product_name : null;
+        $productParent = !empty($request->product_name) ? $request->product_parent : null;
+        $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
+
+        if (!$productFiles && !$productID) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
-        if (strlen($request->product_name) === 0) {
+        if (!$productName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
-        if (strlen($request->product_parent) === 0) {
+        if (!$productParent) {
             return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
         }
 
-        if (Products::where('semantic_url', StringHelper::TransliterateURL($request->product_name))->first()) {
+
+        $semanticURL = StringHelper::TransliterateURL($productName);
+
+        $uniqSemanticURL = Products::where('semantic_url', $semanticURL);
+        if ($productID) {
+            $uniqSemanticURL->where('id', '!=', $productID);
+        }
+        $uniqSemanticURL = $uniqSemanticURL->first();
+
+        if ($uniqSemanticURL) {
             return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
         }
 
@@ -74,28 +88,25 @@ class ProductsController
 
         $serializeImgArray = serialize($saveFiles);
 
-        if (isset($request->product_id)) {
-            $productFind = Products::find($request->product_id);
+        $fields['title'] = $productName;
+        $fields['subcategory_id'] = $productParent;
+        $fields['semantic_url'] = $semanticURL;
+
+        if ($productID) {
+            $productFind = Products::find($productID);
             if ($productFind) {
-                $fields['title'] = $request->product_name;
-                $fields['subcategory_id'] = $request->product_parent;
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
-                $fields['semantic_url'] = StringHelper::TransliterateURL($request->product_name);
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
                     return ResultGenerate::Success('Продукт обновлен успешно!');
                 }
-
                 return ResultGenerate::Error('Ошибка обновления продукта!');
             }
 
         } else {
-            $fields['title'] = $request->product_name;
-            $fields['subcategory_id'] = $request->product_parent;
             $fields['img'] = $serializeImgArray;
-            $fields['semantic_url'] = StringHelper::TransliterateURL($request->product_name);
-            $product = Products::create($fields);
-            if ($product) {
+            $productCreated = Products::create($fields);
+            if ($productCreated) {
                 return ResultGenerate::Success('Продукт создан успешно!');
             }
             return ResultGenerate::Error('Ошибка создания продукта!');

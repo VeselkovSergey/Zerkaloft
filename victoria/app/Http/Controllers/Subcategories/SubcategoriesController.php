@@ -92,7 +92,7 @@ class SubcategoriesController
         $fields['category_id'] = $subcategoryParent;
         $fields['semantic_url'] = $semanticURL;
 
-        if (isset($request->subcategory_id)) {
+        if ($subcategoryID) {
             $subcategoryFind = Subcategories::find($subcategoryID);
             if ($subcategoryFind) {
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $subcategoryFind->img;
