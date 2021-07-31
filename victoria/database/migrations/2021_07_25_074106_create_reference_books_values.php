@@ -18,6 +18,7 @@ class CreateReferenceBooksValues extends Migration
             $table->string('value')->comment('Название справочника');
             $table->string('coefficient')->comment('Название справочника');
             $table->integer('reference_book_id')->comment('id справочника');
+            $table->timestamps();
         });
     }
 

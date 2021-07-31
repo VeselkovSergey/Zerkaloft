@@ -21,6 +21,7 @@ class CreateProducts extends Migration
             $table->longText('description')->comment('Описание продукта');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
+            $table->timestamps();
         });
     }
 

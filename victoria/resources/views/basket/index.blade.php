@@ -76,33 +76,33 @@
 
             <div style="padding: 25px;">
 
-                <div style="display: flex; width: 50%; border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); flex-wrap: wrap;">
+                <div style="display: flex; width: 50%; border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); flex-wrap: wrap;" class="client-order-information">
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_name">Имя</label>
-                            <input id="client_name" name="client_name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="">
+                            <input class="need-validate" id="client_name" name="client_name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_surname">Фамилия</label>
-                            <input id="client_surname" name="client_surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">
+                            <input class="need-validate" id="client_surname" name="client_surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">
                         </div>
                     </div>
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="client_phone">Номер телефона</label>
-                            <input id="client_phone" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+79999999999" value="">
+                            <input class="need-validate" id="client_phone" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+79999999999" value="">
                         </div>
                     </div>
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
-                            <label for="client_email">Почта</label>
-                            <input id="client_email" name="client_email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Почта" value="">
+                            <label for="client_email">Электронная почта</label>
+                            <input class="need-validate" id="client_email" name="client_email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Электронная почта" value="">
                         </div>
                     </div>
 
@@ -112,8 +112,6 @@
                             <textarea id="client_comment" name="client_comment" style="resize: none; width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" placeholder="Комметарий"></textarea>
                         </div>
                     </div>
-
-
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
@@ -127,13 +125,28 @@
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
-                            <div style="font-weight: bold; font-size: 20px; text-align: center;">
-                                <button class="button-add-in-basket" style="width: 80%;">Оформить заказ</button>
-                            </div>
+                            <label for="type_delivery">Способ получения</label>
+                            <select name="type_delivery" id="type_delivery" style="background-color: unset; width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;">
+                                <option value="1">Самовывоз</option>
+                                <option value="2">Доставка</option>
+                            </select>
                         </div>
                     </div>
 
+                    <div style="width: 100%;">
+                        <div style="padding: 10px;">
+                            <label for="delivery_address">Адрес</label>
+                            <input class="need-validate" id="delivery_address" name="delivery_address" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Адрес" value="г.Москва, ул.Тверская, дом 1" readonly>
+                        </div>
+                    </div>
 
+                    <div style="width: 100%;">
+                        <div style="padding: 10px;">
+                            <div style="font-weight: bold; font-size: 20px; text-align: center;">
+                                <button class="button-add-in-basket" style="width: 80%; margin: auto;">Оформить заказ</button>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -200,7 +213,38 @@
                 }, 10);
 
             }
-        })
+        });
+
+        document.body.querySelector('#type_delivery').addEventListener('change', (e) => {
+            let inputDeliveryAddress = document.body.querySelector('#delivery_address');
+            if (parseInt(e.target.value) === 1) {
+                inputDeliveryAddress.readOnly = true;
+                inputDeliveryAddress.value = 'г.Москва, ул.Тверская, дом 1';
+            } else {
+                inputDeliveryAddress.readOnly = false;
+                inputDeliveryAddress.value = '';
+            }
+        });
+
+        document.body.querySelector('.button-add-in-basket').addEventListener('click', (e) => {
+            let dataForm = getDataFormContainer('client-order-information', false);
+            if (!dataForm) {
+                // show error msg
+                return false;
+            }
+
+            dataForm['ordered_products'] = GetAllProductsInBasket();
+
+            let createOrderButton = document.body.querySelector('.client-order-information .button-add-in-basket');
+            HideElement(createOrderButton);
+
+            Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
+                //console.log(response);
+                // ClearAllProductsInBasket();
+                // location.reload();
+                ShowElement(createOrderButton);
+            });
+        });
 
 
 

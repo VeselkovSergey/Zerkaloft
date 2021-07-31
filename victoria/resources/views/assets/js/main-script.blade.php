@@ -419,6 +419,14 @@
         return count;
     }
 
+    function GetAllProductsInBasket(){
+        return localStorage.getItem('products_in_basket');
+    }
+
+    function ClearAllProductsInBasket(){
+        return localStorage.setItem('products_in_basket', {});
+    }
+
     UpdateCountProductsInBasket();
     function UpdateCountProductsInBasket() {
         let counterProductsInBasket = document.body.querySelector('.count-item-in-bag');
@@ -446,6 +454,38 @@
         Ajax("{{route('update-count-products')}}", 'post', {products_in_basket: localStorageBasket}).then((response) => {
             //console.log(response);
         });
+    }
+
+    /**
+     * Проверка и сбор данных из формы
+     */
+    function getDataFormContainer(container, validate) {
+        if (validInputEmpty(container) || !!!validate) {
+            let data = [];
+            document.body.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
+                if (el.type === 'file') {
+                    for (let i = 0; i < el.files.length; i++) {
+                        data[el.id + '-' + i] = el.files[i];
+                    }
+                } else {
+                    data[el.id] = el.value;
+                }
+            });
+            return data;
+        } else {
+            return ['No valid date'];
+        }
+    }
+
+    function validInputEmpty(container) {
+        let validate = true;
+        document.body.querySelectorAll('.' + container + ' .need-validate').forEach((el) => {
+            let strValue = el.value;
+            if (strValue === '' || strValue === null || strValue === undefined) {
+                validate = false;
+            }
+        });
+        return validate;
     }
 
 </script>

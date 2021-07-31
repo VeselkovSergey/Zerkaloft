@@ -12,8 +12,6 @@ class ReferenceBooks extends Model
 {
     use HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'title',
         'value',

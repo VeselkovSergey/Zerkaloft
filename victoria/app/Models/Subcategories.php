@@ -12,8 +12,6 @@ class Subcategories extends Model
 {
     use HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'title',
         'category_id',

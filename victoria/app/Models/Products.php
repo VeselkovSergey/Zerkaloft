@@ -12,8 +12,6 @@ class Products extends Model
 {
     use HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'title',
         'subcategory_id',

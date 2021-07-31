@@ -19,6 +19,7 @@ class CreateSubcategories extends Migration
             $table->integer('category_id')->comment('id категории');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
+            $table->timestamps();
         });
     }
 

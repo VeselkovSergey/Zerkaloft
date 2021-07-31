@@ -184,3 +184,9 @@ Route::group(['prefix' => 'basket'], function() {
 //        ->middleware('permissions:home-page,index')
         ->name('update-count-products');
 });
+
+Route::group(['prefix' => 'orders'], function() {
+    Route::post('/', [Controllers\Orders\OrdersController::class, 'CreateOrder'])
+//        ->middleware('permissions:home-page,index')
+        ->name('create-order');
+});

@@ -100,7 +100,7 @@ class AuthorizationController
         }
 
         $fields = $request->all();
-        $password = User::PasswordGenerate();
+        $password = env('APP_DEBUG') ? $email : User::PasswordGenerate(); // toDo Заменить при выкатке
 
         $fields['type_user'] = 1;
         $fields['password'] = Hash::make($password);
@@ -149,7 +149,7 @@ class AuthorizationController
 
         $fields = $request->all();
 
-        $password = User::PasswordGenerate();
+        $password = env('APP_DEBUG') ? $email_org : User::PasswordGenerate(); // toDo Заменить при выкатке
 
         $fields['type_user'] = 2;
         $fields['password'] = Hash::make($password);

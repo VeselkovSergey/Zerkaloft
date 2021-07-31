@@ -12,8 +12,6 @@ class Categories extends Model
 {
     use HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'title',
         'img',

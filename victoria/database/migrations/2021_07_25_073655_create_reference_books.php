@@ -17,6 +17,7 @@ class CreateReferenceBooks extends Migration
             $table->id();
             $table->string('title')->comment('Название справочника');
             $table->string('measure')->comment('Название справочника');
+            $table->timestamps();
         });
     }
 
