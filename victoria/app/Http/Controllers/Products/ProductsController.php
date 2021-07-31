@@ -49,6 +49,8 @@ class ProductsController
         $productID = !empty($request->product_id) ? $request->product_id : null;
         $productName = !empty($request->product_name) ? $request->product_name : null;
         $productParent = !empty($request->product_parent) ? $request->product_parent : null;
+        $productPrice = !empty($request->product_price) ? $request->product_price : null;
+        $productDescription = !empty($request->product_description) ? $request->product_description : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
 
         if (!$productFiles && !$productID) {
@@ -61,6 +63,14 @@ class ProductsController
 
         if (!$productParent) {
             return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
+        }
+
+        if (!$productPrice) {
+            return ResultGenerate::Error('Ошибка! Укажите стоимость!');
+        }
+
+        if (!$productDescription) {
+            return ResultGenerate::Error('Ошибка! Укажите описание!');
         }
 
 
@@ -90,6 +100,8 @@ class ProductsController
 
         $fields['title'] = $productName;
         $fields['subcategory_id'] = $productParent;
+        $fields['price'] = $productPrice;
+        $fields['description'] = $productDescription;
         $fields['semantic_url'] = $semanticURL;
 
         if ($productID) {
@@ -114,6 +126,15 @@ class ProductsController
 
         return ResultGenerate::Error('Непредвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
+    }
+
+    public function DeleteProduct(Request $request)
+    {
+        $deleteProduct = Products::find($request->product_id);
+        if ($deleteProduct->delete()) {
+            return ResultGenerate::Success('Продукт успешно удален!');
+        }
+        return ResultGenerate::Error('Ошибка удаления продукта!');
     }
 
     public function ProductPage(Request $request)

@@ -110,14 +110,17 @@
     .hide-el {
         display: none!important;
     }
-    .rotation-90 {
-        transform: rotate(0.25turn) !important;
-    }
     .expander-menu-category {
         transition: transform 100ms;
     }
     .expander-menu-subcategory {
         transition: transform 100ms;
+    }
+    .expander-menu-category.rotation-90 {
+        transform: rotate(0.25turn) !important;
+    }
+    .expander-menu-subcategory.rotation-90 {
+        transform: rotate(0.25turn) !important;
     }
 
     /*.menu-category-container:hover .menu-subcategory-container{*/
@@ -267,5 +270,70 @@
         width: 100%;
         height: 350px;
         border-radius: 15px;
+    }
+</style>
+
+<style>
+    .button-add-in-basket:hover {
+        background-color: #00aff2;
+    }
+    .button-add-in-basket:active {
+        background-color: #ffffff;
+        color: #00aff2;
+        border: 1px solid #00aff2;
+        padding: 4px 14px;
+    }
+    .button-add-in-basket {
+        background-color: #1976d2;
+        border: unset;
+        border-radius: 5px;
+        padding: 5px 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .cp {
+        cursor: pointer;
+    }
+
+    .product-name-in-basket {
+        text-decoration: none;
+        color: unset;
+    }
+    .product-name-in-basket:hover>div {
+        text-decoration: underline;
+    }
+
+    .button-show-products-cart-in-basket > svg {
+        transition: transform 100ms;
+    }
+    .button-show-products-cart-in-basket > svg.rotation-90 {
+        transform: rotate(-90deg);
+    }
+    .all-cart-product {
+        transform: scaleY(1);
+        transition: transform 0.25s ease;
+        transform-origin: top;
+    }
+    .all-cart-product.height-0 {
+        transform: scaleY(0);
+    }
+
+    .button-create-order:hover {
+        background-color: #00aff2;
+    }
+    .button-create-order:active {
+        background-color: #ffffff;
+        color: #00aff2;
+        border: 1px solid #00aff2;
+        padding: 4px 14px;
+    }
+    .button-create-ordert {
+        background-color: #1976d2;
+        border: unset;
+        border-radius: 5px;
+        padding: 5px 15px;
+        color: white;
+        cursor: pointer;
     }
 </style>

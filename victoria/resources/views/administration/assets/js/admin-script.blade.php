@@ -291,7 +291,7 @@
     function getDataFormContainer(container, validate) {
         if (validInputEmpty(container) || !!!validate) {
             let data = [];
-            document.body.querySelectorAll('.' + container + ' input, .' + container + ' select').forEach((el) => {
+            document.body.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
                 if (el.type === 'file') {
                     for (let i = 0; i < el.files.length; i++) {
                         data[el.id + '-' + i] = el.files[i];

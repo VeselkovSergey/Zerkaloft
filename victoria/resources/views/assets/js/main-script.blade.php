@@ -2,6 +2,16 @@
 {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>--}}
 <script>
 
+    function ShowElement(el) {
+        el.classList.add('show-el');
+        el.classList.remove('hide-el');
+    }
+
+    function HideElement(el) {
+        el.classList.add('hide-el');
+        el.classList.remove('show-el');
+    }
+
     function ShowLoader() {
         let loader = document.createElement("div");
         loader.className = 'loader';
@@ -49,92 +59,96 @@
         modalFlash.classList.add('hide-el');
     }
 
-    let btnMenu = document.body.querySelector('.menu-btn');
-    btnMenu.addEventListener('click', (el) => {
-        el.stopPropagation();
-        document.body.querySelector('.menu-container').classList.toggle('show-el');
-    });
+    // let btnMenu = document.body.querySelector('.menu-btn');
+    // btnMenu.addEventListener('click', (el) => {
+    //     el.stopPropagation();
+    //     document.body.querySelector('.menu-container').classList.toggle('show-el');
+    // });
 
-    document.body.addEventListener('click', (el) => {
-        if (document.body.querySelector('.menu-container').classList.contains('show-el')) {
-            document.body.querySelector('.menu-container').classList.remove('show-el');
-        }
-    });
+    // document.body.addEventListener('click', (el) => {
+    //     if (document.body.querySelector('.menu-container').classList.contains('show-el')) {
+    //         document.body.querySelector('.menu-container').classList.remove('show-el');
+    //     }
+    // });
 
 </script>
 
 <script>
 
     let carousel = document.body.querySelector('.carousel');
-    let carouselContainer = carousel.querySelector('.carousel-container');
-    let carouselContainerChildren = carousel.querySelectorAll('.img-carousel');
-    let sequenceImgCarousel = [];
-    let activeImgCarousel = 0;
+    if (carousel) {
 
-    carouselContainerChildren.forEach((img) => {
-        sequenceImgCarousel.push(img);
-    });
+        let carouselContainer = carousel.querySelector('.carousel-container');
+        let carouselContainerChildren = carousel.querySelectorAll('.img-carousel');
+        let sequenceImgCarousel = [];
+        let activeImgCarousel = 0;
 
-    Object.keys(sequenceImgCarousel).forEach((key) => {
-        if (sequenceImgCarousel[key].classList.contains('active')) {
-            activeImgCarousel = key;
-        }
-    });
-
-    let countImgInCarousel = sequenceImgCarousel.length - 1;
-
-    document.body.querySelector('.btn-slider-prev').addEventListener('click', (btn) => {
-        clearTimeout(timerNextImgInCarousel);
-        PrevImgInCarousel();
-        TimerNextImgInCarousel();
-    });
-
-    document.body.querySelector('.btn-slider-next').addEventListener('click', (btn) => {
-        clearTimeout(timerNextImgInCarousel);
-        NextImgInCarousel();
-        TimerNextImgInCarousel();
-    });
-
-    let timerNextImgInCarousel;
-    TimerNextImgInCarousel();
-    function TimerNextImgInCarousel() {
-        clearTimeout(timerNextImgInCarousel);
-        timerNextImgInCarousel = setTimeout(() => {
-            NextImgInCarousel();
-            TimerNextImgInCarousel();
-        }, 2500);
-    }
-
-    function NextImgInCarousel() {
-        DeactivateAllImgCarousel();
-        let key;
-        if (parseInt(activeImgCarousel) === countImgInCarousel) {
-            key = 0;
-        } else {
-            key = parseInt(activeImgCarousel) + 1;
-        }
-        sequenceImgCarousel[key].classList.add('active');
-        activeImgCarousel = key;
-    }
-
-    function PrevImgInCarousel() {
-        DeactivateAllImgCarousel();
-        let key;
-        if (parseInt(activeImgCarousel) === 0) {
-            key = countImgInCarousel;
-        } else {
-            key = parseInt(activeImgCarousel) - 1;
-        }
-        sequenceImgCarousel[key].classList.add('active');
-        activeImgCarousel = key;
-    }
-
-    function DeactivateAllImgCarousel() {
         carouselContainerChildren.forEach((img) => {
-            if (img.classList.contains('active')) {
-                img.classList.remove('active');
+            sequenceImgCarousel.push(img);
+        });
+
+        Object.keys(sequenceImgCarousel).forEach((key) => {
+            if (sequenceImgCarousel[key].classList.contains('active')) {
+                activeImgCarousel = key;
             }
         });
+
+        let countImgInCarousel = sequenceImgCarousel.length - 1;
+
+        document.body.querySelector('.btn-slider-prev').addEventListener('click', (btn) => {
+            clearTimeout(timerNextImgInCarousel);
+            PrevImgInCarousel();
+            TimerNextImgInCarousel();
+        });
+
+        document.body.querySelector('.btn-slider-next').addEventListener('click', (btn) => {
+            clearTimeout(timerNextImgInCarousel);
+            NextImgInCarousel();
+            TimerNextImgInCarousel();
+        });
+
+        let timerNextImgInCarousel;
+        TimerNextImgInCarousel();
+        function TimerNextImgInCarousel() {
+            clearTimeout(timerNextImgInCarousel);
+            timerNextImgInCarousel = setTimeout(() => {
+                NextImgInCarousel();
+                TimerNextImgInCarousel();
+            }, 2500);
+        }
+
+        function NextImgInCarousel() {
+            DeactivateAllImgCarousel();
+            let key;
+            if (parseInt(activeImgCarousel) === countImgInCarousel) {
+                key = 0;
+            } else {
+                key = parseInt(activeImgCarousel) + 1;
+            }
+            sequenceImgCarousel[key].classList.add('active');
+            activeImgCarousel = key;
+        }
+
+        function PrevImgInCarousel() {
+            DeactivateAllImgCarousel();
+            let key;
+            if (parseInt(activeImgCarousel) === 0) {
+                key = countImgInCarousel;
+            } else {
+                key = parseInt(activeImgCarousel) - 1;
+            }
+            sequenceImgCarousel[key].classList.add('active');
+            activeImgCarousel = key;
+        }
+
+        function DeactivateAllImgCarousel() {
+            carouselContainerChildren.forEach((img) => {
+                if (img.classList.contains('active')) {
+                    img.classList.remove('active');
+                }
+            });
+        }
+
     }
 
     document.body.querySelector('.delete-value-search-input').addEventListener('click', (el) => {
@@ -349,6 +363,89 @@
     let elements = document.querySelectorAll('.smooth-block');
     for (let elm of elements) {
         observer.observe(elm);
+    }
+
+</script>
+
+<script>
+
+    function changeCountProductInBasket(product, typeChange, countProduct) {
+
+        let localStorageBasket = localStorage.getItem('products_in_basket');
+
+        if (localStorageBasket === null) {
+            localStorageBasket = {};
+        } else {
+            localStorageBasket = JSON.parse(localStorageBasket);
+        }
+
+        if (typeChange === undefined || typeChange === true) {
+            if (localStorageBasket[product] === undefined) {
+                localStorageBasket[product] = 1;
+            } else {
+                localStorageBasket[product] = localStorageBasket[product] + 1;
+            }
+        } else if (typeChange === false) {
+            localStorageBasket[product] = localStorageBasket[product] - 1;
+        } else if (typeChange === 'input') {
+            localStorageBasket[product] = countProduct;
+        }
+
+        if (localStorageBasket[product] === 0) {
+            delete localStorageBasket[product];
+        }
+
+        localStorage.setItem('products_in_basket', JSON.stringify(localStorageBasket));
+        UpdateCountProductsInBasket();
+
+        return localStorageBasket[product] === undefined ? 0 : localStorageBasket[product];
+    }
+
+    function getCountProductsInBasket(){
+        let localStorageBasket = localStorage.getItem('products_in_basket');
+
+        if (localStorageBasket === null) {
+            localStorageBasket = {};
+        } else {
+            localStorageBasket = JSON.parse(localStorageBasket);
+        }
+
+        let count = 0;
+
+        Object.keys(localStorageBasket).forEach(key => {
+            count += parseInt(localStorageBasket[key]);
+        });
+
+        return count;
+    }
+
+    UpdateCountProductsInBasket();
+    function UpdateCountProductsInBasket() {
+        let counterProductsInBasket = document.body.querySelector('.count-item-in-bag');
+        let countProductsInBasket = getCountProductsInBasket();
+        counterProductsInBasket.innerHTML = countProductsInBasket;
+        if (countProductsInBasket > 0) {
+            ShowElement(counterProductsInBasket);
+        } else {
+            HideElement(counterProductsInBasket);
+        }
+        UpdateCountProductsInBasketInBack();
+    }
+
+    // document.body.querySelector('.button-basket').addEventListener('click', () => {
+    //     UpdateCountProductsInBasket();
+    // });
+
+    function UpdateCountProductsInBasketInBack() {
+        let localStorageBasket = localStorage.getItem('products_in_basket');
+
+        if (localStorageBasket === null) {
+            localStorageBasket = {};
+        }
+
+        Ajax("{{route('update-count-products')}}", 'post', {products_in_basket: localStorageBasket}).then((response) => {
+            //console.log(response);
+        });
     }
 
 </script>

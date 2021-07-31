@@ -46,6 +46,16 @@
 
         </div>
 
+        <div style="padding: 10px; width: 100%;">
+            <label for="product_description" style="display: block; width: 100%;">Описание</label>
+            <textarea style="width: 100%;" name="product_description" id="product_description">{{$product->description}}</textarea>
+        </div>
+
+        <div style="padding: 10px; width: 100%;">
+            <label for="product_price" style="display: block; width: 100%;">Стоимость</label>
+            <input id="product_price" type="text" style="width: 100%;" value="{{$product->price}}">
+        </div>
+
         @foreach(unserialize($product->img) as $img)
 
             <div style="padding: 10px; width: 100%;">

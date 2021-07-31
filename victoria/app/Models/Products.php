@@ -19,10 +19,12 @@ class Products extends Model
         'subcategory_id',
         'img',
         'semantic_url',
+        'price',
+        'description',
     ];
 
     public function Subcategory()
     {
-        return $this->hasOne(Categories::class, 'id', 'subcategory_id');
+        return $this->hasOne(Subcategories::class, 'id', 'subcategory_id');
     }
 }
