@@ -271,7 +271,7 @@
             document.body.querySelector('.physical_user_input').classList.remove('show-el');
             document.body.querySelector('.physical_user_input').classList.add('hide-el');
         } else {
-            document.body.querySelector('.radio-effect').style.marginLeft = '5px';
+            document.body.querySelector('.radio-effect').style.marginLeft = '10px';
             document.body.querySelector('.physical_user_input').classList.add('show-el');
             document.body.querySelector('.physical_user_input').classList.remove('hide-el');
             document.body.querySelector('.juridical_user_input').classList.remove('show-el');
@@ -424,7 +424,9 @@
     }
 
     function ClearAllProductsInBasket(){
-        return localStorage.setItem('products_in_basket', {});
+        localStorage.removeItem('products_in_basket');
+        UpdateCountProductsInBasket();
+        return true;
     }
 
     UpdateCountProductsInBasket();
@@ -473,7 +475,7 @@
             });
             return data;
         } else {
-            return ['No valid date'];
+            return false;
         }
     }
 
@@ -486,6 +488,29 @@
             }
         });
         return validate;
+    }
+
+    let regOnlyLetter = new RegExp("^[а-яА-ЯёЁa-zA-Z]+$");
+    let regOnlyNumber = new RegExp("[0-9]");
+    let regEmail = new RegExp("^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$");
+    let regPassword = new RegExp("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+
+    function returnOnlyLetter(string) {
+        return string.replace(/[^а-яА-ЯёЁa-zA-Z\s]/gi, '');
+    }
+
+    function returnOnlyPhoneNumber(string) {
+        return string.replace(/[^0-9+()-]/g, '');
+    }
+
+    function ShowFlashMessage(msg, time) {
+        time = time === undefined ? 1500 : time
+        let containerFlashMessage = document.body.querySelector('.flash-message');
+        containerFlashMessage.innerHTML = msg;
+        containerFlashMessage.classList.add('show-el');
+        setTimeout(() => {
+            containerFlashMessage.classList.remove('show-el');
+        }, time);
     }
 
 </script>

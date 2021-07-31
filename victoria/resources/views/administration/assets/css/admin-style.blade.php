@@ -162,7 +162,7 @@
     .flash-message {
         text-align: center;
         padding: 5px;
-        position: absolute;
+        position: fixed;
         width: 100%;
         display: none;
     }

@@ -17,20 +17,21 @@
 
     </head>
 
-    <body style="max-width: 100%;">
+    <body>
 
-    <div class="modal hide-el" style="position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
+    <div class="modal hide-el">
 
-        <div class="modal-flash-message hide-el" style="position: absolute; width: 100%; cursor: pointer; text-align: center; color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;">
+        <div class="modal-flash-message hide-el">
+
             <div class="modal-flash-message-content">
-
             </div>
+
         </div>
 
-        <div class="modal-container" style="position: fixed; top: 10%; width: 100%; margin: auto; display: flex;">
-            <div class="window-modal" style="margin: auto; /*background-color: white;*/ max-height: 80vh; overflow:auto; position: relative;">
+        <div class="modal-container">
+            <div class="window-modal">
 
-                <div class="modal-close-button" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">
+                <div class="modal-close-button">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                               d="M12.6365 13.3996L13.4001 12.636L7.76373 6.99961L13.4001 1.36325L12.6365 0.599609L7.0001 6.23597L1.36373 0.599609L0.600098 1.36325L6.23646 6.99961L0.600098 12.636L1.36373 13.3996L7.0001 7.76325L12.6365 13.3996Z"
@@ -38,28 +39,27 @@
                     </svg>
                 </div>
 
-{{--                <div class="modal-flash-message hide-el" style="position: absolute; width: 100%; cursor: pointer; text-align: center; color: #721c24;">--}}
-{{--                    <div class="modal-flash-message-content">--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-
                 <div class="modal-content">
-
                 </div>
+
             </div>
         </div>
+
     </div>
 
         <div class="no-mobile-version">
             <h1>Версия для маленьких экранов в разработке</h1>
         </div>
 
-        <header style="height: 100px; background-color: #1976d2; position: sticky; top: 0; z-index: 5; box-shadow: 0 3px 10px rgb(0 0 0);">
+        <header>
             @include('layouts.header')
         </header>
 
-        <nav style="position: absolute; top: 150px; left: 25px; width: 13%; box-shadow: 0 0 10px rgb(0 0 0 / 75%); padding: 25px;">
+        <div class="flash-message flash-message-error hide-el">
+1
+        </div>
+
+        <nav class="left-menu">
             <div>
                 @foreach(\App\Models\Categories::all() as $category)
 

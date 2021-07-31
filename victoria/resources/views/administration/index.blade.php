@@ -103,7 +103,9 @@
             </div>
         </nav>
 
-        <div class="flash-message flash-message-error">123</div>
+        <div class="flash-message flash-message-error">
+
+        </div>
 
         <main style="min-height: calc(100vh - 200px); margin: 25px 15% 0 15%;">
 

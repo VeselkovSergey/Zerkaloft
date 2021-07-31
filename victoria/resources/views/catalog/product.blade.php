@@ -75,17 +75,17 @@
 
     <script>
 
-        //let productAdded = false;
+        let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
         buttonAddInBasket.addEventListener('click', (e) => {
             let productId = document.body.querySelector('.product-id').dataset.productId;
-            //if (!productAdded) {
+            if (!productAdded) {
                 changeCountProductInBasket(productId);
-                //buttonAddInBasket.innerHTML = 'Перейти в корзину';
-                //productAdded = true;
-            //} else {
-                //location.href = "{{route('basket-page')}}";
-            //}
+                buttonAddInBasket.innerHTML = 'Перейти в корзину';
+                productAdded = true;
+            } else {
+                location.href = "{{route('basket-page')}}";
+            }
         });
 
     </script>

@@ -39,6 +39,7 @@
         scroll-behavior: smooth;
         text-rendering: optimizeSpeed;
         line-height: 1.5;
+        max-width: 100%;
     }
 
     /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
@@ -105,10 +106,10 @@
     }
 
     .show-el {
-        display: block!important;
+        display: block;
     }
     .hide-el {
-        display: none!important;
+        display: none;
     }
     .expander-menu-category {
         transition: transform 100ms;
@@ -274,6 +275,23 @@
 </style>
 
 <style>
+    .button-create-order:hover {
+        background-color: #00aff2;
+    }
+    .button-create-order:active {
+        background-color: #ffffff;
+        color: #00aff2;
+        border: 1px solid #00aff2;
+        padding: 4px 14px;
+    }
+    .button-create-order {
+        background-color: #1976d2;
+        border: unset;
+        border-radius: 5px;
+        padding: 5px 15px;
+        color: white;
+        cursor: pointer;
+    }
     .button-add-in-basket:hover {
         background-color: #00aff2;
     }
@@ -284,6 +302,25 @@
         padding: 4px 14px;
     }
     .button-add-in-basket {
+        background-color: #1976d2;
+        border: unset;
+        border-radius: 5px;
+        padding: 5px 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+
+    .button-blue:hover {
+        background-color: #00aff2;
+    }
+    .button-blue:active {
+        background-color: #ffffff;
+        color: #00aff2;
+        border: 1px solid #00aff2;
+        padding: 4px 14px;
+    }
+    .button-blue {
         background-color: #1976d2;
         border: unset;
         border-radius: 5px;
@@ -335,5 +372,97 @@
         padding: 5px 15px;
         color: white;
         cursor: pointer;
+    }
+
+    .type_user_label:checked {
+        color: white;
+    }
+
+    .flash-message {
+        text-align: center;
+        padding: 5px;
+        position: fixed;
+        width: 100%;
+        /*display: none;*/
+    }
+
+    .flash-message.show-el {
+        display: block;
+    }
+
+    .flash-message-error{
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .flash-message-info{
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+    }
+
+    .flash-message-success{
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .modal {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+    .modal.show-el {
+        display: flex;
+    }
+    .modal-close-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+    .modal-container {
+        /* position: fixed; */
+        /* top: 10%; */
+        width: 100%;
+        margin: auto;
+        display: flex;
+    }
+    .modal-flash-message {
+        position: absolute;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+    .window-modal {
+        margin: auto;
+        /* background-color: white; */
+        max-height: 90vh;
+        overflow: auto;
+        position: relative;
+    }
+
+    .left-menu {
+        position: absolute;
+        top: 150px;
+        left: 25px;
+        width: 13%;
+        box-shadow: 0 0 10px rgb(0 0 0 / 75%);
+        padding: 25px;
+    }
+
+    header {
+        height: 100px;
+        background-color: #1976d2;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        box-shadow: 0 3px 10px rgb(0 0 0);
     }
 </style>

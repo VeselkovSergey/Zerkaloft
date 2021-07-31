@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Orders;
 
 use App\Helpers\ResultGenerate;
+use App\Http\Controllers\Authorization\AuthorizationController;
 use App\Models\Orders;
 use App\Models\Products;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class OrdersController
 {
@@ -60,6 +61,23 @@ class OrdersController
             return ResultGenerate::Error('Ошибка! Не верный email!');
         }
 
+        $user = User::query()->where('email', $clientEmail)->first();
+        if ($user) {
+            $clientID = $user->id;
+        } else {
+            $newRequestRegistration = new Request();
+            $newRequestRegistration['type_user'] = 'physical_user';
+            $newRequestRegistration['surname'] = $clientSurname;
+            $newRequestRegistration['name'] = $clientName;
+            $newRequestRegistration['patronymic'] = '';
+            $newRequestRegistration['email'] = $clientEmail;
+            $newRequestRegistration['phone'] = $clientPhone;
+
+            $fastRegistrationUserPhysical = new AuthorizationController();
+            $resultFastRegistrationUserPhysical = $fastRegistrationUserPhysical->FastRegistration($newRequestRegistration);
+            $clientID = $resultFastRegistrationUserPhysical->user_id;
+        }
+
         $fields['user_id'] = $clientID;
         $fields['products'] = $serializeAllInfoOrderedProducts;
         $fields['client_name'] = $clientName;
@@ -73,8 +91,8 @@ class OrdersController
 
         $createdOrder = Orders::create($fields);
 
-        dd($createdOrder);
+        #toDo Отправить письмо на почту об успешном заказе
 
-        return ResultGenerate::Success();
+        return ResultGenerate::Success('Заказ успешно создан!');
     }
 }

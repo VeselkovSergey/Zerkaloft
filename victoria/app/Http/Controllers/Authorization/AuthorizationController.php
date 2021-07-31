@@ -63,11 +63,16 @@ class AuthorizationController
             $res = $this->RegistrationUserJuridical($request);
         }
 
-        if ($res === true) {
+        if ($res instanceof UserPhysicals || $res instanceof UserJuridicals) {
             return ResultGenerate::Success();
         } else {
             return ResultGenerate::Error($res);
         }
+    }
+
+    public function FastRegistration(Request $request)
+    {
+        return $this->RegistrationUserPhysical($request);
     }
 
     private function RegistrationUserPhysical(Request $request)
@@ -107,11 +112,15 @@ class AuthorizationController
         $user = User::create($fields);
 
         $fields['user_id'] = $user->id;
+        $fields['surname'] = $surname;
+        $fields['name'] = $name;
+        $fields['patronymic'] = $patronymic;
+        $fields['phone'] = $phone;
         $userPhysical = UserPhysicals::create($fields);
 
         #toDo Отправить письмо на почту
 
-        return true;
+        return $userPhysical;
     }
 
     private function RegistrationUserJuridical(Request $request)
@@ -156,10 +165,18 @@ class AuthorizationController
         $user = User::create($fields);
 
         $fields['user_id'] = $user->id;
+        $fields['title_org'] = $title_org;
+        $fields['inn_org'] = $inn_org;
+        $fields['email_org'] = $email_org;
+        $fields['phone_org'] = $phone_org;
+        $fields['surname_worker'] = $surname_worker;
+        $fields['name_worker'] = $name_worker;
+        $fields['patronymic_worker'] = $patronymic_worker;
         $userJuridical = UserJuridicals::create($fields);
 
         #toDo Отправить письмо на почту
-        return true;
+
+        return $userJuridical;
     }
 
 
