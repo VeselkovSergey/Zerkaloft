@@ -14,6 +14,7 @@ class CreateUserJuridicalTable extends Migration
     public function up()
     {
         Schema::create('user_juridicals', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id')->comment('ID пользователя');
             $table->string('title_org')->comment('Название организации');
             $table->string('inn_org')->comment('ИНН организации');

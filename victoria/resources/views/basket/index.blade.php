@@ -91,28 +91,28 @@
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_name">Имя</label>
-                            <input data-type-mask="letters" class="need-validate" id="client_name" name="client_name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="">
+                            <input data-type-mask="letters" class="need-validate" id="client_name" name="client_name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="{{auth()->check() ? auth()->user()->Name() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_surname">Фамилия</label>
-                            <input data-type-mask="letters" class="need-validate" id="client_surname" name="client_surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">
+                            <input data-type-mask="letters" class="need-validate" id="client_surname" name="client_surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="{{auth()->check() ? auth()->user()->Surname() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_phone">Номер телефона</label>
-                            <input data-type-mask="phone" class="need-validate" id="client_phone" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)999-99-99" value="">
+                            <input data-type-mask="phone" class="need-validate" id="client_phone" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)999-99-99" value="{{auth()->check() ? auth()->user()->Phone() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_email">Электронная почта</label>
-                            <input class="need-validate" id="client_email" name="client_email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="domain@email.ru" value="">
+                            <input class="need-validate" id="client_email" name="client_email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="domain@email.ru" value="{{auth()->check() ? auth()->user()->email : ''}}">
                         </div>
                     </div>
 
@@ -241,7 +241,6 @@
                     setTimeout(() => {
                         document.body.querySelector('.all-cart-product').classList.remove('height-0');
                     }, 10);
-
                 }
             });
         }
@@ -255,7 +254,10 @@
                     inputDeliveryAddress.value = 'г.Москва, ул.Тверская, дом 1';
                 } else {
                     inputDeliveryAddress.readOnly = false;
-                    inputDeliveryAddress.value = '';
+                    @php
+                        $address = auth()->check() ? auth()->user()->type_user === 2 ? auth()->user()->DetailedInformation->address_physical_org : '' : '';
+                    @endphp
+                    inputDeliveryAddress.value = "{{$address}}";
                 }
             });
         }
@@ -289,7 +291,6 @@
                 HideElement(createOrderButton);
 
                 Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
-                    console.log(response)
                     if (response.status) {
                         ClearAllProductsInBasket();
                         ShowModal('<div style="background-color: white; padding: 25px; font-size: 20px;">Заказ оформлен! С Вами скоро свяжутся!</div>');
@@ -299,7 +300,6 @@
                     } else {
                         ShowFlashMessage(response.message, 5000);
                     }
-
                 });
             });
         }

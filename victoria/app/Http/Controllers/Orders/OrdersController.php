@@ -26,10 +26,9 @@ class OrdersController
         $clientComment = !empty($request->client_comment) ? $request->client_comment : null;
         $orderedProducts = !empty($request->ordered_products) ? json_decode($request->ordered_products) : null;
 
-        $allInfoOrderedProducts = Products::select('id', 'title', 'price')->whereIn('id', array_keys((array)$orderedProducts))->get()->toArray();
-        $serializeAllInfoOrderedProducts = serialize($allInfoOrderedProducts);
+        $jsonAllInfoOrderedProducts = Products::select('id', 'title', 'price')->whereIn('id', array_keys((array)$orderedProducts))->get()->toJson();
 
-        if (!$allInfoOrderedProducts) {
+        if (!sizeof((array)$orderedProducts)) {
             return ResultGenerate::Error('Ошибка! Нет товаров!');
         }
 
@@ -79,7 +78,7 @@ class OrdersController
         }
 
         $fields['user_id'] = $clientID;
-        $fields['products'] = $serializeAllInfoOrderedProducts;
+        $fields['products'] = $jsonAllInfoOrderedProducts;
         $fields['client_name'] = $clientName;
         $fields['client_surname'] = $clientSurname;
         $fields['client_phone'] = $clientPhone;

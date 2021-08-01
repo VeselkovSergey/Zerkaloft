@@ -80,8 +80,6 @@
         document.body.querySelector('.create-product-btn').addEventListener('click', () => {
             let dataForm = getDataFormContainer('container-create-product');
 
-            console.log(dataForm)
-
             let createProductBtn = document.body.querySelector('.container-create-product .container-btn');
             createProductBtn.classList.add('hide-el');
 

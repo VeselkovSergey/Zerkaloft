@@ -12,6 +12,5 @@ class TestController
     public function index(Request $request)
     {
         dd(Hash::make('test@test.test'));
-        dd(123);
     }
 }

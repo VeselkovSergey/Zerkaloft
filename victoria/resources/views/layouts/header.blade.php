@@ -98,7 +98,7 @@
 
     <div style="display: flex; width: 20%; justify-content: center; align-items: center; line-height: 1;">
         @php
-            $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'Logout()';
+            $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
         @endphp
         <div onclick="{{$actionConditionAuth}}" class="container-profile" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 0 16px; text-align: center; cursor: pointer;">
             <div style="width: 100%;">
@@ -109,7 +109,7 @@
 
             <div style="width: 100%; text-align: center; font-size: 14px;">
                 @if(\Illuminate\Support\Facades\Auth::check())
-                    Выход
+                    Профиль
                 @else
                     Вход
                 @endif

@@ -58,6 +58,32 @@ Route::group(['prefix' => 'auth'], function() {
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryPage'])
             ->name('password-recovery-page');
     });
+
+
+});
+
+Route::group(['prefix' => 'profile'], function() {
+
+//    Route::get('/', [Controllers\Profile\ProfileController::class, 'ProfilePage'])
+//        ->name('profile-page');
+
+    Route::get('/orders', [Controllers\Profile\ProfileController::class, 'UserOrdersPage'])
+        ->name('user-orders-page');
+
+    Route::group(['prefix' => 'order'], function() {
+        Route::get('/{order_id}', [Controllers\Profile\ProfileController::class, 'UserOrderPage'])
+            ->name('user-order-page');
+    });
+
+    Route::group(['prefix' => 'setting'], function() {
+
+        Route::get('/', [Controllers\Profile\ProfileController::class, 'UserSettingsPage'])
+            ->name('user-settings-page');
+
+        Route::post('/change-detail-information', [Controllers\Profile\ProfileController::class, 'ChangeDetailInformation'])
+            ->name('change-detail-information');
+    });
+
 });
 
 Route::group(['prefix' => 'admin'], function() {

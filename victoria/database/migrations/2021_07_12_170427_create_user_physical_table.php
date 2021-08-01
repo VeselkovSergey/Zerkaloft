@@ -14,6 +14,7 @@ class CreateUserPhysicalTable extends Migration
     public function up()
     {
         Schema::create('user_physicals', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id')->comment('ID пользователя');
             $table->string('surname');
             $table->string('name');

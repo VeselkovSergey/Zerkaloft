@@ -41,6 +41,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    const TypeUser = [
+        1 => 'Физическое лицо',
+        2 => 'Юридическое лицо'
+    ];
+
+    public function TypeUser()
+    {
+        return self::TypeUser[$this->type_user];
+    }
+
     public static function PasswordGenerate($length = 12): string
     {
 
@@ -60,5 +70,46 @@ class User extends Authenticatable
         }
 
         return $pass;
+    }
+
+    public function DetailedInformation()
+    {
+        if ($this->type_user === 1) {
+            return $this->hasOne(UserPhysicals::class, 'user_id', 'id');
+        } else {
+            return $this->hasOne(UserJuridicals::class, 'user_id', 'id');
+        }
+    }
+
+    public function Name()
+    {
+        if ($this->type_user === 1) {
+            return UserPhysicals::select('name')->where('user_id', $this->id)->first()->name;
+        } else {
+            return UserJuridicals::select('name_worker')->where('user_id', $this->id)->first()->name_worker;
+        }
+    }
+
+    public function Surname()
+    {
+        if ($this->type_user === 1) {
+            return UserPhysicals::select('surname')->where('user_id', $this->id)->first()->surname;
+        } else {
+            return UserJuridicals::select('surname_worker')->where('user_id', $this->id)->first()->surname_worker;
+        }
+    }
+
+    public function Phone()
+    {
+        if ($this->type_user === 1) {
+            return UserPhysicals::select('phone')->where('user_id', $this->id)->first()->phone;
+        } else {
+            return UserJuridicals::select('phone_org')->where('user_id', $this->id)->first()->phone_org;
+        }
+    }
+
+    public function Orders()
+    {
+        return $this->hasMany(Orders::class, 'user_id', 'id');
     }
 }

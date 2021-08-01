@@ -16,7 +16,7 @@ class CreateOrders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->default(-1)->comment('ID юзера если авторизован');
-            $table->string('products')->comment('Заказанные продукты');
+            $table->longText('products')->comment('Заказанные продукты');
             $table->string('client_name')->comment('Имя клиента');
             $table->string('client_surname')->comment('Фамилия клиента');
             $table->string('client_phone')->comment('Номер телефона');

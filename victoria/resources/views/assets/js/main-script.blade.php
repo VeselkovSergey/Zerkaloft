@@ -298,8 +298,15 @@
         })
 
         Ajax("{{route('registration')}}", 'post', data).then((response) => {
-            //console.log(response);
-            ShowModalFlash(response.message, true);
+            if (response.status) {
+                ShowModal('<div style="background-color: white; padding: 25px; font-size: 20px;">' + response.message + '</div>');
+                document.body.querySelector('.modal-close-button').addEventListener('click', (el) => {
+                    location.href = "{{route('home-page')}}";
+                });
+            } else {
+                ShowModalFlash(response.message, true);
+            }
+
         });
     }
 
@@ -319,6 +326,14 @@
         Ajax("{{route('logout')}}").then((response) => {
             location.reload();
         });
+    }
+
+    {{--function ProfilePage() {--}}
+    {{--    location.href = "{{route('profile-page')}}";--}}
+    {{--}--}}
+
+    function UserOrdersPage() {
+        location.href = "{{route('user-orders-page')}}";
     }
 
     function Login() {

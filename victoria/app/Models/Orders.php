@@ -27,12 +27,12 @@ class Orders extends Model
         'delivery_address'
     ];
 
-    const TypeDelivery = [
+    const DeliveryType = [
         1 => 'Самовывоз',
         2 => 'Доставка',
     ];
 
-    const StatusOrder = [
+    const OrderStatus = [
         1 => 'Заказ только создан',
         2 => 'Заказ в обработке',
         3 => 'Заказ в пути',
@@ -41,16 +41,36 @@ class Orders extends Model
         6 => 'Заказ отменён покупателем',
     ];
 
-    const TypePayment = [
+    const PaymentType = [
         1 => 'Оплата при получении',
         2 => 'Онлайн оплата',
     ];
 
-    const StatusPayment = [
+    const PaymentStatus = [
         1 => 'Только создан',
         2 => 'Ожидает оплаты',
         3 => 'Оплачен',
         4 => 'Отменён',
         5 => 'Возврат',
     ];
+
+    public function DeliveryType()
+    {
+        return self::DeliveryType[$this->type_delivery];
+    }
+
+    public function OrderStatus()
+    {
+        return self::OrderStatus[$this->order_status];
+    }
+
+    public function PaymentType()
+    {
+        return self::PaymentType[$this->type_payment];
+    }
+
+    public function PaymentStatus()
+    {
+        return self::PaymentStatus[$this->payment_status];
+    }
 }

@@ -42,7 +42,7 @@ class AuthorizationController
     public function Logout(Request $request)
     {
         Auth::logout();
-        return ResultGenerate::Success('Вы вышли из системы!');
+        return redirect(route('home-page'));
     }
 
     public function RegistrationPage(Request $request)
@@ -64,7 +64,7 @@ class AuthorizationController
         }
 
         if ($res instanceof UserPhysicals || $res instanceof UserJuridicals) {
-            return ResultGenerate::Success();
+            return ResultGenerate::Success('Регистрация успешна! Пароль выслан на почту!');
         } else {
             return ResultGenerate::Error($res);
         }
@@ -162,12 +162,12 @@ class AuthorizationController
 
         $fields['type_user'] = 2;
         $fields['password'] = Hash::make($password);
+        $fields['email'] = $email_org;
         $user = User::create($fields);
 
         $fields['user_id'] = $user->id;
         $fields['title_org'] = $title_org;
         $fields['inn_org'] = $inn_org;
-        $fields['email_org'] = $email_org;
         $fields['phone_org'] = $phone_org;
         $fields['surname_worker'] = $surname_worker;
         $fields['name_worker'] = $name_worker;
