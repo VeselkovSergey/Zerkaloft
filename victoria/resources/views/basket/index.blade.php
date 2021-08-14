@@ -105,7 +105,7 @@
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_phone">Номер телефона</label>
-                            <input data-type-mask="phone" class="need-validate" id="client_phone" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)999-99-99" value="{{auth()->check() ? auth()->user()->Phone() : ''}}">
+                            <input data-type-mask="phone" class="need-validate phone-mask" id="client_phone" maxlength="17" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)-999-99-99" value="{{auth()->check() ? auth()->user()->Phone() : ''}}">
                         </div>
                     </div>
 
@@ -304,7 +304,7 @@
             });
         }
 
-
+        startTrackingNumberInput();
 
 
     </script>

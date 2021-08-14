@@ -66,7 +66,7 @@
                 <div style="width: 100%;">
                     <div style="padding: 10px;">
                         <label for="phone">Телефон</label>
-                        <input id="phone" name="phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Телефон" value="">
+                        <input id="phone" name="phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" class="phone-mask" maxlength="17" placeholder="Телефон" value="">
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                 <div style="width: 100%;">
                     <div style="padding: 10px;">
                         <label for="phone_org">Телефон</label>
-                        <input id="phone_org" name="phone_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Телефон" value="">
+                        <input id="phone_org" name="phone_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" class="phone-mask" maxlength="17" type="text" placeholder="Телефон" value="">
                     </div>
                 </div>
 
