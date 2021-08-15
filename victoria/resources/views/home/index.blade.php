@@ -3,19 +3,19 @@
 @section('content')
 
     <div style="padding: 25px 0;">
-        <div class="carousel" style="width: 80%; margin: auto; margin-bottom: 25px; overflow: hidden; /*border: 1px solid black;*/ border-radius: 15px; position: relative;">
+        <div class="carousel">
 
 
 
             <div class="carousel-container" style="box-shadow: 0 0 10px rgb(0 0 0 / 75%); border-radius: 15px;">
 {{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
-                <div class="img-carousel active" style="justify-content: center; align-items: center; width: 100%; height: 350px; border-radius: 15px; background-color: grey; text-align: center; font-size: 50px;">
+                <div class="img-carousel active">
                     <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>
                 </div>
-                <div class="img-carousel" style="justify-content: center; align-items: center; width: 100%; height: 350px; border-radius: 15px; background-color: grey; text-align: center; font-size: 50px;">
+                <div class="img-carousel">
                     <div style="padding: 0 50px;">Купи 1000 визиток за 100 рублей</div>
                 </div>
-                <div class="img-carousel" style="justify-content: center; align-items: center; width: 100%; height: 350px; border-radius: 15px; background-color: grey; text-align: center; font-size: 50px;">
+                <div class="img-carousel">
                     <div style="padding: 0 50px;">При заказе до 15 числа скидка 15%</div>
                 </div>
 {{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=First IMG" alt="">--}}
@@ -51,11 +51,11 @@
 
                 @foreach(unserialize($category->img) as $img)
 
-                    <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); position: relative;">
+                    <div class="smooth-block" style="">
                         <a href="{{route('category', $category->semantic_url)}}">
                             <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
-                            <div class="title-category" style="background-color: rgba(0, 0, 0, 0.5);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
-                                <div style="color: white; font-size: 40px;">
+                            <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
+                                <div style="color: black; font-size: 40px;">
                                     {{$category->title}}
                                 </div>
                             </div>

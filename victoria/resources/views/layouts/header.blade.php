@@ -73,7 +73,7 @@
 
 {{--    </div>--}}
 
-    <div style="margin: auto; width: 100%;">
+    <div style="margin: auto; width: 100%;" class="search-container-header">
         <div style="position: relative; top: 10px;">
             <div style="position: absolute; top: 10px; left: 10px; color: grey;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

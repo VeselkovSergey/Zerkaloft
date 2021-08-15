@@ -105,7 +105,7 @@
             </div>
         </nav>
 
-        <main style="min-height: calc(100vh - 200px); margin: 25px 15% 0 15%;">
+        <main>
 
             @yield('content')
 

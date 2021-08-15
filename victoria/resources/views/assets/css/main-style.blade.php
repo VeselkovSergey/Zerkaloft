@@ -165,31 +165,13 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
-        header {
-            display: none;
-        }
-        main {
-            display: none;
-        }
-        footer {
-            display: none;
-        }
-        body>nav {
-            display: none;
-        }
-        .no-mobile-version {
-            text-align: center;
-            display: flex;
-            align-items: center;
-            height: 100vh;
-        }
-        .no-mobile-version>h1 {
-            margin: auto;
-        }
+    .smooth-block {
+        width: 48%;
+        margin: 1%; /*border: 1px solid black;*/
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 75%);
+        position: relative;
     }
-
-
 
 </style>
 
@@ -465,4 +447,102 @@
         z-index: 5;
         box-shadow: 0 3px 10px rgb(0 0 0);
     }
+
+    main {
+        min-height: calc(100vh - 200px);
+        margin: 25px 15% 0 15%;
+    }
+
+    .carousel {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 25px;
+        overflow: hidden;
+        /*border: 1px solid black;*/
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .img-carousel {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 350px;
+        border-radius: 15px;
+        background-color: #d0d0d0;
+        text-align: center;
+        font-size: 50px;
+    }
+</style>
+
+<style>
+
+    /*
+        Small screen
+    */
+
+    @media screen and (max-width: 768px) {
+        /*header {*/
+        /*    display: none;*/
+        /*}*/
+        /*main {*/
+        /*    display: none;*/
+        /*}*/
+        /*footer {*/
+        /*    display: none;*/
+        /*}*/
+        /*body>nav {*/
+        /*    display: none;*/
+        /*}*/
+        /*.no-mobile-version {*/
+        /*    text-align: center;*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    height: 100vh;*/
+        /*}*/
+        /*.no-mobile-version>h1 {*/
+        /*    margin: auto;*/
+        /*}*/
+
+        .left-menu {
+            display: none;
+        }
+
+        .no-mobile-version {
+            display: none;
+        }
+
+        .search-container-header {
+            display: none;
+        }
+
+        .smooth-block {
+            width: 100%;
+        }
+
+        main {
+            min-height: calc(100vh - 200px);
+            margin: 25px 5% 0 5%;
+        }
+
+        .carousel {
+            width: 100%;
+        }
+
+        .carousel-container {
+            height: 200px;
+        }
+
+        .img-carousel {
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            background-color: #d0d0d0;
+            text-align: center;
+            font-size: 25px;
+        }
+    }
+
 </style>
