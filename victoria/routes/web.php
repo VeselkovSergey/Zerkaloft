@@ -20,9 +20,15 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'home'], function() {
 
-    Route::get('/', [Controllers\HomeController::class, 'index'])
+    Route::get('/', [Controllers\HomeController::class, 'Index'])
 //        ->middleware('permissions:home-page,index')
         ->name('home-page');
+
+    Route::get('/about', [Controllers\HomeController::class, 'About'])
+        ->name('about-page');
+
+    Route::get('/contacts', [Controllers\HomeController::class, 'Contacts'])
+        ->name('contacts-page');
 });
 
 
@@ -94,7 +100,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('/login', [Controllers\Administration\AdministrationController::class, 'AdminLogin'])
         ->name('admin-login');
 
-    Route::post('/logout', [Controllers\Administration\AdministrationController::class, 'AdminLogout'])
+    Route::get('/logout', [Controllers\Administration\AdministrationController::class, 'AdminLogout'])
         ->name('admin-logout');
 
     Route::group(['prefix' => 'categories'], function() {
@@ -170,6 +176,35 @@ Route::group(['prefix' => 'admin'], function() {
     });
 });
 
+Route::group(['prefix' => 'management'], function() {
+
+    Route::get('/', [Controllers\Management\ManagementController::class, 'ManagementHomePage'])
+        ->name('management-home-page');
+
+    Route::post('/login', [Controllers\Management\ManagementController::class, 'ManagementLogin'])
+        ->name('management-login');
+
+    Route::get('/logout', [Controllers\Management\ManagementController::class, 'ManagementLogout'])
+        ->name('management-logout');
+
+    Route::group(['prefix' => 'orders'], function() {
+
+        Route::get('/', [Controllers\Orders\OrdersController::class, 'OrdersManagementPage'])
+            ->name('orders-management-page');
+
+        Route::get('/detail-order/{order_id}', [Controllers\Orders\OrdersController::class, 'DetailOrdersManagementPage'])
+            ->name('detail-order-management-page');
+
+        Route::post('/change-order-properties-management/{order_id}', [Controllers\Orders\OrdersController::class, 'ChangeOrderProperties'])
+            ->name('change-order-properties-management');
+
+        Route::post('/change-count-product-in-order-management/{order_id}', [Controllers\Orders\OrdersController::class, 'ChangeCountProductInOrder'])
+            ->name('change-count-product-in-order-management');
+
+    });
+
+});
+
 Route::group(['prefix' => 'test'], function() {
 
     Route::get('/', [Controllers\TestController::class, 'index'])
@@ -180,8 +215,6 @@ Route::group(['prefix' => 'test'], function() {
     });
 
 });
-
-
 
 Route::group(['prefix' => 'files'], function() {
 

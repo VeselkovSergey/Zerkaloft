@@ -285,6 +285,8 @@
                     return false;
                 }
 
+
+
                 dataForm['ordered_products'] = GetAllProductsInBasket();
 
                 let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
@@ -299,6 +301,7 @@
                         });
                     } else {
                         ShowFlashMessage(response.message, 5000);
+                        HideElement(createOrderButton);
                     }
                 });
             });

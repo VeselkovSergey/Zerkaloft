@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @php($title_page = $category->title)
+
     <div style="padding: 25px 0;">
         <div class="carousel" style="display: none; width: 80%; margin: auto; margin-bottom: 25px; overflow: hidden; /*border: 1px solid black;*/ border-radius: 15px; position: relative;">
 

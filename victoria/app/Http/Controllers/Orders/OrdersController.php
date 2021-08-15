@@ -25,10 +25,16 @@ class OrdersController
         $clientEmail = !empty($request->client_email) ? $request->client_email : null;
         $clientComment = !empty($request->client_comment) ? $request->client_comment : null;
         $orderedProducts = !empty($request->ordered_products) ? json_decode($request->ordered_products) : null;
+        $orderedProducts = (array)$orderedProducts;
 
-        $jsonAllInfoOrderedProducts = Products::select('id', 'title', 'price')->whereIn('id', array_keys((array)$orderedProducts))->get()->toJson();
+        $allInfoOrderedProducts = Products::select('id', 'title', 'price')->whereIn('id', array_keys($orderedProducts))->get()->toArray();
 
-        if (!sizeof((array)$orderedProducts)) {
+        foreach ($allInfoOrderedProducts as $key => $product) {
+            $allInfoOrderedProducts[$key]['count'] = $orderedProducts[$product['id']];
+        }
+        $jsonAllInfoOrderedProducts = json_encode($allInfoOrderedProducts);
+
+        if (!sizeof($orderedProducts)) {
             return ResultGenerate::Error('Ошибка! Нет товаров!');
         }
 
@@ -93,5 +99,77 @@ class OrdersController
         #toDo Отправить письмо на почту об успешном заказе
 
         return ResultGenerate::Success('Заказ успешно создан!');
+    }
+
+    public function OrdersManagementPage()
+    {
+        $allOrders= Orders::all();
+        return view('management.orders.index', [
+            'allOrders' => $allOrders
+        ]);
+    }
+
+    public function DetailOrdersManagementPage(Request $request)
+    {
+        $orderID = $request->order_id;
+        $order = Orders::findOrFail($orderID);
+        $productsInOrder = json_decode($order->products);
+        $dataProductsInOrder = [];
+        foreach ($productsInOrder as $productInOrder) {
+            $dataProductsInOrder[$productInOrder->id] = $productInOrder;
+        }
+        $productsId = [];
+        foreach ($productsInOrder as $product) {
+            $productsId[] = $product->id;
+        }
+        $allProductsInOrder = Products::whereIn('id', $productsId)->get();
+        return view('management.orders.order', [
+            'order' => $order,
+            'allProductsInOrder' => $allProductsInOrder,
+            'dataProductsInOrder' => $dataProductsInOrder
+        ]);
+    }
+
+    public function ChangeOrderProperties(Request $request)
+    {
+        $orderID = $request->order_id;
+        $order = Orders::findOrFail($orderID);
+        $property = array_key_first($request->all());
+        $value = $request->all();
+
+        $order->$property = $value[$property];
+        $order->save();
+        return ResultGenerate::Success();
+    }
+
+    public function ChangeCountProductInOrder(Request $request)
+    {
+        $orderID = $request->order_id;
+        $order = Orders::findOrFail($orderID);
+
+        $productId = (int)$request->product_id;
+        $newCount = (int)$request->count;
+
+        $orderProducts = json_decode($order->products);
+
+        foreach ($orderProducts as $key => $product) {
+            if ($product->id === $productId) {
+                if ($newCount === 0) {
+                    unset($orderProducts[$key]);
+                } else {
+                    $orderProducts[$key]->count = $newCount;
+                }
+            }
+        }
+
+        if (empty($orderProducts)) {
+            $order->delete();
+            return redirect(route('orders-management-page'));
+        } else {
+            $order->products = json_encode($orderProducts);
+            $order->save();
+        }
+
+        return ResultGenerate::Success();
     }
 }

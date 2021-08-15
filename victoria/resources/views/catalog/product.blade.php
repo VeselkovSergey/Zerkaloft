@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @php($title_page = $product->title)
+
     <div style="padding: 25px 0;">
 
         <style>

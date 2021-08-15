@@ -4,25 +4,45 @@
 namespace App\Http\Controllers\Administration;
 
 
+use App\Helpers\ResultGenerate;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 class AdministrationController
 {
     public function AdminHomePage()
     {
-        if (false) {
+        $authUser = auth()->check();
+        $user = auth()->user();
+        if (!$authUser || $user->role != 99) {
             return view('administration.auth.login');
         } else {
             return view('administration.index');
         }
-
     }
 
-    public function AdminLogin()
+    public function AdminLogin(Request $request)
     {
-        dd('AdminLogin');
+        $user = User::where('email', $request->login)->first();
+
+        if (!$user) {
+            return redirect(route('admin-home-page'));
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect(route('admin-home-page'));
+        }
+
+        Auth::login($user);
+        $request->session()->regenerate();
+        return redirect(route('admin-home-page'));
     }
 
     public function AdminLogout()
     {
-        dd('AdminLogout');
+        Auth::logout();
+        return redirect(route('admin-home-page'));
     }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c8ab5af5-7e1b-41ba-ae88-694f57af5a6c" name="beget" url="http://c90576zn.beget.tech/">
+        <fileTransfer rootFolder="/c90576zn.beget.tech/public_html/victoria" host="c90576zn.beget.tech" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

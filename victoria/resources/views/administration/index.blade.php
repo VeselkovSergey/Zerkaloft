@@ -8,7 +8,8 @@
 
         @yield('meta')
 
-        <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
+{{--        <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>--}}
+        <title>Панель администратора</title>
 
         @include('administration.assets.css.admin-style')
         @include('administration.assets.css.loader-style')
@@ -85,20 +86,20 @@
                     </div>
                 </div>
 
-                <div style="padding: 3px; position: relative;">
-                    <div class="menu-category" style="border: 1px solid black; padding: 3px; cursor: pointer; border-radius: 3px;">Справочники</div>
-                    <div class="expander-menu-category" style="position: absolute; top: 11px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </div>
-                    <div class="menu-category-detail hide-el">
-                        <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                            <a href="{{route('reference-books-admin-page')}}">Все справочники</a>
-                            <a href="{{route('create-reference-book-admin-page')}}">Новый справочник</a>
-                        </div>
-                    </div>
-                </div>
+{{--                <div style="padding: 3px; position: relative;">--}}
+{{--                    <div class="menu-category" style="border: 1px solid black; padding: 3px; cursor: pointer; border-radius: 3px;">Справочники</div>--}}
+{{--                    <div class="expander-menu-category" style="position: absolute; top: 11px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">--}}
+{{--                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>--}}
+{{--                        </svg>--}}
+{{--                    </div>--}}
+{{--                    <div class="menu-category-detail hide-el">--}}
+{{--                        <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">--}}
+{{--                            <a href="{{route('reference-books-admin-page')}}">Все справочники</a>--}}
+{{--                            <a href="{{route('create-reference-book-admin-page')}}">Новый справочник</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
             </div>
         </nav>

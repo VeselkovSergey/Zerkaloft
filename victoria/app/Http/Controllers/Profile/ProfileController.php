@@ -34,6 +34,10 @@ class ProfileController
     {
         $orderID = $request->order_id;
         $order = Orders::findOrFail($orderID);
+        if ($order->user_id !== auth()->user()->id) {
+            return abort('404');
+        }
+
         $productsInOrder = json_decode($order->products);
         $dataProductsInOrder = [];
         foreach ($productsInOrder as $productInOrder) {
