@@ -16,31 +16,26 @@
 
             <div style="padding: 15px; font-size: 20px; font-weight: bold;">Вход в панель управления</div>
 
-            <div style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column; border: 1px solid; border-radius: 5px;">
+            <form style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column; border: 1px solid; border-radius: 5px;" action="{{route('management-login')}}" method="POST">
 
                 <div style="padding: 10px;">
                     <label for="login" style="display: block;">Email</label>
-                    <input id="login" type="text" placeholder="Email">
+                    <input id="login" name="login" type="text" placeholder="Email">
                 </div>
 
                 <div style="padding: 10px;">
                     <label for="password" style="display: block;">Пароль</label>
-                    <input id="password" type="password" placeholder="Пароль">
+                    <input id="password" name="password" type="password" placeholder="Пароль">
                 </div>
 
                 <div style="padding: 10px;">
                     <button style="cursor: pointer;">Войти</button>
                 </div>
 
-            </div>
+            </form>
 
         </div>
 
     </body>
 
 </html>
-
-
-
-
-
