@@ -134,7 +134,7 @@
         </div>
     </div>
 
-    <div style="display: flex; width: 25%; justify-content: center; align-items: center; line-height: 1;">
+    <div class="phone-container-header">
         <a style="color: #000; text-decoration: none; font-size: 24px;" href="tel:+79999999999"> +7 (999) 999-99-99 </a>
     </div>
 

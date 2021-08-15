@@ -473,6 +473,14 @@
         text-align: center;
         font-size: 50px;
     }
+
+    .phone-container-header {
+        display: flex;
+        width: 25%;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+    }
 </style>
 
 <style>
@@ -542,6 +550,10 @@
             background-color: #d0d0d0;
             text-align: center;
             font-size: 25px;
+        }
+
+        .phone-container-header {
+            display: none;
         }
     }
 
