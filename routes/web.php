@@ -15,7 +15,8 @@ use App\Http\Controllers;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    redirect(\route('home-page'));
+//    return view('welcome');
 });
 
 Route::group(['prefix' => 'home'], function() {
