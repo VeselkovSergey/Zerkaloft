@@ -15,7 +15,7 @@ use App\Http\Controllers;
 */
 
 Route::get('/', function () {
-    redirect(\route('home-page'));
+    return redirect(\route('home-page'));
 //    return view('welcome');
 });
 
