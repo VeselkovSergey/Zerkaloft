@@ -1,10 +1,12 @@
 <div style="/*height: 100%;*/ display: flex; /*margin: 0 20%;*/">
 
-    <a class="logo-container" href="{{route('home-page')}}">
-        <div class="logo"></div>
-    </a>
+    <div>
+        <a class="logo-container" href="{{route('home-page')}}">
+            <div class="logo"></div>
+        </a>
+    </div>
 
-    <div style="margin: auto; width: 100%;" class="search-container-header">
+    <div style="margin: auto; /*width: 100%;*/" class="search-container-header">
         <div style="position: relative; /*top: 10px;*/">
             <div style="position: absolute; top: 13px; left: 10px; color: grey;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -29,7 +31,7 @@
         </div>
     </div>
 
-    <div style="display: flex; width: 20%; justify-content: center; align-items: center; line-height: 1;">
+    <div style="display: flex; /*width: 20%;*/ justify-content: center; align-items: center; line-height: 1;">
         @php
             $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
         @endphp
@@ -68,7 +70,7 @@
     </div>
 
     <div class="phone-container-header">
-        <a style="color: #000; text-decoration: none; font-size: 24px;" href="tel:+79999999999"> +7 (999) 999-99-99 </a>
+        <a style="color: #000; text-decoration: none; font-size: 16px;" href="tel:+79999999999"> +7 (999) 999-99-99 </a>
     </div>
 
 </div>
