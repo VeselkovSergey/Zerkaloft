@@ -19,6 +19,8 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
+Route::get('resources/{directory}/{fileName}', [Controllers\Resources\ResourceController::class, 'GetResources']);
+
 Route::group(['prefix' => 'home'], function() {
 
     Route::get('/', [Controllers\HomeController::class, 'Index'])
@@ -31,8 +33,6 @@ Route::group(['prefix' => 'home'], function() {
     Route::get('/contacts', [Controllers\HomeController::class, 'Contacts'])
         ->name('contacts-page');
 });
-
-
 
 Route::group(['prefix' => 'auth'], function() {
 

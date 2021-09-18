@@ -10,8 +10,15 @@
 
         <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
 
-        @include('assets.css.main-style')
-        @include('assets.css.loader-style')
+        <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
+        <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
+
+        <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
+
+        <link href="{{asset('resources/scss/app.scss')}}" rel="stylesheet">
+
+{{--        @include('assets.css.main-style')--}}
+{{--        @include('assets.css.loader-style')--}}
 
         @yield('css')
 
@@ -116,6 +123,8 @@
 {{--        </footer>--}}
 
         @include('assets.js.main-script')
+
+    <script src="{{ 'resources/js/jsssss.js' }}"></script>
 
     @yield('js')
 
