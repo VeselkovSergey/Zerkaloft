@@ -41,12 +41,12 @@
         modal.classList.add('hide-el');
     }
 
-    function ShowModalFlash(content, closeit) {
+    function ShowModalFlash(content, closed) {
         const modalFlash = document.body.querySelector('.modal-flash-message');
         modalFlash.classList.add('show-el');
         modalFlash.classList.remove('hide-el');
         modalFlash.querySelector('.modal-flash-message-content').innerHTML = content;
-        if (closeit) {
+        if (closed) {
             setTimeout(() => {
                 HideModalFlash();
             }, 1500)
@@ -237,11 +237,11 @@
                 })
             }
 
-            var xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
             xhr.open(method, url, true);
 
             xhr.onload = function() {
-                if (this.status == 200) {
+                if (this.status === 200) {
                     try {
                         resolve(JSON.parse(this.response));
                     } catch (e) {
@@ -249,7 +249,7 @@
                     }
 
                 } else {
-                    var error = new Error(this.statusText);
+                    let error = new Error(this.statusText);
                     error.code = this.status;
                     reject(error);
                 }
