@@ -313,7 +313,7 @@
                         });
                     } else {
                         ShowFlashMessage(response.message, 5000);
-                        HideElement(createOrderButton);
+                        ShowElement(createOrderButton);
                     }
                 });
             });

@@ -6,7 +6,9 @@ use App\Helpers\ResultGenerate;
 use App\Http\Controllers\Authorization\AuthorizationController;
 use App\Models\Orders;
 use App\Models\Products;
+use App\Models\ProductsPrices;
 use App\Models\User;
+use App\Services\Telegram\Telegram;
 use Illuminate\Http\Request;
 
 class OrdersController
@@ -25,16 +27,10 @@ class OrdersController
         $clientEmail = !empty($request->client_email) ? $request->client_email : null;
         $clientComment = !empty($request->client_comment) ? $request->client_comment : null;
         $orderedProducts = !empty($request->ordered_products) ? json_decode($request->ordered_products) : null;
-        $orderedProducts = (array)$orderedProducts;
 
-        $allInfoOrderedProducts = Products::select('id', 'title', 'price')->whereIn('id', array_keys($orderedProducts))->get()->toArray();
+        $jsonAllInfoOrderedProducts = json_encode($orderedProducts, JSON_UNESCAPED_UNICODE);
 
-        foreach ($allInfoOrderedProducts as $key => $product) {
-            $allInfoOrderedProducts[$key]['count'] = $orderedProducts[$product['id']];
-        }
-        $jsonAllInfoOrderedProducts = json_encode($allInfoOrderedProducts);
-
-        if (!sizeof($orderedProducts)) {
+        if (!$orderedProducts) {
             return ResultGenerate::Error('Ошибка! Нет товаров!');
         }
 
@@ -96,7 +92,7 @@ class OrdersController
 
         $createdOrder = Orders::create($fields);
 
-        #toDo Отправить письмо на почту об успешном заказе
+        $this->SendTelegram($request);
 
         return ResultGenerate::Success('Заказ успешно создан!');
     }
@@ -171,5 +167,47 @@ class OrdersController
         }
 
         return ResultGenerate::Success();
+    }
+
+    private function SendTelegram(Request $request) {
+
+        $order = $request;
+
+        $productsInOrder = json_decode($order->ordered_products);
+        $idProductPricesInOrder = [];
+        $countProductsInOrder = [];
+        foreach ($productsInOrder as $productId => $productPrices) {
+            foreach ($productPrices as $productPriceId => $productPrice) {
+                $parseProductPriceId = preg_replace("/[^0-9]/", '', $productPriceId);
+                $idProductPricesInOrder[] = $parseProductPriceId;
+                $countProductsInOrder[$parseProductPriceId] = $productPrice->count;
+            }
+        }
+
+        $allProductsInOrder = ProductsPrices::query()
+            ->select('*', 'products_prices.id as price_id')
+            ->whereIn('products_prices.id', $idProductPricesInOrder)
+            ->leftJoin('products', 'products_prices.product_id', '=', 'products.id')
+            ->get();
+        $products = '';
+        foreach ($allProductsInOrder as $key => $product) {
+            $products .= $key + 1 . '. ' .$product->title . ' - ' . $product->count . ' - ' . $product->price . ' - ' . $countProductsInOrder[$product->price_id] . ' шт.' . PHP_EOL;
+        }
+
+        $message = '<b>Заказчик:</b>' . PHP_EOL;
+        $message .= '<i>Имя:</i> ' . $order->client_name . PHP_EOL;
+        $message .= '<i>Фамилия:</i> ' . $order->client_surname . PHP_EOL;
+        $message .= '<i>Телефон:</i> ' . $order->client_phone . PHP_EOL;
+        $message .= '<i>Email:</i> ' . $order->client_email . PHP_EOL;
+        $message .= '<i>Оплата:</i> ' . Orders::PaymentType[$order->type_payment] . PHP_EOL;
+        $message .= '<i>Доставка:</i> ' . Orders::DeliveryType[$order->type_delivery] . PHP_EOL;
+        $message .= '<i>Адрес:</i> ' . $order->delivery_address . PHP_EOL;
+        $message .= '<i>Комментарий:</i> ' . $order->client_comment . PHP_EOL;
+        $message .= PHP_EOL;
+        $message .= '<b>Заказ:</b>' . PHP_EOL;
+        $message .= $products;
+
+        $telegram = new Telegram();
+        $telegram->sendMessage($message, '267236435');
     }
 }
