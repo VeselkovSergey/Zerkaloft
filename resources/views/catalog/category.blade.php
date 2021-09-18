@@ -88,7 +88,7 @@
                                         <img style="width: 100%; height: 350px; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
                                     @endforeach
                                     <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;position: absolute;top: 0;">
-                                        <div style="color: black; font-size: 40px;">
+                                        <div style="color: white; font-size: 40px;">
                                             {{$product->title}}
                                         </div>
                                     </div>

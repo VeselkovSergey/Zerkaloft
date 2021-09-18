@@ -16,7 +16,7 @@ class BasketController
     public function BasketPage(Request $request)
     {
         $productsInBasket = json_decode(session('productsInBasket'));
-        $productsInBasket = $productsInBasket !== null ? ArrayHelper::ObjectToArray($productsInBasket) : [];
+        $productsInBasket = ArrayHelper::ObjectToArray($productsInBasket);
 
         $idProductsInBasket = [];
         $idProductPricesInBasket = [];
@@ -27,14 +27,11 @@ class BasketController
             $idProductsInBasket[] = preg_replace("/[^0-9]/", '', $productId);
         }
 
-        $allProductsInBasket = [];
-        if (sizeof($idProductPricesInBasket)) {
-            $allProductsInBasket = ProductsPrices::query()
-                ->select('*', 'products_prices.id as price_id')
-                ->whereIn('products_prices.id', $idProductPricesInBasket)
-                ->leftJoin('products', 'products_prices.product_id', '=', 'products.id')
-                ->get();
-        }
+        $allProductsInBasket = ProductsPrices::query()
+            ->select('*', 'products_prices.id as price_id')
+            ->whereIn('products_prices.id', $idProductPricesInBasket)
+            ->leftJoin('products', 'products_prices.product_id', '=', 'products.id')
+            ->get();
 
         return view('basket.index', [
             'allProductsInBasket' => $allProductsInBasket,
