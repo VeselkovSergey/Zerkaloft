@@ -300,7 +300,7 @@
 
 
                 dataForm['ordered_products'] = GetAllProductsInBasket();
-return;
+
                 let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
                 HideElement(createOrderButton);
 
