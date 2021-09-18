@@ -514,13 +514,25 @@
 
     function validInputEmpty(container) {
         let validate = true;
-        document.body.querySelectorAll('.' + container + ' .need-validate').forEach((el) => {
-            let strValue = el.value;
+        document.body.querySelectorAll('.' + container + ' .need-validate').forEach((element) => {
+            let strValue = element.value;
             if (strValue === '' || strValue === null || strValue === undefined) {
                 validate = false;
+                element.classList.add('border-red');
+                element.addEventListener('input', () => {
+                    FixValidInput(element);
+                }, {once: true});
             }
         });
         return validate;
+    }
+
+    function FixValidInput(element) {
+        let strValue = element.value;
+        if (strValue !== '' && strValue !== null && strValue !== undefined) {
+            element.classList.remove('border-red');
+            element.removeEventListener('input', null);
+        }
     }
 
     let regOnlyLetter = new RegExp("^[а-яА-ЯёЁa-zA-Z]+$");

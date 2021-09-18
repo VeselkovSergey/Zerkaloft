@@ -572,4 +572,12 @@
         }
     }
 
+    .border-black {
+        border: 1px solid black;
+    }
+
+    .border-red {
+        border-color: red;
+    }
+
 </style>

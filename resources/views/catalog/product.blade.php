@@ -74,13 +74,13 @@
             let productPriceId = document.body.querySelector('#price').value;
             let productPriceText = document.body.querySelector('#price>option[value="'+productPriceId+'"]').innerHTML;
 
-            {{--if (!productAdded) {--}}
+            if (!productAdded) {
                 changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText});
-            {{--    buttonAddInBasket.innerHTML = 'Перейти в корзину';--}}
-            {{--    productAdded = true;--}}
-            {{--} else {--}}
-            {{--    location.href = "{{route('basket-page')}}";--}}
-            {{--}--}}
+                buttonAddInBasket.innerHTML = 'Перейти в корзину';
+                productAdded = true;
+            } else {
+                location.href = "{{route('basket-page')}}";
+            }
         });
 
     </script>

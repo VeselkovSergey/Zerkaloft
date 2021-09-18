@@ -90,42 +90,42 @@
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_name">Имя</label>
-                            <input data-type-mask="letters" class="need-validate" id="client_name" name="client_name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="{{auth()->check() ? auth()->user()->Name() : ''}}">
+                            <input data-type-mask="letters" class="need-validate border-black" id="client_name" name="client_name" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="{{auth()->check() ? auth()->user()->Name() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_surname">Фамилия</label>
-                            <input data-type-mask="letters" class="need-validate" id="client_surname" name="client_surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="{{auth()->check() ? auth()->user()->Surname() : ''}}">
+                            <input data-type-mask="letters" class="need-validate border-black" id="client_surname" name="client_surname" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="{{auth()->check() ? auth()->user()->Surname() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_phone">Номер телефона</label>
-                            <input data-type-mask="phone" class="need-validate phone-mask" id="client_phone" maxlength="17" name="client_phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)-999-99-99" value="{{auth()->check() ? auth()->user()->Phone() : ''}}">
+                            <input data-type-mask="phone" class="need-validate phone-mask border-black" id="client_phone" maxlength="17" name="client_phone" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="+7(999)-999-99-99" value="{{auth()->check() ? auth()->user()->Phone() : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
                             <label for="client_email">Электронная почта</label>
-                            <input class="need-validate" id="client_email" name="client_email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="domain@email.ru" value="{{auth()->check() ? auth()->user()->email : ''}}">
+                            <input class="need-validate border-black" id="client_email" name="client_email" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="domain@email.ru" value="{{auth()->check() ? auth()->user()->email : ''}}">
                         </div>
                     </div>
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="client_comment">Комметарий</label>
-                            <textarea id="client_comment" name="client_comment" style="resize: none; width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" placeholder="Комметарий"></textarea>
+                            <textarea id="client_comment" name="client_comment" class="border-black" style="resize: none; width: 100%; padding: 10px; border-radius: 5px;" placeholder="Комметарий"></textarea>
                         </div>
                     </div>
 
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="type_payment">Тип оплаты</label>
-                            <select name="type_payment" id="type_payment" style="background-color: unset; width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;">
+                            <select name="type_payment" id="type_payment" class="border-black" style="background-color: unset; width: 100%; padding: 10px; border-radius: 5px;">
                                 <option value="1">Оплата при получении</option>
                                 <option value="2">Онлайн оплата</option>
                             </select>
@@ -135,7 +135,7 @@
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="type_delivery">Способ получения</label>
-                            <select name="type_delivery" id="type_delivery" style="background-color: unset; width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;">
+                            <select name="type_delivery" id="type_delivery" class="border-black" style="background-color: unset; width: 100%; padding: 10px; border-radius: 5px;">
                                 <option value="1">Самовывоз</option>
                                 <option value="2">Доставка</option>
                             </select>
@@ -145,7 +145,7 @@
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="delivery_address">Адрес</label>
-                            <input class="need-validate" id="delivery_address" name="delivery_address" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Адрес" value="г.Москва, ул.Тверская, дом 1" readonly>
+                            <input class="need-validate border-black" id="delivery_address" name="delivery_address" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="Адрес" value="г.Москва, ул.Тверская, дом 1" readonly>
                         </div>
                     </div>
 
@@ -291,7 +291,7 @@
         let buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         if (buttonAddProductInBasket !== null) {
             buttonAddProductInBasket.addEventListener('click', (e) => {
-                let dataForm = getDataFormContainer('client-order-information', false);
+                let dataForm = getDataFormContainer('client-order-information', true);
                 if (!dataForm) {
                     ShowFlashMessage('Заполните все поля!', 5000);
                     return false;
@@ -300,7 +300,7 @@
 
 
                 dataForm['ordered_products'] = GetAllProductsInBasket();
-
+return;
                 let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
                 HideElement(createOrderButton);
 
