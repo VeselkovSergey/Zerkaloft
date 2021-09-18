@@ -83,11 +83,10 @@ input {
 }
 
 
-
-  .smooth-block {
-      /* Скроем элемент в начальном состоянии */
-      opacity: 0;
-  }
+.smooth-block {
+    /* Скроем элемент в начальном состоянии */
+    opacity: 0;
+}
 
 .smooth-block.smooth-block-show {
     opacity: 1;
@@ -128,9 +127,6 @@ input {
 }
 
 
-
-
-
 @media screen and (min-width: 768px) {
     .no-mobile-version {
         display: none;
@@ -146,12 +142,10 @@ input {
 }
 
 
-
-
-  .btn-slider {
-      opacity: 25%;
-      cursor: pointer;
-  }
+.btn-slider {
+    opacity: 25%;
+    cursor: pointer;
+}
 
 .btn-slider:hover {
     opacity: 100%;
@@ -172,13 +166,12 @@ input {
 }
 
 
-
-  .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px;
-  }
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
 
 .logo {
     background-position: center;
@@ -191,11 +184,10 @@ input {
 }
 
 
-
-  footer a {
-      color: #000;
-      text-decoration: none
-  }
+footer a {
+    color: #000;
+    text-decoration: none
+}
 
 footer a:hover {
     color: #1976d2;
@@ -203,10 +195,9 @@ footer a:hover {
 }
 
 
-
-  .fast-menu > a:not(:first-child) {
-      border-left: 1px solid black;
-  }
+.fast-menu > a:not(:first-child) {
+    border-left: 1px solid black;
+}
 
 .fast-menu {
     margin: 5px 0;
@@ -234,12 +225,11 @@ footer a:hover {
 }
 
 
-
-  .smooth-block:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-      transition: transform .3s;
-  }
+.smooth-block:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: transform .3s;
+}
 
 .category-img-main {
     width: 100%;
@@ -248,10 +238,9 @@ footer a:hover {
 }
 
 
-
-  .button-create-order:hover {
-      background-color: #00aff2;
-  }
+.button-create-order:hover {
+    background-color: #00aff2;
+}
 
 .button-create-order:active {
     background-color: #ffffff;
@@ -495,11 +484,9 @@ main {
 }
 
 
-
-
-      /*
-          Small screen
-      */
+/*
+    Small screen
+*/
 
 @media screen and (max-width: 768px) {
     /*header {*/
