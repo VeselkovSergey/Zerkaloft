@@ -23,38 +23,29 @@
         </div>
 
         <div style="display: flex; flex-wrap: wrap; width: 100%; padding-top: 30px;">
-            <div style="width: 50%;">
 
+            <div style="width: 50%;">
                 <div style="display: flex; justify-content: center;">
-
-
-
                     <div style="display: flex;flex-wrap: wrap;max-width: 90%;justify-content: center;">
-
-                            @foreach(unserialize($product->img) as $img)
-
-                                <div class="" style="border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); position: relative;">
-{{--                                    <a href="{{route('category', $product->semantic_url)}}">--}}
-                                        <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
-{{--                                    </a>--}}
-                                </div>
-
-                            @endforeach
-                        {{--            @for($i = 0; $i < 10; $i++)--}}
-                        {{--                <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%);">--}}
-                        {{--                    <img style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
-                        {{--                </div>--}}
-                        {{--            @endfor--}}
+                        @foreach(unserialize($product->img) as $img)
+                            <div class="" style="border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); position: relative;">
+                                <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                            </div>
+                        @endforeach
                     </div>
-
                 </div>
-
             </div>
-            <div style="width: 50%;">
 
-                <div style="font-weight: bold; font-size: 20px;">
-                    {{$product->price}}
-                </div>
+            <div style="width: 50%;">
+                <select name="price" class="need-validate" id="price" style="width: 100%;">
+                    @if(sizeof($product->Prices))
+                        @foreach($product->Prices as $productPrice)
+                            <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
+                        @endforeach
+                    @else
+                        <option disabled>Нет цен</option>
+                    @endif
+                </select>
 
                 <div style="font-weight: bold; font-size: 20px; padding: 20px 0;">
                     <button class="button-add-in-basket" style="">Добавить в корзину</button>
@@ -65,11 +56,10 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>
-
-
 
 @stop
 
@@ -81,13 +71,16 @@
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
         buttonAddInBasket.addEventListener('click', (e) => {
             let productId = document.body.querySelector('.product-id').dataset.productId;
-            if (!productAdded) {
-                changeCountProductInBasket(productId);
-                buttonAddInBasket.innerHTML = 'Перейти в корзину';
-                productAdded = true;
-            } else {
-                location.href = "{{route('basket-page')}}";
-            }
+            let productPriceId = document.body.querySelector('#price').value;
+            let productPriceText = document.body.querySelector('#price>option[value="'+productPriceId+'"]').innerHTML;
+
+            {{--if (!productAdded) {--}}
+                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText});
+            {{--    buttonAddInBasket.innerHTML = 'Перейти в корзину';--}}
+            {{--    productAdded = true;--}}
+            {{--} else {--}}
+            {{--    location.href = "{{route('basket-page')}}";--}}
+            {{--}--}}
         });
 
     </script>

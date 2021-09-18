@@ -17,7 +17,6 @@ class CreateProducts extends Migration
             $table->id();
             $table->string('title')->comment('Название продукта');
             $table->integer('subcategory_id')->comment('id подкатегории');
-            $table->string('price')->comment('Стоимость продукта');
             $table->longText('description')->comment('Описание продукта');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');

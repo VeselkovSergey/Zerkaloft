@@ -387,6 +387,10 @@
 
     function changeCountProductInBasket(product, typeChange, countProduct) {
 
+        let productId = product.productId;
+        let productPriceId = product.productPriceId;
+        let productPriceText = product.productPriceText;
+
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
         if (localStorageBasket === null) {
@@ -396,25 +400,34 @@
         }
 
         if (typeChange === undefined || typeChange === true) {
-            if (localStorageBasket[product] === undefined) {
-                localStorageBasket[product] = 1;
+            if (localStorageBasket['productId_' + productId] === undefined) {
+                localStorageBasket['productId_' + productId] = {}
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] = {};
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = 1;
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['text'] = productPriceText;
             } else {
-                localStorageBasket[product] = localStorageBasket[product] + 1;
+                if (localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] === undefined) {
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] = {};
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = 1;
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['text'] = productPriceText;
+                } else {
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] + 1;
+                }
             }
         } else if (typeChange === false) {
-            localStorageBasket[product] = localStorageBasket[product] - 1;
+            localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] - 1;
         } else if (typeChange === 'input') {
-            localStorageBasket[product] = countProduct;
+            localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = countProduct;
         }
 
-        if (localStorageBasket[product] === 0) {
-            delete localStorageBasket[product];
+        if (localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] === 0) {
+            delete localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId];
         }
 
         localStorage.setItem('products_in_basket', JSON.stringify(localStorageBasket));
         UpdateCountProductsInBasket();
 
-        return localStorageBasket[product] === undefined ? 0 : localStorageBasket[product];
+        return localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] === undefined ? 0 : localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'];
     }
 
     function getCountProductsInBasket(){
@@ -428,8 +441,12 @@
 
         let count = 0;
 
-        Object.keys(localStorageBasket).forEach(key => {
-            count += parseInt(localStorageBasket[key]);
+        //крутим объект товаров
+        Object.keys(localStorageBasket).forEach(productId => {
+            // крутим объект цен товара
+            Object.keys(localStorageBasket[productId]).forEach(productPriceId => {
+                count += parseInt(localStorageBasket[productId][productPriceId]['count']);
+            });
         });
 
         return count;

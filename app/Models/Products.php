@@ -25,4 +25,9 @@ class Products extends Model
     {
         return $this->hasOne(Subcategories::class, 'id', 'subcategory_id');
     }
+
+    public function Prices()
+    {
+        return $this->hasMany(ProductsPrices::class, 'product_id', 'id');
+    }
 }

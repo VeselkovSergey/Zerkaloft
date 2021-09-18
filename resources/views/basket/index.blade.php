@@ -2,15 +2,15 @@
 
 @section('content')
 
-    <div>
+    <div class="basket-container">
 
         @if(sizeof($allProductsInBasket))
 
-        <div>
+        <div class="basket-products">
 
             <div style="padding: 25px;">
 
-                <div style=" border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); flex-wrap: wrap; padding: 25px;" class="client-order-information">
+                <div style=" border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); flex-wrap: wrap; padding: 25px;" class="client-order-information">
 
                     <div style="font-weight: bold; font-size: 40px; display: flex; justify-content: space-between;">
                         <div>
@@ -30,7 +30,7 @@
 
                             @foreach($allProductsInBasket as $product)
 
-                                <div style="display: flex; width: 100%; padding: 25px; border-bottom: 1px solid grey; height: 200px; align-items: center;" data-product-container="{{$product->id}}">
+                                <div style="display: flex; width: 100%; padding: 25px; border-bottom: 1px solid grey; height: 200px; align-items: center;" data-product-container="{{$product->id . '-' . $product->price_id}}">
 
                                     <div style="padding-right: 30px;">
                                         @foreach(unserialize($product->img) as $img)
@@ -45,24 +45,23 @@
                                     <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; height: 100%;">
 
                                         <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-around;">
-                                            <a  class="product-name-in-basket cp" href="{{route('product', [$product->Subcategory->Category->semantic_url, $product->Subcategory->semantic_url, $product->semantic_url])}}">
+                                            <a  class="product-name-in-basket cp" href="{{route('product', [$product->Product->Subcategory->Category->semantic_url, $product->Product->Subcategory->semantic_url, $product->Product->semantic_url])}}">
                                                 <div style="font-size: 25px;">{{$product->title}}</div>
                                             </a>
-                                            <div style="font-size: 20px; font-weight: bold;">{{$product->price}}</div>
+                                            <div style="font-size: 20px; font-weight: bold;">{{$product->count . ' ' . $product->price}}</div>
                                         </div>
 
                                         <div style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
-                                            <button class="button-delete-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}">
+                                            <button class="button-delete-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                     <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                                 </svg>
                                             </button>
                                             <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
-                                                <input data-product-id="{{$product->id}}" class="input-count-product-in-basket" data-count-product="{{$product->id}}" value="{{$productsInBasket[$product->id]}}" type="text" autocomplete="off" maxlength="2" style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
-                                                {{--                                    <div  style="width: 40px; height: 40px; line-height: 40px; font-size: 20px;">{{$productsInBasket[$product->id]}}</div>--}}
+                                                <input data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}" class="input-count-product-in-basket" data-count-product="{{$product->id . '-' . $product->price_id}}" value="{{$productsInBasket['productId_' . $product->id]['productPriceId_' . $product->price_id]['count']}}" type="text" autocomplete="off" maxlength="2" style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
                                             </div>
-                                            <button class="button-add-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}">
+                                            <button class="button-add-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -86,7 +85,7 @@
 
             <div style="padding: 25px;">
 
-                <div style="display: flex; width: 100%; border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%); flex-wrap: wrap; padding: 25px;" class="client-order-information">
+                <div style="display: flex; width: 100%; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); flex-wrap: wrap; padding: 25px;" class="client-order-information">
 
                     <div style="width: 50%;">
                         <div style="padding: 10px;">
@@ -164,23 +163,23 @@
 
         </div>
 
-        @else
-            <div>
+        @endif
 
-                <div style="padding: 25px;">
+        <div class="basket-empty @if(sizeof($allProductsInBasket)) hide-el @endif">
 
-                    <div style="font-weight: bold; font-size: 30px; display: flex; justify-content: space-between;">
+            <div style="padding: 25px;">
 
-                            <div>
-                                В корзине пусто
-                            </div>
+                <div style="font-weight: bold; font-size: 30px; display: flex; justify-content: space-between;">
 
-                        </div>
-
+                    <div>
+                        В корзине пусто
                     </div>
 
+                </div>
+
             </div>
-        @endif
+
+        </div>
 
     </div>
 
@@ -193,32 +192,45 @@
 
         document.body.querySelectorAll('.button-add-product-in-basket').forEach((product) => {
            let productId = product.dataset.productId;
+           let productPriceId = product.dataset.productPriceId;
            product.addEventListener('click', (e) => {
-               document.body.querySelector('[data-count-product="' + productId + '"]').value = changeCountProductInBasket(productId);
+               document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = changeCountProductInBasket({productId: productId, productPriceId: productPriceId});
            });
         });
 
         document.body.querySelectorAll('.button-delete-product-in-basket').forEach((product) => {
             let productId = product.dataset.productId;
+            let productPriceId = product.dataset.productPriceId;
             product.addEventListener('click', (e) => {
-                let countProductInBasket = changeCountProductInBasket(productId, false);
+                let countProductInBasket = changeCountProductInBasket({productId: productId, productPriceId: productPriceId}, false);
                 if (countProductInBasket === 0) {
-                    document.body.querySelector('[data-product-container="' + productId + '"]').remove();
+                    document.body.querySelector('[data-product-container="' + productId + '-' + productPriceId + '"]').remove();
+                    EmptyBasketCheck();
                 } else {
-                    document.body.querySelector('[data-count-product="' + productId + '"]').value = countProductInBasket;
+                    document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = countProductInBasket;
                 }
+
             });
         });
 
+        function EmptyBasketCheck() {
+            if (document.body.querySelector('.all-cart-product').children.length === 0) {
+                document.body.querySelector('.basket-products').remove();
+                ShowElement(document.body.querySelector('.basket-empty'));
+            }
+        }
+
         document.body.querySelectorAll('.input-count-product-in-basket').forEach((product) => {
             let productId = product.dataset.productId;
+            let productPriceId = product.dataset.productPriceId;
             product.addEventListener('change', (e) => {
                 let countProductInBasket = Math.abs(e.target.value);
-                countProductInBasket = changeCountProductInBasket(productId, 'input', countProductInBasket);
+                countProductInBasket = changeCountProductInBasket({productId: productId, productPriceId: productPriceId}, 'input', countProductInBasket);
                 if (countProductInBasket === 0) {
-                    document.body.querySelector('[data-product-container="' + productId + '"]').remove();
+                    document.body.querySelector('[data-product-container="' + productId + '-' + productPriceId + '"]').remove();
+                    EmptyBasketCheck();
                 } else {
-                    document.body.querySelector('[data-count-product="' + productId + '"]').value = countProductInBasket;
+                    document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = countProductInBasket;
                 }
             });
         });

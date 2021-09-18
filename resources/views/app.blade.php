@@ -51,7 +51,7 @@
             <h1>Версия для маленьких экранов в разработке</h1>
         </div>
 
-        <header>
+        <header style="">
             @include('layouts.header')
         </header>
 
@@ -111,9 +111,9 @@
 
         </main>
 
-        <footer style="height: 100px;">
-            @include('layouts.footer')
-        </footer>
+{{--        <footer style="height: 100px;">--}}
+{{--            @include('layouts.footer')--}}
+{{--        </footer>--}}
 
         @include('assets.js.main-script')
 

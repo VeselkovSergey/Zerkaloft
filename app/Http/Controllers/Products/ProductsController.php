@@ -8,6 +8,7 @@ use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Models\Products;
+use App\Models\ProductsPrices;
 use App\Models\Subcategories;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,8 @@ class ProductsController
         $productID = !empty($request->product_id) ? $request->product_id : null;
         $productName = !empty($request->product_name) ? $request->product_name : null;
         $productParent = !empty($request->product_parent) ? $request->product_parent : null;
-        $productPrice = !empty($request->product_price) ? $request->product_price : null;
+        $productCount = !empty($request->count) ? $request->count : null;
+        $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
 
@@ -65,7 +67,7 @@ class ProductsController
             return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
         }
 
-        if (!$productPrice) {
+        if (!$productPrices[0] || !$productCount[0]) {
             return ResultGenerate::Error('Ошибка! Укажите стоимость!');
         }
 
@@ -100,7 +102,7 @@ class ProductsController
 
         $fields['title'] = $productName;
         $fields['subcategory_id'] = $productParent;
-        $fields['price'] = $productPrice;
+        //$fields['price'] = $productPrice;
         $fields['description'] = $productDescription;
         $fields['semantic_url'] = $semanticURL;
 
@@ -110,6 +112,13 @@ class ProductsController
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
+                    ProductsPrices::where('product_id', $productID)->delete();
+                    foreach ($productPrices as $key => $price) {
+                        $fieldsPrices['product_id'] = $productID;
+                        $fieldsPrices['price'] = $price;
+                        $fieldsPrices['count'] = $productCount[$key];
+                        ProductsPrices::create($fieldsPrices);
+                    }
                     return ResultGenerate::Success('Продукт обновлен успешно!');
                 }
                 return ResultGenerate::Error('Ошибка обновления продукта!');
@@ -119,6 +128,14 @@ class ProductsController
             $fields['img'] = $serializeImgArray;
             $productCreated = Products::create($fields);
             if ($productCreated) {
+                $productID = $productCreated->id;
+                foreach ($productPrices as $key => $price) {
+                    $fieldsPrices['product_id'] = $productID;
+                    $fieldsPrices['price'] = $price;
+                    $fieldsPrices['count'] = $productCount[$key];
+                    ProductsPrices::create($fieldsPrices);
+                }
+
                 return ResultGenerate::Success('Продукт создан успешно!');
             }
             return ResultGenerate::Error('Ошибка создания продукта!');

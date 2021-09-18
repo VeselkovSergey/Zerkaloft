@@ -35,12 +35,12 @@
 
             <div class="physical_user_input show-el">
 
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="surname">Фамилия</label>
-                        <input id="surname" name="surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">
-                    </div>
-                </div>
+{{--                <div style="width: 100%;">--}}
+{{--                    <div style="padding: 10px;">--}}
+{{--                        <label for="surname">Фамилия</label>--}}
+{{--                        <input id="surname" name="surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div style="width: 100%;">
                     <div style="padding: 10px;">
@@ -49,12 +49,12 @@
                     </div>
                 </div>
 
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="patronymic">Отчество</label>
-                        <input id="patronymic" name="patronymic" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Отчество" value="">
-                    </div>
-                </div>
+{{--                <div style="width: 100%;">--}}
+{{--                    <div style="padding: 10px;">--}}
+{{--                        <label for="patronymic">Отчество</label>--}}
+{{--                        <input id="patronymic" name="patronymic" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Отчество" value="">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div style="width: 100%;">
                     <div style="padding: 10px;">

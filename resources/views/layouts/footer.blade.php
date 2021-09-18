@@ -1,4 +1,4 @@
-<div style=" padding-top: 10px; background-color: #ec407a; display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center;">
+<div style=" padding-top: 10px; background-color: #f4f4f4/*#ec407a*/; display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center;">
 
     <div style="/*width: 33.33%;*/ /*padding-left: 25%;*/">
         <a href="{{route('about-page')}}" style="display: block;">О нас</a>

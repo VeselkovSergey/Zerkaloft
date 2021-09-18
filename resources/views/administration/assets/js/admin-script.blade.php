@@ -190,9 +190,17 @@
                 formDataRAW = {};
             } else {
                 Object.keys(formDataRAW).forEach((key) => {
+                    if (Array.isArray(formDataRAW[key])) {
+                        formDataRAW[key].forEach((value) => {
+                            console.log(value)
+                            formData.append(key, value);
+                        });
+                        //formDataRAW[key] = JSON.stringify(formDataRAW[key]);
 
-                    formData.append(key, formDataRAW[key]);
-                })
+                    } else {
+                        formData.append(key, formDataRAW[key]);
+                    }
+                });
             }
 
             var xhr = new XMLHttpRequest();
@@ -297,7 +305,15 @@
                         data[el.id + '-' + i] = el.files[i];
                     }
                 } else {
-                    data[el.id] = el.value;
+                    if (el.name === '') {
+                        data[el.id] = el.value;
+                    }
+                     else {
+                        if (data[el.name] === undefined) {
+                            data[el.name] = [];
+                        }
+                        data[el.name].push(el.value);
+                    }
                 }
             });
             return data;
