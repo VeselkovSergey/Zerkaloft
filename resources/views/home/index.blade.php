@@ -52,7 +52,7 @@
                         <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
                             <a href="{{route('category', $category->semantic_url)}}">
                                 <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
-                                <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
+                                <div class="shadow-text pos-abs top-0 w-100 h-100 flex-center border-radius-15" style="background-color: rgba(0, 0, 0, 0.2);">
                                     <div style="color: white; font-size: 40px;">
                                         {{$category->title}}
                                     </div>

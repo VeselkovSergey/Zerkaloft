@@ -128,4 +128,14 @@ class SubcategoriesController
         }
         return ResultGenerate::Error('Ошибка удаления подкатегории!');
     }
+
+    public function SubcategoryPage(Request $request)
+    {
+        $subcategory = Subcategories::where('semantic_url', $request->subcategory_semantic_url)->firstOrFail();
+        $products = $subcategory->Products;
+        return view('catalog.subcategory', [
+            'subcategory' => $subcategory,
+            'products' => $products
+        ]);
+    }
 }
