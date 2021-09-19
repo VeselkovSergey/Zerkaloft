@@ -112,7 +112,7 @@
             </div>
         </nav>
 
-        <main>
+        <main class="mx-25">
 
             @yield('content')
 
