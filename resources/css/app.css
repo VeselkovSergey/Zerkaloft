@@ -433,6 +433,10 @@ main {
     /*    display: none;*/
     /*}*/
 
+    .fast-menu {
+        display: none;
+    }
+
     .no-mobile-version {
         display: none;
     }
