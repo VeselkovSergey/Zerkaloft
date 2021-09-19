@@ -24,7 +24,7 @@
 
     </head>
 
-    <body>
+    <body  style="background-image: url('img/bg.jpeg');background-repeat: no-repeat;background-size: contain;background-attachment: fixed;">
 
     <div class="modal hide-el">
 
@@ -124,7 +124,7 @@
 
         @include('assets.js.main-script')
 
-    <script src="{{ 'resources/js/jsssss.js' }}"></script>
+    <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
     @yield('js')
 
