@@ -3,7 +3,7 @@
 @section('content')
 
     <div style="padding: 25px 0;">
-        <div class="carousel ml-a">
+        <div class="carousel ml-a mb-25">
 
 
 
