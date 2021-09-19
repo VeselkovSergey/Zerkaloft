@@ -2,10 +2,8 @@
 
 @section('content')
 
-    <div style="padding: 25px 0;">
+    <div>
         <div class="carousel ml-a mb-25">
-
-
 
             <div class="carousel-container" style="box-shadow: 0 0 10px rgb(0 0 0 / 75%); border-radius: 15px;">
 {{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
@@ -44,14 +42,12 @@
 
         </div>
 
-
-
-        <div class="flex-wrap w-100" style="justify-content: space-around;">
+        <div class="flex-wrap w-100" style="/*justify-content: space-around;*/">
             @foreach(\App\Models\Categories::all() as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
-                    <div class="smooth-block">
+                    <div class="smooth-block shadow pos-rel border-radius-15 mx-a">
                         <a href="{{route('category', $category->semantic_url)}}">
                             <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
                             <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
