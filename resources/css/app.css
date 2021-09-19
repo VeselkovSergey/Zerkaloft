@@ -564,3 +564,21 @@ main {
     border-color: red;
 }
 
+.close-menu-button>svg {
+    transition: transform 500ms;
+}
+
+.left-menu:not(.hide) .close-menu-button>svg {
+    animation: rotate  1s;
+}
+
+.close-menu-button>svg:hover {
+    transform: rotate(360deg);
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    50% {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
+}
+
