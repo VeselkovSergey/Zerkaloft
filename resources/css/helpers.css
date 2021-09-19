@@ -12,6 +12,10 @@
     width: 100%;
 }
 
+.w-75 {
+    width: 75%;
+}
+
 .w-50 {
     width: 50%;
 }
@@ -359,6 +363,18 @@
 /* flex */
 .flex {
     display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .flex-center {

@@ -3,7 +3,7 @@
 @section('content')
 
     <div>
-        <div class="carousel ml-a mb-25">
+        <div class="carousel mx-a mb-25">
 
             <div class="carousel-container" style="box-shadow: 0 0 10px rgb(0 0 0 / 75%); border-radius: 15px;">
 {{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
