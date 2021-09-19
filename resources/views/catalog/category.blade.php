@@ -85,7 +85,7 @@
                             <div class="smooth-block">
                                 <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}">
                                     @foreach(unserialize($product->img) as $img)
-                                        <img style="width: 100%; height: 350px; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                                        <img style="width: 100%; height: 100%; border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
                                     @endforeach
                                     <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;position: absolute;top: 0;">
                                         <div style="color: white; font-size: 40px;">
