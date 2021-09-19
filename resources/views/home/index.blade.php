@@ -46,12 +46,12 @@
 
 
 
-        <div style="display: flex; flex-wrap: wrap; width: 100%;">
+        <div class="flex-wrap w-100" style="justify-content: space-around;">
             @foreach(\App\Models\Categories::all() as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
-                    <div class="smooth-block" style="">
+                    <div class="smooth-block">
                         <a href="{{route('category', $category->semantic_url)}}">
                             <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
                             <div class="title-category" style="background-color: rgba(0, 0, 0, 0.2);position: absolute;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;border-radius: 15px;">
