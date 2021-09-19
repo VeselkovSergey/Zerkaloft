@@ -47,7 +47,7 @@
 
         <nav class="left-menu hide z-2 pos-fix top-0 left-0 w-100 h-100">
             <div class="shadow-menu w-100 h-100 bg-black pos-abs" style="opacity: 0.5"></div>
-            <div class="bg-white h-100 pos-rel" style="width: fit-content;">
+            <div class="bg-white h-100 pos-rel" style="width: fit-content; max-width: calc(100% - 96px);">
                 <div class="close-menu-button cp pos-abs top-0" style="right: -48px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
