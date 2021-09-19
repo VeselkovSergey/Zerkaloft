@@ -70,10 +70,10 @@
             <div>
                 @foreach(\App\Models\Categories::all() as $category)
 
-                    <div class="menu-category-container" style="padding: 3px; position: relative;">
-                        <div class="title-category-container" style="background-color: #00aff2;">
-                            <div class="menu-category" style="/*border: 1px solid black;*/ padding: 3px; cursor: pointer; border-radius: 3px;">{{$category->title}}</div>
-                            <div class="expander-menu-category" style="position: absolute; top: 7px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">
+                    <div class="menu-category-container p-5 pos-rel">
+                        <div class="title-category-container bg-white">
+                            <div class="menu-category p-5 pr-25 cp border-radius-5">{{$category->title}}</div>
+                            <div class="expander-menu-category pos-abs" style="top: 11px; right: 11px; transform: rotate(0.0turn); cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
@@ -83,9 +83,9 @@
                             @foreach(\App\Models\Subcategories::where('category_id', $category->id)->get() as $subcategory)
                                 <div style="padding: 3px; position: relative;" class="menu-subcategory-container">
 
-                                    <div class="title-subcategory-container" style="background-color: #fff200;">
-                                        <div class="menu-subcategory" style="/*border: 1px solid black;*/ padding: 3px; cursor: pointer; border-radius: 3px;">{{$subcategory->title}}</div>
-                                        <div class="expander-menu-subcategory" style="position: absolute; top: 7px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">
+                                    <div class="title-subcategory-container bg-white">
+                                        <div class="menu-subcategory p-5 pr-25 cp border-radius-5">{{$subcategory->title}}</div>
+                                        <div class="expander-menu-subcategory pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                             </svg>
@@ -96,7 +96,7 @@
                                         @foreach(\App\Models\Products::where('subcategory_id', $subcategory->id)->get() as $product)
                                             <div class="menu-product">
                                                 <div style="display: flex; flex-direction: column; padding: 5px 0 5px 25px;">
-                                                    <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}" style="background-color: #ff0090; padding: 3px; color: black; text-decoration: none;">{{$product->title}}</a>
+                                                    <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}" class="bg-white p-5 color-black" style="text-decoration: none;">{{$product->title}}</a>
                                                 </div>
                                             </div>
                                         @endforeach
