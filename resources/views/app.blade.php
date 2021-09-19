@@ -47,7 +47,7 @@
 
         <nav class="left-menu hide z-2 pos-fix top-0 left-0 w-100 h-100">
             <div class="shadow-menu w-100 h-100 bg-black pos-abs" style="opacity: 0.5"></div>
-            <div class="bg-white w-75 h-100 pos-rel">
+            <div class="bg-white h-100 pos-rel pr-25" style="width: fit-content;">
                 @foreach(\App\Models\Categories::all() as $category)
                     <div class="menu-category-container p-5 pos-rel">
                         <div class="title-category-container ">
