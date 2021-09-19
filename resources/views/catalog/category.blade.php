@@ -22,7 +22,7 @@
                     </h2>
                     <div class="flex-wrap w-100">
                         @foreach($subcategory->Products as $product)
-                            <div class="w-25 p-10">
+                            <div class="w-20 p-10">
                                 <div class="smooth-block w-100 pos-rel">
                                     <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}">
                                         @foreach(unserialize($product->img) as $img)
