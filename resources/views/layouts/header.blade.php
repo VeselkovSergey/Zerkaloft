@@ -64,7 +64,7 @@
     </div>
 </div>
 <div class="phone-container-header flex-center p-5">
-    <a class="color-black text-center" style="text-decoration: none;" href="tel:+79999999999"> +7 (999) 999-99-99 </a>
+    <a class="color-black text-center" style="text-decoration: none;" href="tel:+79999999999">{{env('PHONE_COMPANY')}}</a>
 </div>
 <div class="fast-menu flex-center w-100 p-5" style="border-top: 1px solid; justify-content: space-between;">
     <a class="w-100 color-black cp text-center" href="#">Быстрое оформление</a>

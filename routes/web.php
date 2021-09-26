@@ -175,6 +175,31 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/delete', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'DeleteReferenceBook'])
             ->name('delete-reference-book-admin');
     });
+
+    Route::group(['prefix' => 'settings'], function() {
+
+        Route::get('/', [Controllers\Administration\SettingsController::class, 'EditPhonePage'])
+            ->name('edit-phone-page');
+        Route::post('/', [Controllers\Administration\SettingsController::class, 'SavePhone'])
+            ->name('save-phone');
+
+        Route::group(['prefix' => 'carousel'], function() {
+
+            Route::get('/all-carousel-images', [Controllers\Administration\SettingsController::class, 'AllCarouselImagesPage'])
+                ->name('all-carousel-images-page');
+
+            Route::get('/create-carousel-image', [Controllers\Administration\SettingsController::class, 'CreateCarouselImagePage'])
+                ->name('create-carousel-image-page');
+
+            Route::get('/edit-carousel-image/{carouselImageId}', [Controllers\Administration\SettingsController::class, 'EditCarouselImagePage'])
+                ->name('edit-carousel-image-page');
+
+            Route::post('/save-carousel-image', [Controllers\Administration\SettingsController::class, 'SaveCarouselImage'])
+                ->name('save-carousel-image-page');
+
+        });
+
+    });
 });
 
 Route::group(['prefix' => 'management'], function() {
@@ -254,3 +279,5 @@ Route::group(['prefix' => 'orders'], function() {
 //        ->middleware('permissions:home-page,index')
         ->name('create-order');
 });
+
+

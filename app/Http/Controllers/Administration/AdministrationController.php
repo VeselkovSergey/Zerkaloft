@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Administration;
 
 
 use App\Helpers\ResultGenerate;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AdministrationController
+class AdministrationController extends Controller
 {
     public function AdminHomePage()
     {
