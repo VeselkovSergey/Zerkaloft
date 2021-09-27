@@ -19,6 +19,11 @@ Route::get('/', function () {
 //    return view('welcome');
 });
 
+Route::get('/about', function () {
+//    return redirect(\route('home-page'));
+    return view('home.about');
+})->name('about');
+
 Route::get('resources/{directory}/{fileName}', [Controllers\Resources\ResourceController::class, 'GetResources']);
 
 Route::group(['prefix' => 'home'], function() {

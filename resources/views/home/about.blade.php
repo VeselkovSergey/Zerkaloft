@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @php($title_page = 'О нас')
+    @php($title_page = 'О компании')
 
     <div style="padding: 25px 0;">
 

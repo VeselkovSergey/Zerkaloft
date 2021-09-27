@@ -72,5 +72,5 @@
     <a class="w-100 color-black cp text-center" href="#">Индивидульный заказ</a>
     <a class="w-100 color-black cp text-center" href="#">Онлайн калькулятор</a>
     <a class="w-100 color-black cp text-center" href="#">Быстрое оформление</a>
-    <a class="w-100 color-black cp text-center" href="#">О компании</a>
+    <a class="w-100 color-black cp text-center" href="{{route('about')}}">О компании</a>
 </div>
