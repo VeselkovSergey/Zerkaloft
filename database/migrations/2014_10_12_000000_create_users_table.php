@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('type_user')->comment('Тип пользователья физик/юрик');
+            $table->integer('type_user')->default(1)->comment('Тип пользователья физик/юрик');
             $table->string('email')->unique()->comment('почта/логин');
             $table->timestamp('email_verified_at')->nullable()->comment('Подтверждена ли почта?');
             $table->string('password')->comment('Пароль');
@@ -23,6 +23,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken()->comment('Токен восстановления');
             $table->timestamps();
         });
+
+        $admin = new \App\Models\User();
+        $admin->email = 'admin@admin.com';
+        $admin->password = \Illuminate\Support\Facades\Hash::make($admin->email);
+        $admin->role = 99;
+        $admin = $admin->save();
     }
 
     /**

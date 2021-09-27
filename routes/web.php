@@ -14,19 +14,14 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return redirect(\route('home-page'));
-//    return view('welcome');
-});
-
-Route::get('/about', function () {
+//Route::get('/', function () {
 //    return redirect(\route('home-page'));
-    return view('home.about');
-})->name('about');
+////    return view('welcome');
+//});
 
 Route::get('resources/{directory}/{fileName}', [Controllers\Resources\ResourceController::class, 'GetResources']);
 
-Route::group(['prefix' => 'home'], function() {
+Route::group(['prefix' => '/'], function() {
 
     Route::get('/', [Controllers\HomeController::class, 'Index'])
 //        ->middleware('permissions:home-page,index')
@@ -108,6 +103,24 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/logout', [Controllers\Administration\AdministrationController::class, 'AdminLogout'])
         ->name('admin-logout');
+
+    Route::group(['prefix' => 'properties-categories'], function() {
+
+        Route::get('/', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'PropertiesCategoriesAdminPage'])
+            ->name('properties-categories-admin-page');
+
+        Route::get('/create', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'CreatePropertyCategoriesAdminPage'])
+            ->name('create-property-categories-admin-page');
+
+        Route::get('/edit/{property_categories_id}', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'EditPropertyCategoriesAdminPage'])
+            ->name('edit-property-categories-admin-page');
+
+        Route::post('/save', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'SavePropertyCategories'])
+            ->name('save-property-categories-admin');
+
+        Route::post('/delete', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'DeletePropertyCategories'])
+            ->name('delete-property-categories-admin');
+    });
 
     Route::group(['prefix' => 'categories'], function() {
 

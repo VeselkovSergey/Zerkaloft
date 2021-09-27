@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Categories;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
+use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Subcategories;
 use http\Url;
@@ -15,7 +16,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
-class CategoriesController
+class CategoriesController extends Controller
 {
 
     public string $storagePath = 'img/category';

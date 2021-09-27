@@ -4,11 +4,13 @@
 namespace App\Http\Controllers\Products;
 
 
+use App\Helpers\ArrayHelper;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Models\Products;
 use App\Models\ProductsPrices;
+use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Subcategories;
 use Illuminate\Http\Request;
 
@@ -27,9 +29,42 @@ class ProductsController
 
     public function CreateProductAdminPage()
     {
+        $allPropertiesCategories = PropertiesCategories::all();
+        $combinations = [];
+        $combinationsId = [];
+        foreach ($allPropertiesCategories as $propertyCategories) {
+            $tmpStr = [];
+            $tmpId = [];
+            foreach ($propertyCategories->Values as $propertyCategoriesValue) {
+                $tmpStr[] = $propertyCategories->title . ': ' .$propertyCategoriesValue->value;
+                $tmpId[] = $propertyCategoriesValue->id;
+            }
+            $combinations[] = $tmpStr;
+            $combinationsId[] = $tmpId;
+        }
+
+        $combinations = ArrayHelper::Combinations($combinations);
+        $combinationsId = ArrayHelper::Combinations($combinationsId);
+
+        $completeCombinations = [];
+        foreach ($combinations as $k => $combination) {
+            $str = '';
+            $strId = '';
+            foreach ($combination as $j => $value) {
+                $endChar = array_key_last($combination) === $j;
+                $str .= $value . ($endChar ? '' : ' ');
+                $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
+            }
+            $completeCombinations[] = (object)[
+                'id' => $strId,
+                'title' => $str,
+            ];
+        }
+
         $allSubcategories = Subcategories::all();
         return view('administration.products.create', [
-            'allSubcategories' => $allSubcategories
+            'allSubcategories' => $allSubcategories,
+            'completeCombinations' => $completeCombinations,
         ]);
     }
 
