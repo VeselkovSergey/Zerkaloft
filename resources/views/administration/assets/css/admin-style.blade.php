@@ -230,6 +230,21 @@
         display: none;
     }
 
+    .carousel-image-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 200px;
+        cursor: pointer;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #carouselImage {
+        display: none;
+    }
+
 
 
 </style>

@@ -89,9 +89,9 @@ class ProductsController
         }
 
         $saveFiles = [];
-        foreach ($request->allFiles() as $file) {
-            if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
-                $saveFile = Files::SaveFile($file, $this->storagePath, $this->storageDriver);
+        foreach ($productFiles as $productFile) {
+            if (in_array($productFile->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
+                $saveFile = Files::SaveFile($productFile, $this->storagePath, $this->storageDriver);
                 $saveFiles[] = $saveFile->id;
             } else {
                 return ResultGenerate::Error('Ошибка! Не верный формат файла!');
