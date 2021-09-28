@@ -307,12 +307,12 @@
                 } else {
                     if (el.name === '') {
                         data[el.id] = el.value;
-                    }
-                     else {
+                    } else {
                         if (data[el.name] === undefined) {
                             data[el.name] = [];
                         }
-                        data[el.name].push(el.value);
+                        let value = el.type !== 'checkbox' ? el.value : el.checked
+                        data[el.name].push(value);
                     }
                 }
             });

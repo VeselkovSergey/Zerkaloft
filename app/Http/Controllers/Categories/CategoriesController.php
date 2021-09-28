@@ -9,6 +9,7 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Subcategories;
 use http\Url;
 use Illuminate\Http\Request;
@@ -32,7 +33,10 @@ class CategoriesController extends Controller
 
     public function CreateCategoryAdminPage()
     {
-        return view('administration.categories.create');
+        $allPropertiesCategories = PropertiesCategories::all();
+        return view('administration.categories.create', [
+            'allPropertiesCategories' => $allPropertiesCategories
+        ]);
     }
 
     public function EditCategoryAdminPage(Request $request)
@@ -51,6 +55,7 @@ class CategoriesController extends Controller
 
     public function SaveCategory(Request $request)
     {
+        dd($request->all());
         $categoryID = !empty($request->category_id) ? $request->category_id : null;
         $categoryName = !empty($request->category_name) ? $request->category_name : null;
         $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : [];

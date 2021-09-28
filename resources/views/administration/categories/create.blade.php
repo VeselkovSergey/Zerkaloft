@@ -19,6 +19,19 @@
             <input id="category_seo" type="text" style="width: 100%;">
         </div>
 
+        <div class="m-5 p-5 border flex-wrap w-100">
+
+            @foreach($allPropertiesCategories as $propertyCategories)
+
+                <div class="w-20">
+                    <label class="block">{{$propertyCategories->title}}</label>
+                    <input name="usedProperties[]" class="cp" type="checkbox">
+                </div>
+
+            @endforeach
+
+        </div>
+
         <div style="padding: 10px; width: 100%;">
             <button class="create-category-btn container-btn" style="width: 100%;">Создать</button>
         </div>
