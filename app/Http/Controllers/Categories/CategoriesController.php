@@ -10,8 +10,8 @@ use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\PropertiesCategories\PropertiesCategories;
+use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
 use App\Models\Subcategories;
-use http\Url;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\App;
@@ -55,10 +55,10 @@ class CategoriesController extends Controller
 
     public function SaveCategory(Request $request)
     {
-        dd($request->all());
         $categoryID = !empty($request->category_id) ? $request->category_id : null;
         $categoryName = !empty($request->category_name) ? $request->category_name : null;
-        $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
+        $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : null;
+        $usedProperties = !empty($request->usedProperties) ? $request->usedProperties : null;
 
         if (!$categoryFiles && !$categoryID) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
@@ -66,6 +66,10 @@ class CategoriesController extends Controller
 
         if (!$categoryName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
+        }
+
+        if (!$usedProperties) {
+            return ResultGenerate::Error('Ошибка! Выберите хотя бы одно свойство!');
         }
 
         $semanticURL = StringHelper::TransliterateURL($categoryName);
@@ -110,6 +114,16 @@ class CategoriesController extends Controller
             $fields['img'] = $serializeImgArray;
             $createdCategory = Categories::create($fields);
             if ($createdCategory) {
+                $fields = [];
+                foreach ($usedProperties as $propertyId => $usedProperty) {
+                    if ($usedProperty === 'true') {
+                        $fields[] = [
+                            'category_id' => $createdCategory->id,
+                            'properties_categories_id' => $propertyId,
+                        ];
+                    }
+                }
+                RelationsCategoriesAndPropertiesCategories::insert($fields);
                 return ResultGenerate::Success('Категория создана успешно!');
             }
             return ResultGenerate::Error('Ошибка создания категории!');

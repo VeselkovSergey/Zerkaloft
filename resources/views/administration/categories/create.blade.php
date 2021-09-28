@@ -25,7 +25,7 @@
 
                 <div class="w-20">
                     <label class="block">{{$propertyCategories->title}}</label>
-                    <input name="usedProperties[]" class="cp" type="checkbox">
+                    <input name="usedProperties[{{$propertyCategories->id}}]" class="cp" type="checkbox">
                 </div>
 
             @endforeach

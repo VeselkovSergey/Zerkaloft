@@ -48,19 +48,19 @@
         document.body.querySelector('.create-category-btn').addEventListener('click', () => {
             let dataForm = getDataFormContainer('container-create-category');
 
-            // let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
-            // createCategoryBtn.classList.add('hide-el');
+            let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
+            createCategoryBtn.classList.add('hide-el');
 
             Ajax("{{route('save-property-categories-admin')}}", 'post', dataForm).then((response) => {
-                {{--if (response.status) {--}}
-                {{--    ShowFlashMessage(response.message);--}}
-                {{--    setTimeout(() => {--}}
-                {{--        location.href = "{{route('properties-categories-admin-page')}}";--}}
-                {{--    }, 1500);--}}
-                {{--} else {--}}
-                {{--    ShowFlashMessage(response.message);--}}
-                {{--    createCategoryBtn.classList.remove('hide-el');--}}
-                {{--}--}}
+                if (response.status) {
+                    ShowFlashMessage(response.message);
+                    setTimeout(() => {
+                        location.href = "{{route('properties-categories-admin-page')}}";
+                    }, 1500);
+                } else {
+                    ShowFlashMessage(response.message);
+                    createCategoryBtn.classList.remove('hide-el');
+                }
             });
         });
 
