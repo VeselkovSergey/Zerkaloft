@@ -8,9 +8,11 @@ use App\Helpers\ArrayHelper;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
+use App\Models\Categories;
 use App\Models\Products;
 use App\Models\ProductsPrices;
 use App\Models\PropertiesCategories\PropertiesCategories;
+use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
 use App\Models\Subcategories;
 use Illuminate\Http\Request;
 
@@ -21,14 +23,17 @@ class ProductsController
 
     public function ProductsAdminPage()
     {
-        $allProducts = Products::all();
+        $allProducts = Categories::all();
         return view('administration.products.index', [
             'allProducts' => $allProducts
         ]);
     }
 
-    public function CreateProductAdminPage()
+    public function CreateProductAdminPage(Request $request)
     {
+        $categoryId = $request->categoryId;
+        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $categoryId)->get();
+
         $allPropertiesCategories = PropertiesCategories::all();
         $combinations = [];
         $combinationsId = [];
@@ -70,18 +75,55 @@ class ProductsController
 
     public function EditProductAdminPage(Request $request)
     {
-        $product = Products::findOrFail($request->product_id);
-        $subcategory = $product->Subcategory;
-        $allSubcategories = Subcategories::all();
+        $product = Categories::findOrFail($request->product_id);
+
+        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $product->id)->get('properties_categories_id');
+        $propertiesCategories = [];
+        foreach ($relationsCategoryAndPropertiesCategories as $propertyCategories) {
+            $propertiesCategories[] = $propertyCategories->properties_categories_id;
+        }
+
+        $allPropertiesCategories = PropertiesCategories::whereIn('id', $propertiesCategories)->get();
+        $combinations = [];
+        $combinationsId = [];
+        foreach ($allPropertiesCategories as $propertyCategories) {
+            $tmpStr = [];
+            $tmpId = [];
+            foreach ($propertyCategories->Values as $propertyCategoriesValue) {
+                $tmpStr[] = $propertyCategories->title . ': ' .$propertyCategoriesValue->value;
+                $tmpId[] = $propertyCategoriesValue->id;
+            }
+            $combinations[] = $tmpStr;
+            $combinationsId[] = $tmpId;
+        }
+
+        $combinations = ArrayHelper::Combinations($combinations);
+        $combinationsId = ArrayHelper::Combinations($combinationsId);
+
+        $completeCombinations = [];
+        foreach ($combinations as $k => $combination) {
+            $str = '';
+            $strId = '';
+            foreach ($combination as $j => $value) {
+                $endChar = array_key_last($combination) === $j;
+                $str .= $value . ($endChar ? '' : ' ');
+                $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
+            }
+            $completeCombinations[] = (object)[
+                'id' => $strId,
+                'title' => $str,
+            ];
+        }
+
         return view('administration.products.edit', [
             'product' => $product,
-            'subcategory' => $subcategory,
-            'allSubcategories' => $allSubcategories
+            'completeCombinations' => $completeCombinations
         ]);
     }
 
     public function SaveProduct(Request $request)
     {
+        dd($request->all());
         $productID = !empty($request->product_id) ? $request->product_id : null;
         $productName = !empty($request->product_name) ? $request->product_name : null;
         $productParent = !empty($request->product_parent) ? $request->product_parent : null;

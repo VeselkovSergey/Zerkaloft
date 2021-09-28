@@ -99,7 +99,7 @@
                     <div class="menu-category-detail hide-el">
                         <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
                             <a href="{{route('products-admin-page')}}">Все продукты</a>
-                            <a href="{{route('create-product-admin-page')}}">Новый продукт</a>
+{{--                            <a href="{{route('create-product-admin-page')}}">Новый продукт</a>--}}
                         </div>
                     </div>
                 </div>

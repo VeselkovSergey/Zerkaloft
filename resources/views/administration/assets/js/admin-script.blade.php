@@ -2,6 +2,24 @@
 {{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>--}}
 <script>
 
+    function ShowElement(el) {
+        el.classList.add('show-el');
+        el.classList.remove('hide-el');
+    }
+
+    function HideElement(el) {
+        el.classList.add('hide-el');
+        el.classList.remove('show-el');
+    }
+
+    function ToggleShowElement(el) {
+        if (el.classList.contains('hide-el')) {
+            ShowElement(el);
+        } else {
+            HideElement(el);
+        }
+    }
+
     function ShowLoader() {
         let loader = document.createElement("div");
         loader.className = 'loader';
@@ -296,10 +314,12 @@
     /**
      * Проверка и сбор данных из формы
      */
-    function getDataFormContainer(container, validate) {
-        if (validInputEmpty(container) || !!!validate) {
+    function getDataFormContainer(container, validate, startElement) {
+        let elem = startElement || document.body;
+        if (validInputEmpty(container, elem) || !!!validate) {
             let data = [];
-            document.body.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
+
+            elem.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
                 if (el.type === 'file') {
                     for (let i = 0; i < el.files.length; i++) {
                         data[el.id + '-' + i] = el.files[i];
@@ -322,9 +342,9 @@
         }
     }
 
-    function validInputEmpty(container) {
+    function validInputEmpty(container, elem) {
         let validate = true;
-        document.body.querySelectorAll('.' + container + ' .need-validate').forEach((el) => {
+        elem.querySelectorAll('.' + container + ' .need-validate').forEach((el) => {
             let strValue = el.value;
             if (strValue === '' || strValue === null || strValue === undefined) {
                 validate = false;

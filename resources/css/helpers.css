@@ -437,6 +437,16 @@
     align-items: center;
 }
 
+.flex-center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.flex-center-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
 .flex-wrap-center {
     display: flex;
     flex-wrap: wrap;
