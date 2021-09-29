@@ -23,9 +23,9 @@ class Products extends Model
         'active',
     ];
 
-    public function Subcategory()
+    public function Category()
     {
-        return $this->hasOne(Subcategories::class, 'id', 'subcategory_id');
+        return $this->hasOne(Categories::class, 'id', 'category_id');
     }
 
     public function Prices()

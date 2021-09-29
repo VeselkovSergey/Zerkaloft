@@ -9,6 +9,7 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Products;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
 use App\Models\Subcategories;
@@ -153,10 +154,10 @@ class CategoriesController extends Controller
     public function CategoryPage(Request $request)
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $subcategories = $category->Subcategories;
+        $products = $category->Products;
         return view('catalog.category', [
             'category' => $category,
-            'subcategories' => $subcategories
+            'products' => $products
         ]);
     }
 

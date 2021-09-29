@@ -273,11 +273,11 @@ Route::group(['prefix' => 'catalog'], function() {
 //        ->middleware('permissions:home-page,index')
         ->name('category');
 
-    Route::get('/{category_semantic_url}/{subcategory_semantic_url}', [Controllers\Subcategories\SubcategoriesController::class, 'SubcategoryPage'])
-//        ->middleware('permissions:home-page,index')
-        ->name('subcategory');
+//    Route::get('/{category_semantic_url}/{subcategory_semantic_url}', [Controllers\Subcategories\SubcategoriesController::class, 'SubcategoryPage'])
+////        ->middleware('permissions:home-page,index')
+//        ->name('subcategory');
 
-    Route::get('/{category_semantic_url}/{subcategory_semantic_url}/{product_semantic_url}', [App\Http\Controllers\Products\ProductsController::class, 'ProductPage'])
+    Route::get('/{category_semantic_url}/{product_semantic_url}', [App\Http\Controllers\Products\ProductsController::class, 'ProductPage'])
 //        ->middleware('permissions:home-page,index')
         ->name('product');
 });
