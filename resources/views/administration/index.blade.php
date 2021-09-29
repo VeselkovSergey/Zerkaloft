@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
 <head>
 
@@ -52,7 +52,7 @@
             </div>
             <div class="menu-category-detail hide-el">
                 <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('properties-categories-admin-page')}}">Все свойства</a>
+{{--                    <a href="{{route('properties-categories-admin-page')}}">Все свойства</a>--}}
                     <a href="{{route('create-property-categories-admin-page')}}">Новое свойство категорий</a>
                 </div>
             </div>
@@ -69,28 +69,28 @@
             </div>
             <div class="menu-category-detail hide-el">
                 <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('categories-admin-page')}}">Все категории</a>
+{{--                    <a href="{{route('categories-admin-page')}}">Все категории</a>--}}
                     <a href="{{route('create-category-admin-page')}}">Новая категория</a>
                 </div>
             </div>
         </div>
 
-        <div class="p-5 pos-rel">
-            <div class="menu-category border p-5 cp border-radius-5">Подкатегории</div>
-            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-            <div class="menu-category-detail hide-el">
-                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('subcategories-admin-page')}}">Все подкатегории</a>
-                    <a href="{{route('create-subcategory-admin-page')}}">Новая подкатегория</a>
-                </div>
-            </div>
-        </div>
+{{--        <div class="p-5 pos-rel">--}}
+{{--            <div class="menu-category border p-5 cp border-radius-5">Подкатегории</div>--}}
+{{--            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">--}}
+{{--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"--}}
+{{--                     class="bi bi-chevron-right" viewBox="0 0 16 16">--}}
+{{--                    <path fill-rule="evenodd"--}}
+{{--                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>--}}
+{{--                </svg>--}}
+{{--            </div>--}}
+{{--            <div class="menu-category-detail hide-el">--}}
+{{--                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">--}}
+{{--                    <a href="{{route('subcategories-admin-page')}}">Все подкатегории</a>--}}
+{{--                    <a href="{{route('create-subcategory-admin-page')}}">Новая подкатегория</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="p-5 pos-rel">
             <div class="menu-category border p-5 cp border-radius-5">Продукты</div>

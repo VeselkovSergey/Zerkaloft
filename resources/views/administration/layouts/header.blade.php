@@ -1,7 +1,9 @@
 <div class="flex">
 
     <div style="margin: auto;">
-        <div>Панель администратора</div>
+        <a href="{{route('admin-home-page')}}">
+            <div>Панель администратора</div>
+        </a>
     </div>
 
     <div>
