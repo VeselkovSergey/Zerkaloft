@@ -30,12 +30,29 @@ class Files
         ]);
     }
 
+    public static function DeleteFiles($filesId)
+    {
+        if (is_array($filesId)) {
+            $filesDb = FilesDB::whereIn('id', $filesId)->get();
+            foreach ($filesDb as $file) {
+                Storage::disk($file->disk)->delete($file->path . '/' . $file->hash_name);
+                $file->delete();
+            }
+        } else {
+            $file = FilesDB::find($filesId);
+            if ($file) {
+                return Storage::disk($file->disk)->delete($file->path . '/' . $file->hash_name);
+            }
+        }
+        return false;
+    }
+
     public static function GetFile(Request $request)
     {
         $file = FilesDB::find($request->file_id);
         if ($file) {
             $filePath = Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name);
-            return response($filePath)->header('Content-type',$file->type);
+            return response($filePath)->header('Content-type', $file->type);
         }
         return abort(404);
     }

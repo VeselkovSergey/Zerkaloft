@@ -14,11 +14,13 @@ class Products extends Model
 
     protected $fillable = [
         'title',
-        'subcategory_id',
+        'category_id',
+        'modification_id',
         'img',
         'semantic_url',
         'price',
         'description',
+        'active',
     ];
 
     public function Subcategory()

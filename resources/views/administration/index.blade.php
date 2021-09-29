@@ -52,7 +52,7 @@
             </div>
             <div class="menu-category-detail hide-el">
                 <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-{{--                    <a href="{{route('properties-categories-admin-page')}}">Все свойства</a>--}}
+                    <a href="{{route('properties-categories-admin-page')}}">Все свойства</a>
                     <a href="{{route('create-property-categories-admin-page')}}">Новое свойство категорий</a>
                 </div>
             </div>

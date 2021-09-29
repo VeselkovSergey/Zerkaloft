@@ -16,10 +16,12 @@ class CreateProducts extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('Название продукта');
-            $table->integer('subcategory_id')->comment('id подкатегории');
+            $table->integer('category_id')->comment('id категории');
+            $table->string('modification_id')->comment('id модификации');
             $table->longText('description')->comment('Описание продукта');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
+            $table->integer('active')->comment('Активный ли продукт');
             $table->timestamps();
         });
     }

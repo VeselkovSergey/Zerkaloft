@@ -32,10 +32,10 @@ class PropertiesCategories extends Seeder
                 'title' => $propertyCategoriesTitle
             ]);
             foreach ($propertyCategoriesValues as $propertyCategoriesValue) {
-                $createdPropertyCategoriesValue = new \App\Models\PropertiesCategories\PropertiesCategoriesValues();
-                $createdPropertyCategoriesValue->properties_categories_id = $createdPropertyCategories->id;
-                $createdPropertyCategoriesValue->value = $propertyCategoriesValue;
-                $createdPropertyCategoriesValue->save();
+                $createdPropertyCategoriesValue = \App\Models\PropertiesCategories\PropertiesCategoriesValues::create([
+                    'properties_categories_id' => $createdPropertyCategories->id,
+                    'value' => $propertyCategoriesValue,
+                ]);
             }
         }
     }
