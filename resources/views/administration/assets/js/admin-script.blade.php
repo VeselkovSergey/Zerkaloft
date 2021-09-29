@@ -49,11 +49,11 @@
         modal.classList.add('hide-el');
     }
 
-    let btnMenu = document.body.querySelector('.menu-btn');
-    btnMenu.addEventListener('click', (el) => {
-        el.stopPropagation();
-        document.body.querySelector('.menu-container').classList.toggle('show-el');
-    });
+    // let btnMenu = document.body.querySelector('.menu-btn');
+    // btnMenu.addEventListener('click', (el) => {
+    //     el.stopPropagation();
+    //     document.body.querySelector('.menu-container').classList.toggle('show-el');
+    // });
 
     document.body.addEventListener('click', (el) => {
         if (document.body.querySelector('.menu-container').classList.contains('show-el')) {

@@ -68,7 +68,14 @@ class CategoriesController extends Controller
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
-        if (!$usedProperties) {
+        $usedPropertiesError = true;
+        foreach ($usedProperties as $propertyId => $usedProperty) {
+            if ($usedProperty === 'true') {
+                $usedPropertiesError = false;
+                break;
+            }
+        }
+        if ($usedPropertiesError) {
             return ResultGenerate::Error('Ошибка! Выберите хотя бы одно свойство!');
         }
 
