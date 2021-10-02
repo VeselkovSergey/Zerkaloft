@@ -25,7 +25,7 @@
 
                         <div data-category-id="{{$category->id}}">{{$category->title}}</div>
                         <div>
-                            <a style="width: 100%;" href="{{route('edit-category-admin-page', $category->id)}}">Редактировать</a>
+{{--                            <a style="width: 100%;" href="{{route('edit-category-admin-page', $category->id)}}">Редактировать</a>--}}
                         </div>
 
                     </div>
