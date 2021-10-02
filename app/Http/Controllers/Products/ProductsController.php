@@ -101,6 +101,7 @@ class ProductsController
         $combinationsId = ArrayHelper::Combinations($combinationsId);
 
         $completeCombinations = [];
+        $completeCombinationsOnlyId = [];
         foreach ($combinations as $k => $combination) {
             $str = '';
             $strId = '';
@@ -109,12 +110,21 @@ class ProductsController
                 $str .= $value . ($endChar ? '' : ' ');
                 $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
             }
+
+            $productModification = Products::where('modification_id', $strId)->first();
+
             $completeCombinations[] = (object)[
                 'id' => $strId,
                 'title' => $str,
+                'productModification' => $productModification,
             ];
+            $completeCombinationsOnlyId[] = $strId;
         }
 
+//        $productModifications = Products::whereIn('modification_id', $completeCombinationsOnlyId)->get();
+//        dd($productModifications);
+
+//        dd($completeCombinationsOnlyId);
         return view('administration.products.edit', [
             'product' => $product,
             'completeCombinations' => $completeCombinations
@@ -123,16 +133,24 @@ class ProductsController
 
     public function SaveProduct(Request $request)
     {
-        dd($request->all());
-        $productID = !empty($request->product_id) ? $request->product_id : null;
+//        dd($request->all());
+//        $productID = !empty($request->product_id) ? $request->product_id : null;
         $productName = !empty($request->product_name) ? $request->product_name : null;
-        $productParent = !empty($request->product_parent) ? $request->product_parent : null;
+//        $productParent = !empty($request->product_parent) ? $request->product_parent : null;
+        $categoryId = !empty($request->category_id) ? $request->category_id : null;
+        $productCombination = !empty($request->product_combination) ? $request->product_combination : null;
+        $productActive = !empty($request->active) ? $request->active : null;
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
 
-        if (!$productFiles && !$productID) {
+        $product = Products::where('category_id', $categoryId)
+            ->where('modification_id', $productCombination)
+            ->first();
+        $productID = !empty($product->id) ? $product->id : null;
+
+        if (!$productFiles && !$product) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
@@ -140,9 +158,9 @@ class ProductsController
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
-        if (!$productParent) {
-            return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
-        }
+//        if (!$productParent) {
+//            return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
+//        }
 
         if (!$productPrices[0] || !$productCount[0]) {
             return ResultGenerate::Error('Ошибка! Укажите стоимость!');
@@ -178,15 +196,19 @@ class ProductsController
         $serializeImgArray = serialize($saveFiles);
 
         $fields['title'] = $productName;
-        $fields['subcategory_id'] = $productParent;
-        //$fields['price'] = $productPrice;
+        $fields['category_id'] = $categoryId;
+        $fields['modification_id'] = $productCombination;
         $fields['description'] = $productDescription;
         $fields['semantic_url'] = $semanticURL;
+        $fields['active'] = $productActive === 'true' ? 1 : 0;
 
         if ($productID) {
             $productFind = Products::find($productID);
             if ($productFind) {
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
+                if ($request->allFiles()) {
+                    Files::DeleteFiles(unserialize($productFind->img));
+                }
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
                     ProductsPrices::where('product_id', $productID)->delete();

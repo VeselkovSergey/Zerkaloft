@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
 <head>
 
@@ -13,6 +13,7 @@
 
     <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
 
     @include('administration.assets.css.admin-style')
     @include('administration.assets.css.loader-style')
@@ -25,10 +26,9 @@
 
 <body class="w-100">
 
-    <div class="modal hide-el"
-         style="position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
-        <div class="modal-container" style="position: fixed; top: 10%; width: 100%; margin: auto; display: flex;">
-            <div class="window-modal" style="margin: auto; /*background-color: white;*/ max-height: 80vh; overflow:auto;">
+    <div class="modal hide-el pos-fix w-100 h-100 bg-white z-5">
+        <div class="modal-container pos-fix w-100 m-a flex" style="top: 10%;">
+            <div class="window-modal m-a" style="max-height: 80vh; overflow:auto;">
                 <div class="modal-content">
 
                 </div>
@@ -36,11 +36,11 @@
         </div>
     </div>
 
-    <header class="shadow bg-white pos-sticky top-0 z-5" style="height: 100px;">@include('administration.layouts.header')</header>
+    <header class="shadow bg-white pos-sticky top-0 z-5">@include('administration.layouts.header')</header>
 
     <div class="flash-message flash-message-error"></div>
 
-    <nav class="w-20 shadow p-5" style="position: absolute; top: 110px; left: 10px;">
+    <nav class="w-20 shadow p-5" style="position: absolute; top: 80px; left: 10px;">
         <div class="p-5 pos-rel">
             <div class="menu-category border p-5 cp border-radius-5 border p-5 cp border-radius-5">Свойства категорий</div>
             <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
@@ -69,7 +69,7 @@
             </div>
             <div class="menu-category-detail hide-el">
                 <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('categories-admin-page')}}">Все категории</a>
+{{--                    <a href="{{route('categories-admin-page')}}">Все категории</a>--}}
                     <a href="{{route('create-category-admin-page')}}">Новая категория</a>
                 </div>
             </div>
@@ -128,7 +128,7 @@
         </div>
     </nav>
 
-    <main class="w-80 ml-a pl-20" style="min-height: calc(100vh - 200px);">@yield('content')</main>
+    <main class="w-80 ml-a p-20">@yield('content')</main>
 
     @include('administration.assets.js.admin-script')
 

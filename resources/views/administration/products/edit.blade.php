@@ -23,7 +23,7 @@
 
                     <div class="p-10 w-100">
                         <label class="block">Активный</label>
-                        <input name="active" type="checkbox">
+                        <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
                     </div>
 
                     <div class="hide-el">
@@ -38,7 +38,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_name" class="block w-100">Название продукта</label>
-                        <input id="product_name" type="text" class="w-100">
+                        <input id="product_name" type="text" class="w-100" value="{{$combination->productModification->title ?? ''}}">
                     </div>
 
                     <div class="p-10 w-100 hide">
@@ -48,7 +48,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_description" class="block w-100">Описание</label>
-                        <textarea class="w-100" name="product_description" id="product_description"></textarea>
+                        <textarea class="w-100" name="product_description" id="product_description">{{$combination->productModification->description ?? ''}}</textarea>
                     </div>
 
                     <div class="border m-10">
@@ -59,33 +59,80 @@
                             <span class="pl-5">Добавить цену</span>
                         </div>
 
-                        <div class="price-container p-10 w-100" data-count-prices="1">
+                            @if(!empty($combination->productModification))
 
-                            <div class="price flex border mb-10" data-id="1">
-                                <div class="p-10 w-50">
-                                    <label for="count-1" class="block w-100">Измерение</label>
-                                    <input name="count[]" id="count-1" type="text" class="w-100">
+                                <div class="price-container p-10 w-100" data-count-prices="{{count($combination->productModification->Prices)}}">
+
+                                    @foreach($combination->productModification->Prices as $key => $productPrice)
+
+                                        <div class="price flex border mb-10" data-id="{{$key}}">
+                                            <div class="p-10 w-50">
+                                                <label for="count-{{$key}}" class="block w-100">Измерение</label>
+                                                <input name="count[]" id="count-{{$key}}" type="text" class="w-100" value="{{$productPrice->count}}">
+                                            </div>
+
+                                            <div class="p-10 w-50">
+                                                <label for="price-{{$key}}" class="block w-100">Стоимость</label>
+                                                <input name="price[]" id="price-{{$key}}" type="text" class="w-100" value="{{$productPrice->price}}">
+                                            </div>
+
+                                            <div class="btn-dell-price cp p-10">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                    @endforeach
+
                                 </div>
 
-                                <div class="p-10 w-50">
-                                    <label for="price-1" class="block w-100">Стоимость</label>
-                                    <input name="price[]" id="price-1" type="text" class="w-100">
+                            @else
+
+                                <div class="price-container p-10 w-100" data-count-prices="1">
+                                    <div class="price flex border mb-10" data-id="1">
+                                        <div class="p-10 w-50">
+                                            <label for="count-1" class="block w-100">Измерение</label>
+                                            <input name="count[]" id="count-1" type="text" class="w-100">
+                                        </div>
+
+                                        <div class="p-10 w-50">
+                                            <label for="price-1" class="block w-100">Стоимость</label>
+                                            <input name="price[]" id="price-1" type="text" class="w-100">
+                                        </div>
+
+                                        <div class="btn-dell-price p-10 cp">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="btn-dell-price p-10 cp">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
-                                    </svg>
-                                </div>
-                            </div>
+                            @endif
 
+                    </div>
+
+                    @if(!empty($combination->productModification->img) && sizeof(unserialize($combination->productModification->img)))
+
+                        @foreach(unserialize($combination->productModification->img) as $img)
+
+                                <div class="p-10 w-100">
+                                    <label class="product-img-label" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; background-image: url('{{route('files', $img)}}')"></label>
+                                    <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
+                                </div>
+
+                        @endforeach
+
+                    @else
+
+                        <div class="p-10 w-100">
+                            <label class="product-img-label" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
+                            <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
                         </div>
-                    </div>
 
-                    <div class="p-10 w-100">
-                        <label class="product-img-label" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
-                        <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
-                    </div>
+                    @endif
+
 
                     <div class="p-10 w-100">
                         <button class="create-product-btn container-btn">Сохранить</button>
@@ -108,8 +155,6 @@
 @section('js')
 
     <script>
-
-
 
         document.body.querySelectorAll('[data-combination]').forEach((el) => {
             el.addEventListener('click', () => {
@@ -137,15 +182,17 @@
                 AddPrice(productCombinationContainer)
             });
 
-            productCombinationContainer.querySelector('.btn-dell-price').addEventListener('click', (event) => {
-                DellPrice(event, productCombinationContainer);
+            productCombinationContainer.querySelectorAll('.btn-dell-price').forEach((el) => {
+                el.addEventListener('click', (event) => {
+                    DellPrice(event, productCombinationContainer);
+                });
             });
 
             productCombinationContainer.querySelector('.create-product-btn').addEventListener('click', () => {
                 let dataForm = getDataFormContainer('container-create-product', false, productCombinationContainer);
 
                 let createProductBtn = productCombinationContainer.querySelector('.container-create-product .container-btn');
-                //createProductBtn.classList.add('hide-el');
+                createProductBtn.hide();
 
                 Ajax("{{route('save-product-admin')}}", 'post', dataForm).then((response) => {
                     if (response.status) {
@@ -155,8 +202,9 @@
                         {{--}, 1500);--}}
                     } else {
                         ShowFlashMessage(response.message);
-                        //createProductBtn.classList.remove('hide-el');
+
                     }
+                    createProductBtn.show();
                 });
             });
 

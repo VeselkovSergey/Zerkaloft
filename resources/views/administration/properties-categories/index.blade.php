@@ -10,12 +10,12 @@
 
         <div>
 
-            <div style="display: flex; padding: 5px; border: 1px solid black; margin: 5px; justify-content: space-between;">
+{{--            <div style="display: flex; padding: 5px; border: 1px solid black; margin: 5px; justify-content: space-between;">--}}
 
-                <div>Название свойства категорий</div>
-                <div>Действие</div>
+{{--                <div>Название свойства категорий</div>--}}
+{{--                <div>Действие</div>--}}
 
-            </div>
+{{--            </div>--}}
 
             @if(sizeof($allPropertiesCategories))
 
@@ -24,9 +24,9 @@
                     <div style="display: flex; padding: 5px; border: 1px solid black; margin: 5px; justify-content: space-between;">
 
                         <div data-category-id="{{$propertyCategories->id}}">{{$propertyCategories->title}}</div>
-                        <div>
-                            <a style="width: 100%;" href="{{route('edit-property-categories-admin-page', $propertyCategories->id)}}">Редактировать</a>
-                        </div>
+{{--                        <div>--}}
+{{--                            <a style="width: 100%;" href="{{route('edit-property-categories-admin-page', $propertyCategories->id)}}">Редактировать</a>--}}
+{{--                        </div>--}}
 
                     </div>
 

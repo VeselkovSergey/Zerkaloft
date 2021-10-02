@@ -49,17 +49,17 @@
         modal.classList.add('hide-el');
     }
 
-    let btnMenu = document.body.querySelector('.menu-btn');
-    btnMenu.addEventListener('click', (el) => {
-        el.stopPropagation();
-        document.body.querySelector('.menu-container').classList.toggle('show-el');
-    });
+    // let btnMenu = document.body.querySelector('.menu-btn');
+    // btnMenu.addEventListener('click', (el) => {
+    //     el.stopPropagation();
+    //     document.body.querySelector('.menu-container').classList.toggle('show-el');
+    // });
 
-    document.body.addEventListener('click', (el) => {
-        if (document.body.querySelector('.menu-container').classList.contains('show-el')) {
-            document.body.querySelector('.menu-container').classList.remove('show-el');
-        }
-    });
+    // document.body.addEventListener('click', (el) => {
+    //     if (document.body.querySelector('.menu-container').classList.contains('show-el')) {
+    //         document.body.querySelector('.menu-container').classList.remove('show-el');
+    //     }
+    // });
 
 </script>
 
@@ -210,7 +210,7 @@
                 Object.keys(formDataRAW).forEach((key) => {
                     if (Array.isArray(formDataRAW[key])) {
                         formDataRAW[key].forEach((value) => {
-                            console.log(value)
+                            //console.log(value)
                             formData.append(key, value);
                         });
                         //formDataRAW[key] = JSON.stringify(formDataRAW[key]);

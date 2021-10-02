@@ -2,38 +2,42 @@
 
 @section('content')
 
-    <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
+    <div class="container-create-category flex-column w-100">
 
-        <div style="padding: 10px; width: 100%;">
-            <label for="category_name" style="display: block; width: 100%;">Название категории</label>
-            <input class="need-validate" id="category_name" type="text" style="width: 100%;">
+        <div class="p-10 w-100">
+            <label for="category_name">Название категории</label>
+            <input class="need-validate w-100" id="category_name" type="text">
         </div>
 
-        <div style="padding: 10px; width: 100%;">
+        <div class="p-10 w-100">
             <label class="category-img-label" for="category_img" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
-            <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
+            <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" class="w-100">
         </div>
 
-        <div style="padding: 10px; width: 100%; display: none;">
-            <label for="category_seo" style="display: block; width: 100%;">SEO</label>
-            <input id="category_seo" type="text" style="width: 100%;">
+        <div class="p-10 w-100 hide">
+            <label for="category_seo">SEO</label>
+            <input id="category_seo" type="text" class="w-100">
         </div>
 
-        <div class="m-5 p-5 border flex-wrap w-100">
+        <div class="p-10 w-100">
 
-            @foreach($allPropertiesCategories as $propertyCategories)
+            <div class="border flex-wrap">
+                @foreach($allPropertiesCategories as $propertyCategories)
 
-                <div class="w-20">
-                    <label class="block">{{$propertyCategories->title}}</label>
-                    <input name="usedProperties[{{$propertyCategories->id}}]" class="cp" type="checkbox">
-                </div>
+                    <div class="w-10 p-10 flex-column-center">
+                        <label class="block">{{$propertyCategories->title}}</label>
+                        <input name="usedProperties[{{$propertyCategories->id}}]" class="cp" type="checkbox">
+                    </div>
 
-            @endforeach
+                @endforeach
+            </div>
+
+
 
         </div>
 
-        <div style="padding: 10px; width: 100%;">
-            <button class="create-category-btn container-btn" style="width: 100%;">Создать</button>
+        <div class="p-10 w-100">
+            <button class="create-category-btn container-btn w-100">Создать</button>
         </div>
 
     </div>

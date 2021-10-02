@@ -14,16 +14,18 @@ class Products extends Model
 
     protected $fillable = [
         'title',
-        'subcategory_id',
+        'category_id',
+        'modification_id',
         'img',
         'semantic_url',
         'price',
         'description',
+        'active',
     ];
 
-    public function Subcategory()
+    public function Category()
     {
-        return $this->hasOne(Subcategories::class, 'id', 'subcategory_id');
+        return $this->hasOne(Categories::class, 'id', 'category_id');
     }
 
     public function Prices()

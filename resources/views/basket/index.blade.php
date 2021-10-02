@@ -45,7 +45,7 @@
                                     <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; height: 100%;">
 
                                         <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-around;">
-                                            <a  class="product-name-in-basket cp" href="{{route('product', [$product->Product->Subcategory->Category->semantic_url, $product->Product->Subcategory->semantic_url, $product->Product->semantic_url])}}">
+                                            <a  class="product-name-in-basket cp" href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
                                                 <div style="font-size: 25px;">{{$product->title}}</div>
                                             </a>
                                             <div style="font-size: 20px; font-weight: bold;">{{$product->count . ' ' . $product->price}}</div>

@@ -18,8 +18,8 @@ class Categories extends Model
         'semantic_url',
     ];
 
-    public function Subcategories()
+    public function Products()
     {
-        return $this->hasMany(Subcategories::class, 'category_id', 'id');
+        return $this->hasMany(Products::class, 'category_id', 'id');
     }
 }
