@@ -67,27 +67,34 @@
                                 </div>
                             </div>
                             <div class="children-category hide-el">
-                                @foreach(\App\Models\Subcategories::where('category_id', $category->id)->get() as $subcategory)
-                                    <div class="menu-subcategory-container p-5 pos-rel">
-                                        <div class="title-subcategory-container bg-white">
-                                            <div class="menu-subcategory p-5 pr-25 cp border-radius-5">{{$subcategory->title}}</div>
-                                            <div class="expander-menu-subcategory pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="children-subcategory hide-el">
-                                            @foreach(\App\Models\Products::where('subcategory_id', $subcategory->id)->get() as $product)
-                                                <div class="menu-product">
-                                                    <div style="display: flex; flex-direction: column; padding: 5px 0 5px 25px;">
-                                                        <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}" class="bg-white p-5 color-black" style="text-decoration: none;">{{$product->title}}</a>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                @foreach($category->Products as $product)
+
+                                    <div class="pl-10 cp">
+                                        <a href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">{{$product->title}}</a>
                                     </div>
+
                                 @endforeach
+{{--                                @foreach(\App\Models\Subcategories::where('category_id', $category->id)->get() as $subcategory)--}}
+{{--                                    <div class="menu-subcategory-container p-5 pos-rel">--}}
+{{--                                        <div class="title-subcategory-container bg-white">--}}
+{{--                                            <div class="menu-subcategory p-5 pr-25 cp border-radius-5">{{$subcategory->title}}</div>--}}
+{{--                                            <div class="expander-menu-subcategory pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">--}}
+{{--                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">--}}
+{{--                                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>--}}
+{{--                                                </svg>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="children-subcategory hide-el">--}}
+{{--                                            @foreach(\App\Models\Products::where('subcategory_id', $subcategory->id)->get() as $product)--}}
+{{--                                                <div class="menu-product">--}}
+{{--                                                    <div style="display: flex; flex-direction: column; padding: 5px 0 5px 25px;">--}}
+{{--                                                        <a href="{{route('product', [$category->semantic_url, $subcategory->semantic_url, $product->semantic_url])}}" class="bg-white p-5 color-black" style="text-decoration: none;">{{$product->title}}</a>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                     @endforeach

@@ -118,7 +118,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('/save', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'SavePropertyCategories'])
             ->name('save-property-categories-admin');
 
-        Route::post('/delete', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'DeletePropertyCategories'])
+        Route::get('/delete/{propertyCategoriesId}', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'DeletePropertyCategories'])
             ->name('delete-property-categories-admin');
     });
 
@@ -262,7 +262,7 @@ Route::group(['prefix' => 'test'], function() {
 
 Route::group(['prefix' => 'files'], function() {
 
-    Route::get('/{file_id}', [\App\Helpers\Files::class, 'GetFile'])
+    Route::get('/{file_id}', [\App\Helpers\Files::class, 'GetFileHTTP'])
         ->name('files');
 
 });

@@ -47,7 +47,7 @@ class Files
         return false;
     }
 
-    public static function GetFile(Request $request)
+    public static function GetFileHTTP(Request $request)
     {
         $file = FilesDB::find($request->file_id);
         if ($file) {
@@ -55,5 +55,24 @@ class Files
             return response($filePath)->header('Content-type', $file->type);
         }
         return abort(404);
+    }
+
+    public static function GetFile($fileIdOrName)
+    {
+        if (is_int($fileIdOrName)) {
+            $columnName = 'id';
+        } else {
+            $columnName = 'original_name';
+        }
+
+        $file = FilesDB::where($columnName, $fileIdOrName)->first();
+
+        if ($file) {
+            return (object)[
+                'modelFile' => $file,
+                'contentFile' => Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name),
+            ];
+        }
+        return false;
     }
 }

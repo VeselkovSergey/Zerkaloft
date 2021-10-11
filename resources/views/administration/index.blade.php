@@ -69,7 +69,7 @@
             </div>
             <div class="menu-category-detail hide-el">
                 <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-{{--                    <a href="{{route('categories-admin-page')}}">Все категории</a>--}}
+                    <a href="{{route('categories-admin-page')}}">Все категории</a>
                     <a href="{{route('create-category-admin-page')}}">Новая категория</a>
                 </div>
             </div>

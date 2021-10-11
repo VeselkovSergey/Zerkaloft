@@ -40,10 +40,10 @@ class PropertiesCategoriesController extends Controller
 
     public function EditPropertyCategoriesAdminPage(Request $request)
     {
-        $categoryID = !empty($request->category_id) ? $request->category_id : null;
+        $categoryID = !empty($request->property_categories_id) ? $request->property_categories_id : null;
 
         if ($categoryID) {
-            $category = Categories::findOrFail($categoryID);
+            $category = PropertiesCategories::findOrFail($categoryID);
             return view('administration.properties-categories.edit', [
                 'category' => $category
             ]);
@@ -96,14 +96,29 @@ class PropertiesCategoriesController extends Controller
 
     public function DeletePropertyCategories(Request $request)
     {
-        $deleteCategory = Categories::find($request->category_id);
-        if ($deleteCategory->Subcategories->count() !== 0) {
-            return ResultGenerate::Error('Ошибка! На категорию ссылаются подкатегории!');
+        $deletePropertyCategory = PropertiesCategories::find($request->propertyCategoriesId);
+        $valuesPropertyCategory = $deletePropertyCategory->Values; // delete
+        $relationCategoriesRAW = $deletePropertyCategory->RelationCategories;   //delete
+        foreach ($relationCategoriesRAW as $relationCategory) {
+            $category = $relationCategory->Category;    //delete
+            $products = $category->Products;    //delete
+            foreach ($products as $product) {
+                $prices = $product->Prices;
+                foreach ($prices as $price) {
+                    $price->delete();
+                }
+                $product->delete();
+            }
+            $category->delete();
+            $relationCategory->delete();
         }
-        if ($deleteCategory->delete()) {
-            return ResultGenerate::Success('Категория успешно удалена!');
+
+        foreach ($valuesPropertyCategory as $valuePropertyCategory) {
+            $valuePropertyCategory->delete();
         }
-        return ResultGenerate::Error('Ошибка удаления категории!');
+        $deletePropertyCategory->delete();
+
+        return ResultGenerate::Success('Свойство успешно удалено!');
     }
 
 }

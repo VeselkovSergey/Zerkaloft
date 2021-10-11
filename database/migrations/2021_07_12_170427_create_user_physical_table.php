@@ -22,6 +22,22 @@ class CreateUserPhysicalTable extends Migration
             $table->string('phone');
             $table->timestamps();
         });
+
+
+
+        $admin = \App\Models\User::create([
+            'email' => 'admin@admin.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('admin@admin.com'),
+            'role' => 99,
+        ]);
+
+        $adminPhysicalUser = \App\Models\UserPhysicals::create([
+            'user_id' => $admin->id,
+            'surname' => 'Администратор',
+            'name' => 'Администратор',
+            'patronymic' => 'Администратор',
+            'phone' => 'Администратор',
+        ]);
     }
 
     /**

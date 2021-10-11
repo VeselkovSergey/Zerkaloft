@@ -27,6 +27,9 @@
 {{--                        <div>--}}
 {{--                            <a style="width: 100%;" href="{{route('edit-property-categories-admin-page', $propertyCategories->id)}}">Редактировать</a>--}}
 {{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <a style="width: 100%;" href="{{route('delete-property-categories-admin', $propertyCategories->id)}}">Удалить</a>--}}
+{{--                        </div>--}}
 
                     </div>
 

@@ -5,17 +5,25 @@
     <div>
         <div class="carousel mx-a mb-25">
 
-            <div class="carousel-container" style="box-shadow: 0 0 10px rgb(0 0 0 / 75%); border-radius: 15px;">
+            <div class="carousel-container shadow border-radius-15">
+                @php($i = 0)
+                @foreach($carouselImages as $carouselImage)
+                    <div class="img-carousel {{$i === 0 ? 'active' : ''}}">
+{{--                        <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>--}}
+                        <img src="{{route('files', $carouselImage)}}" class="w-100" alt="">
+                    </div>
+                    @php($i++)
+                @endforeach
 {{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
-                <div class="img-carousel active">
-                    <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>
-                </div>
-                <div class="img-carousel">
-                    <div style="padding: 0 50px;">Купи 1000 визиток за 100 рублей</div>
-                </div>
-                <div class="img-carousel">
-                    <div style="padding: 0 50px;">При заказе до 15 числа скидка 15%</div>
-                </div>
+{{--                <div class="img-carousel active">--}}
+{{--                    <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>--}}
+{{--                </div>--}}
+{{--                <div class="img-carousel">--}}
+{{--                    <div style="padding: 0 50px;">Купи 1000 визиток за 100 рублей</div>--}}
+{{--                </div>--}}
+{{--                <div class="img-carousel">--}}
+{{--                    <div style="padding: 0 50px;">При заказе до 15 числа скидка 15%</div>--}}
+{{--                </div>--}}
 {{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=First IMG" alt="">--}}
 {{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Two IMG" alt="">--}}
 {{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Three IMG" alt="">--}}

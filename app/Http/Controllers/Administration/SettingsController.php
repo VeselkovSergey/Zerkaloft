@@ -49,12 +49,22 @@ class SettingsController extends Controller
 
     public function CreateCarouselImagePage()
     {
-        return view('administration.settings.carousel.create');
+        return view('administration.settings.carousel.createOrEdit');
+    }
+
+    public function EditCarouselImagePage(Request $request)
+    {
+        $carouselImage = Settings::where('id', $request->carouselImageId)->first();
+        $carouselImageValue = json_decode($carouselImage->value);
+        return view('administration.settings.carousel.createOrEdit', [
+            'carouselImage' => $carouselImage,
+            'carouselImageValue' => $carouselImageValue,
+        ]);
     }
 
     public function SaveCarouselImage(Request $request)
     {
-        $carouselImageID = !empty($request->carouselImageID) ? $request->carouselImageID : null;
+        $carouselImageId = !empty($request->carouselImageId) ? $request->carouselImageId : null;
         $carouselImageSequence = !empty($request->carouselImageSequence) ? $request->carouselImageSequence : null;
         $carouselImages = !empty($request->allFiles()) ? $request->allFiles() : [];
 
@@ -62,7 +72,7 @@ class SettingsController extends Controller
             return ResultGenerate::Error('Ошибка! Последовательность не может быть пустым полем!');
         }
 
-        if (!$carouselImages && !$carouselImageID) {
+        if (!$carouselImages && !$carouselImageId) {
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
@@ -74,19 +84,26 @@ class SettingsController extends Controller
             }
         }
 
-        if ($carouselImageID) {
+        if ($carouselImageId) {
+            $saveCarouselImages = Settings::where('id', $carouselImageId)->first();
 
+            $saveCarouselImages->update([
+                'type' => 2,
+                'value' => json_encode([
+                    'fileId' => !empty($saveFile) ? $saveFile->id : json_decode($saveCarouselImages->value)->fileId,
+                    'sequence' => $carouselImageSequence,
+                ]),
+            ]);
         } else {
             $saveCarouselImages = Settings::create([
                 'type' => 2,
                 'value' => json_encode([
                     'fileId' => $saveFile->id,
-                    'sequence ' => $carouselImageSequence,
+                    'sequence' => $carouselImageSequence,
                 ]),
             ]);
         }
 
-        dd($saveFile);
         return ResultGenerate::Success();
     }
 }

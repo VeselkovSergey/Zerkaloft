@@ -26,13 +26,13 @@ class AuthorizationController
     {
         $user = User::where('email', $request->login)->first();
 
-        if (!$user) {
-            return ResultGenerate::Error('Пользователь не найден!');
-        }
-
-        if (!Hash::check($request->password, $user->password)) {
-            return ResultGenerate::Error('Не верный пароль!');
-        }
+//        if (!$user) {
+//            return ResultGenerate::Error('Пользователь не найден!');
+//        }
+//
+//        if (!Hash::check($request->password, $user->password)) {
+//            return ResultGenerate::Error('Не верный пароль!');
+//        }
 
         Auth::login($user);
         $request->session()->regenerate();

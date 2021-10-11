@@ -11,18 +11,20 @@
 
     <div class="container-create-carousel-image" style="display: flex; flex-direction: column; width: 100%;">
 
+        <input class="need-validate hide" id="carouselImageId" type="text" style="width: 100%;" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
+
         <div style="padding: 10px; width: 100%;">
             <label for="carouselImageSequence" style="display: block; width: 100%;">Порядок</label>
-            <input class="need-validate" id="carouselImageSequence" type="text" style="width: 100%;">
+            <input class="need-validate" id="carouselImageSequence" type="text" style="width: 100%;" value="{{!empty($carouselImageValue) ? $carouselImageValue->sequence : ''}}">
         </div>
 
         <div style="padding: 10px; width: 100%;">
-            <label class="carousel-image-label" for="carouselImage" style="width: 80%; height: 350px;/*max-width: 300px; max-height: 300px;*/ border: 1px solid black;">Загрузите картинку</label>
+            <label class="carousel-image-label" for="carouselImage" style="width: 80%; height: 350px;/*max-width: 300px; max-height: 300px;*/ border: 1px solid black; background-image: url('{{route('files', $carouselImageValue->fileId)}}')">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
             <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
         </div>
 
         <div style="padding: 10px; width: 100%;">
-            <button class="create-carousel-image-btn container-btn" style="width: 100%;">Создать</button>
+            <button class="create-carousel-image-btn container-btn" style="width: 100%;">Сохранить</button>
         </div>
 
     </div>
