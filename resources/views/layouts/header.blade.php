@@ -67,10 +67,9 @@
     <a class="color-black text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
 </div>
 <div class="fast-menu flex-center w-100 p-5" style="border-top: 1px solid; justify-content: space-between;">
-    <a class="w-100 color-black cp text-center" href="#">Быстрое оформление</a>
+    <a class="w-100 color-black cp text-center form-fast-order" href="#">Быстрое оформление</a>
     <a class="w-100 color-black cp text-center" href="#">Онлайн заказ</a>
-    <a class="w-100 color-black cp text-center" href="#">Индивидульный заказ</a>
-    <a class="w-100 color-black cp text-center" href="#">Онлайн калькулятор</a>
-    <a class="w-100 color-black cp text-center" href="#">Быстрое оформление</a>
+    <a class="w-100 color-black cp text-center form-fast-order" href="#">Индивидульный заказ</a>
+    <a class="w-100 color-black cp text-center" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
     <a class="w-100 color-black cp text-center" href="{{route('about-page')}}">О компании</a>
 </div>

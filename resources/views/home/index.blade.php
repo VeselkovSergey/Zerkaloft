@@ -9,7 +9,7 @@
                 @php($i = 0)
                 @foreach($carouselImages as $carouselImage)
                     <div class="img-carousel {{$i === 0 ? 'active' : ''}}">
-                        <img src="{{route('files', $carouselImage)}}" class="w-100" alt="">
+                        <img src="{{route('files', $carouselImage)}}" class="w-100 h-100" alt="">
                     </div>
                     @php($i++)
                 @endforeach
@@ -33,12 +33,12 @@
 
         </div>
 
-        <div class="flex-wrap w-100">
+        <div class="flex-wrap-center w-100">
             @foreach(\App\Models\Categories::all() as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
-                    <div class="w-50 p-25">
+                    <div class="category-cart-main-page p-25">
 
                         <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
                             <a href="{{route('category', $category->semantic_url)}}">

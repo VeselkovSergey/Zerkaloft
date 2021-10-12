@@ -4,6 +4,8 @@
 namespace App\Models;
 
 
+use App\Models\PropertiesCategories\PropertiesCategories;
+use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -21,5 +23,10 @@ class Categories extends Model
     public function Products()
     {
         return $this->hasMany(Products::class, 'category_id', 'id');
+    }
+
+    public function Properties()
+    {
+        return $this->belongsToMany(PropertiesCategories::class, 'relations_categories_and_properties_categories', 'category_id', 'properties_categories_id');
     }
 }

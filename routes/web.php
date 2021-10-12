@@ -32,6 +32,10 @@ Route::group(['prefix' => '/'], function() {
 
     Route::get('/contacts', [Controllers\HomeController::class, 'Contacts'])
         ->name('contacts-page');
+
+    Route::get('/fast-order', function () {
+        return view('home.formFastOrder');
+    })->name('form-fast-order');
 });
 
 Route::group(['prefix' => 'auth'], function() {
@@ -302,6 +306,18 @@ Route::group(['prefix' => 'orders'], function() {
     Route::post('/', [Controllers\Orders\OrdersController::class, 'CreateOrder'])
 //        ->middleware('permissions:home-page,index')
         ->name('create-order');
+});
+
+Route::group(['prefix' => 'calculator'], function() {
+
+    Route::get('/', [Controllers\Calculator\CalculatorController::class, 'Index'])
+        ->name('calculator-page');
+
+    Route::post('/category-properties', [Controllers\Calculator\CalculatorController::class, 'CategoryProperties'])
+        ->name('category-properties');
+
+    Route::post('/product-modification', [Controllers\Calculator\CalculatorController::class, 'ProductModification'])
+        ->name('product-modification');
 });
 
 

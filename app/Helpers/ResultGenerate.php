@@ -16,8 +16,8 @@ class ResultGenerate
     {
         return json_encode((object)[
             'status' => $status,
-            'message' => $message,
-            'result' => $object,
+            'message' => $message === '' ? 'Успешно!' : $message,
+            'result' => (object)$object,
         ]);
     }
 
@@ -26,7 +26,7 @@ class ResultGenerate
         return json_encode((object)[
             'status' => $status,
             'message' => $message,
-            'result' => $object,
+            'result' => (object)$object,
         ]);
     }
 }

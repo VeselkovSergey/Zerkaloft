@@ -19,7 +19,7 @@
         </div>
 
         <div style="padding: 10px; width: 100%;">
-            <label class="carousel-image-label" for="carouselImage" style="width: 80%; height: 350px;/*max-width: 300px; max-height: 300px;*/ border: 1px solid black; background-image: url('{{route('files', $carouselImageValue->fileId)}}')">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
+            <label class="carousel-image-label" for="carouselImage" style="width: 80%; height: 350px;/*max-width: 300px; max-height: 300px;*/ border: 1px solid black; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
             <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
         </div>
 

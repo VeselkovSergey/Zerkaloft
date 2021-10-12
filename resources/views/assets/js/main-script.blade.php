@@ -630,4 +630,20 @@
         });
     }
 
+
+    let buttonsOpenFormFastOrder = document.body.querySelectorAll('.form-fast-order');
+    if (buttonsOpenFormFastOrder) {
+        buttonsOpenFormFastOrder.forEach((button) => {
+            button.addEventListener('click', () => {
+                GenerationFormFastOrder();
+            });
+        });
+    }
+
+    function GenerationFormFastOrder() {
+        Ajax("{{route('form-fast-order')}}", 'get').then((response) => {
+            ShowModal(response);
+        });
+    }
+
 </script>
