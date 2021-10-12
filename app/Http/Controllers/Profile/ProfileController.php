@@ -6,6 +6,7 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\ValidateFields;
 use App\Models\Orders;
 use App\Models\Products;
+use App\Models\ProductsPrices;
 use App\Models\UserJuridicals;
 use App\Models\UserPhysicals;
 use Illuminate\Http\Request;
@@ -39,15 +40,18 @@ class ProfileController
         }
 
         $productsInOrder = json_decode($order->products);
+
+        $productsPricesId = [];
         $dataProductsInOrder = [];
-        foreach ($productsInOrder as $productInOrder) {
-            $dataProductsInOrder[$productInOrder->id] = $productInOrder;
+        foreach ($productsInOrder as $productId => $productPrices) {
+            foreach ($productPrices as $productPriceId => $productPrice) {
+                $productsPriceId = $productPrice->productPriceId;
+                $productsPricesId[] = $productsPriceId;
+                $dataProductsInOrder[$productsPriceId] = $productPrice;
+            }
         }
-        $productsId = [];
-        foreach ($productsInOrder as $product) {
-            $productsId[] = $product->id;
-        }
-        $allProductsInOrder = Products::whereIn('id', $productsId)->get();
+
+        $allProductsInOrder = ProductsPrices::whereIn('id', $productsPricesId)->get();
         return view('profile.orders.order', [
             'order' => $order,
             'allProductsInOrder' => $allProductsInOrder,

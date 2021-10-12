@@ -388,6 +388,7 @@
         let productId = product.productId;
         let productPriceId = product.productPriceId;
         let productPriceText = product.productPriceText;
+        let productFullText = product.productFullText;
 
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
@@ -403,11 +404,16 @@
                 localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] = {};
                 localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = 1;
                 localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['text'] = productPriceText;
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productId'] = productId;
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productPriceId'] = productPriceId;
+                localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['fullText'] = productFullText;
             } else {
                 if (localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] === undefined) {
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId] = {};
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = 1;
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['text'] = productPriceText;
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productId'] = productId;
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productPriceId'] = productPriceId;
                 } else {
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] + 1;
                 }

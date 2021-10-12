@@ -274,8 +274,6 @@
             });
         }
 
-
-
         document.body.querySelectorAll('[data-type-mask="phone"], [data-type-mask="letters"]').forEach((input) => {
             let typeMask = input.dataset.typeMask;
             input.addEventListener('input', (e) => {
@@ -287,7 +285,6 @@
             });
         });
 
-
         let buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         if (buttonAddProductInBasket !== null) {
             buttonAddProductInBasket.addEventListener('click', (e) => {
@@ -296,8 +293,6 @@
                     ShowFlashMessage('Заполните все поля!', 5000);
                     return false;
                 }
-
-
 
                 dataForm['ordered_products'] = GetAllProductsInBasket();
 

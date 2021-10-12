@@ -236,6 +236,12 @@ Route::group(['prefix' => 'management'], function() {
         Route::get('/', [Controllers\Orders\OrdersController::class, 'OrdersManagementPage'])
             ->name('orders-management-page');
 
+        Route::post('/get-orders-by-phone', [Controllers\Orders\OrdersController::class, 'GetOrdersByPhone'])
+            ->name('get-orders-by-phone');
+
+        Route::post('/get-orders-by-string', [Controllers\Orders\OrdersController::class, 'GetOrdersByString'])
+            ->name('get-orders-by-string');
+
         Route::get('/detail-order/{order_id}', [Controllers\Orders\OrdersController::class, 'DetailOrdersManagementPage'])
             ->name('detail-order-management-page');
 

@@ -26,7 +26,7 @@
                                 <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
                             @endforeach
                             <div class="shadow-text w-100 h-100 flex-center border-radius-15 pos-abs top-0" style="background-color: rgba(0, 0, 0, 0.2);">
-                                <div style="color: white; font-size: 40px;">
+                                <div class="color-white text-center" style="font-size: 24px;">
                                     {{$product->title}}
                                 </div>
                             </div>

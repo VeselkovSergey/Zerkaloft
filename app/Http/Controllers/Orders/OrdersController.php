@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Orders;
 
+use App\Helpers\ArrayHelper;
 use App\Helpers\ResultGenerate;
+use App\Helpers\StringHelper;
 use App\Http\Controllers\Authorization\AuthorizationController;
 use App\Models\Orders;
 use App\Models\Products;
@@ -83,7 +85,7 @@ class OrdersController
         $fields['products'] = $jsonAllInfoOrderedProducts;
         $fields['client_name'] = $clientName;
         $fields['client_surname'] = $clientSurname;
-        $fields['client_phone'] = $clientPhone;
+        $fields['client_phone'] = preg_replace("/[^0-9]/", '', $clientPhone);
         $fields['client_email'] = $clientEmail;
         $fields['client_comment'] = $clientComment;
         $fields['type_payment'] = $clientTypePayment;
@@ -99,8 +101,56 @@ class OrdersController
 
     public function OrdersManagementPage()
     {
-        $allOrders= Orders::all();
+        $allOrders = self::GetOrders();
         return view('management.orders.index', [
+            'allOrders' => $allOrders
+        ]);
+    }
+
+    public static function GetOrders($condition = null, $methodLike = false)
+    {
+        if ($condition === null) {
+            $orders = Orders::all();
+        } else {
+            if ($methodLike === true) {
+                $orders = Orders::where($condition->field, 'like', '%' . $condition->value . '%')->get();
+            } else {
+                $orders = Orders::where($condition->field, $condition->value)->get();
+            }
+        }
+
+        return $orders;
+    }
+
+    public function GetOrdersByPhone(Request $request)
+    {
+        $clientPhone = StringHelper::OnlyNumber($request->client_phone);
+        if ($clientPhone === '') {
+            $allOrders = self::GetOrders();
+        } else {
+
+            $allOrders = self::GetOrders((object)[
+                'field' => 'client_phone',
+                'value' => $clientPhone,
+            ]);
+        }
+        return view('management.orders.generationOrder', [
+            'allOrders' => $allOrders
+        ]);
+    }
+
+    public function GetOrdersByString(Request $request)
+    {
+        $querySearch = $request->querySearch;
+        if ($querySearch === '') {
+            $allOrders = self::GetOrders();
+        } else {
+            $allOrders = self::GetOrders((object)[
+                'field' => 'products',
+                'value' => $querySearch,
+            ], true);
+        }
+        return view('management.orders.generationOrder', [
             'allOrders' => $allOrders
         ]);
     }
@@ -110,15 +160,17 @@ class OrdersController
         $orderID = $request->order_id;
         $order = Orders::findOrFail($orderID);
         $productsInOrder = json_decode($order->products);
+        $productsPricesId = [];
         $dataProductsInOrder = [];
-        foreach ($productsInOrder as $productInOrder) {
-            $dataProductsInOrder[$productInOrder->id] = $productInOrder;
+        foreach ($productsInOrder as $productId => $productPrices) {
+            foreach ($productPrices as $productPriceId => $productPrice) {
+                $productsPriceId = $productPrice->productPriceId;
+                $productsPricesId[] = $productsPriceId;
+                $dataProductsInOrder[$productsPriceId] = $productPrice;
+            }
         }
-        $productsId = [];
-        foreach ($productsInOrder as $product) {
-            $productsId[] = $product->id;
-        }
-        $allProductsInOrder = Products::whereIn('id', $productsId)->get();
+
+        $allProductsInOrder = ProductsPrices::whereIn('id', $productsPricesId)->get();
         return view('management.orders.order', [
             'order' => $order,
             'allProductsInOrder' => $allProductsInOrder,
@@ -143,33 +195,38 @@ class OrdersController
         $orderID = $request->order_id;
         $order = Orders::findOrFail($orderID);
 
-        $productId = (int)$request->product_id;
+        $productId = (int)$request->productId;
+        $productPriceId = (int)$request->productPriceId;
         $newCount = (int)$request->count;
 
         $orderProducts = json_decode($order->products);
 
-        foreach ($orderProducts as $key => $product) {
-            if ($product->id === $productId) {
-                if ($newCount === 0) {
-                    unset($orderProducts[$key]);
-                } else {
-                    $orderProducts[$key]->count = $newCount;
-                }
-            }
+        $orderProducts = ArrayHelper::ObjectToArray($orderProducts);
+
+        if ($newCount === 0) {
+            unset($orderProducts['productId_' . $productId]['productPriceId_' . $productPriceId]);
+        } else {
+            $orderProducts['productId_' . $productId]['productPriceId_' . $productPriceId]['count'] = $newCount;
+        }
+
+        if (empty($orderProducts['productId_' . $productId])) {
+            unset($orderProducts['productId_' . $productId]);
         }
 
         if (empty($orderProducts)) {
             $order->delete();
-            return redirect(route('orders-management-page'));
+            return ResultGenerate::Success('Успешно', ['type' => 'redirect', 'url' => route('orders-management-page')]);
         } else {
-            $order->products = json_encode($orderProducts);
+            $orderProducts = ArrayHelper::ArrayToObject($orderProducts);
+            $order->products = json_encode($orderProducts, JSON_UNESCAPED_UNICODE);
             $order->save();
         }
 
         return ResultGenerate::Success();
     }
 
-    private function SendTelegram(Request $request) {
+    private function SendTelegram(Request $request)
+    {
 
         $order = $request;
 
@@ -178,9 +235,10 @@ class OrdersController
         $countProductsInOrder = [];
         foreach ($productsInOrder as $productId => $productPrices) {
             foreach ($productPrices as $productPriceId => $productPrice) {
-                $parseProductPriceId = preg_replace("/[^0-9]/", '', $productPriceId);
-                $idProductPricesInOrder[] = $parseProductPriceId;
-                $countProductsInOrder[$parseProductPriceId] = $productPrice->count;
+//                $parseProductPriceId = preg_replace("/[^0-9]/", '', $productPriceId);
+                $productPriceId = $productPrice->productPriceId;
+                $idProductPricesInOrder[] = $productPriceId;
+                $countProductsInOrder[$productPriceId] = $productPrice->count;
             }
         }
 
@@ -189,9 +247,11 @@ class OrdersController
             ->whereIn('products_prices.id', $idProductPricesInOrder)
             ->leftJoin('products', 'products_prices.product_id', '=', 'products.id')
             ->get();
+
         $products = '';
         foreach ($allProductsInOrder as $key => $product) {
-            $products .= $key + 1 . '. ' .$product->title . ' - ' . $product->count . ' - ' . $product->price . ' - ' . $countProductsInOrder[$product->price_id] . ' шт.' . PHP_EOL;
+            $category = $product->Product->Category;
+            $products .= $key + 1 . '. ' . $category->title . ' ' . $product->title . ' - ' . $product->count . ' - ' . $product->price . ' - ' . $countProductsInOrder[$product->price_id] . ' шт.' . PHP_EOL;
         }
 
         $message = '<b>Заказчик:</b>' . PHP_EOL;

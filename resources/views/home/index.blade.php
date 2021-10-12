@@ -9,27 +9,10 @@
                 @php($i = 0)
                 @foreach($carouselImages as $carouselImage)
                     <div class="img-carousel {{$i === 0 ? 'active' : ''}}">
-{{--                        <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>--}}
                         <img src="{{route('files', $carouselImage)}}" class="w-100" alt="">
                     </div>
                     @php($i++)
                 @endforeach
-{{--                <img class="img-carousel active" style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
-{{--                <div class="img-carousel active">--}}
-{{--                    <div style="padding: 0 50px;">Рассчитай стоимость онлайн. Онлайн калькулятор.</div>--}}
-{{--                </div>--}}
-{{--                <div class="img-carousel">--}}
-{{--                    <div style="padding: 0 50px;">Купи 1000 визиток за 100 рублей</div>--}}
-{{--                </div>--}}
-{{--                <div class="img-carousel">--}}
-{{--                    <div style="padding: 0 50px;">При заказе до 15 числа скидка 15%</div>--}}
-{{--                </div>--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=First IMG" alt="">--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Two IMG" alt="">--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Three IMG" alt="">--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Four IMG" alt="">--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Five IMG" alt="">--}}
-{{--                <img class="img-carousel" style="width: 100%; height: 350px; border-radius: 15px;" src="https://via.placeholder.com/900x300?text=Six IMG" alt="">--}}
             </div>
 
             <div style="position: absolute; top: calc(50% - 24px); left: 24px;">
@@ -50,7 +33,7 @@
 
         </div>
 
-        <div class="flex-wrap w-100" style="/*justify-content: space-around;*/">
+        <div class="flex-wrap w-100">
             @foreach(\App\Models\Categories::all() as $category)
 
                 @foreach(unserialize($category->img) as $img)

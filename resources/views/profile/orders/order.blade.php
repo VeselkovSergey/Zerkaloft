@@ -9,15 +9,15 @@
 
         <div class="all-cart-product" style="overflow: hidden;">
 
-            @foreach($allProductsInOrder as $key => $product)
+            @foreach($allProductsInOrder as $key => $productPrice)
 
-                <div style="display: flex; width: 100%; padding: 25px; border-bottom: 1px solid grey; height: 200px; align-items: center;" data-product-container="{{$product->id}}">
+                <div style="display: flex; width: 100%; padding: 25px; border-bottom: 1px solid grey; height: 200px; align-items: center;" data-product-container="{{$productPrice->id}}">
 
                     <div style="padding-right: 30px;">
-                        @foreach(unserialize($product->img) as $img)
+                        @foreach(unserialize($productPrice->Product->img) as $img)
 
                             <div class="" style="display: flex;justify-content: center;align-items: center; width:150px;">
-                                <img style="border-radius: 15px; max-width: 150px; max-height: 150px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                                <img style="border-radius: 15px; max-width: 150px; max-height: 150px;" src="{{route('files', $img)}}" alt="Изображение {{$productPrice->Product->title}}">
                             </div>
 
                         @endforeach
@@ -26,10 +26,10 @@
                     <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; height: 100%;">
 
                         <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-around;">
-                            <a  class="product-name-in-basket cp" href="{{route('product', [$product->Subcategory->Category->semantic_url, $product->Subcategory->semantic_url, $product->semantic_url])}}">
-                                <div style="font-size: 25px;">{{$product->title}}</div>
+                            <a  class="product-name-in-basket cp" href="{{route('product', [$productPrice->Product->Category->semantic_url, $productPrice->Product->semantic_url])}}">
+                                <div style="font-size: 25px;">{{$productPrice->Product->title}}</div>
                             </a>
-                            <div style="font-size: 20px; font-weight: bold;">{{$dataProductsInOrder[$product->id]->price}}</div>
+                            <div style="font-size: 20px; font-weight: bold;">{{$dataProductsInOrder[$productPrice->id]->text}}</div>
                         </div>
 
                         <div style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
@@ -41,7 +41,7 @@
 {{--                            </button>--}}
                             <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
 {{--                                <input data-product-id="{{$product->id}}" class="input-count-product-in-basket" data-count-product="{{$product->id}}" value="{{$productsInBasket[$product->id]}}" type="text" autocomplete="off" maxlength="2" style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">--}}
-                                                                    <div  style="width: 40px; height: 40px; line-height: 40px; font-size: 20px;">{{$dataProductsInOrder[$product->id]->count}}</div>
+                                                                    <div  style="width: 40px; height: 40px; line-height: 40px; font-size: 20px;">{{$dataProductsInOrder[$productPrice->id]->count}}</div>
                             </div>
 {{--                            <button class="button-add-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}">--}}
 {{--                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">--}}

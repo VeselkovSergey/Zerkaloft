@@ -5,12 +5,13 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @yield('meta')
 
 {{--        <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>--}}
         <title>Панель управления</title>
 
+        <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
         @include('management.assets.css.management-style')
         @include('management.assets.css.loader-style')
 

@@ -180,25 +180,37 @@
 
 
     function Ajax(url, method, formDataRAW) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             let formData = new FormData();
-            if ( typeof(method) === "undefined" || method === null ) {
+            if (typeof (method) === "undefined" || method === null) {
                 method = 'get';
             }
 
-            if ( typeof(formDataRAW) === "undefined" || formDataRAW === null ) {
+            if (typeof (formDataRAW) === "undefined" || formDataRAW === null) {
                 formDataRAW = {};
             } else {
                 Object.keys(formDataRAW).forEach((key) => {
 
-                    formData.append(key, formDataRAW[key]);
-                })
+                    if (Array.isArray(formDataRAW[key])) {
+
+                        formDataRAW[key].forEach((value) => {
+                            formData.append(key, value);
+                        });
+
+                    } else {
+                        formData.append(key, formDataRAW[key]);
+                    }
+                });
             }
+
 
             var xhr = new XMLHttpRequest();
             xhr.open(method, url, true);
 
-            xhr.onload = function() {
+            let csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
+
+            xhr.onload = function () {
                 if (this.status == 200) {
                     try {
                         resolve(JSON.parse(this.response));
@@ -212,7 +224,7 @@
                 }
             };
 
-            xhr.onerror = function() {
+            xhr.onerror = function () {
                 reject(new Error("Network Error"));
             };
 
