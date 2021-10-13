@@ -51,6 +51,9 @@
                                         categoryId: categoryId,
                                         'modification[]': modification
                                     }).then((response) => {
+                                        if (response.status !== true) {
+                                            return ModalWindowFlash(response.message);
+                                        }
                                         let res = response.result;
                                         containerFoundProduct.innerHTML = '';
                                         let product = CreateElement('div', {
