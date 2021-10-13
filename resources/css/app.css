@@ -601,6 +601,10 @@ main {
     cursor: pointer;
     display: flex;
 }
+.modal-window-component-container .modal-window-component .modal-window-content-container .modal-window-content {
+    overflow: auto;
+    max-height: 80vh;
+}
 
 /* подсказки адресов */
 .container-suggestions-pos-abs {
