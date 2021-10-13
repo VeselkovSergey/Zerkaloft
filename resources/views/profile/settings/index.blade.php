@@ -43,7 +43,7 @@
     <script>
 
         document.body.querySelector('.save-profile-changes').addEventListener('click', (e) => {
-            let dataForm = getDataFormContainer('detailed-information-user', false);
+            let dataForm = GetDataFormContainer('detailed-information-user', false);
             if (!dataForm) {
                 ShowFlashMessage('Заполните все поля!', 5000);
                 return false;

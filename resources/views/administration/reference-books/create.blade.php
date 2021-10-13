@@ -45,7 +45,7 @@
     <script>
 
         document.body.querySelector('.reference-book').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-reference-book');
+            let dataForm = GetDataFormContainer('container-create-reference-book');
 
             let createReferenceBookBtn = document.body.querySelector('.container-create-reference-book .container-btn');
             createReferenceBookBtn.hide();

@@ -23,7 +23,7 @@
 
         document.body.querySelector('.save-phone-button').addEventListener('click', () => {
 
-            let dataForm = getDataFormContainer('container-phone');
+            let dataForm = GetDataFormContainer('container-phone');
 
             Ajax("{{route('save-phone')}}", 'post', dataForm).then((response) => {
                 ShowFlashMessage(response.message);

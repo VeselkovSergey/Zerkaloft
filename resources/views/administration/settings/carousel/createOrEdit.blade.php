@@ -46,7 +46,7 @@
         });
 
         document.body.querySelector('.create-carousel-image-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-carousel-image');
+            let dataForm = GetDataFormContainer('container-create-carousel-image');
 
             Ajax("{{route('save-carousel-image-page')}}", 'post', dataForm).then((response) => {
                 if (response.status) {

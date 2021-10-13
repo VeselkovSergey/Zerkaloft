@@ -56,7 +56,7 @@
         });
 
         document.body.querySelector('.save-category-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-category');
+            let dataForm = GetDataFormContainer('container-create-category');
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
             editAndDeleteCategoryBtn.forEach((btn) => {
@@ -76,7 +76,7 @@
         });
 
         document.body.querySelector('.delete-category-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-category');
+            let dataForm = GetDataFormContainer('container-create-category');
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
             editAndDeleteCategoryBtn.forEach((btn) => {

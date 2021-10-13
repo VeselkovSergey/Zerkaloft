@@ -46,7 +46,7 @@
     <script>
 
         document.body.querySelector('.create-category-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-category');
+            let dataForm = GetDataFormContainer('container-create-category');
 
             let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
             createCategoryBtn.hide();

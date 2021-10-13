@@ -156,43 +156,53 @@ document.body.querySelectorAll('.menu-category, .expander-menu-category').forEac
 /**
  * Проверка и сбор данных из формы
  */
-function getDataFormContainer(container, validate) {
-    if (validInputEmpty(container) || !!!validate) {
-        let data = [];
-        document.body.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
-            if (el.type === 'file') {
-                for (let i = 0; i < el.files.length; i++) {
-                    data[el.id + '-' + i] = el.files[i];
-                }
-            } else {
-                data[el.id] = el.value;
+function GetDataFormContainer(container, startElement = document.body) {
+    let data = [];
+    startElement.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
+        if (el.type === 'file') {
+            for (let i = 0; i < el.files.length; i++) {
+                data[el.id + '-' + i] = el.files[i];
             }
-        });
-        return data;
-    } else {
-        return false;
-    }
+        } else {
+            if (el.name === '') {
+                data[el.id] = el.value;
+            } else {
+                if (data[el.name] === undefined) {
+                    data[el.name] = [];
+                }
+                let value = el.value;
+                if (el.type === 'checkbox' || el.type === 'radio') {
+                    value = el.checked
+                }
+                data[el.name].push(value);
+            }
+        }
+    });
+    return data;
 }
 
-function validInputEmpty(container) {
-    let validate = true;
+function CheckingFieldForEmptiness(container, ShowFlashMessage = false) {
+    let check = true;
     document.body.querySelectorAll('.' + container + ' .need-validate').forEach((element) => {
         let strValue = element.value;
-        if (strValue === '' || strValue === null || strValue === undefined) {
-            validate = false;
-            element.classList.add('border-red');
+        if (strValue === '' || strValue === null || strValue === 'null' || strValue === undefined) {
+            check = false;
+            element.classList.add('invalid-value');
             element.addEventListener('input', () => {
-                FixValidInput(element);
+                FieldCorrection(element);
             }, {once: true});
         }
     });
-    return validate;
+    if (!check) {
+        FlashMessage('Заполните все поля!');
+    }
+    return check;
 }
 
-function FixValidInput(element) {
+function FieldCorrection(element) {
     let strValue = element.value;
-    if (strValue !== '' && strValue !== null && strValue !== undefined) {
-        element.classList.remove('border-red');
+    if (strValue !== '' && strValue !== null && strValue !== 'null' && strValue !== undefined) {
+        element.classList.remove('invalid-value');
         element.removeEventListener('input', null);
     }
 }

@@ -69,7 +69,7 @@
         });
 
         document.body.querySelector('.create-subcategory-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-subcategory');
+            let dataForm = GetDataFormContainer('container-create-subcategory');
 
             let createSubcategoryBtn = document.body.querySelector('.container-create-subcategory .container-btn');
             createSubcategoryBtn.hide();

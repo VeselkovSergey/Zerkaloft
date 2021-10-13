@@ -109,7 +109,7 @@
         });
 
         document.body.querySelector('.create-product-btn').addEventListener('click', () => {
-            let dataForm = getDataFormContainer('container-create-product');
+            let dataForm = GetDataFormContainer('container-create-product');
 
             let createProductBtn = document.body.querySelector('.container-create-product .container-btn');
             //createProductBtn.hide();
