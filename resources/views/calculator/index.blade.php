@@ -27,6 +27,7 @@
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
+            containerFoundProduct.innerHTML = '';
             let select = event.target;
             let categoryId = select.value;
             if (categoryId != 0) {
