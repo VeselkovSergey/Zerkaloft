@@ -87,7 +87,7 @@
                                                     let productFullText = res.title;
 
                                                     changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText, productFullText: productFullText});
-                                                    //location.href = "{{route('basket-page')}}"
+                                                    location.href = "{{route('basket-page')}}"
                                                 }
                                             }
                                         }, containerFoundProduct);
