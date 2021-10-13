@@ -152,3 +152,128 @@ document.body.querySelectorAll('.menu-category, .expander-menu-category').forEac
         }
     });
 });
+
+/**
+ * Проверка и сбор данных из формы
+ */
+function getDataFormContainer(container, validate) {
+    if (validInputEmpty(container) || !!!validate) {
+        let data = [];
+        document.body.querySelectorAll('.' + container + ' input, .' + container + ' select, .' + container + ' textarea').forEach((el) => {
+            if (el.type === 'file') {
+                for (let i = 0; i < el.files.length; i++) {
+                    data[el.id + '-' + i] = el.files[i];
+                }
+            } else {
+                data[el.id] = el.value;
+            }
+        });
+        return data;
+    } else {
+        return false;
+    }
+}
+
+function validInputEmpty(container) {
+    let validate = true;
+    document.body.querySelectorAll('.' + container + ' .need-validate').forEach((element) => {
+        let strValue = element.value;
+        if (strValue === '' || strValue === null || strValue === undefined) {
+            validate = false;
+            element.classList.add('border-red');
+            element.addEventListener('input', () => {
+                FixValidInput(element);
+            }, {once: true});
+        }
+    });
+    return validate;
+}
+
+function FixValidInput(element) {
+    let strValue = element.value;
+    if (strValue !== '' && strValue !== null && strValue !== undefined) {
+        element.classList.remove('border-red');
+        element.removeEventListener('input', null);
+    }
+}
+
+let regOnlyLetter = new RegExp("^[а-яА-ЯёЁa-zA-Z]+$");
+let regOnlyNumber = new RegExp("[0-9]");
+let regEmail = new RegExp("^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$");
+let regPassword = new RegExp("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+
+function returnOnlyLetter(string) {
+    return string.replace(/[^а-яА-ЯёЁa-zA-Z\s]/gi, '');
+}
+
+function returnOnlyPhoneNumber(string) {
+    return string.replace(/[^0-9+()-]/g, '');
+}
+
+function startTrackingNumberInput() {
+    document.body.querySelectorAll('.phone-mask').forEach((element) => {
+
+        let phoneInput = element;
+
+        if (phoneInput !== null) {
+            phoneInput.addEventListener('keypress', (event) => {
+                if (event.keyCode < 47 || event.keyCode > 57) {
+                    event.preventDefault();
+                }
+
+                if (phoneInput.value.length === 2) {
+                    phoneInput.value = phoneInput.value + "(";
+                } else if (phoneInput.value.length === 6) {
+                    phoneInput.value = phoneInput.value + ")-";
+                } else if (phoneInput.value.length === 11 || phoneInput.value.length === 14) {
+                    phoneInput.value = phoneInput.value + "-";
+                }
+            });
+
+            phoneInput.addEventListener('keyup', (event) => {
+                let number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                if (number.indexOf(event.key) === -1) {
+                    if ((event.key === 'Backspace' || event.key === 'Delete') && phoneInput.value.length <= 2) {
+                        phoneInput.value = '+7';
+                        phoneInput.selectionStart = phoneInput.value.length;
+                    }
+                    event.preventDefault();
+                } else {
+                    if (phoneInput.value.length < 3) {
+                        phoneInput.value = '+7(' + event.key;
+                    }
+                }
+            });
+
+            phoneInput.addEventListener('focus', (event) => {
+                if (phoneInput.value.length === 0) {
+                    phoneInput.value = '+7';
+                    phoneInput.selectionStart = phoneInput.value.length;
+                }
+            });
+
+            phoneInput.addEventListener('click', (event) => {
+                if (phoneInput.selectionStart < 2) {
+                    phoneInput.selectionStart = phoneInput.value.length;
+                }
+                if (event.key === 'Backspace' && phoneInput.value.length <= 2) {
+                    event.preventDefault();
+                }
+            });
+
+            phoneInput.addEventListener('blur', () => {
+                if (phoneInput.value === '+7') {
+                    phoneInput.value = '';
+                }
+            });
+
+            phoneInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && phoneInput.value.length <= 2) {
+                    phoneInput.value = '+7';
+                    phoneInput.selectionStart = phoneInput.value.length;
+                    event.preventDefault();
+                }
+            });
+        }
+    });
+}
