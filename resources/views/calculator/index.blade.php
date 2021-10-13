@@ -83,11 +83,11 @@
                                                 click: () => {
                                                     let productId = res.product.id;
                                                     let productPriceId = selectorPrices.value;
-                                                    let productPriceText = '123';
-                                                    let productFullText = res.title;
+                                                    let productPriceText = selectorPrices.querySelector('option[value="'+productPriceId+'"]').innerHTML;;
+                                                    let productFullText = res.product.title;
 
                                                     changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText, productFullText: productFullText});
-                                                    location.href = "{{route('basket-page')}}"
+                                                    //location.href = "{{route('basket-page')}}"
                                                 }
                                             }
                                         }, containerFoundProduct);

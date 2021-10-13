@@ -219,6 +219,8 @@
         let productPriceText = product.productPriceText;
         let productFullText = product.productFullText;
 
+        console.log(product)
+
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
         if (localStorageBasket === null) {
@@ -243,6 +245,8 @@
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['text'] = productPriceText;
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productId'] = productId;
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['productPriceId'] = productPriceId;
+                    localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['fullText'] = productFullText;
+
                 } else {
                     localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] = localStorageBasket['productId_' + productId]['productPriceId_' + productPriceId]['count'] + 1;
                 }
