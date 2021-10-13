@@ -8,15 +8,11 @@
 
     @yield('meta')
 
-    {{--        <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>--}}
     <title>Панель администратора</title>
 
     <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
-
-    @include('administration.assets.css.admin-style')
-    @include('administration.assets.css.loader-style')
 
     @yield('css')
 
@@ -25,16 +21,6 @@
 </head>
 
 <body class="w-100">
-
-    <div class="modal hide pos-fix w-100 h-100 bg-white z-5">
-        <div class="modal-container pos-fix w-100 m-a flex" style="top: 10%;">
-            <div class="window-modal m-a" style="max-height: 80vh; overflow:auto;">
-                <div class="modal-content">
-
-                </div>
-            </div>
-        </div>
-    </div>
 
     <header class="shadow bg-white pos-sticky top-0 z-5">@include('administration.layouts.header')</header>
 
@@ -124,8 +110,6 @@
     </nav>
 
     <main class="w-80 ml-a p-20">@yield('content')</main>
-
-    @include('administration.assets.js.admin-script')
 
     <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 

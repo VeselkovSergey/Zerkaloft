@@ -8,74 +8,69 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @yield('meta')
 
-{{--        <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>--}}
         <title>Панель управления</title>
 
         <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
-        @include('management.assets.css.management-style')
-        @include('management.assets.css.loader-style')
+        <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
+        <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
 
         @yield('css')
 
+        <script src="{{ asset('resources/js/add.prototypes.js') }}"></script>
+
     </head>
 
-    <body style="max-width: 100%;">
+    <body class="w-100">
 
-    <div class="modal hide" style="position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
-        <div class="modal-container" style="position: fixed; top: 10%; width: 100%; margin: auto; display: flex;">
-            <div class="window-modal" style="margin: auto; /*background-color: white;*/ max-height: 80vh; overflow:auto;">
-                <div class="modal-content">
+        <header class="shadow bg-white pos-sticky top-0 z-5">@include('management.layouts.header')</header>
 
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="flash-message flash-message-error hide"></div>
 
-        <div class="no-mobile-version">
-            <h1>Версия для маленьких экранов в разработке</h1>
-        </div>
+        <nav class="w-20 shadow p-5 border-radius-5 pos-abs">
 
-        <header style="height: 100px; background-color: #1976d2; position: sticky; top: 0; z-index: 5; box-shadow: 0 3px 10px rgb(0 0 0);">
-            @include('management.layouts.header')
-        </header>
+            <?php
+            $adminMenu = [
+                [
+                    'title' => 'Заказы',
+                    'subMenu' => [
+                        [
+                            'title' => 'Все заказы',
+                            'link' => route('orders-management-page'),
+                        ],
+                    ],
+                ],
+            ];
+            ?>
 
-        <nav style="position: absolute; top: 150px; left: 25px; width: 13%; box-shadow: 0 0 10px rgb(0 0 0 / 75%); padding: 25px;">
-            <div>
-
-                <div style="padding: 3px; position: relative;">
-                    <div class="menu-category" style="border: 1px solid black; padding: 3px; cursor: pointer; border-radius: 3px;">Заказы</div>
-                    <div class="expander-menu-category" style="position: absolute; top: 11px; right: 11px; line-height: 1; transform: rotate(0.0turn); cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
+            @foreach($adminMenu as $menuItem)
+                <div class="menu-item-container p-5">
+                    <div class="flex-center border cp p-5 border-radius-5">
+                        <div class="menu-category flex-a">{{$menuItem['title']}}</div>
+                        <div class="expander-menu-category flex-center" style="transform: rotate(0.0turn);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
                     </div>
                     <div class="menu-category-detail hide">
-                        <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                            <a href="{{route('orders-management-page')}}">Все заказы</a>
+                        <div class="pl-10 py-10">
+                            @foreach($menuItem['subMenu'] as $subMenuItem)
+                                <a class="block" href="{{$subMenuItem['link']}}">{{$subMenuItem['title']}}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+            @endforeach
 
-            </div>
         </nav>
 
-        <div class="flash-message flash-message-error hide">
+        <main class="w-80 ml-a p-20">@yield('content')</main>
 
-        </div>
+        <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
-        <main style="min-height: calc(100vh - 200px); margin: 25px 15% 0 15%;">
-
-            @yield('content')
-
-        </main>
-
-{{--        <footer style="height: 100px;">--}}
-{{--            @include('management.layouts.footer')--}}
-{{--        </footer>--}}
-
-        @include('management.assets.js.management-script')
-
-    @yield('js')
+        @yield('js')
 
     </body>
 

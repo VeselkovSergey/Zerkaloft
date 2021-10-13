@@ -94,18 +94,6 @@
 
     });
 
-    document.body.querySelectorAll('.title-category-container').forEach((category) => {
-        category.addEventListener('click', (el) => {
-            if (category.parentNode.querySelector('.children-category').classList.contains('hide')) {
-                category.parentNode.querySelector('.children-category').show();
-                category.parentNode.querySelector('.expander-menu-category').classList.add('rotation-90');
-            } else {
-                category.parentNode.querySelector('.children-category').hide();
-                category.parentNode.querySelector('.expander-menu-category').classList.remove('rotation-90');
-            }
-        })
-    });
-
     document.body.querySelectorAll('.title-subcategory-container').forEach((category) => {
         category.addEventListener('click', (el) => {
             if (category.parentNode.querySelector('.children-subcategory').classList.contains('hide')) {
@@ -117,47 +105,6 @@
             }
         })
     });
-
-    function Ajax(url, method, formDataRAW) {
-        return new Promise(function(resolve, reject) {
-            let formData = new FormData();
-            if ( typeof(method) === "undefined" || method === null ) {
-                method = 'get';
-            }
-
-            if ( typeof(formDataRAW) === "undefined" || formDataRAW === null ) {
-                formDataRAW = {};
-            } else {
-                Object.keys(formDataRAW).forEach((key) => {
-                    formData.append(key, formDataRAW[key]);
-                })
-            }
-
-            let xhr = new XMLHttpRequest();
-            xhr.open(method, url, true);
-
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    try {
-                        resolve(JSON.parse(this.response));
-                    } catch (e) {
-                        resolve(this.response);
-                    }
-
-                } else {
-                    let error = new Error(this.statusText);
-                    error.code = this.status;
-                    reject(error);
-                }
-            };
-
-            xhr.onerror = function() {
-                reject(new Error("Network Error"));
-            };
-
-            xhr.send(formData);
-        });
-    }
 
     function changeRadioEffect(type) {
         if (type) {
