@@ -155,12 +155,12 @@ function Ajax(url, method, formDataRAW) {
 
 document.body.querySelectorAll('.menu-category, .expander-menu-category').forEach((category) => {
     category.addEventListener('click', (el) => {
-        if (category.closest('.menu-item-container').querySelector('.menu-category-detail').classList.contains('hide')) {
-            category.closest('.menu-item-container').querySelector('.menu-category-detail').show();
-            category.closest('.menu-item-container').querySelector('.expander-menu-category').classList.add('rotation-90');
+        if (category.closest('.menu-category-container').querySelector('.menu-category-detail').classList.contains('hide')) {
+            category.closest('.menu-category-container').querySelector('.menu-category-detail').show();
+            category.closest('.menu-category-container').querySelector('.expander-menu-category').classList.add('rotation-90');
         } else {
-            category.closest('.menu-item-container').querySelector('.menu-category-detail').hide();
-            category.closest('.menu-item-container').querySelector('.expander-menu-category').classList.remove('rotation-90');
+            category.closest('.menu-category-container').querySelector('.menu-category-detail').hide();
+            category.closest('.menu-category-container').querySelector('.expander-menu-category').classList.remove('rotation-90');
         }
     });
 });

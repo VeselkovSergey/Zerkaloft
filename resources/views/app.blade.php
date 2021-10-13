@@ -50,7 +50,7 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="children-category hide">
+                            <div class="menu-category-detail hide">
                                 @foreach($category->Products as $product)
                                     <div class="pl-10 cp">
                                         <a href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">{{$product->title}}</a>

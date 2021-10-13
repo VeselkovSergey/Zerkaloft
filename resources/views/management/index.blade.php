@@ -43,7 +43,7 @@
             ?>
 
             @foreach($adminMenu as $menuItem)
-                <div class="menu-item-container p-5">
+                <div class="menu-category-container p-5">
                     <div class="flex-center border cp p-5 border-radius-5">
                         <div class="menu-category flex-a">{{$menuItem['title']}}</div>
                         <div class="expander-menu-category flex-center" style="transform: rotate(0.0turn);">
