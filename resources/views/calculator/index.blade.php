@@ -81,10 +81,7 @@
                                             content: 'Добавить в корзину и перейти в корзину',
                                             events: {
                                                 click: () => {
-
-                                                    console.log(selectorPrices.value)
-
-                                                    let productId = categoryId;
+                                                    let productId = res.product.id;
                                                     let productPriceId = selectorPrices.value;
                                                     let productPriceText = '123';
                                                     let productFullText = res.title;
