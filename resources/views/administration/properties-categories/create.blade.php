@@ -18,7 +18,7 @@
 
         <div class="price-container w-100 p-10" data-count-prices="1">
 
-            <div class="price flex border" data-id="1">
+            <div class="price flex border mb-5" data-id="1">
                 <div class="w-100 p-10">
                     <label for="count-1" class="w-100" style="display: block;">Значение</label>
                     <input name="property_categories_values[]" id="count-1" type="text" class="w-100">
@@ -79,7 +79,7 @@
 
             let newPrice = document.createElement("div");
             newPrice.dataset.id = countPrices;
-            newPrice.className = 'price flex border';
+            newPrice.className = 'price flex border mb-5';
 
             newPrice.innerHTML = '<div class="w-100 p-10">'+
                 '<label for="count-' + countPrices + '" class="w-100" style="display: block;">Значение</label>'+
