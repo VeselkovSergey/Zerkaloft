@@ -11,7 +11,7 @@
             <div><label>Фамилия:</label><input name="surname" id="surname" type="text" value="{{$user->DetailedInformation->surname}}"></div>
             <div><label>Имя:</label><input name="name" id="name" type="text" value="{{$user->DetailedInformation->name}}"></div>
             <div><label>Отчетсво:</label><input name="patronymic" id="patronymic" type="text" value="{{$user->DetailedInformation->patronymic}}"></div>
-            <div><label>Телефон:</label><input name="phone" id="phone" type="text" value="{{$user->DetailedInformation->phone}}"></div>
+            <div><label>Телефон:</label><input name="phone" id="phone" type="text" class="phone-mask" maxlength="17" placeholder="+7(999)-999-99-99" value="{{$user->DetailedInformation->phone}}"></div>
         @else
             <div><label>Название организации:</label><input name="title_org" id="title_org" type="text" value="{{$user->DetailedInformation->title_org}}"></div>
             <div><label>ИНН организации:</label><input name="inn_org" id="inn_org" type="text" value="{{$user->DetailedInformation->inn_org}}"></div>
@@ -54,6 +54,8 @@
                 ModalWindow(response.message);
             });
         });
+
+        startTrackingNumberInput();
 
     </script>
 @stop

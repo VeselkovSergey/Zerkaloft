@@ -36,7 +36,7 @@ class CreateUserPhysicalTable extends Migration
             'surname' => 'Администратор',
             'name' => 'Администратор',
             'patronymic' => 'Администратор',
-            'phone' => 'Администратор',
+            'phone' => '+7(999)-999-99-99',
         ]);
     }
 
