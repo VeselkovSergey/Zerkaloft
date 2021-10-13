@@ -60,7 +60,7 @@
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
             editAndDeleteCategoryBtn.forEach((btn) => {
-                btn.classList.add('hide-el');
+                btn.hide();
             });
 
             Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
@@ -70,7 +70,7 @@
                     ShowFlashMessage(response.message);
                 }
                 editAndDeleteCategoryBtn.forEach((btn) => {
-                    btn.classList.remove('hide-el');
+                    btn.show();
                 });
             });
         });
@@ -80,7 +80,7 @@
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
             editAndDeleteCategoryBtn.forEach((btn) => {
-                btn.classList.add('hide-el');
+                btn.hide();
             });
 
             Ajax("{{route('delete-category-admin')}}", 'post', dataForm).then((response) => {
@@ -92,7 +92,7 @@
                 } else {
                     ShowFlashMessage(response.message);
                     editAndDeleteCategoryBtn.forEach((btn) => {
-                        btn.classList.remove('hide-el');
+                        btn.show();
                     });
                 }
             });

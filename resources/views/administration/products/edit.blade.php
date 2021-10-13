@@ -26,12 +26,12 @@
                         <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
                     </div>
 
-                    <div class="hide-el">
+                    <div class="hide">
                         <label for="category_id" class="block w-100">Абстрактный продукт</label>
                         <input id="category_id" type="text" class="w-100" value="{{$product->id}}">
                     </div>
 
-                    <div class="hide-el">
+                    <div class="hide">
                         <label for="product_combination" class="block w-100">Комбинация</label>
                         <input id="product_combination" type="text" class="w-100" value="{{$combination->id}}">
                     </div>

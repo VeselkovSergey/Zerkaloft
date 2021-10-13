@@ -21,7 +21,7 @@
 
     <body style="max-width: 100%;">
 
-    <div class="modal hide-el" style="position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
+    <div class="modal hide" style="position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000;">
         <div class="modal-container" style="position: fixed; top: 10%; width: 100%; margin: auto; display: flex;">
             <div class="window-modal" style="margin: auto; /*background-color: white;*/ max-height: 80vh; overflow:auto;">
                 <div class="modal-content">
@@ -49,7 +49,7 @@
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </div>
-                    <div class="menu-category-detail hide-el">
+                    <div class="menu-category-detail hide">
                         <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
                             <a href="{{route('orders-management-page')}}">Все заказы</a>
                         </div>
@@ -59,7 +59,7 @@
             </div>
         </nav>
 
-        <div class="flash-message flash-message-error">
+        <div class="flash-message flash-message-error hide">
 
         </div>
 

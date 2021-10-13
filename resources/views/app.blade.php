@@ -27,27 +27,30 @@
 
     <body class="bg-logo-victoria">
 
-        <div class="modal hide-el">
-        <div class="modal-flash-message hide-el">
-            <div class="modal-flash-message-content"></div>
-        </div>
-        <div class="modal-container">
-            <div class="window-modal">
-                <div class="modal-close-button">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M12.6365 13.3996L13.4001 12.636L7.76373 6.99961L13.4001 1.36325L12.6365 0.599609L7.0001 6.23597L1.36373 0.599609L0.600098 1.36325L6.23646 6.99961L0.600098 12.636L1.36373 13.3996L7.0001 7.76325L12.6365 13.3996Z"
-                              fill="#000000"></path>
-                    </svg>
+        <div class="modal hide">
+            <div class="modal-flash-message hide">
+                <div class="modal-flash-message-content"></div>
+            </div>
+            <div class="modal-container">
+                <div class="window-modal w-100vw h-100vh flex-center">
+                    <div class="modal-shadow pos-abs top-0 left-0 w-100vw h-100vh"></div>
+                    <div class="modal-content pos-rel">
+                        <div class="modal-close-button">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M12.6365 13.3996L13.4001 12.636L7.76373 6.99961L13.4001 1.36325L12.6365 0.599609L7.0001 6.23597L1.36373 0.599609L0.600098 1.36325L6.23646 6.99961L0.600098 12.636L1.36373 13.3996L7.0001 7.76325L12.6365 13.3996Z"
+                                      fill="#000000"></path>
+                            </svg>
+                        </div>
+                        <div class="content"></div>
+                    </div>
                 </div>
-                <div class="modal-content"></div>
             </div>
         </div>
-    </div>
 
         <header class="flex-wrap pos-sticky top-0 bg-white z-1">@include('layouts.header')</header>
 
-        <div class="flash-message flash-message-error hide-el"></div>
+        <div class="flash-message flash-message-error hide"></div>
 
         <nav class="left-menu hide z-2 pos-fix top-0 left-0 w-100 h-100">
             <div class="shadow-menu w-100 h-100 bg-black pos-abs" style="opacity: 0.5"></div>
@@ -68,7 +71,7 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="children-category hide-el">
+                            <div class="children-category hide">
                                 @foreach($category->Products as $product)
 
                                     <div class="pl-10 cp">
@@ -86,7 +89,7 @@
 {{--                                                </svg>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}
-{{--                                        <div class="children-subcategory hide-el">--}}
+{{--                                        <div class="children-subcategory hide">--}}
 {{--                                            @foreach(\App\Models\Products::where('subcategory_id', $subcategory->id)->get() as $product)--}}
 {{--                                                <div class="menu-product">--}}
 {{--                                                    <div style="display: flex; flex-direction: column; padding: 5px 0 5px 25px;">--}}

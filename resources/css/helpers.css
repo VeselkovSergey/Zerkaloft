@@ -11,6 +11,9 @@
 .w-100 {
     width: 100%;
 }
+.w-100vw {
+    width: 100vw;
+}
 
 .w-90 {
     width: 90%;
@@ -288,6 +291,7 @@
     padding-left: 0;
     padding-right: 0;
 }
+
 .p-5 {
     padding: 5px;
 }
@@ -441,6 +445,10 @@
 /* flex */
 .flex {
     display: flex;
+}
+
+.flex-a {
+    flex: auto;
 }
 
 .flex-column {
@@ -628,4 +636,9 @@
     100% {
         opacity: 0;
     }
+}
+
+.text-bold {
+    font-weight: bold;
+    width: 18px;
 }

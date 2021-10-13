@@ -112,7 +112,7 @@
             let dataForm = getDataFormContainer('container-create-product');
 
             let createProductBtn = document.body.querySelector('.container-create-product .container-btn');
-            //createProductBtn.classList.add('hide-el');
+            //createProductBtn.hide();
 
             Ajax("{{route('save-product-admin')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
@@ -122,7 +122,7 @@
                     }, 1500);
                 } else {
                     ShowFlashMessage(response.message);
-                    //createProductBtn.classList.remove('hide-el');
+                    //createProductBtn.show();
                 }
             });
         });

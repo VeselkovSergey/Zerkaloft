@@ -63,7 +63,7 @@
             let dataForm = getDataFormContainer('container-create-category');
 
             let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
-            createCategoryBtn.classList.add('hide-el');
+            createCategoryBtn.hide();
 
             Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
@@ -73,7 +73,7 @@
                     }, 1500);
                 } else {
                     ShowFlashMessage(response.message);
-                    createCategoryBtn.classList.remove('hide-el');
+                    createCategoryBtn.show();
                 }
             });
         });

@@ -26,7 +26,7 @@
 
 <body class="w-100">
 
-    <div class="modal hide-el pos-fix w-100 h-100 bg-white z-5">
+    <div class="modal hide pos-fix w-100 h-100 bg-white z-5">
         <div class="modal-container pos-fix w-100 m-a flex" style="top: 10%;">
             <div class="window-modal m-a" style="max-height: 80vh; overflow:auto;">
                 <div class="modal-content">
@@ -38,99 +38,96 @@
 
     <header class="shadow bg-white pos-sticky top-0 z-5">@include('administration.layouts.header')</header>
 
-    <div class="flash-message flash-message-error"></div>
+    <div class="flash-message flash-message-error hide"></div>
 
-    <nav class="w-20 shadow p-5" style="position: absolute; top: 80px; left: 10px;">
-        <div class="p-5 pos-rel">
-            <div class="menu-category border p-5 cp border-radius-5 border p-5 cp border-radius-5">Свойства категорий</div>
-            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-            <div class="menu-category-detail hide-el">
-                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('properties-categories-admin-page')}}">Все свойства</a>
-                    <a href="{{route('create-property-categories-admin-page')}}">Новое свойство категорий</a>
+    <nav class="w-20 shadow p-5 border-radius-5 pos-abs">
+
+        <?php
+        $adminMenu = [
+            [
+                'title' => 'Свойства категорий',
+                'subMenu' => [
+                    [
+                        'title' => 'Все свойства',
+                        'link' => route('properties-categories-admin-page'),
+                    ],
+                    [
+                        'title' => 'Новое свойство категорий',
+                        'link' => route('create-property-categories-admin-page'),
+                    ],
+                ],
+            ],
+            [
+                'title' => 'Категории',
+                'subMenu' => [
+                    [
+                        'title' => 'Все категории',
+                        'link' => route('categories-admin-page'),
+                    ],
+                    [
+                        'title' => 'Новая категория',
+                        'link' => route('create-category-admin-page'),
+                    ],
+                ],
+            ],
+            [
+                'title' => 'Продукты',
+                'subMenu' => [
+                    [
+                        'title' => 'Все продукты',
+                        'link' => route('products-admin-page'),
+                    ],
+//                    [
+//                        'title' => 'Новый продукт',
+//                        'link' => route('create-product-admin-page'),
+//                    ],
+                ],
+            ],
+            [
+                'title' => 'Настройки системы',
+                'subMenu' => [
+                    [
+                        'title' => 'Все картинки карусели',
+                        'link' => route('all-carousel-images-page'),
+                    ],
+                    [
+                        'title' => 'Создать картинку карусели',
+                        'link' => route('create-carousel-image-page'),
+                    ],
+                ],
+            ],
+        ];
+        ?>
+
+        @foreach($adminMenu as $menuItem)
+            <div class="menu-item-container p-5">
+                <div class="flex-center border cp p-5 border-radius-5">
+                    <div class="menu-category flex-a">{{$menuItem['title']}}</div>
+                    <div class="expander-menu-category flex-center" style="transform: rotate(0.0turn);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="menu-category-detail hide">
+                    <div class="pl-10 py-10">
+                        @foreach($menuItem['subMenu'] as $subMenuItem)
+                            <a class="block" href="{{$subMenuItem['link']}}">{{$subMenuItem['title']}}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
 
-        <div class="p-5 pos-rel">
-            <div class="menu-category border p-5 cp border-radius-5">Категории</div>
-            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-            <div class="menu-category-detail hide-el">
-                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('categories-admin-page')}}">Все категории</a>
-                    <a href="{{route('create-category-admin-page')}}">Новая категория</a>
-                </div>
-            </div>
-        </div>
-
-{{--        <div class="p-5 pos-rel">--}}
-{{--            <div class="menu-category border p-5 cp border-radius-5">Подкатегории</div>--}}
-{{--            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">--}}
-{{--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"--}}
-{{--                     class="bi bi-chevron-right" viewBox="0 0 16 16">--}}
-{{--                    <path fill-rule="evenodd"--}}
-{{--                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>--}}
-{{--                </svg>--}}
-{{--            </div>--}}
-{{--            <div class="menu-category-detail hide-el">--}}
-{{--                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">--}}
-{{--                    <a href="{{route('subcategories-admin-page')}}">Все подкатегории</a>--}}
-{{--                    <a href="{{route('create-subcategory-admin-page')}}">Новая подкатегория</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-        <div class="p-5 pos-rel">
-            <div class="menu-category border p-5 cp border-radius-5">Продукты</div>
-            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-            <div class="menu-category-detail hide-el">
-                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    <a href="{{route('products-admin-page')}}">Все продукты</a>
-                    {{--                            <a href="{{route('create-product-admin-page')}}">Новый продукт</a>--}}
-                </div>
-            </div>
-        </div>
-
-        <div class="p-5 pos-rel">
-            <div class="menu-category border p-5 cp border-radius-5">Настройки системы</div>
-            <div class="expander-menu-category pos-abs  cp" style="transform: rotate(0.0turn); top: 10px; right:10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-            <div class="menu-category-detail hide-el">
-                <div style="display: flex; flex-direction: column; padding: 15px 0 25px 15px;">
-                    {{--                            <a href="{{route('edit-phone-main-page')}}">Номер телефона на главной странице</a>--}}
-                    <a href="{{route('all-carousel-images-page')}}">Все картинки карусели</a>
-                    <a href="{{route('create-carousel-image-page')}}">Создать картинку карусели</a>
-                </div>
-            </div>
-        </div>
     </nav>
 
     <main class="w-80 ml-a p-20">@yield('content')</main>
 
     @include('administration.assets.js.admin-script')
+
+    <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
     @yield('js')
 

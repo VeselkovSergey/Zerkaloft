@@ -9,9 +9,9 @@ Element.prototype.show = function () {
 
 Element.prototype.showToggle = function () {
     if (this.classList.contains('hide')) {
-        this.classList.remove('hide');
+        this.show();
     } else {
-        this.classList.add('hide');
+        this.hide();
     }
 }
 
@@ -42,17 +42,17 @@ function CreateElement(tag, params, parent) {
         })
     }
     return element;
-}
 
-// let buttonAnswerDelete = CreateElement('button', {
-//     class: 'px-15 py-5 ml-10 cp',
-//     content: 'Удалить ответ',
-//     events: {
-//         click: (e) => {
-//             containerFieldsAdditionalAnswer.remove();
-//         }
-//     }
-// }, containerAdditionalAnswer);
+    // let buttonAnswerDelete = CreateElement('button', {
+    //     class: 'px-15 py-5 ml-10 cp',
+    //     content: 'Удалить ответ',
+    //     events: {
+    //         click: (e) => {
+    //             containerFieldsAdditionalAnswer.remove();
+    //         }
+    //     }
+    // }, containerAdditionalAnswer);
+}
 
 function GenerationFormSelect(obj, name, selected, disableFirstOption = false) {
     let options = '';
