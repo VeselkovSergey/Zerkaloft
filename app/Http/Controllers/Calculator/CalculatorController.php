@@ -47,7 +47,7 @@ class CalculatorController
     {
         $categoryId = $request->categoryId;
         $modification = $request->modification;
-        $modificationProcessed = implode('-', explode(',', $modification));
+        $modificationProcessed = implode('-', $modification);
         $product = Products::where('category_id', $categoryId)->where('modification_id', $modificationProcessed)->first();
         if (empty($product)) {
             return ResultGenerate::Error('Продукт не найден');

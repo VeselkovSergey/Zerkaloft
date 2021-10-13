@@ -49,7 +49,7 @@
                                 if (allSelected === true) {
                                     Ajax("{{route('product-modification')}}", 'post', {
                                         categoryId: categoryId,
-                                        modification: modification
+                                        'modification[]': modification
                                     }).then((response) => {
                                         let res = response.result;
                                         containerFoundProduct.innerHTML = '';
