@@ -193,7 +193,7 @@ function GetDataFormContainer(container, startElement = document.body) {
     return data;
 }
 
-function CheckingFieldForEmptiness(container, ShowFlashMessage = false) {
+function CheckingFieldForEmptiness(container, showFlashMessage = false) {
     let check = true;
     document.body.querySelectorAll('.' + container + ' .need-validate').forEach((element) => {
         let strValue = element.value;
@@ -205,8 +205,8 @@ function CheckingFieldForEmptiness(container, ShowFlashMessage = false) {
             }, {once: true});
         }
     });
-    if (!check) {
-        FlashMessage('Заполните все поля!');
+    if (!check && showFlashMessage) {
+        ShowFlashMessage('Заполните все поля!');
     }
     return check;
 }

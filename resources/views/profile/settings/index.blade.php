@@ -43,11 +43,12 @@
     <script>
 
         document.body.querySelector('.save-profile-changes').addEventListener('click', (e) => {
-            let dataForm = GetDataFormContainer('detailed-information-user', false);
-            if (!dataForm) {
-                ShowFlashMessage('Заполните все поля!', 5000);
+
+            if (!CheckingFieldForEmptiness('detailed-information-user')) {
                 return false;
             }
+
+            let dataForm = GetDataFormContainer('detailed-information-user');
 
             Ajax("{{route('change-detail-information')}}", 'post', dataForm).then((response) => {
                 ModalWindow(response.message);

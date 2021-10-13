@@ -189,7 +189,7 @@
             });
 
             productCombinationContainer.querySelector('.create-product-btn').addEventListener('click', () => {
-                let dataForm = GetDataFormContainer('container-create-product', false, productCombinationContainer);
+                let dataForm = GetDataFormContainer('container-create-product', productCombinationContainer);
 
                 let createProductBtn = productCombinationContainer.querySelector('.container-create-product .container-btn');
                 createProductBtn.hide();

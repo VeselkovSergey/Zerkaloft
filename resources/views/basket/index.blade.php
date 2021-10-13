@@ -288,11 +288,12 @@
         let buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         if (buttonAddProductInBasket !== null) {
             buttonAddProductInBasket.addEventListener('click', (e) => {
-                let dataForm = GetDataFormContainer('client-order-information', true);
-                if (!dataForm) {
-                    ShowFlashMessage('Заполните все поля!', 5000);
+
+                if (!CheckingFieldForEmptiness('client-order-information', true)) {
                     return false;
                 }
+
+                let dataForm = GetDataFormContainer('client-order-information');
 
                 dataForm['ordered_products'] = GetAllProductsInBasket();
 
