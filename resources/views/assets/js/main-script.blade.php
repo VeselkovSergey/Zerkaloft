@@ -142,7 +142,7 @@
                     location.href = "{{route('home-page')}}";
                 });
             } else {
-                ModalWindowFlash(response.message, true);
+                ModalWindowFlash(response.message);
             }
 
         });

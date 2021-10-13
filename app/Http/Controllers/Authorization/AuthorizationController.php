@@ -77,9 +77,9 @@ class AuthorizationController
 
     private function RegistrationUserPhysical(Request $request)
     {
-//        $surname = $request->surname;
+        $surname = !empty($request->surname) ? $request->surname : '-';
         $name = $request->name;
-//        $patronymic = $request->patronymic;
+        $patronymic = !empty($request->patronymic) ? $request->patronymic : '-';
         $email = $request->email;
         $phone = $request->phone;
 
@@ -112,9 +112,9 @@ class AuthorizationController
         $user = User::create($fields);
 
         $fields['user_id'] = $user->id;
-//        $fields['surname'] = $surname;
+        $fields['surname'] = $surname;
         $fields['name'] = $name;
-//        $fields['patronymic'] = $patronymic;
+        $fields['patronymic'] = $patronymic;
         $fields['phone'] = $phone;
         $userPhysical = UserPhysicals::create($fields);
 
