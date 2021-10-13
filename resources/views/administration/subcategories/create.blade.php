@@ -72,7 +72,7 @@
             let dataForm = getDataFormContainer('container-create-subcategory');
 
             let createSubcategoryBtn = document.body.querySelector('.container-create-subcategory .container-btn');
-            createSubcategoryBtn.classList.add('hide-el');
+            createSubcategoryBtn.hide();
 
             Ajax("{{route('save-subcategory-admin')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
@@ -82,7 +82,7 @@
                     }, 1500);
                 } else {
                     ShowFlashMessage(response.message);
-                    createSubcategoryBtn.classList.remove('hide-el');
+                    createSubcategoryBtn.show();
                 }
             });
         });

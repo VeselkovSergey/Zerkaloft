@@ -85,7 +85,7 @@
 
             let editAndDeleteSubcategoryBtn = document.body.querySelectorAll('.container-create-subcategory .container-btn');
             editAndDeleteSubcategoryBtn.forEach((btn) => {
-                btn.classList.add('hide-el');
+                btn.hide();
             });
 
             Ajax("{{route('save-subcategory-admin')}}", 'post', dataForm).then((response) => {
@@ -95,7 +95,7 @@
                     ShowFlashMessage(response.message);
                 }
                 editAndDeleteSubcategoryBtn.forEach((btn) => {
-                    btn.classList.remove('hide-el');
+                    btn.show();
                 });
             });
         });
@@ -105,7 +105,7 @@
 
             let editAndDeleteSubcategoryBtn = document.body.querySelectorAll('.container-create-subcategory .container-btn');
             editAndDeleteSubcategoryBtn.forEach((btn) => {
-                btn.classList.add('hide-el');
+                btn.hide();
             });
 
             Ajax("{{route('delete-subcategory-admin')}}", 'post', dataForm).then((response) => {
@@ -117,7 +117,7 @@
                 } else {
                     ShowFlashMessage(response.message);
                     editAndDeleteSubcategoryBtn.forEach((btn) => {
-                        btn.classList.remove('hide-el');
+                        btn.show();
                     });
                 }
             });

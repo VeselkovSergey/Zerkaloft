@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="physical_user_input show-el">
+            <div class="physical_user_input show">
 
 {{--                <div style="width: 100%;">--}}
 {{--                    <div style="padding: 10px;">--}}
@@ -72,7 +72,7 @@
 
             </div>
 
-            <div class="juridical_user_input hide-el">
+            <div class="juridical_user_input hide">
 
                 <div style="width: 100%;">
                     <div style="padding: 10px;">

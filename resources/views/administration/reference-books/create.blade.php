@@ -48,7 +48,7 @@
             let dataForm = getDataFormContainer('container-create-reference-book');
 
             let createReferenceBookBtn = document.body.querySelector('.container-create-reference-book .container-btn');
-            createReferenceBookBtn.classList.add('hide-el');
+            createReferenceBookBtn.hide();
 
             Ajax("{{route('save-reference-book-admin')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
@@ -58,7 +58,7 @@
                     }, 1500);
                 } else {
                     ShowFlashMessage(response.message);
-                    createReferenceBookBtn.classList.remove('hide-el');
+                    createReferenceBookBtn.show();
                 }
             });
         });

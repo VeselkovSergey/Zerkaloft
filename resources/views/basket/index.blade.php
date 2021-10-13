@@ -165,7 +165,7 @@
 
         @endif
 
-        <div class="basket-empty @if(sizeof($allProductsInBasket)) hide-el @endif">
+        <div class="basket-empty @if(sizeof($allProductsInBasket)) hide @endif">
 
             <div style="padding: 25px;">
 
@@ -216,7 +216,7 @@
         function EmptyBasketCheck() {
             if (document.body.querySelector('.all-cart-product').children.length === 0) {
                 document.body.querySelector('.basket-products').remove();
-                ShowElement(document.body.querySelector('.basket-empty'));
+                document.body.querySelector('.basket-empty').show();
             }
         }
 
@@ -244,12 +244,12 @@
                     document.body.querySelector('.button-show-products-cart-in-basket > svg').classList.add('rotation-90');
                     document.body.querySelector('.all-cart-product').classList.add('height-0');
                     setTimeout(() => {
-                        HideElement(document.body.querySelector('.all-cart-product'));
+                        document.body.querySelector('.all-cart-product').hide();
                     }, 200);
                 } else {
                     productsCartInBasketShown = true;
                     document.body.querySelector('.button-show-products-cart-in-basket > svg').classList.remove('rotation-90');
-                    ShowElement(document.body.querySelector('.all-cart-product'));
+                    document.body.querySelector('.all-cart-product').show();
                     setTimeout(() => {
                         document.body.querySelector('.all-cart-product').classList.remove('height-0');
                     }, 10);
@@ -297,18 +297,17 @@
                 dataForm['ordered_products'] = GetAllProductsInBasket();
 
                 let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
-                HideElement(createOrderButton);
+                createOrderButton.hide();
 
                 Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
                     if (response.status) {
                         ClearAllProductsInBasket();
-                        ShowModal('<div style="background-color: white; padding: 25px; font-size: 20px;">Заказ оформлен! С Вами скоро свяжутся!</div>');
-                        document.body.querySelector('.modal-close-button').addEventListener('click', (el) => {
+                        ModalWindow('Заказ оформлен! С Вами скоро свяжутся!', () => {
                             location.href = "{{route('home-page')}}";
                         });
                     } else {
                         ShowFlashMessage(response.message, 5000);
-                        ShowElement(createOrderButton);
+                        createOrderButton.show();
                     }
                 });
             });

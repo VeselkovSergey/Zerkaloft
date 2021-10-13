@@ -60,9 +60,9 @@
                                         let i = 0;
                                         Object.keys(res.productPrices).forEach((key) => {
                                             let selectedAttr = i === 0 ? 'selected' : '';
-                                            let priceTitle = res.productPrices[key]['count'] + res.productPrices[key]['price'];
+                                            let priceTitle = res.productPrices[key]['count'] + ' ' + res.productPrices[key]['price'];
                                             let priceId = res.productPrices[key]['id']
-                                            options += '<option ' + selectedAttr + 'value="' + priceId + '">' + priceTitle + '</option>';
+                                            options += '<option ' + selectedAttr + ' value="' + priceId + '">' + priceTitle + '</option>';
                                             i++;
                                         });
                                         let selectorPrices = CreateElement('select', {
@@ -70,6 +70,26 @@
                                             content: options
                                         });
                                         containerFoundProduct.append(selectorPrices);
+                                        let addInBasketButton = CreateElement('button', {
+                                            attr: {
+                                                class: 'button-blue mt-5',
+                                            },
+                                            content: 'Добавить в корзину и перейти в корзину',
+                                            events: {
+                                                click: () => {
+
+                                                    console.log(selectorPrices.value)
+
+                                                    let productId = categoryId;
+                                                    let productPriceId = selectorPrices.value;
+                                                    let productPriceText = '123';
+                                                    let productFullText = res.title;
+
+                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText, productFullText: productFullText});
+                                                    //location.href = "{{route('basket-page')}}"
+                                                }
+                                            }
+                                        }, containerFoundProduct);
                                     });
                                 }
                             });

@@ -1,183 +1,49 @@
-{{--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>--}}
-{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>--}}
 <script>
-
-    function ShowLoader() {
-        let loader = document.createElement("div");
-        loader.className = 'loader';
-        loader.innerHTML = '<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-        document.body.prepend(loader);
-    }
-
-    function HideLoader() {
-        document.body.querySelector('.loader').remove();
-    }
-
-    // ShowLoader();
-    // setTimeout(() => {
-    //     HideLoader();
-    // }, 1000);
-
-    function ShowModal(content) {
-        const modal = document.body.querySelector('.modal');
-        modal.classList.add('show-el');
-        modal.classList.remove('hide-el');
-        modal.querySelector('.modal-content').innerHTML = content;
-    }
-
-    function HideModal() {
-        const modal = document.body.querySelector('.modal');
-        modal.classList.remove('show-el');
-        modal.classList.add('hide-el');
-    }
 
     let btnMenu = document.body.querySelector('.menu-btn');
     btnMenu.addEventListener('click', (el) => {
         el.stopPropagation();
-        document.body.querySelector('.menu-container').classList.toggle('show-el');
+        document.body.querySelector('.menu-container').showToggle();
     });
 
     document.body.addEventListener('click', (el) => {
-        if (document.body.querySelector('.menu-container').classList.contains('show-el')) {
-            document.body.querySelector('.menu-container').classList.remove('show-el');
+        if (!document.body.querySelector('.menu-container').classList.contains('hide')) {
+            document.body.querySelector('.menu-container').hide();
         }
     });
 
-</script>
-
-<script>
-
-    // let carousel = document.body.querySelector('.carousel');
-    // let carouselContainer = carousel.querySelector('.carousel-container');
-    // let carouselContainerChildren = carousel.querySelectorAll('.img-carousel');
-    // let sequenceImgCarousel = [];
-    // let activeImgCarousel = 0;
-    //
-    // carouselContainerChildren.forEach((img) => {
-    //     sequenceImgCarousel.push(img);
-    // });
-    //
-    // Object.keys(sequenceImgCarousel).forEach((key) => {
-    //     if (sequenceImgCarousel[key].classList.contains('active')) {
-    //         activeImgCarousel = key;
-    //     }
-    // });
-    //
-    // let countImgInCarousel = sequenceImgCarousel.length - 1;
-    //
-    // document.body.querySelector('.btn-slider-prev').addEventListener('click', (btn) => {
-    //     clearTimeout(timerNextImgInCarousel);
-    //     PrevImgInCarousel();
-    //     TimerNextImgInCarousel();
-    // });
-    //
-    // document.body.querySelector('.btn-slider-next').addEventListener('click', (btn) => {
-    //     clearTimeout(timerNextImgInCarousel);
-    //     NextImgInCarousel();
-    //     TimerNextImgInCarousel();
-    // });
-    //
-    // let timerNextImgInCarousel;
-    // TimerNextImgInCarousel();
-    // function TimerNextImgInCarousel() {
-    //     clearTimeout(timerNextImgInCarousel);
-    //     timerNextImgInCarousel = setTimeout(() => {
-    //         NextImgInCarousel();
-    //         TimerNextImgInCarousel();
-    //     }, 2500);
-    // }
-    //
-    // function NextImgInCarousel() {
-    //     DeactivateAllImgCarousel();
-    //     let key;
-    //     if (parseInt(activeImgCarousel) === countImgInCarousel) {
-    //         key = 0;
-    //     } else {
-    //         key = parseInt(activeImgCarousel) + 1;
-    //     }
-    //     sequenceImgCarousel[key].classList.add('active');
-    //     activeImgCarousel = key;
-    // }
-    //
-    // function PrevImgInCarousel() {
-    //     DeactivateAllImgCarousel();
-    //     let key;
-    //     if (parseInt(activeImgCarousel) === 0) {
-    //         key = countImgInCarousel;
-    //     } else {
-    //         key = parseInt(activeImgCarousel) - 1;
-    //     }
-    //     sequenceImgCarousel[key].classList.add('active');
-    //     activeImgCarousel = key;
-    // }
-    //
-    // function DeactivateAllImgCarousel() {
-    //     carouselContainerChildren.forEach((img) => {
-    //         if (img.classList.contains('active')) {
-    //             img.classList.remove('active');
-    //         }
-    //     });
-    // }
-
-    // document.body.querySelector('.delete-value-search-input').addEventListener('click', (el) => {
-    //     document.body.querySelector('.main-search-input').value = '';
-    //     document.body.querySelector('.delete-value-search-input').classList.add('hide-el');
-    //     document.body.querySelector('.delete-value-search-input').classList.remove('show-el');
-    // });
-
-    // if (document.body.querySelector('.main-search-input').value.length > 0) {
-    //     document.body.querySelector('.delete-value-search-input').classList.add('show-el');
-    //     document.body.querySelector('.delete-value-search-input').classList.remove('hide-el');
-    // }
-
-    // document.body.querySelector('.main-search-input').addEventListener('input', (el) => {
-    //     if (document.body.querySelector('.main-search-input').value.length > 0) {
-    //         document.body.querySelector('.delete-value-search-input').classList.add('show-el');
-    //         document.body.querySelector('.delete-value-search-input').classList.remove('hide-el');
-    //     } else {
-    //         document.body.querySelector('.delete-value-search-input').classList.add('hide-el');
-    //         document.body.querySelector('.delete-value-search-input').classList.remove('show-el');
-    //     }
-    //
-    // });
-
     document.body.querySelectorAll('.menu-category, .expander-menu-category').forEach((category) => {
         category.addEventListener('click', (el) => {
-            if (category.parentNode.querySelector('.menu-category-detail').classList.contains('show-el')) {
-                category.parentNode.querySelector('.menu-category-detail').classList.remove('show-el');
-                category.parentNode.querySelector('.menu-category-detail').classList.add('hide-el');
-                category.parentNode.querySelector('.expander-menu-category').classList.remove('rotation-90');
-            } else {
-                category.parentNode.querySelector('.menu-category-detail').classList.add('show-el');
-                category.parentNode.querySelector('.menu-category-detail').classList.remove('hide-el');
+            if (category.parentNode.querySelector('.menu-category-detail').classList.contains('hide')) {
+                category.parentNode.querySelector('.menu-category-detail').show();
                 category.parentNode.querySelector('.expander-menu-category').classList.add('rotation-90');
+            } else {
+                category.parentNode.querySelector('.menu-category-detail').hide();
+                category.parentNode.querySelector('.expander-menu-category').classList.remove('rotation-90');
             }
         })
     });
 
     document.body.querySelector('.container-profile').addEventListener('click', (el) => {
-        ShowLoader();
+        LoaderShow();
         Ajax("{{route('login-page')}}").then((response) => {
-            ShowModal(response);
-            HideLoader();
+            ModalWindow(response);
+            LoaderHide();
         });
     });
 
     document.body.querySelector('.modal').addEventListener('click', (el) => {
         el.stopPropagation();
-        if (document.body.querySelector('.modal').classList.contains('show-el')) {
-            document.body.querySelector('.modal').classList.remove('show-el');
-            document.body.querySelector('.modal').classList.add('hide-el');
+        if (document.body.querySelector('.modal').classList.contains('hide')) {
+            document.body.querySelector('.modal').show();
         } else {
-            document.body.querySelector('.modal').classList.add('show-el');
-            document.body.querySelector('.modal').classList.remove('hide-el');
+            document.body.querySelector('.modal').hide();
         }
     });
 
     document.body.querySelector('.window-modal').addEventListener('click', (el) => {
         el.stopPropagation();
     });
-
 
     function Ajax(url, method, formDataRAW) {
         return new Promise(function (resolve, reject) {
@@ -235,16 +101,12 @@
     function changeRadioEffect(type) {
         if (type) {
             document.body.querySelector('.radio-effect').style.marginLeft = '50%';
-            document.body.querySelector('.juridical_user_input').classList.add('show-el');
-            document.body.querySelector('.juridical_user_input').classList.remove('hide-el');
-            document.body.querySelector('.physical_user_input').classList.remove('show-el');
-            document.body.querySelector('.physical_user_input').classList.add('hide-el');
+            document.body.querySelector('.physical_user_input').hide();
+            document.body.querySelector('.juridical_user_input').show();
         } else {
             document.body.querySelector('.radio-effect').style.marginLeft = '5px';
-            document.body.querySelector('.physical_user_input').classList.add('show-el');
-            document.body.querySelector('.physical_user_input').classList.remove('hide-el');
-            document.body.querySelector('.juridical_user_input').classList.remove('show-el');
-            document.body.querySelector('.juridical_user_input').classList.add('hide-el');
+            document.body.querySelector('.juridical_user_input').hide();
+            document.body.querySelector('.physical_user_input').show();
         }
     }
 
@@ -266,20 +128,15 @@
             data[el.id] = el.value;
         })
 
-        Ajax("{{route('registration')}}", 'post', data).then((response) => {
-            //console.log(response);
-        });
+        Ajax("{{route('registration')}}", 'post', data)
     }
 
     function RegistrationPage() {
         Ajax("{{route('registration-page')}}").then((response) => {
-            ShowModal(response);
+            ModalWindow(response);
         });
     }
 
-</script>
-
-<script>
     /**
      * Плавное появление блоков если их видно на странице
      */
@@ -327,15 +184,6 @@
             }
         });
         return validate;
-    }
-
-    function ShowFlashMessage(msg) {
-        let containerFlashMessage = document.body.querySelector('.flash-message');
-        containerFlashMessage.innerHTML = msg;
-        containerFlashMessage.classList.add('show-el');
-        setTimeout(() => {
-            containerFlashMessage.classList.remove('show-el');
-        }, 1500);
     }
 
 </script>

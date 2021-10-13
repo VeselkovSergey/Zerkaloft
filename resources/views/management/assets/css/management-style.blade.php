@@ -96,10 +96,10 @@
     }
 
 
-    .show-el {
+    .show {
         display: block!important;
     }
-    .hide-el {
+    .hide {
         display: none!important;
     }
     .rotation-90 {
@@ -164,13 +164,7 @@
         padding: 5px;
         position: fixed;
         width: 100%;
-        display: none;
-    }
-
-    .flash-message-error{
-        color: #721c24;
-        background-color: #f8d7da;
-        border-color: #f5c6cb;
+        /*display: none;*/
     }
 
     .flash-message-info{
