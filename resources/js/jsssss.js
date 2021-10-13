@@ -299,3 +299,102 @@ function startTrackingNumberInput() {
         }
     });
 }
+
+let fieldsWithSuggestionsAddress = document.body.querySelectorAll('.suggestions-address');
+fieldsWithSuggestionsAddress.forEach((filed) => {
+    if (filed !== null) {
+        filed.addEventListener('input', (event) => {
+            let searchAddress = event.target.value;
+            SuggestionsAddress(searchAddress, filed);
+        });
+    }
+});
+
+let timerSuggestionsAddress = null;
+function SuggestionsAddress(query, inputSuggestions, callback) {
+
+    if (query.length < 4) {
+        return
+    }
+
+    clearTimeout(timerSuggestionsAddress)
+
+    timerSuggestionsAddress = setTimeout(() => {
+
+        const url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
+        const token = "980b289f33c7bafda2d4007c51a2d45d6c980425";
+
+        let data = {
+            query:query,
+            restrict_value: true,
+            count: 3,
+        }
+
+        let options = {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Token " + token
+            },
+            body: JSON.stringify(data)
+        }
+
+        fetch(url, options)
+            .then(response => response.text())
+            .then(result => ContainerSuggestionsGeneration(result, inputSuggestions))
+            .catch(error => console.log("error", error));
+    }, 500)
+}
+
+function ContainerSuggestionsGeneration(result, inputSuggestions) {
+    result = JSON.parse(result).suggestions;
+
+    let parentInputSuggestions = inputSuggestions.parentNode;
+    let oldSuggestionsElement = parentInputSuggestions.querySelector('.container-suggestions');
+    if (oldSuggestionsElement !== null) {
+        oldSuggestionsElement.remove();
+    }
+
+    let containerSuggestions = document.createElement('div');
+    containerSuggestions.className = 'container-suggestions w-100 pos-rel';
+
+    let containerSuggestionsAbsolutePosition = document.createElement('div');
+    containerSuggestionsAbsolutePosition.className = 'container-suggestions-pos-abs pos-abs top-0 left-0 w-100 border-radius-5';
+    if (result.length === 0) {
+        let itemSuggestion = document.createElement('div');
+        itemSuggestion.className = 'p-5';
+        itemSuggestion.innerHTML = 'Нет результатов удовлетворяющих поиску';
+        containerSuggestionsAbsolutePosition.append(itemSuggestion);
+    } else {
+        containerSuggestionsAbsolutePosition.innerHTML = '<div class="p-5 color-grey">Выберите подсказку:</div>';
+        result.forEach((item) => {
+            let itemSuggestion = document.createElement('div');
+            itemSuggestion.className = 'p-5 suggestion-item';
+            itemSuggestion.innerHTML = item.value;
+            containerSuggestionsAbsolutePosition.append(itemSuggestion);
+            console.log(itemSuggestion)
+            itemSuggestion.addEventListener('mousedown', () => {
+                console.log(inputSuggestions)
+                inputSuggestions.value = itemSuggestion.innerHTML;
+                containerSuggestions.remove();
+                inputSuggestions.focus();
+
+                /* #todo remake */
+                let inputName = inputSuggestions.name;
+                let inputValue = inputSuggestions.value;
+                inputName = inputName[0].toUpperCase() + inputName.slice(1);
+                localStorage.setItem('last' + inputName, inputValue);
+            });
+
+            inputSuggestions.addEventListener('blur', () => {
+                    containerSuggestions.remove();
+            });
+        });
+    }
+
+    containerSuggestions.append(containerSuggestionsAbsolutePosition);
+
+    inputSuggestions.insertAdjacentElement('afterEnd', containerSuggestions);
+}

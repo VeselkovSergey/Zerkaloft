@@ -602,3 +602,13 @@ main {
     display: flex;
 }
 
+/* подсказки адресов */
+.container-suggestions-pos-abs {
+    border: 1px solid #cbcdd1;
+    background-color: #FFFFFF;
+}
+
+.suggestion-item:hover {
+    cursor: pointer;
+    background-color: rgb(243, 243, 247);
+}

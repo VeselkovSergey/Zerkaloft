@@ -145,7 +145,7 @@
                     <div style="width: 100%;">
                         <div style="padding: 10px;">
                             <label for="delivery_address">Адрес</label>
-                            <input class="need-validate border-black" id="delivery_address" name="delivery_address" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="Адрес" value="г.Москва, ул.Тверская, дом 1" readonly>
+                            <input class="need-validate border-black suggestions-address" id="delivery_address" name="delivery_address" style="width: 100%; padding: 10px; border-radius: 5px;" type="text" placeholder="Адрес" value="г.Москва, ул.Тверская, дом 1" readonly>
                         </div>
                     </div>
 
