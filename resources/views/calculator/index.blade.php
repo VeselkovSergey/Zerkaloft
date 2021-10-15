@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <div class="container-calculator">
-        <div>
+    <div class="container-calculator flex">
+        <div class="p-25">
             <div class="container-categories">
                 <label for="">Категория</label>
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product"></div>
+        <div class="container-found-product p-25"></div>
     </div>
 
 @stop
@@ -59,12 +59,22 @@
                                         if (response.status !== true) {
                                             return ModalWindowFlash(response.message);
                                         }
+
                                         let res = response.result;
                                         containerFoundProduct.innerHTML = '';
                                         let product = CreateElement('div', {
-                                            content: res.product.title
+                                            content: res.product.title,
+                                            class: 'font-semibold'
                                         });
                                         containerFoundProduct.append(product);
+
+                                        let productImg = CreateElement('img', {
+                                            attr: {
+                                                src: res.productImgUrl,
+                                                class: "my-5 w-50"
+                                            }
+                                        });
+                                        containerFoundProduct.append(productImg);
                                         let options = '';
                                         let i = 0;
                                         Object.keys(res.productPrices).forEach((key) => {

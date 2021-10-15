@@ -437,7 +437,6 @@ main {
     /*.left-menu {*/
     /*    display: none;*/
     /*}*/
-
     .fast-menu {
         display: none;
     }
@@ -526,9 +525,11 @@ main {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 #category_img {
     display: none;
 }
+
 .product-img-label {
     display: flex;
     justify-content: center;
@@ -540,6 +541,7 @@ main {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 #product_img {
     display: none;
 }
@@ -555,6 +557,7 @@ main {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 #carouselImage {
     display: none;
 }
@@ -601,6 +604,7 @@ main {
     cursor: pointer;
     display: flex;
 }
+
 .modal-window-component-container .modal-window-component .modal-window-content-container .modal-window-content {
     overflow: auto;
     max-height: 80vh;
@@ -615,4 +619,8 @@ main {
 .suggestion-item:hover {
     cursor: pointer;
     background-color: rgb(243, 243, 247);
+}
+
+.font-semibold {
+    font-weight: 600
 }

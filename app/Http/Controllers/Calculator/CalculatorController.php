@@ -56,6 +56,7 @@ class CalculatorController
         return ResultGenerate::Success('', [
             'product' => $product,
             'productPrices' => $productPrices,
+            'productImgUrl' => route('files', unserialize($product->img)[0])
         ]);
     }
 }
