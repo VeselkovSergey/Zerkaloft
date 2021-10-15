@@ -263,20 +263,26 @@
         let count = 0;
         let sum = 0;
 
-        //крутим объект товаров
-        Object.keys(localStorageBasket).forEach(productId => {
-            // крутим объект цен товара
-            Object.keys(localStorageBasket[productId]).forEach(productPriceId => {
-                let concreteProductCount = parseInt(localStorageBasket[productId][productPriceId]['count']);
-                let concreteProductPrice = parseInt(localStorageBasket[productId][productPriceId]['productFullInformation']['prices'][productPriceId]['price']);
-                let concreteProductSum = parseInt(concreteProductCount) * parseInt(concreteProductPrice);
-                sum += concreteProductSum;
-                count += concreteProductCount;
+        try {
+            //крутим объект товаров
+            Object.keys(localStorageBasket).forEach(productId => {
+                // крутим объект цен товара
+                Object.keys(localStorageBasket[productId]).forEach(productPriceId => {
+                    let concreteProductCount = parseInt(localStorageBasket[productId][productPriceId]['count']);
+                    let concreteProductPrice = parseInt(localStorageBasket[productId][productPriceId]['productFullInformation']['prices'][productPriceId]['price']);
+                    let concreteProductSum = parseInt(concreteProductCount) * parseInt(concreteProductPrice);
+                    sum += concreteProductSum;
+                    count += concreteProductCount;
+                });
             });
-        });
-
-        localStorage.setItem('sumProductsPricesInBasket', sum);
-        localStorage.setItem('products_in_basket', JSON.stringify(localStorageBasket));
+            localStorage.setItem('sumProductsPricesInBasket', sum);
+            localStorage.setItem('products_in_basket', JSON.stringify(localStorageBasket));
+        } catch (e) {
+            localStorage.clear();
+            count = 0;
+            sum = 0;
+            location.href = '/';
+        }
 
         return count;
     }
