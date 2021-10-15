@@ -23,9 +23,12 @@
             <div>
                 <select name="price" class="need-validate w-100 p-5 border-radius-5" id="price">
                     @if(sizeof($product->Prices))
+                        @php($tempProductPrice = [])
                         @foreach($product->Prices as $productPrice)
+                                @php($tempProductPrice[$productPrice->id] = $productPrice->toArray())
                             <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
                         @endforeach
+                        @php($product->prices = $tempProductPrice)
                     @else
                         <option disabled>Нет цен</option>
                     @endif
@@ -51,16 +54,17 @@
 
     <script>
 
+        const product = JSON.parse('@json($product->getAttributes(), JSON_UNESCAPED_UNICODE)');
+
         let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
         buttonAddInBasket.addEventListener('click', (e) => {
-            let productId = document.body.querySelector('.product-id').dataset.productId;
+            let productId = product.id;
             let productPriceId = document.body.querySelector('#price').value;
-            let productPriceText = document.body.querySelector('#price>option[value="'+productPriceId+'"]').innerHTML;
-            let productFullText = document.body.querySelector('.full-text-product').innerHTML;
+            let productFullText = product;
 
             if (!productAdded) {
-                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText, productFullText: productFullText});
+                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullText: productFullText});
                 buttonAddInBasket.innerHTML = 'Перейти в корзину';
                 productAdded = true;
             } else {

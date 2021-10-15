@@ -204,13 +204,13 @@ class OrdersController
         $orderProducts = ArrayHelper::ObjectToArray($orderProducts);
 
         if ($newCount === 0) {
-            unset($orderProducts['productId_' . $productId]['productPriceId_' . $productPriceId]);
+            unset($orderProducts[$productId][$productPriceId]);
         } else {
-            $orderProducts['productId_' . $productId]['productPriceId_' . $productPriceId]['count'] = $newCount;
+            $orderProducts[$productId][$productPriceId]['count'] = $newCount;
         }
 
-        if (empty($orderProducts['productId_' . $productId])) {
-            unset($orderProducts['productId_' . $productId]);
+        if (empty($orderProducts[$productId])) {
+            unset($orderProducts[$productId]);
         }
 
         if (empty($orderProducts)) {

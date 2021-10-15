@@ -77,10 +77,10 @@
                                         containerFoundProduct.append(productImg);
                                         let options = '';
                                         let i = 0;
-                                        Object.keys(res.productPrices).forEach((key) => {
+                                        Object.keys(res.product.prices).forEach((key) => {
                                             let selectedAttr = i === 0 ? 'selected' : '';
-                                            let priceTitle = res.productPrices[key]['count'] + ' ' + res.productPrices[key]['price'];
-                                            let priceId = res.productPrices[key]['id']
+                                            let priceTitle = res.product.prices[key]['count'] + ' ' + res.product.prices[key]['price'];
+                                            let priceId = res.product.prices[key]['id']
                                             options += '<option ' + selectedAttr + ' value="' + priceId + '">' + priceTitle + '</option>';
                                             i++;
                                         });
@@ -98,10 +98,9 @@
                                                 click: () => {
                                                     let productId = res.product.id;
                                                     let productPriceId = selectorPrices.value;
-                                                    let productPriceText = selectorPrices.querySelector('option[value="'+productPriceId+'"]').innerHTML;;
-                                                    let productFullText = res.product.title;
+                                                    let productFullText = res.product;
 
-                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productPriceText: productPriceText, productFullText: productFullText});
+                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullText: productFullText});
                                                     //location.href = "{{route('basket-page')}}"
                                                 }
                                             }

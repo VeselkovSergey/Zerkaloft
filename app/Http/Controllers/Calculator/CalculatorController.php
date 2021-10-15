@@ -52,10 +52,9 @@ class CalculatorController
         if (empty($product)) {
             return ResultGenerate::Error('Продукт не найден');
         }
-        $productPrices = $product->Prices;
+        $product->Prices;
         return ResultGenerate::Success('', [
             'product' => $product,
-            'productPrices' => $productPrices,
             'productImgUrl' => route('files', unserialize($product->img)[0])
         ]);
     }

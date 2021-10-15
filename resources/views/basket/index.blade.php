@@ -59,7 +59,7 @@
                                                 </svg>
                                             </button>
                                             <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
-                                                <input data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}" class="input-count-product-in-basket" data-count-product="{{$product->id . '-' . $product->price_id}}" value="{{$productsInBasket['productId_' . $product->id]['productPriceId_' . $product->price_id]['count']}}" type="text" autocomplete="off" maxlength="2" style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
+                                                <input data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}" class="input-count-product-in-basket" data-count-product="{{$product->id . '-' . $product->price_id}}" value="{{$productsInBasket[$product->id][$product->price_id]['count']}}" type="text" autocomplete="off" maxlength="2" style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
                                             </div>
                                             <button class="button-add-product-in-basket cp" style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;" data-product-id="{{$product->id}}" data-product-price-id="{{$product->price_id}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
