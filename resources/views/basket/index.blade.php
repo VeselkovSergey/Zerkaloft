@@ -15,6 +15,7 @@
                     <div style="font-weight: bold; font-size: 40px; display: flex; justify-content: space-between;">
                         <div>
                             Корзина
+                            <span class="sum-products-prices-in-basket"></span>
                         </div>
                         <button class="button-show-products-cart-in-basket" style="border: unset; color: unset; background-color: unset;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-down cp" viewBox="0 0 16 16">
@@ -190,11 +191,17 @@
 
     <script>
 
+        let sumProductsPricesInBasket = document.body.querySelector('.sum-products-prices-in-basket');
+        if (sumProductsPricesInBasket) {
+            sumProductsPricesInBasket.innerHTML = '('+ localStorage.getItem('sumProductsPricesInBasket') +' руб)';
+        }
+
         document.body.querySelectorAll('.button-add-product-in-basket').forEach((product) => {
            let productId = product.dataset.productId;
            let productPriceId = product.dataset.productPriceId;
            product.addEventListener('click', (e) => {
                document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = changeCountProductInBasket({productId: productId, productPriceId: productPriceId});
+               sumProductsPricesInBasket.innerHTML = '('+ localStorage.getItem('sumProductsPricesInBasket') +' руб)';
            });
         });
 
@@ -209,7 +216,7 @@
                 } else {
                     document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = countProductInBasket;
                 }
-
+                sumProductsPricesInBasket.innerHTML = '('+ localStorage.getItem('sumProductsPricesInBasket') +' руб)';
             });
         });
 
@@ -232,6 +239,7 @@
                 } else {
                     document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value = countProductInBasket;
                 }
+                sumProductsPricesInBasket.innerHTML = '('+ localStorage.getItem('sumProductsPricesInBasket') +' руб)';
             });
         });
 

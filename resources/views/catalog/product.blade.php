@@ -61,10 +61,10 @@
         buttonAddInBasket.addEventListener('click', (e) => {
             let productId = product.id;
             let productPriceId = document.body.querySelector('#price').value;
-            let productFullText = product;
+            let productFullInformation = product;
 
             if (!productAdded) {
-                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullText: productFullText});
+                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
                 buttonAddInBasket.innerHTML = 'Перейти в корзину';
                 productAdded = true;
             } else {

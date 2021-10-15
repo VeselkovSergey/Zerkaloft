@@ -204,7 +204,7 @@
 
         let productId = product.productId;
         let productPriceId = product.productPriceId;
-        let productFullText = product.productFullText;
+        let productFullInformation = product.productFullInformation;
 
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
@@ -217,19 +217,20 @@
         if (typeChange === undefined || typeChange === true) {
             if (localStorageBasket[productId] === undefined) {
                 localStorageBasket[productId] = {}
-                localStorageBasket[productId][productPriceId] = {};
-                localStorageBasket[productId][productPriceId]['count'] = 1;
-                localStorageBasket[productId][productPriceId]['productId'] = productId;
-                localStorageBasket[productId][productPriceId]['productPriceId'] = productPriceId;
-                localStorageBasket[productId][productPriceId]['fullText'] = productFullText;
+                localStorageBasket[productId][productPriceId] = {
+                    count: 1,
+                    productId: productId,
+                    productPriceId: productPriceId,
+                    productFullInformation: productFullInformation,
+                };
             } else {
                 if (localStorageBasket[productId][productPriceId] === undefined) {
-                    localStorageBasket[productId][productPriceId] = {};
-                    localStorageBasket[productId][productPriceId]['count'] = 1;
-                    localStorageBasket[productId][productPriceId]['productId'] = productId;
-                    localStorageBasket[productId][productPriceId]['productPriceId'] = productPriceId;
-                    localStorageBasket[productId][productPriceId]['fullText'] = productFullText;
-
+                    localStorageBasket[productId][productPriceId] = {
+                        count: 1,
+                        productId: productId,
+                        productPriceId: productPriceId,
+                        productFullInformation: productFullInformation,
+                    };
                 } else {
                     localStorageBasket[productId][productPriceId]['count'] = localStorageBasket[productId][productPriceId]['count'] + 1;
                 }
@@ -260,14 +261,22 @@
         }
 
         let count = 0;
+        let sum = 0;
 
         //крутим объект товаров
         Object.keys(localStorageBasket).forEach(productId => {
             // крутим объект цен товара
             Object.keys(localStorageBasket[productId]).forEach(productPriceId => {
-                count += parseInt(localStorageBasket[productId][productPriceId]['count']);
+                let concreteProductCount = parseInt(localStorageBasket[productId][productPriceId]['count']);
+                let concreteProductPrice = parseInt(localStorageBasket[productId][productPriceId]['productFullInformation']['prices'][productPriceId]['price']);
+                let concreteProductSum = parseInt(concreteProductCount) * parseInt(concreteProductPrice);
+                sum += concreteProductSum;
+                count += concreteProductCount;
             });
         });
+
+        localStorage.setItem('sumProductsPricesInBasket', sum);
+        localStorage.setItem('products_in_basket', JSON.stringify(localStorageBasket));
 
         return count;
     }

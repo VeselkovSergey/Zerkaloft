@@ -98,10 +98,10 @@
                                                 click: () => {
                                                     let productId = res.product.id;
                                                     let productPriceId = selectorPrices.value;
-                                                    let productFullText = res.product;
+                                                    let productFullInformation = res.product;
 
-                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullText: productFullText});
-                                                    //location.href = "{{route('basket-page')}}"
+                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
+                                                    location.href = "{{route('basket-page')}}"
                                                 }
                                             }
                                         }, containerFoundProduct);

@@ -52,9 +52,13 @@ class CalculatorController
         if (empty($product)) {
             return ResultGenerate::Error('Продукт не найден');
         }
-        $product->Prices;
+        $tempProductPrice = [];
+        foreach ($product->Prices as $productPrice) {
+            $tempProductPrice[$productPrice->id] = $productPrice->toArray();
+        }
+        $product->prices = $tempProductPrice;
         return ResultGenerate::Success('', [
-            'product' => $product,
+            'product' => $product->getAttributes(),
             'productImgUrl' => route('files', unserialize($product->img)[0])
         ]);
     }
