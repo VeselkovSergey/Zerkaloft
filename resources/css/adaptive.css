@@ -2,6 +2,10 @@
     width: 25%;
 }
 
+.fast-menu-in-left-menu {
+    display: none;
+}
+
 .product-container-product-page > div {
     width: 50%;
 }
@@ -29,6 +33,9 @@
 }
 
 @media screen and (max-width: 720px) {
+    .fast-menu-in-left-menu {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 540px) {
