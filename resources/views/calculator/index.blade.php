@@ -19,6 +19,8 @@
     <script>
 
         let selectorCategories = GenerationFormSelect(JSON.parse('@json($allCategories->pluck('title', 'id')->prepend('Выберите категорию', 0), JSON_UNESCAPED_UNICODE)'), 'category', 0, true);
+        selectorCategories.classList.add('p-5');
+        selectorCategories.classList.add('border-radius-5');
 
         let containerCategories = document.body.querySelector('.container-categories').append(selectorCategories);
         let containerCategoriesProperties = document.body.querySelector('.container-categories-properties');
@@ -36,7 +38,10 @@
                         let obj = response.result;
                         containerCategoriesProperties.innerHTML = '';
                         Object.keys(obj).forEach((key) => {
-                            let propertySelector = GenerationFormSelect(obj[key].propertyValues, obj[key].propertyTitleTransliterate, 0, true)
+                            let propertySelector = GenerationFormSelect(obj[key].propertyValues, obj[key].propertyTitleTransliterate, 0, true);
+                            propertySelector.classList.add('p-5');
+                            propertySelector.classList.add('border-radius-5');
+
                             propertySelector.addEventListener('change', (event) => {
                                 let modification = [];
                                 let allSelected = true;
@@ -70,7 +75,7 @@
                                             i++;
                                         });
                                         let selectorPrices = CreateElement('select', {
-                                            attr: {name: name},
+                                            attr: {name: name, class: 'p-5 border-radius-5'},
                                             content: options
                                         });
                                         containerFoundProduct.append(selectorPrices);
