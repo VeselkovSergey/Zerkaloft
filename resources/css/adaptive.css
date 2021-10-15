@@ -2,6 +2,10 @@
     width: 25%;
 }
 
+.product-container-product-page > div {
+    width: 50%;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page {
@@ -17,6 +21,10 @@
 
     .category-cart-main-page, .product-category-page {
         width: 50%;
+    }
+
+    .product-container-product-page > div {
+        width: 100%;
     }
 }
 

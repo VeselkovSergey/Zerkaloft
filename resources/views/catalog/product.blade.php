@@ -10,9 +10,9 @@
 
         <div class="full-text-product text-center pb-10" style="font-size: 24px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid grey">{{$product->Category->title . ' ' . $product->title}}</div>
 
-        <div class="flex mt-20">
+        <div class="product-container-product-page flex-wrap mt-20">
 
-            <div class="w-50">
+            <div class="">
                 <div class="flex-center">
                     @foreach(unserialize($product->img) as $img)
                         <img class="border-radius-15" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="w-50">
+            <div class="">
                 <select name="price" class="need-validate w-100 p-5 border-radius-5" id="price">
                     @if(sizeof($product->Prices))
                         @foreach($product->Prices as $productPrice)
