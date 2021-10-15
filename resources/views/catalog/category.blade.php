@@ -6,20 +6,12 @@
 
     <div>
 
-        <style>
-            .smooth-block:hover {
-                transform: scale(1.05);
-                cursor: pointer;
-                transition: transform .3s;
-            }
-        </style>
-
         <div class="flex-wrap w-100">
             <h2 class="w-100 m-5 ml-25">
                 {{$category->title}}
             </h2>
             @foreach($products as $product)
-                <div class="w-20 p-10">
+                <div class="product-category-page p-10">
                     <div class="smooth-block w-100 pos-rel">
                         <a href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">
                             @foreach(unserialize($product->img) as $img)

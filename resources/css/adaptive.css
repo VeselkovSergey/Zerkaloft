@@ -1,9 +1,12 @@
-.category-cart-main-page{
-    width: 33%;
+.category-cart-main-page, .product-category-page {
+    width: 25%;
 }
 
 @media screen and (max-width: 1440px) {
 
+    .category-cart-main-page, .product-category-page {
+        width: 33%;
+    }
 }
 
 @media screen and (max-width: 1140px) {
@@ -12,7 +15,7 @@
 
 @media screen and (max-width: 960px) {
 
-    .category-cart-main-page{
+    .category-cart-main-page, .product-category-page {
         width: 50%;
     }
 }
@@ -21,7 +24,7 @@
 }
 
 @media screen and (max-width: 540px) {
-    .category-cart-main-page{
+    .category-cart-main-page, .product-category-page {
         width: 100%;
     }
 }
