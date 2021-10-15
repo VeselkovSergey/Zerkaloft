@@ -10,6 +10,10 @@
     width: 50%;
 }
 
+.product-img-in-calculator {
+    width: 25px;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page {
@@ -23,7 +27,7 @@
 
 @media screen and (max-width: 960px) {
 
-    .category-cart-main-page, .product-category-page {
+    .category-cart-main-page, .product-category-page, .product-img-in-calculator {
         width: 50%;
     }
 
@@ -39,7 +43,7 @@
 }
 
 @media screen and (max-width: 540px) {
-    .category-cart-main-page, .product-category-page {
+    .category-cart-main-page, .product-category-page, .product-img-in-calculator {
         width: 100%;
     }
 }

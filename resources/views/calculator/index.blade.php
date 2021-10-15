@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container-calculator flex">
+    <div class="container-calculator flex-wrap">
         <div class="p-25">
             <div class="container-categories">
                 <label for="">Категория</label>
@@ -71,7 +71,7 @@
                                         let productImg = CreateElement('img', {
                                             attr: {
                                                 src: res.productImgUrl,
-                                                class: "my-5 w-50"
+                                                class: "my-5 product-img-in-calculator"
                                             }
                                         });
                                         containerFoundProduct.append(productImg);
