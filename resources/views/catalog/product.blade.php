@@ -12,7 +12,7 @@
 
         <div class="product-container-product-page flex-wrap mt-20">
 
-            <div class="">
+            <div class="mb-25">
                 <div class="flex-center">
                     @foreach(unserialize($product->img) as $img)
                         <img class="border-radius-15" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="">
+            <div>
                 <select name="price" class="need-validate w-100 p-5 border-radius-5" id="price">
                     @if(sizeof($product->Prices))
                         @foreach($product->Prices as $productPrice)
