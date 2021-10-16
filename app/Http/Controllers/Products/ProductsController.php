@@ -255,6 +255,9 @@ class ProductsController
         $productID = !empty($product->id) ? $product->id : null;
 
         if ($productID) {
+            foreach ($product->Prices as $price) {
+                $price->delete();
+            }
             if ($product->delete()) {
                 return ResultGenerate::Success('Продукт успешно удален!');
             }
