@@ -23,4 +23,7 @@ Route::group(['prefix' => 'github'], function () {
     Route::post('/push', [\App\Http\Controllers\Api\GitHubController::class, 'Push'])
         ->name('github-push');
 
+    Route::get('/test-push', [\App\Http\Controllers\Api\GitHubController::class, 'TestPush'])
+        ->name('github-test-push');
+
 });
