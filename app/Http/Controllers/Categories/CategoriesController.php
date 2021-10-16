@@ -51,7 +51,8 @@ class CategoriesController extends Controller
             ]);
         }
 
-        return abort(404);
+        abort(404);
+        return '';
     }
 
     public function SaveCategory(Request $request)
@@ -69,15 +70,17 @@ class CategoriesController extends Controller
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
-        $usedPropertiesError = true;
-        foreach ($usedProperties as $propertyId => $usedProperty) {
-            if ($usedProperty === 'true') {
-                $usedPropertiesError = false;
-                break;
+        if (!$categoryID) {
+            $usedPropertiesError = true;
+            foreach ($usedProperties as $propertyId => $usedProperty) {
+                if ($usedProperty === 'true') {
+                    $usedPropertiesError = false;
+                    break;
+                }
             }
-        }
-        if ($usedPropertiesError) {
-            return ResultGenerate::Error('Ошибка! Выберите хотя бы одно свойство!');
+            if ($usedPropertiesError) {
+                return ResultGenerate::Error('Ошибка! Выберите хотя бы одно свойство!');
+            }
         }
 
         $semanticURL = StringHelper::TransliterateURL($categoryName);
@@ -92,17 +95,19 @@ class CategoriesController extends Controller
             return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
         }
 
-        $saveFiles = [];
-        foreach ($categoryFiles as $file) {
-            if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
-                $saveFile = Files::SaveFile($file, $this->storagePath, $this->storageDriver);
-                $saveFiles[] = $saveFile->id;
-            } else {
-                return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+        if ($categoryFiles) {
+            $saveFiles = [];
+            foreach ($categoryFiles as $file) {
+                if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
+                    $saveFile = Files::SaveFile($file, $this->storagePath, $this->storageDriver);
+                    $saveFiles[] = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
             }
-        }
 
-        $serializeImgArray = serialize($saveFiles);
+            $serializeImgArray = serialize($saveFiles);
+        }
 
         $fields['title'] = $categoryName;
         $fields['semantic_url'] = $semanticURL;
@@ -142,8 +147,8 @@ class CategoriesController extends Controller
     public function DeleteCategory(Request $request)
     {
         $deleteCategory = Categories::find($request->category_id);
-        if ($deleteCategory->Subcategories->count() !== 0) {
-            return ResultGenerate::Error('Ошибка! На категорию ссылаются подкатегории!');
+        if ($deleteCategory->Products->count() !== 0) {
+            return ResultGenerate::Error('Ошибка! На категорию ссылаются продукты!');
         }
         if ($deleteCategory->delete()) {
             return ResultGenerate::Success('Категория успешно удалена!');

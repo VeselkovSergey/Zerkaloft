@@ -246,11 +246,20 @@ class ProductsController
 
     public function DeleteProduct(Request $request)
     {
-        $deleteProduct = Products::find($request->product_id);
-        if ($deleteProduct->delete()) {
-            return ResultGenerate::Success('Продукт успешно удален!');
+        $categoryId = !empty($request->category_id) ? $request->category_id : null;
+        $productCombination = !empty($request->product_combination) ? $request->product_combination : null;
+
+        $product = Products::where('category_id', $categoryId)
+            ->where('modification_id', $productCombination)
+            ->first();
+        $productID = !empty($product->id) ? $product->id : null;
+
+        if ($productID) {
+            if ($product->delete()) {
+                return ResultGenerate::Success('Продукт успешно удален!');
+            }
         }
-        return ResultGenerate::Error('Ошибка удаления продукта!');
+        return ResultGenerate::Error('Ошибка удаления продукта! Возможно его уже нет');
     }
 
     public function ProductPage(Request $request)

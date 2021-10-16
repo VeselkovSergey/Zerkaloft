@@ -22,8 +22,10 @@
                 <div data-combination-container="{{$combination->id}}" class="border hide container-create-product flex-column w-100">
 
                     <div class="p-10 w-100 flex">
-                        <label class="block">Активный</label>
-                        <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
+                        <label class="block">
+                            Активный
+                            <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
+                        </label>
                     </div>
 
                     <div class="hide">
@@ -136,6 +138,7 @@
 
                     <div class="p-10 w-100">
                         <button class="create-product-btn container-btn">Сохранить</button>
+                        <button class="delete-product-btn container-btn">Удалить</button>
                     </div>
 
                 </div>
@@ -178,7 +181,7 @@
                 fileReader.readAsDataURL(event.target.files[0]);
             });
 
-            productCombinationContainer.querySelector('.btn-new-price').addEventListener('click', (event) => {
+            productCombinationContainer.querySelector('.btn-new-price').addEventListener('click', () => {
                 AddPrice(productCombinationContainer)
             });
 
@@ -195,16 +198,20 @@
                 createProductBtn.hide();
 
                 Ajax("{{route('save-product-admin')}}", 'post', dataForm).then((response) => {
-                    if (response.status) {
-                        ShowFlashMessage(response.message);
-                        {{--setTimeout(() => {--}}
-                        {{--    //location.href = "{{route('products-admin-page')}}";--}}
-                        {{--}, 1500);--}}
-                    } else {
-                        ShowFlashMessage(response.message);
-
-                    }
+                    ShowFlashMessage(response.message);
                     createProductBtn.show();
+                });
+            });
+
+            productCombinationContainer.querySelector('.delete-product-btn').addEventListener('click', (event) => {
+                let dataForm = GetDataFormContainer('container-create-product', productCombinationContainer);
+                event.target.hide();
+                Ajax("{{route('delete-product-admin')}}", 'post', dataForm).then((response) => {
+                    ShowFlashMessage(response.message);
+                    setTimeout(() => {
+                       location.reload();
+                    }, 1500);
+                    event.target.show();
                 });
             });
 
