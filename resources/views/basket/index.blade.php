@@ -8,7 +8,7 @@
 
             <div class="basket-products flex-wrap">
 
-                <div class="w-50-100 client-order-information border-radius-10 shadow p-20">
+                <div class="w-50-100 client-order-information border-radius-10 shadow p-20 h-fit">
 
                     <div class="flex-center-vertical p-10">
                         <div class="flex-a font-semibold" style="font-size: 24px;">
