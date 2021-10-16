@@ -20,7 +20,7 @@ class SettingsController extends Controller
 
     public function EditPhonePage()
     {
-        $phone = Settings::where('type', 1)->first();
+        $phone = Settings::where('type', Settings::TypeByWords['mainPhone'])->first();
         $phone = json_decode($phone->value)->phone;
         return view('administration.settings.phone.index', [
             'phone' => $phone
@@ -31,7 +31,7 @@ class SettingsController extends Controller
     {
         $phone = $request->phone;
 
-        $savePhone = Settings::where('type', 1)->update([
+        $savePhone = Settings::where('type', Settings::TypeByWords['mainPhone'])->update([
             'value' => json_encode(['phone' => $phone])
         ]);
 
@@ -87,7 +87,7 @@ class SettingsController extends Controller
             $saveCarouselImages = Settings::where('id', $carouselImageId)->first();
 
             $saveCarouselImages->update([
-                'type' => 2,
+                'type' => Settings::TypeByWords['carouselImage'],
                 'value' => json_encode([
                     'fileId' => !empty($saveFile) ? $saveFile->id : json_decode($saveCarouselImages->value)->fileId,
                     'sequence' => $carouselImageSequence,
@@ -95,7 +95,7 @@ class SettingsController extends Controller
             ]);
         } else {
             $saveCarouselImages = Settings::create([
-                'type' => 2,
+                'type' => Settings::TypeByWords['carouselImage'],
                 'value' => json_encode([
                     'fileId' => $saveFile->id,
                     'sequence' => $carouselImageSequence,
