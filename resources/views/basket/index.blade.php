@@ -6,9 +6,9 @@
 
         @if(sizeof($allProductsInBasket))
 
-            <div class="basket-products">
+            <div class="basket-products flex-wrap">
 
-                <div class="client-order-information border-radius-10 shadow p-20">
+                <div class="w-50-100 client-order-information border-radius-10 shadow p-20">
 
                     <div class="flex-center-vertical p-10">
                         <div class="flex-a font-semibold" style="font-size: 24px;">
@@ -82,7 +82,7 @@
 
                 </div>
 
-                <div class="client-order-information flex-wrap">
+                <div class="w-50-100 client-order-information flex-wrap pl-20">
 
                     <div class="w-50-100 p-10">
                         <label for="client_name">Имя</label>
