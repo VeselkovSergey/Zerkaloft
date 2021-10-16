@@ -398,7 +398,6 @@ function ContainerSuggestionsGeneration(result, inputSuggestions, callback, addi
         itemSuggestion.innerHTML = 'Нет результатов удовлетворяющих запросу';
         containerSuggestionsAbsolutePosition.append(itemSuggestion);
     } else {
-        // containerSuggestionsAbsolutePosition.innerHTML = '<div class="p-5 color-grey">Выберите подсказку:</div>';
         result.forEach((item) => {
             let itemSuggestion = document.createElement('div');
             itemSuggestion.className = 'p-5 suggestion-item';
@@ -418,16 +417,8 @@ function ContainerSuggestionsGeneration(result, inputSuggestions, callback, addi
                     inputSuggestions.value = itemSuggestion.innerHTML;
                     containerSuggestions.remove();
                     inputSuggestions.focus();
-
-                    /* #todo remake */
-                    let inputName = inputSuggestions.name;
-                    let inputValue = inputSuggestions.value;
-                    inputName = inputName[0].toUpperCase() + inputName.slice(1);
-                    localStorage.setItem('last' + inputName, inputValue);
                 });
             }
-
-
 
             inputSuggestions.addEventListener('blur', () => {
                     containerSuggestions.remove();
