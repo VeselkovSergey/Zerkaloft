@@ -37,7 +37,7 @@
                                 @endforeach
 
                                 <div class="flex-wrap flex-a">
-                                    <div class="flex-a ml-10">
+                                    <div class="ml-10">
                                         <a class="product-name-in-basket cp font-semibold"
                                            href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
                                             <div>{{$product->title}}</div>
@@ -45,7 +45,7 @@
                                         <div>{{$product->count . ' ' . $product->price}}</div>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex ml-a">
                                         <button class="button-delete-product-in-basket cp clear-button"
                                                 data-product-id="{{$product->id}}"
                                                 data-product-price-id="{{$product->price_id}}">
