@@ -21,7 +21,7 @@
 
                 <div data-combination-container="{{$combination->id}}" class="border hide container-create-product flex-column w-100">
 
-                    <div class="p-10 w-100">
+                    <div class="p-10 w-100 flex">
                         <label class="block">Активный</label>
                         <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
                     </div>
@@ -38,7 +38,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_name" class="block w-100">Название продукта</label>
-                        <input id="product_name" type="text" class="w-100" value="{{$combination->productModification->title ?? ''}}">
+                        <input id="product_name" type="text" class="w-100" value="{{$combination->productModification->title ?? $combination->title}}">
                     </div>
 
                     <div class="p-10 w-100 hide">
@@ -48,7 +48,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_description" class="block w-100">Описание</label>
-                        <textarea class="w-100" name="product_description" id="product_description">{{$combination->productModification->description ?? ''}}</textarea>
+                        <textarea class="w-100" name="product_description" id="product_description">{{$combination->productModification->description ?? $combination->title}}</textarea>
                     </div>
 
                     <div class="border m-10">
