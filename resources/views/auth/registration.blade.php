@@ -2,32 +2,20 @@
 
     <div class="flex-column-center">
 
-        <style>
-            .radio-effect {
-                background-color: #1976d2;
-                position: absolute;
-                width: 47%;
-                opacity: 0.7;
-                margin: 5px 5px 5px 10px;
-                height: calc(100% - 10px);
-                transition: margin 300ms;
-                border-radius: 10px;
-            }
-        </style>
-
         <form onsubmit="return false;">
 
-            <div style="display: flex; position: relative;">
-                <div class="radio-effect"></div>
-                <div style="display: flex; width: 100%; background-color: rgba(0, 0, 0, 0.2); padding: 10px; border-radius: 10px;">
-                    <div style="width: 50%; text-align: center; z-index: 1;">
-                        <label class="type_user_label" for="physical_user" style="display: block; cursor: pointer;">Физ. лицо</label>
-                        <input class="type_user" id="physical_user" name="type_user" type="radio" style="display: none;" checked="checked" onchange="changeRadioEffect(0);">
+            <div class="pos-rel">
+                <div class="radio-effect">
+                    <div class="slider"></div>
+                </div>
+                <div class="flex py-10 bg-grey border-radius-5" style="justify-content: space-around">
+                    <div class="flex-a z-1">
+                        <label class="type_user_label cp text-center color-white" for="physical_user">Физ. лицо</label>
+                        <input class="type_user hide" id="physical_user" name="type_user" type="radio" checked="checked" onchange="changeRadioEffect(0);">
                     </div>
-
-                    <div style="width: 50%; text-align: center; z-index: 1;">
-                        <label class="type_user_label" for="juridical_user" style="display: block; cursor: pointer;">Юр. лицо</label>
-                        <input class="type_user" id="juridical_user" name="type_user" type="radio" style="display: none;" onchange="changeRadioEffect(1);">
+                    <div class="flex-a z-1">
+                        <label class="type_user_label cp text-center color-white" for="juridical_user">Юр. лицо</label>
+                        <input class="type_user hide" id="juridical_user" name="type_user" type="radio" onchange="changeRadioEffect(1);">
                     </div>
                 </div>
             </div>

@@ -96,11 +96,11 @@
 
     function changeRadioEffect(type) {
         if (type) {
-            document.body.querySelector('.radio-effect').style.marginLeft = '50%';
+            document.body.querySelector('.radio-effect>.slider').style.marginLeft = '50%';
             document.body.querySelector('.physical_user_input').hide();
             document.body.querySelector('.juridical_user_input').show();
         } else {
-            document.body.querySelector('.radio-effect').style.marginLeft = '10px';
+            document.body.querySelector('.radio-effect>.slider').style.marginLeft = '0';
             document.body.querySelector('.juridical_user_input').hide();
             document.body.querySelector('.physical_user_input').show();
         }
@@ -164,7 +164,7 @@
         let password = document.getElementById('password').value;
 
         if(login === '' || password === '') {
-            ModalWindowFlash('Заполните все поля', true);
+            ModalWindowFlash('Заполните все поля');
             return false;
         }
 
@@ -172,7 +172,7 @@
             if (response.status) {
                 location.reload();
             } else {
-                ModalWindowFlash(response.message, true);
+                ModalWindowFlash(response.message);
             }
         });
     }

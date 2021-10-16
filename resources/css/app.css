@@ -636,3 +636,20 @@ main {
 .font-semibold {
     font-weight: 600
 }
+
+.radio-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.radio-effect>.slider {
+    background-color: #1976d2;
+    height: 100%;
+    width: 50%;
+    transition: margin 300ms;
+    margin-left: 0;
+    border-radius: 5px;
+}
