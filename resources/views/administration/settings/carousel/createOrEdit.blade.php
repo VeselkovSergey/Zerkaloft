@@ -4,9 +4,9 @@
 
     <div class="container-create-carousel-image">
 
-        <div class="mb-10">
+        <div class="mb-10 hide">
             <label for="carouselImageId">ID</label>
-            <input class="need-validate hide" id="carouselImageId" type="text" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
+            <input class="need-validate" id="carouselImageId" type="text" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
         </div>
 
 
