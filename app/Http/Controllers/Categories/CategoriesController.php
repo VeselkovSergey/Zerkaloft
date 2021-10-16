@@ -67,6 +67,9 @@ class CategoriesController extends Controller
 
         if (!$categoryID) {
             $usedPropertiesError = true;
+            if (!$usedProperties) {
+                return ResultGenerate::Error('Нужны свойства');
+            }
             foreach ($usedProperties as $propertyId => $usedProperty) {
                 if ($usedProperty === 'true') {
                     $usedPropertiesError = false;
