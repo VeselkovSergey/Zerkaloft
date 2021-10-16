@@ -363,26 +363,27 @@ function SuggestionsProducts(query, inputSuggestions, callback, additionalData) 
     }, 500)
 }
 
-document.body.querySelector('.main-search-input').addEventListener('input', (event) => {
-    let mainSearch = event.target;
-    let mainSearchValue = mainSearch.value;
-    let containerMainSearch = mainSearch.closest('.search-container-header');
-    let containerSuggestions = containerMainSearch.querySelector('.container-suggestions');
+let mainSearchInput = document.body.querySelector('.main-search-input');
+if (mainSearchInput) {
+    mainSearchInput.addEventListener('input', (event) => {
+        let mainSearch = event.target;
+        let mainSearchValue = mainSearch.value;
+        let containerMainSearch = mainSearch.closest('.search-container-header');
+        let containerSuggestions = containerMainSearch.querySelector('.container-suggestions');
 
-    if (containerSuggestions !== null && mainSearchValue === '') {
-        containerSuggestions.remove();
-    }
+        if (containerSuggestions !== null && mainSearchValue === '') {
+            containerSuggestions.remove();
+        }
 
-    SuggestionsProducts(mainSearchValue, mainSearch, (event) => {
-        let productLink = event.target.dataset.link;
-        window.open(
-            productLink,
-            '_blank'
-        );
-    }, {additionalData: 'link'});
-});
-
-
+        SuggestionsProducts(mainSearchValue, mainSearch, (event) => {
+            let productLink = event.target.dataset.link;
+            window.open(
+                productLink,
+                '_blank'
+            );
+        }, {additionalData: 'link'});
+    });
+}
 
 function ContainerSuggestionsGeneration(result, inputSuggestions, callback, additionalData) {
     result = JSON.parse(result).suggestions;
