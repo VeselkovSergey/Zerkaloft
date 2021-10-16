@@ -13,7 +13,6 @@ use App\Models\Products;
 use App\Models\ProductsPrices;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
-use App\Models\Subcategories;
 use Illuminate\Http\Request;
 
 class ProductsController
@@ -29,49 +28,47 @@ class ProductsController
         ]);
     }
 
-    public function CreateProductAdminPage(Request $request)
-    {
-        $categoryId = $request->categoryId;
-        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $categoryId)->get();
-
-        $allPropertiesCategories = PropertiesCategories::all();
-        $combinations = [];
-        $combinationsId = [];
-        foreach ($allPropertiesCategories as $propertyCategories) {
-            $tmpStr = [];
-            $tmpId = [];
-            foreach ($propertyCategories->Values as $propertyCategoriesValue) {
-                $tmpStr[] = $propertyCategories->title . ': ' .$propertyCategoriesValue->value;
-                $tmpId[] = $propertyCategoriesValue->id;
-            }
-            $combinations[] = $tmpStr;
-            $combinationsId[] = $tmpId;
-        }
-
-        $combinations = ArrayHelper::Combinations($combinations);
-        $combinationsId = ArrayHelper::Combinations($combinationsId);
-
-        $completeCombinations = [];
-        foreach ($combinations as $k => $combination) {
-            $str = '';
-            $strId = '';
-            foreach ($combination as $j => $value) {
-                $endChar = array_key_last($combination) === $j;
-                $str .= $value . ($endChar ? '' : ' ');
-                $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
-            }
-            $completeCombinations[] = (object)[
-                'id' => $strId,
-                'title' => $str,
-            ];
-        }
-
-        $allSubcategories = Subcategories::all();
-        return view('administration.products.create', [
-            'allSubcategories' => $allSubcategories,
-            'completeCombinations' => $completeCombinations,
-        ]);
-    }
+//    public function CreateProductAdminPage(Request $request)
+//    {
+//        $categoryId = $request->categoryId;
+//        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $categoryId)->get();
+//
+//        $allPropertiesCategories = PropertiesCategories::all();
+//        $combinations = [];
+//        $combinationsId = [];
+//        foreach ($allPropertiesCategories as $propertyCategories) {
+//            $tmpStr = [];
+//            $tmpId = [];
+//            foreach ($propertyCategories->Values as $propertyCategoriesValue) {
+//                $tmpStr[] = $propertyCategories->title . ': ' .$propertyCategoriesValue->value;
+//                $tmpId[] = $propertyCategoriesValue->id;
+//            }
+//            $combinations[] = $tmpStr;
+//            $combinationsId[] = $tmpId;
+//        }
+//
+//        $combinations = ArrayHelper::Combinations($combinations);
+//        $combinationsId = ArrayHelper::Combinations($combinationsId);
+//
+//        $completeCombinations = [];
+//        foreach ($combinations as $k => $combination) {
+//            $str = '';
+//            $strId = '';
+//            foreach ($combination as $j => $value) {
+//                $endChar = array_key_last($combination) === $j;
+//                $str .= $value . ($endChar ? '' : ' ');
+//                $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
+//            }
+//            $completeCombinations[] = (object)[
+//                'id' => $strId,
+//                'title' => $str,
+//            ];
+//        }
+//
+//        return view('administration.products.create', [
+//            'completeCombinations' => $completeCombinations,
+//        ]);
+//    }
 
     public function EditProductAdminPage(Request $request)
     {
@@ -121,10 +118,6 @@ class ProductsController
             $completeCombinationsOnlyId[] = $strId;
         }
 
-//        $productModifications = Products::whereIn('modification_id', $completeCombinationsOnlyId)->get();
-//        dd($productModifications);
-
-//        dd($completeCombinationsOnlyId);
         return view('administration.products.edit', [
             'product' => $product,
             'completeCombinations' => $completeCombinations

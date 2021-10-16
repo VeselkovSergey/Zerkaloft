@@ -9,7 +9,7 @@
             <div class="m-5 p-5 product-combination-container">
 
                 <div class="w-100 flex-center-vertical cp" data-combination="{{$combination->id}}">
-                    <div>{{($combination->productModification ? '(существует) ' : '') . $combination->title}}</div>
+                    <div>{{($combination->productModification ? '(существует) ' : '') . $product->title . ' ' . $combination->title}}</div>
                     <div class="flex-center-vertical">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
@@ -38,7 +38,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_name" class="block w-100">Название продукта</label>
-                        <input id="product_name" type="text" class="w-100" value="{{$combination->productModification->title ?? $combination->title}}">
+                        <input id="product_name" type="text" class="w-100" value="{{!empty($combination->productModification->title) ? $combination->productModification->title : ($product->title . ' ' . $combination->title)}}">
                     </div>
 
                     <div class="p-10 w-100 hide">
@@ -48,7 +48,7 @@
 
                     <div class="p-10 w-100">
                         <label for="product_description" class="block w-100">Описание</label>
-                        <textarea class="w-100" name="product_description" id="product_description">{{$combination->productModification->description ?? $combination->title}}</textarea>
+                        <textarea class="w-100" name="product_description" id="product_description">{{!empty($combination->productModification->description) ? $combination->productModification->description : ($product->title . ' ' . $combination->title)}}</textarea>
                     </div>
 
                     <div class="border m-10">

@@ -4,20 +4,11 @@
 namespace App\Http\Controllers\PropertiesCategories;
 
 
-use App\Helpers\ArrayHelper;
-use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
-use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\PropertiesCategories\PropertiesCategoriesValues;
-use App\Models\Subcategories;
-use http\Url;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 
 class PropertiesCategoriesController extends Controller
 {

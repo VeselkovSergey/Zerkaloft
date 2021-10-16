@@ -14,11 +14,6 @@ use App\Http\Controllers;
 |
 */
 
-//Route::get('/', function () {
-//    return redirect(\route('home-page'));
-////    return view('welcome');
-//});
-
 Route::get('resources/{directory}/{fileName}', [Controllers\Resources\ResourceController::class, 'GetResources']);
 
 Route::group(['prefix' => '/'], function () {
@@ -36,6 +31,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/fast-order', function () {
         return view('home.formFastOrder');
     })->name('form-fast-order');
+
 });
 
 Route::group(['prefix' => 'auth'], function () {
@@ -69,7 +65,6 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryPage'])
             ->name('password-recovery-page');
     });
-
 
 });
 
@@ -149,8 +144,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
             ->name('products-admin-page');
 
-        Route::get('/create', [Controllers\Products\ProductsController::class, 'CreateProductAdminPage'])
-            ->name('create-product-admin-page');
+//        Route::get('/create', [Controllers\Products\ProductsController::class, 'CreateProductAdminPage'])
+//            ->name('create-product-admin-page');
 
         Route::get('/edit/{product_id}', [Controllers\Products\ProductsController::class, 'EditProductAdminPage'])
             ->name('edit-product-admin-page');
@@ -247,32 +242,28 @@ Route::group(['prefix' => 'files'], function () {
 Route::group(['prefix' => 'catalog'], function () {
 
     Route::get('/{category_semantic_url}', [App\Http\Controllers\Categories\CategoriesController::class, 'CategoryPage'])
-//        ->middleware('permissions:home-page,index')
         ->name('category');
 
-//    Route::get('/{category_semantic_url}/{subcategory_semantic_url}', [Controllers\Subcategories\SubcategoriesController::class, 'SubcategoryPage'])
-////        ->middleware('permissions:home-page,index')
-//        ->name('subcategory');
-
     Route::get('/{category_semantic_url}/{product_semantic_url}', [App\Http\Controllers\Products\ProductsController::class, 'ProductPage'])
-//        ->middleware('permissions:home-page,index')
         ->name('product');
+
 });
 
 Route::group(['prefix' => 'basket'], function () {
+
     Route::get('/', [Controllers\Basket\BasketController::class, 'BasketPage'])
-//        ->middleware('permissions:home-page,index')
         ->name('basket-page');
 
     Route::post('/update-count-products', [Controllers\Basket\BasketController::class, 'UpdateCountProducts'])
-//        ->middleware('permissions:home-page,index')
         ->name('update-count-products');
+
 });
 
 Route::group(['prefix' => 'orders'], function () {
+
     Route::post('/', [Controllers\Orders\OrdersController::class, 'CreateOrder'])
-//        ->middleware('permissions:home-page,index')
         ->name('create-order');
+
 });
 
 Route::group(['prefix' => 'calculator'], function () {
@@ -285,6 +276,7 @@ Route::group(['prefix' => 'calculator'], function () {
 
     Route::post('/product-modification', [Controllers\Calculator\CalculatorController::class, 'ProductModification'])
         ->name('product-modification');
+
 });
 
 Route::group(['prefix' => 'search'], function () {
