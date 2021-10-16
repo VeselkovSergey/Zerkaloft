@@ -28,7 +28,7 @@
 
                         @foreach($allProductsInBasket as $product)
 
-                            <div class="flex-center-vertical flex-wrap"
+                            <div class="flex-column-center"
                                  data-product-container="{{$product->id . '-' . $product->price_id}}">
 
                                 @foreach(unserialize($product->img) as $img)
@@ -36,7 +36,7 @@
                                          alt="Изображение {{$product->title}}">
                                 @endforeach
 
-                                    <div class="ml-10">
+                                    <div class="flex-column-center">
                                         <div class="m-10">
                                             <a class="product-name-in-basket cp font-semibold"
                                                href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
