@@ -660,6 +660,10 @@
     outline: unset;
 }
 
+.clear-a {
+    color: #000;
+    text-decoration: none
+}
 
 /* adaptive */
 .w-50-100 {

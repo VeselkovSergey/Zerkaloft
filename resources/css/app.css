@@ -637,3 +637,7 @@ main {
 .btn-new-price:hover {
     color: red;
 }
+
+.link-menu:hover {
+    color: #ca0088;
+}
