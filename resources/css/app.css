@@ -653,3 +653,7 @@ main {
     margin-left: 0;
     border-radius: 5px;
 }
+
+.btn-new-price:hover {
+    color: red;
+}
