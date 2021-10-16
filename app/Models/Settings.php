@@ -21,6 +21,11 @@ class Settings extends Model
         2 => 'Картинки карусели',
     ];
 
+    const TypeByWords = [
+        'mainPhone' => 1,
+        'carouselImage' => 2,
+    ];
+
     public function TypeSetting()
     {
         return self::Type[$this->type];

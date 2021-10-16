@@ -40,8 +40,7 @@ class SettingsController extends Controller
 
     public function AllCarouselImagesPage()
     {
-        $carouselImages = Settings::where('type', 2)->get();
-//        $carouselImages = json_decode($carouselImages->value);
+        $carouselImages = Settings::where('type', Settings::TypeByWords['carouselImage'])->get();
         return view('administration.settings.carousel.index', [
             'carouselImages' => $carouselImages
         ]);
@@ -105,5 +104,17 @@ class SettingsController extends Controller
         }
 
         return ResultGenerate::Success();
+    }
+
+    public function DeleteCarouselImage(Request $request)
+    {
+        $carouselImageId = $request->carouselImageId;
+
+        $deleteCarouselImage = Settings::where('id', $carouselImageId)->first();
+
+        if ($deleteCarouselImage->delete()) {
+            return ResultGenerate::Success('Картинка карусели успешно удалена!');
+        }
+        return ResultGenerate::Error('Ошибка удаления картинки карусели!');
     }
 }

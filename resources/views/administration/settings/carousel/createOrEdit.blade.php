@@ -2,29 +2,30 @@
 
 @section('content')
 
-    <style>
-        .price {
-            display: flex;
-            border: 1px solid;
-        }
-    </style>
+    <div class="container-create-carousel-image">
 
-    <div class="container-create-carousel-image" style="display: flex; flex-direction: column; width: 100%;">
-
-        <input class="need-validate hide" id="carouselImageId" type="text" style="width: 100%;" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
-
-        <div style="padding: 10px; width: 100%;">
-            <label for="carouselImageSequence" style="display: block; width: 100%;">Порядок</label>
-            <input class="need-validate" id="carouselImageSequence" type="text" style="width: 100%;" value="{{!empty($carouselImageValue) ? $carouselImageValue->sequence : ''}}">
+        <div class="mb-10">
+            <label for="carouselImageId">ID</label>
+            <input class="need-validate hide" id="carouselImageId" type="text" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
         </div>
 
-        <div style="padding: 10px; width: 100%;">
-            <label class="carousel-image-label" for="carouselImage" style="width: 80%; height: 350px;/*max-width: 300px; max-height: 300px;*/ border: 1px solid black; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
-            <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
+
+
+        <div class="mb-10">
+            <label for="carouselImageSequence">Порядок</label>
+            <input class="need-validate" id="carouselImageSequence" type="text" value="{{!empty($carouselImageValue) ? $carouselImageValue->sequence : ''}}">
         </div>
 
-        <div style="padding: 10px; width: 100%;">
-            <button class="create-carousel-image-btn container-btn" style="width: 100%;">Сохранить</button>
+        <div class="mb-10">
+            <label class="carousel-image-label border" for="carouselImage" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
+            <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp">
+        </div>
+
+        <div class="container-buttons">
+            <button class="create-carousel-image-btn container-btn">Сохранить</button>
+            @if(!empty($carouselImage))
+                <button class="delete-carousel-image-btn container-btn">Удалить</button>
+            @endif
         </div>
 
     </div>
@@ -48,11 +49,35 @@
         document.body.querySelector('.create-carousel-image-btn').addEventListener('click', () => {
             let dataForm = GetDataFormContainer('container-create-carousel-image');
 
+            let containerButtons = document.body.querySelector('.container-buttons');
+            containerButtons.hide();
+
             Ajax("{{route('save-carousel-image-page')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
                 if (response.status) {
-                    ShowFlashMessage(response.message);
+                    setTimeout(() => {
+                        location.href = "{{route('all-carousel-images-page')}}";
+                    }, 1500);
                 } else {
-                    ShowFlashMessage(response.message);
+                    containerButtons.show();
+                }
+            });
+        });
+
+        document.body.querySelector('.delete-carousel-image-btn').addEventListener('click', () => {
+            let dataForm = GetDataFormContainer('container-create-carousel-image');
+
+            let containerButtons = document.body.querySelector('.container-buttons');
+            containerButtons.hide();
+
+            Ajax("{{route('delete-carousel-image-page')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
+                if (response.status) {
+                    setTimeout(() => {
+                        location.href = "{{route('all-carousel-images-page')}}";
+                    }, 1500);
+                } else {
+                    containerButtons.show();
                 }
             });
         });
