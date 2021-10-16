@@ -93,6 +93,16 @@ textarea {
     resize: vertical;
 }
 
+*, *:focus, *:hover {
+    outline: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 
 .smooth-block {
     /* Скроем элемент в начальном состоянии */
