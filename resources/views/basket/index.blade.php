@@ -82,7 +82,7 @@
 
                 </div>
 
-                <div class="w-50-100 client-order-information flex-wrap pl-20">
+                <div class="w-50-100 client-order-information flex-wrap pl-20 h-fit">
 
                     <div class="w-50-100 p-10">
                         <label for="client_name">Имя</label>
