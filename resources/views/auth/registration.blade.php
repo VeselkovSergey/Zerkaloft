@@ -1,6 +1,6 @@
-<div style="background-color: white; display: flex; justify-content: center; align-items: center; padding: 25px;">
+<div class="flex-center">
 
-    <div style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div class="flex-column-center">
 
         <style>
             .radio-effect {
@@ -9,7 +9,6 @@
                 width: 47%;
                 opacity: 0.7;
                 margin: 5px 5px 5px 10px;
-                /*margin-left: 50%;*/
                 height: calc(100% - 10px);
                 transition: margin 300ms;
                 border-radius: 10px;
@@ -34,105 +33,55 @@
             </div>
 
             <div class="physical_user_input show">
-
-{{--                <div style="width: 100%;">--}}
-{{--                    <div style="padding: 10px;">--}}
-{{--                        <label for="surname">Фамилия</label>--}}
-{{--                        <input id="surname" name="surname" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="name">Имя</label>
-                        <input id="name" name="name" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="name">Имя</label>
+                    <input id="name" name="name" type="text" placeholder="Имя" class="p-5">
                 </div>
-
-{{--                <div style="width: 100%;">--}}
-{{--                    <div style="padding: 10px;">--}}
-{{--                        <label for="patronymic">Отчество</label>--}}
-{{--                        <input id="patronymic" name="patronymic" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Отчество" value="">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Email" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text" placeholder="Email" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="phone">Телефон</label>
-                        <input id="phone" name="phone" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" class="phone-mask" maxlength="17" placeholder="Телефон" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="phone">Телефон</label>
+                    <input id="phone" name="phone" type="text" class="phone-mask p-5" maxlength="17" placeholder="Телефон">
                 </div>
 
             </div>
 
             <div class="juridical_user_input hide">
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="title_org">Название</label>
-                        <input id="title_org" name="title_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Название" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="title_org">Название</label>
+                    <input id="title_org" name="title_org" type="text" placeholder="Название" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="inn_org">ИНН</label>
-                        <input id="inn_org" name="inn_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="ИНН" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="inn_org">ИНН</label>
+                    <input id="inn_org" name="inn_org" type="text" placeholder="ИНН" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="surname_worker">Фамилия</label>
-                        <input id="surname_worker" name="surname_worker" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Фамилия" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="surname_worker">Фамилия</label>
+                    <input id="surname_worker" name="surname_worker" type="text" placeholder="Фамилия" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="name_worker">Имя</label>
-                        <input id="name_worker" name="name_worker" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Имя" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="name_worker">Имя</label>
+                    <input id="name_worker" name="name_worker" type="text" placeholder="Имя" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="patronymic_worker">Отчество</label>
-                        <input id="patronymic_worker" name="patronymic_worker" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Отчество" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="patronymic_worker">Отчество</label>
+                    <input id="patronymic_worker" name="patronymic_worker" type="text" placeholder="Отчество" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="email_org">Email</label>
-                        <input id="email_org" name="email_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" type="text" placeholder="Email" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="email_org">Email</label>
+                    <input id="email_org" name="email_org" type="text" placeholder="Email" class="p-5">
                 </div>
-
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <label for="phone_org">Телефон</label>
-                        <input id="phone_org" name="phone_org" style="width: 100%; border: 1px solid black; padding: 10px; border-radius: 5px;" class="phone-mask" maxlength="17" type="text" placeholder="Телефон" value="">
-                    </div>
+                <div class="mb-10">
+                    <label for="phone_org">Телефон</label>
+                    <input id="phone_org" name="phone_org" class="phone-mask p-5" maxlength="17" type="text" placeholder="Телефон">
                 </div>
 
             </div>
 
-            <div style="display: flex;">
-                <div style="width: 100%;">
-                    <div style="padding: 10px;">
-                        <div style="/*font-weight: bold; font-size: 20px;*/ text-align: center;">
-                            <button  onclick="NewUser()" class="button-blue" style="width: 100%;/*width: 80%; margin: auto;*/">Регистрация</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex-center">
+                <button  onclick="NewUser()" class="button-blue">Регистрация</button>
             </div>
 
         </form>
