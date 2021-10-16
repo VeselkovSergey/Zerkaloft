@@ -11,6 +11,7 @@
 .w-100 {
     width: 100%;
 }
+
 .w-100vw {
     width: 100vw;
 }
@@ -641,4 +642,38 @@
 .text-bold {
     font-weight: bold;
     width: 18px;
+}
+
+.clear-button {
+    border: unset;
+    background-color: unset;
+    outline: unset;
+}
+
+
+/* adaptive */
+.w-50-100 {
+    width: 50%;
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1140px) {
+
+}
+
+@media screen and (max-width: 960px) {
+    .w-50-100 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+}
+
+@media screen and (max-width: 540px) {
+
 }

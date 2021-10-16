@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="px-25">
                 <select name="price" class="need-validate w-100 p-5 border-radius-5" id="price">
                     @if(sizeof($product->Prices))
                         @php($tempProductPrice = [])
