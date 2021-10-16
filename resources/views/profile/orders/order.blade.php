@@ -23,8 +23,7 @@
                            href="{{route('product', [$productPrice->Product->Category->semantic_url, $productPrice->Product->semantic_url])}}">
                             {{$productPrice->Product->title}}
                         </a>
-
-                        <div class="mb-10">{{$dataProductsInOrder[$productPrice->id]->productFullInformation}}</div>
+                        <div class="mb-10">{{$dataProductsInOrder[$productPrice->id]->productFullInformation->prices->{$productPrice->id}->count . ' ' . $dataProductsInOrder[$productPrice->id]->productFullInformation->prices->{$productPrice->id}->price}}</div>
 
                         <div>{{$dataProductsInOrder[$productPrice->id]->count}} шт.</div>
                     </div>
