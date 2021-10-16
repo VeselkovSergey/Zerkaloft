@@ -13,6 +13,4 @@ class GitHubController extends ApiController
         echo '<pre>'. shell_exec('git pull') .'</pre>';
         echo 'End git pull' . PHP_EOL;
     }
-
-    //test
 }
