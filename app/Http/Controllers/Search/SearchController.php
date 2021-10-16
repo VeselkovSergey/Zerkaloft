@@ -17,6 +17,10 @@ class SearchController
     public function Products(Request $request)
     {
         $context = $request->context;
+        if (empty($context)) {
+            return ResultGenerate::Error();
+        }
+
         $products = Products::query()->where('title', 'like', '%' . $context . '%')->get();
 
         $allProducts = [];
