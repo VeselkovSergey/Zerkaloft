@@ -234,26 +234,6 @@ textarea {
     border-radius: 15px;
 }
 
-.button-create-order:hover {
-    background-color: #00aff2;
-}
-
-.button-create-order:active {
-    background-color: #ffffff;
-    color: #00aff2;
-    border: 1px solid #00aff2;
-    padding: 4px 14px;
-}
-
-.button-create-order {
-    background-color: #1976d2;
-    border: unset;
-    border-radius: 5px;
-    padding: 5px 15px;
-    color: white;
-    cursor: pointer;
-}
-
 .button-add-in-basket:hover {
     background-color: #00aff2;
 }
