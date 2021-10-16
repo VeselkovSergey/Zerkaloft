@@ -9,14 +9,9 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
-use App\Models\Products;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
-use App\Models\Subcategories;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
@@ -149,6 +144,9 @@ class CategoriesController extends Controller
         $deleteCategory = Categories::find($request->category_id);
         if ($deleteCategory->Products->count() !== 0) {
             return ResultGenerate::Error('Ошибка! На категорию ссылаются продукты!');
+        }
+        foreach ($deleteCategory->RelationsWithProperties as $relation) {
+            $relation->delete();
         }
         if ($deleteCategory->delete()) {
             return ResultGenerate::Success('Категория успешно удалена!');

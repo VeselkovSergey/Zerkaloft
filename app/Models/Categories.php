@@ -29,4 +29,9 @@ class Categories extends Model
     {
         return $this->belongsToMany(PropertiesCategories::class, 'relations_categories_and_properties_categories', 'category_id', 'properties_categories_id');
     }
+
+    public function RelationsWithProperties()
+    {
+        return $this->hasMany(RelationsCategoriesAndPropertiesCategories::class, 'category_id', 'id');
+    }
 }
