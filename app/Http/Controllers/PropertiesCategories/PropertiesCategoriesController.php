@@ -40,16 +40,17 @@ class PropertiesCategoriesController extends Controller
 
     public function EditPropertyCategoriesAdminPage(Request $request)
     {
-        $categoryID = !empty($request->property_categories_id) ? $request->property_categories_id : null;
+        $propertyCategoriesId = !empty($request->property_categories_id) ? $request->property_categories_id : null;
 
-        if ($categoryID) {
-            $category = PropertiesCategories::findOrFail($categoryID);
+        if ($propertyCategoriesId) {
+            $propertyCategories = PropertiesCategories::findOrFail($propertyCategoriesId);
             return view('administration.properties-categories.edit', [
-                'category' => $category
+                'propertyCategories' => $propertyCategories
             ]);
         }
 
-        return abort(404);
+        abort(404);
+        return '';
     }
 
     public function SavePropertyCategories(Request $request)
@@ -69,14 +70,14 @@ class PropertiesCategoriesController extends Controller
         $fields['title'] = $propertyCategoriesTitle;
 
         if ($propertyCategoriesId) {
-//            $foundPropertyCategories = PropertiesCategories::find($categoryID);
-//            if ($foundPropertyCategories) {
-//                $updatedCategory = $foundCategory->update($fields);
-//                if ($updatedCategory) {
-//                    return ResultGenerate::Success('Категория обновлена успешно!');
-//                }
-//                return ResultGenerate::Error('Ошибка обновления категории!');
-//            }
+            $foundPropertyCategories = PropertiesCategories::find($propertyCategoriesId);
+            if ($foundPropertyCategories) {
+                $updatedPropertyCategories = $foundPropertyCategories->update($fields);
+                if ($updatedPropertyCategories) {
+                    return ResultGenerate::Success('Свойство обновлено успешно!');
+                }
+                return ResultGenerate::Error('Ошибка обновления свойства!');
+            }
 
         } else {
             $createdPropertyCategories = PropertiesCategories::create($fields);
@@ -96,23 +97,12 @@ class PropertiesCategoriesController extends Controller
 
     public function DeletePropertyCategories(Request $request)
     {
-        $deletePropertyCategory = PropertiesCategories::find($request->propertyCategoriesId);
-        $valuesPropertyCategory = $deletePropertyCategory->Values; // delete
-        $relationCategoriesRAW = $deletePropertyCategory->RelationCategories;   //delete
-        foreach ($relationCategoriesRAW as $relationCategory) {
-            $category = $relationCategory->Category;    //delete
-            $products = $category->Products;    //delete
-            foreach ($products as $product) {
-                $prices = $product->Prices;
-                foreach ($prices as $price) {
-                    $price->delete();
-                }
-                $product->delete();
-            }
-            $category->delete();
-            $relationCategory->delete();
+        $deletePropertyCategory = PropertiesCategories::find($request->property_categories_id);
+        if ($deletePropertyCategory->RelationCategories->count() !== 0) {
+            return ResultGenerate::Error('Свойство используется в категориях!');
         }
 
+        $valuesPropertyCategory = $deletePropertyCategory->Values;
         foreach ($valuesPropertyCategory as $valuePropertyCategory) {
             $valuePropertyCategory->delete();
         }

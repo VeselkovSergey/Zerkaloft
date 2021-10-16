@@ -122,7 +122,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/save', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'SavePropertyCategories'])
             ->name('save-property-categories-admin');
 
-        Route::get('/delete/{propertyCategoriesId}', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'DeletePropertyCategories'])
+        Route::post('/delete', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'DeletePropertyCategories'])
             ->name('delete-property-categories-admin');
     });
 

@@ -2,40 +2,19 @@
 
 @section('content')
 
-    <div class="container-create-category" style="display: flex; flex-direction: column; width: 100%;">
-
-        <div style="padding: 10px; width: 100%; display: none;">
-            <label for="category_id" style="display: block; width: 100%;">ID категории</label>
-            <input class="need-validate" id="category_id" type="text" style="width: 100%;" value="{{$category->id}}">
+    <div class="container-create-property-categories">
+        <div class="mb-10 hide">
+            <label for="property_categories_id">ID свойства категорий</label>
+            <input class="need-validate" id="property_categories_id" type="text" value="{{$propertyCategories->id}}">
         </div>
-
-        <div style="padding: 10px; width: 100%;">
-            <label for="category_name" style="display: block; width: 100%;">Название категории</label>
-            <input class="need-validate" id="category_name" type="text" style="width: 100%;" value="{{$category->title}}">
+        <div class="mb-10">
+            <label for="property_categories_title">Название свойства категорий</label>
+            <input class="need-validate" id="property_categories_title" type="text" value="{{$propertyCategories->title}}">
         </div>
-
-        @foreach(unserialize($category->img) as $img)
-
-            <div style="padding: 10px; width: 100%;">
-                <label class="category-img-label" for="category_img" style="max-width: 300px; max-height: 300px; background-image: url('{{route('files', $img)}}')"></label>
-                <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
-            </div>
-
-        @endforeach
-
-        <div style="padding: 10px; width: 100%; display: none;">
-            <label for="category_seo" style="display: block; width: 100%;">SEO</label>
-            <input id="category_seo" type="text" style="width: 100%;">
+        <div class="container-buttons">
+            <button class="save-property-categories-btn container-btn">Сохранить</button>
+            <button class="delete-property-categories-btn container-btn">Удалить</button>
         </div>
-
-        <div style="padding: 10px; width: 100%;">
-            <button class="save-category-btn container-btn" style="width: 100%;">Сохранить</button>
-        </div>
-
-        <div style="padding: 10px; width: 100%;">
-            <button class="delete-category-btn container-btn" style="width: 100%;">Удалить</button>
-        </div>
-
     </div>
 
 @stop
@@ -44,56 +23,32 @@
 
     <script>
 
-        document.getElementById('category_img').addEventListener('input', (event) => {
-            let fileReader = new FileReader();
-            fileReader.addEventListener("load", () => {
-                let labelCategoryImg = document.querySelector(".category-img-label");
-                labelCategoryImg.innerHTML = '';
-                labelCategoryImg.style.border = '';
-                labelCategoryImg.style.backgroundImage = "url(" + fileReader.result + ")";
-            }, false);
-            fileReader.readAsDataURL(event.target.files[0]);
-        });
+        document.body.querySelector('.save-property-categories-btn').addEventListener('click', () => {
+            let dataForm = GetDataFormContainer('container-create-property-categories');
 
-        document.body.querySelector('.save-category-btn').addEventListener('click', () => {
-            let dataForm = GetDataFormContainer('container-create-category');
+            let containerButtons = document.body.querySelector('.container-buttons');
+            containerButtons.hide();
 
-            let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
-            editAndDeleteCategoryBtn.forEach((btn) => {
-                btn.hide();
-            });
-
-            Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
-                if (response.status) {
-                    ShowFlashMessage(response.message);
-                } else {
-                    ShowFlashMessage(response.message);
-                }
-                editAndDeleteCategoryBtn.forEach((btn) => {
-                    btn.show();
-                });
+            Ajax("{{route('save-property-categories-admin')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
+                containerButtons.show();
             });
         });
 
-        document.body.querySelector('.delete-category-btn').addEventListener('click', () => {
-            let dataForm = GetDataFormContainer('container-create-category');
+        document.body.querySelector('.delete-property-categories-btn').addEventListener('click', () => {
+            let dataForm = GetDataFormContainer('container-create-property-categories');
 
-            let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
-            editAndDeleteCategoryBtn.forEach((btn) => {
-                btn.hide();
-            });
+            let containerButtons = document.body.querySelector('.container-buttons');
+            containerButtons.hide();
 
-            Ajax("{{route('delete-category-admin')}}", 'post', dataForm).then((response) => {
+            Ajax("{{route('delete-property-categories-admin')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
                 if (response.status) {
-                    ShowFlashMessage(response.message);
                     setTimeout(() => {
-                        location.href = "{{route('categories-admin-page')}}";
-                    }, 1500);
+                        location.href = "{{route('properties-categories-admin-page')}}";
+                    }, 1500)
                 } else {
-                    ShowFlashMessage(response.message);
-                    editAndDeleteCategoryBtn.forEach((btn) => {
-                        btn.show();
-                    });
+                    containerButtons.show();
                 }
             });
         });

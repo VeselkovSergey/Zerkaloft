@@ -6,8 +6,6 @@
 
         @foreach($completeCombinations as $combination)
 
-
-
             <div class="m-5 p-5 product-combination-container">
 
                 <div class="w-100 flex-center-vertical cp" data-combination="{{$combination->id}}">
@@ -148,10 +146,6 @@
         @endforeach
 
     </div>
-
-
-
-
 
 @stop
 
