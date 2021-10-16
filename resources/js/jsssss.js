@@ -419,12 +419,12 @@ function ContainerSuggestionsGeneration(result, inputSuggestions, callback, addi
                     inputSuggestions.focus();
                 });
             }
-
-            inputSuggestions.addEventListener('blur', () => {
-                    containerSuggestions.remove();
-            });
         });
     }
+
+    inputSuggestions.addEventListener('blur', () => {
+        containerSuggestions.remove();
+    });
 
     containerSuggestions.append(containerSuggestionsAbsolutePosition);
 
