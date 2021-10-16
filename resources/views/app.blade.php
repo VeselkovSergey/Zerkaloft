@@ -72,6 +72,10 @@
 
         <main class="m-25">@yield('content')</main>
 
+        <script>
+            const suggestionsProducts = "{{route('suggestion-products')}}";
+        </script>
+
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
         @include('assets.js.main-script')

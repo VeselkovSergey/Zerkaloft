@@ -348,7 +348,37 @@ function SuggestionsAddress(query, inputSuggestions, callback) {
     }, 500)
 }
 
-function ContainerSuggestionsGeneration(result, inputSuggestions) {
+let timerSuggestionsProducts = null;
+function SuggestionsProducts(query, inputSuggestions, callback, additionalData) {
+
+    clearTimeout(timerSuggestionsProducts)
+
+    timerSuggestionsProducts = setTimeout(() => {
+        Ajax(suggestionsProducts, 'post', {context: query}).then((response) => {
+            if (response.status) {
+                let result = response.result;
+                ContainerSuggestionsGeneration(JSON.stringify(result), inputSuggestions, callback, additionalData)
+            }
+        });
+    }, 500)
+}
+
+document.body.querySelector('.main-search-input').addEventListener('input', (event) => {
+    let mainSearch = event.target;
+    let mainSearchValue = mainSearch.value;
+
+    SuggestionsProducts(mainSearchValue, mainSearch, (event) => {
+        let productLink = event.target.dataset.link;
+        window.open(
+            productLink,
+            '_blank'
+        );
+    }, {additionalData: 'link'});
+});
+
+
+
+function ContainerSuggestionsGeneration(result, inputSuggestions, callback, additionalData) {
     result = JSON.parse(result).suggestions;
 
     let parentInputSuggestions = inputSuggestions.parentNode;
@@ -365,28 +395,39 @@ function ContainerSuggestionsGeneration(result, inputSuggestions) {
     if (result.length === 0) {
         let itemSuggestion = document.createElement('div');
         itemSuggestion.className = 'p-5';
-        itemSuggestion.innerHTML = 'Нет результатов удовлетворяющих поиску';
+        itemSuggestion.innerHTML = 'Нет результатов удовлетворяющих запросу';
         containerSuggestionsAbsolutePosition.append(itemSuggestion);
     } else {
-        containerSuggestionsAbsolutePosition.innerHTML = '<div class="p-5 color-grey">Выберите подсказку:</div>';
+        // containerSuggestionsAbsolutePosition.innerHTML = '<div class="p-5 color-grey">Выберите подсказку:</div>';
         result.forEach((item) => {
             let itemSuggestion = document.createElement('div');
             itemSuggestion.className = 'p-5 suggestion-item';
             itemSuggestion.innerHTML = item.value;
+            if (additionalData) {
+                Object.keys(additionalData).forEach((key) => {
+                    itemSuggestion.dataset[additionalData[key]] = item[additionalData[key]];
+                });
+            }
             containerSuggestionsAbsolutePosition.append(itemSuggestion);
-            console.log(itemSuggestion)
-            itemSuggestion.addEventListener('mousedown', () => {
-                console.log(inputSuggestions)
-                inputSuggestions.value = itemSuggestion.innerHTML;
-                containerSuggestions.remove();
-                inputSuggestions.focus();
 
-                /* #todo remake */
-                let inputName = inputSuggestions.name;
-                let inputValue = inputSuggestions.value;
-                inputName = inputName[0].toUpperCase() + inputName.slice(1);
-                localStorage.setItem('last' + inputName, inputValue);
-            });
+            if (callback) {
+                itemSuggestion.addEventListener('mousedown', callback);
+            } else {
+                itemSuggestion.addEventListener('mousedown', () => {
+                    console.log(inputSuggestions)
+                    inputSuggestions.value = itemSuggestion.innerHTML;
+                    containerSuggestions.remove();
+                    inputSuggestions.focus();
+
+                    /* #todo remake */
+                    let inputName = inputSuggestions.name;
+                    let inputValue = inputSuggestions.value;
+                    inputName = inputName[0].toUpperCase() + inputName.slice(1);
+                    localStorage.setItem('last' + inputName, inputValue);
+                });
+            }
+
+
 
             inputSuggestions.addEventListener('blur', () => {
                     containerSuggestions.remove();

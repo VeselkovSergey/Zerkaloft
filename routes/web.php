@@ -21,7 +21,7 @@ use App\Http\Controllers;
 
 Route::get('resources/{directory}/{fileName}', [Controllers\Resources\ResourceController::class, 'GetResources']);
 
-Route::group(['prefix' => '/'], function() {
+Route::group(['prefix' => '/'], function () {
 
     Route::get('/', [Controllers\HomeController::class, 'Index'])
 //        ->middleware('permissions:home-page,index')
@@ -38,9 +38,9 @@ Route::group(['prefix' => '/'], function() {
     })->name('form-fast-order');
 });
 
-Route::group(['prefix' => 'auth'], function() {
+Route::group(['prefix' => 'auth'], function () {
 
-    Route::group(['prefix' => 'registration'], function() {
+    Route::group(['prefix' => 'registration'], function () {
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'RegistrationPage'])
             ->name('registration-page');
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'auth'], function() {
             ->name('registration');
     });
 
-    Route::group(['prefix' => 'login'], function() {
+    Route::group(['prefix' => 'login'], function () {
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'LoginPage'])
             ->name('login-page');
@@ -58,13 +58,13 @@ Route::group(['prefix' => 'auth'], function() {
             ->name('login');
     });
 
-    Route::group(['prefix' => 'logout'], function() {
+    Route::group(['prefix' => 'logout'], function () {
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'Logout'])
             ->name('logout');
     });
 
-    Route::group(['prefix' => 'password-recovery'], function() {
+    Route::group(['prefix' => 'password-recovery'], function () {
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryPage'])
             ->name('password-recovery-page');
@@ -73,7 +73,7 @@ Route::group(['prefix' => 'auth'], function() {
 
 });
 
-Route::group(['prefix' => 'profile'], function() {
+Route::group(['prefix' => 'profile'], function () {
 
 //    Route::get('/', [Controllers\Profile\ProfileController::class, 'ProfilePage'])
 //        ->name('profile-page');
@@ -81,12 +81,12 @@ Route::group(['prefix' => 'profile'], function() {
     Route::get('/orders', [Controllers\Profile\ProfileController::class, 'UserOrdersPage'])
         ->name('user-orders-page');
 
-    Route::group(['prefix' => 'order'], function() {
+    Route::group(['prefix' => 'order'], function () {
         Route::get('/{order_id}', [Controllers\Profile\ProfileController::class, 'UserOrderPage'])
             ->name('user-order-page');
     });
 
-    Route::group(['prefix' => 'setting'], function() {
+    Route::group(['prefix' => 'setting'], function () {
 
         Route::get('/', [Controllers\Profile\ProfileController::class, 'UserSettingsPage'])
             ->name('user-settings-page');
@@ -97,7 +97,7 @@ Route::group(['prefix' => 'profile'], function() {
 
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', [Controllers\Administration\AdministrationController::class, 'AdminHomePage'])
         ->name('admin-home-page');
@@ -108,7 +108,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/logout', [Controllers\Administration\AdministrationController::class, 'AdminLogout'])
         ->name('admin-logout');
 
-    Route::group(['prefix' => 'properties-categories'], function() {
+    Route::group(['prefix' => 'properties-categories'], function () {
 
         Route::get('/', [Controllers\PropertiesCategories\PropertiesCategoriesController::class, 'PropertiesCategoriesAdminPage'])
             ->name('properties-categories-admin-page');
@@ -126,7 +126,7 @@ Route::group(['prefix' => 'admin'], function() {
             ->name('delete-property-categories-admin');
     });
 
-    Route::group(['prefix' => 'categories'], function() {
+    Route::group(['prefix' => 'categories'], function () {
 
         Route::get('/', [Controllers\Categories\CategoriesController::class, 'CategoriesAdminPage'])
             ->name('categories-admin-page');
@@ -144,7 +144,7 @@ Route::group(['prefix' => 'admin'], function() {
             ->name('delete-category-admin');
     });
 
-    Route::group(['prefix' => 'subcategories'], function() {
+    Route::group(['prefix' => 'subcategories'], function () {
 
         Route::get('/', [Controllers\Subcategories\SubcategoriesController::class, 'SubcategoriesAdminPage'])
             ->name('subcategories-admin-page');
@@ -162,7 +162,7 @@ Route::group(['prefix' => 'admin'], function() {
             ->name('delete-subcategory-admin');
     });
 
-    Route::group(['prefix' => 'products'], function() {
+    Route::group(['prefix' => 'products'], function () {
 
         Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
             ->name('products-admin-page');
@@ -180,7 +180,7 @@ Route::group(['prefix' => 'admin'], function() {
             ->name('delete-product-admin');
     });
 
-    Route::group(['prefix' => 'reference-book'], function() {
+    Route::group(['prefix' => 'reference-book'], function () {
 
         Route::get('/', [Controllers\ReferenceBooks\ReferenceBooksController::class, 'ReferenceBooksAdminPage'])
             ->name('reference-books-admin-page');
@@ -198,14 +198,14 @@ Route::group(['prefix' => 'admin'], function() {
             ->name('delete-reference-book-admin');
     });
 
-    Route::group(['prefix' => 'settings'], function() {
+    Route::group(['prefix' => 'settings'], function () {
 
         Route::get('/', [Controllers\Administration\SettingsController::class, 'EditPhonePage'])
             ->name('edit-phone-page');
         Route::post('/', [Controllers\Administration\SettingsController::class, 'SavePhone'])
             ->name('save-phone');
 
-        Route::group(['prefix' => 'carousel'], function() {
+        Route::group(['prefix' => 'carousel'], function () {
 
             Route::get('/all-carousel-images', [Controllers\Administration\SettingsController::class, 'AllCarouselImagesPage'])
                 ->name('all-carousel-images-page');
@@ -224,7 +224,7 @@ Route::group(['prefix' => 'admin'], function() {
     });
 });
 
-Route::group(['prefix' => 'management'], function() {
+Route::group(['prefix' => 'management'], function () {
 
     Route::get('/', [Controllers\Management\ManagementController::class, 'ManagementHomePage'])
         ->name('management-home-page');
@@ -235,7 +235,7 @@ Route::group(['prefix' => 'management'], function() {
     Route::get('/logout', [Controllers\Management\ManagementController::class, 'ManagementLogout'])
         ->name('management-logout');
 
-    Route::group(['prefix' => 'orders'], function() {
+    Route::group(['prefix' => 'orders'], function () {
 
         Route::get('/', [Controllers\Orders\OrdersController::class, 'OrdersManagementPage'])
             ->name('orders-management-page');
@@ -259,25 +259,25 @@ Route::group(['prefix' => 'management'], function() {
 
 });
 
-Route::group(['prefix' => 'test'], function() {
+Route::group(['prefix' => 'test'], function () {
 
     Route::get('/', [Controllers\TestController::class, 'index'])
         ->name('test');
 
-    Route::get('/mail-test', function (){
+    Route::get('/mail-test', function () {
         \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new \App\Helpers\MailSender());
     });
 
 });
 
-Route::group(['prefix' => 'files'], function() {
+Route::group(['prefix' => 'files'], function () {
 
     Route::get('/{file_id}', [\App\Helpers\Files::class, 'GetFileHTTP'])
         ->name('files');
 
 });
 
-Route::group(['prefix' => 'catalog'], function() {
+Route::group(['prefix' => 'catalog'], function () {
 
     Route::get('/{category_semantic_url}', [App\Http\Controllers\Categories\CategoriesController::class, 'CategoryPage'])
 //        ->middleware('permissions:home-page,index')
@@ -292,7 +292,7 @@ Route::group(['prefix' => 'catalog'], function() {
         ->name('product');
 });
 
-Route::group(['prefix' => 'basket'], function() {
+Route::group(['prefix' => 'basket'], function () {
     Route::get('/', [Controllers\Basket\BasketController::class, 'BasketPage'])
 //        ->middleware('permissions:home-page,index')
         ->name('basket-page');
@@ -302,13 +302,13 @@ Route::group(['prefix' => 'basket'], function() {
         ->name('update-count-products');
 });
 
-Route::group(['prefix' => 'orders'], function() {
+Route::group(['prefix' => 'orders'], function () {
     Route::post('/', [Controllers\Orders\OrdersController::class, 'CreateOrder'])
 //        ->middleware('permissions:home-page,index')
         ->name('create-order');
 });
 
-Route::group(['prefix' => 'calculator'], function() {
+Route::group(['prefix' => 'calculator'], function () {
 
     Route::get('/', [Controllers\Calculator\CalculatorController::class, 'Index'])
         ->name('calculator-page');
@@ -318,6 +318,13 @@ Route::group(['prefix' => 'calculator'], function() {
 
     Route::post('/product-modification', [Controllers\Calculator\CalculatorController::class, 'ProductModification'])
         ->name('product-modification');
+});
+
+Route::group(['prefix' => 'search'], function () {
+
+    Route::post('/', [Controllers\Search\SearchController::class, 'Products'])
+        ->name('suggestion-products');
+
 });
 
 

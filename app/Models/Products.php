@@ -32,4 +32,9 @@ class Products extends Model
     {
         return $this->hasMany(ProductsPrices::class, 'product_id', 'id');
     }
+
+    public function Link()
+    {
+        return route('product', [$this->Category->semantic_url, $this->semantic_url]);
+    }
 }
