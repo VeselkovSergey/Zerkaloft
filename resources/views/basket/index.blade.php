@@ -29,15 +29,13 @@
                         @foreach($allProductsInBasket as $product)
 
                             <div class="flex-center-vertical flex-wrap"
-                                 data-product-container="{{$product->id . '-' . $product->price_id}}"
-                                 style="justify-content: space-around">
+                                 data-product-container="{{$product->id . '-' . $product->price_id}}">
 
                                 @foreach(unserialize($product->img) as $img)
                                     <img class="border-radius-10 mb-10" width="300" src="{{route('files', $img)}}"
                                          alt="Изображение {{$product->title}}">
                                 @endforeach
 
-                                <div>
                                     <div class="ml-10">
                                         <a class="product-name-in-basket cp font-semibold"
                                            href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
@@ -46,7 +44,7 @@
                                         <div>{{$product->count . ' ' . $product->price}}</div>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex w-100">
                                         <button class="button-delete-product-in-basket cp clear-button"
                                                 data-product-id="{{$product->id}}"
                                                 data-product-price-id="{{$product->price_id}}">
@@ -75,7 +73,6 @@
                                             </svg>
                                         </button>
                                     </div>
-                                </div>
 
                             </div>
 
