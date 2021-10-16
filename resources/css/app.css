@@ -605,6 +605,8 @@ main {
     background-color: white;
     padding: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .modal-window-component-container .modal-window-component .modal-window-content-container .modal-window-close-button {
