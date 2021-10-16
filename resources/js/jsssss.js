@@ -366,6 +366,12 @@ function SuggestionsProducts(query, inputSuggestions, callback, additionalData) 
 document.body.querySelector('.main-search-input').addEventListener('input', (event) => {
     let mainSearch = event.target;
     let mainSearchValue = mainSearch.value;
+    let containerMainSearch = mainSearch.closest('.search-container-header');
+    let containerSuggestions = containerMainSearch.querySelector('.container-suggestions');
+
+    if (containerSuggestions !== null && mainSearchValue === '') {
+        containerSuggestions.remove();
+    }
 
     SuggestionsProducts(mainSearchValue, mainSearch, (event) => {
         let productLink = event.target.dataset.link;
