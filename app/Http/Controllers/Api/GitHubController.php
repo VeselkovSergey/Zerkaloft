@@ -9,7 +9,9 @@ class GitHubController extends ApiController
 {
     public function Push(Request $request)
     {
-        shell_exec('git pull');
+        echo 'git pull start' . PHP_EOL;
+        // chmod 600 /var/www/.ssh/ida_rsa
+        echo shell_exec('git pull');
         echo 'git pull complete' . PHP_EOL;
     }
 }
