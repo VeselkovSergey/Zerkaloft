@@ -6,6 +6,7 @@
     @if(sizeof($carouselImages))
         @foreach($carouselImages as $carouselImage)
             <div class="flex-space-between border p-5 m-5">
+                <img width="200" src="{{route('files', json_decode($carouselImage->value)->fileId)}}" alt="">
                 <div data-product-id="{{$carouselImage->id}}">Очередь: {{json_decode($carouselImage->value)->sequence}}</div>
                 <a href="{{route('edit-carousel-image-page', $carouselImage->id)}}">Редактировать</a>
             </div>
