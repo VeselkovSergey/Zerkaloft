@@ -24,7 +24,7 @@
                             {{$productPrice->Product->title}}
                         </a>
 
-                        <div class="mb-10">{{$dataProductsInOrder[$productPrice->id]->text}}</div>
+                        <div class="mb-10">{{$dataProductsInOrder[$productPrice->id]->productFullInformation}}</div>
 
                         <div>{{$dataProductsInOrder[$productPrice->id]->count}} шт.</div>
                     </div>
