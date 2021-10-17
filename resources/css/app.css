@@ -214,7 +214,12 @@ textarea {
     color: #ec407a;
 }
 
-.container-profile:hover {
+.container-profile > .profile-svg {
+    color: #fff12d;
+}
+
+.container-profile > .text-center:hover {
+    color: #2e3192;
     color: #fff12d;
 }
 
