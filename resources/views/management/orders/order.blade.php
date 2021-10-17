@@ -52,6 +52,11 @@
             <input type="text" name="delivery_address" value="{{$order->delivery_address}}" class="change-order-properties w-100">
         </div>
 
+        <div>
+            <div>Коментарий к заказу</div>
+            <div>{{$order->client_comment}}</div>
+        </div>
+
         <div class="all-cart-product" style="overflow: hidden;">
 
             @foreach($allProductsInOrder as $key => $productPrice)
