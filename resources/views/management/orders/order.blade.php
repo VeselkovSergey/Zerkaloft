@@ -53,8 +53,8 @@
         </div>
 
         <div>
-            <div>Коментарий к заказу</div>
-            <div>{{$order->client_comment}}</div>
+            <div>Коментарий к заказу:</div>
+            <div style="font-style: italic">{{$order->client_comment}}</div>
         </div>
 
         <div class="all-cart-product" style="overflow: hidden;">
