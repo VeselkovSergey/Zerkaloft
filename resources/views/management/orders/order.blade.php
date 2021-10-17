@@ -78,7 +78,7 @@
                                href="{{route('product', [$productPrice->Product->Category->semantic_url, $productPrice->Product->semantic_url])}}">
                                 <div style="font-size: 25px;">{{$productPrice->Product->title}}</div>
                             </a>
-                            <div style="font-size: 20px; font-weight: bold;">{{$dataProductsInOrder[$productPrice->id]->text}}</div>
+                            <div style="font-size: 20px; font-weight: bold;">{{$dataProductsInOrder[$productPrice->id]->productFullInformation->prices->{$productPrice->id}->count . ' ' . $dataProductsInOrder[$productPrice->id]->productFullInformation->prices->{$productPrice->id}->price}}</div>
                         </div>
 
                         <div class="flex-center h-100">
