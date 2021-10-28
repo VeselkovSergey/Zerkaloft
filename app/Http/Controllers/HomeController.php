@@ -27,6 +27,11 @@ class HomeController
         ]);
     }
 
+    public function OnlineOrder(Request $request)
+    {
+        return view('home.index');
+    }
+
     public function About(Request $request)
     {
 

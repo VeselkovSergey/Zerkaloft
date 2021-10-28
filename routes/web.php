@@ -22,6 +22,9 @@ Route::group(['prefix' => '/'], function () {
 //        ->middleware('permissions:home-page,index')
         ->name('home-page');
 
+    Route::get('/online-order', [Controllers\HomeController::class, 'OnlineOrder'])
+        ->name('online-order');
+
     Route::get('/about', [Controllers\HomeController::class, 'About'])
         ->name('about-page');
 

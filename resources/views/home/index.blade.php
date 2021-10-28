@@ -3,6 +3,10 @@
 @section('content')
 
     <div>
+
+        @if(isset($carouselImages))
+{{--Для онлайн заказа (та же страница но без слайдера)--}}
+
         <div class="carousel mx-a mb-25">
 
             <div class="carousel-container shadow border-radius-15">
@@ -32,6 +36,8 @@
             </div>
 
         </div>
+
+        @endif
 
         <div class="flex-wrap-center w-100">
             @foreach(\App\Models\Categories::all() as $category)
