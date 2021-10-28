@@ -7,13 +7,16 @@
         </div>
     </a>
 </div>
+
 <div class="menu flex-center p-5 cp">
     <div class="flex-center border px-10 border-radius-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
+        <div class="ml-10">КАТАЛОГ</div>
     </div>
 </div>
+
 <div class="search-container-header p-5 flex-center" style="flex: 1;">
     <div class="pos-rel w-100">
         <div class="pos-abs" style="top: 11px; left: 10px; color: grey;">
@@ -21,7 +24,7 @@
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
         </div>
-        <input class="main-search-input w-100 p-10 border-radius-5" style="border: 2px solid #2e3192; text-indent: 30px;" type="text" placeholder="Поиск" value="">
+        <input class="main-search-input w-100 p-10 border-radius-5" style="border: 2px solid #2e3192; text-indent: 30px;" type="text">
         <div class="delete-value-search-input hide pos-abs cp" style="top: 9px; right: 10px; color: grey;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -29,6 +32,19 @@
         </div>
     </div>
 </div>
+
+
+<div class="flex-wrap-center">
+    <div class="flex-center w-100 social-contact">
+        <img class="mx-5" width="32" src="{{url('icon/telegram.svg')}}" alt="">
+        <img class="mx-5" width="32" src="{{url('icon/viber.svg')}}" alt="">
+        <img class="mx-5" width="32" src="{{url('icon/whatsapp.svg')}}" alt="">
+    </div>
+    <div class="phone-container-header flex-center font-semibold">
+        <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
+    </div>
+</div>
+
 <div class="flex-center p-5">
     @php
         $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
@@ -63,13 +79,11 @@
         </a>
     </div>
 </div>
-<div class="phone-container-header flex-center p-5">
-    <a class="color-black text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
-</div>
-<div class="fast-menu flex-center w-100 p-5" style="border-top: 1px solid; justify-content: space-between;">
-    <a class="w-100 color-black cp text-center form-fast-order" href="#">Быстрое оформление</a>
-    <a class="w-100 color-black cp text-center">Онлайн заказ</a>
-    <a class="w-100 color-black cp text-center form-fast-order" href="#">Индивидульный заказ</a>
-    <a class="w-100 color-black cp text-center" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
-    <a class="w-100 color-black cp text-center" href="{{route('about-page')}}">О компании</a>
+
+<div class="fast-menu flex-center w-100 p-5 font-semibold" style="justify-content: space-between; padding:5px 15%;">
+    <a class="cp text-center form-fast-order" href="#">Быстрое оформление</a>
+    <a class="cp text-center">Онлайн заказ</a>
+    <a class="cp text-center form-fast-order" href="#">Индивидульный заказ</a>
+    <a class="cp text-center" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
+    <a class="cp text-center" href="{{route('about-page')}}">О компании</a>
 </div>

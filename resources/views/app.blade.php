@@ -27,7 +27,7 @@
 
     <body class="bg-logo-victoria">
 
-        <header class="flex-wrap pos-sticky top-0 bg-white z-1">@include('layouts.header')</header>
+        <header class="flex-wrap pos-sticky top-0 bg-white z-1 color-violet">@include('layouts.header')</header>
 
         <div class="flash-message flash-message-error hide"></div>
 
