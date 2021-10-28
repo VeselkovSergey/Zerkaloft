@@ -21,12 +21,14 @@ class CreateOrders extends Migration
             $table->string('client_surname')->comment('Фамилия клиента');
             $table->string('client_phone')->comment('Номер телефона');
             $table->string('client_email')->comment('Email клиента');
-            $table->longText('client_comment')->nullable()->comment('Коментарий к заказу');
+            $table->longText('client_comment')->nullable()->comment('Комментарий к заказу');
+            $table->longText('manager_comment')->nullable()->comment('Комментарий менеджера');
             $table->integer('type_payment')->comment('Тип оплаты');
             $table->integer('type_delivery')->comment('Тип получения');
             $table->integer('payment_status')->comment('Статус оплаты')->default(1);
             $table->integer('order_status')->comment('Статус заказа')->default(1);
             $table->longText('delivery_address')->comment('Адрес получения');
+            $table->date('deadline')->comment('Срок сдачи');
             $table->timestamps();
         });
     }

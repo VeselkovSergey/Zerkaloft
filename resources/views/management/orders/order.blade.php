@@ -53,8 +53,18 @@
         </div>
 
         <div>
-            <div>Коментарий к заказу:</div>
+            <div>Комментарий к заказу:</div>
             <div style="font-style: italic">{{$order->client_comment}}</div>
+        </div>
+
+        <div>
+            <div>Комментарий менеджера:</div>
+            <input type="text" name="manager_comment" value="{{$order->manager_comment}}" class="change-order-properties w-100">
+        </div>
+
+        <div class="w-fit">
+            <div>Срок сдачи:</div>
+            <input name="deadline" type="date" class="change-order-properties" value="{{$order->deadline}}">
         </div>
 
         <div class="all-cart-product" style="overflow: hidden;">
@@ -140,10 +150,10 @@
                 let selectName = fieldInput.name;
 
                 let selectValue = '';
-                if (fieldInput.getAttribute('type') === 'text') {
-                    selectValue = fieldInput.value;
-                } else {
+                if (fieldInput.tagName === 'SELECT') {
                     selectValue = fieldInput.options[fieldInput.selectedIndex].value;
+                } else {
+                    selectValue = fieldInput.value;
                 }
 
                 let changeData = [];
