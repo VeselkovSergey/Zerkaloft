@@ -222,6 +222,10 @@ textarea {
     color: #ec407a;
 }
 
+.phone-container-header a:hover {
+    color: #ec407a;
+}
+
 .color-violet {
     color: #2e3192;
 }
