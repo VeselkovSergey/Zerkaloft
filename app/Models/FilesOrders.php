@@ -8,21 +8,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Files extends Model
+class FilesOrders extends Model
 {
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'hash_name',
-        'original_name',
-        'extension',
-        'type',
-        'disk',
-        'path',
+        'file_id',
+        'order_id',
     ];
 
-    public function FullName()
+    public function File()
     {
-        return $this->original_name . '.' . $this->extension;
+        return $this->hasOne(Files::class, 'id', 'file_id');
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Orders;
 
 use App\Helpers\ArrayHelper;
+use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Authorization\AuthorizationController;
+use App\Models\FilesOrders;
 use App\Models\Orders;
 use App\Models\Products;
 use App\Models\ProductsPrices;
@@ -160,6 +162,7 @@ class OrdersController
         $orderID = $request->order_id;
         $order = Orders::findOrFail($orderID);
         $productsInOrder = json_decode($order->products);
+        $filesOrder = $order->Files;
         $productsPricesId = [];
         $dataProductsInOrder = [];
         foreach ($productsInOrder as $productId => $productPrices) {
@@ -174,7 +177,8 @@ class OrdersController
         return view('management.orders.order', [
             'order' => $order,
             'allProductsInOrder' => $allProductsInOrder,
-            'dataProductsInOrder' => $dataProductsInOrder
+            'dataProductsInOrder' => $dataProductsInOrder,
+            'filesOrder' => $filesOrder,
         ]);
     }
 
@@ -269,5 +273,26 @@ class OrdersController
 
         $telegram = new Telegram();
         $telegram->sendMessage($message, '267236435');
+    }
+
+    public function NewOrderFile (Request $request)
+    {
+        $orderId = $request->orderId;
+        $newFile = $request->file('newFile-0');
+        $file = Files::SaveFile($newFile, 'files/orders');
+        FilesOrders::query()->create([
+            'file_id' => $file->id,
+            'order_id' => $orderId,
+        ]);
+        return ResultGenerate::Success();
+    }
+
+    public function DeleteOrderFile (Request $request)
+    {
+        $orderFileId = $request->orderFileId;
+        $fileOrder = FilesOrders::query()->find($orderFileId);
+        Files::DeleteFiles($fileOrder->id);
+        $fileOrder->delete();
+        return ResultGenerate::Success();
     }
 }

@@ -234,6 +234,12 @@ Route::group(['prefix' => 'management'], function () {
         Route::post('/change-count-product-in-order-management/{order_id}', [Controllers\Orders\OrdersController::class, 'ChangeCountProductInOrder'])
             ->name('change-count-product-in-order-management');
 
+        Route::post('/new-order-file', [Controllers\Orders\OrdersController::class, 'NewOrderFile'])
+            ->name('new-order-file');
+
+        Route::post('/delete-order-file', [Controllers\Orders\OrdersController::class, 'DeleteOrderFile'])
+            ->name('delete-order-file');
+
     });
 
 });

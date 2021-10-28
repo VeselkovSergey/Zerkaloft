@@ -67,6 +67,21 @@
             <input name="deadline" type="date" class="change-order-properties" value="{{$order->deadline}}">
         </div>
 
+        <div class="mt-10 button-container-new-file">
+            <label for="newFile" class="button-blue w-fit">Загрузить документ</label>
+            <input id="newFile" class="hide button-new-file" type="file">
+            <input name="orderId" class="hide" type="text" value="{{$order->id}}">
+        </div>
+
+        <div>
+            @foreach($filesOrder as $fileOrder)
+                <div class="flex-center w-fit">
+                    <a class="m-5" target="_blank" download="{{$fileOrder->File->FullName()}}" href="{{route('files', $fileOrder->File->id)}}">{{$fileOrder->File->FullName()}}</a>
+                    <img class="cp button-delete-order-file" data-order-file-id="{{$fileOrder->id}}" src="{{url('icon/delete.svg')}}" alt="delete">
+                </div>
+            @endforeach
+        </div>
+
         <div class="all-cart-product" style="overflow: hidden;">
 
             @foreach($allProductsInOrder as $key => $productPrice)
@@ -204,6 +219,23 @@
                 }
             });
         }
+
+        let buttonNewFile = document.body.querySelector('.button-new-file');
+        buttonNewFile.addEventListener('change', (ev) => {
+            let dataForm = GetDataFormContainer('button-container-new-file');
+            Ajax("{{route('new-order-file')}}", 'post', dataForm).then((response) => {
+                location.reload();
+            });
+        });
+
+        document.body.querySelectorAll('.button-delete-order-file').forEach((buttonDeleteOrderFile) => {
+            buttonDeleteOrderFile.addEventListener('click', (ev) => {
+                let orderFileId = ev.target.dataset.orderFileId;
+                Ajax("{{route('delete-order-file')}}", 'post', {orderFileId: orderFileId}).then((response) => {
+                    location.reload();
+                });
+            });
+        });
 
     </script>
 

@@ -75,4 +75,9 @@ class Orders extends Model
     {
         return self::PaymentStatus[$this->payment_status];
     }
+
+    public function Files()
+    {
+        return $this->hasMany(FilesOrders::class, 'order_id', 'id');
+    }
 }
