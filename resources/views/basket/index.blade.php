@@ -45,7 +45,7 @@
                                             <div>{{$product->count . ' ' . $product->price}}</div>
                                         </div>
 
-                                        <div class="flex m-10">
+                                        <div class="flex m-10 container-amount">
                                             <button class="button-delete-product-in-basket cp clear-button"
                                                     data-product-id="{{$product->id}}"
                                                     data-product-price-id="{{$product->price_id}}">
@@ -57,6 +57,7 @@
                                             </button>
                                             <div>
                                                 <input data-product-id="{{$product->id}}"
+                                                       data-delete-accept="false"
                                                        data-product-price-id="{{$product->price_id}}"
                                                        class="input-count-product-in-basket clear-button"
                                                        data-count-product="{{$product->id . '-' . $product->price_id}}"
@@ -189,6 +190,15 @@
             let productId = product.dataset.productId;
             let productPriceId = product.dataset.productPriceId;
             product.addEventListener('click', (e) => {
+
+                let countProductInBasketPreProcess = e.target.closest('.container-amount').querySelector('.input-count-product-in-basket');
+
+                if (parseInt(countProductInBasketPreProcess.value) === 1 && countProductInBasketPreProcess.dataset.deleteAccept === 'false') {
+                    ModalWindow('Остался последний товар в корзине! Если хотите удалить, просто повторите удаление.');
+                    countProductInBasketPreProcess.dataset.deleteAccept = 'true';
+                    return;
+                }
+
                 let countProductInBasket = changeCountProductInBasket({
                     productId: productId,
                     productPriceId: productPriceId
