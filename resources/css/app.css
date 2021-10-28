@@ -450,6 +450,9 @@ main {
     .social-contact {
         display: none;
     }
+    .text-menu {
+        display: none;
+    }
 
     .no-mobile-version {
         display: none;
