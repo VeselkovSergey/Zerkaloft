@@ -80,8 +80,10 @@ Route::group(['prefix' => 'profile'], function () {
         ->name('user-orders-page');
 
     Route::group(['prefix' => 'order'], function () {
+
         Route::get('/{order_id}', [Controllers\Profile\ProfileController::class, 'UserOrderPage'])
             ->name('user-order-page');
+
     });
 
     Route::group(['prefix' => 'setting'], function () {
@@ -164,6 +166,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/', [Controllers\Administration\SettingsController::class, 'EditPhonePage'])
             ->name('edit-phone-page');
+
         Route::post('/', [Controllers\Administration\SettingsController::class, 'SavePhone'])
             ->name('save-phone');
 
@@ -187,6 +190,17 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
     });
+
+    Route::group(['prefix' => 'users'], function () {
+
+        Route::get('/', [Controllers\Administration\SettingsController::class, 'AllUsersPage'])
+            ->name('all-users-page');
+
+        Route::post('/change-role', [Controllers\Administration\SettingsController::class, 'ChangeRole'])
+            ->name('change-role');
+
+    });
+
 });
 
 Route::group(['prefix' => 'management'], function () {

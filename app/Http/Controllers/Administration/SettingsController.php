@@ -117,4 +117,20 @@ class SettingsController extends Controller
         }
         return ResultGenerate::Error('Ошибка удаления картинки карусели!');
     }
+
+    public function AllUsersPage()
+    {
+        $users = User::all();
+        return view('administration.users.index', [
+            'users' => $users,
+        ]);
+    }
+
+    public function ChangeRole()
+    {
+        $user = User::query()->find(\request()->userId);
+        $user->role = \request()->role;
+        $user->save();
+        return ResultGenerate::Success();
+    }
 }

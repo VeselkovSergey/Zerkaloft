@@ -47,6 +47,12 @@ class User extends Authenticatable
         2 => 'Юридическое лицо'
     ];
 
+    const RoleName = [
+        99 => 'Администратор',
+        10 => 'Менеджер',
+        1 => 'Пользователь'
+    ];
+
     public function TypeUser()
     {
         return self::TypeUser[$this->type_user];
