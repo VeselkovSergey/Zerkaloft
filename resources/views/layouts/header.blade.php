@@ -40,7 +40,7 @@
         <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
         <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">
         <img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt="">
-        <img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt="">
+        <a href="https://tele.click/STigranS"><img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt=""></a>
     </div>
     <div class="phone-container-header flex-center font-semibold">
         <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
@@ -63,7 +63,7 @@
                                     c-1.417-20.967-19.833-37.117-41.083-35.7c-21.25,1.417-37.117,20.117-35.7,41.083
                                     C339.433,422.431,356.15,438.298,376.267,438.298z"/>
                     </svg>
-                    <div class="count-item-in-bag hide color-black pos-abs right-0 p-5" style="background-color: #ec407a;border-radius: 100px;top: -10px; min-width: 30px;">
+                    <div class="count-item-in-bag hide color-black pos-abs right-0 p-5" style="background-color: #ec407a; border-radius: 100px; top: -10px; min-width: 30px;">
                         0
                     </div>
                 </div>
