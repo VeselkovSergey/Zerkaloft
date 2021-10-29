@@ -70,6 +70,7 @@
                             <a class="p-5 w-100 color-black cp" href="{{route('calculator-page')}}">Онлайн заказ</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('about-page')}}">О компании</a>
+                            <a class="p-5 w-100 color-black cp button-back-call" href="#">Обратный звонок</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('basket-page')}}">Корзина</a>
                             <a class="p-5 w-100 color-black cp" href="#" onclick="{{$actionConditionAuth}}">
                                 @if(\Illuminate\Support\Facades\Auth::check())

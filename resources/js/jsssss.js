@@ -398,8 +398,7 @@ function triggerEvent(elem, event) {
 
 // triggerEvent(buttonBackCall, 'click');
 
-let buttonBackCall = document.body.querySelector('.button-back-call');
-if (buttonBackCall) {
+document.body.querySelectorAll('.button-back-call').forEach((buttonBackCall) => {
     buttonBackCall.addEventListener('click', () => {
         let callbackWindowContent = CreateElement('div', {
             class: 'flex-column-center'
@@ -426,7 +425,7 @@ if (buttonBackCall) {
         }, callbackWindowContent);
         let modalWindow = ModalWindow(callbackWindowContent);
     });
-}
+});
 
 function ContainerSuggestionsGeneration(result, inputSuggestions, callback, additionalData) {
     result = JSON.parse(result).suggestions;

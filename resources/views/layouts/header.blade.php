@@ -99,7 +99,7 @@
 
 
 <div class="pos-rel w-100">
-    <button class="pos-abs button-back-call button-blue text-center border border-radius-5 cp" style="right: 10px; top: -25px;">
+    <button class="pos-abs button-back-call header button-blue text-center border border-radius-5 cp" style="right: 10px; top: -25px;">
         Обратный звонок
     </button>
 </div>

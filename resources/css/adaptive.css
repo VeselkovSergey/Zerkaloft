@@ -98,7 +98,7 @@
     .fast-menu-in-left-menu {
         display: block;
     }
-    .button-back-call {
+    .button-back-call.header {
         display: none;
     }
 }
