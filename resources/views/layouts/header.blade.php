@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class="flex-column-center" style="justify-content: space-between;">
+<div class="flex-column-center mr-10" style="justify-content: space-between;">
     @php
         $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
     @endphp
