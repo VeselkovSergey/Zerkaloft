@@ -186,15 +186,6 @@ textarea {
     display: flex;
 }
 
-.logo-container {
-    height: 50px;
-}
-
-.logo {
-    width: 100px;
-    height: 100px;
-}
-
 .bg-logo-victoria {
     background-image: url('/img/bg.jpeg');
     background-repeat: no-repeat;
