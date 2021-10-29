@@ -5,7 +5,7 @@
 {{--            <div class="font-semibold" style="font-size: 3em;">Victoria</div>--}}
 {{--            <div class="font-semibold" >Рекламное агенство</div>--}}
 {{--        </div>--}}
-        <img width="250" src="{{url('img/logo-2.jpeg')}}" alt="">
+        <img width="200" src="{{url('img/logo-2.jpeg')}}" alt="">
     </a>
 </div>
 
