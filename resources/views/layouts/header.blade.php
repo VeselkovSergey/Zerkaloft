@@ -1,4 +1,4 @@
-<div class="logo-container flex-center m-a p-10">
+<div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
         <img width="100" src="{{url('img/logo.jpeg')}}" alt="logo">
         <div class="flex-column-center ml-10">
@@ -8,7 +8,7 @@
     </a>
 </div>
 
-<div class="menu flex-center p-5 cp">
+<div class="menu flex-center cp mr-10">
     <div class="flex-center border px-10 border-radius-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="search-container-header p-5 flex-center" style="flex: 1;">
+<div class="search-container-header flex-center" style="flex: 1;">
     <div class="pos-rel w-100">
         <div class="pos-abs" style="top: 11px; left: 10px; color: grey;">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search color-pink" viewBox="0 0 16 16">
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class=" p-5">
+<div class="">
     @php
         $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
     @endphp
@@ -85,7 +85,7 @@
     </button>
 </div>
 
-<div class="fast-menu flex-center w-100 p-5 font-semibold" style="justify-content: space-between; padding:5px 15%;">
+<div class="fast-menu flex-center w-100 font-semibold" style="justify-content: space-between; padding:5px 15%;">
     <a class="cp text-center" href="#">Быстрое оформление</a>
     <a class="cp text-center" href="{{route('online-order')}}">Онлайн заказ</a>
     <a class="cp text-center form-fast-order" href="#">Индивидульный заказ</a>
