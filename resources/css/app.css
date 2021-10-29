@@ -641,7 +641,9 @@ main {
 }
 
 .font-semibold {
-    font-weight: 600
+    font-family: 'Visby CF Extra';
+    font-weight: 800;
+    font-style: normal;
 }
 
 .radio-effect {

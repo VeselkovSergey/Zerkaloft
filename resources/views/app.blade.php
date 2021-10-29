@@ -17,6 +17,8 @@
 
         <link href="{{asset('resources/css/adaptive.css')}}" rel="stylesheet">
 
+        <link href="{{asset('fonts/fonts.css')}}" rel="stylesheet">
+
 {{--        <link href="{{asset('resources/scss/app.scss')}}" rel="stylesheet">--}}
 
         @yield('css')
