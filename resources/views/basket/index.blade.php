@@ -24,11 +24,11 @@
                         </button>
                     </div>
 
-                    <div class="all-cart-product">
+                    <div class="all-cart-product flex-wrap">
 
                         @foreach($allProductsInBasket as $product)
 
-                            <div class="flex-column-center"
+                            <div class="flex-column-center p-5"
                                  data-product-container="{{$product->id . '-' . $product->price_id}}">
 
                                 @foreach(unserialize($product->img) as $img)
