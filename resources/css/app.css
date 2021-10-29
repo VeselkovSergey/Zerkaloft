@@ -211,6 +211,15 @@ textarea {
 
 .button-basket:hover {
     color: #ec407a;
+    fill: #ec407a;
+}
+
+.button-basket div {
+    fill: #2e3192;
+}
+
+.button-basket:hover div {
+    fill: #ec407a;
 }
 
 .phone-container-header a:hover {
