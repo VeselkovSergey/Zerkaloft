@@ -74,9 +74,14 @@ function ModalWindow(content, closingCallback) {
     let modalWindowContent = CreateElement('div', {
         attr: {
             class: 'modal-window-content',
-        },
-        content: content,
+        }
     }, modalWindowContainer);
+
+    if (typeof content === 'string') {
+        modalWindowContent.innerHTML = content
+    } else {
+        modalWindowContent.append(content)
+    }
 
     document.body.append(modalWindowComponentContainer);
 
@@ -132,7 +137,7 @@ function Ajax(url, method, formDataRAW) {
         xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
 
         xhr.onload = function () {
-            if (this.status == 200) {
+            if (this.status === 200) {
                 try {
                     resolve(JSON.parse(this.response));
                 } catch {
@@ -154,7 +159,7 @@ function Ajax(url, method, formDataRAW) {
 }
 
 document.body.querySelectorAll('.menu-category, .expander-menu-category').forEach((category) => {
-    category.addEventListener('click', (el) => {
+    category.addEventListener('click', () => {
         if (category.closest('.menu-category-container').querySelector('.menu-category-detail').classList.contains('hide')) {
             category.closest('.menu-category-container').querySelector('.menu-category-detail').show();
             category.closest('.menu-category-container').querySelector('.expander-menu-category').classList.add('rotation-90');
@@ -267,7 +272,7 @@ function startTrackingNumberInput() {
                 }
             });
 
-            phoneInput.addEventListener('focus', (event) => {
+            phoneInput.addEventListener('focus', () => {
                 if (phoneInput.value.length === 0) {
                     phoneInput.value = '+7';
                     phoneInput.selectionStart = phoneInput.value.length;
@@ -311,6 +316,7 @@ fieldsWithSuggestionsAddress.forEach((filed) => {
 });
 
 let timerSuggestionsAddress = null;
+
 function SuggestionsAddress(query, inputSuggestions, callback) {
 
     if (query.length < 4) {
@@ -325,7 +331,7 @@ function SuggestionsAddress(query, inputSuggestions, callback) {
         const token = "980b289f33c7bafda2d4007c51a2d45d6c980425";
 
         let data = {
-            query:query,
+            query: query,
             restrict_value: true,
             count: 3,
         }
@@ -349,6 +355,7 @@ function SuggestionsAddress(query, inputSuggestions, callback) {
 }
 
 let timerSuggestionsProducts = null;
+
 function SuggestionsProducts(query, inputSuggestions, callback, additionalData) {
 
     clearTimeout(timerSuggestionsProducts)
@@ -382,6 +389,42 @@ if (mainSearchInput) {
                 '_blank'
             );
         }, {additionalData: 'link'});
+    });
+}
+
+function triggerEvent(elem, event) {
+    elem.dispatchEvent(new Event(event));
+}
+
+// triggerEvent(buttonBackCall, 'click');
+
+let buttonBackCall = document.body.querySelector('.button-back-call');
+if (buttonBackCall) {
+    buttonBackCall.addEventListener('click', () => {
+        let callbackWindowContent = CreateElement('div', {
+            class: 'flex-column-center'
+        });
+        CreateElement('label', {
+            content: 'Номер телефона для обратной связи',
+            class: 'mb-5'
+        }, callbackWindowContent);
+        let input = CreateElement('input', {}, callbackWindowContent);
+        CreateElement('button', {
+            content: 'Отправить',
+            class: 'button-blue mt-5',
+            events: {
+                click: () => {
+                    // #todo отправить на сервер
+                    if (input.value.length < 11) {
+                        ModalWindowFlash('Не верный номер');
+                    } else {
+                        modalWindow.remove();
+                        ModalWindowFlash('Мы скоро с вами свяжемся');
+                    }
+                }
+            }
+        }, callbackWindowContent);
+        let modalWindow = ModalWindow(callbackWindowContent);
     });
 }
 
