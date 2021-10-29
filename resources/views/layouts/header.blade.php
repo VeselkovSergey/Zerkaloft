@@ -3,7 +3,7 @@
         <img width="100" src="{{url('img/logo.jpeg')}}" alt="logo">
         <div class="flex-column-center ml-10">
             <div class="font-semibold" style="font-size: 3em;">Victoria</div>
-            <div>Рекламное агенство</div>
+            <div class="font-semibold" >Рекламное агенство</div>
         </div>
     </a>
 </div>
