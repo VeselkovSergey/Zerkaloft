@@ -59,11 +59,11 @@
                                                 <input data-product-id="{{$product->id}}"
                                                        data-delete-accept="false"
                                                        data-product-price-id="{{$product->price_id}}"
-                                                       class="input-count-product-in-basket clear-button"
+                                                       class="input-count-product-in-basket border"
                                                        data-count-product="{{$product->id . '-' . $product->price_id}}"
                                                        value="{{$productsInBasket[$product->id][$product->price_id]['count']}}"
                                                        type="text" autocomplete="off" maxlength="2"
-                                                       style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
+                                                       style="font-size: 20px; cursor: default; width: 40px; height: 40px; text-align: center;">
                                             </div>
                                             <button class="button-add-product-in-basket cp clear-button"
                                                     data-product-id="{{$product->id}}"
