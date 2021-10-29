@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div class="social-contact flex-column-center mr-10" style="justify-content: space-evenly;">
+<div class="social-contact flex-column-center" style="justify-content: space-evenly;">
     <div class="flex-center">
         <img class="mx-5" width="24" src="{{url('icon/phone.svg')}}" alt="">
         <img class="mx-5" width="26" src="{{url('icon/mail.svg')}}" alt="">
