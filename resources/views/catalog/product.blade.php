@@ -57,6 +57,8 @@
 
         const product = JSON.parse('@json($product->getAttributes(), JSON_UNESCAPED_UNICODE)');
 
+        console.log(product)
+
         let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
         let buttonLinkBasketPage = document.body.querySelector('.button-link-basket-page')

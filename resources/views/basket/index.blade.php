@@ -87,13 +87,6 @@
 
                 <div class="w-50-100 client-order-information flex-wrap pl-20 h-fit">
 
-
-
-                    <div class="w-100 p-10 flex">
-                        <button class="button-create-order mr-a">Оформить заказ</button>
-                        <button class="button-blue button-clear-basket">Очистить корзину</button>
-                    </div>
-
                     <div class="w-50-100 p-10">
                         <label for="client_name">Имя</label>
                         <input data-type-mask="letters" class="need-validate border-black p-5 border-radius-5"
@@ -153,6 +146,11 @@
                         <input class="need-validate border-black w-100 p-5 border-radius-5 suggestions-address"
                                id="delivery_address" name="delivery_address" type="text" placeholder="Адрес"
                                value="г.Москва, ул.Тверская, дом 1" readonly>
+                    </div>
+
+                    <div class="w-100 p-10 flex">
+                        <button class="button-create-order mr-a">Оформить заказ</button>
+                        <button class="button-blue button-clear-basket">Очистить корзину</button>
                     </div>
 
                 </div>
