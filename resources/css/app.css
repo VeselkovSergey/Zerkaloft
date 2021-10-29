@@ -246,6 +246,10 @@ header a {
     color: #2e3192;
 }
 
+* {
+    color: #2e3192;
+}
+
 .smooth-block:hover {
     transform: scale(1.05);
     cursor: pointer;
