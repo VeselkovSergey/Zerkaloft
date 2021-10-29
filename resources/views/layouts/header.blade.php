@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="search-container-header flex-center" style="flex: 1;">
+<div class="search-container-header flex-center mr-10" style="flex: 1;">
     <div class="pos-rel w-100">
         <div class="pos-abs" style="top: 11px; left: 10px; color: grey;">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search color-pink" viewBox="0 0 16 16">
@@ -34,13 +34,13 @@
 </div>
 
 
-<div class="flex-wrap-center">
-    <div class="flex-center w-100 social-contact">
+<div class="flex-column-center">
+    <div class="flex-center social-contact">
         <img class="mx-5" width="32" src="{{url('icon/telegram.svg')}}" alt="">
         <img class="mx-5" width="32" src="{{url('icon/viber.svg')}}" alt="">
         <img class="mx-5" width="32" src="{{url('icon/whatsapp.svg')}}" alt="">
     </div>
-    <div class="phone-container-header flex-center font-semibold">
+    <div class="phone-container-header flex-center font-semibold pt-25">
         <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
     </div>
 </div>
