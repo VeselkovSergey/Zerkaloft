@@ -34,8 +34,9 @@
                     @endif
                 </select>
 
-                <div class="mt-20">
-                    <button class="button-add-in-basket p-5">Добавить в корзину</button>
+                <div class="mt-20 flex">
+                    <button class="button-add-in-basket p-5 mr-10">Добавить в корзину</button>
+                    <a class="clear-a button-link-basket-page hide" href="{{route('basket-page')}}"><button class="button-blue">Перейти в корзину</button></a>
                 </div>
 
                 <div class="mt-20">
@@ -58,17 +59,14 @@
 
         let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
+        let buttonLinkBasketPage = document.body.querySelector('.button-link-basket-page')
         buttonAddInBasket.addEventListener('click', (e) => {
             let productId = product.id;
             let productPriceId = document.body.querySelector('#price').value;
             let productFullInformation = product;
-
+            changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
             if (!productAdded) {
-                changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
-                buttonAddInBasket.innerHTML = 'Перейти в корзину';
-                productAdded = true;
-            } else {
-                location.href = "{{route('basket-page')}}";
+                buttonLinkBasketPage.show()
             }
         });
 
