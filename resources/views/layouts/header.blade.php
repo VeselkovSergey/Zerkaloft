@@ -48,9 +48,6 @@
 </div>
 
 <div class="container-basket-and-profile flex-column-center mr-10">
-    @php
-        $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
-    @endphp
     <div class="flex-center">
         <div class="button-basket flex-column-center text-center cp px-10">
             <a href="{{route('basket-page')}}" style="text-decoration: unset; color: unset;">
