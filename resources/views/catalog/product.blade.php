@@ -35,7 +35,7 @@
                 </select>
 
                 <div class="mt-20 flex">
-                    <button class="button-add-in-basket p-5 mr-10">Добавить в корзину</button>
+                    <button class="button-add-in-basket p-5 mr-10">+1 в корзину</button>
                     <a class="clear-a button-link-basket-page hide" href="{{route('basket-page')}}"><button class="button-blue">Перейти в корзину</button></a>
                 </div>
 
@@ -66,7 +66,7 @@
             let productFullInformation = product;
             changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
             if (!productAdded) {
-                buttonAddInBasket.innerHTML = 'Добавить еще корзину';
+                // buttonAddInBasket.innerHTML = 'Добавить еще корзину +1';
                 buttonLinkBasketPage.show()
             }
         });
