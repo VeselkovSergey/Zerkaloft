@@ -15,7 +15,7 @@
             <div class="mb-25">
                 <div class="flex-center">
                     @foreach(unserialize($product->img) as $img)
-                        <img class="border-radius-15" style="max-height: calc(80vh);" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                        <img class="border-radius-15" style="max-height: calc(70vh);" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
                     @endforeach
                 </div>
             </div>
