@@ -18,6 +18,10 @@
     width: 25%
 }
 
+.container-product-in-basket {
+    width: 25%;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page, .about-text {
@@ -26,6 +30,10 @@
 
     .carousel {
         width: 95%;
+    }
+
+    .container-product-in-basket {
+        width: 50%;
     }
 }
 
@@ -45,6 +53,10 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    .container-product-in-basket {
+        width: 100%;
+    }
 
     .fast-menu {
         display: none;
