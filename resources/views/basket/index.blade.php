@@ -37,13 +37,13 @@
                                 @endforeach
 
                                     <div class="flex-column-center">
-                                        <div class="m-10">
-                                            <a class="product-name-in-basket cp font-semibold"
-                                               href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
-                                                <div>{{$product->title}}</div>
-                                            </a>
-                                            <div>{{$product->count . ' ' . $product->price}}</div>
-                                        </div>
+{{--                                        <div class="m-10">--}}
+{{--                                            <a class="product-name-in-basket cp font-semibold"--}}
+{{--                                               href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">--}}
+{{--                                                <div>{{$product->title}}</div>--}}
+{{--                                            </a>--}}
+{{--                                            <div>{{$product->count . ' ' . $product->price}}</div>--}}
+{{--                                        </div>--}}
 
                                         <div class="flex m-10 container-amount">
                                             <button class="button-delete-product-in-basket cp clear-button"
