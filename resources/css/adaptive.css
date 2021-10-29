@@ -40,14 +40,80 @@
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
+
+    .fast-menu {
+        display: none;
+    }
+    .social-contact {
+        display: none;
+    }
+    .menu {
+        margin-right: auto;
+    }
+    .text-menu {
+        display: none;
+    }
+
+    .no-mobile-version {
+        display: none;
+    }
+
+    .search-container-header {
+        display: none;
+    }
+
+    .smooth-block {
+        width: 100%;
+    }
+
+    main {
+        min-height: calc(100vh - 200px);
+        margin: 25px 5% 0 5%;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+
+    .carousel-container {
+        height: 200px;
+    }
+
+    .img-carousel {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        border-radius: 15px;
+        background-color: #d0d0d0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .phone-container-header {
+        display: none;
+    }
+
     .fast-menu-in-left-menu {
         display: block;
+    }
+    .button-back-call {
+        display: none;
     }
 }
 
 @media screen and (max-width: 540px) {
     .category-cart-main-page, .product-category-page, .product-img-in-calculator, .about-text {
         width: 100%;
+    }
+    .container-basket-and-profile {
+        display: none;
+    }
+    .logo-container {
+        margin-right: auto;
+    }
+    .menu {
+        margin-right: 10px;
     }
 }
