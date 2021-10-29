@@ -34,7 +34,7 @@
 </div>
 
 
-<div class="flex-column-center">
+<div class="flex-column-center mr-10">
     <div class="flex-center social-contact">
         <img class="mx-5" width="32" src="{{url('icon/telegram.svg')}}" alt="">
         <img class="mx-5" width="32" src="{{url('icon/viber.svg')}}" alt="">
