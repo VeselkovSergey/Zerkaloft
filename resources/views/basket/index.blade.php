@@ -148,8 +148,9 @@
                                value="г.Москва, ул.Тверская, дом 1" readonly>
                     </div>
 
-                    <div class="w-100 p-10">
-                        <button class="button-create-order">Оформить заказ</button>
+                    <div class="w-100 p-10 flex">
+                        <button class="button-create-order mr-a">Оформить заказ</button>
+                        <button class="button-blue button-clear-basket">Очистить корзину</button>
                     </div>
 
                 </div>
@@ -315,6 +316,13 @@
                         createOrderButton.show();
                     }
                 });
+            });
+        }
+
+        let buttonClearBasket = document.body.querySelector('.button-clear-basket');
+        if (buttonClearBasket) {
+            buttonClearBasket.addEventListener('click', () => {
+                ClearAllProductsInBasket(true);
             });
         }
 

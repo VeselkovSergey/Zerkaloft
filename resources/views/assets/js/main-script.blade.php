@@ -291,14 +291,14 @@
         return localStorage.getItem('products_in_basket');
     }
 
-    function ClearAllProductsInBasket(){
+    function ClearAllProductsInBasket(reload){
         localStorage.removeItem('products_in_basket');
-        UpdateCountProductsInBasket();
+        UpdateCountProductsInBasket(reload);
         return true;
     }
 
     UpdateCountProductsInBasket();
-    function UpdateCountProductsInBasket() {
+    function UpdateCountProductsInBasket(reload) {
         let counterProductsInBasket = document.body.querySelector('.count-item-in-bag');
         let countProductsInBasket = getCountProductsInBasket();
         counterProductsInBasket.innerHTML = countProductsInBasket;
@@ -307,17 +307,21 @@
         } else {
             counterProductsInBasket.hide();
         }
-        UpdateCountProductsInBasketInBack();
+        UpdateCountProductsInBasketInBack(reload);
     }
 
-    function UpdateCountProductsInBasketInBack() {
+    function UpdateCountProductsInBasketInBack(reload) {
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
         if (localStorageBasket === null) {
             localStorageBasket = {};
         }
 
-        Ajax("{{route('update-count-products')}}", 'post', {products_in_basket: localStorageBasket});
+        Ajax("{{route('update-count-products')}}", 'post', {products_in_basket: localStorageBasket}).then(() => {
+            if (reload === true) {
+                location.reload();
+            }
+        });
     }
 
     let buttonsOpenFormFastOrder = document.body.querySelectorAll('.form-fast-order');
