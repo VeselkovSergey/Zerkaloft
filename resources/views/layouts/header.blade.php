@@ -36,11 +36,11 @@
 
 <div class="social-contact flex-column-center" style="justify-content: space-evenly;">
     <div class="flex-center">
-        <img class="mx-10" width="24" src="{{url('icon/phone.svg')}}" alt="">
-        <img class="mx-10" width="26" src="{{url('icon/mail.svg')}}" alt="">
-        <img class="mx-10" width="32" src="{{url('icon/viber.svg')}}" alt="">
-        <img class="mx-10" width="32" src="{{url('icon/whatsapp.svg')}}" alt="">
-        <img class="mx-10" width="32" src="{{url('icon/telegram.svg')}}" alt="">
+        <img class="mx-10" width="20" src="{{url('icon/phone.svg')}}" alt="">
+        <img class="mx-10" width="22" src="{{url('icon/mail.svg')}}" alt="">
+        <img class="mx-10" width="28" src="{{url('icon/viber.svg')}}" alt="">
+        <img class="mx-10" width="28" src="{{url('icon/whatsapp.svg')}}" alt="">
+        <img class="mx-10" width="28" src="{{url('icon/telegram.svg')}}" alt="">
     </div>
     <div class="phone-container-header flex-center font-semibold">
         <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
