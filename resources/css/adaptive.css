@@ -19,7 +19,7 @@
 }
 
 .container-product-in-basket {
-    width: 25%;
+    width: 20%;
 }
 
 @media screen and (max-width: 1440px) {
@@ -33,12 +33,15 @@
     }
 
     .container-product-in-basket {
-        width: 50%;
+        width: 25%;
     }
 }
 
 @media screen and (max-width: 1140px) {
 
+    .container-product-in-basket {
+        width: 33%;
+    }
 }
 
 @media screen and (max-width: 960px) {
