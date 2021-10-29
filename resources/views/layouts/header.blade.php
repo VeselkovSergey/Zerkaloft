@@ -40,8 +40,8 @@
         <img class="mx-5" width="32" src="{{url('icon/telegram.svg')}}" alt="">
         <img class="mx-5" width="32" src="{{url('icon/viber.svg')}}" alt="">
         <img class="mx-5" width="32" src="{{url('icon/whatsapp.svg')}}" alt="">
-        <img class="mx-5" width="28" src="{{url('icon/mail.svg')}}" alt="">
-        <img class="mx-5" width="28" src="{{url('icon/phone.svg')}}" alt="">
+        <img class="mx-5" width="26" src="{{url('icon/mail.svg')}}" alt="">
+        <img class="mx-5" width="24" src="{{url('icon/phone.svg')}}" alt="">
     </div>
     <div class="phone-container-header flex-center font-semibold pt-25" style="padding-top: 40px;">
         <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
