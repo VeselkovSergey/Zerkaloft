@@ -45,12 +45,15 @@
     .fast-menu {
         display: none;
     }
+
     .social-contact {
         display: none;
     }
+
     .menu {
         margin-right: auto;
     }
+
     .text-menu {
         display: none;
     }
@@ -98,6 +101,7 @@
     .fast-menu-in-left-menu {
         display: block;
     }
+
     .button-back-call.header {
         display: none;
     }
@@ -107,13 +111,20 @@
     .category-cart-main-page, .product-category-page, .product-img-in-calculator, .about-text {
         width: 100%;
     }
+
     .container-basket-and-profile {
         display: none;
     }
+
     .logo-container {
         margin-right: auto;
     }
+
     .menu {
         margin-right: 10px;
+    }
+
+    .carousel-container {
+        height: 150px;
     }
 }
