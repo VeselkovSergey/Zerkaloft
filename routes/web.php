@@ -244,17 +244,6 @@ Route::group(['prefix' => 'management'], function () {
 
 });
 
-Route::group(['prefix' => 'test'], function () {
-
-    Route::get('/', [Controllers\TestController::class, 'index'])
-        ->name('test');
-
-    Route::get('/mail-test', function () {
-        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new \App\Helpers\MailSender());
-    });
-
-});
-
 Route::group(['prefix' => 'files'], function () {
 
     Route::get('/{file_id}', [\App\Helpers\Files::class, 'GetFileHTTP'])
@@ -309,12 +298,13 @@ Route::group(['prefix' => 'search'], function () {
 
 });
 
-//Route::get('/test', function () {
-//    $prod = \App\Models\Products::all();
-//    foreach ($prod as $p) {
-//        $p->search_words = $p->title;
-//        $p->save();
-//    }
-//});
+Route::group(['prefix' => 'test'], function () {
 
+    Route::get('/', [Controllers\TestController::class, 'index'])
+        ->name('test');
 
+    Route::get('/mail-test', function () {
+        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new \App\Helpers\MailSender());
+    });
+
+});
