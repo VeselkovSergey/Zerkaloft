@@ -181,45 +181,45 @@
             })
         });
 
-        document.body.querySelectorAll('.button-delete-product-in-basket').forEach((el) => {
-            el.addEventListener('click', () => {
-                let countProductInOrder = el.parentNode.querySelector('input');
-                let countProductInOrderValue = parseInt(countProductInOrder.value);
-                countProductInOrderValue = countProductInOrderValue - 1
-                let productId = countProductInOrder.dataset.productId;
-                let productPriceId = countProductInOrder.dataset.productPriceId;
-                if (countProductInOrderValue > 0) {
-                    countProductInOrder.value = countProductInOrderValue;
-                } else {
-                    document.body.querySelector('[data-product-container="' + productPriceId + '"]').remove();
-                }
-                ChangeCountProductInOrder(countProductInOrderValue, productId, productPriceId);
-            });
-        });
+        {{--document.body.querySelectorAll('.button-delete-product-in-basket').forEach((el) => {--}}
+        {{--    el.addEventListener('click', () => {--}}
+        {{--        let countProductInOrder = el.parentNode.querySelector('input');--}}
+        {{--        let countProductInOrderValue = parseInt(countProductInOrder.value);--}}
+        {{--        countProductInOrderValue = countProductInOrderValue - 1--}}
+        {{--        let productId = countProductInOrder.dataset.productId;--}}
+        {{--        let productPriceId = countProductInOrder.dataset.productPriceId;--}}
+        {{--        if (countProductInOrderValue > 0) {--}}
+        {{--            countProductInOrder.value = countProductInOrderValue;--}}
+        {{--        } else {--}}
+        {{--            document.body.querySelector('[data-product-container="' + productPriceId + '"]').remove();--}}
+        {{--        }--}}
+        {{--        ChangeCountProductInOrder(countProductInOrderValue, productId, productPriceId);--}}
+        {{--    });--}}
+        {{--});--}}
 
-        document.body.querySelectorAll('.button-add-product-in-basket').forEach((el) => {
-            el.addEventListener('click', () => {
-                let countProductInOrder = el.parentNode.querySelector('input');
-                let countProductInOrderValue = parseInt(countProductInOrder.value);
-                countProductInOrderValue = countProductInOrderValue + 1;
-                let productId = countProductInOrder.dataset.productId;
-                let productPriceId = countProductInOrder.dataset.productPriceId;
-                countProductInOrder.value = countProductInOrderValue;
-                ChangeCountProductInOrder(countProductInOrderValue, productId, productPriceId);
-            });
-        });
+        {{--document.body.querySelectorAll('.button-add-product-in-basket').forEach((el) => {--}}
+        {{--    el.addEventListener('click', () => {--}}
+        {{--        let countProductInOrder = el.parentNode.querySelector('input');--}}
+        {{--        let countProductInOrderValue = parseInt(countProductInOrder.value);--}}
+        {{--        countProductInOrderValue = countProductInOrderValue + 1;--}}
+        {{--        let productId = countProductInOrder.dataset.productId;--}}
+        {{--        let productPriceId = countProductInOrder.dataset.productPriceId;--}}
+        {{--        countProductInOrder.value = countProductInOrderValue;--}}
+        {{--        ChangeCountProductInOrder(countProductInOrderValue, productId, productPriceId);--}}
+        {{--    });--}}
+        {{--});--}}
 
-        function ChangeCountProductInOrder(count, productId, productPriceId) {
-            let data = [];
-            data['count'] = count;
-            data['productId'] = productId;
-            data['productPriceId'] = productPriceId;
-            Ajax("{{route('change-count-product-in-order-management', $order->id)}}", 'post', data).then((response) => {
-                if (response.result.type === 'redirect') {
-                    location.href = response.result.url;
-                }
-            });
-        }
+        {{--function ChangeCountProductInOrder(count, productId, productPriceId) {--}}
+        {{--    let data = [];--}}
+        {{--    data['count'] = count;--}}
+        {{--    data['productId'] = productId;--}}
+        {{--    data['productPriceId'] = productPriceId;--}}
+        {{--    Ajax("{{route('change-count-product-in-order-management', $order->id)}}", 'post', data).then((response) => {--}}
+        {{--        if (response.result.type === 'redirect') {--}}
+        {{--            location.href = response.result.url;--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--}--}}
 
         let buttonNewFile = document.body.querySelector('.button-new-file');
         buttonNewFile.addEventListener('change', (ev) => {
