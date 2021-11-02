@@ -29,7 +29,7 @@
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
-            containerFoundProduct.innerHTML = '';
+            containerFoundProduct.innerHTML = 'Сдесь можно сделать свой выбор';
             let select = event.target;
             let categoryId = select.value;
             if (categoryId != 0) {
