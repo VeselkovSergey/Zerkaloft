@@ -19,6 +19,7 @@ class CreateProducts extends Migration
             $table->integer('category_id')->comment('id категории');
             $table->string('modification_id')->comment('id модификации');
             $table->longText('description')->comment('Описание продукта');
+            $table->longText('search_words')->comment('Слова для поиска');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
             $table->integer('active')->comment('Активный ли продукт');

@@ -136,6 +136,7 @@ class ProductsController
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
+        $productSearchWords = !empty($request->search_words) ? $request->search_words : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
 
         $product = Products::where('category_id', $categoryId)
@@ -161,6 +162,10 @@ class ProductsController
 
         if (!$productDescription) {
             return ResultGenerate::Error('Ошибка! Укажите описание!');
+        }
+
+        if (!$productSearchWords) {
+            return ResultGenerate::Error('Ошибка! Укажите слова для поиска!');
         }
 
 
@@ -192,6 +197,7 @@ class ProductsController
         $fields['category_id'] = $categoryId;
         $fields['modification_id'] = $productCombination;
         $fields['description'] = $productDescription;
+        $fields['search_words'] = $productSearchWords;
         $fields['semantic_url'] = $semanticURL;
         $fields['active'] = $productActive === 'true' ? 1 : 0;
 

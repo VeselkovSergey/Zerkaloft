@@ -21,7 +21,7 @@ class SearchController
             return ResultGenerate::Error();
         }
 
-        $products = Products::query()->where('title', 'like', '%' . $context . '%')->get();
+        $products = Products::query()->where('search_words', 'like', '%' . $context . '%')->get();
 
         $allProducts = [];
         foreach ($products as $product) {

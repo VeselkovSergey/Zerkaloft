@@ -51,6 +51,11 @@
                         <textarea class="w-100" name="product_description" id="product_description">{{!empty($combination->productModification->description) ? $combination->productModification->description : ($product->title . ' ' . $combination->title)}}</textarea>
                     </div>
 
+                    <div class="p-10 w-100">
+                        <label for="search_words" class="block w-100">Слова для поиска</label>
+                        <textarea class="w-100" name="search_words" id="search_words">{{!empty($combination->productModification->search_words) ? $combination->productModification->search_words : ($product->title . ' ' . $combination->title)}}</textarea>
+                    </div>
+
                     <div class="border m-10">
                         <div class="btn-new-price p-10 flex-center-vertical cp w-fit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
