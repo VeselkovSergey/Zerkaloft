@@ -309,12 +309,12 @@ Route::group(['prefix' => 'search'], function () {
 
 });
 
-Route::get('/test', function () {
-    $prod = \App\Models\Products::all();
-    foreach ($prod as $p) {
-        $p->search_words = $p->title;
-        $p->save();
-    }
-});
+//Route::get('/test', function () {
+//    $prod = \App\Models\Products::all();
+//    foreach ($prod as $p) {
+//        $p->search_words = $p->title;
+//        $p->save();
+//    }
+//});
 
 
