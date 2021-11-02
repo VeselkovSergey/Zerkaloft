@@ -112,35 +112,36 @@
                         </div>
 
                         <div class="flex-center h-100">
-                            <button class="button-delete-product-in-basket cp"
-                                    style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;"
-                                    data-product-id="{{$productPrice->Product->id}}"
-                                    data-product-price-id="{{$productPrice->id}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                     class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                </svg>
-                            </button>
-                            <div class="flex-center">
-                                <input data-product-id="{{$productPrice->Product->id}}"
-                                       data-product-price-id="{{$productPrice->id}}"
-                                       class="input-count-product-in-basket"
-                                       data-count-product="{{$productPrice->Product->id}}"
-                                       value="{{$dataProductsInOrder[$productPrice->id]->count}}" type="text"
-                                       autocomplete="off" maxlength="2"
-                                       style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">
-                            </div>
-                            <button class="button-add-product-in-basket cp flex-center"
-                                    style="border: unset; color: unset; background-color: unset;"
-                                    data-product-id="{{$productPrice->Product->id}}"
-                                    data-product-price-id="{{$productPrice->id}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                     class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg>
-                            </button>
+                            <div>кол-во: {{$dataProductsInOrder[$productPrice->id]->count}}</div>
+{{--                            <button class="button-delete-product-in-basket cp"--}}
+{{--                                    style="display: flex; justify-content: center; align-items: center; border: unset; color: unset; background-color: unset;"--}}
+{{--                                    data-product-id="{{$productPrice->Product->id}}"--}}
+{{--                                    data-product-price-id="{{$productPrice->id}}">--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"--}}
+{{--                                     class="bi bi-dash-circle" viewBox="0 0 16 16">--}}
+{{--                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>--}}
+{{--                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>--}}
+{{--                                </svg>--}}
+{{--                            </button>--}}
+{{--                            <div class="flex-center">--}}
+{{--                                <input data-product-id="{{$productPrice->Product->id}}"--}}
+{{--                                       data-product-price-id="{{$productPrice->id}}"--}}
+{{--                                       class="input-count-product-in-basket"--}}
+{{--                                       data-count-product="{{$productPrice->Product->id}}"--}}
+{{--                                       value="{{$dataProductsInOrder[$productPrice->id]->count}}" type="text"--}}
+{{--                                       autocomplete="off" maxlength="2"--}}
+{{--                                       style="font-size: 20px; cursor: default; border: unset; width: 40px; height: 40px; text-align: center;">--}}
+{{--                            </div>--}}
+{{--                            <button class="button-add-product-in-basket cp flex-center"--}}
+{{--                                    style="border: unset; color: unset; background-color: unset;"--}}
+{{--                                    data-product-id="{{$productPrice->Product->id}}"--}}
+{{--                                    data-product-price-id="{{$productPrice->id}}">--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"--}}
+{{--                                     class="bi bi-plus-circle" viewBox="0 0 16 16">--}}
+{{--                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>--}}
+{{--                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>--}}
+{{--                                </svg>--}}
+{{--                            </button>--}}
                         </div>
 
                     </div>
