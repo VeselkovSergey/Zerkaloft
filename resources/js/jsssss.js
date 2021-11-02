@@ -404,17 +404,24 @@ document.body.querySelectorAll('.button-back-call').forEach((buttonBackCall) => 
             class: 'flex-column-center'
         });
         CreateElement('label', {
+            content: 'Имя',
+            class: 'mb-5'
+        }, callbackWindowContent);
+        CreateElement('input', {}, callbackWindowContent);
+
+        CreateElement('label', {
             content: 'Номер телефона для обратной связи',
             class: 'mb-5'
         }, callbackWindowContent);
         let input = CreateElement('input', {}, callbackWindowContent);
+
         CreateElement('button', {
             content: 'Отправить',
             class: 'button-blue mt-5',
             events: {
                 click: () => {
                     // #todo отправить на сервер
-                    if (input.value.length < 11) {
+                    if (input.value.length < 10) {
                         ModalWindowFlash('Не верный номер');
                     } else {
                         modalWindow.remove();
