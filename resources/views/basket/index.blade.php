@@ -40,7 +40,7 @@
                                         <div class="m-10">
                                             <a class="product-name-in-basket cp font-semibold"
                                                href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
-                                                <div>{{$product->title}}</div>
+                                                <div class="zagolovok">{{$product->title}}</div>
                                             </a>
 {{--                                            <div>{{$product->count . ' ' . $product->price}}</div>--}}
                                         </div>
@@ -82,6 +82,8 @@
                         @endforeach
 
                     </div>
+
+                    <button class="ml-a button-blue button-clear-basket">Очистить корзину</button>
 
                 </div>
 
@@ -150,7 +152,6 @@
 
                     <div class="w-100 p-10 flex">
                         <button class="button-create-order mr-a">Оформить заказ</button>
-                        <button class="button-blue button-clear-basket">Очистить корзину</button>
                     </div>
 
                 </div>
