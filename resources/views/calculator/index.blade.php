@@ -9,7 +9,7 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product p-25">Сдесь можно сделать свой выбор</div>
+        <div class="container-found-product p-25">Здесь можно сделать свой выбор</div>
     </div>
 
 @stop
@@ -29,7 +29,7 @@
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
-            containerFoundProduct.innerHTML = 'Сдесь можно сделать свой выбор';
+            containerFoundProduct.innerHTML = 'Здесь можно сделать свой выбор';
             let select = event.target;
             let categoryId = select.value;
             if (categoryId != 0) {
