@@ -9,7 +9,7 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product p-25"></div>
+        <div class="container-found-product p-25">Сдесь можно сделать свой выбор</div>
     </div>
 
 @stop
