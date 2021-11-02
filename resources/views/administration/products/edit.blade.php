@@ -127,7 +127,7 @@
                     @else
 
                         <div class="p-10 w-100">
-                            <label class="product-img-label" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку (квадратная 800*800 / 1000*1000)</label>
+                            <label class="product-img-label text-center" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку (квадратная 800*800 / 1000*1000)</label>
                             <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
                         </div>
 
