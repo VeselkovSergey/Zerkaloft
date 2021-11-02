@@ -34,4 +34,9 @@ class Categories extends Model
     {
         return $this->hasMany(RelationsCategoriesAndPropertiesCategories::class, 'category_id', 'id');
     }
+
+    public function Link()
+    {
+        return route('category', $this->semantic_url);
+    }
 }

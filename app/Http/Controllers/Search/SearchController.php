@@ -14,9 +14,21 @@ use Illuminate\Http\Request;
 
 class SearchController
 {
-    public function Products(Request $request)
+    public function Index(Request $request)
     {
         $context = $request->context;
+        $categories = $this->Categories($context);
+        $products = $this->Products($context);
+
+        $searchResult = (object)[
+            'suggestions' => array_merge($categories, $products)
+        ];
+
+        return \App\Helpers\ResultGenerate::Success('', $searchResult);
+    }
+
+    public function Products($context)
+    {
         if (empty($context)) {
             return ResultGenerate::Error();
         }
@@ -35,11 +47,24 @@ class SearchController
             $allProducts[] = $product->getAttributes();
         }
 
+        return $allProducts;
+    }
 
-        $searchResult = (object)[
-            'suggestions' => $allProducts,
-        ];
+    public function Categories($context)
+    {
+        if (empty($context)) {
+            return ResultGenerate::Error();
+        }
 
-        return \App\Helpers\ResultGenerate::Success('', $searchResult);
+        $categories = Categories::query()->where('title', 'like', '%' . $context . '%')->get();
+
+        $allCategories = [];
+        foreach ($categories as $category) {
+            $category->value = $category->title;
+            $category->link = $category->Link();
+            $allCategories[] = $category->getAttributes();
+        }
+
+        return $allCategories;
     }
 }

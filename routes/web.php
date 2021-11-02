@@ -293,8 +293,8 @@ Route::group(['prefix' => 'calculator'], function () {
 
 Route::group(['prefix' => 'search'], function () {
 
-    Route::post('/', [Controllers\Search\SearchController::class, 'Products'])
-        ->name('suggestion-products');
+    Route::post('/', [Controllers\Search\SearchController::class, 'Index'])
+        ->name('suggestion-categories-and-products');
 
 });
 

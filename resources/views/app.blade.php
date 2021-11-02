@@ -90,7 +90,7 @@
         <main class="m-25">@yield('content')</main>
 
         <script>
-            const suggestionsProducts = "{{route('suggestion-products')}}";
+            const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
         </script>
 
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
