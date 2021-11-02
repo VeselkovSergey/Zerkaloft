@@ -7,7 +7,7 @@
         <div>Заказ № {{$order->id}} от {{$order->created_at->format('d.m.Y H:i:s')}}</div>
         <div>Номер телефона: {{$order->client_phone}}</div>
 
-        <div>
+        <div class="mb-10">
             <label>Изменить статус заказа</label>
             <select class="change-order-properties" name="order_status">
                 @foreach(\App\Models\Orders::OrderStatus as $orderStatusKey => $orderStatus)
@@ -17,7 +17,7 @@
             </select>
         </div>
 
-        <div>
+        <div class="mb-10">
             <label>Изменить статус оплаты</label>
             <select class="change-order-properties" name="payment_status">
                 @foreach(\App\Models\Orders::PaymentStatus as $paymentStatusKey => $paymentStatus)
@@ -27,7 +27,7 @@
             </select>
         </div>
 
-        <div>
+        <div class="mb-10">
             <label>Изменить тип оплаты</label>
             <select class="change-order-properties" name="type_payment">
                 @foreach(\App\Models\Orders::PaymentType as $paymentTypeKey => $paymentType)
@@ -37,7 +37,7 @@
             </select>
         </div>
 
-        <div>
+        <div class="mb-10">
             <label>Изменить тип доставки</label>
             <select class="change-order-properties" name="type_delivery">
                 @foreach(\App\Models\Orders::DeliveryType as $deliveryTypeKey => $deliveryType)
@@ -47,22 +47,22 @@
             </select>
         </div>
 
-        <div>
+        <div class="mb-10">
             <label>Изменить адрес</label>
             <input type="text" name="delivery_address" value="{{$order->delivery_address}}" class="change-order-properties w-100">
         </div>
 
-        <div>
+        <div class="mb-10">
             <div>Комментарий к заказу:</div>
             <div style="font-style: italic">{{$order->client_comment}}</div>
         </div>
 
-        <div>
+        <div class="mb-10">
             <div>Комментарий менеджера:</div>
             <input type="text" name="manager_comment" value="{{$order->manager_comment}}" class="change-order-properties w-100">
         </div>
 
-        <div class="w-fit">
+        <div class="w-fit mb-10">
             <div>Срок сдачи:</div>
             <input name="deadline" type="date" class="change-order-properties" value="{{$order->deadline}}">
         </div>
