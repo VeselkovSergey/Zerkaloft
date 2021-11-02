@@ -7,6 +7,10 @@
             <label for="property_categories_title">Название свойства категорий</label>
             <input class="need-validate" id="property_categories_title" type="text">
         </div>
+        <div class="mb-10">
+            <label for="property_categories_sequence">Очередность</label>
+            <input class="need-validate" id="property_categories_sequence" type="text">
+        </div>
         <div class="border mb-10">
             <div class="btn-new-price p-10 flex-center-vertical cp w-fit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">

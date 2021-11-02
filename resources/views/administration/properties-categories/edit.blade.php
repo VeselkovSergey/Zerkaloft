@@ -11,6 +11,10 @@
             <label for="property_categories_title">Название свойства категорий</label>
             <input class="need-validate" id="property_categories_title" type="text" value="{{$propertyCategories->title}}">
         </div>
+        <div class="mb-10">
+            <label for="property_categories_sequence">Очередность</label>
+            <input class="need-validate" id="property_categories_sequence" type="text" value="{{$propertyCategories->property_categories_sequence}}">
+        </div>
         <div class="container-buttons">
             <button class="save-property-categories-btn container-btn">Сохранить</button>
             <button class="delete-property-categories-btn container-btn">Удалить</button>

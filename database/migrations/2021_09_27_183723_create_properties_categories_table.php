@@ -16,6 +16,7 @@ class CreatePropertiesCategoriesTable extends Migration
         Schema::create('properties_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('Название свойства категорий');
+            $table->integer('sequence')->comment('Очередность');
             $table->timestamps();
         });
     }

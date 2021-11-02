@@ -16,6 +16,7 @@ class PropertiesCategories extends Model
 
     protected $fillable = [
         'title',
+        'sequence',
     ];
 
     public function Values()

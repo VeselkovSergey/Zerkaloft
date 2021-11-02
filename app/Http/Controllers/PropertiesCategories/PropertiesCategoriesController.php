@@ -48,6 +48,7 @@ class PropertiesCategoriesController extends Controller
     {
         $propertyCategoriesId = !empty($request->property_categories_id) ? $request->property_categories_id : null;
         $propertyCategoriesTitle = !empty($request->property_categories_title) ? $request->property_categories_title : null;
+        $propertyCategoriesSequence = !empty($request->property_categories_sequence) ? $request->property_categories_sequence : null;
         $propertyCategoriesValues = !empty($request->property_categories_values[0]) ? $request->property_categories_values : null;
 
         if (!$propertyCategoriesValues && !$propertyCategoriesId) {
@@ -58,7 +59,12 @@ class PropertiesCategoriesController extends Controller
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
+        if (!$propertyCategoriesSequence) {
+            return ResultGenerate::Error('Ошибка! Заполните очередность!');
+        }
+
         $fields['title'] = $propertyCategoriesTitle;
+        $fields['sequence'] = $propertyCategoriesSequence;
 
         if ($propertyCategoriesId) {
             $foundPropertyCategories = PropertiesCategories::find($propertyCategoriesId);

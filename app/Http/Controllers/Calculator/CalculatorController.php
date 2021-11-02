@@ -26,7 +26,7 @@ class CalculatorController
     {
         $categoryId = $request->categoryId;
         $category = Categories::find($categoryId);
-        $categoryProperties = $category->Properties;
+        $categoryProperties = $category->Properties->sortBy('sequence');
         $categoryPropertiesWithValues = [];
         foreach ($categoryProperties as $categoryProperty) {
             $propertyValues = $categoryProperty->Values->pluck('value', 'id')->prepend('Выберите значение', 0)->toArray();

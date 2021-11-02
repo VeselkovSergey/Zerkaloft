@@ -20,6 +20,7 @@ class Products extends Model
         'semantic_url',
         'price',
         'description',
+        'search_words',
         'active',
     ];
 
