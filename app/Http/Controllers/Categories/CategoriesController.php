@@ -54,6 +54,7 @@ class CategoriesController extends Controller
     {
         $categoryID = !empty($request->category_id) ? $request->category_id : null;
         $categoryName = !empty($request->category_name) ? $request->category_name : null;
+        $categoryAdditionalLinks = !empty($request->additional_links) ? $request->additional_links : null;
         $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : null;
         $usedProperties = !empty($request->usedProperties) ? $request->usedProperties : null;
 
@@ -109,6 +110,7 @@ class CategoriesController extends Controller
 
         $fields['title'] = $categoryName;
         $fields['semantic_url'] = $semanticURL;
+        $fields['additional_links'] = $categoryAdditionalLinks;
 
         if ($categoryID) {
             $foundCategory = Categories::find($categoryID);
@@ -161,9 +163,11 @@ class CategoriesController extends Controller
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
         $products = $category->Products;
+        $categoryAdditionalLinks = explode(';', $category->additional_links);
         return view('catalog.category', [
             'category' => $category,
-            'products' => $products
+            'products' => $products,
+            'categoryAdditionalLinks' => $categoryAdditionalLinks
         ]);
     }
 

@@ -14,6 +14,11 @@
             <input class="need-validate" id="category_name" type="text" style="width: 100%;" value="{{$category->title}}">
         </div>
 
+        <div class="p-10 w-100">
+            <label for="additional_links">Дополнительные ссылки (разделение через - ;)</label>
+            <textarea class="w-100" name="additional_links" id="additional_links">{{$category->additional_links}}</textarea>
+        </div>
+
         @foreach(unserialize($category->img) as $img)
 
             <div style="padding: 10px; width: 100%;">

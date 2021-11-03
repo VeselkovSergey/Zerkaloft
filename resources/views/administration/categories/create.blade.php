@@ -10,6 +10,11 @@
         </div>
 
         <div class="p-10 w-100">
+            <label for="additional_links">Дополнительные ссылки (разделение через - ;)</label>
+            <textarea class="w-100" name="additional_links" id="additional_links">ссылка-1; ссылка-2</textarea>
+        </div>
+
+        <div class="p-10 w-100">
             <label class="category-img-label" for="category_img" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
             <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" class="w-100">
         </div>

@@ -10,6 +10,13 @@
             <h2 class="w-100 m-5 ml-25">
                 {{$category->title}}
             </h2>
+            <div class="w-100 m-5 flex-wrap">
+                @foreach($categoryAdditionalLinks as $categoryAdditionalLink)
+                    <div class="m-5">
+                        <a class="clear-a button-blue" href="{{route('category', $category->semantic_url)}}?{{\App\Helpers\StringHelper::TransliterateURL($categoryAdditionalLink)}}">{{$categoryAdditionalLink}}</a>
+                    </div>
+                @endforeach
+            </div>
             @foreach($products as $product)
                 <div class="product-category-page p-10">
                     <div class="smooth-block w-100 pos-rel">

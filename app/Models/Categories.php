@@ -18,6 +18,7 @@ class Categories extends Model
         'title',
         'img',
         'semantic_url',
+        'additional_links',
     ];
 
     public function Products()
