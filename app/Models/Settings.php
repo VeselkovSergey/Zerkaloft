@@ -21,6 +21,7 @@ class Settings extends Model
         2 => 'Картинки карусели',
         3 => 'Текст для страницы калькулятора',
         4 => 'Текст для страницы онлайн заказа',
+        5 => 'Текст для страницы быстрое оформление',
     ];
 
     const TypeByWords = [
@@ -28,6 +29,7 @@ class Settings extends Model
         'carouselImage' => 2,
         'calculatorPageText' => 3,
         'onlineOrderPageText' => 4,
+        'fastOrderPageText' => 5,
     ];
 
     public function TypeSetting()

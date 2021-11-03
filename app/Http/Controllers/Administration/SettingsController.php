@@ -139,6 +139,7 @@ class SettingsController extends Controller
         return view('administration.settings.texts.index', [
             'calculatorPageText' => self::CalculatorPageText(),
             'onlineOrderPageText' => self::OnlineOrderText(),
+            'fastOrderPageText' => self::FastOrderText(),
         ]);
     }
 
