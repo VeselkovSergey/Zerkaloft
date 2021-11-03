@@ -18,7 +18,7 @@
     <div class="container-online-order-text flex-column w-100">
 
         <div class="p-10 w-100">
-            <label for="onlineOrderText">Текст для онлайн калькулятора</label>
+            <label for="onlineOrderText">Текст для онлайн заказа</label>
             <textarea class="w-100" name="onlineOrderText" id="onlineOrderText">{{$onlineOrderPageText}}</textarea>
         </div>
 
