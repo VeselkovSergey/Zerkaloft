@@ -183,7 +183,7 @@ class ProductsController
 
         $saveFiles = [];
         foreach ($productFiles as $productFile) {
-            if (in_array($productFile->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
+            if (in_array($productFile->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
                 $saveFile = Files::SaveFile($productFile, $this->storagePath, $this->storageDriver);
                 $saveFiles[] = $saveFile->id;
             } else {
