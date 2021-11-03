@@ -133,4 +133,28 @@ class SettingsController extends Controller
         $user->save();
         return ResultGenerate::Success();
     }
+
+    public function AllTextsPage()
+    {
+        return view('administration.settings.texts.index', [
+            'calculatorPageText' => self::CalculatorPageText()
+        ]);
+    }
+
+    public static function CalculatorPageText()
+    {
+        $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
+        return json_decode($calculatorPageText->value)->text;
+
+    }
+
+    public function SaveCalculatorText(Request $request)
+    {
+        $calculatorText = $request->calculatorText;
+        $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
+        $calculatorPageText->update([
+            'value' => json_encode(['text' => $calculatorText])
+        ]);
+        return ResultGenerate::Success();
+    }
 }

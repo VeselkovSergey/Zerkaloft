@@ -9,7 +9,7 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product p-25">Здесь можно сделать свой выбор</div>
+        <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::CalculatorPageText()}}</div>
     </div>
 
 @stop

@@ -81,6 +81,10 @@
                         'title' => 'Создать картинку карусели',
                         'link' => route('create-carousel-image-page'),
                     ],
+                    [
+                        'title' => 'Текста',
+                        'link' => route('texts'),
+                    ],
                 ],
             ],
             [

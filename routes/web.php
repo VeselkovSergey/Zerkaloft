@@ -189,6 +189,16 @@ Route::group(['prefix' => 'admin'], function () {
 
         });
 
+        Route::group(['prefix' => 'texts'], function () {
+
+            Route::get('/', [Controllers\Administration\SettingsController::class, 'AllTextsPage'])
+                ->name('texts');
+
+            Route::post('/save-calculator-text', [Controllers\Administration\SettingsController::class, 'SaveCalculatorText'])
+                ->name('save-calculator-text');
+
+        });
+
     });
 
     Route::group(['prefix' => 'users'], function () {

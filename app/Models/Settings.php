@@ -19,11 +19,13 @@ class Settings extends Model
     const Type = [
         1 => 'Номер телефона',
         2 => 'Картинки карусели',
+        3 => 'Текст для страницы калькулятора',
     ];
 
     const TypeByWords = [
         'mainPhone' => 1,
         'carouselImage' => 2,
+        'calculatorPageText' => 3,
     ];
 
     public function TypeSetting()

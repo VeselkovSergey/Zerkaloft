@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Settings;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,8 +22,13 @@ class CreateSettingsTable extends Migration
         });
 
         \App\Models\Settings::create([
-            'type' => 1,
+            'type' => Settings::TypeByWords['mainPhone'],
             'value' => json_encode(['phone' => '+7(999)999-99-99'])
+        ]);
+
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['calculatorPageText'],
+            'value' => json_encode(['text' => 'Текст для страницы калькулятора'])
         ]);
 
     }
