@@ -31,6 +31,11 @@ class CreateSettingsTable extends Migration
             'value' => json_encode(['text' => 'Текст для страницы калькулятора'])
         ]);
 
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['onlineOrderPageText'],
+            'value' => json_encode(['text' => 'Текст для страницы онлайн заказа'])
+        ]);
+
     }
 
     /**

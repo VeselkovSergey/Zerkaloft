@@ -137,7 +137,8 @@ class SettingsController extends Controller
     public function AllTextsPage()
     {
         return view('administration.settings.texts.index', [
-            'calculatorPageText' => self::CalculatorPageText()
+            'calculatorPageText' => self::CalculatorPageText(),
+            'onlineOrderPageText' => self::OnlineOrderText(),
         ]);
     }
 
@@ -154,6 +155,23 @@ class SettingsController extends Controller
         $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
         $calculatorPageText->update([
             'value' => json_encode(['text' => $calculatorText])
+        ]);
+        return ResultGenerate::Success();
+    }
+
+    public static function OnlineOrderText()
+    {
+        $calculatorPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
+        return json_decode($calculatorPageText->value)->text;
+
+    }
+
+    public function SaveOnlineOrderText(Request $request)
+    {
+        $onlineOrderText = $request->onlineOrderText;
+        $onlineOrderPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
+        $onlineOrderPageText->update([
+            'value' => json_encode(['text' => $onlineOrderText])
         ]);
         return ResultGenerate::Success();
     }

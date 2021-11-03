@@ -10,7 +10,20 @@
         </div>
 
         <div class="p-5">
-            <button class="saveCalculatorTextButton">Сохранить</button>
+            <button class="save-calculator-text-button">Сохранить</button>
+        </div>
+
+    </div>
+
+    <div class="container-online-order-text flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="onlineOrderText">Текст для онлайн калькулятора</label>
+            <textarea class="w-100" name="onlineOrderText" id="onlineOrderText">{{$onlineOrderPageText}}</textarea>
+        </div>
+
+        <div class="p-5">
+            <button class="save-online-order-text-button">Сохранить</button>
         </div>
 
     </div>
@@ -21,11 +34,20 @@
 
     <script>
 
-        document.body.querySelector('.saveCalculatorTextButton').addEventListener('click', () => {
+        document.body.querySelector('.save-calculator-text-button').addEventListener('click', () => {
 
             let dataForm = GetDataFormContainer('container-calculator-text');
 
             Ajax("{{route('save-calculator-text')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-online-order-text-button').addEventListener('click', () => {
+
+            let dataForm = GetDataFormContainer('container-online-order-text');
+
+            Ajax("{{route('save-online-order-text')}}", 'post', dataForm).then((response) => {
                 ShowFlashMessage(response.message);
             });
         });

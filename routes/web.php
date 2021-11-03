@@ -197,6 +197,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-calculator-text', [Controllers\Administration\SettingsController::class, 'SaveCalculatorText'])
                 ->name('save-calculator-text');
 
+            Route::post('/save-online-order-text', [Controllers\Administration\SettingsController::class, 'SaveOnlineOrderText'])
+                ->name('save-online-order-text');
+
         });
 
     });

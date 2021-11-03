@@ -20,12 +20,14 @@ class Settings extends Model
         1 => 'Номер телефона',
         2 => 'Картинки карусели',
         3 => 'Текст для страницы калькулятора',
+        4 => 'Текст для страницы онлайн заказа',
     ];
 
     const TypeByWords = [
         'mainPhone' => 1,
         'carouselImage' => 2,
         'calculatorPageText' => 3,
+        'onlineOrderPageText' => 4,
     ];
 
     public function TypeSetting()

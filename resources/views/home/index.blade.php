@@ -37,6 +37,12 @@
 
         </div>
 
+        @else
+
+        <div class="font-semibold text-center">
+            {{\App\Http\Controllers\Administration\SettingsController::OnlineOrderText()}}
+        </div>
+
         @endif
 
         <div class="flex-wrap-center w-100">
