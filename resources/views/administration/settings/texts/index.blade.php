@@ -31,7 +31,7 @@
     <div class="container-fast-order-text flex-column w-100">
 
         <div class="p-10 w-100">
-            <label for="fastOrderText">Текст для онлайн калькулятора</label>
+            <label for="fastOrderText">Текст для быстрого оформления</label>
             <textarea class="w-100" name="fastOrderText" id="fastOrderText">{{$fastOrderPageText}}</textarea>
         </div>
 
