@@ -30,7 +30,7 @@ class SearchController
     public function Products($context)
     {
         if (empty($context)) {
-            return ResultGenerate::Error();
+            return [];
         }
 
         $products = Products::query()->where('search_words', 'like', '%' . $context . '%')->get();
@@ -53,10 +53,10 @@ class SearchController
     public function Categories($context)
     {
         if (empty($context)) {
-            return ResultGenerate::Error();
+            return [];
         }
 
-        $categories = Categories::query()->where('title', 'like', '%' . $context . '%')->get();
+        $categories = Categories::query()->where('search_words', 'like', '%' . $context . '%')->get();
 
         $allCategories = [];
         foreach ($categories as $category) {
