@@ -146,7 +146,6 @@ class SettingsController extends Controller
     {
         $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
         return json_decode($calculatorPageText->value)->text;
-
     }
 
     public function SaveCalculatorText(Request $request)
@@ -161,9 +160,8 @@ class SettingsController extends Controller
 
     public static function OnlineOrderText()
     {
-        $calculatorPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
-        return json_decode($calculatorPageText->value)->text;
-
+        $onlineOrderPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
+        return json_decode($onlineOrderPageText->value)->text;
     }
 
     public function SaveOnlineOrderText(Request $request)
@@ -172,6 +170,22 @@ class SettingsController extends Controller
         $onlineOrderPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
         $onlineOrderPageText->update([
             'value' => json_encode(['text' => $onlineOrderText])
+        ]);
+        return ResultGenerate::Success();
+    }
+
+    public static function FastOrderText()
+    {
+        $fastOrderPageText = Settings::where('type', Settings::TypeByWords['fastOrderPageText'])->first();
+        return json_decode($fastOrderPageText->value)->text;
+    }
+
+    public function SaveFastOrderText(Request $request)
+    {
+        $fastOrderText = $request->fastOrderText;
+        $fastOrderPageText = Settings::where('type', Settings::TypeByWords['fastOrderPageText'])->first();
+        $fastOrderPageText->update([
+            'value' => json_encode(['text' => $fastOrderText])
         ]);
         return ResultGenerate::Success();
     }

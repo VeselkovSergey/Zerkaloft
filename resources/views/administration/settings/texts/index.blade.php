@@ -28,6 +28,19 @@
 
     </div>
 
+    <div class="container-fast-order-text flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="fastOrderText">Текст для онлайн калькулятора</label>
+            <textarea class="w-100" name="fastOrderText" id="fastOrderText">{{$fastOrderPageText}}</textarea>
+        </div>
+
+        <div class="p-5">
+            <button class="save-fast-order-text-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -48,6 +61,15 @@
             let dataForm = GetDataFormContainer('container-online-order-text');
 
             Ajax("{{route('save-online-order-text')}}", 'post', dataForm).then((response) => {
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-fast-order-text-button').addEventListener('click', () => {
+
+            let dataForm = GetDataFormContainer('container-fast-order-text');
+
+            Ajax("{{route('save-fast-order-text')}}", 'post', dataForm).then((response) => {
                 ShowFlashMessage(response.message);
             });
         });
