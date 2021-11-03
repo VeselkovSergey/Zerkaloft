@@ -12,9 +12,11 @@
             </h2>
             <div class="w-100 m-5 flex-wrap">
                 @foreach($categoryAdditionalLinks as $categoryAdditionalLink)
-                    <div class="m-5">
-                        <a class="clear-a button-blue" href="{{route('category', $category->semantic_url)}}?{{\App\Helpers\StringHelper::TransliterateURL($categoryAdditionalLink)}}">{{$categoryAdditionalLink}}</a>
-                    </div>
+                    @if(strlen($categoryAdditionalLink) > 0)
+                        <div class="m-5">
+                            <a class="clear-a button-blue" href="{{route('category', $category->semantic_url)}}?{{\App\Helpers\StringHelper::TransliterateURL($categoryAdditionalLink)}}">{{$categoryAdditionalLink}}</a>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             @foreach($products as $product)
