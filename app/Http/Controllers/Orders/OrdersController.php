@@ -32,6 +32,8 @@ class OrdersController
         $clientComment = !empty($request->client_comment) ? $request->client_comment : null;
         $orderedProducts = !empty($request->ordered_products) ? json_decode($request->ordered_products) : null;
 
+        $orderLayouts = !empty($request->allFiles()) ? $request->allFiles() : null;
+
         $jsonAllInfoOrderedProducts = json_encode($orderedProducts, JSON_UNESCAPED_UNICODE);
 
         if (!$orderedProducts) {
@@ -95,6 +97,12 @@ class OrdersController
         $fields['delivery_address'] = $clientDeliveryAddress;
 
         $createdOrder = Orders::create($fields);
+
+        if (!empty($orderLayouts)) {
+            foreach ($orderLayouts as $orderLayout) {
+                $this->SaveOrderFile($createdOrder->id, $orderLayout);
+            }
+        }
 
         $this->SendTelegram($request);
 
@@ -279,6 +287,11 @@ class OrdersController
     {
         $orderId = $request->orderId;
         $newFile = $request->file('newFile-0');
+        return $this->SaveOrderFile($orderId, $newFile);
+    }
+
+    public function SaveOrderFile ($orderId, $newFile)
+    {
         $file = Files::SaveFile($newFile, 'files/orders');
         FilesOrders::query()->create([
             'file_id' => $file->id,
