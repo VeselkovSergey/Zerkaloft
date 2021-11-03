@@ -19,6 +19,7 @@ class CreateCategories extends Migration
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
             $table->longText('additional_links')->comment('Дополнительные ссылки');
+            $table->longText('search_words')->comment('Слова для поиска');
             $table->timestamps();
         });
     }

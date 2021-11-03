@@ -55,6 +55,7 @@ class CategoriesController extends Controller
         $categoryID = !empty($request->category_id) ? $request->category_id : null;
         $categoryName = !empty($request->category_name) ? $request->category_name : null;
         $categoryAdditionalLinks = !empty($request->additional_links) ? $request->additional_links : null;
+        $categorySearchWords = !empty($request->search_words) ? $request->search_words : null;
         $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : null;
         $usedProperties = !empty($request->usedProperties) ? $request->usedProperties : null;
 
@@ -64,6 +65,10 @@ class CategoriesController extends Controller
 
         if (!$categoryName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
+        }
+
+        if (!$categorySearchWords) {
+            return ResultGenerate::Error('Ошибка! Заполните слова для поиска!');
         }
 
         if (!$categoryID) {
@@ -111,6 +116,7 @@ class CategoriesController extends Controller
         $fields['title'] = $categoryName;
         $fields['semantic_url'] = $semanticURL;
         $fields['additional_links'] = $categoryAdditionalLinks;
+        $fields['search_words'] = $categorySearchWords;
 
         if ($categoryID) {
             $foundCategory = Categories::find($categoryID);

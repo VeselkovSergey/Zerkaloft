@@ -19,6 +19,11 @@
             <textarea class="w-100" name="additional_links" id="additional_links">{{$category->additional_links}}</textarea>
         </div>
 
+        <div class="p-10 w-100">
+            <label for="search_words" class="block w-100">Слова для поиска</label>
+            <textarea class="w-100" name="search_words" id="search_words">{{$category->search_words}}</textarea>
+        </div>
+
         @foreach(unserialize($category->img) as $img)
 
             <div style="padding: 10px; width: 100%;">
