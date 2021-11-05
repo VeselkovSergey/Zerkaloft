@@ -31,9 +31,9 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/contacts', [Controllers\HomeController::class, 'Contacts'])
         ->name('contacts-page');
 
-    Route::get('/fast-order', function () {
+    Route::get('/special-order', function () {
         return view('home.formFastOrder');
-    })->name('form-fast-order');
+    })->name('form-special-order');
 
 });
 
@@ -304,6 +304,13 @@ Route::group(['prefix' => 'calculator'], function () {
 
     Route::post('/product-modification', [Controllers\Calculator\CalculatorController::class, 'ProductModification'])
         ->name('product-modification');
+
+});
+
+Route::group(['prefix' => 'fast-order'], function () {
+
+    Route::get('/', [Controllers\Calculator\CalculatorController::class, 'IndexForFastOrder'])
+        ->name('fast-order-page');
 
 });
 

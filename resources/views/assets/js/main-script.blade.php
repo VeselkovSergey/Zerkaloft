@@ -324,17 +324,17 @@
         });
     }
 
-    let buttonsOpenFormFastOrder = document.body.querySelectorAll('.form-fast-order');
-    if (buttonsOpenFormFastOrder) {
-        buttonsOpenFormFastOrder.forEach((button) => {
+    let buttonsOpenFormSpecialOrder = document.body.querySelectorAll('.form-special-order');
+    if (buttonsOpenFormSpecialOrder) {
+        buttonsOpenFormSpecialOrder.forEach((button) => {
             button.addEventListener('click', () => {
-                GenerationFormFastOrder();
+                GenerationFormSpecialOrder();
             });
         });
     }
 
-    function GenerationFormFastOrder() {
-        Ajax("{{route('form-fast-order')}}", 'get').then((response) => {
+    function GenerationFormSpecialOrder() {
+        Ajax("{{route('form-special-order')}}", 'get').then((response) => {
             ModalWindow(response);
         });
     }

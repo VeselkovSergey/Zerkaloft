@@ -21,6 +21,14 @@ class CalculatorController
             'allCategories' => $allCategories,
         ]);
     }
+    public function IndexForFastOrder()
+    {
+        $allCategories = Categories::all();
+        return view('calculator.index', [
+            'allCategories' => $allCategories,
+            'fastOrder' => true,
+        ]);
+    }
 
     public function CategoryProperties(Request $request)
     {

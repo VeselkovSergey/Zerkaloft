@@ -9,7 +9,11 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::CalculatorPageText()}}</div>
+        @if(isset($fastOrder) && $fastOrder === true)
+            <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::FastOrderText()}}</div>
+        @else
+            <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::CalculatorPageText()}}</div>
+        @endif
     </div>
 
 @stop
