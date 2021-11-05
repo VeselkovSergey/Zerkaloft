@@ -258,7 +258,7 @@ function startTrackingNumberInput() {
                     clearTimeout(timer);
                     timer = setTimeout(() => {
                         let rawPhone = phoneInput.value;
-                        let onlyNumber = rawPhone.replace(/[^0-9]/g,"");
+                        let onlyNumber = rawPhone.replace(/[^0-9]/g,'');
                         let formatPhone = '';
                         for (let i = 0; i < onlyNumber.length; i++) {
 
