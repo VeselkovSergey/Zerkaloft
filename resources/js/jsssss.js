@@ -265,7 +265,7 @@ function startTrackingNumberInput() {
                             let char = onlyNumber.charAt(i);
 
                             if (i === 0) {
-                                formatPhone += "+";
+                                formatPhone += '+';
                                 if (char !== '7') {
                                     formatPhone += '7(';
                                 }
@@ -273,11 +273,11 @@ function startTrackingNumberInput() {
                                     char = '';
                                 }
                             } else if (i === 1) {
-                                formatPhone += "(";
+                                formatPhone += '(';
                             } else if (i === 4) {
-                                formatPhone += ")";
+                                formatPhone += ')';
                             } else if (i === 7 || i === 9) {
-                                formatPhone += "-";
+                                formatPhone += '-';
                             }
 
                             if (i <= 10) {
