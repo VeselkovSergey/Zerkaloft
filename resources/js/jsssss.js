@@ -243,62 +243,51 @@ function startTrackingNumberInput() {
         let phoneInput = element;
 
         if (phoneInput !== null) {
-            phoneInput.addEventListener('keypress', (event) => {
-                if (event.keyCode < 47 || event.keyCode > 57) {
-                    event.preventDefault();
-                }
 
-                if (phoneInput.value.length === 2) {
-                    phoneInput.value = phoneInput.value + "(";
-                } else if (phoneInput.value.length === 6) {
-                    phoneInput.value = phoneInput.value + ")-";
-                } else if (phoneInput.value.length === 11 || phoneInput.value.length === 14) {
-                    phoneInput.value = phoneInput.value + "-";
-                }
-            });
-
-            phoneInput.addEventListener('keyup', (event) => {
-                let number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-                if (number.indexOf(event.key) === -1) {
-                    if ((event.key === 'Backspace' || event.key === 'Delete') && phoneInput.value.length <= 2) {
-                        phoneInput.value = '+7';
-                        phoneInput.selectionStart = phoneInput.value.length;
-                    }
-                    event.preventDefault();
-                } else {
-                    if (phoneInput.value.length < 3) {
-                        phoneInput.value = '+7(' + event.key;
-                    }
-                }
-            });
-
-            phoneInput.addEventListener('focus', () => {
-                if (phoneInput.value.length === 0) {
-                    phoneInput.value = '+7';
-                    phoneInput.selectionStart = phoneInput.value.length;
-                }
-            });
-
-            phoneInput.addEventListener('click', (event) => {
-                if (phoneInput.selectionStart < 2) {
-                    phoneInput.selectionStart = phoneInput.value.length;
-                }
-                if (event.key === 'Backspace' && phoneInput.value.length <= 2) {
-                    event.preventDefault();
-                }
-            });
-
-            phoneInput.addEventListener('blur', () => {
-                if (phoneInput.value === '+7') {
-                    phoneInput.value = '';
-                }
-            });
+            let number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowTop', 'ArrowDown'];
 
             phoneInput.addEventListener('keydown', (event) => {
-                if (event.key === 'Backspace' && phoneInput.value.length <= 2) {
-                    phoneInput.value = '+7';
-                    phoneInput.selectionStart = phoneInput.value.length;
+                if (number.indexOf(event.key) === -1) {
                     event.preventDefault();
+                }
+            });
+
+            let timer;
+            phoneInput.addEventListener('keyup', (event) => {
+                if ((event.key !== 'Backspace' && event.key !== 'Delete')) {
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        let rawPhone = phoneInput.value;
+                        let onlyNumber = rawPhone.replace(/[^0-9]/g,"");
+                        let formatPhone = '';
+                        for (let i = 0; i < onlyNumber.length; i++) {
+
+                            let char = onlyNumber.charAt(i);
+
+                            if (i === 0) {
+                                formatPhone += "+";
+                                if (char !== '7') {
+                                    formatPhone += '7(';
+                                }
+                                if (char === '8') {
+                                    char = '';
+                                }
+                            } else if (i === 1) {
+                                formatPhone += "(";
+                            } else if (i === 4) {
+                                formatPhone += ")";
+                            } else if (i === 7 || i === 9) {
+                                formatPhone += "-";
+                            }
+
+                            if (i <= 10) {
+                                formatPhone += char;
+                            }
+
+                        }
+                        phoneInput.value = formatPhone;
+
+                    }, 50);
                 }
             });
         }
