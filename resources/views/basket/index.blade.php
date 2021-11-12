@@ -85,7 +85,11 @@
 
                     </div>
 
-                    <button class="ml-a button-blue button-clear-basket">Очистить корзину</button>
+                    <div class="flex">
+                        <label for="layouts" class="ml-a button-blue w-fit mr-10">Загрузить макеты</label>
+                        <input id="layouts" name="layouts" class="hide" type="file" multiple>
+                        <button class=" button-blue button-clear-basket">Очистить корзину</button>
+                    </div>
 
                 </div>
 
@@ -153,8 +157,6 @@
                     </div>
 
                     <div class="w-100 p-10 flex">
-                        <label for="layouts" class="button-blue w-fit mr-10">Загрузить макеты</label>
-                        <input id="layouts" name="layouts" class="hide" type="file" multiple>
                         <button class="button-create-order mr-a">Оформить заказ</button>
                     </div>
 
