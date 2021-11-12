@@ -24,6 +24,11 @@
             <textarea class="w-100" name="search_words" id="search_words">{{$category->search_words}}</textarea>
         </div>
 
+        <div class="p-10 w-100">
+            <label for="sequence" class="block w-100">Очередность</label>
+            <input class="need-validate w-100" id="sequence" type="text" value="{{$category->sequence}}">
+        </div>
+
         @foreach(unserialize($category->img) as $img)
 
             <div style="padding: 10px; width: 100%;">

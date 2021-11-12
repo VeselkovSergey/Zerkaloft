@@ -46,7 +46,7 @@
         @endif
 
         <div class="flex-wrap-center w-100">
-            @foreach(\App\Models\Categories::all() as $category)
+            @foreach(\App\Models\Categories::orderBy('sequence')->get() as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
