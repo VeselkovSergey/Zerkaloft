@@ -46,6 +46,26 @@
         @endif
 
         <div class="flex-wrap-center w-100">
+
+            @foreach(\App\Models\Products::where('show_main_page', 1)->get() as $product)
+
+                <div class="category-cart-main-page p-25">
+                    <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
+                        <a href="{{$product->Link()}}">
+                            @foreach(unserialize($product->img) as $img)
+                                <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                            @endforeach
+                            <div class="shadow-text w-100 h-100 flex-center border-radius-15 pos-abs top-0" style="background-color: rgba(0, 0, 0, 0.2);">
+                                <div class="color-white text-center" style="font-size: 24px;">
+                                    {{$product->title}}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            @endforeach
+
             @foreach(\App\Models\Categories::orderBy('sequence')->get() as $category)
 
                 @foreach(unserialize($category->img) as $img)
