@@ -106,6 +106,8 @@ class ProfileController
             return ResultGenerate::Error('Ошибка! Заполните номер телефона!');
         }
 
+        $newDetailInformation->phone = preg_replace("/[^0-9]/", '', $newDetailInformation->phone);
+
         $detailInfo = UserPhysicals::where('user_id', auth()->user()->id)->firstOrFail();
         $detailInfo->update((array)$newDetailInformation);
         return $detailInfo;
