@@ -19,7 +19,7 @@
                     @endif
                 @endforeach
             </div>
-            @foreach($products as $product)
+            @foreach($productsByNotOnlyInCalculator as $product)
                 <div class="product-category-page p-10">
                     <div class="smooth-block w-100 pos-rel">
                         <a href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">

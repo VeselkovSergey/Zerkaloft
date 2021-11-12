@@ -22,6 +22,8 @@ class Products extends Model
         'description',
         'search_words',
         'active',
+        'not_only_calculator',
+        'show_main_page',
     ];
 
     public function Category()

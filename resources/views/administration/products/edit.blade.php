@@ -26,6 +26,20 @@
                         </label>
                     </div>
 
+                    <div class="p-10 w-100 flex">
+                        <label class="block">
+                            Показывать не только в калькуляторе
+                            <input name="not_only_calculator" type="checkbox" {{$combination->productModification ? $combination->productModification->not_only_calculator ? 'checked' : '' : ''}}>
+                        </label>
+                    </div>
+
+                    <div class="p-10 w-100 flex">
+                        <label class="block">
+                            Показывать на главной странице
+                            <input name="show_main_page" type="checkbox" {{$combination->productModification ? $combination->productModification->show_main_page ? 'checked' : '' : ''}}>
+                        </label>
+                    </div>
+
                     <div class="hide">
                         <label for="category_id" class="block w-100">Абстрактный продукт</label>
                         <input id="category_id" type="text" class="w-100" value="{{$product->id}}">

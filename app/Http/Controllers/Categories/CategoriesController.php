@@ -174,11 +174,11 @@ class CategoriesController extends Controller
     public function CategoryPage(Request $request)
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $products = $category->Products;
+        $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
         $categoryAdditionalLinks = explode(';', $category->additional_links);
         return view('catalog.category', [
             'category' => $category,
-            'products' => $products,
+            'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,
             'categoryAdditionalLinks' => $categoryAdditionalLinks
         ]);
     }

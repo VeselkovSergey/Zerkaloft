@@ -28,6 +28,11 @@ class Categories extends Model
         return $this->hasMany(Products::class, 'category_id', 'id');
     }
 
+    public function ProductsByNotOnlyInCalculator()
+    {
+        return $this->hasMany(Products::class, 'category_id', 'id')->where('not_only_calculator', 1);
+    }
+
     public function Properties()
     {
         return $this->belongsToMany(PropertiesCategories::class, 'relations_categories_and_properties_categories', 'category_id', 'properties_categories_id');

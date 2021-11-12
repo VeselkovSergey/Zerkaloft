@@ -133,6 +133,8 @@ class ProductsController
         $categoryId = !empty($request->category_id) ? $request->category_id : null;
         $productCombination = !empty($request->product_combination) ? $request->product_combination : null;
         $productActive = !empty($request->active) ? $request->active : null;
+        $productNotOnlyCalculator = !empty($request->not_only_calculator) ? $request->not_only_calculator : null;
+        $productShowMainPage = !empty($request->show_main_page) ? $request->show_main_page : null;
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
@@ -200,6 +202,8 @@ class ProductsController
         $fields['search_words'] = $productSearchWords;
         $fields['semantic_url'] = $semanticURL;
         $fields['active'] = $productActive === 'true' ? 1 : 0;
+        $fields['not_only_calculator'] = $productNotOnlyCalculator === 'true' ? 1 : 0;
+        $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
 
         if ($productID) {
             $productFind = Products::find($productID);
