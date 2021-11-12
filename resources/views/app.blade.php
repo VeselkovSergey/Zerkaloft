@@ -31,7 +31,13 @@
 
     </head>
 
-    <body class="bg-logo-victoria">
+    <body class="bg-logo-victoria scroll-off">
+
+        <div class="loader bg-blue pos-abs top-0 left-menu z-5">
+            <div class="flex-center w-100vw h-100vh">
+                <img src="{{url('img/oval.svg')}}" alt="">
+            </div>
+        </div>
 
         <header class="flex-wrap pos-sticky top-0 bg-white z-1 color-violet py-10">@include('layouts.header')</header>
 
@@ -91,6 +97,14 @@
 
         <script>
             const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
+        </script>
+
+        <script>
+            const loader = document.body.querySelector('.loader');
+            window.onload = () => {
+                loader.hide();
+                document.body.classList.remove('scroll-off');
+            }
         </script>
 
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
