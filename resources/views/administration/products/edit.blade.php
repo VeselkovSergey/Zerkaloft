@@ -28,7 +28,7 @@
 
                     <div class="p-10 w-100 flex">
                         <label class="block">
-                            Показывать не только в калькуляторе
+                            Активный для просмотра в каталоге
                             <input name="not_only_calculator" type="checkbox" {{$combination->productModification ? $combination->productModification->not_only_calculator ? 'checked' : '' : ''}}>
                         </label>
                     </div>
