@@ -210,7 +210,7 @@
                     countProductInBasketPreProcess.dataset.deleteAccept = 'true';
                     setTimeout(() => {
                         countProductInBasketPreProcess.dataset.deleteAccept = 'false';
-                    }, 5000)
+                    }, 15000)
                     return;
                 }
 
