@@ -38,9 +38,9 @@
     <div class="flex-center">
         <img class="mx-10" width="20" src="{{url('icon/phone.svg')}}" alt="">
         <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
-        <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">
-        <a href="https://api.whatsapp.com/send/?phone=79999999999"><img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt=""></a>
-        <a href="https://tele.click/STigranS"><img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt=""></a>
+{{--        <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">--}}
+{{--        <a href="https://api.whatsapp.com/send/?phone=79999999999"><img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt=""></a>--}}
+{{--        <a href="https://tele.click/STigranS"><img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt=""></a>--}}
     </div>
     <div class="phone-container-header flex-center font-semibold">
         <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
