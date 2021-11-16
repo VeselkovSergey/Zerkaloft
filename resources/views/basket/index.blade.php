@@ -177,6 +177,10 @@
 
     <script>
 
+        @if(!sizeof($allProductsInBasket))
+            ClearAllProductsInBasket();
+        @endif
+
         let sumProductsPricesInBasket = document.body.querySelector('.sum-products-prices-in-basket');
         if (sumProductsPricesInBasket) {
             sumProductsPricesInBasket.innerHTML = '(' + localStorage.getItem('sumProductsPricesInBasket') + ' руб)';
