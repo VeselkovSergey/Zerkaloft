@@ -208,6 +208,9 @@
                 if (parseInt(countProductInBasketPreProcess.value) === 1 && countProductInBasketPreProcess.dataset.deleteAccept === 'false') {
                     ModalWindow('Остался последний товар в корзине! Если хотите удалить, просто повторите удаление.');
                     countProductInBasketPreProcess.dataset.deleteAccept = 'true';
+                    setTimeout(() => {
+                        countProductInBasketPreProcess.dataset.deleteAccept = 'false';
+                    }, 5000)
                     return;
                 }
 
