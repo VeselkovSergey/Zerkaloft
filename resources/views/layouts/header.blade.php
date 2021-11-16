@@ -15,7 +15,7 @@
 </div>
 
 <div class="menu flex-center cp mr-10">
-    <div class="flex-center border-radius-5" style="border: 1px solid #2e3192; padding: 4px 10px">
+    <div class="flex-center border-radius-5 button-blue" style="padding: 4px 10px; display: flex;">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
