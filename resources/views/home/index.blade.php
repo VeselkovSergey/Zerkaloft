@@ -76,7 +76,7 @@
                             <a href="{{route('category', $category->semantic_url)}}">
                                 <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
                                 <div class="shadow-text pos-abs top-0 w-100 h-100 flex-center border-radius-15" style="background-color: rgba(0, 0, 0, 0.2);">
-                                    <div style="color: white; font-size: 40px;">
+                                    <div class="color-white text-center" style="font-size: 24px;">
                                         {{$category->title}}
                                     </div>
                                 </div>
