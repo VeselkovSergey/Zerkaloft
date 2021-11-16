@@ -85,6 +85,10 @@
                         'title' => 'Текста',
                         'link' => route('texts'),
                     ],
+                    [
+                        'title' => 'Номер телефона',
+                        'link' => route('edit-phone-page'),
+                    ],
                 ],
             ],
             [

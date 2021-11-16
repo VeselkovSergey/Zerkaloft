@@ -1,3 +1,8 @@
+@php
+    $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();
+    $phone = json_decode($phone->value)->phone;
+@endphp
+
 <div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
 {{--        <img width="100" src="{{url('img/logo.jpeg')}}" alt="logo">--}}
@@ -43,7 +48,7 @@
 {{--        <a href="https://tele.click/STigranS"><img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt=""></a>--}}
     </div>
     <div class="phone-container-header flex-center font-semibold">
-        <a class="text-center" style="text-decoration: none;" href="tel:{{env('PHONE_COMPANY')}}">{{env('PHONE_COMPANY')}}</a>
+        <a class="text-center" style="text-decoration: none;" href="tel:{{$phone}}">{{$phone}}</a>
     </div>
 </div>
 
