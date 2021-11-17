@@ -8,6 +8,8 @@
 
         <title>Панель администратора</title>
 
+        <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
+
     </head>
 
     <body style="max-width: 100%;">
@@ -16,7 +18,7 @@
 
             <div style="padding: 15px; font-size: 20px; font-weight: bold;">Вход в панель администратора</div>
 
-            <form style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column; border: 1px solid; border-radius: 5px;" action="{{route('admin-login')}}" method="POST">
+            <form class="shadow border-radius-10" style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column;" action="{{route('admin-login')}}" method="POST">
 
                 <div style="padding: 10px;">
                     <label for="login" style="display: block;">Email</label>
