@@ -23,7 +23,8 @@ Route::group(['prefix' => 'github'], function () {
     Route::post('/push', [\App\Http\Controllers\Api\GitHubController::class, 'Push'])
         ->name('github-push');
 
-    Route::get('/push', [\App\Http\Controllers\Api\GitHubController::class, 'Push'])
-        ->name('github-push');
-
 });
+
+Route::get('/migrate', function() {
+    $exitCode = \Illuminate\Support\Facades\Artisan::call('migrate');
+})->name('migrate');
