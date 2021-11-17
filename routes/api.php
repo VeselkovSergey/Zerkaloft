@@ -24,7 +24,3 @@ Route::group(['prefix' => 'github'], function () {
         ->name('github-push');
 
 });
-
-Route::get('/migrate', function() {
-    return \Illuminate\Support\Facades\Artisan::call('migrate');
-})->name('migrate');

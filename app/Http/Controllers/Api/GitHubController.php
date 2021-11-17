@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class GitHubController extends ApiController
 {
@@ -16,7 +17,7 @@ class GitHubController extends ApiController
         echo 'git pull complete' . PHP_EOL;
 
         echo 'php artisan migrate start' . PHP_EOL;
-        echo shell_exec('php artisan migrate');
+        Artisan::call('migrate');
         echo 'php artisan migrate complete' . PHP_EOL;
 
     }
