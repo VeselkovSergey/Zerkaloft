@@ -26,5 +26,5 @@ Route::group(['prefix' => 'github'], function () {
 });
 
 Route::get('/migrate', function() {
-    $exitCode = \Illuminate\Support\Facades\Artisan::call('migrate');
+    return \Illuminate\Support\Facades\Artisan::call('migrate');
 })->name('migrate');
