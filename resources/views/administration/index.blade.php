@@ -71,6 +71,19 @@
                 ],
             ],
             [
+                'title' => 'Дополнительные услуги',
+                'subMenu' => [
+                    [
+                        'title' => 'Все дополнительные услуги',
+                        'link' => route('additional-services-admin-page'),
+                    ],
+                    [
+                        'title' => 'Новая дополнительная услуга',
+                        'link' => route('create-additional-service-page'),
+                    ],
+                ],
+            ],
+            [
                 'title' => 'Настройки системы',
                 'subMenu' => [
                     [
