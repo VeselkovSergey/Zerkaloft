@@ -15,7 +15,7 @@ class CreateAdditionalServicesTable extends Migration
     {
         Schema::create('additional_services', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->comment('Название дополнительной услуги');
             $table->timestamps();
         });
     }

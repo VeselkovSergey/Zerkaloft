@@ -8,6 +8,8 @@ use App\Helpers\ArrayHelper;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
+use App\Models\AdditionalServices\AdditionalProductServices;
+use App\Models\AdditionalServices\AdditionalServices;
 use App\Models\Categories;
 use App\Models\Products;
 use App\Models\ProductsPrices;
@@ -110,17 +112,28 @@ class ProductsController
 
             $productModification = Products::where('modification_id', $strId)->first();
 
+            $existAdditionalServices = [];
+            if (!empty($productModification->AdditionalServices)) {
+                foreach ($productModification->AdditionalServices as $additionalService) {
+                    $priceAdditionalProductService = AdditionalProductServices::where('additional_service_id', $additionalService->id)->where('product_id', $productModification->id)->first();
+                    $additionalService->price = $priceAdditionalProductService->price;
+                    $existAdditionalServices[$additionalService->id] = $additionalService;
+                }
+            }
+
             $completeCombinations[] = (object)[
                 'id' => $strId,
                 'title' => $str,
                 'productModification' => $productModification,
+                'existAdditionalServices' => $existAdditionalServices,
             ];
             $completeCombinationsOnlyId[] = $strId;
         }
 
         return view('administration.products.edit', [
             'product' => $product,
-            'completeCombinations' => $completeCombinations
+            'completeCombinations' => $completeCombinations,
+            'allAdditionalServices' => AdditionalServices::all(),
         ]);
     }
 
@@ -140,6 +153,9 @@ class ProductsController
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
         $productSearchWords = !empty($request->search_words) ? $request->search_words : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
+        $productAdditionalServices = !empty($request->additional_service_id) ? $request->additional_service_id : null;
+        $productAdditionalServicesActivation = !empty($request->additional_service_activation) ? $request->additional_service_activation : null;
+        $productAdditionalServicesPrice = !empty($request->additional_service_price) ? $request->additional_service_price : null;
 
         $product = Products::where('category_id', $categoryId)
             ->where('modification_id', $productCombination)
@@ -214,6 +230,7 @@ class ProductsController
                 }
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
+
                     ProductsPrices::where('product_id', $productID)->delete();
                     foreach ($productPrices as $key => $price) {
                         $fieldsPrices['product_id'] = $productID;
@@ -221,6 +238,17 @@ class ProductsController
                         $fieldsPrices['count'] = $productCount[$key];
                         ProductsPrices::create($fieldsPrices);
                     }
+
+                    AdditionalProductServices::where('product_id', $productID)->delete();
+                    foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                        if ($productAdditionalServicesActivation[$key] === 'true') {
+                            $fieldsPrices['product_id'] = $productID;
+                            $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
+                            $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                            AdditionalProductServices::create($fieldsPrices);
+                        }
+                    }
+
                     return ResultGenerate::Success('Продукт обновлен успешно!');
                 }
                 return ResultGenerate::Error('Ошибка обновления продукта!');
@@ -236,6 +264,16 @@ class ProductsController
                     $fieldsPrices['price'] = $price;
                     $fieldsPrices['count'] = $productCount[$key];
                     ProductsPrices::create($fieldsPrices);
+                }
+
+                AdditionalProductServices::where('product_id', $productID)->delete();
+                foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                    if ($productAdditionalServicesActivation[$key]) {
+                        $fieldsPrices['product_id'] = $productID;
+                        $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
+                        $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                        ProductsPrices::create($fieldsPrices);
+                    }
                 }
 
                 return ResultGenerate::Success('Продукт создан успешно!');

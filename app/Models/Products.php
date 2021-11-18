@@ -4,6 +4,8 @@
 namespace App\Models;
 
 
+use App\Models\AdditionalServices\AdditionalProductServices;
+use App\Models\AdditionalServices\AdditionalServices;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -39,5 +41,10 @@ class Products extends Model
     public function Link()
     {
         return route('product', [$this->Category->semantic_url, $this->semantic_url]);
+    }
+
+    public function AdditionalServices()
+    {
+        return $this->belongsToMany(AdditionalServices::class, 'additional_product_services', 'product_id', 'additional_service_id');
     }
 }
