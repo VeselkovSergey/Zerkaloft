@@ -51,7 +51,7 @@
                     <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
                         <a href="{{$product->Link()}}">
                             @foreach(unserialize($product->img) as $img)
-                                <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                                <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
                             @endforeach
                             <div class="shadow-text w-100 h-100 flex-center border-radius-15 pos-abs top-0">
                                 <div class="color-white text-center" style="font-size: 24px;">
