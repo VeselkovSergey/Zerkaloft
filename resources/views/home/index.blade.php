@@ -11,9 +11,9 @@
 
             <div class="carousel-container shadow border-radius-15">
                 @foreach($carouselImages as $carouselImage)
-                    <div class="img-carousel {{$loop->first ? 'active' : ''}}">
-                        <img src="{{route('files', $carouselImage)}}" class="w-100 h-100" alt="">
-                    </div>
+                    <a href="{{$carouselImage->link}}" class="img-carousel {{$loop->first ? 'active' : ''}}">
+                        <img src="{{route('files', $carouselImage->fileId)}}" class="w-100 h-100" alt="">
+                    </a>
                 @endforeach
             </div>
 

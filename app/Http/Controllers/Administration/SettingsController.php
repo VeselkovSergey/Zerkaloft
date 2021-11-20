@@ -65,10 +65,15 @@ class SettingsController extends Controller
     {
         $carouselImageId = !empty($request->carouselImageId) ? $request->carouselImageId : null;
         $carouselImageSequence = !empty($request->carouselImageSequence) ? $request->carouselImageSequence : null;
+        $carouselImageLink = !empty($request->carouselImageLink) ? $request->carouselImageLink : null;
         $carouselImages = !empty($request->allFiles()) ? $request->allFiles() : [];
 
         if (!$carouselImageSequence) {
             return ResultGenerate::Error('Ошибка! Последовательность не может быть пустым полем!');
+        }
+
+        if (!$carouselImageLink) {
+            return ResultGenerate::Error('Ошибка! Ссылка не может быть пустым полем!');
         }
 
         if (!$carouselImages && !$carouselImageId) {
@@ -91,6 +96,7 @@ class SettingsController extends Controller
                 'value' => json_encode([
                     'fileId' => !empty($saveFile) ? $saveFile->id : json_decode($saveCarouselImages->value)->fileId,
                     'sequence' => $carouselImageSequence,
+                    'link' => $carouselImageLink,
                 ]),
             ]);
         } else {
@@ -99,6 +105,7 @@ class SettingsController extends Controller
                 'value' => json_encode([
                     'fileId' => $saveFile->id,
                     'sequence' => $carouselImageSequence,
+                    'link' => $carouselImageLink,
                 ]),
             ]);
         }

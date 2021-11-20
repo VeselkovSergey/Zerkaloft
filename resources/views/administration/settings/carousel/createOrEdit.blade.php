@@ -9,11 +9,14 @@
             <input class="need-validate" id="carouselImageId" type="text" value="{{!empty($carouselImage) ? $carouselImage->id : ''}}">
         </div>
 
-
-
         <div class="mb-10">
             <label for="carouselImageSequence">Порядок</label>
             <input class="need-validate" id="carouselImageSequence" type="text" value="{{!empty($carouselImageValue) ? $carouselImageValue->sequence : ''}}">
+        </div>
+
+        <div class="mb-10">
+            <label for="carouselImageLink">Ссылка</label>
+            <input class="need-validate" id="carouselImageLink" type="text" value="{{!empty($carouselImageValue) ? $carouselImageValue->link : '#'}}">
         </div>
 
         <div class="mb-10">

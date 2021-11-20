@@ -17,8 +17,9 @@ class HomeController
             $value = json_decode($carouselImageInSetting->value);
             $sequence = $value->sequence;
             $fileId = $value->fileId;
+            $link = $value->link;
 //            $file = Files::GetFile($fileId);
-            $carouselImages[$sequence] = $fileId;
+            $carouselImages[$sequence] = (object)compact('fileId', 'link');
 
         }
         ksort($carouselImages);
