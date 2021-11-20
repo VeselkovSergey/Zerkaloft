@@ -95,6 +95,9 @@
 
         <main class="m-25">@yield('content')</main>
 
+        <footer>@include('layouts.footer')</footer>
+
+
         <script>
             const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
         </script>

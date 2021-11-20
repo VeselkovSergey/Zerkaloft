@@ -1,12 +1,12 @@
-<div style=" padding-top: 10px; background-color: #f4f4f4/*#ec407a*/; display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center;">
+<div class="bg-violet flex-space-between py-10" style="justify-content: space-evenly;">
 
-    <div style="/*width: 33.33%;*/ /*padding-left: 25%;*/">
-        <a href="{{route('about-page')}}" style="display: block;">О нас</a>
-        <a href="{{route('contacts-page')}}" style="display: block;">Контакты</a>
-    </div>
+{{--    <div style="/*width: 33.33%;*/ /*padding-left: 25%;*/">--}}
+{{--        <a href="{{route('about-page')}}" style="display: block;">О нас</a>--}}
+{{--        <a href="{{route('contacts-page')}}" style="display: block;">Контакты</a>--}}
+{{--    </div>--}}
 
-    <div style="/*margin:auto;*/ display: flex; justify-content: center; align-items: center;">
-        <div style="padding: 8px;">
+    <div class="flex-center">
+        <div class="mr-10">
             <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>.cls-vk-1 {
@@ -25,7 +25,7 @@
                 </g>
             </svg>
         </div>
-        <div style="padding: 8px;">
+        <div>
             <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <style>.cls-inst-1 {
@@ -59,7 +59,12 @@
         </div>
     </div>
 
-    <div style="/*width: 33.33%;*/ display: flex; justify-content: center; align-items: center;">
+
+    <div class="color-white">
+        © 2021 Victoria CORP.
+    </div>
+
+    <div class="flex-center">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" viewBox="0 0 48 32" fill="none">
                 <g opacity="0.75">
@@ -87,10 +92,6 @@
                 </g>
             </svg>
         </div>
-    </div>
-
-    <div style="width: 100%; text-align: center;">
-        © 2021 Victoria CORP.
     </div>
 
 </div>
