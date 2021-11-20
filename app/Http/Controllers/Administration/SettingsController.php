@@ -144,57 +144,102 @@ class SettingsController extends Controller
     public function AllTextsPage()
     {
         return view('administration.settings.texts.index', [
-            'calculatorPageText' => self::CalculatorPageText(),
-            'onlineOrderPageText' => self::OnlineOrderText(),
-            'fastOrderPageText' => self::FastOrderText(),
+            'calculatorPageInfo' => self::CalculatorPageInfo(),
+            'onlineOrderPageInfo' => self::OnlineOrderInfo(),
+            'fastOrderPageInfo' => self::FastOrderInfo(),
         ]);
     }
 
-    public static function CalculatorPageText()
+    public static function CalculatorPageInfo()
     {
         $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
-        return json_decode($calculatorPageText->value)->text;
+        return json_decode($calculatorPageText->value);
     }
 
-    public function SaveCalculatorText(Request $request)
+    public function SaveCalculatorInfo(Request $request)
     {
         $calculatorText = $request->calculatorText;
+        $carouselImages = !empty($request->allFiles()) ? $request->allFiles() : null;
         $calculatorPageText = Settings::where('type', Settings::TypeByWords['calculatorPageText'])->first();
+
+        $fileId = -1;
+        if (!empty($carouselImages)) {
+            foreach ($carouselImages as $calculatorImage) {
+                if (in_array($calculatorImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($calculatorImage, $this->storagePath, $this->storageDriver);
+                    $fileId = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
         $calculatorPageText->update([
-            'value' => json_encode(['text' => $calculatorText])
+            'value' => json_encode(['text' => $calculatorText, 'imageFileId' => $fileId])
         ]);
+
         return ResultGenerate::Success();
     }
 
-    public static function OnlineOrderText()
+    public static function OnlineOrderInfo()
     {
         $onlineOrderPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
-        return json_decode($onlineOrderPageText->value)->text;
+        return json_decode($onlineOrderPageText->value);
     }
 
-    public function SaveOnlineOrderText(Request $request)
+    public function SaveOnlineOrderInfo(Request $request)
     {
         $onlineOrderText = $request->onlineOrderText;
+        $onlineOrderImages = !empty($request->allFiles()) ? $request->allFiles() : null;
         $onlineOrderPageText = Settings::where('type', Settings::TypeByWords['onlineOrderPageText'])->first();
+
+        $fileId = -1;
+        if (!empty($onlineOrderImages)) {
+            foreach ($onlineOrderImages as $onlineOrderImage) {
+                if (in_array($onlineOrderImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($onlineOrderImage, $this->storagePath, $this->storageDriver);
+                    $fileId = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
         $onlineOrderPageText->update([
-            'value' => json_encode(['text' => $onlineOrderText])
+            'value' => json_encode(['text' => $onlineOrderText, 'imageFileId' => $fileId])
         ]);
+
         return ResultGenerate::Success();
     }
 
-    public static function FastOrderText()
+    public static function FastOrderInfo()
     {
         $fastOrderPageText = Settings::where('type', Settings::TypeByWords['fastOrderPageText'])->first();
-        return json_decode($fastOrderPageText->value)->text;
+        return json_decode($fastOrderPageText->value);
     }
 
-    public function SaveFastOrderText(Request $request)
+    public function SaveFastOrderInfo(Request $request)
     {
         $fastOrderText = $request->fastOrderText;
+        $fastOrderImages = !empty($request->allFiles()) ? $request->allFiles() : null;
         $fastOrderPageText = Settings::where('type', Settings::TypeByWords['fastOrderPageText'])->first();
+
+        $fileId = -1;
+        if (!empty($fastOrderImages)) {
+            foreach ($fastOrderImages as $fastOrderImage) {
+                if (in_array($fastOrderImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($fastOrderImage, $this->storagePath, $this->storageDriver);
+                    $fileId = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
         $fastOrderPageText->update([
-            'value' => json_encode(['text' => $fastOrderText])
+            'value' => json_encode(['text' => $fastOrderText, 'imageFileId' => $fileId])
         ]);
+
         return ResultGenerate::Success();
     }
 }

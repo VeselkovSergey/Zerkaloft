@@ -212,13 +212,13 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/', [Controllers\Administration\SettingsController::class, 'AllTextsPage'])
                 ->name('texts');
 
-            Route::post('/save-calculator-text', [Controllers\Administration\SettingsController::class, 'SaveCalculatorText'])
+            Route::post('/save-calculator-text', [Controllers\Administration\SettingsController::class, 'SaveCalculatorInfo'])
                 ->name('save-calculator-text');
 
-            Route::post('/save-online-order-text', [Controllers\Administration\SettingsController::class, 'SaveOnlineOrderText'])
+            Route::post('/save-online-order-text', [Controllers\Administration\SettingsController::class, 'SaveOnlineOrderInfo'])
                 ->name('save-online-order-text');
 
-            Route::post('/save-fast-order-text', [Controllers\Administration\SettingsController::class, 'SaveFastOrderText'])
+            Route::post('/save-fast-order-text', [Controllers\Administration\SettingsController::class, 'SaveFastOrderInfo'])
                 ->name('save-fast-order-text');
 
         });

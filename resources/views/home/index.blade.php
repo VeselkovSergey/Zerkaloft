@@ -38,7 +38,7 @@
         @else
 
         <div class="font-semibold text-center">
-            {{\App\Http\Controllers\Administration\SettingsController::OnlineOrderText()}}
+            {{\App\Http\Controllers\Administration\SettingsController::OnlineOrderInfo()->text}}
         </div>
 
         @endif

@@ -6,7 +6,12 @@
 
         <div class="p-10 w-100">
             <label for="calculatorText">Текст для онлайн калькулятора</label>
-            <textarea class="w-100" name="calculatorText" id="calculatorText">{{$calculatorPageText}}</textarea>
+            <textarea class="w-100" name="calculatorText" id="calculatorText">{{$calculatorPageInfo->text}}</textarea>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="calculatorImage">Картинка для калькулятора</label>
+            <input type="file" name="calculatorImage" id="calculatorImage">
         </div>
 
         <div class="p-5">
@@ -19,7 +24,12 @@
 
         <div class="p-10 w-100">
             <label for="onlineOrderText">Текст для онлайн заказа</label>
-            <textarea class="w-100" name="onlineOrderText" id="onlineOrderText">{{$onlineOrderPageText}}</textarea>
+            <textarea class="w-100" name="onlineOrderText" id="onlineOrderText">{{$onlineOrderPageInfo->text}}</textarea>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="onlineOrderImage">Картинка для онлайн заказа</label>
+            <input type="file" name="onlineOrderImage" id="onlineOrderImage">
         </div>
 
         <div class="p-5">
@@ -32,7 +42,12 @@
 
         <div class="p-10 w-100">
             <label for="fastOrderText">Текст для быстрого оформления</label>
-            <textarea class="w-100" name="fastOrderText" id="fastOrderText">{{$fastOrderPageText}}</textarea>
+            <textarea class="w-100" name="fastOrderText" id="fastOrderText">{{$fastOrderPageInfo->text}}</textarea>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="fastOrderImage">Картинка для быстрого оформления</label>
+            <input type="file" name="fastOrderImage" id="fastOrderImage">
         </div>
 
         <div class="p-5">

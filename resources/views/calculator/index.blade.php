@@ -2,6 +2,17 @@
 
 @section('content')
 
+    @php
+        $info = \App\Http\Controllers\Administration\SettingsController::CalculatorPageInfo();
+        $text = $info->text;
+        $fileId = $info->imageFileId;
+        if(isset($fastOrder) && $fastOrder === true) {
+            $info = \App\Http\Controllers\Administration\SettingsController::FastOrderInfo();
+            $text = $info->text;
+            $fileId = $info->imageFileId;
+        }
+    @endphp
+
     <div class="container-calculator flex-wrap">
         <div class="p-25">
             <div class="container-categories">
@@ -9,11 +20,17 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        @if(isset($fastOrder) && $fastOrder === true)
-            <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::FastOrderText()}}</div>
-        @else
-            <div class="container-found-product p-25">{{\App\Http\Controllers\Administration\SettingsController::CalculatorPageText()}}</div>
-        @endif
+        <div class="container-found-product p-25 w-75">
+            <div class="flex">
+                <div class="w-50">
+                    {{$text}}
+                </div>
+                @if($fileId !== -1)
+                    <img class="product-img-in-calculator" style="width: 50%" src="{{route('files', $fileId)}}" alt="">
+                @endif
+            </div>
+        </div>
+
     </div>
 
 @stop
@@ -26,17 +43,17 @@
         selectorCategories.classList.add('p-5');
         selectorCategories.classList.add('border-radius-5');
 
-        let containerCategories = document.body.querySelector('.container-categories').append(selectorCategories);
+        /*let containerCategories = */document.body.querySelector('.container-categories').append(selectorCategories);
         let containerCategoriesProperties = document.body.querySelector('.container-categories-properties');
         let containerFoundProduct = document.body.querySelector('.container-found-product');
 
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
-            containerFoundProduct.innerHTML = 'Здесь можно сделать свой выбор';
+            containerFoundProduct.innerHTML = '<div class="flex"> <div class="w-50"> {{$text}} </div> @if($fileId !== -1) <img class="product-img-in-calculator" style="width: 50%" src="{{route('files', $fileId)}}" alt=""> @endif </div>';
             let select = event.target;
             let categoryId = select.value;
-            if (categoryId != 0) {
+            if (parseInt(categoryId) !== 0) {
                 Ajax("{{route('category-properties')}}", 'post', {categoryId: categoryId}).then((response) => {
                     if (response.status === true) {
                         let obj = response.result;
@@ -46,12 +63,12 @@
                             propertySelector.classList.add('p-5');
                             propertySelector.classList.add('border-radius-5');
 
-                            propertySelector.addEventListener('change', (event) => {
+                            propertySelector.addEventListener('change', () => {
                                 let modification = [];
                                 let allSelected = true;
                                 containerCategoriesProperties.querySelectorAll('select').forEach((property) => {
                                     modification.push(property.value)
-                                    if (property.value == 0) {
+                                    if (parseInt(property.value) === 0) {
                                         allSelected = false;
                                     }
                                 });
@@ -93,7 +110,7 @@
                                             content: options
                                         });
                                         containerFoundProduct.append(selectorPrices);
-                                        let addInBasketButton = CreateElement('button', {
+                                        /*let addInBasketButton = */CreateElement('button', {
                                             attr: {
                                                 class: 'button-blue mt-5',
                                             },
