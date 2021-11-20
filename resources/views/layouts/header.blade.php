@@ -5,11 +5,6 @@
 
 <div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
-{{--        <img width="100" src="{{url('img/logo.jpeg')}}" alt="logo">--}}
-{{--        <div class="flex-column-center ml-10">--}}
-{{--            <div class="font-semibold" style="font-size: 3em;">Victoria</div>--}}
-{{--            <div class="font-semibold" >Рекламное агенство</div>--}}
-{{--        </div>--}}
         <img width="200" src="{{url('icon/logo_rus.svg')}}" alt="logo">
     </a>
 </div>
