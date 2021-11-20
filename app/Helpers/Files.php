@@ -52,7 +52,11 @@ class Files
         $file = FilesDB::find($request->file_id);
         if ($file) {
             $filePath = Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name);
-            return response($filePath)->header('Content-type', $file->type);
+            $response = response($filePath);
+            $response->header('Content-type', $file->type);
+            $response->header('Cache-Control', 'public');
+            $response->header('Cache-Control', 'max-age=86400');
+            return $response;
         }
         return abort(404);
     }

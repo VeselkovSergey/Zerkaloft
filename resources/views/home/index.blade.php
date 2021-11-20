@@ -44,7 +44,27 @@
         @endif
 
         <div class="flex-wrap-center w-100">
-            @foreach(\App\Models\Categories::all() as $category)
+
+            @foreach(\App\Models\Products::where('show_main_page', 1)->get() as $product)
+
+                <div class="category-cart-main-page p-25">
+                    <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
+                        <a href="{{$product->Link()}}">
+                            @foreach(unserialize($product->img) as $img)
+                                <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
+                            @endforeach
+                            <div class="shadow-text w-100 h-100 flex-center border-radius-15 pos-abs top-0">
+                                <div class="color-white text-center" style="font-size: 24px;">
+                                    {{$product->title}}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            @endforeach
+
+            @foreach(\App\Models\Categories::orderBy('sequence')->get() as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
@@ -53,8 +73,8 @@
                         <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
                             <a href="{{route('category', $category->semantic_url)}}">
                                 <img class="category-img-main" src="{{route('files', $img)}}" alt="Изображение {{$category->title}}">
-                                <div class="shadow-text pos-abs top-0 w-100 h-100 flex-center border-radius-15" style="background-color: rgba(0, 0, 0, 0.2);">
-                                    <div style="color: white; font-size: 40px;">
+                                <div class="shadow-text pos-abs top-0 w-100 h-100 flex-center border-radius-15">
+                                    <div class="color-white text-center" style="font-size: 24px;">
                                         {{$category->title}}
                                     </div>
                                 </div>
@@ -66,16 +86,9 @@
                 @endforeach
 
             @endforeach
-{{--            @for($i = 0; $i < 10; $i++)--}}
-{{--                <div class="smooth-block" style="width: 48%; margin: 1%; /*border: 1px solid black;*/ border-radius: 15px; box-shadow: 0 0 10px rgb(0 0 0 / 75%);">--}}
-{{--                    <img style="width: 100%; height: 350px; border-radius: 15px;" src="img.jpg" alt="">--}}
-{{--                </div>--}}
-{{--            @endfor--}}
         </div>
 
     </div>
-
-
 
 @stop
 

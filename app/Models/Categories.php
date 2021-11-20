@@ -20,11 +20,17 @@ class Categories extends Model
         'semantic_url',
         'additional_links',
         'search_words',
+        'sequence',
     ];
 
     public function Products()
     {
         return $this->hasMany(Products::class, 'category_id', 'id');
+    }
+
+    public function ProductsByNotOnlyInCalculator()
+    {
+        return $this->hasMany(Products::class, 'category_id', 'id')->where('not_only_calculator', 1);
     }
 
     public function Properties()

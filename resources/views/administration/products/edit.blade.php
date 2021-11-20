@@ -26,6 +26,42 @@
                         </label>
                     </div>
 
+                    <div class="p-10 w-100 flex">
+                        <label class="block">
+                            Активный для просмотра в каталоге
+                            <input name="not_only_calculator" type="checkbox" {{$combination->productModification ? $combination->productModification->not_only_calculator ? 'checked' : '' : ''}}>
+                        </label>
+                    </div>
+
+                    <div class="p-10 w-100 flex">
+                        <label class="block">
+                            Показывать на главной странице
+                            <input name="show_main_page" type="checkbox" {{$combination->productModification ? $combination->productModification->show_main_page ? 'checked' : '' : ''}}>
+                        </label>
+                    </div>
+
+                    <div>
+
+                        @foreach($allAdditionalServices as $allAdditionalService)
+                            <input class="hide" name="additional_service_id[]" type="text" value="{{$allAdditionalService->id}}">
+                            <div class="flex">
+                                <div class="p-5">
+                                    <label class="block">
+                                        {{$allAdditionalService->title}}
+                                        <input name="additional_service_activation[]" type="checkbox" {{isset($combination->existAdditionalServices) ? isset($combination->existAdditionalServices[$allAdditionalService->id]) ? 'checked' : '' : ''}}
+                                            >
+                                    </label>
+                                </div>
+                                <div class="p-5 flex">
+                                    <label class="block">
+                                        <input name="additional_service_price[]" type="text" placeholder="цена" value="{{isset($combination->existAdditionalServices) ? isset($combination->existAdditionalServices[$allAdditionalService->id]) ? $combination->existAdditionalServices[$allAdditionalService->id]->price : '' : ''}}">
+                                    </label>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+
                     <div class="hide">
                         <label for="category_id" class="block w-100">Абстрактный продукт</label>
                         <input id="category_id" type="text" class="w-100" value="{{$product->id}}">

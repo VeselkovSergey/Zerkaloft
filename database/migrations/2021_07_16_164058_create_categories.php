@@ -20,6 +20,7 @@ class CreateCategories extends Migration
             $table->string('semantic_url')->comment('Семантический URL');
             $table->longText('additional_links')->comment('Дополнительные ссылки');
             $table->longText('search_words')->comment('Слова для поиска');
+            $table->integer('sequence')->comment('Очередность');
             $table->timestamps();
         });
     }

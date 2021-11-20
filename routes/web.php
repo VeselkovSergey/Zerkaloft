@@ -144,6 +144,24 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('delete-category-admin');
     });
 
+    Route::group(['prefix' => 'additional-services'], function () {
+
+        Route::get('/', [Controllers\AdditionalServices\AdditionalServicesController::class, 'AdditionalServicesAdminPage'])
+            ->name('additional-services-admin-page');
+
+        Route::get('/create', [Controllers\AdditionalServices\AdditionalServicesController::class, 'CreateAdditionalServiceAdminPage'])
+            ->name('create-additional-service-page');
+
+        Route::get('/edit/{additional_service_id}', [Controllers\AdditionalServices\AdditionalServicesController::class, 'EditAdditionalServiceAdminPage'])
+            ->name('edit-additional-service-page');
+
+        Route::post('/save', [Controllers\AdditionalServices\AdditionalServicesController::class, 'SaveAdditionalService'])
+            ->name('save-additional-service-admin');
+
+        Route::post('/delete', [Controllers\AdditionalServices\AdditionalServicesController::class, 'DeleteAdditionalServices'])
+            ->name('delete-additional-service-admin');
+    });
+
     Route::group(['prefix' => 'products'], function () {
 
         Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])

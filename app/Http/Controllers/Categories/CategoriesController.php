@@ -56,6 +56,7 @@ class CategoriesController extends Controller
         $categoryName = !empty($request->category_name) ? $request->category_name : null;
         $categoryAdditionalLinks = !empty($request->additional_links) ? $request->additional_links : null;
         $categorySearchWords = !empty($request->search_words) ? $request->search_words : null;
+        $categorySequence = !empty($request->sequence) ? $request->sequence : null;
         $categoryFiles = !empty($request->allFiles()) ? $request->allFiles() : null;
         $usedProperties = !empty($request->usedProperties) ? $request->usedProperties : null;
 
@@ -69,6 +70,10 @@ class CategoriesController extends Controller
 
         if (!$categorySearchWords) {
             return ResultGenerate::Error('Ошибка! Заполните слова для поиска!');
+        }
+
+        if (!$categorySequence) {
+            return ResultGenerate::Error('Ошибка! Заполните очередность!');
         }
 
         if (!$categoryID) {
@@ -117,6 +122,7 @@ class CategoriesController extends Controller
         $fields['semantic_url'] = $semanticURL;
         $fields['additional_links'] = $categoryAdditionalLinks;
         $fields['search_words'] = $categorySearchWords;
+        $fields['sequence'] = $categorySequence;
 
         if ($categoryID) {
             $foundCategory = Categories::find($categoryID);
@@ -168,11 +174,11 @@ class CategoriesController extends Controller
     public function CategoryPage(Request $request)
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $products = $category->Products;
+        $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
         $categoryAdditionalLinks = explode(';', $category->additional_links);
         return view('catalog.category', [
             'category' => $category,
-            'products' => $products,
+            'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,
             'categoryAdditionalLinks' => $categoryAdditionalLinks
         ]);
     }

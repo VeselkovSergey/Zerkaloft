@@ -23,6 +23,8 @@ class CreateProducts extends Migration
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
             $table->integer('active')->comment('Активный ли продукт');
+            $table->integer('not_only_calculator')->comment('Не только для калькулятора');
+            $table->integer('show_main_page')->comment('Показывать на главной странице');
             $table->timestamps();
         });
     }

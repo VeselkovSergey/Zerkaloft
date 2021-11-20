@@ -126,6 +126,7 @@ textarea {
 .smooth-block > a > .shadow-text {
     opacity: 0;
     transition: opacity .3s;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .smooth-block:hover > a > .shadow-text {
@@ -236,6 +237,10 @@ textarea {
 
 .color-blue {
     color: #00acec;
+}
+
+.bg-blue {
+    background-color: #00acec;
 }
 
 .color-pink {

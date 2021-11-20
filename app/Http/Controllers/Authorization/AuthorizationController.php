@@ -115,7 +115,7 @@ class AuthorizationController
         $fields['surname'] = $surname;
         $fields['name'] = $name;
         $fields['patronymic'] = $patronymic;
-        $fields['phone'] = $phone;
+        $fields['phone'] = preg_replace("/[^0-9]/", '', $phone);
         $userPhysical = UserPhysicals::create($fields);
 
         #toDo Отправить письмо на почту
