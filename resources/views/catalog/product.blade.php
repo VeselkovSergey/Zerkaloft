@@ -68,7 +68,11 @@
             let productFullInformation = product;
             changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
             if (!productAdded) {
-                buttonAddInBasket.innerHTML = '+1 в корзину';
+                @if($product->show_add_more)
+                    buttonAddInBasket.innerHTML = '+1 в корзину';
+                @else
+                    buttonAddInBasket.hide();
+                @endif
                 buttonLinkBasketPage.show()
             }
         });

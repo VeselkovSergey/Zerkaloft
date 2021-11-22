@@ -40,6 +40,13 @@
                         </label>
                     </div>
 
+                    <div class="p-10 w-100 flex">
+                        <label class="block">
+                            Показывать кнопку добавить +1 в корзину
+                            <input name="show_add_more" type="checkbox" {{$combination->productModification ? $combination->productModification->show_add_more ? 'checked' : '' : ''}}>
+                        </label>
+                    </div>
+
                     <div>
 
                         @foreach($allAdditionalServices as $allAdditionalService)

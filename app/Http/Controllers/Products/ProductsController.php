@@ -148,6 +148,7 @@ class ProductsController
         $productActive = !empty($request->active) ? $request->active : null;
         $productNotOnlyCalculator = !empty($request->not_only_calculator) ? $request->not_only_calculator : null;
         $productShowMainPage = !empty($request->show_main_page) ? $request->show_main_page : null;
+        $productShowAddMore = !empty($request->show_add_more) ? $request->show_add_more : null;
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
@@ -220,6 +221,7 @@ class ProductsController
         $fields['active'] = $productActive === 'true' ? 1 : 0;
         $fields['not_only_calculator'] = $productNotOnlyCalculator === 'true' ? 1 : 0;
         $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
+        $fields['show_add_more'] = $productShowAddMore === 'true' ? 1 : 0;
 
         if ($productID) {
             $productFind = Products::find($productID);

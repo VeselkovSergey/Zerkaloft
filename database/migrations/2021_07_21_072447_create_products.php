@@ -25,6 +25,7 @@ class CreateProducts extends Migration
             $table->integer('active')->comment('Активный ли продукт');
             $table->integer('not_only_calculator')->comment('Не только для калькулятора');
             $table->integer('show_main_page')->comment('Показывать на главной странице');
+            $table->integer('show_add_more')->comment('Показывать кнопку добавить еще в корзину');
             $table->timestamps();
         });
     }

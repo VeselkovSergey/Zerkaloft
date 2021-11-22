@@ -26,6 +26,7 @@ class Products extends Model
         'active',
         'not_only_calculator',
         'show_main_page',
+        'show_add_more',
     ];
 
     public function Category()
