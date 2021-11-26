@@ -1,10 +1,5 @@
 <div class="bg-violet flex-space-between py-10" style="justify-content: space-evenly;">
 
-{{--    <div style="/*width: 33.33%;*/ /*padding-left: 25%;*/">--}}
-{{--        <a href="{{route('about-page')}}" style="display: block;">О нас</a>--}}
-{{--        <a href="{{route('contacts-page')}}" style="display: block;">Контакты</a>--}}
-{{--    </div>--}}
-
     <div class="flex-center">
         <div class="mr-10">
             <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
