@@ -7,6 +7,7 @@ use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Authorization\AuthorizationController;
+use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\FilesOrders;
 use App\Models\Orders;
 use App\Models\Products;
@@ -95,6 +96,7 @@ class OrdersController
         $fields['type_payment'] = $clientTypePayment;
         $fields['type_delivery'] = $clientTypeDelivery;
         $fields['delivery_address'] = $clientDeliveryAddress;
+        $fields['deadline'] = date('Y-m-d', time());
 
         $createdOrder = Orders::create($fields);
 
@@ -173,21 +175,26 @@ class OrdersController
         $filesOrder = $order->Files;
         $productsPricesId = [];
         $dataProductsInOrder = [];
+        $additionalServices = [];
         foreach ($productsInOrder as $productId => $productPrices) {
             foreach ($productPrices as $productPriceId => $productPrice) {
                 $productsPriceId = $productPrice->productPriceId;
                 $productsPricesId[] = $productsPriceId;
                 $dataProductsInOrder[$productsPriceId] = $productPrice;
+
+                $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice->additionalServices)->get();
+
             }
         }
 
         $allProductsInOrder = ProductsPrices::whereIn('id', $productsPricesId)->get();
-        return view('management.orders.order', [
-            'order' => $order,
-            'allProductsInOrder' => $allProductsInOrder,
-            'dataProductsInOrder' => $dataProductsInOrder,
-            'filesOrder' => $filesOrder,
-        ]);
+        return view('management.orders.order', compact(
+            'order',
+            'allProductsInOrder',
+            'dataProductsInOrder',
+            'filesOrder',
+            'additionalServices',
+        ));
     }
 
     public function ChangeOrderProperties(Request $request)

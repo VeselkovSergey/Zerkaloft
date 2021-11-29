@@ -24,7 +24,8 @@ class Orders extends Model
         'payment_status',
         'type_delivery',
         'order_status',
-        'delivery_address'
+        'delivery_address',
+        'deadline',
     ];
 
     const DeliveryType = [

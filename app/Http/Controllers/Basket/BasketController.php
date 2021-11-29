@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Basket;
 
 use App\Helpers\ArrayHelper;
 use App\Helpers\ResultGenerate;
+use App\Models\AdditionalServices\AdditionalProductServices;
+use App\Models\AdditionalServices\AdditionalServices;
 use App\Models\Products;
 use App\Models\ProductsPrices;
 use Illuminate\Http\Request;
@@ -19,12 +21,15 @@ class BasketController
         $productsInBasket = ArrayHelper::ObjectToArray($productsInBasket);
 
         $allProductsInBasket = [];
+        $additionalServices = [];
         if (!empty($productsInBasket)) {
             $idProductsInBasket = [];
             $idProductPricesInBasket = [];
             foreach ($productsInBasket as $productId => $productPrices) {
                 foreach ($productPrices as $productPriceId => $productPrice) {
                     $idProductPricesInBasket[] = preg_replace("/[^0-9]/", '', $productPriceId);
+
+                    $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice['additionalServices'])->get();
                 }
                 $idProductsInBasket[] = preg_replace("/[^0-9]/", '', $productId);
             }
@@ -36,10 +41,11 @@ class BasketController
                 ->get();
         }
 
-        return view('basket.index', [
-            'allProductsInBasket' => $allProductsInBasket,
-            'productsInBasket' => $productsInBasket,
-        ]);
+        return view('basket.index', compact(
+            'allProductsInBasket',
+            'productsInBasket',
+            'additionalServices')
+        );
     }
 
     public function UpdateCountProducts(Request $request)

@@ -86,7 +86,7 @@
 
             @foreach($allProductsInOrder as $key => $productPrice)
 
-                <div style="display: flex; width: 100%; padding: 25px; border-bottom: 1px solid grey; height: 200px; align-items: center;"
+                <div style="display: flex; width: 100%; padding: 25px; height: 200px; align-items: center;"
                      data-product-container="{{$productPrice->id}}">
 
                     <div style="padding-right: 30px;">
@@ -146,6 +146,16 @@
 
                     </div>
 
+                </div>
+
+                <div class="w-100" style="border-bottom: 1px solid grey;">
+                    @foreach($additionalServices[$productPrice->Product->id] as $additionalService)
+
+                        <div class="flex">
+                            <div>{{$additionalService->AdditionalServices->title}} - {{$additionalService->price}}</div>
+                        </div>
+
+                    @endforeach
                 </div>
 
             @endforeach

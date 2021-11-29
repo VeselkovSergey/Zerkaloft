@@ -48,4 +48,9 @@ class Products extends Model
     {
         return $this->belongsToMany(AdditionalServices::class, 'additional_product_services', 'product_id', 'additional_service_id');
     }
+
+    public function AdditionalServicesPrice()
+    {
+        return $this->hasMany(AdditionalProductServices::class, 'product_id', 'id');
+    }
 }

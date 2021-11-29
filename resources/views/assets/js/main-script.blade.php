@@ -202,9 +202,11 @@
 
     function changeCountProductInBasket(product, typeChange, countProduct) {
 
+
         let productId = product.productId;
         let productPriceId = product.productPriceId;
         let productFullInformation = product.productFullInformation;
+        let additionalServices = product.additionalServicesSelection;
 
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
@@ -222,6 +224,7 @@
                     productId: productId,
                     productPriceId: productPriceId,
                     productFullInformation: productFullInformation,
+                    additionalServices: additionalServices,
                 };
             } else {
                 if (localStorageBasket[productId][productPriceId] === undefined) {
@@ -230,6 +233,7 @@
                         productId: productId,
                         productPriceId: productPriceId,
                         productFullInformation: productFullInformation,
+                        additionalServices: additionalServices,
                     };
                 } else {
                     localStorageBasket[productId][productPriceId]['count'] = localStorageBasket[productId][productPriceId]['count'] + 1;

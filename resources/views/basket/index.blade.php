@@ -47,6 +47,16 @@
 {{--                                            <div>{{$product->count . ' ' . $product->price}}</div>--}}
                                         </div>
 
+                                        <div class="mb-10">
+                                            @foreach($additionalServices[$product->id] as $additionalService)
+
+                                                <div class="flex">
+                                                    <div>{{$additionalService->AdditionalServices->title}} - {{$additionalService->price}}</div>
+                                                </div>
+
+                                            @endforeach
+                                        </div>
+
                                         <div class="flex m-10 container-amount">
                                             <button class="button-delete-product-in-basket cp clear-button"
                                                     data-product-id="{{$product->id}}"

@@ -21,7 +21,7 @@
             </div>
 
             <div class="px-25">
-                <select name="price" class="need-validate w-100 p-5 border-radius-5" id="price">
+                <select name="price" class="need-validate w-100 p-5 border-radius-5 mb-10" id="price">
                     @if(sizeof($product->Prices))
                         @php($tempProductPrice = [])
                         @foreach($product->Prices as $productPrice)
@@ -33,6 +33,15 @@
                         <option disabled>Нет цен</option>
                     @endif
                 </select>
+
+                <div class="additional-services-container">
+                    @foreach($product->AdditionalServicesPrice as $additionalServicePrice)
+                        <label for="">
+                            <input type="checkbox" name="additionalService[]" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}">
+                            {{$additionalServicePrice->AdditionalServices->title}} - {{$additionalServicePrice->price}}
+                        </label>
+                    @endforeach
+                </div>
 
                 <div class="mt-20 flex">
                     <button class="button-add-in-basket p-5 mr-10">Добавить в корзину</button>
@@ -57,16 +66,24 @@
 
         const product = JSON.parse('@json($product->getAttributes(), JSON_UNESCAPED_UNICODE)');
 
-        console.log(product)
-
         let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
         let buttonLinkBasketPage = document.body.querySelector('.button-link-basket-page')
         buttonAddInBasket.addEventListener('click', (e) => {
+
             let productId = product.id;
             let productPriceId = document.body.querySelector('#price').value;
             let productFullInformation = product;
-            changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
+
+            let additionalServicesSelection = [];
+            let additionalServices = document.body.querySelectorAll('.additional-services-container input');
+            additionalServices.forEach((additionalService) => {
+                if (additionalService.checked) {
+                    additionalServicesSelection.push(additionalService.dataset.additionalServiceId);
+                }
+            });
+
+            changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation, additionalServicesSelection: additionalServicesSelection});
             if (!productAdded) {
                 @if($product->show_add_more)
                     buttonAddInBasket.innerHTML = '+1 в корзину';

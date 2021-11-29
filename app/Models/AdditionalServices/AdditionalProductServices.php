@@ -17,4 +17,9 @@ class AdditionalProductServices extends Model
         'product_id',
         'price',
     ];
+
+    public function AdditionalServices()
+    {
+        return $this->hasOne(AdditionalServices::class, 'id', 'additional_service_id');
+    }
 }

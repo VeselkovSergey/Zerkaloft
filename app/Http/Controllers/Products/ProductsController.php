@@ -274,7 +274,7 @@ class ProductsController
                         $fieldsPrices['product_id'] = $productID;
                         $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
                         $fieldsPrices['additional_service_id'] = $productAdditionalService;
-                        ProductsPrices::create($fieldsPrices);
+                        AdditionalProductServices::create($fieldsPrices);
                     }
                 }
 
