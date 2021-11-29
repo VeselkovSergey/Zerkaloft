@@ -182,7 +182,7 @@ class OrdersController
                 $productsPricesId[] = $productsPriceId;
                 $dataProductsInOrder[$productsPriceId] = $productPrice;
 
-                $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice->additionalServices)->get();
+                $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice->additionalServices)->where('product_id', $productId)->get();
 
             }
         }
