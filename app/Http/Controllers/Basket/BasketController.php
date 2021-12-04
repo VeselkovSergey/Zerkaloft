@@ -29,7 +29,9 @@ class BasketController
                 foreach ($productPrices as $productPriceId => $productPrice) {
                     $idProductPricesInBasket[] = preg_replace("/[^0-9]/", '', $productPriceId);
 
-                    $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice['additionalServices'])->where('product_id', $productId)->get();
+                    if (isset($productPrice['additionalServices'])) {
+                        $additionalServices[$productId] = AdditionalProductServices::whereIn('additional_service_id', $productPrice['additionalServices'])->where('product_id', $productId)->get();
+                    }
                 }
                 $idProductsInBasket[] = preg_replace("/[^0-9]/", '', $productId);
             }
