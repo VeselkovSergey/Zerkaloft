@@ -9,6 +9,11 @@
             <input class="need-validate" id="phone" name="phone" type="text"  value="{{$phone}}" style="width: 100%;">
         </div>
 
+        <div class="p-5 w-50">
+            <label for="additionalPhones" style="display: block; width: 100%;">Дополнительные телефоны</label>
+            <input class="need-validate" id="additionalPhones" name="additionalPhones" type="text"  value="{{$additionalPhones}}" style="width: 100%;">
+        </div>
+
         <div class="p-5">
             <button class="save-phone-button">Сохранить</button>
         </div>

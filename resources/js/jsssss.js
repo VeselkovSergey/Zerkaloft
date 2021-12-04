@@ -13,10 +13,26 @@ if (mainMenuShadow) {
     });
 }
 
-let mainMenuCloseButton = document.body.querySelector('.close-menu-button')
+let mainMenuCloseButton = document.body.querySelector('.close-menu-button');
 if (mainMenuCloseButton) {
     mainMenuCloseButton.addEventListener('click', () => {
         document.body.querySelector('.left-menu').showToggle();
+    });
+}
+
+let additionalPhonesButton = document.body.querySelector('.additional-phones');
+if (additionalPhonesButton) {
+    additionalPhonesButton.addEventListener('click', () => {
+        let additionalPhones = additionalPhonesButton.dataset.additionalPhones;
+        additionalPhones = additionalPhones.split(';');
+        let containerAdditionalPhones = CreateElement('div', {});
+        for (let i = 0; i < additionalPhones.length; i++) {
+            CreateElement('div', {
+                content: '<a class="text-center" style="text-decoration: none;" href="tel:' + additionalPhones[i] + '">' + additionalPhones[i] + '</a>',
+                class: 'mb-5'
+            }, containerAdditionalPhones);
+        }
+        ModalWindow(containerAdditionalPhones);
     });
 }
 
@@ -258,7 +274,7 @@ function startTrackingNumberInput() {
                     clearTimeout(timer);
                     timer = setTimeout(() => {
                         let rawPhone = phoneInput.value;
-                        let onlyNumber = rawPhone.replace(/[^0-9]/g,'');
+                        let onlyNumber = rawPhone.replace(/[^0-9]/g, '');
                         let formatPhone = '';
                         for (let i = 0; i < onlyNumber.length; i++) {
 

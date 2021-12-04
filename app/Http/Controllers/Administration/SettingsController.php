@@ -10,8 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -22,17 +20,26 @@ class SettingsController extends Controller
     {
         $phone = Settings::where('type', Settings::TypeByWords['mainPhone'])->first();
         $phone = json_decode($phone->value)->phone;
+
+        $additionalPhones = Settings::where('type', Settings::TypeByWords['additionalPhones'])->first();
+        $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
         return view('administration.settings.phone.index', [
-            'phone' => $phone
+            'phone' => $phone,
+            'additionalPhones' => $additionalPhones,
         ]);
     }
 
     public function SavePhone(Request $request)
     {
         $phone = $request->phone;
+        $additionalPhones = $request->additionalPhones;
 
         $savePhone = Settings::where('type', Settings::TypeByWords['mainPhone'])->update([
             'value' => json_encode(['phone' => $phone])
+        ]);
+
+        $savePhone = Settings::where('type', Settings::TypeByWords['additionalPhones'])->update([
+            'value' => json_encode(['additionalPhones' => $additionalPhones])
         ]);
 
         return ResultGenerate::Success();

@@ -22,6 +22,7 @@ class Settings extends Model
         3 => 'Текст для страницы калькулятора',
         4 => 'Текст для страницы онлайн заказа',
         5 => 'Текст для страницы быстрое оформление',
+        6 => 'Дополнительные телефоны',
     ];
 
     const TypeByWords = [
@@ -30,6 +31,7 @@ class Settings extends Model
         'calculatorPageText' => 3,
         'onlineOrderPageText' => 4,
         'fastOrderPageText' => 5,
+        'additionalPhones' => 6,
     ];
 
     public function TypeSetting()

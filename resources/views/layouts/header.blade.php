@@ -1,6 +1,9 @@
 @php
     $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();
     $phone = json_decode($phone->value)->phone;
+
+    $additionalPhones = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['additionalPhones'])->first();
+    $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
 @endphp
 
 <div class="logo-container flex-center mr-10">
@@ -36,7 +39,7 @@
 
 <div class="social-contact flex-column-center" style="justify-content: space-evenly;">
     <div class="flex-center social-contact-container">
-        <img class="mx-10" width="20" src="{{url('icon/phone.svg')}}" alt="">
+        <img class="mx-10 additional-phones" width="20" data-additional-phones="{{$additionalPhones}}" src="{{url('icon/phone.svg')}}" alt="">
         <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
         <img class="mx-10 hide viber" width="24" src="{{url('icon/viber.svg')}}" alt="">
         <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone=79999999999">
