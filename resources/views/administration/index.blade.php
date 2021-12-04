@@ -99,7 +99,7 @@
                         'link' => route('texts'),
                     ],
                     [
-                        'title' => 'Номер телефона',
+                        'title' => 'Номера телефонов',
                         'link' => route('edit-phone-page'),
                     ],
                 ],
