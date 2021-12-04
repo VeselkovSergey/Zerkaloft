@@ -50,6 +50,10 @@ class SettingsController extends Controller
     {
         $phone = $request->phone;
         $additionalPhones = $request->additionalPhones;
+        $viberPhone = $request->viberPhone;
+        $whatsappPhone = $request->whatsappPhone;
+        $telegramPhone = $request->telegramPhone;
+        $mail = $request->mail;
 
         $savePhone = Settings::where('type', Settings::TypeByWords['mainPhone'])->update([
             'value' => json_encode(['phone' => $phone])
@@ -60,19 +64,19 @@ class SettingsController extends Controller
         ]);
 
         $saveViberPhone = Settings::where('type', Settings::TypeByWords['viberPhone'])->update([
-            'value' => json_encode(['viberPhone' => $additionalPhones])
+            'value' => json_encode(['viberPhone' => $viberPhone])
         ]);
 
         $saveWhatsappPhone = Settings::where('type', Settings::TypeByWords['whatsappPhone'])->update([
-            'value' => json_encode(['whatsappPhone' => $additionalPhones])
+            'value' => json_encode(['whatsappPhone' => $whatsappPhone])
         ]);
 
         $saveTelegramPhone = Settings::where('type', Settings::TypeByWords['telegramPhone'])->update([
-            'value' => json_encode(['telegramPhone' => $additionalPhones])
+            'value' => json_encode(['telegramPhone' => $telegramPhone])
         ]);
 
         $saveMail = Settings::where('type', Settings::TypeByWords['mail'])->update([
-            'value' => json_encode(['mail' => $additionalPhones])
+            'value' => json_encode(['mail' => $mail])
         ]);
 
         return ResultGenerate::Success();
