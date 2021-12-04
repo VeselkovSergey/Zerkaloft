@@ -35,12 +35,16 @@
 </div>
 
 <div class="social-contact flex-column-center" style="justify-content: space-evenly;">
-    <div class="flex-center">
+    <div class="flex-center social-contact-container">
         <img class="mx-10" width="20" src="{{url('icon/phone.svg')}}" alt="">
         <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
-{{--        <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">--}}
-{{--        <a href="https://api.whatsapp.com/send/?phone=79999999999"><img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt=""></a>--}}
-{{--        <a href="https://tele.click/STigranS"><img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt=""></a>--}}
+        <img class="mx-10 hide viber" width="24" src="{{url('icon/viber.svg')}}" alt="">
+        <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone=79999999999">
+            <img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt="">
+        </a>
+        <a  class="mx-10 hide telegram" href="https://tele.click/STigranS">
+            <img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt="">
+        </a>
     </div>
     <div class="phone-container-header flex-center font-semibold">
         <a class="text-center" style="text-decoration: none;" href="tel:{{$phone}}">{{$phone}}</a>

@@ -77,7 +77,16 @@
     }
 
     .social-contact {
-        display: none;
+        position: absolute;
+        right: 0;
+        bottom: calc(-75vh);
+        .social-contact-container {
+            flex-direction: column;
+            > * {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
     }
 
     .menu {

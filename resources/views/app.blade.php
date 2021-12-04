@@ -19,7 +19,7 @@
 
         <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
 
-        <link href="{{asset('resources/css/adaptive.css')}}" rel="stylesheet">
+        <link href="{{asset('resources/css/adaptive.scss')}}" rel="stylesheet">
 
         <link href="{{asset('fonts/fonts.css')}}" rel="stylesheet">
 
