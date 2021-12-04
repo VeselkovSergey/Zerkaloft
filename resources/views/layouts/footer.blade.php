@@ -1,4 +1,4 @@
-<div class="bg-violet flex-space-between py-10" style="justify-content: space-evenly;">
+<div class="bg-violet flex-space-between py-10 px-10" style="justify-content: space-evenly;">
 
     <div class="flex-center">
         <div class="mr-10">
@@ -55,7 +55,7 @@
     </div>
 
 
-    <div class="color-white">
+    <div class="color-white text-center">
         © 2021 Victoria CORP.
     </div>
 
