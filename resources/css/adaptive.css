@@ -139,7 +139,7 @@
         width: 100%;
     }
 
-    .container-basket-and-profile {
+    .container-basket-and-profile .container-profile {
         display: none;
     }
 
