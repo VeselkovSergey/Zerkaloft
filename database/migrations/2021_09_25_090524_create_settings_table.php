@@ -32,6 +32,26 @@ class CreateSettingsTable extends Migration
         ]);
 
         \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['viberPhone'],
+            'value' => json_encode(['phone' => '79999999999'])
+        ]);
+
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['whatsappPhone'],
+            'value' => json_encode(['phone' => '79999999999'])
+        ]);
+
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['telegramPhone'],
+            'value' => json_encode(['phone' => '79999999999'])
+        ]);
+
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['mail'],
+            'value' => json_encode(['phone' => 'mail@mail.mail'])
+        ]);
+
+        \App\Models\Settings::create([
             'type' => Settings::TypeByWords['calculatorPageText'],
             'value' => json_encode(['text' => 'Текст для страницы калькулятора'])
         ]);

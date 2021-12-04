@@ -23,6 +23,10 @@ class Settings extends Model
         4 => 'Текст для страницы онлайн заказа',
         5 => 'Текст для страницы быстрое оформление',
         6 => 'Дополнительные телефоны',
+        7 => 'Номер viber',
+        8 => 'Номер whatsap',
+        9 => 'Номер telegram',
+        10 => 'Почта',
     ];
 
     const TypeByWords = [
@@ -32,6 +36,10 @@ class Settings extends Model
         'onlineOrderPageText' => 4,
         'fastOrderPageText' => 5,
         'additionalPhones' => 6,
+        'viberPhone' => 7,
+        'whatsappPhone' => 8,
+        'telegramPhone' => 9,
+        'mail' => 10,
     ];
 
     public function TypeSetting()

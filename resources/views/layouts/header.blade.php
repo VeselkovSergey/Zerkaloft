@@ -4,6 +4,18 @@
 
     $additionalPhones = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['additionalPhones'])->first();
     $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
+
+    $viberPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['viberPhone'])->first();
+    $viberPhone = json_decode($viberPhone->value)->viberPhone;
+
+    $whatsappPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['whatsappPhone'])->first();
+    $whatsappPhone = json_decode($whatsappPhone->value)->whatsappPhone;
+
+    $telegramPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['telegramPhone'])->first();
+    $telegramPhone = json_decode($telegramPhone->value)->telegramPhone;
+
+    $mail = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mail'])->first();
+    $mail = json_decode($mail->value)->mail;
 @endphp
 
 <div class="logo-container flex-center mr-10">
@@ -40,12 +52,16 @@
 <div class="social-contact flex-column-center" style="justify-content: space-evenly;">
     <div class="flex-center social-contact-container">
         <img class="mx-10 additional-phones" width="20" data-additional-phones="{{$additionalPhones}}" src="{{url('icon/phone.svg')}}" alt="">
-        <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
-        <img class="mx-10 hide viber" width="24" src="{{url('icon/viber.svg')}}" alt="">
-        <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone=79999999999">
+        <a class="mx-10" href="mailto:{{$mail}}?subject=Вопрос">
+            <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
+        </a>
+        <a class="mx-10 hide viber" href="viber://chat?number={{$viberPhone}}">
+            <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">
+        </a>
+        <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone={{$whatsappPhone}}">
             <img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt="">
         </a>
-        <a  class="mx-10 hide telegram" href="https://tele.click/STigranS">
+        <a  class="mx-10 hide telegram" href="https://tele.click/{{$telegramPhone}}">
             <img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt="">
         </a>
     </div>

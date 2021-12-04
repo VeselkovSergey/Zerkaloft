@@ -23,9 +23,26 @@ class SettingsController extends Controller
 
         $additionalPhones = Settings::where('type', Settings::TypeByWords['additionalPhones'])->first();
         $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
+
+        $viberPhone = Settings::where('type', Settings::TypeByWords['viberPhone'])->first();
+        $viberPhone = json_decode($viberPhone->value)->viberPhone;
+
+        $whatsappPhone = Settings::where('type', Settings::TypeByWords['whatsappPhone'])->first();
+        $whatsappPhone = json_decode($whatsappPhone->value)->whatsappPhone;
+
+        $telegramPhone = Settings::where('type', Settings::TypeByWords['telegramPhone'])->first();
+        $telegramPhone = json_decode($telegramPhone->value)->telegramPhone;
+
+        $mail = Settings::where('type', Settings::TypeByWords['mail'])->first();
+        $mail = json_decode($mail->value)->mail;
+
         return view('administration.settings.phone.index', [
             'phone' => $phone,
             'additionalPhones' => $additionalPhones,
+            'viberPhone' => $viberPhone,
+            'whatsappPhone' => $whatsappPhone,
+            'telegramPhone' => $telegramPhone,
+            'mail' => $mail,
         ]);
     }
 
@@ -38,8 +55,24 @@ class SettingsController extends Controller
             'value' => json_encode(['phone' => $phone])
         ]);
 
-        $savePhone = Settings::where('type', Settings::TypeByWords['additionalPhones'])->update([
+        $saveAdditionalPhones = Settings::where('type', Settings::TypeByWords['additionalPhones'])->update([
             'value' => json_encode(['additionalPhones' => $additionalPhones])
+        ]);
+
+        $saveViberPhone = Settings::where('type', Settings::TypeByWords['viberPhone'])->update([
+            'value' => json_encode(['viberPhone' => $additionalPhones])
+        ]);
+
+        $saveWhatsappPhone = Settings::where('type', Settings::TypeByWords['whatsappPhone'])->update([
+            'value' => json_encode(['whatsappPhone' => $additionalPhones])
+        ]);
+
+        $saveTelegramPhone = Settings::where('type', Settings::TypeByWords['telegramPhone'])->update([
+            'value' => json_encode(['telegramPhone' => $additionalPhones])
+        ]);
+
+        $saveMail = Settings::where('type', Settings::TypeByWords['mail'])->update([
+            'value' => json_encode(['mail' => $additionalPhones])
         ]);
 
         return ResultGenerate::Success();
