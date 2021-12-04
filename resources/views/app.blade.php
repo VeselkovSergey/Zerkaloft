@@ -73,7 +73,7 @@
                     @endforeach
                     <div class="fast-menu-in-left-menu">
                         <div class="flex-column p-5">
-                            <a class="cp text-center" href="{{route('fast-order-page')}}">Быстрое оформление</a>
+                            <a class="p-5 w-100 color-black cp" href="{{route('fast-order-page')}}">Быстрое оформление</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('online-order')}}">Онлайн заказ</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('about-page')}}">О компании</a>
