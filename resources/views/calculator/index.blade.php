@@ -110,11 +110,12 @@
                                             content: options
                                         });
                                         containerFoundProduct.append(selectorPrices);
-                                        /*let addInBasketButton = */CreateElement('button', {
+
+                                        let addInBasketButton = CreateElement('button', {
                                             attr: {
                                                 class: 'button-blue mt-5',
                                             },
-                                            content: 'Добавить в корзину и перейти в корзину',
+                                            content: 'Добавить в корзину',
                                             events: {
                                                 click: () => {
                                                     let productId = res.product.id;
@@ -122,6 +123,24 @@
                                                     let productFullInformation = res.product;
 
                                                     changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
+
+                                                    if (productFullInformation.show_add_more === 0) {
+                                                        addInBasketButton.innerHTML = '+1 в корзину';
+                                                    } else {
+                                                        addInBasketButton.hide();
+                                                    }
+                                                    linkBasketButton.show();
+                                                }
+                                            }
+                                        }, containerFoundProduct);
+
+                                        let linkBasketButton = CreateElement('button', {
+                                            attr: {
+                                                class: 'button-blue mt-5 hide',
+                                            },
+                                            content: 'Перейти в корзину',
+                                            events: {
+                                                click: () => {
                                                     location.href = "{{route('basket-page')}}"
                                                 }
                                             }

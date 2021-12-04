@@ -303,8 +303,11 @@ header a {
     padding: 4px 14px;
 }
 
-.button-blue {
+.button-blue:not(.hide) {
     display: block;
+}
+
+.button-blue {
     text-decoration: unset;
     background-color: #1976d2;
     border: unset;
