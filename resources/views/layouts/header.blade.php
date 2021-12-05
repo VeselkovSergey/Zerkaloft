@@ -61,7 +61,7 @@
         <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone={{$whatsappPhone}}">
             <img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt="">
         </a>
-        <a  class="mx-10 hide telegram" href="https://tele.click/{{$telegramPhone}}">
+        <a  class="mx-10 hide telegram" href="https://t.me/{{$telegramPhone}}">
             <img class="mx-10" width="24" src="{{url('icon/telegram.svg')}}" alt="">
         </a>
     </div>
