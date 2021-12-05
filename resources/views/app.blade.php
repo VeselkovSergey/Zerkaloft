@@ -39,7 +39,7 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
-        <header class="flex-wrap pos-sticky top-0 bg-white z-1 color-violet py-10">@include('layouts.header')</header>
+        <header class="flex-wrap pos-sticky top-0 bg-white z-1 color-violet p-5">@include('layouts.header')</header>
 
         <div class="flash-message flash-message-error hide"></div>
 
