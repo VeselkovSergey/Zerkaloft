@@ -174,18 +174,19 @@
         right: 0;
         bottom: calc(-75vh);
 
+        > div {
+            flex-direction: column;
+        }
+
         .count-item-in-bag {
             right: -15px;
             top: -20px;
         }
 
-        .text-basket {
+        .text-basket,
+        .text-profile {
             display: none;
         }
-    }
-
-    .container-basket-and-profile .container-profile {
-        display: none;
     }
 
     .logo-container {
