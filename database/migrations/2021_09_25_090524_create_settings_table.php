@@ -53,17 +53,26 @@ class CreateSettingsTable extends Migration
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['calculatorPageText'],
-            'value' => json_encode(['text' => 'Текст для страницы калькулятора'])
+            'value' => json_encode([
+                'text' => 'Текст для страницы калькулятора',
+                'imageFileId' => 0,
+            ])
         ]);
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['onlineOrderPageText'],
-            'value' => json_encode(['text' => 'Текст для страницы онлайн заказа'])
+            'value' => json_encode([
+                'text' => 'Текст для страницы онлайн заказа',
+                'imageFileId' => 0,
+            ])
         ]);
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['onlineOrderPageText'],
-            'value' => json_encode(['text' => 'Текст для страницы онлайн заказа'])
+            'value' => json_encode([
+                'text' => 'Текст для страницы онлайн заказа',
+                'imageFileId' => 0,
+            ])
         ]);
 
     }
