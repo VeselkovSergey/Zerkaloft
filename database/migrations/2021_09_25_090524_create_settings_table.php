@@ -33,22 +33,22 @@ class CreateSettingsTable extends Migration
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['viberPhone'],
-            'value' => json_encode(['phone' => '79999999999'])
+            'value' => json_encode(['viberPhone' => '79999999999'])
         ]);
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['whatsappPhone'],
-            'value' => json_encode(['phone' => '79999999999'])
+            'value' => json_encode(['whatsappPhone' => '79999999999'])
         ]);
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['telegramPhone'],
-            'value' => json_encode(['phone' => '79999999999'])
+            'value' => json_encode(['telegramPhone' => '79999999999'])
         ]);
 
         \App\Models\Settings::create([
             'type' => Settings::TypeByWords['mail'],
-            'value' => json_encode(['phone' => 'mail@mail.mail'])
+            'value' => json_encode(['mail' => 'mail@mail.mail'])
         ]);
 
         \App\Models\Settings::create([
