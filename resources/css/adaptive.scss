@@ -22,6 +22,13 @@
     width: 20%;
 }
 
+.count-item-in-bag {
+    background-color: #ec407a;
+    border-radius: 100px;
+    top: -20px;
+    min-width: 30px;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page, .about-text {
@@ -80,15 +87,19 @@
         position: absolute;
         right: 0;
         bottom: calc(-65vh);
+
         .social-contact-container {
             flex-direction: column;
+
             > * {
                 display: block;
                 margin: 0 0 10px 0;
             }
+
             img {
                 width: 25px;
             }
+
             .viber,
             .whatsapp,
             .telegram {
@@ -162,10 +173,12 @@
         position: absolute;
         right: 0;
         bottom: calc(-75vh);
+
         .count-item-in-bag {
             right: -15px;
             top: -20px;
         }
+
         .text-basket {
             display: none;
         }
