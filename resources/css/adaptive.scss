@@ -162,6 +162,13 @@
         position: absolute;
         right: 0;
         bottom: calc(-75vh);
+        .count-item-in-bag {
+            right: -15px;
+            top: -20px;
+        }
+        .text-basket {
+            display: none;
+        }
     }
 
     .container-basket-and-profile .container-profile {

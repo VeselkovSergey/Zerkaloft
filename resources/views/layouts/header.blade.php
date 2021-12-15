@@ -90,7 +90,7 @@
                         0
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center text-basket">
                     Корзина
                 </div>
             </a>
