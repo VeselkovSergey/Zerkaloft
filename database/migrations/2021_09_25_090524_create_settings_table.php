@@ -68,7 +68,7 @@ class CreateSettingsTable extends Migration
         ]);
 
         \App\Models\Settings::create([
-            'type' => Settings::TypeByWords['onlineOrderPageText'],
+            'type' => Settings::TypeByWords['fastOrderPageText'],
             'value' => json_encode([
                 'text' => 'Текст для страницы онлайн заказа',
                 'imageFileId' => 0,
