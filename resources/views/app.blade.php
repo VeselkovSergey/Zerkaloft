@@ -52,25 +52,25 @@
                     </svg>
                 </div>
                 <div class="scroll-auto pr-25 h-100">
-                    @foreach(\App\Models\Categories::all() as $category)
-                        <div class="menu-category-container p-5 pos-rel">
-                            <div class="title-category-container ">
-                                <div class="menu-category p-5 pr-25 cp border-radius-5">{{$category->title}}</div>
-                                <div class="expander-menu-category pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="menu-category-detail hide">
-                                @foreach($category->Products as $product)
-                                    <div class="pl-10 py-5 cp">
-                                        <a class="link-menu clear-a color-violet" href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">{{$product->title}}</a>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endforeach
+{{--                    @foreach(\App\Models\Categories::all() as $category)--}}
+{{--                        <div class="menu-category-container p-5 pos-rel">--}}
+{{--                            <div class="title-category-container ">--}}
+{{--                                <div class="menu-category p-5 pr-25 cp border-radius-5">{{$category->title}}</div>--}}
+{{--                                <div class="expander-menu-category pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">--}}
+{{--                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">--}}
+{{--                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>--}}
+{{--                                    </svg>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="menu-category-detail hide">--}}
+{{--                                @foreach($category->Products as $product)--}}
+{{--                                    <div class="pl-10 py-5 cp">--}}
+{{--                                        <a class="link-menu clear-a color-violet" href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">{{$product->title}}</a>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
                     <div class="fast-menu-in-left-menu">
                         <div class="flex-column p-5">
                             <a class="p-5 w-100 color-black cp" href="{{route('fast-order-page')}}">Быстрое оформление</a>

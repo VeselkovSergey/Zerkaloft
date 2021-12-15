@@ -79,7 +79,7 @@
     .social-contact {
         position: absolute;
         right: 0;
-        bottom: calc(-75vh);
+        bottom: calc(-55vh);
         .social-contact-container {
             flex-direction: column;
             > * {
@@ -156,6 +156,12 @@
 @media screen and (max-width: 540px) {
     .category-cart-main-page, .product-category-page, .product-img-in-calculator, .about-text {
         width: 100%;
+    }
+
+    .container-basket-and-profile {
+        position: absolute;
+        right: 0;
+        bottom: calc(-75vh);
     }
 
     .container-basket-and-profile .container-profile {

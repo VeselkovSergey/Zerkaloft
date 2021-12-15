@@ -55,9 +55,9 @@
         <a class="mx-10" href="mailto:{{$mail}}?subject=Вопрос">
             <img class="mx-10" width="20" src="{{url('icon/mail.svg')}}" alt="">
         </a>
-        <a class="mx-10 hide viber" href="viber://chat?number=%2B{{$viberPhone}}">
-            <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">
-        </a>
+{{--        <a class="mx-10 hide viber" href="viber://chat?number=%2B{{$viberPhone}}">--}}
+{{--            <img class="mx-10" width="24" src="{{url('icon/viber.svg')}}" alt="">--}}
+{{--        </a>--}}
         <a class="mx-10 hide whatsapp" href="https://api.whatsapp.com/send/?phone={{$whatsappPhone}}">
             <img class="mx-10" width="24" src="{{url('icon/whatsapp.svg')}}" alt="">
         </a>
