@@ -39,7 +39,7 @@
                                 @endforeach
 
                                     <div class="flex-column-center" style="flex: 1;">
-                                        <div class="m-10">
+                                        <div class="m-10" style="flex: 1;">
                                             <a class="product-name-in-basket cp font-semibold"
                                                href="{{route('product', [$product->Product->Category->semantic_url, $product->Product->semantic_url])}}">
                                                 <div class="zagolovok">{{$product->title}}</div>
