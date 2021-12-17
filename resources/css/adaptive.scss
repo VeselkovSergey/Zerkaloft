@@ -179,12 +179,12 @@
 
     .container-basket-and-profile {
         position: absolute;
-        right: 0;
-        bottom: calc(-75vh);
-
-        > div {
-            flex-direction: column;
-        }
+        bottom: calc(-93vh);
+        padding: 15px 5px;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -2px 3px 0 rgb(0 0 0 / 25%);
+        left: 0;
 
         .count-item-in-bag {
             right: -15px;
