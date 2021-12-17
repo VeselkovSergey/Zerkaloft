@@ -12,14 +12,9 @@ class MailSender extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @param  \App\Models\Order  $order
-     * @return void
-     */
-    public function __construct()
+    public function __construct($password)
     {
+        $this->password = $password;
     }
 
     /**
@@ -29,6 +24,7 @@ class MailSender extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.test');
+        $password = $this->password;
+        return $this->view('mail.test', compact('password'));
     }
 }

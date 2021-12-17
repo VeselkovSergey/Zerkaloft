@@ -1,5 +1,7 @@
 <?php
 
+use App\Helpers\MailSender;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 
@@ -353,13 +355,13 @@ Route::group(['prefix' => 'callback-orders'], function () {
 
 });
 
-Route::group(['prefix' => 'test'], function () {
-
-    Route::get('/', [Controllers\TestController::class, 'index'])
-        ->name('test');
-
-    Route::get('/mail-test', function () {
-        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new \App\Helpers\MailSender());
-    });
-
-});
+//Route::group(['prefix' => 'test'], function () {
+//
+//    Route::get('/', [Controllers\TestController::class, 'index'])
+//        ->name('test');
+//
+//    Route::get('/mail-test', function () {
+//        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new MailSender(User::PasswordGenerate()));
+//    });
+//
+//});

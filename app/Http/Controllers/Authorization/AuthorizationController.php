@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Authorization;
 
+use App\Helpers\MailSender;
 use App\Helpers\ResultGenerate;
 use App\Helpers\ValidateFields;
 use App\Models\User;
@@ -11,6 +12,7 @@ use App\Models\UserPhysicals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthorizationController
 {
@@ -105,7 +107,7 @@ class AuthorizationController
         }
 
         $fields = $request->all();
-        $password = env('APP_DEBUG') ? $email : User::PasswordGenerate(); // toDo Заменить при выкатке
+        $password = User::PasswordGenerate();
 
         $fields['type_user'] = 1;
         $fields['password'] = Hash::make($password);
@@ -118,7 +120,7 @@ class AuthorizationController
         $fields['phone'] = preg_replace("/[^0-9]/", '', $phone);
         $userPhysical = UserPhysicals::create($fields);
 
-        #toDo Отправить письмо на почту
+        Mail::to($user->email)->send(new MailSender($password));
 
         return $userPhysical;
     }
@@ -158,7 +160,7 @@ class AuthorizationController
 
         $fields = $request->all();
 
-        $password = env('APP_DEBUG') ? $email_org : User::PasswordGenerate(); // toDo Заменить при выкатке
+        $password = User::PasswordGenerate();
 
         $fields['type_user'] = 2;
         $fields['password'] = Hash::make($password);
@@ -174,7 +176,7 @@ class AuthorizationController
         $fields['patronymic_worker'] = $patronymic_worker;
         $userJuridical = UserJuridicals::create($fields);
 
-        #toDo Отправить письмо на почту
+        Mail::to($user->email)->send(new MailSender($password));
 
         return $userJuridical;
     }
