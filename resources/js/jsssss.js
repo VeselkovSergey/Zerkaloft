@@ -29,7 +29,6 @@ additionalPhonesButtons.forEach((additionalPhonesButton) => {
         for (let i = 0; i < additionalPhones.length; i++) {
             CreateElement('div', {
                 content: '<a class="text-center" style="text-decoration: none;" href="tel:' + additionalPhones[i] + '">' + additionalPhones[i] + '</a>',
-                class: 'mb-5'
             }, containerAdditionalPhones);
         }
         ModalWindow(containerAdditionalPhones);
