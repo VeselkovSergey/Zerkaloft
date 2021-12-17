@@ -367,6 +367,7 @@
         searchButtonSmallScreen.addEventListener('click', () => {
             let searchContainer = document.body.querySelector('.search-container-header');
             searchContainer.showToggle();
+            searchContainer.querySelector('input').focus();
         });
     }
 
