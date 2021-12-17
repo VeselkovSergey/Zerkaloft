@@ -592,6 +592,8 @@ main {
 .container-suggestions-pos-abs {
     border: 1px solid #cbcdd1;
     background-color: #FFFFFF;
+    max-height: 50vh;
+    overflow: auto;
 }
 
 .suggestion-item:hover {
