@@ -106,7 +106,7 @@ class OrdersController
             }
         }
 
-        $this->SendTelegram($request);
+//        $this->SendTelegram($request);
 
         return ResultGenerate::Success('Заказ успешно создан!');
     }
