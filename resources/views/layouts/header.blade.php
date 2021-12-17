@@ -20,7 +20,7 @@
 
 <div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
-        <img width="200" src="{{url('icon/logo_rus.svg')}}" alt="logo">
+        <img class="img-logo" src="{{url('icon/logo_rus.svg')}}" alt="logo">
     </a>
 </div>
 

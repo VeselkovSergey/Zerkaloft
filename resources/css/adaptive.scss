@@ -29,6 +29,10 @@
     min-width: 30px;
 }
 
+.img-logo {
+    width: 200px;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page, .about-text {
@@ -167,6 +171,10 @@
 @media screen and (max-width: 540px) {
     .category-cart-main-page, .product-category-page, .product-img-in-calculator, .about-text {
         width: 100%;
+    }
+
+    .img-logo {
+        width: 130px;
     }
 
     .container-basket-and-profile {
