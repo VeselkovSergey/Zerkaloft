@@ -276,6 +276,13 @@ Route::group(['prefix' => 'management'], function () {
 
     });
 
+    Route::group(['prefix' => 'callback-orders'], function () {
+
+        Route::get('/all', [Controllers\CallbackOrders\CallbackOrdersController::class, 'AllCallbackOrders'])
+            ->name('all-callback-orders');
+
+    });
+
 });
 
 Route::group(['prefix' => 'files'], function () {
@@ -340,9 +347,6 @@ Route::group(['prefix' => 'search'], function () {
 });
 
 Route::group(['prefix' => 'callback-orders'], function () {
-
-    Route::get('/all', [Controllers\CallbackOrders\CallbackOrdersController::class, 'AllCallbackOrders'])
-        ->name('all-callback-orders');
 
     Route::post('/create', [Controllers\CallbackOrders\CallbackOrdersController::class, 'CreateCallbackOrderRequest'])
         ->name('create-callback-order');
