@@ -20,13 +20,13 @@
             </div>
             <div class="container-categories-properties"></div>
         </div>
-        <div class="container-found-product p-25 w-75">
-            <div class="flex">
-                <div class="w-50">
+        <div class="container-found-product p-25">
+            <div class="container-found-product-container">
+                <div class="container-found-product-container-text">
                     {{$text}}
                 </div>
                 @if($fileId !== -1)
-                    <img class="product-img-in-calculator" style="width: 50%" src="{{route('files', $fileId)}}" alt="">
+                    <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt="">
                 @endif
             </div>
         </div>
@@ -50,7 +50,7 @@
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
-            containerFoundProduct.innerHTML = '<div class="flex"> <div class="w-50"> {{$text}} </div> @if($fileId !== -1) <img class="product-img-in-calculator" style="width: 50%" src="{{route('files', $fileId)}}" alt=""> @endif </div>';
+            containerFoundProduct.innerHTML = '<div class="container-found-product-container"> <div class="container-found-product-container-text"> {{$text}} </div> @if($fileId !== -1) <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt=""> @endif </div>';
             let select = event.target;
             let categoryId = select.value;
             if (parseInt(categoryId) !== 0) {

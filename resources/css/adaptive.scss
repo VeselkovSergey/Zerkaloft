@@ -33,6 +33,19 @@
     width: 200px;
 }
 
+.container-found-product {
+    width: 75%;
+    .container-found-product-container {
+        display: flex;
+        .container-found-product-container-text {
+            width: 50%;
+        }
+        .product-img-in-calculator {
+            width: 50%;
+        }
+    }
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page, .about-text {
@@ -225,5 +238,18 @@
 
     .img-carousel {
         height: 150px;
+    }
+
+    .container-found-product {
+        width: 100%;
+        .container-found-product-container {
+            flex-direction: column;
+            .container-found-product-container-text {
+                width: 100%;
+            }
+            .product-img-in-calculator {
+                width: 100%;
+            }
+        }
     }
 }
