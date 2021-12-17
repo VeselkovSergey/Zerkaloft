@@ -37,7 +37,7 @@
                 <div class="additional-services-container">
                     @foreach($product->AdditionalServicesPrice as $additionalServicePrice)
                         <label for="">
-                            <input type="checkbox" name="additionalService[]" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}">
+                            <input type="checkbox" name="additionalService[]" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
                             {{$additionalServicePrice->AdditionalServices->title}} - {{$additionalServicePrice->price}}
                         </label>
                     @endforeach
@@ -76,14 +76,22 @@
             let productFullInformation = product;
 
             let additionalServicesSelection = [];
+            let additionalServicesSelectionPrice = [];
             let additionalServices = document.body.querySelectorAll('.additional-services-container input');
             additionalServices.forEach((additionalService) => {
                 if (additionalService.checked) {
                     additionalServicesSelection.push(additionalService.dataset.additionalServiceId);
+                    additionalServicesSelectionPrice.push(additionalService.dataset.additionalServicePrice);
                 }
             });
 
-            changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation, additionalServicesSelection: additionalServicesSelection});
+            changeCountProductInBasket({
+                productId: productId,
+                productPriceId: productPriceId,
+                productFullInformation: productFullInformation,
+                additionalServicesSelection: additionalServicesSelection,
+                additionalServicesSelectionPrice: additionalServicesSelectionPrice
+            });
             if (!productAdded) {
                 @if($product->show_add_more)
                     buttonAddInBasket.innerHTML = '+1 в корзину';

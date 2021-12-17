@@ -207,6 +207,7 @@
         let productPriceId = product.productPriceId;
         let productFullInformation = product.productFullInformation;
         let additionalServices = product.additionalServicesSelection;
+        let additionalServicesSelectionPrice = product.additionalServicesSelectionPrice;
 
         let localStorageBasket = localStorage.getItem('products_in_basket');
 
@@ -225,6 +226,7 @@
                     productPriceId: productPriceId,
                     productFullInformation: productFullInformation,
                     additionalServices: additionalServices,
+                    additionalServicesSelectionPrice: additionalServicesSelectionPrice,
                 };
             } else {
                 if (localStorageBasket[productId][productPriceId] === undefined) {
@@ -234,6 +236,7 @@
                         productPriceId: productPriceId,
                         productFullInformation: productFullInformation,
                         additionalServices: additionalServices,
+                        additionalServicesSelectionPrice: additionalServicesSelectionPrice,
                     };
                 } else {
                     localStorageBasket[productId][productPriceId]['count'] = localStorageBasket[productId][productPriceId]['count'] + 1;
@@ -242,7 +245,9 @@
         } else if (typeChange === false) {
             localStorageBasket[productId][productPriceId]['count'] = localStorageBasket[productId][productPriceId]['count'] - 1;
         } else if (typeChange === 'input') {
-            localStorageBasket[productId][productPriceId]['count'] = countProduct;
+            localStorageBasket[productId][productPriceId]['count'] = parseInt(countProduct);
+            localStorageBasket[productId][productPriceId]['additionalServices'] = additionalServices;
+            localStorageBasket[productId][productPriceId]['additionalServicesSelectionPrice'] = additionalServicesSelectionPrice;
         }
 
         if (localStorageBasket[productId][productPriceId]['count'] === 0) {
@@ -275,8 +280,16 @@
                     let concreteProductCount = parseInt(localStorageBasket[productId][productPriceId]['count']);
                     let concreteProductPrice = parseInt(localStorageBasket[productId][productPriceId]['productFullInformation']['prices'][productPriceId]['price']);
                     let concreteProductSum = parseInt(concreteProductCount) * parseInt(concreteProductPrice);
+
+                    let additionalServicePrice = 0;
+                    Object.keys(localStorageBasket[productId][productPriceId]['additionalServicesSelectionPrice']).forEach((additionalService) => {
+                        additionalServicePrice += parseInt(localStorageBasket[productId][productPriceId]['additionalServicesSelectionPrice'][additionalService]);
+                    });
+
                     sum += concreteProductSum;
+                    sum += additionalServicePrice;
                     count += concreteProductCount;
+                    console.log(localStorageBasket[productId][productPriceId])
                 });
             });
             localStorage.setItem('sumProductsPricesInBasket', sum);

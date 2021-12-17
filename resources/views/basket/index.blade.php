@@ -49,11 +49,17 @@
 
                                         @if(isset($additionalServices[$product->id]))
 
-                                        <div class="mb-10">
+                                        <div class="mb-10 additional-service-container">
                                             @foreach($additionalServices[$product->id] as $additionalService)
 
-                                                <div class="flex">
+                                                <div class="flex additional-service" data-product-container="{{$product->id . '-' . $product->price_id}}" data-product-price-id="{{$product->price_id}}" data-product-id="{{$product->id}}" data-additional-service-id="{{$additionalService->additional_service_id}}" data-additional-service-price="{{$additionalService->price}}">
                                                     <div>{{$additionalService->AdditionalServices->title}} - {{$additionalService->price}}</div>
+                                                    <span class="flex-center ml-5 cp delete-additional-service">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                        </svg>
+                                                    </span>
                                                 </div>
 
                                             @endforeach
@@ -79,6 +85,7 @@
                                                        data-count-product="{{$product->id . '-' . $product->price_id}}"
                                                        value="{{$productsInBasket[$product->id][$product->price_id]['count']}}"
                                                        type="text" autocomplete="off" maxlength="2"
+                                                       readonly
                                                        style="font-size: 16px; cursor: default; width: 26px; height: 26px; text-align: center;">
                                             </div>
                                             <button class="button-add-product-in-basket cp clear-button"
@@ -199,6 +206,38 @@
         if (sumProductsPricesInBasket) {
             sumProductsPricesInBasket.innerHTML = '(' + localStorage.getItem('sumProductsPricesInBasket') + ' руб)';
         }
+
+        document.body.querySelectorAll('.delete-additional-service').forEach((additionalServiceButton) => {
+            additionalServiceButton.addEventListener('click', (event) => {
+                let clickedButton = event.target;
+                let additionalServiceClicked = clickedButton.closest('.additional-service');
+                let productId = additionalServiceClicked.dataset.productId;
+                let productPriceId = additionalServiceClicked.dataset.productPriceId;
+                let additionalServiceContainer = clickedButton.closest('.additional-service-container');
+
+                additionalServiceClicked.remove();
+
+                let additionalServicesSelection = [];
+                let additionalServicesSelectionPrice = [];
+                let additionalServices = additionalServiceContainer.querySelectorAll('.additional-service');
+                additionalServices.forEach((additionalService) => {
+                    additionalServicesSelection.push(additionalService.dataset.additionalServiceId);
+                    additionalServicesSelectionPrice.push(additionalService.dataset.additionalServicePrice);
+                });
+
+                let count = document.body.querySelector('[data-count-product="' + productId + '-' + productPriceId + '"]').value
+
+                changeCountProductInBasket({
+                    productId: productId,
+                    productPriceId: productPriceId,
+                    additionalServicesSelection: additionalServicesSelection,
+                    additionalServicesSelectionPrice: additionalServicesSelectionPrice
+                }, 'input', count);
+
+                sumProductsPricesInBasket.innerHTML = '(' + localStorage.getItem('sumProductsPricesInBasket') + ' руб)';
+
+            });
+        });
 
         document.body.querySelectorAll('.button-add-product-in-basket').forEach((product) => {
             let productId = product.dataset.productId;
