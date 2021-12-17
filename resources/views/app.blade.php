@@ -1,5 +1,23 @@
 @php
     $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
+
+    $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();
+    $phone = json_decode($phone->value)->phone;
+
+    $additionalPhones = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['additionalPhones'])->first();
+    $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
+
+    $viberPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['viberPhone'])->first();
+    $viberPhone = json_decode($viberPhone->value)->viberPhone;
+
+    $whatsappPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['whatsappPhone'])->first();
+    $whatsappPhone = json_decode($whatsappPhone->value)->whatsappPhone;
+
+    $telegramPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['telegramPhone'])->first();
+    $telegramPhone = json_decode($telegramPhone->value)->telegramPhone;
+
+    $mail = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mail'])->first();
+    $mail = json_decode($mail->value)->mail;
 @endphp
 
 <!DOCTYPE html>
@@ -113,6 +131,8 @@
                 const containerBasketAndProfile = document.body.querySelector('.container-basket-and-profile');
                 const footer = document.body.querySelector('footer');
                 document.body.insertBefore(containerBasketAndProfile, footer);
+                let additionalPhones = CreateElement('div', {class: 'button-blue call-me w-100 text-center additional-phones', content: 'Позвонить'}, containerBasketAndProfile);
+                additionalPhones.dataset.additionalPhones="{{$additionalPhones}}";
             }
 
         </script>

@@ -1,23 +1,3 @@
-@php
-    $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();
-    $phone = json_decode($phone->value)->phone;
-
-    $additionalPhones = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['additionalPhones'])->first();
-    $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
-
-    $viberPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['viberPhone'])->first();
-    $viberPhone = json_decode($viberPhone->value)->viberPhone;
-
-    $whatsappPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['whatsappPhone'])->first();
-    $whatsappPhone = json_decode($whatsappPhone->value)->whatsappPhone;
-
-    $telegramPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['telegramPhone'])->first();
-    $telegramPhone = json_decode($telegramPhone->value)->telegramPhone;
-
-    $mail = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mail'])->first();
-    $mail = json_decode($mail->value)->mail;
-@endphp
-
 <div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
         <img class="img-logo" src="{{url('icon/logo_rus.svg')}}" alt="logo">
@@ -71,7 +51,7 @@
 </div>
 
 <div class="container-basket-and-profile flex-column-center mr-10">
-    <div class="flex-center">
+    <div class="flex-center basket-and-profile">
         <div class="button-basket flex-column-center text-center cp px-10">
             <a href="{{route('basket-page')}}" style="text-decoration: unset; color: unset;">
                 <div class="pos-rel">

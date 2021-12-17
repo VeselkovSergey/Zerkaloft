@@ -20,8 +20,8 @@ if (mainMenuCloseButton) {
     });
 }
 
-let additionalPhonesButton = document.body.querySelector('.additional-phones');
-if (additionalPhonesButton) {
+let additionalPhonesButtons = document.body.querySelectorAll('.additional-phones');
+additionalPhonesButtons.forEach((additionalPhonesButton) => {
     additionalPhonesButton.addEventListener('click', () => {
         let additionalPhones = additionalPhonesButton.dataset.additionalPhones;
         additionalPhones = additionalPhones.split(';');
@@ -34,7 +34,7 @@ if (additionalPhonesButton) {
         }
         ModalWindow(containerAdditionalPhones);
     });
-}
+});
 
 function LoaderShow() {
     let loader = document.createElement("div");
