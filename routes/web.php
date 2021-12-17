@@ -69,6 +69,9 @@ Route::group(['prefix' => 'auth'], function () {
 
         Route::get('/', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryPage'])
             ->name('password-recovery-page');
+
+        Route::post('/post', [Controllers\Authorization\AuthorizationController::class, 'PasswordRecoveryRequest'])
+            ->name('password-recovery-request');
     });
 
 });

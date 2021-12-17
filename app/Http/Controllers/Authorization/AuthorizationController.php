@@ -186,4 +186,17 @@ class AuthorizationController
     {
         return view('auth.password-recovery');
     }
+
+
+    public function PasswordRecoveryRequest(Request $request)
+    {
+        $login = $request->login;
+        $user = User::where('email', $login)->first();
+        if ($user) {
+            $password = User::PasswordGenerate();
+            $user->password = Hash::make($password);
+            $user->save();
+            Mail::to($user->email)->send(new MailSender($password));
+        }
+    }
 }

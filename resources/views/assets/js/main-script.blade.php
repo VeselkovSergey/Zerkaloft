@@ -179,7 +179,13 @@
 
     function PasswordRecoveryPage() {
         Ajax("{{route('password-recovery-page')}}").then((response) => {
-            ModalWindow(response);
+            let modal = ModalWindow(response);
+            modal.querySelector('.btn-password-recovery').addEventListener('click', () => {
+                Ajax("{{route('password-recovery-request')}}", 'POST', {login: modal.querySelector('input[name="login"]').value}).then(() => {
+                    modal.remove();
+                    ModalWindow('Новый пароль отправлен на почту');
+                });
+            });
         });
     }
 
