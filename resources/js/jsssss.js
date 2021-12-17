@@ -411,25 +411,27 @@ document.body.querySelectorAll('.button-back-call').forEach((buttonBackCall) => 
             content: 'Имя',
             class: 'mb-5'
         }, callbackWindowContent);
-        CreateElement('input', {}, callbackWindowContent);
+        let name = CreateElement('input', {}, callbackWindowContent);
 
         CreateElement('label', {
             content: 'Номер телефона для обратной связи',
             class: 'mb-5'
         }, callbackWindowContent);
-        let input = CreateElement('input', {}, callbackWindowContent);
+        let phone = CreateElement('input', {}, callbackWindowContent);
 
         CreateElement('button', {
             content: 'Отправить',
             class: 'button-blue mt-5',
             events: {
                 click: () => {
-                    // #todo отправить на сервер
-                    if (input.value.length < 10) {
+                    if (phone.value.length < 10) {
                         ModalWindowFlash('Не верный номер');
+                    } else if (name.value.length < 1) {
+                        ModalWindowFlash('Укажите имя');
                     } else {
                         modalWindow.remove();
                         ModalWindowFlash('Мы скоро с вами свяжемся');
+                        Ajax(createCallbackOrderRequestRoute, "POST", {phone: phone.value, name: name.value});
                     }
                 }
             }

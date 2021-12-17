@@ -339,6 +339,16 @@ Route::group(['prefix' => 'search'], function () {
 
 });
 
+Route::group(['prefix' => 'create-callback-orders'], function () {
+
+    Route::get('/all', [Controllers\CallbackOrders\CallbackOrdersController::class, 'AllCallbackOrders'])
+        ->name('all-callback-orders');
+
+    Route::post('/create', [Controllers\CallbackOrders\CallbackOrdersController::class, 'CreateCallbackOrderRequest'])
+        ->name('create-callback-order');
+
+});
+
 Route::group(['prefix' => 'test'], function () {
 
     Route::get('/', [Controllers\TestController::class, 'index'])
