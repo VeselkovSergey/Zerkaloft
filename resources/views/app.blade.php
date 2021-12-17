@@ -98,18 +98,24 @@
 
         <footer>@include('layouts.footer')</footer>
 
-
         <script>
             const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
         </script>
 
-{{--        <script>--}}
-{{--            const loader = document.body.querySelector('.loader');--}}
-{{--            window.onload = () => {--}}
-{{--                loader.hide();--}}
-{{--                document.body.classList.remove('scroll-off');--}}
-{{--            }--}}
-{{--        </script>--}}
+        <script>
+            // const loader = document.body.querySelector('.loader');
+            // window.onload = () => {
+            //     loader.hide();
+            //     document.body.classList.remove('scroll-off');
+            // }
+
+            if (window.outerWidth <= 540) {
+                const containerBasketAndProfile = document.body.querySelector('.container-basket-and-profile');
+                const footer = document.body.querySelector('footer');
+                document.body.insertBefore(containerBasketAndProfile, footer);
+            }
+
+        </script>
 
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 

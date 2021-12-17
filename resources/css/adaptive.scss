@@ -178,8 +178,8 @@
     }
 
     .container-basket-and-profile {
-        position: absolute;
-        bottom: calc(-93vh);
+        position: sticky;
+        bottom: 0;
         padding-left: 5px;
         padding-right: 5px;
         min-height: 60px;
