@@ -115,36 +115,37 @@
                                             attr: {
                                                 class: 'button-blue mt-5',
                                             },
-                                            content: 'Добавить в корзину',
+                                            content: 'Перейти товару',
                                             events: {
                                                 click: () => {
-                                                    let productId = res.product.id;
-                                                    let productPriceId = selectorPrices.value;
-                                                    let productFullInformation = res.product;
-
-                                                    changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
-
-                                                    if (productFullInformation.show_add_more === 0) {
-                                                        addInBasketButton.innerHTML = '+1 в корзину';
-                                                    } else {
-                                                        addInBasketButton.hide();
-                                                    }
-                                                    linkBasketButton.show();
+                                                    location.href = res.productLink;
+                                                    // let productId = res.product.id;
+                                                    // let productPriceId = selectorPrices.value;
+                                                    // let productFullInformation = res.product;
+                                                    //
+                                                    // changeCountProductInBasket({productId: productId, productPriceId: productPriceId, productFullInformation: productFullInformation});
+                                                    //
+                                                    // if (productFullInformation.show_add_more === 0) {
+                                                    //     addInBasketButton.innerHTML = '+1 в корзину';
+                                                    // } else {
+                                                    //     addInBasketButton.hide();
+                                                    // }
+                                                    // linkBasketButton.show();
                                                 }
                                             }
                                         }, containerFoundProduct);
 
-                                        let linkBasketButton = CreateElement('button', {
-                                            attr: {
-                                                class: 'button-blue mt-5 hide',
-                                            },
-                                            content: 'Перейти в корзину',
-                                            events: {
-                                                click: () => {
-                                                    location.href = "{{route('basket-page')}}"
-                                                }
-                                            }
-                                        }, containerFoundProduct);
+                                        {{--let linkBasketButton = CreateElement('button', {--}}
+                                        {{--    attr: {--}}
+                                        {{--        class: 'button-blue mt-5 hide',--}}
+                                        {{--    },--}}
+                                        {{--    content: 'Перейти в корзину',--}}
+                                        {{--    events: {--}}
+                                        {{--        click: () => {--}}
+                                        {{--            location.href = "{{route('basket-page')}}"--}}
+                                        {{--        }--}}
+                                        {{--    }--}}
+                                        {{--}, containerFoundProduct);--}}
                                     });
                                 }
                             });
