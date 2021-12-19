@@ -251,7 +251,8 @@
     }
 
     .logo-container {
-        margin-right: auto;
+        //margin-right: auto;
+        margin: 0;
     }
 
     .menu {
@@ -260,7 +261,8 @@
 
     .search-button-small-screen-container {
         display: flex;
-        margin-right: 5px;
+        //margin-right: 5px;
+        margin: auto;
     }
 
     .search-container-header {
