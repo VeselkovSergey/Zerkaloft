@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div class="container-basket-and-profile flex-column-center mr-10">
+<div class="container-basket-and-profile flex-column-center color-violet mr-10">
     <div class="flex-center basket-and-profile">
         <div class="button-basket flex-column-center text-center cp px-10">
             <a href="{{route('basket-page')}}" style="text-decoration: unset; color: unset;">
