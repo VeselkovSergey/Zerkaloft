@@ -57,6 +57,10 @@
     display: none;
 }
 
+.callback {
+    display: none;
+}
+
 @media screen and (max-width: 1440px) {
 
     .category-cart-main-page, .product-category-page, .about-text {
@@ -126,6 +130,14 @@
 
             img {
                 width: 25px;
+            }
+
+            .additional-phones {
+                display: none;
+            }
+
+            .callback {
+                display: block;
             }
 
             .viber,
