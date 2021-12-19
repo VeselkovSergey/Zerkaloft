@@ -10,6 +10,9 @@
         </div>
         <div>
             <button class="save-additional-service-btn container-btn">Сохранить</button>
+            @if(isset($additionalService->id))
+            <button onclick="DeleteAdditionalService({{$additionalService->id}})" class="delete-additional-service-btn container-btn">Удалить</button>
+            @endif
         </div>
     </div>
 
@@ -37,6 +40,19 @@
                 }
             });
         });
+
+        function DeleteAdditionalService(id) {
+            Ajax("{{route('delete-additional-service-admin')}}", 'post', {id: id}).then((response) => {
+                if (response.status) {
+                    ShowFlashMessage(response.message);
+                    setTimeout(() => {
+                        location.href = "{{route('additional-services-admin-page')}}";
+                    }, 1500);
+                } else {
+                    ShowFlashMessage(response.message);
+                }
+            });
+        }
 
     </script>
 

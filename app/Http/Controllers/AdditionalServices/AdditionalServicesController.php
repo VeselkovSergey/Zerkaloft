@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdditionalServices;
 
 use App\Helpers\ResultGenerate;
+use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,13 @@ class AdditionalServicesController
 
     public function DeleteAdditionalServices()
     {
+        $additionalServiceId = \request()->post('id');
+        $used = AdditionalProductServices::where('additional_service_id', $additionalServiceId)->first();
+        if (!$used) {
+            AdditionalServices::where('id', $additionalServiceId)->delete();
+            return ResultGenerate::Success();
+        }
+        return ResultGenerate::Error('Услуги используются! Сначала уберите связь!');
 
     }
 }
