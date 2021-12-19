@@ -67,7 +67,8 @@ class CalculatorController
         $product->prices = $tempProductPrice;
         return ResultGenerate::Success('', [
             'product' => $product->getAttributes(),
-            'productImgUrl' => route('files', unserialize($product->img)[0])
+            'productImgUrl' => route('files', unserialize($product->img)[0]),
+            'productLink' => $product->Link(),
         ]);
     }
 }
