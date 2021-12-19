@@ -362,13 +362,13 @@
         });
     }
 
-    let searchButtonSmallScreen = document.body.querySelector('.search-button-small-screen-container');
-    if (searchButtonSmallScreen) {
-        searchButtonSmallScreen.addEventListener('click', () => {
-            let searchContainer = document.body.querySelector('.search-container-header');
-            searchContainer.showToggle();
-            searchContainer.querySelector('input').focus();
-        });
-    }
+    // let searchButtonSmallScreen = document.body.querySelector('.search-button-small-screen-container');
+    // if (searchButtonSmallScreen) {
+    //     searchButtonSmallScreen.addEventListener('click', () => {
+    //         let searchContainer = document.body.querySelector('.search-container-header');
+    //         searchContainer.showToggle();
+    //         searchContainer.querySelector('input').focus();
+    //     });
+    // }
 
 </script>
