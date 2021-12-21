@@ -15,6 +15,12 @@
             <label for="property_categories_sequence">Очередность</label>
             <input class="need-validate" id="property_categories_sequence" type="text" value="{{$propertyCategories->property_categories_sequence}}">
         </div>
+        <div class="mb-10">
+            Значения:
+            @foreach($propertyCategories->Values as $value)
+                <div>{{$value->value}}</div>
+            @endforeach
+        </div>
         <div class="container-buttons">
             <button class="save-property-categories-btn container-btn">Сохранить</button>
             <button class="delete-property-categories-btn container-btn">Удалить</button>
