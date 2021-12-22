@@ -125,7 +125,7 @@ class SettingsController extends Controller
         }
 
         foreach ($carouselImages as $CarouselImage) {
-            if (in_array($CarouselImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp'])) {
+            if (in_array($CarouselImage->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp'])) {
                 $saveFile = Files::SaveFile($CarouselImage, $this->storagePath . '/carousel', $this->storageDriver);
             } else {
                 return ResultGenerate::Error('Ошибка! Не верный формат файла!');
@@ -209,7 +209,7 @@ class SettingsController extends Controller
         $fileId = -1;
         if (!empty($carouselImages)) {
             foreach ($carouselImages as $calculatorImage) {
-                if (in_array($calculatorImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                if (in_array($calculatorImage->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
                     $saveFile = Files::SaveFile($calculatorImage, $this->storagePath, $this->storageDriver);
                     $fileId = $saveFile->id;
                 } else {
@@ -240,7 +240,7 @@ class SettingsController extends Controller
         $fileId = -1;
         if (!empty($onlineOrderImages)) {
             foreach ($onlineOrderImages as $onlineOrderImage) {
-                if (in_array($onlineOrderImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                if (in_array($onlineOrderImage->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
                     $saveFile = Files::SaveFile($onlineOrderImage, $this->storagePath, $this->storageDriver);
                     $fileId = $saveFile->id;
                 } else {
@@ -271,7 +271,7 @@ class SettingsController extends Controller
         $fileId = -1;
         if (!empty($fastOrderImages)) {
             foreach ($fastOrderImages as $fastOrderImage) {
-                if (in_array($fastOrderImage->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+                if (in_array($fastOrderImage->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
                     $saveFile = Files::SaveFile($fastOrderImage, $this->storagePath, $this->storageDriver);
                     $fileId = $saveFile->id;
                 } else {
