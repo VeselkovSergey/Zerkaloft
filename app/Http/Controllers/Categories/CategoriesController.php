@@ -107,11 +107,11 @@ class CategoriesController extends Controller
         if ($categoryFiles) {
             $saveFiles = [];
             foreach ($categoryFiles as $file) {
-                if (in_array($file->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp'])) {
+                if (in_array($file->getMimeType(), ['image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp'])) {
                     $saveFile = Files::SaveFile($file, $this->storagePath, $this->storageDriver);
                     $saveFiles[] = $saveFile->id;
                 } else {
-                    return ResultGenerate::Error('Ошибка! Не верный формат файла!' . $file->getMimeType());
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
                 }
             }
 
