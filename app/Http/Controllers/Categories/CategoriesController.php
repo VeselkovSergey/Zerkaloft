@@ -111,7 +111,7 @@ class CategoriesController extends Controller
                     $saveFile = Files::SaveFile($file, $this->storagePath, $this->storageDriver);
                     $saveFiles[] = $saveFile->id;
                 } else {
-                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!' . $file->getMimeType());
                 }
             }
 
