@@ -301,6 +301,11 @@ class ProductsController
             foreach ($product->Prices as $price) {
                 $price->delete();
             }
+
+            foreach ($product->AdditionalServicesPrice as $additionalServicesPrice) {
+                $additionalServicesPrice->delete();
+            }
+
             if ($product->delete()) {
                 return ResultGenerate::Success('Продукт успешно удален!');
             }
