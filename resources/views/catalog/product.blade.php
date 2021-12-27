@@ -8,7 +8,7 @@
 
         <div data-product-id="{{$product->id}}" class="product-id hide">{{$product->id}}</div>
 
-        <div class="full-text-product text-center pb-10" style="font-size: 24px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid grey">{{$product->Category->title . ' ' . $product->title}}</div>
+        <div class="full-text-product text-center pb-10" style="font-size: 24px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid grey">{{$product->title}}</div>
 
         <div class="product-container-product-page flex-wrap mt-20">
 

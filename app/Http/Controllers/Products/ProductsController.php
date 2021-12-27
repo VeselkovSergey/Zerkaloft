@@ -202,7 +202,7 @@ class ProductsController
 
         $saveFiles = [];
         foreach ($productFiles as $productFile) {
-            if (in_array($productFile->getMimeType(), ['image/jpeg', 'image/png', 'image/bmp', 'image/gif'])) {
+            if (in_array($productFile->getMimeType(), ['image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
                 $saveFile = Files::SaveFile($productFile, $this->storagePath, $this->storageDriver);
                 $saveFiles[] = $saveFile->id;
             } else {
@@ -301,6 +301,11 @@ class ProductsController
             foreach ($product->Prices as $price) {
                 $price->delete();
             }
+
+            foreach ($product->AdditionalServicesPrice as $additionalServicesPrice) {
+                $additionalServicesPrice->delete();
+            }
+
             if ($product->delete()) {
                 return ResultGenerate::Success('Продукт успешно удален!');
             }
