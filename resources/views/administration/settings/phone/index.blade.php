@@ -47,10 +47,12 @@
     <script>
 
         document.body.querySelector('.save-phone-button').addEventListener('click', () => {
+            LoaderShow();
 
             let dataForm = GetDataFormContainer('container-phone');
 
             Ajax("{{route('save-phone')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
             });
         });

@@ -50,12 +50,14 @@
         });
 
         document.body.querySelector('.create-carousel-image-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-carousel-image');
 
             let containerButtons = document.body.querySelector('.container-buttons');
             containerButtons.hide();
 
             Ajax("{{route('save-carousel-image-page')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
                 if (response.status) {
                     setTimeout(() => {
@@ -68,12 +70,14 @@
         });
 
         document.body.querySelector('.delete-carousel-image-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-carousel-image');
 
             let containerButtons = document.body.querySelector('.container-buttons');
             containerButtons.hide();
 
             Ajax("{{route('delete-carousel-image-page')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
                 if (response.status) {
                     setTimeout(() => {

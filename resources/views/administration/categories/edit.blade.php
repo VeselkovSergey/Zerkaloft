@@ -71,6 +71,7 @@
         });
 
         document.body.querySelector('.save-category-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-category');
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
@@ -79,6 +80,7 @@
             });
 
             Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 if (response.status) {
                     ShowFlashMessage(response.message);
                 } else {
@@ -91,6 +93,7 @@
         });
 
         document.body.querySelector('.delete-category-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-category');
 
             let editAndDeleteCategoryBtn = document.body.querySelectorAll('.container-create-category .container-btn');
@@ -99,6 +102,7 @@
             });
 
             Ajax("{{route('delete-category-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 if (response.status) {
                     ShowFlashMessage(response.message);
                     setTimeout(() => {

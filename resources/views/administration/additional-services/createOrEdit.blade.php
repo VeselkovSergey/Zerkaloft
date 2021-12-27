@@ -23,12 +23,14 @@
     <script>
 
         document.body.querySelector('.save-additional-service-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-additional-service');
 
             let saveAdditionalServiceBtn = document.body.querySelector('.container-create-additional-service .container-btn');
             saveAdditionalServiceBtn.hide();
 
             Ajax("{{route('save-additional-service-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 if (response.status) {
                     ShowFlashMessage(response.message);
                     setTimeout(() => {
@@ -42,7 +44,9 @@
         });
 
         function DeleteAdditionalService(id) {
+            LoaderShow();
             Ajax("{{route('delete-additional-service-admin')}}", 'post', {id: id}).then((response) => {
+                LoaderHide();
                 if (response.status) {
                     ShowFlashMessage(response.message);
                     setTimeout(() => {

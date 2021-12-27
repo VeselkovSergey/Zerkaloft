@@ -63,28 +63,34 @@
     <script>
 
         document.body.querySelector('.save-calculator-text-button').addEventListener('click', () => {
+            LoaderShow();
 
             let dataForm = GetDataFormContainer('container-calculator-text');
 
             Ajax("{{route('save-calculator-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
             });
         });
 
         document.body.querySelector('.save-online-order-text-button').addEventListener('click', () => {
+            LoaderShow();
 
             let dataForm = GetDataFormContainer('container-online-order-text');
 
             Ajax("{{route('save-online-order-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
             });
         });
 
         document.body.querySelector('.save-fast-order-text-button').addEventListener('click', () => {
+            LoaderShow();
 
             let dataForm = GetDataFormContainer('container-fast-order-text');
 
             Ajax("{{route('save-fast-order-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
             });
         });
