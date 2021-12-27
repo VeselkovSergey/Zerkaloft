@@ -242,12 +242,14 @@ class ProductsController
                     }
 
                     AdditionalProductServices::where('product_id', $productID)->delete();
-                    foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                        if ($productAdditionalServicesActivation[$key] === 'true') {
-                            $fieldsPrices['product_id'] = $productID;
-                            $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
-                            $fieldsPrices['additional_service_id'] = $productAdditionalService;
-                            AdditionalProductServices::create($fieldsPrices);
+                    if ($productAdditionalServices) {
+                        foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                            if ($productAdditionalServicesActivation[$key] === 'true') {
+                                $fieldsPrices['product_id'] = $productID;
+                                $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
+                                $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                                AdditionalProductServices::create($fieldsPrices);
+                            }
                         }
                     }
 
@@ -269,12 +271,14 @@ class ProductsController
                 }
 
                 AdditionalProductServices::where('product_id', $productID)->delete();
-                foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                    if ($productAdditionalServicesActivation[$key]) {
-                        $fieldsPrices['product_id'] = $productID;
-                        $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
-                        $fieldsPrices['additional_service_id'] = $productAdditionalService;
-                        AdditionalProductServices::create($fieldsPrices);
+                if ($productAdditionalServices) {
+                    foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                        if ($productAdditionalServicesActivation[$key]) {
+                            $fieldsPrices['product_id'] = $productID;
+                            $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
+                            $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                            AdditionalProductServices::create($fieldsPrices);
+                        }
                     }
                 }
 
