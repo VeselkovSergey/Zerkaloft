@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
     <head>
 
@@ -22,60 +22,66 @@
 
     <body class="w-100">
 
-        <header class="shadow bg-white pos-sticky top-0 z-5">@include('management.layouts.header')</header>
+        <header class="shadow bg-white pos-sticky top-0">@include('management.layouts.header')</header>
 
         <div class="flash-message flash-message-error hide"></div>
 
-        <nav class="w-20 shadow p-5 border-radius-5 pos-abs">
-
-            <?php
-            $adminMenu = [
-                [
-                    'title' => 'Заказы',
-                    'subMenu' => [
-                        [
-                            'title' => 'Все заказы',
-                            'link' => route('orders-management-page'),
-                        ],
+        <?php
+        $adminMenu = [
+            [
+                'title' => 'Заказы',
+                'subMenu' => [
+                    [
+                        'title' => 'Все заказы',
+                        'link' => route('orders-management-page'),
                     ],
                 ],
-                [
-                    'title' => 'Заказы обратного звонка',
-                    'subMenu' => [
-                        [
-                            'title' => 'Все заказы',
-                            'link' => route('all-callback-orders'),
-                        ],
+            ],
+            [
+                'title' => 'Заказы обратного звонка',
+                'subMenu' => [
+                    [
+                        'title' => 'Все заказы',
+                        'link' => route('all-callback-orders'),
                     ],
                 ],
-            ];
-            ?>
+            ],
+        ];
+        ?>
 
-            @foreach($adminMenu as $menuItem)
-                <div class="menu-category-container p-5">
-                    <div class="flex-center border cp p-5 border-radius-5">
-                        <div class="menu-category flex-a">{{$menuItem['title']}}</div>
-                        <div class="expander-menu-category flex-center" style="transform: rotate(0.0turn);">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="menu-category-detail hide">
-                        <div class="pl-10 py-10">
-                            @foreach($menuItem['subMenu'] as $subMenuItem)
-                                <a class="block" href="{{$subMenuItem['link']}}">{{$subMenuItem['title']}}</a>
-                            @endforeach
-                        </div>
-                    </div>
+        <nav class="left-menu hide z-2 pos-fix top-0 left-0 w-100 h-100">
+            <div class="shadow-menu w-100 h-100 bg-black pos-abs" style="opacity: 0.5"></div>
+            <div class="bg-white h-100 pos-rel" style="width: fit-content; max-width: calc(100% - 96px);">
+                <div class="close-menu-button cp pos-abs top-0" style="right: -48px">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                    </svg>
                 </div>
-            @endforeach
-
+                <div class="scroll-auto pr-25 h-100">
+                    @foreach($adminMenu as $menuItem)
+                        <div class="menu-category-container p-5 pos-rel main-left-menu">
+                            <div class="title-category-container ">
+                                <div class="menu-category p-5 pr-25 cp border-radius-5">{{$menuItem['title']}}</div>
+                                <div class="expander-menu-category pos-abs cp" style="top: 11px; right: 11px; transform: rotate(0.0turn);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="menu-category-detail hide">
+                                @foreach($menuItem['subMenu'] as $subMenuItem)
+                                    <div class="pl-10 py-5 cp">
+                                        <a class="link-menu clear-a color-violet" href="{{$subMenuItem['link']}}">{{$subMenuItem['title']}}</a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </nav>
 
-        <main class="w-80 ml-a p-20">@yield('content')</main>
+        <main class="p-20">@yield('content')</main>
 
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
