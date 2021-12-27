@@ -40,8 +40,9 @@ class ArrayHelper
     }
 
 
-
-    public static function Combinations($options){
+    public static function Combinations($options)
+    {
+        ini_set('memory_limit', '1024M');
 
         $combinations = [[]];
 
