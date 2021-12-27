@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
     <head>
 
@@ -9,29 +9,30 @@
         <title>Панель администратора</title>
 
         <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
+        <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
 
     </head>
 
-    <body style="max-width: 100%;">
+    <body class="flex-center">
 
-        <div style="background-color: white; display: flex; justify-content: center; align-items: center; padding: 25px; height: calc(100vh - 100px); flex-direction: column;">
+        <div class="flex-column-center">
 
-            <div style="padding: 15px; font-size: 20px; font-weight: bold;">Вход в панель администратора</div>
+            <div class="mb-10 font-semibold">Вход в панель администратора</div>
 
-            <form class="shadow border-radius-10" style="width: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column;" action="{{route('admin-login')}}" method="POST">
+            <form class="shadow border-radius-10 p-25" action="{{route('admin-login')}}" method="POST">
 
-                <div style="padding: 10px;">
+                <div class="mb-10">
                     <label for="login" style="display: block;">Email</label>
-                    <input id="login" name="login" type="text" placeholder="Email">
+                    <input id="login" name="login" type="text" placeholder="Email" class="p-5">
                 </div>
 
-                <div style="padding: 10px;">
+                <div class="mb-10">
                     <label for="password" style="display: block;">Пароль</label>
-                    <input id="password" name="password" type="password" placeholder="Пароль">
+                    <input id="password" name="password" type="password" placeholder="Пароль" class="p-5">
                 </div>
 
-                <div style="padding: 10px;">
-                    <button style="cursor: pointer;">Войти</button>
+                <div class="flex-center">
+                    <button class="button-blue w-100">Войти</button>
                 </div>
 
             </form>
