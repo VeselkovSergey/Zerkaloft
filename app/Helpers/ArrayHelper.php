@@ -47,9 +47,9 @@ class ArrayHelper
         for ($count = 0; $count < count($options); $count++) {
             $tmp = [];
             foreach ($combinations as $v1) {
-                foreach ($options[$count] as $v2)
+                foreach ($options[$count] as $v2) {
                     $tmp[] = array_merge($v1, [$v2]);
-
+                }
             }
             $combinations = $tmp;
         }
