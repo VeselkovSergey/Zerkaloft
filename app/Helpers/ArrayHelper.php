@@ -42,7 +42,6 @@ class ArrayHelper
 
     public static function Combinations($options)
     {
-        dd($options);
         $combinations = [[]];
 
         for ($count = 0; $count < count($options); $count++) {
