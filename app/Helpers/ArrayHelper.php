@@ -42,8 +42,6 @@ class ArrayHelper
 
     public static function Combinations($options)
     {
-        ini_set('memory_limit', '1024M');
-
         $combinations = [[]];
 
         for ($count = 0; $count < count($options); $count++) {
