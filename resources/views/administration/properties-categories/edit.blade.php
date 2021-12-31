@@ -34,24 +34,28 @@
     <script>
 
         document.body.querySelector('.save-property-categories-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-property-categories');
 
             let containerButtons = document.body.querySelector('.container-buttons');
             containerButtons.hide();
 
             Ajax("{{route('save-property-categories-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
                 containerButtons.show();
             });
         });
 
         document.body.querySelector('.delete-property-categories-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-property-categories');
 
             let containerButtons = document.body.querySelector('.container-buttons');
             containerButtons.hide();
 
             Ajax("{{route('delete-property-categories-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 ShowFlashMessage(response.message);
                 if (response.status) {
                     setTimeout(() => {

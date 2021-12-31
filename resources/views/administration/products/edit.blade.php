@@ -234,21 +234,25 @@
             });
 
             productCombinationContainer.querySelector('.create-product-btn').addEventListener('click', () => {
+                LoaderShow();
                 let dataForm = GetDataFormContainer('container-create-product', productCombinationContainer);
 
                 let createProductBtn = productCombinationContainer.querySelector('.container-create-product .container-btn');
                 createProductBtn.hide();
 
                 Ajax("{{route('save-product-admin')}}", 'post', dataForm).then((response) => {
+                    LoaderHide();
                     ShowFlashMessage(response.message);
                     createProductBtn.show();
                 });
             });
 
             productCombinationContainer.querySelector('.delete-product-btn').addEventListener('click', (event) => {
+                LoaderShow();
                 let dataForm = GetDataFormContainer('container-create-product', productCombinationContainer);
                 event.target.hide();
                 Ajax("{{route('delete-product-admin')}}", 'post', dataForm).then((response) => {
+                    LoaderHide();
                     ShowFlashMessage(response.message);
                     setTimeout(() => {
                        location.reload();

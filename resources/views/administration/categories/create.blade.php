@@ -75,12 +75,14 @@
         });
 
         document.body.querySelector('.create-category-btn').addEventListener('click', () => {
+            LoaderShow();
             let dataForm = GetDataFormContainer('container-create-category');
 
             let createCategoryBtn = document.body.querySelector('.container-create-category .container-btn');
             createCategoryBtn.hide();
 
             Ajax("{{route('save-category-admin')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
                 if (response.status) {
                     ShowFlashMessage(response.message);
                     setTimeout(() => {

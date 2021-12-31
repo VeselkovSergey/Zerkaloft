@@ -358,6 +358,11 @@ Route::group(['prefix' => 'callback-orders'], function () {
 
 });
 
+Route::get('/debug-phpinfo', function () {
+    phpinfo();
+});
+
+
 //Route::group(['prefix' => 'test'], function () {
 //
 //    Route::get('/', [Controllers\TestController::class, 'index'])
