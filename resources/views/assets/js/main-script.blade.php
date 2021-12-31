@@ -43,35 +43,27 @@
         }
 
         function NextImgInCarousel() {
-            DeactivateAllImgCarousel();
             let key;
             if (parseInt(activeImgCarousel) === countImgInCarousel) {
                 key = 0;
             } else {
                 key = parseInt(activeImgCarousel) + 1;
             }
-            sequenceImgCarousel[key].classList.add('active');
+            let pos = 100 * key;
+            carouselContainer.style.transform = "translateX(-"+pos+"%)";
             activeImgCarousel = key;
         }
 
         function PrevImgInCarousel() {
-            DeactivateAllImgCarousel();
             let key;
             if (parseInt(activeImgCarousel) === 0) {
                 key = countImgInCarousel;
             } else {
                 key = parseInt(activeImgCarousel) - 1;
             }
-            sequenceImgCarousel[key].classList.add('active');
+            let pos = 100 * key;
+            carouselContainer.style.transform = "translateX(-"+pos+"%)";
             activeImgCarousel = key;
-        }
-
-        function DeactivateAllImgCarousel() {
-            carouselContainerChildren.forEach((img) => {
-                if (img.classList.contains('active')) {
-                    img.classList.remove('active');
-                }
-            });
         }
 
     }

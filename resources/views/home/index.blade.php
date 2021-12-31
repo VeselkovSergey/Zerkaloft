@@ -9,9 +9,9 @@
 
         <div class="carousel mx-a mb-25">
 
-            <div class="carousel-container shadow border-radius-15">
+            <div class="carousel-container shadow border-radius-15 flex">
                 @foreach($carouselImages as $carouselImage)
-                    <a href="{{$carouselImage->link}}" class="img-carousel {{$loop->first ? 'active' : ''}}">
+                    <a href="{{$carouselImage->link}}" class="img-carousel">
                         <img src="{{route('files', $carouselImage->fileId)}}" class="w-100 h-100" alt="">
                     </a>
                 @endforeach
