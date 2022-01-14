@@ -488,3 +488,17 @@ function ContainerSuggestionsGeneration(result, inputSuggestions, callback, addi
 
     inputSuggestions.insertAdjacentElement('afterEnd', containerSuggestions);
 }
+
+function ToggleShow() {
+    let allToggleButtons = document.body.querySelectorAll('.toggle-button');
+    allToggleButtons.forEach((toggleButton) => {
+        let toggleContainerSelector = toggleButton.dataset.toogle;
+        let toggleContainer = document.body.querySelector('.' + toggleContainerSelector);
+        toggleContainer.hide();
+        toggleButton.addEventListener('click', () => {
+            toggleContainer.showToggle();
+        });
+    });
+}
+
+ToggleShow();
