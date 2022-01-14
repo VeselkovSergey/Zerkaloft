@@ -179,9 +179,9 @@ class ProductsController
 //            $productID = !empty($product->id) ? $product->id : null;
 //        }
 //
-//        if (!$productFiles && !$product) {
-//            return ResultGenerate::Error('Ошибка! Загрузите картинку!');
-//        }
+        if (!$productFiles && sizeof($arrCombinations) !== 1) {
+            return ResultGenerate::Error('Ошибка! Загрузите общую картинку!');
+        }
 
         if (!$productName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
@@ -303,7 +303,7 @@ class ProductsController
     public function DeleteProduct(Request $request)
     {
         $categoryId = !empty($request->category_id) ? $request->category_id : null;
-        $productCombination = !empty($request->product_combination) ? $request->product_combination : null;
+        $productCombination = !empty($request->product_combination_for_delete) ? $request->product_combination_for_delete : null;
 
         $product = Products::where('category_id', $categoryId)
             ->where('modification_id', $productCombination)
