@@ -1,24 +1,20 @@
-/* JS */
-let mainMenu = document.body.querySelector('.menu');
-if (mainMenu) {
-    mainMenu.addEventListener('click', () => {
-        document.body.querySelector('.left-menu').showToggle();
+let leftMenuButtons = document.body.querySelectorAll('.menu, .shadow-menu, .close-menu-button');
+leftMenuButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let leftMenu = document.body.querySelector('.left-menu');
+        if (leftMenu.classList.contains('hide')) {
+            leftMenu.classList.remove('hide');
+            setTimeout(() => {
+                leftMenu.querySelector('.left-menu-content-container').style.transform = "translateX(0%)"
+            }, 50)
+        } else {
+            leftMenu.querySelector('.left-menu-content-container').style.transform = "translateX(-120%)"
+            setTimeout(() => {
+                leftMenu.classList.add('hide');
+            }, 300)
+        }
     });
-}
-
-let mainMenuShadow = document.body.querySelector('.shadow-menu');
-if (mainMenuShadow) {
-    mainMenuShadow.addEventListener('click', () => {
-        document.body.querySelector('.left-menu').showToggle();
-    });
-}
-
-let mainMenuCloseButton = document.body.querySelector('.close-menu-button');
-if (mainMenuCloseButton) {
-    mainMenuCloseButton.addEventListener('click', () => {
-        document.body.querySelector('.left-menu').showToggle();
-    });
-}
+});
 
 let additionalPhonesButtons = document.body.querySelectorAll('.additional-phones');
 additionalPhonesButtons.forEach((additionalPhonesButton) => {

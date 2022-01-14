@@ -641,3 +641,8 @@ main {
     min-height: 4em;
     line-height: 1em;
 }
+
+.left-menu-content-container {
+    transition: transform 500ms;
+    transform: translateX(-100%);
+}
