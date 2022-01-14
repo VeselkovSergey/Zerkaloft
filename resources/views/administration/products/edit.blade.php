@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <div class="mb-10">
+        <a href="{{route('products-admin-page')}}" class="button-blue w-fit">назад во все продукты</a>
+    </div>
+
     <div>
 
         @foreach($categoryPropertiesWithValues as $property)
