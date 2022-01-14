@@ -3,227 +3,179 @@
 @section('content')
 
     <div>
-        
-        <div>
-            <label>Фильтр по названию
-                <input type="text" class="filter">
-            </label>
-        </div>
 
-        @foreach($completeCombinations as $combination)
+        @foreach($categoryPropertiesWithValues as $property)
 
-            <div class="m-5 p-5 product-combination-container">
+            <div class="mb-10">
+                <label for="{{$property->propertyId}}">{{$property->propertyTitle}}</label>
+                <select class="category-property" name="{{$property->propertyTitle}}" id="{{$property->propertyId}}">
+                    @foreach($property->propertyValues as $key => $value)
+                        <option value="{{$key}}">{{$value}}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                <div class="w-100 flex-center-vertical cp" data-combination="{{$combination->id}}">
-                    <div class="combination-title">{{($combination->productModification ? '(существует) ' : '') . $product->title . ' ' . $combination->title}}</div>
-                    <div class="flex-center-vertical">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-                        </svg>
-                    </div>
+        @endforeach
+
+        <div class="product-combination-container hide">
+            <div class="border container-create-product flex-column w-100">
+
+                <div class="p-10 w-100 flex">
+                    <label class="block">
+                        Активный
+                        <input name="active" type="checkbox">
+                    </label>
                 </div>
 
-                <div data-combination-container="{{$combination->id}}" class="border hide container-create-product flex-column w-100">
+                <div class="p-10 w-100 flex">
+                    <label class="block">
+                        Активный для просмотра в каталоге
+                        <input name="not_only_calculator" type="checkbox">
+                    </label>
+                </div>
 
-                    <div class="p-10 w-100 flex">
-                        <label class="block">
-                            Активный
-                            <input name="active" type="checkbox" {{$combination->productModification ? $combination->productModification->active ? 'checked' : '' : ''}}>
-                        </label>
-                    </div>
+                <div class="p-10 w-100 flex">
+                    <label class="block">
+                        Показывать на главной странице
+                        <input name="show_main_page" type="checkbox">
+                    </label>
+                </div>
 
-                    <div class="p-10 w-100 flex">
-                        <label class="block">
-                            Активный для просмотра в каталоге
-                            <input name="not_only_calculator" type="checkbox" {{$combination->productModification ? $combination->productModification->not_only_calculator ? 'checked' : '' : ''}}>
-                        </label>
-                    </div>
+                <div class="p-10 w-100 flex">
+                    <label class="block">
+                        Показывать кнопку добавить +1 в корзину
+                        <input name="show_add_more" type="checkbox">
+                    </label>
+                </div>
 
-                    <div class="p-10 w-100 flex">
-                        <label class="block">
-                            Показывать на главной странице
-                            <input name="show_main_page" type="checkbox" {{$combination->productModification ? $combination->productModification->show_main_page ? 'checked' : '' : ''}}>
-                        </label>
-                    </div>
+                <div>
 
-                    <div class="p-10 w-100 flex">
-                        <label class="block">
-                            Показывать кнопку добавить +1 в корзину
-                            <input name="show_add_more" type="checkbox" {{$combination->productModification ? $combination->productModification->show_add_more ? 'checked' : '' : ''}}>
-                        </label>
-                    </div>
-
-                    <div>
-
-                        @foreach($allAdditionalServices as $allAdditionalService)
-                            <input class="hide" name="additional_service_id[]" type="text" value="{{$allAdditionalService->id}}">
+                    @foreach($allAdditionalServices as $allAdditionalService)
+                        <div class="additional-service-id-{{$allAdditionalService->id}}">
+                            <input class="hide" name="additional_service_id[]" type="text"
+                                   value="{{$allAdditionalService->id}}">
                             <div class="flex">
                                 <div class="p-5">
                                     <label class="block">
                                         {{$allAdditionalService->title}}
-                                        <input name="additional_service_activation[]" type="checkbox" {{isset($combination->existAdditionalServices) ? isset($combination->existAdditionalServices[$allAdditionalService->id]) ? 'checked' : '' : ''}}
-                                            >
+                                        <input data-additional-service-id-activation="{{$allAdditionalService->id}}"
+                                               name="additional_service_activation[]" type="checkbox">
                                     </label>
                                 </div>
                                 <div class="p-5 flex">
                                     <label class="block">
-                                        <input name="additional_service_price[]" type="text" placeholder="цена" value="{{isset($combination->existAdditionalServices) ? isset($combination->existAdditionalServices[$allAdditionalService->id]) ? $combination->existAdditionalServices[$allAdditionalService->id]->price : '' : ''}}">
+                                        <input data-additional-service-id-price="{{$allAdditionalService->id}}"
+                                               name="additional_service_price[]" type="text" placeholder="цена">
                                     </label>
                                 </div>
                             </div>
-                        @endforeach
-
-                    </div>
-
-                    <div class="hide">
-                        <label for="category_id" class="block w-100">Абстрактный продукт</label>
-                        <input id="category_id" type="text" class="w-100" value="{{$product->id}}">
-                    </div>
-
-                    <div class="hide">
-                        <label for="product_combination_for_delete" class="block w-100">Комбинация</label>
-                        <input id="product_combination_for_delete" type="text" class="w-100" value="{{$combination->id}}">
-                    </div>
-
-                    <div class="p-10 w-100">
-                        <label for="product_name" class="block w-100">Название продукта</label>
-                        <input id="product_name" type="text" class="w-100" value="{{!empty($combination->productModification->title) ? $combination->productModification->title : ($product->title . ' ' . $combination->title)}}">
-                    </div>
-
-                    <div class="p-10 w-100 hide">
-                        <label for="product_seo" class="block w-100">SEO</label>
-                        <input id="product_seo" type="text" class="w-100">
-                    </div>
-
-                    <div class="p-10 w-100">
-                        <label for="product_description" class="block w-100">Описание</label>
-                        <textarea class="w-100" name="product_description" id="product_description">{{!empty($combination->productModification->description) ? $combination->productModification->description : ($product->title . ' ' . $combination->title)}}</textarea>
-                    </div>
-
-                    <div class="p-10 w-100">
-                        <label for="search_words" class="block w-100">Слова для поиска</label>
-                        <textarea class="w-100" name="search_words" id="search_words">{{!empty($combination->productModification->search_words) ? $combination->productModification->search_words : ($product->title . ' ' . $combination->title)}}</textarea>
-                    </div>
-
-                    <div class="border m-10">
-                        <div class="btn-new-price p-10 flex-center-vertical cp w-fit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
-                            </svg>
-                            <span class="pl-5">Добавить цену</span>
                         </div>
+                    @endforeach
 
-                            @if(!empty($combination->productModification))
+                </div>
 
-                                <div class="price-container p-10 w-100" data-count-prices="{{count($combination->productModification->Prices)}}">
+                <div class="hide">
+                    <label for="category_id" class="block w-100">Абстрактный продукт</label>
+                    <input id="category_id" type="text" class="w-100" value="{{$category->id}}">
+                </div>
 
-                                    @foreach($combination->productModification->Prices as $key => $productPrice)
+                <div class="hide">
+                    <label for="product_combination_for_delete" class="block w-100">Комбинация</label>
+                    <input id="product_combination_for_delete" type="text" class="w-100">
+                </div>
 
-                                        <div class="price flex border mb-10" data-id="{{$key}}">
-                                            <div class="p-10 w-50">
-                                                <label for="count-{{$key}}" class="block w-100">Измерение</label>
-                                                <input name="count[]" id="count-{{$key}}" type="text" class="w-100" value="{{$productPrice->count}}">
-                                            </div>
+                <div class="p-10 w-100">
+                    <label for="product_name" class="block w-100">Название продукта</label>
+                    <input id="product_name" type="text" class="w-100">
+                </div>
 
-                                            <div class="p-10 w-50">
-                                                <label for="price-{{$key}}" class="block w-100">Стоимость</label>
-                                                <input name="price[]" id="price-{{$key}}" type="text" class="w-100" value="{{$productPrice->price}}">
-                                            </div>
+                <div class="p-10 w-100">
+                    <label for="product_description" class="block w-100">Описание</label>
+                    <textarea class="w-100" name="product_description" id="product_description"></textarea>
+                </div>
 
-                                            <div class="btn-dell-price cp p-10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
-                                                </svg>
-                                            </div>
-                                        </div>
+                <div class="p-10 w-100">
+                    <label for="search_words" class="block w-100">Слова для поиска</label>
+                    <textarea class="w-100" name="search_words" id="search_words"></textarea>
+                </div>
 
-                                    @endforeach
-
-                                </div>
-
-                            @else
-
-                                <div class="price-container p-10 w-100" data-count-prices="1">
-                                    <div class="price flex border mb-10" data-id="1">
-                                        <div class="p-10 w-50">
-                                            <label for="count-1" class="block w-100">Измерение</label>
-                                            <input name="count[]" id="count-1" type="text" class="w-100">
-                                        </div>
-
-                                        <div class="p-10 w-50">
-                                            <label for="price-1" class="block w-100">Стоимость</label>
-                                            <input name="price[]" id="price-1" type="text" class="w-100">
-                                        </div>
-
-                                        <div class="btn-dell-price p-10 cp">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @endif
-
+                <div class="border m-10">
+                    <div class="btn-new-price p-10 flex-center-vertical cp w-fit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        <span class="pl-5">Добавить цену</span>
                     </div>
 
-                    @if(!empty($combination->productModification->img) && sizeof(unserialize($combination->productModification->img)))
-
-                        @foreach(unserialize($combination->productModification->img) as $img)
-
-                                <div class="p-10 w-100">
-                                    <label class="product-img-label" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; background-image: url('{{route('files', $img)}}')"></label>
-                                    <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
-                                </div>
-
-                        @endforeach
-
-                    @else
-
-                        <div class="p-10 w-100">
-                            <label class="product-img-label text-center" for="product_img{{$combination->id}}" style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку (квадратная 800*800 / 1000*1000)</label>
-                            <input class="hide w-100" id="product_img{{$combination->id}}" name="product_img" type="file" accept="image/jpeg, image/png, image/bmp">
-                        </div>
-
-                    @endif
-
-                    <div class="p-10">
-                        <div class="toggle-button cp" data-toogle="list-apply-{{$combination->id}}">
-                            Раскрыть список к которым применить
-                        </div>
-                        <div class="list-apply list-apply-{{$combination->id}}">
-
-                            <div>
-                                <label>Фильтр по названию
-                                    <input type="text" class="filter2">
-                                </label>
+                    <div class="price-container p-10 w-100" data-count-prices="1">
+                        <div class="price flex border mb-10" data-id="1">
+                            <div class="p-10 w-50">
+                                <label for="count-1" class="block w-100">Измерение</label>
+                                <input name="count[]" id="count-1" type="text" class="w-100" value="0">
                             </div>
 
-                            <label>
-                                <input type="checkbox" class="select-all">
-                                Выбрать все
-                            </label>
+                            <div class="p-10 w-50">
+                                <label for="price-1" class="block w-100">Стоимость</label>
+                                <input name="price[]" id="price-1" type="text" class="w-100" value="0">
+                            </div>
 
-                            @foreach($completeCombinations as $comb)
-                                <label class="items-apply-container" @if($comb->id === $combination->id) style="display: none;" @endif>
-                                    <input type="checkbox" @if($comb->id === $combination->id) checked @endif name="product_combination[{{$comb->id}}]" value="{{$comb->id}}">
-                                    <span class="item-apply">{{$product->title . ' ' . $comb->title}}</span>
-                                </label>
-                            @endforeach
+                            <div class="btn-dell-price p-10 cp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-
-
-                    <div class="p-10 w-100">
-                        <button class="create-product-btn container-btn">Сохранить</button>
-                        <button class="delete-product-btn container-btn">Удалить</button>
                     </div>
 
                 </div>
 
-            </div>
+                <div class="p-10 w-100">
+                    <label class="product-img-label text-center border"
+                           for="product_img"
+                           style="max-width: 300px; max-height: 300px;">Загрузите картинку (квадратная 800*800 /
+                        1000*1000)</label>
+                    <input class="hide w-100" id="product_img" name="product_img"
+                           type="file" accept="image/jpeg, image/png, image/bmp">
+                </div>
 
-        @endforeach
+                <div class="p-10">
+                    <div class="toggle-button cp" data-toogle="list-apply-toggle">
+                        Раскрыть список к которым применить
+                    </div>
+                    <div class="list-apply list-apply-toggle">
+
+                        <div>
+                            <label>Фильтр по названию
+                                <input type="text" class="filter">
+                            </label>
+                        </div>
+
+                        <label>
+                            <input type="checkbox" class="select-all">
+                            Выбрать все
+                        </label>
+
+                        @foreach($completeCombinations as $combination)
+                            <label class="items-apply-container">
+                                <input type="checkbox" class="combination-checkbox" name="product_combination[{{$combination->id}}]"
+                                       value="{{$combination->id}}">
+                                <span class="item-apply">{{$category->title . ' ' . $combination->title}}</span>
+                            </label>
+                        @endforeach
+
+                    </div>
+                </div>
+
+
+                <div class="p-10 w-100">
+                    <button class="create-product-btn container-btn">Сохранить</button>
+                    <button class="delete-product-btn container-btn">Удалить</button>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
@@ -233,24 +185,26 @@
 
     <script>
 
-        document.body.querySelectorAll('[data-combination]').forEach((el) => {
-            el.addEventListener('click', () => {
-                let combinationId = el.dataset.combination;
-                let combinationContainer = document.body.querySelector('[data-combination-container="' + combinationId + '"]');
-                combinationContainer.showToggle();
-           });
-        });
+        const productCombinationContainer = document.body.querySelector('.product-combination-container');
+        const activeProductField = productCombinationContainer.querySelector('input[name="active"]');
+        const notOnlyCalculator = productCombinationContainer.querySelector('input[name="not_only_calculator"]');
+        const showMainPage = productCombinationContainer.querySelector('input[name="show_main_page"]');
+        const showAddMore = productCombinationContainer.querySelector('input[name="show_add_more"]');
+        const productCombinationForDelete = productCombinationContainer.querySelector('input[id="product_combination_for_delete"]');
+        const productName = productCombinationContainer.querySelector('input[id="product_name"]');
+        const productDescription = productCombinationContainer.querySelector('textarea[name="product_description"]');
+        const searchWords = productCombinationContainer.querySelector('textarea[name="search_words"]');
+        const labelProductImg = productCombinationContainer.querySelector('.product-img-label');
+
+        const selectAllCombinationsButton = document.body.querySelector('.select-all');
 
         document.body.querySelectorAll('.product-combination-container').forEach((productCombinationContainer) => {
             let productImg = productCombinationContainer.querySelector('[name="product_img"]');
-            let labelProductImg = productCombinationContainer.querySelector('.product-img-label');
 
             productImg.addEventListener('input', (event) => {
                 let fileReader = new FileReader();
                 fileReader.addEventListener("load", () => {
-                    labelProductImg.innerHTML = '';
-                    labelProductImg.style.border = '';
-                    labelProductImg.style.backgroundImage = "url(" + fileReader.result + ")";
+                    PutImgUrlInInput(fileReader.result)
                 }, false);
                 fileReader.readAsDataURL(event.target.files[0]);
             });
@@ -287,7 +241,7 @@
                     LoaderHide();
                     ShowFlashMessage(response.message);
                     setTimeout(() => {
-                       location.reload();
+                        location.reload();
                     }, 1500);
                     event.target.show();
                 });
@@ -295,26 +249,7 @@
 
         });
 
-        document.body.querySelector('.filter').addEventListener('input', (event) => {
-
-            let filterValue = event.target.value;
-
-            let combinationsTitle = document.body.querySelectorAll('.combination-title');
-
-            let regExp = new RegExp(filterValue, 'ig');
-            for (let i = 0; i < combinationsTitle.length; i++) {
-                let combinationTitle = combinationsTitle[i];
-
-                if (combinationTitle.innerHTML.match(regExp)) {
-                    combinationTitle.closest('.product-combination-container').show();
-                } else {
-                    combinationTitle.closest('.product-combination-container').hide();
-                }
-            }
-
-        });
-
-        document.body.querySelectorAll('.filter2').forEach((filter) => {
+        document.body.querySelectorAll('.filter').forEach((filter) => {
             filter.addEventListener('input', (event) => {
 
                 let filterValue = event.target.value;
@@ -336,16 +271,26 @@
             });
         });
 
-        document.body.querySelectorAll('.select-all').forEach((selectAllButton) => {
-            selectAllButton.addEventListener('click', (event) => {
-                const checked = event.target.checked;
-                event.target.closest('.list-apply').querySelectorAll('.items-apply-container:not(.hide) input').forEach((input) => {
-                    input.checked = checked;
-                });
-            })
+        selectAllCombinationsButton.addEventListener('change', (event) => {
+            const checked = event.target.checked;
+            event.target.closest('.list-apply').querySelectorAll('.items-apply-container:not(.hide) input').forEach((input) => {
+                input.checked = checked;
+            });
         });
 
-        function AddPrice(productCombinationContainer) {
+        function PutImgUrlInInput(imgUrl) {
+            if (imgUrl) {
+                labelProductImg.innerHTML = '';
+                labelProductImg.classList.remove('border');
+                labelProductImg.style.backgroundImage = "url(" + imgUrl + ")";
+            } else {
+                labelProductImg.innerHTML = 'Загрузите картинку (квадратная 800*800 / 1000*1000)';
+                labelProductImg.classList.add('border');
+                labelProductImg.style.backgroundImage = "";
+            }
+        }
+
+        function AddPrice(productCombinationContainer, count = 0, price = 0) {
             let pricesContainer = productCombinationContainer.querySelector('.price-container');
             let countPrices = pricesContainer.dataset.countPrices;
             countPrices++;
@@ -353,19 +298,19 @@
             let newPrice = document.createElement("div");
             newPrice.dataset.id = countPrices;
             newPrice.className = 'price mb-10 flex border';
-            newPrice.innerHTML =    '<div class="p-10 w-50">'+
-                                        '<label for="count-' + countPrices + '" class="block w-50">Измерение</label>'+
-                                        '<input name="count[]" id="count-' + countPrices + '" type="text" class="w-100">'+
-                                    '</div>'+
-                                    '<div class="p-10 w-50">'+
-                                        '<label for="price-' + countPrices + '" class="block w-50">Стоимость</label>'+
-                                        '<input name="price[]" id="price-' + countPrices + '" type="text" class="w-100">'+
-                                    '</div>'+
-                                    '<div class="btn-dell-price p-10 cp" data-id="' + countPrices + '">'+
-                                        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">'+
-                                            '<path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>'+
-                                        '</svg>'+
-                                    '</div>';
+            newPrice.innerHTML = '<div class="p-10 w-50">' +
+                '<label for="count-' + countPrices + '" class="block w-50">Измерение</label>' +
+                '<input name="count[]" id="count-' + countPrices + '" type="text" class="w-100" value="' + count + '">' +
+                '</div>' +
+                '<div class="p-10 w-50">' +
+                '<label for="price-' + countPrices + '" class="block w-50">Стоимость</label>' +
+                '<input name="price[]" id="price-' + countPrices + '" type="text" class="w-100" value="' + price + '">' +
+                '</div>' +
+                '<div class="btn-dell-price p-10 cp" data-id="' + countPrices + '">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">' +
+                '<path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>' +
+                '</svg>' +
+                '</div>';
 
             pricesContainer.append(newPrice);
             newPrice.querySelector('.btn-dell-price').addEventListener('click', (event) => {
@@ -383,6 +328,93 @@
                         }
                     }
                 });
+            }
+        }
+
+        let categoryProperties = document.body.querySelectorAll('.category-property');
+        categoryProperties.forEach((categoryProperty) => {
+            categoryProperty.addEventListener('change', () => {
+                GetValuesOnAllSelects(categoryProperties);
+            });
+        });
+
+        function GetValuesOnAllSelects(categoryProperties) {
+            let modification = [];
+            let allSelected = true;
+            categoryProperties.forEach((select) => {
+                modification.push(select.value)
+                if (parseInt(select.value) === 0) {
+                    allSelected = false;
+                }
+            });
+            if (allSelected === true) {
+                Ajax("{{route('product-modification')}}", 'post', {
+                    categoryId: {{$category->id}},
+                    'modification[]': modification,
+                    productEdit: true,
+                }).then((response) => {
+                    productCombinationContainer.show();
+                    SetData(response.status ? response.result : false);
+                });
+            } else {
+                productCombinationContainer.hide();
+            }
+        }
+
+        function SetData(data) {
+
+            let pricesContainer = productCombinationContainer.querySelector('.price-container');
+            pricesContainer.innerHTML = '';
+            pricesContainer.dataset.countPrices = '0';
+
+            document.body.querySelectorAll('.combination-checkbox').forEach((input) => {
+                input.checked = 0;
+            });
+
+            document.body.querySelectorAll('input[name="additional_service_price[]"]').forEach((input) => {
+                input.value = '';
+            });
+
+            selectAllCombinationsButton.checked = false;
+            document.body.querySelectorAll('input[name="additional_service_activation[]"]').forEach((input) => {
+                input.checked = 0;
+            });
+
+            if (data !== false) {
+                activeProductField.checked = data.product.active;
+                notOnlyCalculator.checked = data.product.not_only_calculator;
+                showMainPage.checked = data.product.show_main_page;
+                showAddMore.checked = data.product.show_add_more;
+                productCombinationForDelete.value = data.product.modification_id;
+                productName.value = data.product.title;
+                productDescription.value = data.product.description;
+                searchWords.value = data.product.search_words;
+                PutImgUrlInInput(data.productImgUrl);
+
+                Object.keys(data.product.prices).forEach((key) => {
+                    const priceData = data.product.prices[key];
+                    AddPrice(productCombinationContainer, priceData.count, priceData.price);
+                });
+
+                Object.keys(data.additionalProductServices).forEach((key) => {
+                    const additionalProductServices = data.additionalProductServices[key];
+                    document.body.querySelector('[data-additional-service-id-activation="' + additionalProductServices.additional_service_id + '"]').checked = 1;
+                    document.body.querySelector('[data-additional-service-id-price="' + additionalProductServices.additional_service_id + '"]').value = additionalProductServices.price;
+                });
+
+                document.body.querySelector('.combination-checkbox[name="product_combination['+data.product.modification_id+']"]').checked = 1;
+
+            } else {
+                activeProductField.checked = 0;
+                notOnlyCalculator.checked = 0;
+                showMainPage.checked = 0;
+                showAddMore.checked = 0;
+                productCombinationForDelete.value = '';
+                productName.value = '';
+                productDescription.value = '';
+                searchWords.value = '';
+                AddPrice(productCombinationContainer, 0, 0);
+                PutImgUrlInInput();
             }
         }
 

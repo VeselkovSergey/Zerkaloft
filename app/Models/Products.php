@@ -6,10 +6,18 @@ namespace App\Models;
 
 use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @mixin Builder
+ * @property AdditionalProductServices AdditionalServicesPrice
+ * @property AdditionalServices AdditionalServices
+ * @property Categories Category
+ * @property ProductsPrices Prices
+ */
 class Products extends Model
 {
     use HasFactory, Notifiable;

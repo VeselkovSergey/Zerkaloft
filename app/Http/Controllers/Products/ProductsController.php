@@ -74,9 +74,31 @@ class ProductsController
 
     public function EditProductAdminPage(Request $request)
     {
-        $product = Categories::findOrFail($request->product_id);
+        $category = Categories::findOrFail($request->product_id);
+        $categoryProperties = $category->Properties;
+        $categoryPropertiesWithValues = [];
+        foreach ($categoryProperties as $categoryProperty) {
+            $propertyValues = $categoryProperty->Values->pluck('value', 'id')->prepend('Выберите значение', 0)->toArray();
+            ksort($propertyValues);
 
-        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $product->id)->get('properties_categories_id');
+            $categoryPropertiesWithValues[] = (object)[
+                'propertyId' => $categoryProperty->id,
+                'propertyTitle' => $categoryProperty->title,
+                'propertyTitleTransliterate' => StringHelper::TransliterateURL($categoryProperty->title),
+                'propertyValues' => $propertyValues,
+            ];
+        }
+
+        $combination = self::ProductCombinations($category);
+        $completeCombinations = $combination->completeCombinations;
+        $allAdditionalServices = $combination->allAdditionalServices;
+
+        return view('administration.products.edit', compact('category', 'categoryPropertiesWithValues', 'completeCombinations', 'allAdditionalServices'));
+    }
+
+    public static function ProductCombinations(Categories $category)
+    {
+        $relationsCategoryAndPropertiesCategories = RelationsCategoriesAndPropertiesCategories::where('category_id', $category->id)->get('properties_categories_id');
         $propertiesCategories = [];
         foreach ($relationsCategoryAndPropertiesCategories as $propertyCategories) {
             $propertiesCategories[] = $propertyCategories->properties_categories_id;
@@ -100,7 +122,6 @@ class ProductsController
         $combinationsId = ArrayHelper::Combinations($combinationsId);
 
         $completeCombinations = [];
-        $completeCombinationsOnlyId = [];
         foreach ($combinations as $k => $combination) {
             $str = '';
             $strId = '';
@@ -110,31 +131,16 @@ class ProductsController
                 $strId .= $combinationsId[$k][$j] . ($endChar ? '' : '-');
             }
 
-            $productModification = Products::where('modification_id', $strId)->first();
-
-            $existAdditionalServices = [];
-            if (!empty($productModification->AdditionalServices)) {
-                foreach ($productModification->AdditionalServices as $additionalService) {
-                    $priceAdditionalProductService = AdditionalProductServices::where('additional_service_id', $additionalService->id)->where('product_id', $productModification->id)->first();
-                    $additionalService->price = $priceAdditionalProductService->price;
-                    $existAdditionalServices[$additionalService->id] = $additionalService;
-                }
-            }
-
             $completeCombinations[] = (object)[
                 'id' => $strId,
                 'title' => $str,
-                'productModification' => $productModification,
-                'existAdditionalServices' => $existAdditionalServices,
             ];
-            $completeCombinationsOnlyId[] = $strId;
         }
 
-        return view('administration.products.edit', [
-            'product' => $product,
+        return (object)[
             'completeCombinations' => $completeCombinations,
             'allAdditionalServices' => AdditionalServices::all(),
-        ]);
+        ];
     }
 
     public function SaveProduct(Request $request)
@@ -295,8 +301,6 @@ class ProductsController
         }
 
         return ResultGenerate::Success();
-
-        return ResultGenerate::Error('Непредвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
     }
 

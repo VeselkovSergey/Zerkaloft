@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Calculator;
 use App\Helpers\ArrayHelper;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
+use App\Models\AdditionalServices\AdditionalProductServices;
+use App\Models\AdditionalServices\AdditionalServices;
 use App\Models\Categories;
 use App\Models\Products;
 use App\Models\ProductsPrices;
@@ -69,6 +71,7 @@ class CalculatorController
             'product' => $product->getAttributes(),
             'productImgUrl' => route('files', unserialize($product->img)[0]),
             'productLink' => $product->Link(),
+            'additionalProductServices' => (isset($request->productEdit) && $request->productEdit === "true") ? $product->AdditionalServicesPrice : null,
         ]);
     }
 }
