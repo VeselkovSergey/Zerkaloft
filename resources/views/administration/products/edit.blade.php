@@ -80,10 +80,10 @@
                         <input id="category_id" type="text" class="w-100" value="{{$product->id}}">
                     </div>
 
-                    <div class="hide">
-                        <label for="product_combination" class="block w-100">Комбинация</label>
-                        <input id="product_combination" type="text" class="w-100" value="{{$combination->id}}">
-                    </div>
+{{--                    <div class="hide">--}}
+{{--                        <label for="product_combination" class="block w-100">Комбинация</label>--}}
+{{--                        <input id="product_combination" type="text" class="w-100" value="{{$combination->id}}">--}}
+{{--                    </div>--}}
 
                     <div class="p-10 w-100">
                         <label for="product_name" class="block w-100">Название продукта</label>
@@ -187,6 +187,32 @@
 
                     @endif
 
+                    <div class="p-10">
+                        <div class="toggle-button cp" data-toogle="list-apply-{{$combination->id}}">
+                            Раскрыть список к которым применить
+                        </div>
+                        <div class="list-apply list-apply-{{$combination->id}}">
+
+                            <div>
+                                <label>Фильтр по названию
+                                    <input type="text" class="filter2">
+                                </label>
+                            </div>
+
+                            <label>
+                                <input type="checkbox" class="select-all">
+                                Выбрать все
+                            </label>
+
+                            @foreach($completeCombinations as $comb)
+                                <label class="items-apply-container" @if($comb->id === $combination->id) style="display: none;" @endif>
+                                    <input type="checkbox" @if($comb->id === $combination->id) checked @endif name="product_combination[{{$comb->id}}]" value="{{$comb->id}}">
+                                    <span class="item-apply">{{($comb->productModification ? '(существует) ' : '') . $product->title . ' ' . $comb->title}}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+
 
                     <div class="p-10 w-100">
                         <button class="create-product-btn container-btn">Сохранить</button>
@@ -286,6 +312,35 @@
                 }
             }
 
+        });
+
+        document.body.querySelector('.filter2').addEventListener('input', (event) => {
+
+            let filterValue = event.target.value;
+
+            let listApplyContainer = event.target.closest('.list-apply');
+            let itemsApplyTitle = listApplyContainer.querySelectorAll('.item-apply');
+
+            let regExp = new RegExp(filterValue, 'ig');
+            for (let i = 0; i < itemsApplyTitle.length; i++) {
+                let itemApplyTitle = itemsApplyTitle[i];
+
+                if (itemApplyTitle.innerHTML.match(regExp)) {
+                    itemApplyTitle.closest('.items-apply-container').show();
+                } else {
+                    itemApplyTitle.closest('.items-apply-container').hide();
+                }
+            }
+
+        });
+
+        document.body.querySelectorAll('.select-all').forEach((selectAllButton) => {
+            selectAllButton.addEventListener('click', (event) => {
+                const checked = event.target.checked;
+                event.target.closest('.list-apply').querySelectorAll('.items-apply-container:not(.hide) input').forEach((input) => {
+                    input.checked = checked;
+                });
+            })
         });
 
         function AddPrice(productCombinationContainer) {

@@ -158,22 +158,34 @@ class ProductsController
         $productAdditionalServicesActivation = !empty($request->additional_service_activation) ? $request->additional_service_activation : null;
         $productAdditionalServicesPrice = !empty($request->additional_service_price) ? $request->additional_service_price : null;
 
-        $product = Products::where('category_id', $categoryId)
-            ->where('modification_id', $productCombination)
-            ->first();
-        $productID = !empty($product->id) ? $product->id : null;
+        $arrCombinations = [];
 
-        if (!$productFiles && !$product) {
-            return ResultGenerate::Error('Ошибка! Загрузите картинку!');
+        foreach ($productCombination as $combination => $boolText) {
+            if ($boolText === 'true') {
+                $arrCombinations[] = $combination;
+            }
         }
+
+        if (!sizeof($arrCombinations)) {
+            return ResultGenerate::Error('Ошибка! Выберите хотя бы одну модификацию');
+        }
+
+//        $product = null;
+//        $productID = null;
+//        if (sizeof($arrCombinations) === 1) {
+//            $product = Products::where('category_id', $categoryId)
+//                ->where('modification_id', $arrCombinations[0])
+//                ->first();
+//            $productID = !empty($product->id) ? $product->id : null;
+//        }
+//
+//        if (!$productFiles && !$product) {
+//            return ResultGenerate::Error('Ошибка! Загрузите картинку!');
+//        }
 
         if (!$productName) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
-
-//        if (!$productParent) {
-//            return ResultGenerate::Error('Ошибка! Выберите подкатегорию!');
-//        }
 
         if (!$productPrices[0] || !$productCount[0]) {
             return ResultGenerate::Error('Ошибка! Укажите стоимость!');
@@ -190,16 +202,6 @@ class ProductsController
 
         $semanticURL = StringHelper::TransliterateURL($productName);
 
-        $uniqSemanticURL = Products::where('semantic_url', $semanticURL);
-        if ($productID) {
-            $uniqSemanticURL->where('id', '!=', $productID);
-        }
-        $uniqSemanticURL = $uniqSemanticURL->first();
-
-        if ($uniqSemanticURL) {
-            return ResultGenerate::Error('Ошибка! Название должно быть уникальным!');
-        }
-
         $saveFiles = [];
         foreach ($productFiles as $productFile) {
             if (in_array($productFile->getMimeType(), ['image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
@@ -214,26 +216,59 @@ class ProductsController
 
         $fields['title'] = $productName;
         $fields['category_id'] = $categoryId;
-        $fields['modification_id'] = $productCombination;
         $fields['description'] = $productDescription;
         $fields['search_words'] = $productSearchWords;
-        $fields['semantic_url'] = $semanticURL;
         $fields['active'] = $productActive === 'true' ? 1 : 0;
         $fields['not_only_calculator'] = $productNotOnlyCalculator === 'true' ? 1 : 0;
         $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
         $fields['show_add_more'] = $productShowAddMore === 'true' ? 1 : 0;
 
-        if ($productID) {
-            $productFind = Products::find($productID);
+        foreach ($arrCombinations as $combination) {
+            $fields['semantic_url'] = $semanticURL . '-' . $combination;
+            $fields['modification_id'] = $combination;
+
+
+            $productFind = Products::where('category_id', $categoryId)
+                ->where('modification_id', $combination)
+                ->first();
+
             if ($productFind) {
                 $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
-                if ($request->allFiles()) {
-                    Files::DeleteFiles(unserialize($productFind->img));
-                }
+//                if ($request->allFiles()) {
+//                    Files::DeleteFiles(unserialize($productFind->img));
+//                }
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
 
-                    ProductsPrices::where('product_id', $productID)->delete();
+                    ProductsPrices::where('product_id', $productFind->id)->delete();
+                    foreach ($productPrices as $key => $price) {
+                        $fieldsPrices['product_id'] = $productFind->id;
+                        $fieldsPrices['price'] = $price;
+                        $fieldsPrices['count'] = $productCount[$key];
+                        ProductsPrices::create($fieldsPrices);
+                    }
+
+                    AdditionalProductServices::where('product_id', $productFind->id)->delete();
+                    if ($productAdditionalServices) {
+                        foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                            if ($productAdditionalServicesActivation[$key] === 'true') {
+                                $fieldsPrices['product_id'] = $productFind->id;
+                                $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
+                                $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                                AdditionalProductServices::create($fieldsPrices);
+                            }
+                        }
+                    }
+
+                    //return ResultGenerate::Success('Продукт обновлен успешно!');
+                }
+                //return ResultGenerate::Error('Ошибка обновления продукта!');
+
+            } else {
+                $fields['img'] = $serializeImgArray;
+                $productCreated = Products::create($fields);
+                if ($productCreated) {
+                    $productID = $productCreated->id;
                     foreach ($productPrices as $key => $price) {
                         $fieldsPrices['product_id'] = $productID;
                         $fieldsPrices['price'] = $price;
@@ -244,48 +279,22 @@ class ProductsController
                     AdditionalProductServices::where('product_id', $productID)->delete();
                     if ($productAdditionalServices) {
                         foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                            if ($productAdditionalServicesActivation[$key] === 'true') {
+                            if ($productAdditionalServicesActivation[$key]) {
                                 $fieldsPrices['product_id'] = $productID;
-                                $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
+                                $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
                                 $fieldsPrices['additional_service_id'] = $productAdditionalService;
                                 AdditionalProductServices::create($fieldsPrices);
                             }
                         }
                     }
 
-                    return ResultGenerate::Success('Продукт обновлен успешно!');
+                    //return ResultGenerate::Success('Продукт создан успешно!');
                 }
-                return ResultGenerate::Error('Ошибка обновления продукта!');
+                //return ResultGenerate::Error('Ошибка создания продукта!');
             }
-
-        } else {
-            $fields['img'] = $serializeImgArray;
-            $productCreated = Products::create($fields);
-            if ($productCreated) {
-                $productID = $productCreated->id;
-                foreach ($productPrices as $key => $price) {
-                    $fieldsPrices['product_id'] = $productID;
-                    $fieldsPrices['price'] = $price;
-                    $fieldsPrices['count'] = $productCount[$key];
-                    ProductsPrices::create($fieldsPrices);
-                }
-
-                AdditionalProductServices::where('product_id', $productID)->delete();
-                if ($productAdditionalServices) {
-                    foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                        if ($productAdditionalServicesActivation[$key]) {
-                            $fieldsPrices['product_id'] = $productID;
-                            $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
-                            $fieldsPrices['additional_service_id'] = $productAdditionalService;
-                            AdditionalProductServices::create($fieldsPrices);
-                        }
-                    }
-                }
-
-                return ResultGenerate::Success('Продукт создан успешно!');
-            }
-            return ResultGenerate::Error('Ошибка создания продукта!');
         }
+
+        return ResultGenerate::Success();
 
         return ResultGenerate::Error('Непредвиденная ошибка. Попробуйте позже или обратитесь в поддержку!');
 
