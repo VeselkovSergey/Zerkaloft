@@ -279,7 +279,7 @@ class ProductsController
                     AdditionalProductServices::where('product_id', $productID)->delete();
                     if ($productAdditionalServices) {
                         foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                            if ($productAdditionalServicesActivation[$key]) {
+                            if ($productAdditionalServicesActivation[$key] === 'true') {
                                 $fieldsPrices['product_id'] = $productID;
                                 $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
                                 $fieldsPrices['additional_service_id'] = $productAdditionalService;
