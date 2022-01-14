@@ -204,12 +204,12 @@
                                 Выбрать все
                             </label>
 
-{{--                            @foreach($completeCombinations as $comb)--}}
-{{--                                <label class="items-apply-container" @if($comb->id === $combination->id) style="display: none;" @endif>--}}
-{{--                                    <input type="checkbox" @if($comb->id === $combination->id) checked @endif name="product_combination[{{$comb->id}}]" value="{{$comb->id}}">--}}
-{{--                                    <span class="item-apply">{{$product->title . ' ' . $comb->title}}</span>--}}
-{{--                                </label>--}}
-{{--                            @endforeach--}}
+                            @foreach($completeCombinations as $comb)
+                                <label class="items-apply-container" @if($comb->id === $combination->id) style="display: none;" @endif>
+                                    <input type="checkbox" @if($comb->id === $combination->id) checked @endif name="product_combination[{{$comb->id}}]" value="{{$comb->id}}">
+                                    <span class="item-apply">{{$comb->title}}</span>
+                                </label>
+                            @endforeach
                         </div>
                     </div>
 
