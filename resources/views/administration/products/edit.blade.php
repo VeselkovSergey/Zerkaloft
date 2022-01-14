@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mb-10">
-        <a href="{{route('products-admin-page')}}" class="button-blue w-fit">назад во все продукты</a>
+        <a href="{{route('products-admin-page')}}" class="button-blue w-fit">назад в продукты</a>
     </div>
 
     <div>
