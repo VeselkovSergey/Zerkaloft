@@ -111,7 +111,7 @@ class ProductsController
             $tmpStr = [];
             $tmpId = [];
             foreach ($propertyCategories->Values as $propertyCategoriesValue) {
-                $tmpStr[] = $propertyCategories->title . ': ' .$propertyCategoriesValue->value;
+                $tmpStr[] = $propertyCategories->title . ': ' . $propertyCategoriesValue->value;
                 $tmpId[] = $propertyCategoriesValue->id;
             }
             $combinations[] = $tmpStr;
@@ -163,6 +163,7 @@ class ProductsController
         $productAdditionalServices = !empty($request->additional_service_id) ? $request->additional_service_id : null;
         $productAdditionalServicesActivation = !empty($request->additional_service_activation) ? $request->additional_service_activation : null;
         $productAdditionalServicesPrice = !empty($request->additional_service_price) ? $request->additional_service_price : null;
+        $fieldsApply = !empty($request->fieldsApply) ? $request->fieldsApply : null;
 
         $arrCombinations = [];
 
@@ -185,7 +186,7 @@ class ProductsController
 //            $productID = !empty($product->id) ? $product->id : null;
 //        }
 //
-        if (!$productFiles && sizeof($arrCombinations) !== 1) {
+        if (!$productFiles && sizeof($arrCombinations) !== 1 && $fieldsApply['img'] === 'true') {
             return ResultGenerate::Error('Ошибка! Загрузите общую картинку!');
         }
 
@@ -220,48 +221,74 @@ class ProductsController
 
         $serializeImgArray = serialize($saveFiles);
 
-        $fields['title'] = $productName;
+        if ($fieldsApply['product_name'] === 'true') {
+            $fields['title'] = $productName;
+        }
+
+        if ($fieldsApply['product_description'] === 'true') {
+            $fields['description'] = $productDescription;
+        }
+
+        if ($fieldsApply['search_words'] === 'true') {
+            $fields['search_words'] = $productSearchWords;
+        }
+
+        if ($fieldsApply['active'] === 'true') {
+            $fields['active'] = $productActive === 'true' ? 1 : 0;
+        }
+
+        if ($fieldsApply['not_only_calculator'] === 'true') {
+            $fields['not_only_calculator'] = $productNotOnlyCalculator === 'true' ? 1 : 0;
+        }
+
+        if ($fieldsApply['show_main_page'] === 'true') {
+            $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
+        }
+
+        if ($fieldsApply['show_add_more'] === 'true') {
+            $fields['show_add_more'] = $productShowAddMore === 'true' ? 1 : 0;
+        }
+
         $fields['category_id'] = $categoryId;
-        $fields['description'] = $productDescription;
-        $fields['search_words'] = $productSearchWords;
-        $fields['active'] = $productActive === 'true' ? 1 : 0;
-        $fields['not_only_calculator'] = $productNotOnlyCalculator === 'true' ? 1 : 0;
-        $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
-        $fields['show_add_more'] = $productShowAddMore === 'true' ? 1 : 0;
 
         foreach ($arrCombinations as $combination) {
             $fields['semantic_url'] = $semanticURL . '-' . $combination;
             $fields['modification_id'] = $combination;
-
 
             $productFind = Products::where('category_id', $categoryId)
                 ->where('modification_id', $combination)
                 ->first();
 
             if ($productFind) {
-                $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
+                if ($fieldsApply['img'] === 'true') {
+                    $fields['img'] = $request->allFiles() ? $serializeImgArray : $productFind->img;
+                }
 //                if ($request->allFiles()) {
 //                    Files::DeleteFiles(unserialize($productFind->img));
 //                }
                 $productUpdate = $productFind->update($fields);
                 if ($productUpdate) {
 
-                    ProductsPrices::where('product_id', $productFind->id)->delete();
-                    foreach ($productPrices as $key => $price) {
-                        $fieldsPrices['product_id'] = $productFind->id;
-                        $fieldsPrices['price'] = $price;
-                        $fieldsPrices['count'] = $productCount[$key];
-                        ProductsPrices::create($fieldsPrices);
+                    if ($fieldsApply['prices'] === 'true') {
+                        ProductsPrices::where('product_id', $productFind->id)->delete();
+                        foreach ($productPrices as $key => $price) {
+                            $fieldsPrices['product_id'] = $productFind->id;
+                            $fieldsPrices['price'] = $price;
+                            $fieldsPrices['count'] = $productCount[$key];
+                            ProductsPrices::create($fieldsPrices);
+                        }
                     }
 
-                    AdditionalProductServices::where('product_id', $productFind->id)->delete();
-                    if ($productAdditionalServices) {
-                        foreach ($productAdditionalServices as $key => $productAdditionalService) {
-                            if ($productAdditionalServicesActivation[$key] === 'true') {
-                                $fieldsPrices['product_id'] = $productFind->id;
-                                $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
-                                $fieldsPrices['additional_service_id'] = $productAdditionalService;
-                                AdditionalProductServices::create($fieldsPrices);
+                    if ($fieldsApply['additional_services'] === 'true') {
+                        AdditionalProductServices::where('product_id', $productFind->id)->delete();
+                        if ($productAdditionalServices) {
+                            foreach ($productAdditionalServices as $key => $productAdditionalService) {
+                                if ($productAdditionalServicesActivation[$key] === 'true') {
+                                    $fieldsPrices['product_id'] = $productFind->id;
+                                    $fieldsPrices['price'] = !empty($productAdditionalServicesPrice[$key]) ? $productAdditionalServicesPrice[$key] : 0;
+                                    $fieldsPrices['additional_service_id'] = $productAdditionalService;
+                                    AdditionalProductServices::create($fieldsPrices);
+                                }
                             }
                         }
                     }

@@ -56,8 +56,10 @@
 
                     @foreach($allAdditionalServices as $allAdditionalService)
                         <div class="additional-service-id-{{$allAdditionalService->id}}">
-                            <input class="hide" name="additional_service_id[]" type="text"
-                                   value="{{$allAdditionalService->id}}">
+                            <label class="hide">
+                                <input class="hide" name="additional_service_id[]" type="text"
+                                       value="{{$allAdditionalService->id}}">
+                            </label>
                             <div class="flex">
                                 <div class="p-5">
                                     <label class="block">
@@ -145,8 +147,67 @@
                 </div>
 
                 <div class="p-10">
+                    <div class="toggle-button cp" data-toogle="list-fields-apply-toggle">
+                        Раскрыть список применяемых полей
+                    </div>
+                    <div class="list-fields-apply list-fields-apply-toggle">
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[active]" checked>
+                            Активный
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[not_only_calculator]" checked>
+                            Активный для просмотра в каталоге
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[show_main_page]" checked>
+                            Показывать на главной странице
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[show_add_more]" checked>
+                            Показывать кнопку добавить +1 в корзину
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[additional_services]" checked>
+                            Доп. услуги
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[product_name]" checked>
+                            Название продукта
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[product_description]" checked>
+                            Описание
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[search_words]" checked>
+                            Слова для поиска
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[prices]" checked>
+                            Цены
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[img]" checked>
+                            Картинка
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="p-10">
                     <div class="toggle-button cp" data-toogle="list-apply-toggle">
-                        Раскрыть список к которым применить
+                        Раскрыть список комбинаций к которым применить изменение
                     </div>
                     <div class="list-apply list-apply-toggle">
 
