@@ -80,10 +80,10 @@
                         <input id="category_id" type="text" class="w-100" value="{{$product->id}}">
                     </div>
 
-{{--                    <div class="hide">--}}
-{{--                        <label for="product_combination" class="block w-100">Комбинация</label>--}}
-{{--                        <input id="product_combination" type="text" class="w-100" value="{{$combination->id}}">--}}
-{{--                    </div>--}}
+                    <div class="hide">
+                        <label for="product_combination_for_delete" class="block w-100">Комбинация</label>
+                        <input id="product_combination_for_delete" type="text" class="w-100" value="{{$combination->id}}">
+                    </div>
 
                     <div class="p-10 w-100">
                         <label for="product_name" class="block w-100">Название продукта</label>
@@ -207,7 +207,7 @@
                             @foreach($completeCombinations as $comb)
                                 <label class="items-apply-container" @if($comb->id === $combination->id) style="display: none;" @endif>
                                     <input type="checkbox" @if($comb->id === $combination->id) checked @endif name="product_combination[{{$comb->id}}]" value="{{$comb->id}}">
-                                    <span class="item-apply">{{$comb->title}}</span>
+                                    <span class="item-apply">{{$product->title . ' ' . $comb->title}}</span>
                                 </label>
                             @endforeach
                         </div>
@@ -314,24 +314,26 @@
 
         });
 
-        document.body.querySelector('.filter2').addEventListener('input', (event) => {
+        document.body.querySelectorAll('.filter2').forEach((filter) => {
+            filter.addEventListener('input', (event) => {
 
-            let filterValue = event.target.value;
+                let filterValue = event.target.value;
 
-            let listApplyContainer = event.target.closest('.list-apply');
-            let itemsApplyTitle = listApplyContainer.querySelectorAll('.item-apply');
+                let listApplyContainer = event.target.closest('.list-apply');
+                let itemsApplyTitle = listApplyContainer.querySelectorAll('.item-apply');
 
-            let regExp = new RegExp(filterValue, 'ig');
-            for (let i = 0; i < itemsApplyTitle.length; i++) {
-                let itemApplyTitle = itemsApplyTitle[i];
+                let regExp = new RegExp(filterValue, 'ig');
+                for (let i = 0; i < itemsApplyTitle.length; i++) {
+                    let itemApplyTitle = itemsApplyTitle[i];
 
-                if (itemApplyTitle.innerHTML.match(regExp)) {
-                    itemApplyTitle.closest('.items-apply-container').show();
-                } else {
-                    itemApplyTitle.closest('.items-apply-container').hide();
+                    if (itemApplyTitle.innerHTML.match(regExp)) {
+                        itemApplyTitle.closest('.items-apply-container').show();
+                    } else {
+                        itemApplyTitle.closest('.items-apply-container').hide();
+                    }
                 }
-            }
 
+            });
         });
 
         document.body.querySelectorAll('.select-all').forEach((selectAllButton) => {
