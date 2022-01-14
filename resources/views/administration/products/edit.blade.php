@@ -3,13 +3,19 @@
 @section('content')
 
     <div>
+        
+        <div>
+            <label>Фильтр по названию
+                <input type="text" class="filter">
+            </label>
+        </div>
 
         @foreach($completeCombinations as $combination)
 
             <div class="m-5 p-5 product-combination-container">
 
                 <div class="w-100 flex-center-vertical cp" data-combination="{{$combination->id}}">
-                    <div>{{($combination->productModification ? '(существует) ' : '') . $product->title . ' ' . $combination->title}}</div>
+                    <div class="combination-title">{{($combination->productModification ? '(существует) ' : '') . $product->title . ' ' . $combination->title}}</div>
                     <div class="flex-center-vertical">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
@@ -260,6 +266,25 @@
                     event.target.show();
                 });
             });
+
+        });
+
+        document.body.querySelector('.filter').addEventListener('input', (event) => {
+
+            let filterValue = event.target.value;
+
+            let combinationsTitle = document.body.querySelectorAll('.combination-title');
+
+            let regExp = new RegExp(filterValue, 'ig');
+            for (let i = 0; i < combinationsTitle.length; i++) {
+                let combinationTitle = combinationsTitle[i];
+
+                if (combinationTitle.innerHTML.match(regExp)) {
+                    combinationTitle.closest('.product-combination-container').show();
+                } else {
+                    combinationTitle.closest('.product-combination-container').hide();
+                }
+            }
 
         });
 
