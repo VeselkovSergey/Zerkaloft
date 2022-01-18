@@ -334,27 +334,37 @@ class ProductsController
     public function DeleteProduct(Request $request)
     {
         $categoryId = !empty($request->category_id) ? $request->category_id : null;
-        $productCombination = !empty($request->product_combination_for_delete) ? $request->product_combination_for_delete : null;
+        $productCombinations = !empty($request->product_combination) ? $request->product_combination : [];
 
-        $product = Products::where('category_id', $categoryId)
-            ->where('modification_id', $productCombination)
-            ->first();
-        $productID = !empty($product->id) ? $product->id : null;
+        $arrCombinations = [];
 
-        if ($productID) {
-            foreach ($product->Prices as $price) {
-                $price->delete();
-            }
-
-            foreach ($product->AdditionalServicesPrice as $additionalServicesPrice) {
-                $additionalServicesPrice->delete();
-            }
-
-            if ($product->delete()) {
-                return ResultGenerate::Success('Продукт успешно удален!');
+        foreach ($productCombinations as $combination => $boolText) {
+            if ($boolText === 'true') {
+                $arrCombinations[] = $combination;
             }
         }
-        return ResultGenerate::Error('Ошибка удаления продукта! Возможно его уже нет');
+
+        foreach ($arrCombinations as $combination) {
+
+            $product = Products::where('category_id', $categoryId)
+                ->where('modification_id', $combination)
+                ->first();
+
+            if ($product) {
+                foreach ($product->Prices as $price) {
+                    $price->delete();
+                }
+
+                foreach ($product->AdditionalServicesPrice as $additionalServicesPrice) {
+                    $additionalServicesPrice->delete();
+                }
+
+                if ($product->delete()) {
+
+                }
+            }
+        }
+        return ResultGenerate::Success();
     }
 
     public function ProductPage(Request $request)
