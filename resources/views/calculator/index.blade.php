@@ -78,7 +78,11 @@
                                         'modification[]': modification
                                     }).then((response) => {
                                         if (response.status !== true) {
-                                            return ModalWindowFlash(response.message);
+                                            ModalWindowFlash(response.message);
+                                            setTimeout(() => {
+                                                GenerationFormSpecialOrder();
+                                            }, 1500);
+                                            return
                                         }
 
                                         let res = response.result;
