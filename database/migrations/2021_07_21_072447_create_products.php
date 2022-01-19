@@ -22,10 +22,10 @@ class CreateProducts extends Migration
             $table->longText('search_words')->comment('Слова для поиска');
             $table->string('img')->comment('Файлы картинки');
             $table->string('semantic_url')->comment('Семантический URL');
-            $table->integer('active')->comment('Активный ли продукт');
-            $table->integer('not_only_calculator')->comment('Не только для калькулятора');
-            $table->integer('show_main_page')->comment('Показывать на главной странице');
-            $table->integer('show_add_more')->comment('Показывать кнопку добавить еще в корзину');
+            $table->integer('active')->comment('Активный ли продукт')->default(0);
+            $table->integer('not_only_calculator')->comment('Не только для калькулятора')->default(0);
+            $table->integer('show_main_page')->comment('Показывать на главной странице')->default(0);
+            $table->integer('show_add_more')->comment('Показывать кнопку добавить еще в корзину')->default(0);
             $table->timestamps();
         });
     }
