@@ -39,9 +39,13 @@
 
     <script>
 
-        let allCategoryDebug = JSON.parse('@json($allCategories->pluck('title', 'id')->prepend('Выберите категорию', 0), JSON_UNESCAPED_UNICODE)');
+        let categoryOptions = '<option disabled selected value="0">Выберите категорию</option>';
+        @foreach($allCategories as $category)
+            categoryOptions += '<option value="{{$category->id}}">{{$category->title}}</option>';
+        @endforeach
 
-        let selectorCategories = GenerationFormSelect(JSON.parse('@json($allCategories->pluck('title', 'id')->prepend('Выберите категорию', 0), JSON_UNESCAPED_UNICODE)'), 'category', 0, true);
+        let selectorCategories = CreateElement('select', {attr: {name: 'category'}, content: categoryOptions});
+
         selectorCategories.classList.add('p-5');
         selectorCategories.classList.add('border-radius-5');
 
