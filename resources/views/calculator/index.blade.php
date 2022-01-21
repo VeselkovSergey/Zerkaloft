@@ -39,6 +39,8 @@
 
     <script>
 
+        let allCategoryDebug = JSON.parse('@json($allCategories->pluck('title', 'id')->prepend('Выберите категорию', 0), JSON_UNESCAPED_UNICODE)');
+
         let selectorCategories = GenerationFormSelect(JSON.parse('@json($allCategories->pluck('title', 'id')->prepend('Выберите категорию', 0), JSON_UNESCAPED_UNICODE)'), 'category', 0, true);
         selectorCategories.classList.add('p-5');
         selectorCategories.classList.add('border-radius-5');
