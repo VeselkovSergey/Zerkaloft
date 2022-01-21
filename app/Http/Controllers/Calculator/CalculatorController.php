@@ -18,14 +18,14 @@ class CalculatorController
 {
     public function Index()
     {
-        $allCategories = Categories::all();
+        $allCategories = Categories::orderBy('sequence')->get();
         return view('calculator.index', [
             'allCategories' => $allCategories,
         ]);
     }
     public function IndexForFastOrder()
     {
-        $allCategories = Categories::all();
+        $allCategories = Categories::orderBy('sequence')->get();
         return view('calculator.index', [
             'allCategories' => $allCategories,
             'fastOrder' => true,
