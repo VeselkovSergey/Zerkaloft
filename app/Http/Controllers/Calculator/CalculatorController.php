@@ -19,7 +19,6 @@ class CalculatorController
     public function Index()
     {
         $allCategories = Categories::orderBy('sequence')->get();
-        dd($allCategories);
         return view('calculator.index', [
             'allCategories' => $allCategories,
         ]);
