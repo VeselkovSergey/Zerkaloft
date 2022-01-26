@@ -10,7 +10,7 @@
 
         <div class="about-text">
 
-            {{$aboutPage->text}}
+            {!! $aboutPage->text !!}
 
 {{--        </pre>--}}
         </div>
