@@ -56,6 +56,19 @@
 
     </div>
 
+    <div class="container-about-text flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="aboutText">Текст для страницы о нас</label>
+            <textarea class="w-100" name="aboutText" id="aboutText">{{$aboutPageInfo->text}}</textarea>
+        </div>
+
+        <div class="p-5">
+            <button class="save-about-text-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -90,6 +103,17 @@
             let dataForm = GetDataFormContainer('container-fast-order-text');
 
             Ajax("{{route('save-fast-order-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-about-text-button').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('container-about-text');
+
+            Ajax("{{route('save-about-text')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

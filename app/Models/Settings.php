@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string value
+ */
 class Settings extends Model
 {
     /**
@@ -27,6 +30,7 @@ class Settings extends Model
         8 => 'Номер whatsap',
         9 => 'Номер telegram',
         10 => 'Почта',
+        11 => 'О компании',
     ];
 
     const TypeByWords = [
@@ -40,6 +44,7 @@ class Settings extends Model
         'whatsappPhone' => 8,
         'telegramPhone' => 9,
         'mail' => 10,
+        'aboutPageText' => 11,
     ];
 
     public function TypeSetting()

@@ -191,6 +191,7 @@ class SettingsController extends Controller
             'calculatorPageInfo' => self::CalculatorPageInfo(),
             'onlineOrderPageInfo' => self::OnlineOrderInfo(),
             'fastOrderPageInfo' => self::FastOrderInfo(),
+            'aboutPageInfo' => self::AboutInfo(),
         ]);
     }
 
@@ -282,6 +283,24 @@ class SettingsController extends Controller
 
         $fastOrderPageText->update([
             'value' => json_encode(['text' => $fastOrderText, 'imageFileId' => $fileId])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public static function AboutInfo()
+    {
+        $aboutPageText = Settings::where('type', Settings::TypeByWords['aboutPageText'])->first();
+        return json_decode($aboutPageText->value);
+    }
+
+    public function SaveAboutInfo(Request $request)
+    {
+        $aboutText = $request->aboutText;
+        $aboutPage = Settings::where('type', Settings::TypeByWords['aboutPageText'])->first();
+
+        $aboutPage->update([
+            'value' => json_encode(['text' => $aboutText])
         ]);
 
         return ResultGenerate::Success();

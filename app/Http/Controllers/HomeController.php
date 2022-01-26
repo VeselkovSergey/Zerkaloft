@@ -35,8 +35,9 @@ class HomeController
 
     public function About(Request $request)
     {
-
-        return view('home.about');
+        $aboutPage = Settings::where('type', Settings::TypeByWords['aboutPageText'])->first();
+        $aboutPage = json_decode($aboutPage->value);
+        return view('home.about', compact('aboutPage'));
     }
 
     public function Contacts(Request $request)

@@ -75,6 +75,13 @@ class CreateSettingsTable extends Migration
             ])
         ]);
 
+        \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['aboutPageText'],
+            'value' => json_encode([
+                'text' => 'Текст для страницы о нас',
+            ])
+        ]);
+
     }
 
     /**

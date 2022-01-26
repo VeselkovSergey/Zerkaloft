@@ -226,6 +226,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-fast-order-text', [Controllers\Administration\SettingsController::class, 'SaveFastOrderInfo'])
                 ->name('save-fast-order-text');
 
+            Route::post('/save-about-text', [Controllers\Administration\SettingsController::class, 'SaveAboutInfo'])
+                ->name('save-about-text');
+
         });
 
     });
