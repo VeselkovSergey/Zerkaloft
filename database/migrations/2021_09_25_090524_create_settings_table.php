@@ -52,6 +52,11 @@ class CreateSettingsTable extends Migration
         ]);
 
         \App\Models\Settings::create([
+            'type' => Settings::TypeByWords['address'],
+            'value' => json_encode(['address' => 'Москва, Тверская, 1.'])
+        ]);
+
+        \App\Models\Settings::create([
             'type' => Settings::TypeByWords['calculatorPageText'],
             'value' => json_encode([
                 'text' => 'Текст для страницы калькулятора',

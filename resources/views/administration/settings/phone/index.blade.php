@@ -34,6 +34,11 @@
             <input class="need-validate" id="mail" name="mail" type="text"  value="{{$mail}}" style="width: 100%;">
         </div>
 
+        <div class="p-5 w-50">
+            <label for="mail" style="display: block; width: 100%;">Адрес</label>
+            <input class="need-validate" id="address" name="address" type="text"  value="{{$address}}" style="width: 100%;">
+        </div>
+
         <div class="p-5">
             <button class="save-phone-button">Сохранить</button>
         </div>

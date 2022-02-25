@@ -36,6 +36,9 @@ class SettingsController extends Controller
         $mail = Settings::where('type', Settings::TypeByWords['mail'])->first();
         $mail = json_decode($mail->value)->mail;
 
+        $address = Settings::where('type', Settings::TypeByWords['address'])->first();
+        $address = json_decode($address->value)->address;
+
         return view('administration.settings.phone.index', [
             'phone' => $phone,
             'additionalPhones' => $additionalPhones,
@@ -43,6 +46,7 @@ class SettingsController extends Controller
             'whatsappPhone' => $whatsappPhone,
             'telegramPhone' => $telegramPhone,
             'mail' => $mail,
+            'address' => $address,
         ]);
     }
 
@@ -54,6 +58,7 @@ class SettingsController extends Controller
         $whatsappPhone = $request->whatsappPhone;
         $telegramPhone = $request->telegramPhone;
         $mail = $request->mail;
+        $address = $request->address;
 
         $savePhone = Settings::where('type', Settings::TypeByWords['mainPhone'])->update([
             'value' => json_encode(['phone' => $phone])
@@ -77,6 +82,10 @@ class SettingsController extends Controller
 
         $saveMail = Settings::where('type', Settings::TypeByWords['mail'])->update([
             'value' => json_encode(['mail' => $mail])
+        ]);
+
+        $saveAddress = Settings::where('type', Settings::TypeByWords['address'])->update([
+            'value' => json_encode(['address' => $address])
         ]);
 
         return ResultGenerate::Success();

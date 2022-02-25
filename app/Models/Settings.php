@@ -31,6 +31,7 @@ class Settings extends Model
         9 => 'Номер telegram',
         10 => 'Почта',
         11 => 'О компании',
+        12 => 'Адрес',
     ];
 
     const TypeByWords = [
@@ -45,6 +46,7 @@ class Settings extends Model
         'telegramPhone' => 9,
         'mail' => 10,
         'aboutPageText' => 11,
+        'address' => 12,
     ];
 
     public function TypeSetting()
