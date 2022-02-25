@@ -8,7 +8,7 @@
         <a class="button-blue ml-a" href="{{route('logout')}}">Выход</a>
     </div>
 
-    <div class="client-order-information p-25 border-radius-10 shadow">
+    <div class="client-order-information p-25 border-radius-10 shadow scroll-auto">
         @yield('profile-content')
     </div>
 
