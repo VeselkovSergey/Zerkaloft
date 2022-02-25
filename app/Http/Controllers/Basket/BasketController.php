@@ -10,6 +10,7 @@ use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
 use App\Models\Products;
 use App\Models\ProductsPrices;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class BasketController
@@ -43,10 +44,15 @@ class BasketController
                 ->get();
         }
 
+        $pickupAddress = Settings::where('type', Settings::TypeByWords['address'])->first();
+        $pickupAddress = json_decode($pickupAddress->value)->address;
+
         return view('basket.index', compact(
-            'allProductsInBasket',
-            'productsInBasket',
-            'additionalServices')
+                'allProductsInBasket',
+                'productsInBasket',
+                'additionalServices',
+                'pickupAddress',
+            )
         );
     }
 

@@ -174,7 +174,7 @@
                         <label for="delivery_address">Адрес</label>
                         <input class="need-validate border-black w-100 p-5 border-radius-5 suggestions-address"
                                id="delivery_address" name="delivery_address" type="text" placeholder="Адрес"
-                               value="г.Москва, ул.Тверская, дом 1" readonly>
+                               value="{{$pickupAddress}}" readonly>
                     </div>
 
                     <div class="w-100 p-10 flex">
@@ -201,6 +201,8 @@
         @if(!sizeof($allProductsInBasket))
             ClearAllProductsInBasket();
         @endif
+
+        const pickupAddress = "{{$pickupAddress}}";
 
         let sumProductsPricesInBasket = document.body.querySelector('.sum-products-prices-in-basket');
         if (sumProductsPricesInBasket) {
@@ -335,7 +337,7 @@
                 let inputDeliveryAddress = document.body.querySelector('#delivery_address');
                 if (parseInt(e.target.value) === 1) {
                     inputDeliveryAddress.readOnly = true;
-                    inputDeliveryAddress.value = 'г.Москва, ул.Тверская, дом 1';
+                    inputDeliveryAddress.value = pickupAddress;
                 } else {
                     inputDeliveryAddress.readOnly = false;
                     @php
