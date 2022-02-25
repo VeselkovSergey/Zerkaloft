@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Files;
+use App\Models\Categories;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 
@@ -43,5 +44,11 @@ class HomeController
     public function Contacts(Request $request)
     {
         return view('home.contacts');
+    }
+
+    public function SiteMap()
+    {
+        $categories = Categories::all();
+        return response()->view('sitemap', compact('categories'))->header('Content-Type', 'text/xml');
     }
 }

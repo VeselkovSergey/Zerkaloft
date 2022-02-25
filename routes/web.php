@@ -365,6 +365,8 @@ Route::get('/debug-phpinfo', function () {
     phpinfo();
 });
 
+Route::get('sitemap.xml', [Controllers\HomeController::class, 'SiteMap'])->name('sitemap');
+
 
 //Route::group(['prefix' => 'test'], function () {
 //

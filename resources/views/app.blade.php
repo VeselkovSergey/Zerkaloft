@@ -33,6 +33,8 @@
 
         <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
 
+        <link href='{{ route('sitemap') }}' rel='alternate' title='Sitemap' type='application/rss+xml'/>
+
         <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
         <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
 

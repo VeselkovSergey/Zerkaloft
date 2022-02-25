@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property string semantic_url
+ * @property string updated_at
+ */
 class Categories extends Model
 {
     use HasFactory, Notifiable;
