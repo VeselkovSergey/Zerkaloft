@@ -48,7 +48,7 @@
                     <a class="clear-a button-link-basket-page hide" href="{{route('basket-page')}}"><button class="button-blue">Перейти в корзину</button></a>
                 </div>
 
-                <div class="mt-20">
+                <div class="mt-20" style="word-break: break-all;">
                     {{$product->description}}
                 </div>
 
