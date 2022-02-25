@@ -366,13 +366,13 @@ Route::get('/debug-phpinfo', function () {
 });
 
 
-Route::group(['prefix' => 'test'], function () {
-
-    Route::get('/', [Controllers\TestController::class, 'index'])
-        ->name('test');
-
-    Route::get('/mail-test', function () {
-        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new MailSender(User::PasswordGenerate()));
-    });
-
-});
+//Route::group(['prefix' => 'test'], function () {
+//
+//    Route::get('/', [Controllers\TestController::class, 'index'])
+//        ->name('test');
+//
+//    Route::get('/mail-test', function () {
+//        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new MailSender(User::PasswordGenerate()));
+//    });
+//
+//});
