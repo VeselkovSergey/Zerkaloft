@@ -287,7 +287,6 @@
                     sum += concreteProductSum;
                     sum += additionalServicePrice;
                     count += concreteProductCount;
-                    console.log(localStorageBasket[productId][productPriceId])
                 });
             });
             localStorage.setItem('sumProductsPricesInBasket', sum);
