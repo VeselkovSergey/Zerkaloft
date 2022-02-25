@@ -39,8 +39,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME', 's-vesel94@yandex.ru'),
-            'password' => env('MAIL_PASSWORD', 'NfrfzCexrf2302'),
+            'username' => env('MAIL_USERNAME', 'vivepro@yandex.ru'),
+            'password' => env('MAIL_PASSWORD', '17122021Vive'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 's-vesel94@yandex.ru'),
+        'address' => env('MAIL_FROM_ADDRESS', 'vivepro@yandex.ru'),
         'name' => env('MAIL_FROM_NAME', 'no_replay'),
     ],
 
