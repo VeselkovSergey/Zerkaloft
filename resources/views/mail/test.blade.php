@@ -1,3 +1,3 @@
 <div>
-    Ваш пароль: {{$password}}
+    Пароль: {{$password}}
 </div>
