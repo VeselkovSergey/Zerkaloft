@@ -106,7 +106,7 @@ class OrdersController
             }
         }
 
-//        $this->SendTelegram($request);
+        $this->SendTelegram($request);
 
         return ResultGenerate::Success('Заказ успешно создан!');
     }
@@ -287,7 +287,7 @@ class OrdersController
         $message .= $products;
 
         $telegram = new Telegram();
-        $telegram->sendMessage($message, '267236435');
+        $telegram->sendMessage($message, env('TELEGRAM_ORDER_GROUP'));
     }
 
     public function NewOrderFile (Request $request)
