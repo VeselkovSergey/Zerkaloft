@@ -183,6 +183,24 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/delete', [Controllers\Products\ProductsController::class, 'DeleteProduct'])
             ->name('delete-product-admin');
+
+        Route::get('/to-csv', function () {
+            $csvContent = chr(239) . chr(187) . chr(191);
+            $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . PHP_EOL;
+            $products = \App\Models\Products::all();
+            foreach ($products as $product) {
+                $csvContent .= $product->Category->title . ';';
+                $csvContent .= $product->title . ';';
+                $csvContent .= $product->id . ';';
+                $csvContent .= $product->description . ';';
+                $csvContent .= $product->Prices()->first()->price . ';';
+                $csvContent .= PHP_EOL;
+            }
+
+            return \response($csvContent)
+                ->header('Content-Type', 'text/csv; charset=utf-8')
+                ->header('Content-Disposition', 'attachment; filename="Файл.csv');
+        })->name('products-to-csv');
     });
 
     Route::group(['prefix' => 'settings'], function () {

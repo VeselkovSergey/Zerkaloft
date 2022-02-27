@@ -62,6 +62,10 @@
                         'title' => 'Все продукты',
                         'link' => route('products-admin-page'),
                     ],
+                    [
+                        'title' => 'Выгрузить в CSV',
+                        'link' => route('products-to-csv'),
+                    ],
 //                    [
 //                        'title' => 'Новый продукт',
 //                        'link' => route('create-product-admin-page'),
