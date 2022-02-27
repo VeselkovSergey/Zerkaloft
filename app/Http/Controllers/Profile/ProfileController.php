@@ -81,7 +81,7 @@ class ProfileController
         if ($res instanceof UserPhysicals || $res instanceof UserJuridicals) {
             return ResultGenerate::Success('Изменения применены!');
         } else {
-            return ResultGenerate::Error($res);
+            return $res;
         }
     }
 
