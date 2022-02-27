@@ -4,6 +4,8 @@
 
     @php($title_page = $product->title)
 
+    @php($metaDescription = $product->description)
+
     <div>
 
         <div data-product-id="{{$product->id}}" class="product-id hide">{{$product->id}}</div>

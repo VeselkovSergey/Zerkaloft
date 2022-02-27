@@ -29,6 +29,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="yandex-verification" content="1bc095e408e6a616" />
+
+        <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Рекламное агенство'}}">
+
         @yield('meta')
 
         <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>

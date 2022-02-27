@@ -4,6 +4,8 @@
 
     @php($title_page = $category->title)
 
+    @php($metaDescription = $category->title)
+
     <div>
 
         <div class="flex-wrap w-100">
