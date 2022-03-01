@@ -30,7 +30,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="yandex-verification" content="1bc095e408e6a616" />
 
-        <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Рекламное агенство'}}">
+        <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Рекламное агентство'}}">
 
         @yield('meta')
 
