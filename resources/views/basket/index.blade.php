@@ -201,7 +201,7 @@
 
     <script>
 
-        const ipay = new IPAY({api_token: '2blrrbk2ltqsubnqal041l27d4'});
+        const ipay = new IPAY({api_token: sberKey});
 
         function OrderPay() {
             if (!CheckingFieldForEmptiness('client-order-information', true)) {

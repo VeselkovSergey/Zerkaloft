@@ -309,6 +309,14 @@ Route::group(['prefix' => 'management'], function () {
 
     });
 
+    Route::group(['prefix' => 'online-payments'], function () {
+
+        Route::get('/create-payment-link', function () {
+            return view('management.onlinePayments.create');
+        })->name('create-payment-link');
+
+    });
+
 });
 
 Route::group(['prefix' => 'files'], function () {

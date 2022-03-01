@@ -1,3 +1,5 @@
+const sberKey = '2blrrbk2ltqsubnqal041l27d4';
+
 let leftMenuButtons = document.body.querySelectorAll('.menu, .shadow-menu, .close-menu-button');
 leftMenuButtons.forEach((button) => {
     button.addEventListener('click', () => {
