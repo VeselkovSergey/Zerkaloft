@@ -3,7 +3,8 @@
         <img width="200" height="60" src="{{asset('icon/logo_rus.png')}}" alt="">
     </div>
     <div style="text-align: center;">
-        <h3>Добро пожаловать Victoria Рекламное агентство</h3>
+        <h3>Добро пожаловать</h3>
+        <h3>Victoria Рекламное агентство</h3>
         <div>Для входа в личный кабинет используйте:</div>
         <div>Логин: {{$email}}</div>
         <div>Пароль: {{$password}}</div>
