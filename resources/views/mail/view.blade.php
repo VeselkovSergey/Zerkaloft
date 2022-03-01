@@ -1,4 +1,4 @@
-<div style="text-align: center; background-image: url('{{asset('img/bg.jpeg')}}'); background-repeat: no-repeat; background-size: contain; background-attachment: fixed;">
+<div style="text-align: center; background-image: url('{{asset('img/bg.jpeg')}}'); background-repeat: no-repeat; background-size: contain;">
     <div>
         <img width="200" height="60" src="{{asset('icon/logo_rus.png')}}" alt="">
     </div>
