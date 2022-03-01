@@ -152,7 +152,7 @@
                                   placeholder="Комметарий"></textarea>
                     </div>
 
-                    <div class="w-100 p-10">
+                    <div class="w-100 p-10 hide">
                         <label for="type_payment">Тип оплаты</label>
                         <select name="type_payment" id="type_payment"
                                 class="border-black w-100 p-5 border-radius-5">
