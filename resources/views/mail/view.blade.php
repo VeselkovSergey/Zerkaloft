@@ -4,7 +4,6 @@
     </div>
     <div style="text-align: center;">
         <h3>Добро пожаловать Victoria Рекламное агенство</h3>
-        <div>Вы успешно зарегистрировались на сайте vivepro.ru</div>
         <div>Для входа в личный кабинет используйте:</div>
         <div>Логин: {{$email}}</div>
         <div>Пароль: {{$password}}</div>
