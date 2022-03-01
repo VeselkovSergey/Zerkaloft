@@ -178,7 +178,8 @@
                     </div>
 
                     <div class="w-100 p-10 flex">
-                        <button class="button-create-order mr-a">Оформить заказ</button>
+                        <button class="button-create-order mr-15">Оформить заказ</button>
+                        <button class="button-blue mr-a" onclick="OrderPay();">Оплатить заказ</button>
                     </div>
 
                 </div>
@@ -196,7 +197,34 @@
 
 @section('js')
 
+    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
+
     <script>
+
+        const ipay = new IPAY({api_token: '2blrrbk2ltqsubnqal041l27d4'});
+
+        function OrderPay() {
+            if (!CheckingFieldForEmptiness('client-order-information', true)) {
+                return false;
+            }
+
+            ipayCheckout({
+                    amount: localStorage.getItem('sumProductsPricesInBasket'),
+                    currency: 'RUB',
+                    order_number: '',
+                    // description: 'А. С. Пушкин. Избранное (подарочное издание)'
+                },
+                function (order) {
+                    let buttonAddProductInBasket = document.body.querySelector('.button-create-order');
+                    if (buttonAddProductInBasket !== null) {
+                        triggerEvent(buttonAddProductInBasket, 'click');
+                    }
+                    //showSuccessfulPurchase(order)
+                },
+                function (order) {
+                    //showFailurefulPurchase(order)
+                });
+        }
 
         @if(!sizeof($allProductsInBasket))
             ClearAllProductsInBasket();
