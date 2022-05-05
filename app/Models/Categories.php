@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 /**
  * @property string semantic_url
  * @property string updated_at
+ * @property Products Products
  */
 class Categories extends Model
 {

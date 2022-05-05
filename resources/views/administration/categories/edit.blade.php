@@ -53,6 +53,16 @@
 
     </div>
 
+    <div style="padding: 10px; width: 100%;">
+        <div>
+            <label>
+                <span>Процент изменения цены</span>
+                <input type="number" name="percent">
+            </label>
+            <button class="mt-10 change-price-by-category">Применить изменения цены</button>
+        </div>
+    </div>
+
 @stop
 
 @section('js')
@@ -115,6 +125,23 @@
                     });
                 }
             });
+        });
+
+        document.body.querySelector('.change-price-by-category').addEventListener('click', () => {
+            const percent = document.body.querySelector('[name="percent"]').value;
+            if (percent < -99 || percent == 0) {
+                return ModalWindowFlash('Максимум -99');
+            }
+
+            if (percent.length === 0) {
+                return ModalWindowFlash('Укажите процент');
+            }
+            LoaderShow();
+            Ajax("{{route('change-prices-category-admin')}}", "POST", {categoryId: {{$category->id}}, percent: percent}).then(() => {
+                ModalWindowFlash('Успешно!');
+            }).finally(() => {
+                LoaderHide();
+            })
         });
 
     </script>

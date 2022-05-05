@@ -147,6 +147,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('/delete', [Controllers\Categories\CategoriesController::class, 'DeleteCategory'])
             ->name('delete-category-admin');
+
+        Route::post('/change-prices', [Controllers\Categories\CategoriesController::class, 'ChangePrices'])
+            ->name('change-prices-category-admin');
     });
 
     Route::group(['prefix' => 'additional-services'], function () {

@@ -9,6 +9,7 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Products;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
 use Illuminate\Http\Request;
@@ -181,6 +182,31 @@ class CategoriesController extends Controller
             'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,
             'categoryAdditionalLinks' => $categoryAdditionalLinks
         ]);
+    }
+
+    public function ChangePrices()
+    {
+        $category = Categories::findOrFail(\request('categoryId'));
+        $percent = (float)\request('percent');
+        /** @var $category Categories */
+
+        foreach ($category->Products as $product) {
+            /** @var $product Products */
+            foreach ($product->Prices as $price) {
+                $productPrice = $price->price;
+                $onlyNumber = preg_replace("/[^0-9]/", '', $productPrice);
+                $residue = str_replace($onlyNumber, '', $productPrice);
+
+                $percentSum = $onlyNumber / 100 * $percent;
+
+                $newPrice = (int)($onlyNumber + $percentSum);
+
+                if ($newPrice > 0) {
+                    $price->price = $newPrice . $residue;
+                    $price->save();
+                }
+            }
+        }
     }
 
 }
