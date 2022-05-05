@@ -152,7 +152,7 @@
                                   placeholder="Комметарий"></textarea>
                     </div>
 
-                    <div class="w-100 p-10 hide">
+                    <div class="w-100 p-10">
                         <label for="type_payment">Тип оплаты</label>
                         <select name="type_payment" id="type_payment"
                                 class="border-black w-100 p-5 border-radius-5">
@@ -179,7 +179,7 @@
 
                     <div class="w-100 p-10 flex">
                         <button class="button-create-order mr-15">Оформить заказ</button>
-                        <button class="button-blue mr-a" onclick="OrderPay();">Оплатить заказ</button>
+                        <button class="order-payment-button button-blue mr-a hide" onclick="OrderPay();">Оплатить заказ</button>
                     </div>
 
                 </div>
@@ -203,6 +203,9 @@
 
         const ipay = new IPAY({api_token: sberKey});
 
+        const buttonAddProductInBasket = document.body.querySelector('.button-create-order');
+        const orderPaymentButton = document.body.querySelector('.order-payment-button');
+
         function OrderPay() {
             if (!CheckingFieldForEmptiness('client-order-information', true)) {
                 return false;
@@ -225,6 +228,17 @@
                     //showFailurefulPurchase(order)
                 });
         }
+
+
+        document.body.querySelector('#type_payment').addEventListener('change', (event) => {
+            if (parseInt(event.target.value) === 1) {
+                buttonAddProductInBasket.show();
+                orderPaymentButton.hide();
+            } else {
+                orderPaymentButton.show();
+                buttonAddProductInBasket.hide();
+            }
+        });
 
         @if(!sizeof($allProductsInBasket))
             ClearAllProductsInBasket();
@@ -387,7 +401,6 @@
             });
         });
 
-        let buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         if (buttonAddProductInBasket !== null) {
             buttonAddProductInBasket.addEventListener('click', (e) => {
 
