@@ -57,8 +57,13 @@ label {
     display: block;
 }
 
-input:not([type="checkbox"]) {
+input:not([type="checkbox"]):not([type="radio"]) {
     width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin: 0 5px 0 0;
 }
 
 /* Указываем понятную периодичность в потоке данных у article*/

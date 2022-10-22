@@ -194,15 +194,15 @@ function GetDataFormContainer(container, startElement = document.body) {
                 data[el.id + '-' + i] = el.files[i];
             }
         } else {
+            let value = el.value;
+            if (el.type === 'checkbox' || el.type === 'radio') {
+                value = el.checked
+            }
             if (el.name === '') {
-                data[el.id] = el.value;
+                data[el.id] = value;
             } else {
                 if (data[el.name] === undefined) {
                     data[el.name] = [];
-                }
-                let value = el.value;
-                if (el.type === 'checkbox' || el.type === 'radio') {
-                    value = el.checked
                 }
                 data[el.name].push(value);
             }
