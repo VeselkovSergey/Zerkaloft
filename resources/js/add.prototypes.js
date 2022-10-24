@@ -59,8 +59,8 @@ function GenerationFormSelect(obj, name, selected, disableFirstOption = false) {
     let i = 0;
     Object.keys(obj).forEach((key) => {
         let disabled = (i === 0 && disableFirstOption === true) ? 'disabled' : '';
-        let selectedAttr = selected == key ? 'selected' : '';
-        options += '<option ' + disabled + ' ' + selectedAttr + ' value="' + key + '">' + obj[key] + '</option>';
+        let selectedAttr = selected == key || obj[key]?.is_default_value ? 'selected' : '';
+        options += '<option ' + disabled + ' ' + selectedAttr + ' value="' + key + '">' + obj[key].value + '</option>';
         i++;
     });
     return CreateElement('select', {attr: {name: name}, content: options});

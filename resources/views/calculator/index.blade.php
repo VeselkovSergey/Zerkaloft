@@ -66,8 +66,7 @@
                         containerCategoriesProperties.innerHTML = '';
                         Object.keys(obj).forEach((key) => {
                             let propertySelector = GenerationFormSelect(obj[key].propertyValues, obj[key].propertyTitleTransliterate, 0, true);
-                            propertySelector.classList.add('p-5');
-                            propertySelector.classList.add('border-radius-5');
+                            propertySelector.className = 'p-5 border-radius-5';
 
                             propertySelector.addEventListener('change', () => {
                                 let modification = [];
@@ -166,6 +165,11 @@
                                 ]
                             });
                             containerCategoriesProperties.append(containerProperty);
+
+                            // если быстрый заказ то скрываем профессиональные поля
+                            if (obj[key].propertyIsProfessional === 1 && {{isset($fastOrder) && $fastOrder === true ? 'true' : 'false'}}) {
+                                containerProperty.hide();
+                            }
                         });
                     }
                 });

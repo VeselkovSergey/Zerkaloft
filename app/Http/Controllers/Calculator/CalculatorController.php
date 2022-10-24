@@ -39,12 +39,27 @@ class CalculatorController
         $categoryProperties = $category->Properties->sortBy('sequence');
         $categoryPropertiesWithValues = [];
         foreach ($categoryProperties as $categoryProperty) {
-            $propertyValues = $categoryProperty->Values->pluck('value', 'id')->prepend('Выберите значение', 0)->toArray();
+
+            $propertyValues = [
+                0 => (object)[
+                    'value' => 'Выберите значение'
+                ]
+            ];
+
+            foreach ($categoryProperty
+                         ->Values()
+                         ->select(['id', 'is_default_value', 'properties_categories_id', 'value'])
+                         ->toBase()
+                         ->get() as $categoryPropertyValue) {
+                $categoryPropertyValue->is_default_value = $categoryProperty->is_professional && $categoryPropertyValue->is_default_value ? 1 : 0;
+                $propertyValues[$categoryPropertyValue->id] = $categoryPropertyValue;
+            }
             ksort($propertyValues);
 
             $categoryPropertiesWithValues[] = (object)[
                 'propertyId' => $categoryProperty->id,
                 'propertyTitle' => $categoryProperty->title,
+                'propertyIsProfessional' => $categoryProperty->is_professional,
                 'propertyTitleTransliterate' => StringHelper::TransliterateURL($categoryProperty->title),
                 'propertyValues' => $propertyValues,
             ];
