@@ -13,12 +13,15 @@
         </div>
         <div class="mb-10">
             <label for="property_categories_sequence">Очередность</label>
-            <input class="need-validate" id="property_categories_sequence" type="text" value="{{$propertyCategories->property_categories_sequence}}">
+            <input class="need-validate" id="property_categories_sequence" type="text" value="{{$propertyCategories->sequence}}">
+        </div>
+        <div class="mb-10">
+            Профессиональная настройка - {{$propertyCategories->is_professional ? 'Да' : 'Нет'}}
         </div>
         <div class="mb-10">
             Значения:
             @foreach($propertyCategories->Values as $value)
-                <div>{{$value->value}}</div>
+                <div>{{$value->value}}{{$propertyCategories->is_professional && $value->is_default_value ? ' - (значение по умолчанию)' : ''}}</div>
             @endforeach
         </div>
         <div class="container-buttons">

@@ -15,6 +15,7 @@ class PropertiesCategoriesValues extends Model
     protected $fillable = [
         'properties_categories_id',
         'value',
+        'is_default_value',
     ];
 
     public function Title()

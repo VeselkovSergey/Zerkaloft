@@ -49,6 +49,8 @@ class PropertiesCategoriesController extends Controller
         $propertyCategoriesId = !empty($request->property_categories_id) ? $request->property_categories_id : null;
         $propertyCategoriesTitle = !empty($request->property_categories_title) ? $request->property_categories_title : null;
         $propertyCategoriesSequence = !empty($request->property_categories_sequence) ? $request->property_categories_sequence : null;
+        $propertyCategoriesIsProfessional = $request->get('property_categories_is_professional') === 'true' ? 1 : 0;
+        $propertyCategoriesDefaultValue = !empty($request->is_default_value[0]) ? $request->is_default_value : null;
         $propertyCategoriesValues = !empty($request->property_categories_values[0]) ? $request->property_categories_values : null;
 
         if (!$propertyCategoriesValues && !$propertyCategoriesId) {
@@ -65,6 +67,7 @@ class PropertiesCategoriesController extends Controller
 
         $fields['title'] = $propertyCategoriesTitle;
         $fields['sequence'] = $propertyCategoriesSequence;
+        $fields['is_professional'] = $propertyCategoriesIsProfessional;
 
         if ($propertyCategoriesId) {
             $foundPropertyCategories = PropertiesCategories::find($propertyCategoriesId);
@@ -79,10 +82,11 @@ class PropertiesCategoriesController extends Controller
         } else {
             $createdPropertyCategories = PropertiesCategories::create($fields);
             if ($createdPropertyCategories) {
-                foreach ($propertyCategoriesValues as $propertyCategoriesValue) {
+                foreach ($propertyCategoriesValues as $index => $propertyCategoriesValue) {
                     $createdPropertyCategoriesValues = PropertiesCategoriesValues::create([
                         'properties_categories_id' => $createdPropertyCategories->id,
                         'value' => $propertyCategoriesValue,
+                        'is_default_value' => $fields['is_professional'] && $propertyCategoriesDefaultValue[$index] === 'true' ? 1 : 0,
                     ]);
                 }
                 return ResultGenerate::Success('Свойство создано успешно!');
