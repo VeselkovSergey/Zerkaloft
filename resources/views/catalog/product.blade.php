@@ -71,7 +71,6 @@
         let containerCategoriesProperties = document.body.querySelector('.container-categories-properties');
 
         const categoryProperties = @json($product->Category->Properties);
-        console.log(categoryProperties)
             Object.keys(categoryProperties).forEach((key) => {
                 const categoryProperty = categoryProperties[key];
                 categoryProperty.values.unshift({value: "Выберите значение"});
