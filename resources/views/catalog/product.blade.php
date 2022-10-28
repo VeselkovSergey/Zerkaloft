@@ -103,7 +103,7 @@
                             'modification[]': modification
                         }).then((response) => {
                             if (response.status !== true) {
-                                ModalWindowFlash(response.message);
+                                //ModalWindowFlash(response.message);
                                 return
                             }
                             location.href = response.result.productLink
