@@ -73,7 +73,7 @@
                                 let allSelected = true;
                                 containerCategoriesProperties.querySelectorAll('select').forEach((property) => {
                                     modification.push(property.value)
-                                    if (parseInt(property.value) == 0) {
+                                    if (!parseInt(property.value)) {
                                         allSelected = false;
                                     }
                                 });
