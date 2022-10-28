@@ -54,6 +54,8 @@
                     {{$product->description}}
                 </div>
 
+                <div class="mt-15 container-categories-properties"></div>
+
             </div>
 
         </div>
@@ -65,6 +67,50 @@
 @section('js')
 
     <script>
+
+        let containerCategoriesProperties = document.body.querySelector('.container-categories-properties');
+
+        const categoryProperties = @json($product->Category->Properties);
+        console.log(categoryProperties)
+            Object.keys(categoryProperties).forEach((key) => {
+                const categoryProperty = categoryProperties[key];
+                categoryProperty.values.unshift({value: "Выберите значение"});
+                let propertySelector = GenerationFormSelect(categoryProperty.values, `property-${key}`, 0, true);
+                propertySelector.className = 'p-5 border-radius-5';
+
+                let containerProperty = CreateElement('div', {
+                    childs: [
+                        CreateElement('label', {content: categoryProperty.title}),
+                        propertySelector,
+                    ]
+                });
+                containerCategoriesProperties.append(containerProperty);
+                if (categoryProperty.is_professional === 1) {
+                    containerProperty.hide();
+                }
+                propertySelector.addEventListener('change', () => {
+                    let modification = [];
+                    let allSelected = true;
+                    containerCategoriesProperties.querySelectorAll('select').forEach((property) => {
+                        modification.push(property.value)
+                        if (parseInt(property.value) === 0) {
+                            allSelected = false;
+                        }
+                    });
+                    if (allSelected === true) {
+                        Ajax("{{route('product-modification')}}", 'post', {
+                            categoryId: {{$product->category_id}},
+                            'modification[]': modification
+                        }).then((response) => {
+                            if (response.status !== true) {
+                                ModalWindowFlash(response.message);
+                                return
+                            }
+                            location.href = response.result.productLink
+                        });
+                    }
+                });
+            })
 
         const product = JSON.parse('@json($product->getAttributes(), JSON_UNESCAPED_UNICODE)');
 

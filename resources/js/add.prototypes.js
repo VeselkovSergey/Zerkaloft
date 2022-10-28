@@ -54,13 +54,20 @@ function CreateElement(tag, params, parent) {
     // }, containerAdditionalAnswer);
 }
 
-function GenerationFormSelect(obj, name, selected, disableFirstOption = false) {
+function GenerationFormSelect(obj, name, selected = 0, disableFirstOption = false) {
     let options = '';
     let i = 0;
+
+    Object.keys(obj).forEach((key) => {
+        if (obj[key]?.is_default_value) {
+            selected = key
+        }
+    });
+
     Object.keys(obj).forEach((key) => {
         let disabled = (i === 0 && disableFirstOption === true) ? 'disabled' : '';
-        let selectedAttr = selected == key || obj[key]?.is_default_value ? 'selected' : '';
-        options += '<option ' + disabled + ' ' + selectedAttr + ' value="' + key + '">' + obj[key].value + '</option>';
+        let selectedAttr = selected == key ? 'selected' : '';
+        options += '<option ' + disabled + ' ' + selectedAttr + ' value="' + obj[key].id + '">' + obj[key].value + '</option>';
         i++;
     });
     return CreateElement('select', {attr: {name: name}, content: options});
