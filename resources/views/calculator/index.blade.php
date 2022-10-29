@@ -91,6 +91,8 @@
                                         }
 
                                         let res = response.result;
+                                        window.history.pushState({}, '', res.productLink);
+
                                         containerFoundProduct.innerHTML = '';
                                         let product = CreateElement('div', {
                                             content: res.product.title,
