@@ -95,6 +95,19 @@
 
     </div>
 
+    <div class="container-body-image flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="bodyImage">Картинка для фона</label>
+            <input type="file" name="bodyImage" id="bodyImage">
+        </div>
+
+        <div class="p-5">
+            <button class="save-body-image-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -162,6 +175,17 @@
             let dataForm = GetDataFormContainer('container-header-logo');
 
             Ajax("{{route('save-header-logo')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-body-image-button').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('container-body-image');
+
+            Ajax("{{route('save-body-image')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

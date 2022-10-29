@@ -55,7 +55,7 @@
 
     </head>
 
-    <body class="bg-logo-victoria {{--scroll-off--}}">
+    <body class="bg-logo-victoria {{--scroll-off--}}" style="background-image: url({{route('files', \App\Http\Controllers\Administration\SettingsController::GetBodyImage()->imageFileId)}});">
 
 {{--        <div class="loader bg-blue pos-abs top-0 left-menu z-5 w-100 h-100">--}}
 {{--            <div class="flex-center w-100vw h-100vh">--}}

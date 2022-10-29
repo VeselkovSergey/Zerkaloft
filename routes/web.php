@@ -256,6 +256,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-header-logo', [Controllers\Administration\SettingsController::class, 'SaveHeaderLogo'])
                 ->name('save-header-logo');
 
+            Route::post('/save-body-image', [Controllers\Administration\SettingsController::class, 'SaveBodyImage'])
+                ->name('save-body-image');
+
         });
 
     });

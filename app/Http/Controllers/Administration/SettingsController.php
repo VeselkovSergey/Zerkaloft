@@ -363,4 +363,34 @@ class SettingsController extends Controller
         $model = Settings::where('type', Settings::TypeByWords['headerLogo'])->first();
         return json_decode($model->value);
     }
+
+    public function SaveBodyImage(Request $request)
+    {
+        $images = !empty($request->allFiles()) ? $request->allFiles() : null;
+        $model = Settings::where('type', Settings::TypeByWords['bodyImage'])->first();
+
+        $fileId = -1;
+        if (!empty($images)) {
+            foreach ($images as $image) {
+                if (in_array($image->getMimeType(), ['image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($image, $this->storagePath, $this->storageDriver);
+                    $fileId = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
+        $model->update([
+            'value' => json_encode(['imageFileId' => $fileId])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public static function GetBodyImage()
+    {
+        $model = Settings::where('type', Settings::TypeByWords['bodyImage'])->first();
+        return json_decode($model->value);
+    }
 }
