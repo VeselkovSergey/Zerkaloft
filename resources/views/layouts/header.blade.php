@@ -112,9 +112,9 @@
 
 <div class="fast-menu flex-center w-100 font-semibold" style="justify-content: space-around; padding:5px 15%;">
     <a class="cp text-center {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}" href="{{route('fast-order-page')}}">Быстрое оформление</a>
-    <a class="cp text-center" href="{{route('online-order')}}">Онлайн заказ</a>
+    <a class="cp text-center {{$fastMenuSetting->onlineOrderLink === 'true' ? '' : ' hide '}}" href="{{route('online-order')}}">Онлайн заказ</a>
     <a class="cp text-center form-special-order" href="#special-order">Индивидульный заказ</a>
-    <a class="cp text-center{{$fastMenuSetting->calculatorLink === 'true' ? '' : ' hide '}}" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
+    <a class="cp text-center {{$fastMenuSetting->calculatorLink === 'true' ? '' : ' hide '}}" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
     <a class="cp text-center" href="{{route('about-page')}}">О компании</a>
 </div>
 

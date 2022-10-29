@@ -131,6 +131,13 @@
             </label>
         </div>
 
+        <div class="p-10 w-100">
+            <label for="onlineOrderLink">
+                <input type="checkbox" name="onlineOrderLink" id="onlineOrderLink" {{$fastMenuSetting->onlineOrderLink === 'true' ? ' checked ' : ''}}>
+                Ссылка онлайн заказ
+            </label>
+        </div>
+
         <div class="p-5">
             <button class="save-fast-menu-button">Сохранить</button>
         </div>
