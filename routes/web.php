@@ -259,6 +259,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-body-image', [Controllers\Administration\SettingsController::class, 'SaveBodyImage'])
                 ->name('save-body-image');
 
+            Route::post('/save-fast-menu', [Controllers\Administration\SettingsController::class, 'SaveFastMenu'])
+                ->name('save-fast-menu');
+
         });
 
     });

@@ -2,6 +2,13 @@
 
 @section('content')
 
+    <style>
+        div[class^="container-"] {
+            border-bottom: 1px solid black;
+            margin-bottom: 15px;
+        }
+    </style>
+
     <div class="container-calculator-text flex-column w-100">
 
         <div class="p-10 w-100">
@@ -108,6 +115,28 @@
 
     </div>
 
+    <div class="container-fast-menu-setting flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="fastOrderLink">
+                <input type="checkbox" name="fastOrderLink" id="fastOrderLink" {{$fastMenuSetting->fastOrderLink === 'true' ? ' checked ' : ''}}>
+                Ссылка быстрого заказа
+            </label>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="calculatorLink">
+                <input type="checkbox" name="calculatorLink" id="calculatorLink" {{$fastMenuSetting->calculatorLink === 'true' ? ' checked ' : ''}}>
+                Ссылка онлайн калькулятора
+            </label>
+        </div>
+
+        <div class="p-5">
+            <button class="save-fast-menu-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -186,6 +215,17 @@
             let dataForm = GetDataFormContainer('container-body-image');
 
             Ajax("{{route('save-body-image')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-fast-menu-button').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('container-fast-menu-setting');
+
+            Ajax("{{route('save-fast-menu')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

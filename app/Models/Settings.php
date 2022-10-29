@@ -35,6 +35,7 @@ class Settings extends Model
         13 => 'Футтер',
         14 => 'Логотип Заголовка',
         15 => 'Задний фон сайта',
+        16 => 'Быстрое меню',
     ];
 
     const TypeByWords = [
@@ -53,6 +54,7 @@ class Settings extends Model
         'footerText' => 13,
         'headerLogo' => 14,
         'bodyImage' => 15,
+        'fastMenu' => 16,
     ];
 
     public function TypeSetting()

@@ -202,6 +202,7 @@ class SettingsController extends Controller
             'fastOrderPageInfo' => self::FastOrderInfo(),
             'aboutPageInfo' => self::AboutInfo(),
             'footerText' => self::FooterText(),
+            'fastMenuSetting' => self::GetFastMenu(),
         ]);
     }
 
@@ -391,6 +392,25 @@ class SettingsController extends Controller
     public static function GetBodyImage()
     {
         $model = Settings::where('type', Settings::TypeByWords['bodyImage'])->first();
+        return json_decode($model->value);
+    }
+
+    public function SaveFastMenu(Request $request)
+    {
+        $fastOrderLink = $request->fastOrderLink;
+        $calculatorLink = $request->calculatorLink;
+        $model = Settings::where('type', Settings::TypeByWords['fastMenu'])->first();
+
+        $model->update([
+            'value' => json_encode(compact('fastOrderLink', 'calculatorLink'))
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public static function GetFastMenu()
+    {
+        $model = Settings::where('type', Settings::TypeByWords['fastMenu'])->first();
         return json_decode($model->value);
     }
 }
