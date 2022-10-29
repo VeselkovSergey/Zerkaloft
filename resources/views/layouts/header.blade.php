@@ -106,7 +106,7 @@
     </div>
 </div>
 
-<div class="fast-menu flex-center w-100 font-semibold" style="justify-content: space-between; padding:5px 15%;">
+<div class="fast-menu flex-center w-100 font-semibold" style="justify-content: space-around; padding:5px 15%;">
     <a class="cp text-center" href="{{route('fast-order-page')}}">Быстрое оформление</a>
     <a class="cp text-center" href="{{route('online-order')}}">Онлайн заказ</a>
     <a class="cp text-center form-special-order" href="#special-order">Индивидульный заказ</a>
