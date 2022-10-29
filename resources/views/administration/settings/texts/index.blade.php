@@ -82,6 +82,19 @@
 
     </div>
 
+    <div class="container-header-logo flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="headerLogo">Картинка для логотипа</label>
+            <input type="file" name="headerLogo" id="headerLogo">
+        </div>
+
+        <div class="p-5">
+            <button class="save-header-logo-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -138,6 +151,17 @@
             let dataForm = GetDataFormContainer('container-footer-text');
 
             Ajax("{{route('save-footer-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-header-logo-button').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('container-header-logo');
+
+            Ajax("{{route('save-header-logo')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

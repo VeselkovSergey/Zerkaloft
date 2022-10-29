@@ -333,4 +333,34 @@ class SettingsController extends Controller
 
         return ResultGenerate::Success();
     }
+
+    public function SaveHeaderLogo(Request $request)
+    {
+        $headerLogo = !empty($request->allFiles()) ? $request->allFiles() : null;
+        $model = Settings::where('type', Settings::TypeByWords['headerLogo'])->first();
+
+        $fileId = -1;
+        if (!empty($headerLogo)) {
+            foreach ($headerLogo as $headerLogoItem) {
+                if (in_array($headerLogoItem->getMimeType(), ['image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($headerLogoItem, $this->storagePath, $this->storageDriver);
+                    $fileId = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
+        $model->update([
+            'value' => json_encode(['imageFileId' => $fileId])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public static function GetHeaderLogo()
+    {
+        $model = Settings::where('type', Settings::TypeByWords['headerLogo'])->first();
+        return json_decode($model->value);
+    }
 }

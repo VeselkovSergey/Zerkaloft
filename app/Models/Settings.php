@@ -33,6 +33,7 @@ class Settings extends Model
         11 => 'О компании',
         12 => 'Адрес',
         13 => 'Футтер',
+        14 => 'Логотип Заголовка',
     ];
 
     const TypeByWords = [
@@ -49,6 +50,7 @@ class Settings extends Model
         'aboutPageText' => 11,
         'address' => 12,
         'footerText' => 13,
+        'headerLogo' => 14,
     ];
 
     public function TypeSetting()

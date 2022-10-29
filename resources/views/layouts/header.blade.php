@@ -1,6 +1,6 @@
 <div class="logo-container flex-center mr-10">
     <a class="flex-center clear-a color-violet" href="{{route('home-page')}}">
-        <img class="img-logo" src="{{url('icon/logo_rus.svg')}}" alt="logo">
+        <img class="img-logo" src="{{route('files', \App\Http\Controllers\Administration\SettingsController::GetHeaderLogo()->imageFileId)}}" alt="logo">
     </a>
 </div>
 

@@ -253,6 +253,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-footer-text', [Controllers\Administration\SettingsController::class, 'SaveFooterInfo'])
                 ->name('save-footer-text');
 
+            Route::post('/save-header-logo', [Controllers\Administration\SettingsController::class, 'SaveHeaderLogo'])
+                ->name('save-header-logo');
+
         });
 
     });
