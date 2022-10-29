@@ -69,6 +69,19 @@
 
     </div>
 
+    <div class="container-footer-text flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="footerText">Текст футера</label>
+            <textarea class="w-100" name="footerText" id="footerText">{{$footerText->text}}</textarea>
+        </div>
+
+        <div class="p-5">
+            <button class="save-footer-text-button">Сохранить</button>
+        </div>
+
+    </div>
+
 @stop
 
 @section('js')
@@ -114,6 +127,17 @@
             let dataForm = GetDataFormContainer('container-about-text');
 
             Ajax("{{route('save-about-text')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.save-footer-text-button').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('container-footer-text');
+
+            Ajax("{{route('save-footer-text')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

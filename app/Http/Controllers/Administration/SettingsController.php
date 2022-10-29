@@ -201,6 +201,7 @@ class SettingsController extends Controller
             'onlineOrderPageInfo' => self::OnlineOrderInfo(),
             'fastOrderPageInfo' => self::FastOrderInfo(),
             'aboutPageInfo' => self::AboutInfo(),
+            'footerText' => self::FooterText(),
         ]);
     }
 
@@ -303,6 +304,12 @@ class SettingsController extends Controller
         return json_decode($aboutPageText->value);
     }
 
+    public static function FooterText()
+    {
+        $footerText = Settings::where('type', Settings::TypeByWords['footerText'])->first();
+        return json_decode($footerText->value);
+    }
+
     public function SaveAboutInfo(Request $request)
     {
         $aboutText = $request->aboutText;
@@ -310,6 +317,18 @@ class SettingsController extends Controller
 
         $aboutPage->update([
             'value' => json_encode(['text' => $aboutText])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public function SaveFooterInfo(Request $request)
+    {
+        $footerText = $request->footerText;
+        $model = Settings::where('type', Settings::TypeByWords['footerText'])->first();
+
+        $model->update([
+            'value' => json_encode(['text' => $footerText])
         ]);
 
         return ResultGenerate::Success();

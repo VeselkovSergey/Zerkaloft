@@ -56,7 +56,7 @@
 
 
     <div class="color-white text-center">
-        © 2021 Victoria CORP.
+        {{\App\Http\Controllers\Administration\SettingsController::FooterText()->text}}
     </div>
 
     <div class="flex-center">

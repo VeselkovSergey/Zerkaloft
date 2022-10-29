@@ -32,6 +32,7 @@ class Settings extends Model
         10 => 'Почта',
         11 => 'О компании',
         12 => 'Адрес',
+        13 => 'Футтер',
     ];
 
     const TypeByWords = [
@@ -47,6 +48,7 @@ class Settings extends Model
         'mail' => 10,
         'aboutPageText' => 11,
         'address' => 12,
+        'footerText' => 13,
     ];
 
     public function TypeSetting()

@@ -250,6 +250,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/save-about-text', [Controllers\Administration\SettingsController::class, 'SaveAboutInfo'])
                 ->name('save-about-text');
 
+            Route::post('/save-footer-text', [Controllers\Administration\SettingsController::class, 'SaveFooterInfo'])
+                ->name('save-footer-text');
+
         });
 
     });
