@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string updated_at
  *
  * @property Products Products
+ * @property Products ProductsByNotOnlyInCalculator
  * @property PropertiesCategories Properties
  */
 class Categories extends Model

@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="menu-category-detail hide">
-                                @foreach($category->Products as $product)
+                                @foreach($category->ProductsByNotOnlyInCalculator as $product)
                                     <div class="pl-10 py-5 cp">
                                         <a class="link-menu clear-a color-violet" href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">{{$product->title}}</a>
                                     </div>
