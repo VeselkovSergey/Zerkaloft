@@ -400,10 +400,18 @@ class SettingsController extends Controller
         $fastOrderLink = $request->fastOrderLink;
         $calculatorLink = $request->calculatorLink;
         $onlineOrderLink = $request->onlineOrderLink;
+        $specialOrderLink = $request->specialOrderLink;
+        $buttonUploadDesign = $request->buttonUploadDesign;
         $model = Settings::where('type', Settings::TypeByWords['fastMenu'])->first();
 
         $model->update([
-            'value' => json_encode(compact('fastOrderLink', 'calculatorLink', 'onlineOrderLink'))
+            'value' => json_encode(compact(
+                'fastOrderLink',
+                'calculatorLink',
+                'onlineOrderLink',
+                'specialOrderLink',
+                'buttonUploadDesign'
+            ))
         ]);
 
         return ResultGenerate::Success();

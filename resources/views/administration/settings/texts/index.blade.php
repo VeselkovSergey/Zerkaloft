@@ -138,6 +138,20 @@
             </label>
         </div>
 
+        <div class="p-10 w-100">
+            <label for="specialOrderLink">
+                <input type="checkbox" name="specialOrderLink" id="specialOrderLink" {{$fastMenuSetting->specialOrderLink === 'true' ? ' checked ' : ''}}>
+                Ссылка индивидуальный заказ
+            </label>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="specialOrderLink">
+                <input type="checkbox" name="specialOrderLink" id="specialOrderLink" {{$fastMenuSetting->buttonUploadDesign === 'true' ? ' checked ' : ''}}>
+                Кнопка загрузить макеты
+            </label>
+        </div>
+
         <div class="p-5">
             <button class="save-fast-menu-button">Сохранить</button>
         </div>

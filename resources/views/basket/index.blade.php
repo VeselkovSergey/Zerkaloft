@@ -105,9 +105,11 @@
                         @endforeach
 
                     </div>
-
-                    <div class="flex">
-                        <label for="layouts" class="ml-a button-blue w-fit mr-10">Загрузить макеты</label>
+                    @php
+                        $fastMenuSetting = \App\Http\Controllers\Administration\SettingsController::GetFastMenu();
+                    @endphp
+                    <div class="flex" style="justify-content: end">
+                        <label for="layouts" class="ml-a button-blue w-fit mr-10 {{$fastMenuSetting->buttonUploadDesign === 'true' ? '' : ' hide '}}">Загрузить макеты</label>
                         <input id="layouts" name="layouts" class="hide" type="file" multiple>
                         <button class=" button-blue button-clear-basket">Очистить корзину</button>
                     </div>
