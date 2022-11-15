@@ -93,7 +93,7 @@
 
         <div class="p-10 w-100">
             <label for="headerLogo">Картинка для логотипа (200*65)</label>
-            <input type="file" name="headerLogo" id="headerLogo">
+            <input type="file" name="headerLogo" id="headerLogo" accept="image/jpeg, image/png">
         </div>
 
         <div class="p-5">
@@ -106,7 +106,7 @@
 
         <div class="p-10 w-100">
             <label for="bodyImage">Картинка для фона</label>
-            <input type="file" name="bodyImage" id="bodyImage">
+            <input type="file" name="bodyImage" id="bodyImage" accept="image/jpeg, image/png">
         </div>
 
         <div class="p-5">
