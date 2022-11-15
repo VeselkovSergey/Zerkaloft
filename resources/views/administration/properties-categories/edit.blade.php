@@ -21,7 +21,7 @@
         <div class="mb-10">
             Значения:
             @foreach($propertyCategories->Values as $value)
-                <div>{{$value->value}}{{$propertyCategories->is_professional && $value->is_default_value ? ' - (значение по умолчанию)' : ''}}</div>
+                <div class="mb-5"><input style="width: 75%" name="property_categories_values[{{$value->id}}]" type="text" value="{{$value->value}}">{{$propertyCategories->is_professional && $value->is_default_value ? ' - (значение по умолчанию)' : ''}}</div>
             @endforeach
         </div>
         <div class="container-buttons">

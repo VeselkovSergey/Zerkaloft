@@ -51,7 +51,7 @@ class PropertiesCategoriesController extends Controller
         $propertyCategoriesSequence = !empty($request->property_categories_sequence) ? $request->property_categories_sequence : null;
         $propertyCategoriesIsProfessional = $request->get('property_categories_is_professional') === 'true' ? 1 : 0;
         $propertyCategoriesDefaultValue = !empty($request->is_default_value[0]) ? $request->is_default_value : null;
-        $propertyCategoriesValues = !empty($request->property_categories_values[0]) ? $request->property_categories_values : null;
+        $propertyCategoriesValues = isset($request->property_categories_values) && count($request->property_categories_values) ? $request->property_categories_values : null;
 
         if (!$propertyCategoriesValues && !$propertyCategoriesId) {
             return ResultGenerate::Error('Ошибка! Заполните хотя бы одно значение!');
@@ -74,6 +74,11 @@ class PropertiesCategoriesController extends Controller
             if ($foundPropertyCategories) {
                 $updatedPropertyCategories = $foundPropertyCategories->update($fields);
                 if ($updatedPropertyCategories) {
+                    foreach ($propertyCategoriesValues as $index => $propertyCategoriesValue) {
+                        PropertiesCategoriesValues::where('id', $index)->update([
+                            'value' => $propertyCategoriesValue ?? 'Значение - ' . $index,
+                        ]);
+                    }
                     return ResultGenerate::Success('Свойство обновлено успешно!');
                 }
                 return ResultGenerate::Error('Ошибка обновления свойства!');
@@ -85,7 +90,7 @@ class PropertiesCategoriesController extends Controller
                 foreach ($propertyCategoriesValues as $index => $propertyCategoriesValue) {
                     $createdPropertyCategoriesValues = PropertiesCategoriesValues::create([
                         'properties_categories_id' => $createdPropertyCategories->id,
-                        'value' => $propertyCategoriesValue,
+                        'value' => $propertyCategoriesValue ?? 'Значение - ' . $index,
                         'is_default_value' => $fields['is_professional'] && $propertyCategoriesDefaultValue[$index] === 'true' ? 1 : 0,
                     ]);
                 }

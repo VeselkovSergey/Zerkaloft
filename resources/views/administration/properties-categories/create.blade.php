@@ -73,7 +73,7 @@
 
             newItem.innerHTML =    '<div class="w-100 p-10"><div class="w-100">'+
                                         '<label>Значение</label>'+
-                                        '<input name="property_categories_values[]" type="text">'+
+                                        '<input name="property_categories_values[]" type="text" value="1">'+
                                     '</div>'+
 
                                     '<div class="is_default_value_container ' + (property_categories_is_professional.checked ? '' : ' hide ') + '">'+
