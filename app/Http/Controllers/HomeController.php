@@ -12,6 +12,7 @@ class HomeController
 {
     public function Index(Request $request)
     {
+        $searchQuery = $request->get('search');
         $carouselImagesInSetting = Settings::where('type', 2)->get();
         $carouselImages = [];
         foreach ($carouselImagesInSetting as $carouselImageInSetting) {
@@ -24,9 +25,7 @@ class HomeController
 
         }
         ksort($carouselImages);
-        return view('home.index', [
-            'carouselImages' => $carouselImages,
-        ]);
+        return view('home.index', compact('carouselImages', 'searchQuery'));
     }
 
     public function OnlineOrder(Request $request)

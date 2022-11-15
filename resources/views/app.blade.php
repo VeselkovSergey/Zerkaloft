@@ -127,6 +127,7 @@
 
         <script>
             const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
+            const searchPage = "{{route('home-page')}}";
             const createCallbackOrderRequestRoute = "{{route('create-callback-order')}}";
         </script>
 

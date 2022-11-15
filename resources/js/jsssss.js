@@ -392,6 +392,12 @@ if (mainSearchInput) {
             );
         }, {additionalData: 'link'});
     });
+    mainSearchInput.addEventListener('keypress', (event) => {
+        let mainSearchValue = mainSearchInput.value;
+        if (event.key === 'Enter' && mainSearchValue.length) {
+            location.href = searchPage + '?search=' + mainSearchValue
+        }
+    });
 }
 
 function triggerEvent(elem, event) {

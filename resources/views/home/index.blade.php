@@ -49,7 +49,15 @@
 
         <div class="flex-wrap-center w-100">
 
-            @foreach(\App\Models\Products::where('show_main_page', 1)->get() as $product)
+            @php
+                if (isset($searchQuery)) {
+                    $products = \App\Models\Products::where('search_words', 'like', '%' . $searchQuery . '%')->get();
+                } else {
+                    $products = \App\Models\Products::where('show_main_page', 1)->get();
+                }
+            @endphp
+
+            @foreach($products as $product)
 
                 <div class="category-cart-main-page p-25">
                     <div class="smooth-block shadow pos-rel border-radius-15 mx-a w-100 h-100">
@@ -68,7 +76,15 @@
 
             @endforeach
 
-            @foreach(\App\Models\Categories::orderBy('sequence')->get() as $category)
+            @php
+                if (isset($searchQuery)) {
+                    $categories = \App\Models\Categories::where('search_words', 'like', '%' . $searchQuery . '%')->get();
+                } else {
+                    $categories = \App\Models\Categories::orderBy('sequence')->get();
+                }
+            @endphp
+
+            @foreach($categories as $category)
 
                 @foreach(unserialize($category->img) as $img)
 
