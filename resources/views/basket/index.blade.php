@@ -199,7 +199,7 @@
 
 @section('js')
 
-    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
+    <script src="http://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
 
     <script>
 
