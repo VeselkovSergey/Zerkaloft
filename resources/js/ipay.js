@@ -1,7 +1,7 @@
 (function() {
 
     var payformLocation = (function () {
-        var script = document.querySelector('script[src*="assets/js/ipay.js"]');
+        var script = document.querySelector('script[src*="resources/js/ipay.js"]');
         var src = script.src;
         return src.split('/').slice(0, -3).join('/');
     })();
