@@ -409,6 +409,19 @@ Route::get('/debug-phpinfo', function () {
 Route::get('sitemap.xml', [Controllers\HomeController::class, 'SiteMap'])->name('sitemap');
 
 
+Route::group(['prefix' => 'new-design'], function () {
+
+    Route::get('/', function () {
+        return view("new-design.index");
+    });
+
+    Route::get('/product', function () {
+        return view("new-design.product");
+    });
+
+});
+
+
 
 //Route::group(['prefix' => 'test'], function () {
 //
