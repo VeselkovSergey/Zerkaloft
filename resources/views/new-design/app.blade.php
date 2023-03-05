@@ -233,6 +233,10 @@
             justify-content: end;
         }
 
+        .w-max-content {
+            width: max-content;
+        }
+
         .w-auto {
             width: auto;
         }

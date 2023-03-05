@@ -2,7 +2,7 @@
 
 @section("content")
     <main>
-        <div class="flex">
+        <div class="flex mb-10">
             <div>Главная</div>
             <div class="mx-10">/</div>
             <div>Каталог</div>

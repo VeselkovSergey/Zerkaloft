@@ -423,6 +423,10 @@ Route::group(['prefix' => 'new-design'], function () {
         return view("new-design.product");
     });
 
+    Route::get('/fast-order', function () {
+        return view("new-design.fast-order");
+    });
+
 });
 
 
