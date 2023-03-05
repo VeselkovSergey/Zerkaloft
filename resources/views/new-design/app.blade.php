@@ -299,7 +299,7 @@
 
         .w-33 {
             width: 33%;
-            margin-right: 0.3%;
+            /*margin-right: 0.3%;*/
         }
 
         .w-30 {

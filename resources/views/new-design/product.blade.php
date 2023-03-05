@@ -166,13 +166,13 @@
                 <div class="p-50">
                     <div class="h2" style="color: black; border: 1px solid black; border-radius: 30px; padding: 15px; width: max-content;">ПОПУЛЯРНОЕ</div>
                 </div>
-                <div class="flex-wrap">
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
+                <div class="flex-wrap" style="justify-content: space-evenly;">
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
                 </div>
             </div>
         </div>
@@ -181,10 +181,10 @@
                 <div class="p-50">
                     <div class="h2" style="color: black; border: 1px solid black; border-radius: 30px; padding: 15px; width: max-content;">ПОНРАВИЛОСЬ</div>
                 </div>
-                <div class="flex-wrap">
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
-                    <div class="w-33 mb-5" style="background-color: grey; height: 250px;"></div>
+                <div class="flex-wrap" style="justify-content: space-evenly;">
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
+                    <div class="w-33 mb-5" style="background-color: grey; height: 250px; border-radius: 25px;"></div>
                 </div>
             </div>
         </div>
