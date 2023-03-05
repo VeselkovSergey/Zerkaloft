@@ -93,7 +93,7 @@
     <main>
         <div class="flex" style="padding-left: 100px; padding-right: 100px;">
             <div class="w-60">
-                <div class="flex">
+                <div class="flex mb-10">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                     <div class="px-20" style="width: calc(100% - 20px - 20px - 300px)">
                         <div class="h3">ИЗМЕНИТЬ ПАРАМЕТРЫ</div>
