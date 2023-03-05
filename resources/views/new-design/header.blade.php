@@ -1,5 +1,5 @@
 <header style="max-width: 1440px;">
-    <div class="flex-center-y" style="height: 100px">
+    <div class="flex-center-y" style="height: 60px; padding-top: 15px;">
         <div class="flex-center-y mr-10">
             <img class="pl-10" width="100" src="/assets/imgs/logo.svg" alt="logo">
         </div>

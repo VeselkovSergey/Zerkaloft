@@ -96,7 +96,7 @@
                 <div class="flex">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                     <div class="px-20" style="width: calc(100% - 20px - 20px - 300px)">
-                        <h3>ИЗМЕНИТЬ ПАРАМЕТРЫ</h3>
+                        <div class="h3">ИЗМЕНИТЬ ПАРАМЕТРЫ</div>
                         <div>
                             <div>
                                 <div class="p-10 h3">Подсветка</div>
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="w-40">
-                <h3>ОПИСАНИЕ</h3>
+                <div class="h3">ОПИСАНИЕ</div>
                 <p>
                     Лицевая панель - акрил, задняя и боковые панели - ПВХ,
                     подсветка - светодиодные кластеры на задней панели.
