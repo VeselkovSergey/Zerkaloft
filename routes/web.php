@@ -415,6 +415,10 @@ Route::group(['prefix' => 'new-design'], function () {
         return view("new-design.index");
     });
 
+    Route::get('/catalog', function () {
+        return view("new-design.catalog");
+    });
+
     Route::get('/product', function () {
         return view("new-design.product");
     });
