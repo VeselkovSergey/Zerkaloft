@@ -9,7 +9,7 @@
         </div>
         <div class="flex-wrap mb-10">
             <div class="mr-10">
-                <div class="p-10">КАТЕГОРИЯ</div>
+                <div class="p-10">Категория</div>
                 <div>
                     <select name="" id="" class="select-2">
                         <option value="123" selected>Объемные буквы</option>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="mr-10">
-                <div class="p-10">КАТЕГОРИЯ</div>
+                <div class="p-10">Тип</div>
                 <div>
                     <select name="" id="" class="select-2">
                         <option value="123" selected>Объемные буквы</option>
