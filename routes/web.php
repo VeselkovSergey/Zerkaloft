@@ -427,6 +427,10 @@ Route::group(['prefix' => 'new-design'], function () {
         return view("new-design.fast-order");
     });
 
+    Route::get('/basket', function () {
+        return view("new-design.basket");
+    });
+
 });
 
 

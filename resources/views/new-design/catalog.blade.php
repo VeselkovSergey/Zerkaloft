@@ -11,7 +11,7 @@
             <div class="mr-10">
                 <div class="p-10">Категория</div>
                 <div>
-                    <select name="" id="" class="select-2">
+                    <select name="" id="" class="select-3">
                         <option value="123" selected>Объемные буквы</option>
                     </select>
                 </div>
@@ -19,7 +19,7 @@
             <div class="mr-10">
                 <div class="p-10">Тип</div>
                 <div>
-                    <select name="" id="" class="select-2">
+                    <select name="" id="" class="select-3">
                         <option value="123" selected>Объемные буквы</option>
                     </select>
                 </div>
