@@ -1,7 +1,7 @@
 @extends("new-design.app")
 
 @section("content")
-    <main>
+    <div>
         <div class="flex">
             <div class="w-75 mb-10" style="padding-right: 20px;">
                 <div class="flex" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;">
@@ -134,5 +134,5 @@
             </div>
         </div>
         @include("new-design.info")
-    </main>
+    </div>
 @endsection

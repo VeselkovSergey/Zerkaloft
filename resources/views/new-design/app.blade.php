@@ -568,12 +568,19 @@
             background-color: #e9ecef;
         }
     </style>
+    <style>
+        main {
+            min-height: calc(100vh - 176px);
+        }
+    </style>
 </head>
 <body>
-<div class="flex-column-center">
-    <div style="max-width: 1440px;">
+<div class="flex-column-center" style="min-height: 100vh;">
+    <div style="max-width: 1440px; min-height: 100vh;">
         @include("new-design.header")
-        @yield("content")
+        <main>
+            @yield("content")
+        </main>
         <footer class="flex-center-y flex-wrap-evenly-x p-10 color-white">
             <div class="flex">
                 <div class="mr-10">

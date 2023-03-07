@@ -1,7 +1,7 @@
 @extends("new-design.app")
 
 @section("content")
-    <main>
+    <div>
         <div class="flex mb-10">
             <div>Главная</div>
             <div class="mx-10">/</div>
@@ -245,5 +245,5 @@
             </div>
         </div>
         @include("new-design.info")
-    </main>
+    </div>
 @endsection

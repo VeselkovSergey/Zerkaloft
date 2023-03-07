@@ -431,6 +431,10 @@ Route::group(['prefix' => 'new-design'], function () {
         return view("new-design.basket");
     });
 
+    Route::get('/text', function () {
+        return view("new-design.text");
+    });
+
 });
 
 
