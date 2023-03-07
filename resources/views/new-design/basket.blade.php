@@ -3,7 +3,7 @@
 @section("content")
     <div>
         <div class="flex">
-            <div class="w-75 mb-10" style="padding-right: 20px;">
+            <div class="w-75 mb-10" style=" width: calc(75% - 20px); padding-right: 20px;">
                 <div class="flex" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;">
                     <div>
                         <div style="background-color: grey; width: 40px; height: 40px; margin-right: 20px;">
@@ -81,23 +81,23 @@
                     </div>
                 </div>
             </div>
-            <div class="w-25 mb-10">
+            <div class="w-25 mb-10" style="">
                 <div class="h3 flex-center mb-10">ОФОРМЛЕНИЕ</div>
                 <div>
                     <div class="mb-10">
-                        <input type="text" placeholder="ИМЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                        <input type="text" placeholder="ИМЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                     </div>
                     <div class="mb-10">
-                        <input type="text" placeholder="ФАМИЛИЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                        <input type="text" placeholder="ФАМИЛИЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                     </div>
                     <div class="mb-10">
-                        <input type="text" placeholder="ТЕЛЕФОН" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                        <input type="text" placeholder="ТЕЛЕФОН" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                     </div>
                     <div class="mb-10">
-                        <input type="text" placeholder="ЭЛЕКТРОННАЯ ПОЧТА" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                        <input type="text" placeholder="ЭЛЕКТРОННАЯ ПОЧТА" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                     </div>
                     <div class="mb-10">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="КОММЕНТАРИЙ" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="КОММЕНТАРИЙ" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
                     </div>
                     <div class="mb-10">
                         <select name="" id="" class="select-3 w-100">
@@ -114,7 +114,7 @@
                         </select>
                     </div>
                     <div class="mb-10">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="АДРЕС" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 30px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="АДРЕС" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
                     </div>
                     <div>
                         <div class="flex-center" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОФОРМИТЬ</div>
