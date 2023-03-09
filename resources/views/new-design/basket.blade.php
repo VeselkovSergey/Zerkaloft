@@ -2,7 +2,7 @@
 
 @section("content")
     <div>
-        <div class="flex">
+        <div class="">
             <div class="w-75 mb-10" style=" width: calc(75% - 20px); padding-right: 20px;">
                 <div class="flex" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;">
                     <div>
@@ -19,8 +19,8 @@
                                 <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
                                 <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
                             </div>
-                            <div class="w-25">
-                                <div class="flex-center" style="border: 1px solid white; border-radius: 25px; padding: 10px;">1 шт 745 руб</div>
+                            <div class="w-25 flex-column-end-y">
+                                <div class="flex-center" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">1 шт 745 руб</div>
                             </div>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                                 <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
                                 <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
                             </div>
-                            <div class="w-25">
-                                <div class="flex-center" style="border: 1px solid white; border-radius: 25px; padding: 10px;">1 шт 745 руб</div>
+                            <div class="w-25 flex-column-end-y">
+                                <div class="flex-center" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">1 шт 745 руб</div>
                             </div>
                         </div>
                     </div>
@@ -81,43 +81,54 @@
                     </div>
                 </div>
             </div>
-            <div class="w-25 mb-10" style="">
-                <div class="h3 flex-center mb-10">ОФОРМЛЕНИЕ</div>
-                <div>
-                    <div class="mb-10">
-                        <input type="text" placeholder="ИМЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
-                    </div>
-                    <div class="mb-10">
-                        <input type="text" placeholder="ФАМИЛИЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
-                    </div>
-                    <div class="mb-10">
-                        <input type="text" placeholder="ТЕЛЕФОН" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
-                    </div>
-                    <div class="mb-10">
-                        <input type="text" placeholder="ЭЛЕКТРОННАЯ ПОЧТА" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
-                    </div>
-                    <div class="mb-10">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="КОММЕНТАРИЙ" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
-                    </div>
-                    <div class="mb-10">
-                        <select name="" id="" class="select-3 w-100">
-                            <option value="123" selected>ТИП ОПЛАТЫ</option>
-                            <option value="123">ОПЛАТА ПРИ ПОЛУЧЕНИИ</option>
-                            <option value="123">ОПЛАТА ОНЛАЙН</option>
-                        </select>
-                    </div>
-                    <div class="mb-10">
-                        <select name="" id="" class="select-3 w-100">
-                            <option value="123" selected>СПОСОБ ПОЛУЧЕНИЯ</option>
-                            <option value="123">САМОВЫВОЗ</option>
-                            <option value="123">ДОСТАВКА</option>
-                        </select>
-                    </div>
-                    <div class="mb-10">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="АДРЕС" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
-                    </div>
+            <div class="flex">
+                <div class="w-70 mb-10" style="margin-right: 5%;">
+                    <div class="h3 flex-center mb-10">ОФОРМЛЕНИЕ</div>
                     <div>
-                        <div class="flex-center" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОФОРМИТЬ</div>
+                        <div class="flex-space-x">
+                            <div class="mb-10" style="width: 49%;">
+                                <input type="text" placeholder="ИМЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                            </div>
+                            <div class="mb-10" style="width: 49%;">
+                                <input type="text" placeholder="ФАМИЛИЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                            </div>
+                        </div>
+                        <div class="flex-space-x">
+                            <div class="mb-10" style="width: 49%;">
+                                <input type="text" placeholder="ТЕЛЕФОН" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                            </div>
+                            <div class="mb-10" style="width: 49%;">
+                                <input type="text" placeholder="ЭЛЕКТРОННАЯ ПОЧТА" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <textarea name="" id="" cols="30" rows="5" placeholder="КОММЕНТАРИЙ" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                        </div>
+                        <div class="flex-space-x">
+                            <div class="mb-10" style="width: 49%;">
+                                <select name="" id="" class="select-3 w-100">
+                                    <option value="123" selected>ТИП ОПЛАТЫ</option>
+                                    <option value="123">ОПЛАТА ПРИ ПОЛУЧЕНИИ</option>
+                                    <option value="123">ОПЛАТА ОНЛАЙН</option>
+                                </select>
+                            </div>
+                            <div class="mb-10" style="width: 49%;">
+                                <select name="" id="" class="select-3 w-100">
+                                    <option value="123" selected>СПОСОБ ПОЛУЧЕНИЯ</option>
+                                    <option value="123">САМОВЫВОЗ</option>
+                                    <option value="123">ДОСТАВКА</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-10">
+                            <textarea name="" id="" cols="30" rows="3" placeholder="АДРЕС" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-25 flex-column-end-y mb-10">
+                    <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 20px;">
+                        <div class="flex-center mb-20" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОФОРМИТЬ</div>
                         <div>
                             <span style="vertical-align: middle; color: var(--pink-color);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">

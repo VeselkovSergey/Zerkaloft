@@ -233,6 +233,12 @@
             justify-content: end;
         }
 
+        .flex-column-end-y {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+        }
+
         .w-max-content {
             width: max-content;
         }
@@ -358,9 +364,17 @@
             margin-right: 10px;
         }
 
+        .mr-20 {
+            margin-right: 20px;
+        }
+
         .mx-10 {
             margin-right: 10px;
             margin-left: 10px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
         }
 
         .mb-10 {
