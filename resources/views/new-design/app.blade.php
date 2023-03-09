@@ -123,7 +123,7 @@
             top: 0;
             background-color: rgba(0, 0, 0, 0.8);
 
-            border: 1px solid white;
+            /*border: 1px solid white;*/
             border-bottom-left-radius: 20px;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
