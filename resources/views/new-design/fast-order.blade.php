@@ -8,8 +8,8 @@
             <div>Быстрое оформление</div>
         </div>
         <div class="flex mb-10">
-            <div class="w-33">
-                <div class="px-20" style="width: calc(100% - 20px - 20px)">
+            <div class="w-35">
+                <div class="px-20 mb-20" style="width: calc(100% - 20px - 20px)">
                     <div>
                         <div class="p-10 h3">Категория</div>
                         <div>
@@ -35,29 +35,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="px-20 w-50">
+                    <div style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ПЕРЕЙТИ К ТОВАРУ</div>
+                </div>
             </div>
-            <div class="w-33">
+            <div class="w-40">
                 <div class="flex mb-10">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
-                <div class="mb-10">
-                    <select name="" id="" class="select-1">
-                        <option value="123" selected>1 шт - 745 р</option>
-                    </select>
-                </div>
-
-                <div class="flex">
-                    <div>
-                        <div class="mr-10" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ПЕРЕЙТИ К ТОВАРУ</div>
-                    </div>
-                    <div>
-                        <div style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33">
                 <div>
-                    <div class="h3">ОПИСАНИЕ</div>
                     <p>
                         Лицевая панель - акрил, задняя и боковые панели - ПВХ,
                         подсветка - светодиодные кластеры на задней панели.
@@ -78,6 +64,17 @@
                     <div class="checkbox-wrapper-1 mb-10 w-max-content">
                         <input id="color-2" type="checkbox" class="custom-checkbox ">
                         <label for="color-2">Доп 2</label>
+                    </div>
+                </div>
+                <div class="mb-10">
+                    <select name="" id="" class="select-1">
+                        <option value="123" selected>1 шт - 745 р</option>
+                    </select>
+                </div>
+
+                <div class="flex">
+                    <div>
+                        <div style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
                     </div>
                 </div>
             </div>
