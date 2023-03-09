@@ -385,6 +385,10 @@
             margin: 0;
         }
 
+        .ml-20 {
+            margin-left: 20px;
+        }
+
         .mr-10 {
             margin-right: 10px;
         }
@@ -717,5 +721,6 @@
         </footer>
     </div>
 </div>
+@yield("js")
 </body>
 </html>
