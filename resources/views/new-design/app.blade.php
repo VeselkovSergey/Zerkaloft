@@ -539,6 +539,7 @@
             border: 1px solid white;
             border-radius: 25px;
             font-size: 20px;
+            display: flex;
         }
 
     </style>
