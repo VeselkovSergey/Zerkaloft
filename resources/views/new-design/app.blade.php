@@ -427,6 +427,10 @@
             padding-left: 10px;
         }
 
+        .p-30 {
+            padding: 30px;
+        }
+
         .p-20 {
             padding: 20px;
         }

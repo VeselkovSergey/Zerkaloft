@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="w-50" style="border: 1px solid white; border-radius: 0 50px 50px 50px;">
-                <div class="ml-20">
+                <div style="padding: 10px 30px;">
                     <h2>О КОМПАНИИ</h2>
                     <p>
                         Древность
