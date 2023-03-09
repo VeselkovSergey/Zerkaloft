@@ -7,6 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+
+
+        @font-face {
+            font-family: 'Calibri';
+            /*src: url('calibri/calibri.ttf');*/
+            /*src: local('Visby CF Demi Bold Oblique'), local('VisbyCF-DemiBoldOblique'),*/
+            /*url('VisbyCF-DemiBoldOblique.eot?#iefix') format('embedded-opentype'),*/
+            /*url('VisbyCF-DemiBoldOblique.woff2') format('woff2'),*/
+            /*url('VisbyCF-DemiBoldOblique.woff') format('woff'),*/
+        url('calibri/calibri.ttf') format('truetype');
+            /*font-weight: 600;*/
+            /*font-style: italic;*/
+        }
+
+        * {
+            font-family: 'Calibri';
+            font-weight: 500;
+            font-style: normal;
+        }
+
+
         :root {
             --border-color: white;
             --main-bg-color: #13161a;
