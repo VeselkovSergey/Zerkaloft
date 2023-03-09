@@ -188,7 +188,7 @@ textarea {
 .bg-logo-victoria {
     background-image: url('/img/bg.jpeg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-attachment: fixed;
 }
 
