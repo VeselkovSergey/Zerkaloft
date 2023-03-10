@@ -6,29 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <style>
 
 
         @font-face {
-            /*font-family: 'Calibri';*/
             font-family: 'NeusaNextPro-Regular';
-            /*src: url('/fonts/calibri/calibri.ttf');*/
             src: url('/fonts/neusa/NeusaNextPro-Regular.otf');
-            /*src: local('Visby CF Demi Bold Oblique'), local('VisbyCF-DemiBoldOblique'),*/
-            /*url('VisbyCF-DemiBoldOblique.eot?#iefix') format('embedded-opentype'),*/
-            /*url('VisbyCF-DemiBoldOblique.woff2') format('woff2'),*/
-            /*url('VisbyCF-DemiBoldOblique.woff') format('woff'),*/
-        /*url('/fonts/calibri/calibri.ttf') format('truetype');*/
-        url('/fonts/neusa/NeusaNextPro-Regular.otf') format('truetype');
-        /*url('fonts/helvetica/helveticaneuecyr-thin.ttf') format('truetype');*/
-            /*font-weight: 600;*/
-            /*font-style: italic;*/
         }
 
-        * {
+        @font-face {
+            font-family: 'NeusaNextPro-Light';
+            src: url('/fonts/neusa/NeusaNextPro-Light.otf');
+        }
+
+        @font-face {
+            font-family: 'NeusaNextPro-Bold';
+            src: url('/fonts/neusa/NeusaNextPro-Bold.otf');
+        }
+
+        .font-regular {
             font-family: 'NeusaNextPro-Regular';
-            font-weight: 500;
+            font-weight: 400;
             font-style: normal;
+        }
+
+        .font-light {
+            font-family: 'NeusaNextPro-Light';
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .font-bold {
+            font-family: 'NeusaNextPro-Bold';
+            font-weight: 600;
         }
 
 
@@ -168,6 +179,7 @@
             display: none;
         }
     </style>
+
     <style>
         /*helpers*/
         .text-center {
@@ -498,7 +510,6 @@
         }
     </style>
 
-
     <style>
         .select-1 {
             padding: 10px 40px 10px 10px;
@@ -616,11 +627,13 @@
             background-color: #e9ecef;
         }
     </style>
+
     <style>
         main {
             min-height: calc(100vh - 176px);
         }
     </style>
+
 </head>
 <body>
 <div class="flex-column-center" style="min-height: 100vh;">
