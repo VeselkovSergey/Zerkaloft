@@ -1,7 +1,7 @@
 <div>
     <div class="bg-yellow">
         <div class="p-20">
-            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">популярное</div>
+            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
         </div>
         <div class="flex-wrap" style="justify-content: space-evenly;">
             <div class="w-33 pos-rel product-container">
@@ -14,7 +14,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -106,7 +106,7 @@
 <div>
     <div class="bg-yellow">
         <div class="p-20">
-            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">понравилось</div>
+            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
         </div>
         <div class="flex-wrap" style="justify-content: space-evenly;">
             <div class="w-33 pos-rel product-container">
@@ -119,7 +119,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center font-bold"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>

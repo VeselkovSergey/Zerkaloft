@@ -44,21 +44,23 @@
                 <div class="flex-space-x">
                     <div class="font-light">
                         <div class="checkbox-wrapper-1 mb-10">
-                            <input id="color-1" type="checkbox" class="custom-checkbox ">
+                            <input id="color-1" type="checkbox" class="custom-checkbox">
                             <label for="color-1">Доп</label>
                         </div>
                         <div class="checkbox-wrapper-1 mb-10">
-                            <input id="color-2" type="checkbox" class="custom-checkbox ">
+                            <input id="color-2" type="checkbox" class="custom-checkbox">
                             <label for="color-2">Доп 2</label>
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                             style="background-color: white; color: black">В КОРЗИНУ
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="w-40">
-                <div class="h3">ОПИСАНИЕ</div>
+                <div class="h3">Описание</div>
                 <p>
                     Лицевая панель - акрил, задняя и боковые панели - ПВХ,
                     подсветка - светодиодные кластеры на задней панели.

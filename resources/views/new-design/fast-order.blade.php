@@ -39,7 +39,9 @@ $bredcrumbs = [
                     </div>
                 </div>
                 <div class="px-20 w-50">
-                    <div class="font-bold" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ПЕРЕЙТИ К ТОВАРУ</div>
+                    <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                         style="background-color: white; color: black">К ТОВАРУ
+                    </div>
                 </div>
             </div>
             <div class="w-40">
@@ -77,7 +79,9 @@ $bredcrumbs = [
 
                 <div class="flex">
                     <div>
-                        <div class="font-bold" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                             style="background-color: white; color: black">В КОРЗИНУ
+                        </div>
                     </div>
                 </div>
             </div>

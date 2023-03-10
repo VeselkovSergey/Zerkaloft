@@ -26,7 +26,7 @@
                     <div class="wrapper active" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
                         <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
                             <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                о компании
+                                О компании
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="wrapper" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
                         <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
                             <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                о компании
+                                О компании
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="w-50" style="border: 1px solid white; border-radius: 0 50px 50px 50px;">
                 <div style="padding: 10px 30px;">
-                    <h2>О КОМПАНИИ</h2>
+                    <h2 class="text-center">О компании</h2>
                     <p>
                         Древность
 

@@ -5,7 +5,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                ИНФОРМАЦИЯ
+                Информация
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 Небольшой рассказ о маркетинге статьи из журналов изменения в закондательстве
@@ -18,7 +18,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                ОНЛАЙН ЗАКАЗ
+                Онлайн заказ
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 предлагаем вашему вниманию подобранные параметры для быстрого заказа
@@ -31,7 +31,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                СПОСОБ ОПЛАТЫ
+                Способ оплаты
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 оплачивайте заказ на сайте как физическое лицо или как юридическое
@@ -44,7 +44,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                ДОСТАВКА
+                Доставка
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 оформите доставку у нас на сайте воспользуйтесь услугами наших партнеров
@@ -57,7 +57,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                ФОРУМ
+                Форум
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
@@ -70,7 +70,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                ГАЛЕРЕЯ
+                Галерея
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 Работы выполненные нашей командой не тратье время на поиски подберите себе готовые идеи
