@@ -12,7 +12,7 @@
                             <div>
                                 <div class="p-10 h3">Подсветка</div>
                                 <div>
-                                    <select name="" id="" class="select-1 w-100">
+                                    <select name="" id="" class="select-1 w-100 font-light">
                                         <option value="123" selected>123</option>
                                     </select>
                                 </div>
@@ -20,7 +20,7 @@
                             <div>
                                 <div class="p-10 h3">Размер</div>
                                 <div>
-                                    <select name="" id="" class="select-1 w-100">
+                                    <select name="" id="" class="select-1 w-100 font-light">
                                         <option value="123" selected>123</option>
                                     </select>
                                 </div>
@@ -28,7 +28,7 @@
                             <div>
                                 <div class="p-10 h3">Материал</div>
                                 <div>
-                                    <select name="" id="" class="select-1 w-100">
+                                    <select name="" id="" class="select-1 w-100 font-light">
                                         <option value="123" selected>123</option>
                                     </select>
                                 </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="mb-10">
-                    <select name="" id="" class="select-1">
+                    <select name="" id="" class="select-1 font-light">
                         <option value="123" selected>1 шт - 745 р</option>
                     </select>
                 </div>

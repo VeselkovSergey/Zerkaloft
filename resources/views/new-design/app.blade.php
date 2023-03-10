@@ -635,7 +635,7 @@
     </style>
 
 </head>
-<body>
+<body class="font-regular">
 <div class="flex-column-center" style="min-height: 100vh;">
     <div style="max-width: 1440px; min-height: 100vh;">
         @include("new-design.header")

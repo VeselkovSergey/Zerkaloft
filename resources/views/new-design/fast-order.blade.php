@@ -9,7 +9,7 @@
                     <div>
                         <div class="p-10 h3">Категория</div>
                         <div>
-                            <select name="" id="" class="select-1 w-100">
+                            <select name="" id="" class="select-1 w-100 font-light">
                                 <option value="123" selected>123</option>
                             </select>
                         </div>
@@ -17,7 +17,7 @@
                     <div>
                         <div class="p-10 h3">Размер</div>
                         <div>
-                            <select name="" id="" class="select-1 w-100">
+                            <select name="" id="" class="select-1 w-100 font-light">
                                 <option value="123" selected>123</option>
                             </select>
                         </div>
@@ -25,21 +25,21 @@
                     <div>
                         <div class="p-10 h3">Материал</div>
                         <div>
-                            <select name="" id="" class="select-1 w-100">
+                            <select name="" id="" class="select-1 w-100 font-light">
                                 <option value="123" selected>123</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="px-20 w-50">
-                    <div style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ПЕРЕЙТИ К ТОВАРУ</div>
+                    <div class="font-bold" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ПЕРЕЙТИ К ТОВАРУ</div>
                 </div>
             </div>
             <div class="w-40">
                 <div class="flex mb-10">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
-                <div>
+                <div class="font-light">
                     <p>
                         Лицевая панель - акрил, задняя и боковые панели - ПВХ,
                         подсветка - светодиодные кластеры на задней панели.
@@ -52,7 +52,7 @@
                         Монтаж не включён в стоимость.
                     </p>
                 </div>
-                <div>
+                <div class="font-light">
                     <div class="checkbox-wrapper-1 mb-10 w-max-content">
                         <input id="color-1" type="checkbox" class="custom-checkbox ">
                         <label for="color-1">Доп</label>
@@ -63,14 +63,14 @@
                     </div>
                 </div>
                 <div class="mb-10">
-                    <select name="" id="" class="select-1">
+                    <select name="" id="" class="select-1 font-light">
                         <option value="123" selected>1 шт - 745 р</option>
                     </select>
                 </div>
 
                 <div class="flex">
                     <div>
-                        <div style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
+                        <div class="font-bold" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">В КОРЗИНУ</div>
                     </div>
                 </div>
             </div>

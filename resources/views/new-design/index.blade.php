@@ -34,9 +34,9 @@
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
@@ -50,9 +50,9 @@
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
@@ -66,9 +66,9 @@
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
@@ -82,9 +82,9 @@
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
@@ -98,9 +98,9 @@
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
-                        <div>свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
+                        <div class="font-light">свойство</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
