@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="w-25 flex-center-y">
-            <div class="w-40">
+            <div class="w-45">
                 <div>+7 495 123 12 23</div>
                 <div>+7 495 456 45 56</div>
             </div>
