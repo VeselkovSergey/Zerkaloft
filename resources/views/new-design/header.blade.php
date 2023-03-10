@@ -6,7 +6,7 @@
         <div class="mr-10">
             <div class="catalog-button flex-center-y border-radius-25" style="width: fit-content; padding: 5px 10px">
                 <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
-                <div class="pl-10">КАТАЛОГ</div>
+                <div class="pl-10">каталог</div>
                 <div class="catalog-container pos-abs" style="top: 0; left: 0;/* width: 100vw; height: 100vh;*/">
                     <div class="border-radius-25"
                          style="margin: 5px 0 0 5px; border: 1px solid #ffffff; width: 25vw; background-color: rgba(0,0,0,0.8)">
@@ -171,8 +171,8 @@
     </div>
     <div class="flex-end-x">
         <div class="w-25 flex-center-y">
-            <div class="mr-10">ГАЛЕРЕЯ</div>
-            <div>О КОМПАНИИ</div>
+            <div class="mr-10">галерея</div>
+            <div>о компании</div>
         </div>
     </div>
 </header>
