@@ -24,8 +24,8 @@
             <div class="w-25">
                 <div class="mb-10">
                     <div class="wrapper active" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
-                        <div class="block" style="padding: 25px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
-                            <div class="h2" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                        <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
+                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 О КОМПАНИИ
                             </div>
                         </div>
@@ -33,8 +33,8 @@
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
-                        <div class="block" style="padding: 25px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
-                            <div class="h2" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                        <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
+                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 О КОМПАНИИ
                             </div>
                         </div>

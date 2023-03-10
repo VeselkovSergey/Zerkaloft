@@ -557,7 +557,7 @@
             padding: 10px;
             border: 1px solid white;
             border-radius: 25px;
-            font-size: 20px;
+            font-size: 14px;
             display: flex;
         }
 

@@ -1,7 +1,7 @@
 <div>
     <div class="bg-yellow">
-        <div class="p-50">
-            <div class="h2" style="color: black; border: 1px solid black; border-radius: 30px; padding: 15px; width: max-content;">ПОПУЛЯРНОЕ</div>
+        <div class="p-20">
+            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">популярное</div>
         </div>
         <div class="flex-wrap" style="justify-content: space-evenly;">
             <div class="w-33 pos-rel product-container">
@@ -105,8 +105,8 @@
 </div>
 <div>
     <div class="bg-yellow">
-        <div class="p-50">
-            <div class="h2" style="color: black; border: 1px solid black; border-radius: 30px; padding: 15px; width: max-content;">ПОНРАВИЛОСЬ</div>
+        <div class="p-20">
+            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">понравилось</div>
         </div>
         <div class="flex-wrap" style="justify-content: space-evenly;">
             <div class="w-33 pos-rel product-container">
