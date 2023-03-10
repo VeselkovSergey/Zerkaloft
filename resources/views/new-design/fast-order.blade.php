@@ -63,11 +63,11 @@ $bredcrumbs = [
                 </div>
                 <div class="font-light">
                     <div class="checkbox-wrapper-1 mb-10 w-max-content">
-                        <input id="color-1" type="checkbox" class="custom-checkbox ">
+                        <input id="color-1" type="checkbox" class="custom-checkbox">
                         <label for="color-1">Доп</label>
                     </div>
                     <div class="checkbox-wrapper-1 mb-10 w-max-content">
-                        <input id="color-2" type="checkbox" class="custom-checkbox ">
+                        <input id="color-2" type="checkbox" class="custom-checkbox">
                         <label for="color-2">Доп 2</label>
                     </div>
                 </div>
