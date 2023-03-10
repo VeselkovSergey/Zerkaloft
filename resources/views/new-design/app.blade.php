@@ -9,7 +9,6 @@
 
     <style>
 
-
         @font-face {
             font-family: 'NeusaNextPro-Regular';
             src: url('/fonts/neusa/NeusaNextPro-Regular.otf');
@@ -42,6 +41,9 @@
             font-weight: 600;
         }
 
+    </style>
+
+    <style>
 
         :root {
             --border-color: white;

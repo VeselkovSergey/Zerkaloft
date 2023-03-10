@@ -18,7 +18,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                Онлайн заказ
+                Онлайн&nbspзаказ
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 предлагаем вашему вниманию подобранные параметры для быстрого заказа
@@ -31,7 +31,7 @@
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                Способ оплаты
+                Способ&nbspоплаты
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 оплачивайте заказ на сайте как физическое лицо или как юридическое
