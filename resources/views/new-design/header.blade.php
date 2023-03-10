@@ -171,7 +171,7 @@
     </div>
     <div class="flex-end-x">
         <div class="w-25 flex-center-y">
-            <div class="mr-10">галерея</div>
+            <div class="mr-10">быстрое оформление</div>
             <div>о компании</div>
         </div>
     </div>

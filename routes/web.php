@@ -413,27 +413,27 @@ Route::group(['prefix' => 'new-design'], function () {
 
     Route::get('/', function () {
         return view("new-design.index");
-    });
+    })->name("new-design.index");
 
     Route::get('/catalog', function () {
         return view("new-design.catalog");
-    });
+    })->name("new-design.catalog");
 
     Route::get('/product', function () {
         return view("new-design.product");
-    });
+    })->name("new-design.product");
 
     Route::get('/fast-order', function () {
         return view("new-design.fast-order");
-    });
+    })->name("new-design.fast-order");
 
     Route::get('/basket', function () {
         return view("new-design.basket");
-    });
+    })->name("new-design.basket");
 
     Route::get('/text', function () {
         return view("new-design.text");
-    });
+    })->name("new-design.text");
 
 });
 

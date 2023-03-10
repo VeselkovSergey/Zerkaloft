@@ -1,8 +1,15 @@
+<?php
+$bredcrumbs = [
+    "Главная" => route("new-design.index"),
+    "Быстрое оформление" => route("new-design.fast-order"),
+];
+?>
+
 @extends("new-design.app")
 
 @section("content")
     <div>
-        @include("new-design.bredcrumbs")
+        @include("new-design.bredcrumbs", $bredcrumbs)
         <div class="flex mb-10">
             <div class="w-35">
                 <div class="px-20 mb-20" style="width: calc(100% - 20px - 20px)">

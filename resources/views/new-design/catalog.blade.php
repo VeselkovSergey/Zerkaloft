@@ -1,8 +1,15 @@
+<?php
+$bredcrumbs = [
+    "Главная" => route("new-design.index"),
+    "Каталог" => route("new-design.catalog"),
+];
+?>
+
 @extends("new-design.app")
 
 @section("content")
     <div>
-        @include("new-design.bredcrumbs")
+        @include("new-design.bredcrumbs", $bredcrumbs)
         <div class="flex-wrap mb-10">
             <div class="mr-10">
                 <div class="p-10">Категория</div>
