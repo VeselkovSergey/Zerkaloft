@@ -2,11 +2,7 @@
 
 @section("content")
     <div>
-        <div class="flex mb-10">
-            <div>Главная</div>
-            <div class="mx-10">/</div>
-            <div>Каталог</div>
-        </div>
+        @include("new-design.bredcrumbs")
         <div class="flex-wrap mb-10">
             <div class="mr-10">
                 <div class="p-10">Категория</div>
