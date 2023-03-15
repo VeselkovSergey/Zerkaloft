@@ -42,7 +42,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
                         <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>

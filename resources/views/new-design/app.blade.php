@@ -444,6 +444,10 @@
             margin-bottom: 5px;
         }
 
+        .mt-10 {
+            margin-top: 10px;
+        }
+
         .px-20 {
             padding-left: 20px;
             padding-right: 20px;
@@ -952,10 +956,10 @@
         </div>
         <div id="mobMenu" class="hide" style="z-index:3; position: fixed; top: 0; left: 0; background-color: rgba(0,0,0,0.8); color: white; width: 100vw; height: calc(100vh - 60px);">
             <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;">
-                <div class="border-radius-25 p-10 mb-10 mt-10">Главная</div>
-                <div class="border-radius-25 p-10 mb-10 mt-10">Быстрое оформление</div>
-                <div class="border-radius-25 p-10 mb-10 mt-10">Онлайн заказ</div>
-                <div class="border-radius-25 p-10 mb-10 mt-10">О компании</div>
+                <div class="border-radius-25 p-10 mb-10">Главная</div>
+                <div class="border-radius-25 p-10 mb-10">Быстрое оформление</div>
+                <div class="border-radius-25 p-10 mb-10">Онлайн заказ</div>
+                <div class="border-radius-25 p-10 mb-10">О компании</div>
             </div>
         </div>
     </div>
