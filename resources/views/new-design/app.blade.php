@@ -693,6 +693,10 @@
             width: 15%;
         }
 
+        .w-15-adaptive-40vw {
+            width: 15%;
+        }
+
         .w-33-adaptive-100 {
             width: 33%;
         }
@@ -759,6 +763,10 @@
 
             .w-15-adaptive-100 {
                 width: 100%;
+            }
+
+            .w-15-adaptive-40vw {
+                width: 40vw;
             }
 
             .w-33-adaptive-100 {
