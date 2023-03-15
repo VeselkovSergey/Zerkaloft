@@ -153,7 +153,7 @@
                 <input class="w-100 input-search" type="text">
             </div>
         </div>
-        <div class="show-adaptive-flex" data-relation-id="mobCatalog" style="padding: 0 10px;">
+        <div class="show-adaptive-flex" data-relation-id="mobCatalog" style="padding: 0 14px;">
             <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
         </div>
         <div id="mobCatalog" class="hide" style="position: absolute; top: 60px; left: 0; background-color: rgba(0,0,0,0.8); width: 100vw; height: calc(100vh - 60px);">
