@@ -2,6 +2,22 @@
 
 @section("content")
     <style>
+        .wrapper {
+            position: relative;
+            border-right: unset;
+            border-radius: 50px 0 0 50px;
+            height: 92px;
+        }
+
+        .wrapper .block {
+            padding: 30px;
+            width: 87%;
+            position: absolute;
+            border-radius: 50px 0 0 50px;
+            left: 0;
+            top: 0;
+        }
+
         .active.wrapper {
             border: 1px solid white;
         }
@@ -18,13 +34,39 @@
             color: var(--blue-color);
             border-color: var(--blue-color);
         }
+
+        .block-adaptive-flex {
+            overflow: scroll;
+        }
+
+        .border-adaptive-none {
+            border: 1px solid white;
+        }
+
+        @media screen and (max-width: 540px) {
+            .active.wrapper {
+                border: unset;
+            }
+
+            .wrapper .block {
+                position: static;
+            }
+
+            .active.wrapper .block {
+                background-color: unset;
+            }
+
+            .border-adaptive-none {
+                border: unset;
+            }
+        }
     </style>
     <div class="mb-10">
-        <div class="flex">
-            <div class="w-25">
+        <div class="flex-adaptive-block">
+            <div class="w-25-adaptive-100 block-adaptive-flex">
                 <div class="mb-10">
-                    <div class="wrapper active" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
-                        <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
+                    <div class="wrapper active">
+                        <div class="block">
                             <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 О компании
                             </div>
@@ -32,16 +74,25 @@
                     </div>
                 </div>
                 <div class="mb-10">
-                    <div class="wrapper" style="position: relative;border-right: unset;border-radius: 50px 0 0 50px;height: 92px;">
-                        <div class="block" style="padding: 30px; width: 87%; position: absolute; border-radius: 50px 0 0 50px; left: 0; top: 0;">
+                    <div class="wrapper">
+                        <div class="block">
                             <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                О компании
+                                О компании 1
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-10">
+                    <div class="wrapper">
+                        <div class="block">
+                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                                О компании 2
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-50" style="border: 1px solid white; border-radius: 0 50px 50px 50px;">
+            <div class="w-50-adaptive-100 border-adaptive-none" style="border-radius: 0 50px 50px 50px;">
                 <div style="padding: 10px 30px;">
                     <h2 class="text-center">О компании</h2>
                     <p>

@@ -705,6 +705,10 @@
             width: 50%;
         }
 
+        .w-25-adaptive-100 {
+            width: 25%;
+        }
+
         .flex-wrap-adaptive-block {
             display: flex;
             flex-wrap: wrap;
@@ -712,6 +716,10 @@
 
         .flex-adaptive-block {
             display: flex;
+        }
+
+        .block-adaptive-flex {
+            display: block;
         }
 
         .pos-abs-adaptive-static {
@@ -777,12 +785,20 @@
                 width: 100%;
             }
 
+            .w-25-adaptive-100 {
+                width: 100%;
+            }
+
             .flex-wrap-adaptive-block {
                 display: block;
             }
 
             .flex-adaptive-block {
                 display: block;
+            }
+
+            .block-adaptive-flex {
+                display: flex;
             }
 
             .product-container .product-description, .category-container .category-description {
