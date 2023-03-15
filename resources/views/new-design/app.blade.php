@@ -170,6 +170,7 @@
         .catalog-button:hover .catalog-container {
             display: block;
         }
+
         .catalog-container {
             display: none;
         }
@@ -177,6 +178,7 @@
         .catalog-product-container:hover .catalog-product-description {
             display: block;
         }
+
         .catalog-product-description {
             display: none;
         }
@@ -184,6 +186,11 @@
 
     <style>
         /*helpers*/
+
+        .hide {
+            display: none;
+        }
+
         .text-center {
             text-align: center;
         }
@@ -433,6 +440,11 @@
             padding-right: 20px;
         }
 
+        .px-10 {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
         .pl-20 {
             padding-left: 20px;
         }
@@ -574,14 +586,14 @@
         }
 
         /* для элемента label, связанного с .custom-checkbox */
-        .custom-checkbox+label {
+        .custom-checkbox + label {
             display: inline-flex;
             align-items: center;
             user-select: none;
         }
 
         /* создание в label псевдоэлемента before со следующими стилями */
-        .custom-checkbox+label::before {
+        .custom-checkbox + label::before {
             content: '';
             display: inline-block;
             width: 1em;
@@ -597,35 +609,35 @@
         }
 
         /* стили при наведении курсора на checkbox */
-        .custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+        .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
             border-color: #b3d7ff;
         }
 
         /* стили для активного чекбокса (при нажатии на него) */
-        .custom-checkbox:not(:disabled):active+label::before {
+        .custom-checkbox:not(:disabled):active + label::before {
             background-color: #b3d7ff;
             border-color: #b3d7ff;
         }
 
         /* стили для чекбокса, находящегося в фокусе */
-        .custom-checkbox:focus+label::before {
+        .custom-checkbox:focus + label::before {
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
 
         /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-        .custom-checkbox:focus:not(:checked)+label::before {
+        .custom-checkbox:focus:not(:checked) + label::before {
             border-color: #80bdff;
         }
 
         /* стили для чекбокса, находящегося в состоянии checked */
-        .custom-checkbox:checked+label::before {
+        .custom-checkbox:checked + label::before {
             border-color: #0b76ef;
             background-color: #0b76ef;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
         }
 
         /* стили для чекбокса, находящегося в состоянии disabled */
-        .custom-checkbox:disabled+label::before {
+        .custom-checkbox:disabled + label::before {
             background-color: #e9ecef;
         }
     </style>
@@ -634,12 +646,167 @@
         main {
             min-height: calc(100vh - 176px);
         }
+
+        img {
+            height: 100%;
+            /*width: 100%;*/
+        }
+    </style>
+
+    <style>
+
+        .font-36-adaptive {
+            font-size: 36px;
+        }
+
+        .show-adaptive, .show-adaptive-flex {
+            display: none;
+        }
+
+        .img-120-adaptive-70 {
+            height: 120px;
+        }
+
+        .img-w-100-adaptive-60 {
+            width: 100px;
+        }
+
+        .flex-center-x-adaptive-none {
+            display: flex;
+            justify-content: center;
+        }
+
+        .w-15-adaptive-100 {
+            width: 15%;
+        }
+
+        .w-33-adaptive-100 {
+            width: 33%;
+        }
+
+        .w-50-adaptive-100 {
+            width: 50%;
+        }
+
+        .flex-wrap-adaptive-block {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-adaptive-block {
+            display: flex;
+        }
+
+        .pos-abs-adaptive-static {
+            position: absolute;
+        }
+
+        .pt-15-adaptive-0 {
+            padding-top: 15px;
+        }
+
+        .img-search {
+            width: 25px;
+        }
+
+        .search-container {
+            padding: 12px 10px;
+        }
+
+        @media screen and (max-width: 540px) {
+            .font-36-adaptive {
+                font-size: unset;
+            }
+
+            .show-adaptive {
+                display: block;
+            }
+
+            .show-adaptive-flex {
+                display: flex;
+            }
+
+            .img-120-adaptive-70 {
+                height: 70px;
+            }
+
+            .img-w-100-adaptive-60 {
+                width: 60px;
+            }
+
+            .hide-adaptive {
+                display: none;
+            }
+
+            .flex-center-x-adaptive-none {
+                display: block;
+            }
+
+            .w-15-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-33-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-50-adaptive-100 {
+                width: 100%;
+            }
+
+            .flex-wrap-adaptive-block {
+                display: block;
+            }
+
+            .flex-adaptive-block {
+                display: block;
+            }
+
+            .product-container .product-description, .category-container .category-description {
+                display: block;
+            }
+
+            .pos-abs-adaptive-static {
+                position: static;
+            }
+
+            .product-description, .category-description {
+                width: 100%;
+            }
+
+            .product-container:hover, .category-container:hover {
+                transform: unset;
+            }
+
+            .category-container .category-description {
+                border-radius: 50px;
+                padding: 10px;
+                margin: auto;
+                margin-bottom: 10px;
+            }
+
+            main {
+                margin-top: 60px;
+            }
+
+            .pt-15-adaptive-0 {
+                padding-top: 0;
+            }
+
+            .img-search {
+                width: 18px;
+            }
+
+            .search-container {
+                padding: 0 0 0 5px;
+            }
+        }
     </style>
 
 </head>
 <body class="font-regular">
-<div class="flex-column-center" style="min-height: 100vh;">
-    <div style="max-width: 1440px; min-height: 100vh;">
+<div style="min-height: 100vh;">
+    <div style="max-width: 1440px; min-height: 100vh; margin: auto;">
         @include("new-design.header")
         <main>
             @yield("content")
@@ -740,6 +907,13 @@
         </footer>
     </div>
 </div>
+<script>
+    document.body.querySelectorAll("[data-relation-id]").forEach((element) => {
+        element.addEventListener("click", () => {
+            document.body.querySelector("#" + element.dataset.relationId).classList.toggle("hide")
+        })
+    })
+</script>
 @yield("js")
 </body>
 </html>

@@ -1,9 +1,9 @@
 <header class="font-light" style="max-width: 1440px;">
-    <div class="flex-center-y" style="height: 60px; padding-top: 15px;">
+    <div class="flex-center-y pt-15-adaptive-0" style="height: 60px;">
         <div class="flex-center-y mr-10">
-            <img class="pl-10" width="100" src="/assets/imgs/logo.svg" alt="logo">
+            <img class="pl-10 img-w-100-adaptive-60" src="/assets/imgs/logo.svg" alt="logo">
         </div>
-        <div class="mr-10">
+        <div class="mr-10 hide-adaptive">
             <div class="catalog-button flex-center-y border-radius-25" style="width: fit-content; padding: 5px 10px">
                 <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
                 <div class="pl-10 font-regular">Каталог</div>
@@ -148,12 +148,35 @@
             </div>
         </div>
         <div class="mr-10" style="flex: 1">
-            <div class="border-radius-25 flex-center-y" style="padding: 12px 10px;">
-                <img width="25" src="/assets/imgs/search.svg" alt="search">
+            <div class="border-radius-25 flex-center-y search-container">
+                <img class="img-search" src="/assets/imgs/search.svg" alt="search">
                 <input class="w-100 input-search" type="text">
             </div>
         </div>
-        <div class="w-25 flex-center-y">
+        <div class="show-adaptive-flex" data-relation-id="mobCatalog">
+            <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
+        </div>
+        <div id="mobCatalog" class="hide" style="position: absolute; top: 60px; left: 0; background-color: rgba(0,0,0,0.8); width: 100vw; height: calc(100vh - 60px);">
+            <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;">
+                <div class="mb-10">
+                    <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                </div>
+                <div class="mb-10">
+                    <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                    <div>Категория</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-25 flex-center-y hide-adaptive">
             <div class="w-45">
                 <div>+7 495 123 12 23</div>
                 <div>+7 495 456 45 56</div>
@@ -169,7 +192,7 @@
             </div>
         </div>
     </div>
-    <div class="flex-end-x">
+    <div class="flex-end-x hide-adaptive">
         <div class="w-25 flex-center-y font-regular">
             <div class="mr-10">Быстрое оформление</div>
             <div>О компании</div>

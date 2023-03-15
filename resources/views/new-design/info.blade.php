@@ -1,7 +1,7 @@
-<div class="flex-center-x p-20 bg-pink" style="color: black;">
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/info.svg" alt="">
+<div class="flex-center-x-adaptive-none p-20 bg-pink" style="color: black;">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/info.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -12,35 +12,35 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/online-order.svg" alt="">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/online-order.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                Онлайн&nbspзаказ
+                Онлайн&nbsp;заказ
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 предлагаем вашему вниманию подобранные параметры для быстрого заказа
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/payments.svg" alt="">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/payments.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
-                Способ&nbspоплаты
+                Способ&nbsp;оплаты
             </div>
             <div class="font-light" style="padding: 0 40px;">
                 оплачивайте заказ на сайте как физическое лицо или как юридическое
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/delivered.svg" alt="">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/delivered.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -51,9 +51,9 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/forum.svg" alt="">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/forum.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -64,9 +64,9 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15 flex-column-center-x">
-        <div>
-            <img height="120" src="/assets/imgs/gallery.svg" alt="">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/gallery.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
