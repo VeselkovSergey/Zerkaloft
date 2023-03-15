@@ -684,7 +684,7 @@
             width: 100px;
         }
 
-        .flex-center-x-adaptive-none {
+        .info-block {
             display: flex;
             justify-content: center;
         }
@@ -751,8 +751,10 @@
                 display: none;
             }
 
-            .flex-center-x-adaptive-none {
-                display: block;
+            .info-block {
+                display: flex;
+                overflow: scroll;
+                justify-content: start;
             }
 
             .w-15-adaptive-100 {

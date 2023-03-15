@@ -1,4 +1,4 @@
-<div class="flex-center-x-adaptive-none p-20 bg-pink" style="color: black;">
+<div class="info-block p-20 bg-pink" style="color: black;">
     <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/info.svg" alt="">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/online-order.svg" alt="">
         </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/payments.svg" alt="">
         </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="scale-1 w-15-adaptive-100 flex-column-center-x hide-adaptive">
+    <div class="scale-1 w-15-adaptive-100 flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/delivered.svg" alt="">
         </div>
