@@ -799,6 +799,7 @@
 
             .product-container:hover, .category-container:hover {
                 transform: unset;
+                z-index: unset;
             }
 
             .category-container .category-description {
