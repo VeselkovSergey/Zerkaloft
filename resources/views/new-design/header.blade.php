@@ -160,19 +160,17 @@
             <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;">
                 <div class="mb-10">
                     <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
                 </div>
                 <div class="mb-10">
                     <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
-                    <div>Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
+                    <div class="p-5">Категория</div>
                 </div>
             </div>
         </div>
