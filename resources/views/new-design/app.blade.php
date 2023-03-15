@@ -802,6 +802,10 @@
                 margin-top: 60px;
             }
 
+            footer {
+                margin-bottom: 60px;
+            }
+
             .pt-15-adaptive-0 {
                 padding-top: 0;
             }
@@ -935,7 +939,7 @@
                 </a>
             </div>
         </div>
-        <div class="mob-menu show-adaptive" style="position: sticky; bottom: 0; height: 60px; width: 100vw; z-index: 4;">
+        <div class="mob-menu show-adaptive" style="position: fixed; bottom: 0; height: 60px; width: 100vw; z-index: 4;">
             <div class="flex-around-x" style="background-color: var(--main-bg-color); padding: 10px; color: white; height: calc(100% - 20px)">
                 <div>
                     <img width="30" src="/assets/imgs/email.svg" alt="email">
