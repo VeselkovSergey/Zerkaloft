@@ -10,9 +10,9 @@ $bredcrumbs = [
 @section("content")
     <div>
         @include("new-design.bredcrumbs", $bredcrumbs)
-        <div class="flex mb-10">
-            <div class="w-35">
-                <div class="px-20 mb-20" style="width: calc(100% - 20px - 20px)">
+        <div class="flex-wrap mb-10 px-0-adaptive-10">
+            <div class="w-35-adaptive-100 mb-10">
+                <div class="mb-20 mr-10-adaptive-0">
                     <div>
                         <div class="p-10 h3">Категория</div>
                         <div>
@@ -38,13 +38,13 @@ $bredcrumbs = [
                         </div>
                     </div>
                 </div>
-                <div class="px-20 w-50">
-                    <div class="border-radius-25 p-10 mt-a w-100 text-center"
+                <div class="w-50-adaptive-100">
+                    <div class="border-radius-25 p-10 mt-a text-center"
                          style="background-color: white; color: black">К ТОВАРУ
                     </div>
                 </div>
             </div>
-            <div class="w-40">
+            <div class="w-40-adaptive-100">
                 <div class="flex mb-10">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
@@ -61,26 +61,27 @@ $bredcrumbs = [
                         Монтаж не включён в стоимость.
                     </p>
                 </div>
-                <div class="font-light">
-                    <div class="checkbox-wrapper-1 mb-10 w-max-content">
-                        <input id="color-1" type="checkbox" class="custom-checkbox">
-                        <label for="color-1">Доп</label>
+                <div class="flex-space-x mr-10-adaptive-0">
+                    <div class="flex mb-10">
+                        <select name="" id="" class="select-3 font-light">
+                            <option value="123" selected>1 шт - 745 р</option>
+                        </select>
                     </div>
-                    <div class="checkbox-wrapper-1 mb-10 w-max-content">
-                        <input id="color-2" type="checkbox" class="custom-checkbox">
-                        <label for="color-2">Доп 2</label>
+                    <div class="mb-10 w-a-adaptive-100 ml-10">
+                        <div class="border-radius-25 p-10 mt-a text-center"
+                             style="background-color: white; color: black;">В КОРЗИНУ
+                        </div>
                     </div>
                 </div>
-                <div class="mb-10">
-                    <select name="" id="" class="select-3 font-light">
-                        <option value="123" selected>1 шт - 745 р</option>
-                    </select>
-                </div>
-
-                <div class="flex">
-                    <div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center"
-                             style="background-color: white; color: black">В КОРЗИНУ
+                <div class="flex-space-x-adaptive-column">
+                    <div class="font-light">
+                        <div class="checkbox-wrapper-1 mb-10">
+                            <input id="color-1" type="checkbox" class="custom-checkbox">
+                            <label for="color-1">Доп</label>
+                        </div>
+                        <div class="checkbox-wrapper-1 mb-10">
+                            <input id="color-2" type="checkbox" class="custom-checkbox">
+                            <label for="color-2">Доп 2</label>
                         </div>
                     </div>
                 </div>

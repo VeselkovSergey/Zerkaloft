@@ -580,7 +580,8 @@
         }
 
         .select-3 {
-            padding: 10px 40px 10px 10px;
+            height: 40px;
+            padding: 0 40px 0 10px;
             border-radius: 25px;
             color: white;
             background-color: var(--main-bg-color);
@@ -594,11 +595,23 @@
         }
 
         .checkbox-wrapper-1 {
-            padding: 10px;
+            height: 40px;
+            padding: 0 10px;
             border: 1px solid white;
             border-radius: 25px;
             font-size: 14px;
             display: flex;
+        }
+
+        .white-button {
+            background-color: white;
+            color: black;
+            height: 40px;
+            padding: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
         }
 
     </style>
@@ -767,7 +780,54 @@
             padding: 12px 10px;
         }
 
+        .mr-10-adaptive-0 {
+            margin-right: 10px;
+        }
+
+        .px-100-adaptive-10 {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .w-a-adaptive-100 {
+            width: auto;
+        }
+
+        .w-50-adaptive-100 {
+            width: 50%;
+        }
+
+        .flex-space-x-adaptive-column {
+             display: flex;
+             justify-content: space-between;
+         }
+
         @media screen and (max-width: 540px) {
+
+            .flex-space-x-adaptive-column {
+                display: flex;
+                justify-content: normal;
+                flex-direction: column;
+            }
+
+            .w-50-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-a-adaptive-100 {
+                width: 100%;
+            }
+
+            .px-0-adaptive-10 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .px-100-adaptive-10 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
             .font-36-adaptive {
                 font-size: unset;
             }
@@ -894,6 +954,10 @@
 
             .search-container {
                 padding: 0 0 0 5px;
+            }
+
+            .mr-10-adaptive-0 {
+                margin-right: 0;
             }
         }
     </style>
@@ -1043,7 +1107,7 @@
                 <div class="border-radius-25 p-10 mb-10 mt-a">Главная</div>
                 <div class="border-radius-25 p-10 mb-10">Быстрое оформление</div>
                 <div class="border-radius-25 p-10 mb-10">Онлайн заказ</div>
-                <div class="border-radius-25 p-10 mb-10">О компании</div>
+                <div class="border-radius-25 p-10 mb-10" style="margin-bottom: 50px;">О компании</div>
             </div>
         </div>
     </div>

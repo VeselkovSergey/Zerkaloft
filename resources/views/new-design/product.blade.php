@@ -2,19 +2,6 @@
 
 @section("content")
     <style>
-        .px-100-adaptive-10 {
-            padding-left: 100px;
-            padding-right: 100px;
-        }
-
-        .flex-space-x-adaptive-column {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .w-a-adaptive-100 {
-            width: auto;
-        }
 
         .order-2-4 {
             order: 2;
@@ -24,25 +11,7 @@
             order: 4;
         }
 
-        .mr-10-adaptive-0 {
-            margin-right: 10px;
-        }
-
         @media screen and (max-width: 540px) {
-            .px-100-adaptive-10 {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .flex-space-x-adaptive-column {
-                display: flex;
-                justify-content: normal;
-                flex-direction: column;
-            }
-
-            .w-a-adaptive-100 {
-                width: 100%;
-            }
 
             .order-2-4 {
                 order: 4;
@@ -50,10 +19,6 @@
 
             .order-4-2 {
                 order: 2;
-            }
-
-            .mr-10-adaptive-0 {
-                margin-right: 0;
             }
         }
     </style>
