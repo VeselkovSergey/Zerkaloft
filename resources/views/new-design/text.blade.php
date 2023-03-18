@@ -35,15 +35,16 @@
             border-color: var(--blue-color);
         }
 
-        .block-adaptive-flex {
-            overflow: scroll;
-        }
-
         .border-adaptive-none {
             border: 1px solid white;
         }
 
         @media screen and (max-width: 540px) {
+
+            .block-adaptive-flex {
+                overflow: scroll;
+            }
+
             .active.wrapper {
                 border: unset;
             }
