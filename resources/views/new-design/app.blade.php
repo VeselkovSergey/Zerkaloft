@@ -908,7 +908,10 @@
                 display: flex;
             }
 
-            .main-page .product-container .product-description, .main-page .category-container .category-description {
+            .main-page .product-container .product-description,
+            .catalog .product-container .product-description,
+            .main-page .category-container .category-description,
+            .catalog .category-container .category-description {
                 display: block;
             }
 
