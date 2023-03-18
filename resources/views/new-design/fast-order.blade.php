@@ -43,7 +43,9 @@ $bredcrumbs = [
     </style>
 
     <div>
-        @include("new-design.bredcrumbs", $bredcrumbs)
+        <div class="px-0-adaptive-10">
+            @include("new-design.bredcrumbs", $bredcrumbs)
+        </div>
         <div class="flex-wrap mb-10 px-0-adaptive-10">
             <div class="w-35-adaptive-100 mb-10">
                 <div class="mb-20 mr-10-adaptive-0">
