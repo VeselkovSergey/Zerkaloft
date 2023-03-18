@@ -35,6 +35,10 @@ $bredcrumbs = [
             .order-4-3 {
                 order: 3;
             }
+            .m-a-adaptive {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
 
@@ -75,7 +79,7 @@ $bredcrumbs = [
                 </div>
             </div>
             <div class="flex-wrap w-40-adaptive-100">
-                <div class="flex mb-10" style="order: 1">
+                <div class="flex mb-10 m-a-adaptive" style="order: 1">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
                 <div class="font-light order-2-4">
