@@ -1,7 +1,6 @@
 <style>
     .wrap-adaptive-nowrap {
         flex-wrap: wrap;
-        justify-content: space-evenly;
     }
     @media screen and (max-width: 540px) {
         .wrap-adaptive-nowrap {
