@@ -8,6 +8,36 @@ $bredcrumbs = [
 @extends("new-design.app")
 
 @section("content")
+
+    <style>
+        .order-2-4 {
+            order: 2;
+        }
+
+        .order-3-2 {
+            order: 3;
+        }
+
+        .order-4-3 {
+            order: 4;
+        }
+
+        @media screen and (max-width: 540px) {
+
+            .order-2-4 {
+                order: 4;
+            }
+
+            .order-3-2 {
+                order: 2;
+            }
+
+            .order-4-3 {
+                order: 3;
+            }
+        }
+    </style>
+
     <div>
         @include("new-design.bredcrumbs", $bredcrumbs)
         <div class="flex-wrap mb-10 px-0-adaptive-10">
@@ -44,11 +74,11 @@ $bredcrumbs = [
                     </div>
                 </div>
             </div>
-            <div class="w-40-adaptive-100">
-                <div class="flex mb-10">
+            <div class="flex-wrap w-40-adaptive-100">
+                <div class="flex mb-10" style="order: 1">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
-                <div class="font-light">
+                <div class="font-light order-2-4">
                     <p>
                         Лицевая панель - акрил, задняя и боковые панели - ПВХ,
                         подсветка - светодиодные кластеры на задней панели.
@@ -61,7 +91,7 @@ $bredcrumbs = [
                         Монтаж не включён в стоимость.
                     </p>
                 </div>
-                <div class="flex-space-x mr-10-adaptive-0">
+                <div class="flex-space-x mr-10-adaptive-0 order-3-2 w-100">
                     <div class="flex mb-10">
                         <select name="" id="" class="select-3 font-light">
                             <option value="123" selected>1 шт - 745 р</option>
@@ -73,7 +103,7 @@ $bredcrumbs = [
                         </div>
                     </div>
                 </div>
-                <div class="flex-space-x-adaptive-column">
+                <div class="flex-space-x-adaptive-column order-4-3">
                     <div class="font-light">
                         <div class="checkbox-wrapper-1 mb-10">
                             <input id="color-1" type="checkbox" class="custom-checkbox">
