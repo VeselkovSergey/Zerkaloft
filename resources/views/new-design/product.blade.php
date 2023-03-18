@@ -61,7 +61,7 @@
     <div>
         <div class="flex-wrap px-100-adaptive-10">
             <div class="w-25-adaptive-100" style="order: 1;">
-                <div class="flex mb-10">
+                <div class="flex-center mb-10">
                     <div style="width: 300px; height: 300px; background-color: grey"></div>
                 </div>
             </div>
