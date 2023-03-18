@@ -1,7 +1,7 @@
 @extends("new-design.app")
 
 @section("content")
-    <div>
+    <div class="main-page">
         <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px)">
             <div class="w-20">
                 <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">

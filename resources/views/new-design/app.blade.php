@@ -211,6 +211,11 @@
             display: flex;
         }
 
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+        }
+
         .flex-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -411,6 +416,10 @@
             margin: 0;
         }
 
+        .ml-10 {
+            margin-left: 10px;
+        }
+
         .ml-20 {
             margin-left: 20px;
         }
@@ -484,6 +493,10 @@
 
         .p-50 {
             padding: 50px;
+        }
+
+        .pb-10 {
+            padding-bottom: 10px;
         }
 
         .color-white {
@@ -662,7 +675,7 @@
 
         img {
             height: 100%;
-            /*width: 100%;*/
+            width: 100%;
         }
     </style>
 
@@ -698,6 +711,22 @@
         }
 
         .w-33-adaptive-100 {
+            width: 33%;
+        }
+
+        .w-35-adaptive-100 {
+            width: 35%;
+        }
+
+        .w-40-adaptive-100 {
+            width: 40%;
+        }
+
+        .w-60-adaptive-100 {
+            width: 60%;
+        }
+
+        .w-33-adaptive-40vw {
             width: 33%;
         }
 
@@ -781,6 +810,24 @@
                 width: 100%;
             }
 
+            .w-35-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-40-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-60-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-33-adaptive-40vw {
+                width: 40vw;
+                min-width: 40vw;
+                max-width: 40vw;
+            }
+
             .w-50-adaptive-100 {
                 width: 100%;
             }
@@ -801,8 +848,12 @@
                 display: flex;
             }
 
-            .product-container .product-description, .category-container .category-description {
+            .main-page .product-container .product-description, .main-page .category-container .category-description {
                 display: block;
+            }
+
+            .favorite-page .product-container .product-description, .favorite-page .category-container .category-description {
+                display: none;
             }
 
             .pos-abs-adaptive-static {
