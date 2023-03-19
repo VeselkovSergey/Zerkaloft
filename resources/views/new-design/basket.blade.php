@@ -13,9 +13,11 @@
                     <div class="w-90-adaptive-100">
                         <div class="mr-10-adaptive-0">
                             <div class="flex">
-                                <div class="show-adaptive">
-                                    <div class="mr-10" style="background-color: grey; width: 40px; height: 40px;">
+                                <div class="mb-10 flex-center">
+                                    <div class="show-adaptive">
+                                        <div class="mr-10" style="background-color: grey; width: 40px; height: 40px;">
 
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="w-100 mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">
