@@ -1,7 +1,8 @@
 <header class="font-light" style="max-width: 1440px;">
     <div class="flex-center-y pt-15-adaptive-0" style="height: 60px;">
         <div class="flex-center-y mr-10">
-            <img class="pl-10 img-w-100-adaptive-60" src="/assets/imgs/logo.svg" alt="logo">
+            <img class="pl-10 img-w-100-adaptive-60 hide-adaptive" src="/assets/imgs/logo.svg" alt="logo">
+            <img class="pl-10 show-adaptive" style="width: 30px;" src="/assets/imgs/logo-small.svg" alt="logo">
         </div>
         <div class="mr-10 hide-adaptive">
             <div class="catalog-button flex-center-y border-radius-25" style="width: fit-content; padding: 5px 10px">
@@ -153,7 +154,7 @@
                 <input class="w-100 input-search" type="text">
             </div>
         </div>
-        <div class="show-adaptive-flex" data-relation-id="mobCatalog" style="padding: 0 19px;">
+        <div class="show-adaptive-flex" data-relation-id="mobCatalog" style="padding: 0 10px;">
             <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
         </div>
         <div id="mobCatalog" class="hide" style="position: absolute; top: 60px; left: 0; background-color: rgba(0,0,0,0.8); width: 100vw; height: calc(100vh - 60px);">
