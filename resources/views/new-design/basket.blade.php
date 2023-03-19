@@ -6,55 +6,21 @@
             <div class="w-70-adaptive-100 mb-10">
                 <div class="flex-adaptive-column" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;">
                     <div class="hide-adaptive">
-                        <div style="background-color: grey; width: 40px; height: 40px; margin-right: 20px;">
+                        <div class="mr-10" style="background-color: grey; width: 40px; height: 40px;">
 
                         </div>
                     </div>
                     <div class="w-90-adaptive-100">
                         <div class="mr-10-adaptive-0">
-                            <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">
-                                ОБЪЕМНАЯ БУКВА С ЛИЦЕВОЙ ПОДСВТЕКОЙ 20СМ.
-                            </div>
-                            <div class="flex-adaptive-column">
-                                <div class="w-75-adaptive-100">
-                                    <div class="mr-10-adaptive-0">
-                                        <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
-                                        <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">Dop</div>
+                            <div class="flex">
+                                <div class="show-adaptive">
+                                    <div class="mr-10" style="background-color: grey; width: 40px; height: 40px;">
+
                                     </div>
                                 </div>
-                                <div class="w-25-adaptive-100 flex-column-end-y">
-                                    <div class="flex-center" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">1 шт 745 руб</div>
+                                <div class="w-100 mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">
+                                    ОБЪЕМНАЯ БУКВА С ЛИЦЕВОЙ ПОДСВТЕКОЙ 20СМ.
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-10-adaptive-100">
-                        <div class="flex-space-x" style="border: 1px solid white; border-radius: 25px; padding: 10px;">
-                            <div class="flex-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
-                                </svg>
-                            </div>
-                            <div>1</div>
-                            <div class="flex-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                                </svg>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="flex-adaptive-column" style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;">
-                    <div class="hide-adaptive">
-                        <div style="background-color: grey; width: 40px; height: 40px; margin-right: 20px;">
-
-                        </div>
-                    </div>
-                    <div class="w-90-adaptive-100">
-                        <div class="mr-10-adaptive-0">
-                            <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">
-                                ОБЪЕМНАЯ БУКВА С ЛИЦЕВОЙ ПОДСВТЕКОЙ 20СМ.
                             </div>
                             <div class="flex-adaptive-column">
                                 <div class="w-75-adaptive-100">
