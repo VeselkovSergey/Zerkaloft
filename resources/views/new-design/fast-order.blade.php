@@ -107,7 +107,7 @@ $bredcrumbs = [
                         </div>
                     </div>
                 </div>
-                <div class="flex-space-x-adaptive-column order-4-3">
+                <div class="flex-space-x-adaptive-column order-4-3 w-100">
                     <div class="font-light">
                         <div class="checkbox-wrapper-1 mb-10">
                             <input id="color-1" type="checkbox" class="custom-checkbox">
