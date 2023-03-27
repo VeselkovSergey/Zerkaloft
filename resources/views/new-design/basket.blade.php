@@ -45,7 +45,7 @@
                                 </svg>
                             </div>
                             <div>1</div>
-                            <div class="flex-center">
+                            <div class="flex-center" style="color: green;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                                 </svg>
@@ -60,41 +60,41 @@
                     <div>
                         <div class="flex-space-x-adaptive-column">
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
-                                <input type="text" placeholder="ИМЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                                <input type="text" placeholder="Имя" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                             </div>
                             <div class="mb-10 w-50-adaptive-100">
-                                <input type="text" placeholder="ФАМИЛИЯ" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                                <input type="text" placeholder="Фамилия" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                             </div>
                         </div>
                         <div class="flex-space-x-adaptive-column">
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
-                                <input type="text" placeholder="ТЕЛЕФОН" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                                <input type="text" placeholder="Телефон" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                             </div>
                             <div class="mb-10 w-50-adaptive-100">
-                                <input type="text" placeholder="ЭЛЕКТРОННАЯ ПОЧТА" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
+                                <input type="text" placeholder="Электронная почта" style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;">
                             </div>
                         </div>
                         <div class="mb-10">
-                            <textarea name="" id="" cols="30" rows="5" placeholder="КОММЕНТАРИЙ" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                            <textarea name="" id="" cols="30" rows="5" placeholder="Комментарий" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
                         </div>
                         <div class="flex-space-x-adaptive-column">
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
                                 <select name="" id="" class="select-3 w-100">
-                                    <option value="123" selected>ТИП ОПЛАТЫ</option>
+                                    <option value="123" selected>Тип оплаты</option>
                                     <option value="123">ОПЛАТА ПРИ ПОЛУЧЕНИИ</option>
                                     <option value="123">ОПЛАТА ОНЛАЙН</option>
                                 </select>
                             </div>
                             <div class="mb-10 w-50-adaptive-100">
                                 <select name="" id="" class="select-3 w-100">
-                                    <option value="123" selected>СПОСОБ ПОЛУЧЕНИЯ</option>
+                                    <option value="123" selected>Способ получения</option>
                                     <option value="123">САМОВЫВОЗ</option>
                                     <option value="123">ДОСТАВКА</option>
                                 </select>
                             </div>
                         </div>
                         <div class="mb-10">
-                            <textarea name="" id="" cols="30" rows="3" placeholder="АДРЕС" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
+                            <textarea name="" id="" cols="30" rows="3" placeholder="Адрес" style="resize: vertical; border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"></textarea>
                         </div>
                     </div>
                 </div>
