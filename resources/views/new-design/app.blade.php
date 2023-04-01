@@ -751,7 +751,7 @@
 
         .info-block {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
         }
 
         .w-15-adaptive-100 {
