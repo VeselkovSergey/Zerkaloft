@@ -106,7 +106,7 @@
                         </select>
                     </div>
                     <div class="mb-10 w-a-adaptive-100 ml-10">
-                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center"
+                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center mb-10"
                              style="background-color: white; color: black;">В КОРЗИНУ
                         </div>
                         <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center"
