@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="main-page">
-        <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px)">
+        <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px); display: none;">
             <div class="w-20">
                 <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">
             </div>
@@ -32,124 +32,45 @@
         </div>
         @include("new-design.info")
         <div class="flex-wrap-adaptive-block">
-            <div class="w-33-adaptive-100 pos-rel product-container">
+            @php
+                $products = \App\Models\Products::where('show_main_page', 1)->get();
+            @endphp
+            @foreach($products as $product)
+            <a href="{{$product->Link()}}" class="block w-33-adaptive-100 pos-rel product-container color-white">
                 <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
+                    @foreach(unserialize($product->img) as $img)
+                        <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
+                    @endforeach
                 </div>
                 <div class="product-description z-1 pos-abs-adaptive-static">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
+                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">{{$product->title}}</div>
+                        @foreach($product->Category->Properties as $property)
+                            <div class="font-light">{{$property->title}}</div>
+                        @endforeach
                         <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </a>
+            @endforeach
         <div class="flex-wrap-adaptive-block">
-            <div class="w-50-adaptive-100 category-container pos-rel">
+            @php
+                $categories = \App\Models\Categories::orderBy('sequence')->get();
+            @endphp
+            @foreach($categories as $category)
+            <a href="{{route('category', $category->semantic_url)}}" class="block color-white w-50-adaptive-100 category-container pos-rel">
                 <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
+                    @foreach(unserialize($category->img) as $img)
+                        <img style="" src="{{route('files', $img)}}" alt="{{$category->title}}">
+                    @endforeach
                 </div>
                 <div class="category-description pos-abs-adaptive-static z-1 border-radius-50 p-20 text-center font-36-adaptive">
-                    ОБЪЕМНЫЕ
-                    БУКВЫ
+                    {{$category->title}}
                 </div>
-            </div>
-            <div class="w-50-adaptive-100 category-container pos-rel">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="category-description pos-abs-adaptive-static z-1 border-radius-50 p-20 text-center font-36-adaptive">
-                    ОБЪЕМНЫЕ
-                    БУКВЫ
-                </div>
-            </div>
-            <div class="w-50-adaptive-100 category-container pos-rel">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="category-description pos-abs-adaptive-static z-1 border-radius-50 p-20 text-center font-36-adaptive">
-                    ОБЪЕМНЫЕ
-                    БУКВЫ
-                </div>
-            </div>
-            <div class="w-50-adaptive-100 category-container pos-rel">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="category-description pos-abs-adaptive-static z-1 border-radius-50 p-20 text-center font-36-adaptive">
-                    ОБЪЕМНЫЕ
-                    БУКВЫ
-                </div>
-            </div>
+            </a>
+            @endforeach
         </div>
     </div>
 @endsection

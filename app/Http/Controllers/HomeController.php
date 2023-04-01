@@ -25,6 +25,7 @@ class HomeController
 
         }
         ksort($carouselImages);
+        return view('new-design.index', compact('carouselImages', 'searchQuery'));
         return view('home.index', compact('carouselImages', 'searchQuery'));
     }
 
@@ -37,6 +38,7 @@ class HomeController
     {
         $aboutPage = Settings::where('type', Settings::TypeByWords['aboutPageText'])->first();
         $aboutPage = json_decode($aboutPage->value);
+        return view('new-design.text', compact('aboutPage'));
         return view('home.about', compact('aboutPage'));
     }
 

@@ -43,6 +43,8 @@
 
         <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
 
+        <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
+
         <link href="{{asset('resources/css/adaptive.scss')}}" rel="stylesheet">
 
         <link href="{{asset('fonts/fonts.css')}}" rel="stylesheet">
@@ -151,7 +153,6 @@
         <script src="{{ asset('resources/js/jsssss.js') }}"></script>
 
         @include('assets.js.main-script')
-
 
         @yield('js')
 

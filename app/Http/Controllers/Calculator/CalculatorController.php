@@ -26,6 +26,10 @@ class CalculatorController
     public function IndexForFastOrder()
     {
         $allCategories = Categories::orderBy('sequence')->get();
+        return view('new-design.fast-order', [
+            'allCategories' => $allCategories,
+            'fastOrder' => true,
+        ]);
         return view('calculator.index', [
             'allCategories' => $allCategories,
             'fastOrder' => true,

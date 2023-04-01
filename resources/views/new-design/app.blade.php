@@ -1,11 +1,41 @@
+@php
+
+    $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
+
+    $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();
+    $phone = json_decode($phone->value)->phone;
+
+    $additionalPhones = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['additionalPhones'])->first();
+    $additionalPhones = json_decode($additionalPhones->value)->additionalPhones;
+
+    $viberPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['viberPhone'])->first();
+    $viberPhone = json_decode($viberPhone->value)->viberPhone;
+
+    $whatsappPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['whatsappPhone'])->first();
+    $whatsappPhone = json_decode($whatsappPhone->value)->whatsappPhone;
+
+    $telegramPhone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['telegramPhone'])->first();
+    $telegramPhone = json_decode($telegramPhone->value)->telegramPhone;
+
+    $mail = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mail'])->first();
+    $mail = json_decode($mail->value)->mail;
+
+@endphp
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="yandex-verification" content="1bc095e408e6a616" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
+
+    <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Агентство ' . env('APP_NAME')}}">
+
+    <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
 
     <style>
 
@@ -209,6 +239,15 @@
 
         .flex {
             display: flex;
+        }
+
+        .block {
+            display: block;
+        }
+
+        a.block {
+            text-decoration: none;
+            color: inherit;
         }
 
         .flex-column {
@@ -1018,6 +1057,66 @@
         }
     </style>
 
+    @yield('css')
+
+    <script src="{{ asset('resources/js/add.prototypes.js') }}"></script>
+
+    <style>
+        /*toDo*/
+        .button-blue {
+            color: black;
+            background-color: white;
+            border: unset;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        .radio-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            /*padding: 5px;*/
+        }
+        .radio-effect>.slider {
+            background-color: #1976d2;
+            height: 100%;
+            width: 50%;
+            transition: margin 300ms;
+            margin-left: 0;
+            border-radius: 5px;
+        }
+
+        .search-container-header {
+            margin-right: 10px;
+        }
+        .search-container-header.hide {
+             display: flex;
+        }
+
+        /* подсказки адресов */
+        .container-suggestions-pos-abs {
+            border: 1px solid #cbcdd1;
+            /*background-color: #FFFFFF;*/
+            background-color: var(--main-bg-color);
+            max-height: 50vh;
+            overflow: auto;
+        }
+
+        /* подсказки адресов */
+        .container-suggestions {
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+
+        .suggestion-item:hover {
+            cursor: pointer;
+            background-color: rgb(80, 80, 80);
+        }
+    </style>
+
 </head>
 <body class="font-regular">
 <div style="min-height: 100vh;">
@@ -1127,38 +1226,38 @@
                 </svg>
             </div>
             <div class="mb-5 flex-center">
-                <a class="whatsapp" href="https://api.whatsapp.com/send/?phone={}">
+                <a class="whatsapp" href="https://api.whatsapp.com/send/?phone={{$whatsappPhone}}">
                     <img width="26" src="{{url('icon/whatsapp.svg')}}" alt="">
                 </a>
             </div>
             <div class="mb-5 flex-center">
-                <a class="telegram" href="https://t.me/{}">
+                <a class="telegram" href="https://t.me/{{$telegramPhone}}">
                     <img width="24" src="{{url('icon/telegram.svg')}}" alt="">
                 </a>
             </div>
         </div>
         <div class="mob-menu show-adaptive" style="position: fixed; bottom: 0; height: 60px; width: 100vw; z-index: 4;">
             <div class="flex-around-x" style="background-color: var(--main-bg-color); padding: 10px; color: white; height: calc(100% - 20px)">
-                <div>
+                <div onclick="location.href='tel:{{$phone}}'">
                     <img width="30" src="/assets/imgs/call.svg" alt="call">
                 </div>
-                <div>
+                <div onclick="location.href='mailto:{{$mail}}?subject=Вопрос'">
                     <img width="30" src="/assets/imgs/email.svg" alt="email">
                 </div>
                 <div data-relation-id="mobMenu">
                     <img width="30" src="/assets/imgs/catalog.svg" alt="catalog">
                 </div>
-                <div>
+                <div onclick="{{$actionConditionAuth}}">
                     <img width="30" src="/assets/imgs/profile.svg" alt="profile">
                 </div>
-                <div>
+                <div onclick="location.href='{{route('basket-page')}}'">
                     <img width="30" src="/assets/imgs/basket.svg" alt="basket">
                 </div>
             </div>
         </div>
         <div id="mobMenu" class="hide" style="z-index:3; position: fixed; top: 0; left: 0; background-color: rgba(0,0,0,0.8); color: white; width: 100vw; height: calc(100vh - 60px);">
             <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;display: flex;flex-direction: column;">
-                <div class="border-radius-25 p-10 mb-10 mt-a">Главная</div>
+                <div class="border-radius-25 p-10 mb-10 mt-a" onclick="location.href='{{route("home-page")}}'">Главная</div>
                 <div class="border-radius-25 p-10 mb-10">Быстрое оформление</div>
                 <div class="border-radius-25 p-10 mb-10">Онлайн заказ</div>
                 <div class="border-radius-25 p-10 mb-10" style="margin-bottom: 50px;">О компании</div>
@@ -1166,6 +1265,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    const suggestionsProducts = "{{route('suggestion-categories-and-products')}}";
+    const searchPage = "{{route('home-page')}}";
+    const createCallbackOrderRequestRoute = "{{route('create-callback-order')}}";
+</script>
+
 <script>
     document.body.querySelectorAll("[data-relation-id]").forEach((element) => {
         element.addEventListener("click", () => {
@@ -1173,6 +1279,25 @@
         })
     })
 </script>
-@yield("js")
+
+@include('assets.js.main-script')
+
+@yield('js')
+
+{{--<!-- Yandex.Metrika counter -->--}}
+{{--<script type="text/javascript" >--}}
+{{--    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};--}}
+{{--        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})--}}
+{{--    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");--}}
+
+{{--    ym(89337448, "init", {--}}
+{{--        clickmap:true,--}}
+{{--        trackLinks:true,--}}
+{{--        accurateTrackBounce:true--}}
+{{--    });--}}
+{{--</script>--}}
+{{--<noscript><div><img src="https://mc.yandex.ru/watch/89337448" style="position:absolute; left:-9999px;" alt="" /></div></noscript>--}}
+{{--<!-- /Yandex.Metrika counter -->--}}
+
 </body>
 </html>

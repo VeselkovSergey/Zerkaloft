@@ -1,9 +1,13 @@
-<?php
+@php
 $bredcrumbs = [
-    "Главная" => route("new-design.index"),
-    "Каталог" => route("new-design.catalog"),
+    "Главная" => route("home-page"),
+    $category->title => route('category', $category->semantic_url),
 ];
-?>
+@endphp
+
+@php($title_page = $category->title)
+
+@php($metaDescription = $category->title . '. ' . $category->title)
 
 @extends("new-design.app")
 
@@ -29,86 +33,26 @@ $bredcrumbs = [
             </div>
         </div>
         <div class="flex-wrap-adaptive-block">
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
+            @foreach($productsByNotOnlyInCalculator as $product)
+                <a href="{{$product->Link()}}" class="block w-33-adaptive-100 pos-rel product-container color-white">
+                    <div>
+                        @foreach(unserialize($product->img) as $img)
+                            <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
+                        @endforeach
+                    </div>
+                    <div class="product-description z-1 pos-abs-adaptive-static">
+                        <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
+                            <div class="border-radius-25 p-10 w-100 mb-10 text-center">{{$product->title}}</div>
+                            @foreach($product->Category->Properties as $property)
+                                <div class="font-light">{{$property->title}}</div>
+                            @endforeach
+                            <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
+                                 style="background-color: white; color: black">К ТОВАРУ
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-33-adaptive-100 pos-rel product-container">
-                <div>
-                    <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                </div>
-                <div class="product-description z-1 pos-abs-adaptive-static">
-                    <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">Название</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="font-light">свойство</div>
-                        <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                             style="background-color: white; color: black">К ТОВАРУ
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </a>
+            @endforeach
         </div>
         @include("new-design.info")
     </div>

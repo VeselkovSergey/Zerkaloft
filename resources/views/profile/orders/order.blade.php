@@ -14,7 +14,7 @@
                 <div class="flex-wrap" data-product-container="{{$productPrice->id}}">
 
                     @foreach(unserialize($productPrice->Product->img) as $img)
-                        <img class="border-radius-10 mr-10 mb--10" width="300" src="{{route('files', $img)}}"
+                        <img class="border-radius-10 mr-10 mb--10" style="width: 300px;" src="{{route('files', $img)}}"
                              alt="Изображение {{$productPrice->Product->title}}">
                     @endforeach
 

@@ -377,6 +377,7 @@ class ProductsController
             })
             ->firstOrFail();
 
+        return view('new-design.product', compact('product'));
         return view('catalog.product', compact('product'));
     }
 }

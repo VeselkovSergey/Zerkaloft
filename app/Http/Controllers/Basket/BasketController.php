@@ -47,6 +47,13 @@ class BasketController
         $pickupAddress = Settings::where('type', Settings::TypeByWords['address'])->first();
         $pickupAddress = json_decode($pickupAddress->value)->address;
 
+        return view('new-design.basket', compact(
+                'allProductsInBasket',
+                'productsInBasket',
+                'additionalServices',
+                'pickupAddress',
+            )
+        );
         return view('basket.index', compact(
                 'allProductsInBasket',
                 'productsInBasket',

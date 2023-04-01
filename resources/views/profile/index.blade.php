@@ -1,10 +1,10 @@
-@extends('app')
+@extends('new-design.app')
 
 @section('content')
 
     <div class="flex mb-10">
-        <a class="button-blue mr-5" href="{{route('user-orders-page')}}">Заказы</a>
-        <a class="button-blue mr-5" href="{{route('user-settings-page')}}">Профиль</a>
+        <a class="button-blue mr-10" href="{{route('user-orders-page')}}">Заказы</a>
+        <a class="button-blue mr-10" href="{{route('user-settings-page')}}">Профиль</a>
         <a class="button-blue ml-a" href="{{route('logout')}}">Выход</a>
     </div>
 

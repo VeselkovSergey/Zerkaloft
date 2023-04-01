@@ -177,6 +177,11 @@ class CategoriesController extends Controller
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
         $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
         $categoryAdditionalLinks = explode(';', $category->additional_links);
+        return view('new-design.catalog', [
+            'category' => $category,
+            'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,
+            'categoryAdditionalLinks' => $categoryAdditionalLinks
+        ]);
         return view('catalog.category', [
             'category' => $category,
             'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,

@@ -54,7 +54,7 @@ function CreateElement(tag, params, parent) {
     // }, containerAdditionalAnswer);
 }
 
-function GenerationFormSelect(obj, name, selected = 0, disableFirstOption = false) {
+function GenerationFormSelect(obj, name, selected = 0, disableFirstOption = false, selectValue = false) {
     let options = '';
     let i = 0;
 
@@ -66,10 +66,63 @@ function GenerationFormSelect(obj, name, selected = 0, disableFirstOption = fals
 
     Object.keys(obj).forEach((key) => {
         let disabled = (i === 0 && disableFirstOption === true) ? 'disabled' : '';
-        let selectedAttr = selected == key ? 'selected' : '';
+        let selectedAttr = selected == (selectValue ? obj[key].id : key) ? 'selected' : '';
         options += '<option ' + disabled + ' ' + selectedAttr + ' value="' + obj[key].id + '">' + obj[key].value + '</option>';
         i++;
     });
     return CreateElement('select', {attr: {name: name}, content: options});
 
+}
+
+function Ajax(url, method, formDataRAW) {
+    return new Promise(function (resolve, reject) {
+        let formData = new FormData();
+        if (typeof (method) === "undefined" || method === null) {
+            method = 'get';
+        }
+
+        if (typeof (formDataRAW) === "undefined" || formDataRAW === null) {
+            formDataRAW = {};
+        } else {
+            Object.keys(formDataRAW).forEach((key) => {
+
+                if (Array.isArray(formDataRAW[key])) {
+
+                    formDataRAW[key].forEach((value) => {
+                        formData.append(key, value);
+                    });
+
+                } else {
+                    formData.append(key, formDataRAW[key]);
+                }
+            });
+        }
+
+
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
+
+        let csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                try {
+                    resolve(JSON.parse(this.response));
+                } catch {
+                    resolve(this.response);
+                }
+            } else {
+                var error = new Error(this.statusText);
+                error.code = this.status;
+                reject(error);
+            }
+        };
+
+        xhr.onerror = function () {
+            reject(new Error("Network Error"));
+        };
+
+        xhr.send(formData);
+    });
 }

@@ -13,6 +13,7 @@
         <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
         <link href="{{asset('resources/css/loaders.css')}}" rel="stylesheet">
         <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
+        <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
 
         @yield('css')
 
@@ -92,7 +93,7 @@
 
         <main class="p-20">@yield('content')</main>
 
-        <script src="{{ asset('resources/js/jsssss.js') }}"></script>
+        @include('assets.js.main-script')
 
         @yield('js')
 

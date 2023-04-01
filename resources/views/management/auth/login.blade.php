@@ -10,6 +10,7 @@
 
     <link href="{{asset('resources/css/helpers.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
 
 </head>
 
