@@ -8,7 +8,7 @@
             <div class="catalog-button flex-center-y border-radius-25" style="width: fit-content; padding: 5px 10px">
                 <img style="color: white" src="/assets/imgs/catalog.svg" alt="catalog">
                 <div class="pl-10 font-regular">Каталог</div>
-                <div class="catalog-container pos-abs" style="top: 0; left: 0;/* width: 100vw; height: 100vh;*/">
+                <div class="catalog-container pos-abs" style="z-index: 1; top: 0; left: 0;/* width: 100vw; height: 100vh;*/">
                     <div class="border-radius-25"
                          style="margin: 5px 0 0 5px; border: 1px solid #ffffff; width: 25vw; background-color: rgba(0,0,0,0.8)">
                         <div class="p-20">
