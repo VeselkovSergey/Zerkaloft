@@ -825,4 +825,80 @@
     }
     ToggleShow()
 
+    // указать контейнеру размеры в px
+    const slider = (sliderContainer) => {
+
+        const insideElements = sliderContainer.querySelectorAll(":scope > *:not(.slider-button)")
+        if (insideElements.length < 2) {
+            return
+        }
+
+        const prevSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16"> <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path> </svg>`
+        const nextSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"> <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path> </svg>`
+
+        // const sliderContainer = document.body.querySelector(".slider")
+        sliderContainer.style.position = "relative"
+        sliderContainer.style.overflow = "hidden"
+
+        const prevButton = document.createElement("div")
+        prevButton.innerHTML = prevSVG
+        prevButton.style.position = "absolute"
+        prevButton.style.top = "calc(50% - 24px)"
+        prevButton.style.left = "12px"
+        prevButton.classList.add("slider-button")
+        sliderContainer.append(prevButton)
+
+        const nextButton = document.createElement("div")
+        nextButton.innerHTML = nextSVG
+        nextButton.style.position = "absolute"
+        nextButton.style.top = "calc(50% - 24px)"
+        nextButton.style.right = "12px"
+        nextButton.classList.add("slider-button")
+        sliderContainer.append(nextButton)
+
+        insideElements.forEach((insideElement, index) => {
+            insideElement.style.position = "absolute"
+            insideElement.style.top = "0"
+            insideElement.style.left = "0"
+            insideElement.style.opacity = "0"
+            insideElement.style.transition = "opacity 1s"
+            insideElement.index = index
+            if (index === 0) {
+                insideElement.style.opacity = "1"
+                insideElement.classList.add("active")
+            }
+        })
+
+        nextButton.addEventListener("click", () => {
+            const currentImg = sliderContainer.querySelector(":scope > .active")
+            let nextIndex = currentImg.index + 1
+            nextIndex = nextIndex >= insideElements.length ? 0 : nextIndex
+            insideElements.forEach((insideElement) => {
+                insideElement.style.opacity = "0"
+                insideElement.classList.remove("active")
+                if (insideElement.index === nextIndex) {
+                    insideElement.style.opacity = "1"
+                    insideElement.classList.add("active")
+                }
+            })
+        })
+
+        prevButton.addEventListener("click", () => {
+            const currentImg = sliderContainer.querySelector(":scope > .active")
+            console.log(currentImg)
+            let prevIndex = currentImg.index - 1
+            prevIndex = prevIndex < 0 ? insideElements.length - 1 : prevIndex
+            insideElements.forEach((insideElement) => {
+                insideElement.style.opacity = "0"
+                insideElement.classList.remove("active")
+                if (insideElement.index === prevIndex) {
+                    insideElement.style.opacity = "1"
+                    insideElement.classList.add("active")
+                }
+            })
+        })
+    }
+
+    document.body.querySelectorAll(".slider").forEach(slider)
+
 </script>

@@ -14,8 +14,9 @@
             </div>
         </div>
         <div class="flex-adaptive-block bg-yellow p-20">
-            <div class="w-50-adaptive-100">
+            <div class="w-50-adaptive-100 slider" style="height: 450px;">
                 <img width="100%" src="/assets/imgs/img-1.png" alt="">
+                <img width="100%" src="/img/bg.jpeg" alt="">
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
                 <div>
