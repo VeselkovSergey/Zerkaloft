@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
+use App\Models\PropertiesCategories\PropertiesCategoriesValues;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -60,5 +61,12 @@ class Products extends Model
     public function AdditionalServicesPrice()
     {
         return $this->hasMany(AdditionalProductServices::class, 'product_id', 'id');
+    }
+
+    public function Properties()
+    {
+        $propertiesIds = explode("-", $this->modification_id);
+        $properties = PropertiesCategoriesValues::whereIn("id", $propertiesIds)->get();
+        return $properties;
     }
 }
