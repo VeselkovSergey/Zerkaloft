@@ -182,7 +182,7 @@
                                 }
 
                                 let res = response.result;
-                                window.history.pushState({}, '', res.productLink);
+                                window.history.pushState({}, '', res.productLink)
 
                                 document.body.querySelector('.fast-order-product-title').innerHTML = res.product.title
                                 document.body.querySelector('.fast-order-product-description').innerHTML = res.product.description
