@@ -196,6 +196,9 @@
             border-bottom-left-radius: 20px;
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
+
+            max-height: 80vh;
+            overflow-y: scroll;
         }
 
         .catalog-button:hover .catalog-container {
