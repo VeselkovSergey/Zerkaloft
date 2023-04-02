@@ -1,8 +1,8 @@
 <header class="font-light" style="max-width: 1440px;">
     <div class="flex-center-y pt-15-adaptive-0" style="height: 60px;">
         <a class=" block flex-center-y mr-10" href="{{route('home-page')}}">
-            <img class="pl-10 img-w-100-adaptive-60 hide-adaptive" src="{{route('files', \App\Http\Controllers\Administration\SettingsController::GetHeaderLogo()->imageFileId) ?? "/assets/imgs/logo.svg"}}" alt="logo">
-            <img class="pl-10 show-adaptive" style="width: 30px;" src="/assets/imgs/logo-small.svg" alt="logo">
+            <img class="pl-10 img-w-100-adaptive-60 {{--hide-adaptive--}}" src="{{route('files', \App\Http\Controllers\Administration\SettingsController::GetHeaderLogo()->imageFileId) ?? "/assets/imgs/logo.svg"}}" alt="logo">
+{{--            <img class="pl-10 show-adaptive" style="width: 30px;" src="/assets/imgs/logo-small.svg" alt="logo">--}}
         </a>
         <div class="mr-10 hide-adaptive">
             <div class="catalog-button flex-center-y border-radius-25" style="width: fit-content; padding: 5px 10px">
