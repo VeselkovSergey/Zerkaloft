@@ -123,7 +123,7 @@
         </div>
     </div>
 </div>
-<div>
+<div class="favorite-page">
     <div class="bg-yellow pb-10">
         <div class="p-20">
             <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
