@@ -62,13 +62,13 @@
             @endphp
             @foreach($categories as $category)
             <a href="{{route('category', $category->semantic_url)}}" class="block color-white w-50-adaptive-100 category-container pos-rel">
+                <div class="category-description pos-abs-adaptive-static z-1 p-20 text-center font-36-adaptive">
+                    {{$category->title}}
+                </div>
                 <div>
                     @foreach(unserialize($category->img) as $img)
                         <img style="" src="{{route('files', $img)}}" alt="{{$category->title}}">
                     @endforeach
-                </div>
-                <div class="category-description pos-abs-adaptive-static z-1 border-radius-50 p-20 text-center font-36-adaptive">
-                    {{$category->title}}
                 </div>
             </a>
             @endforeach

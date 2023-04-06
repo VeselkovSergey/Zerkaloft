@@ -139,8 +139,8 @@
             right: unset;
             height: unset;
             width: calc(100% - 40px);
-            top: 100%;
-            border-radius: 0 0 25px 25px;
+            /*top: 100%;*/
+            border-radius: 0;
         }
 
         .product-container:hover,
