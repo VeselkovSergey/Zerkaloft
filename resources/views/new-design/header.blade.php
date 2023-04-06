@@ -29,7 +29,7 @@
                                                                  style="top: 5px; left: 5px; width: calc(100% - 10px); height: calc(100% - 10px)">
                                                                 <div class="catalog-product-description h-100 w-100">
                                                                     <div class="p-20 text-center flex-column-space-y" style="background-color: rgba(0,0,0,0.5); height: calc(100% - 40px)">
-                                                                        <div>{{$product->title}}</div>
+                                                                        <div style="text-align: start;">{{$product->title}}</div>
                                                                         <div class="border-radius-25 p-10">Перейти к товару</div>
                                                                     </div>
                                                                 </div>
@@ -79,7 +79,7 @@
             </div>
             <a href="{{route('basket-page')}}" class="block w-20 pos-rel">
                 <img width="50" src="/assets/imgs/basket.svg" alt="basket">
-                <div class="count-item-in-bag" style="position: absolute; top: 0; color: red; right: 0;">
+                <div class="count-item-in-bag">
 
                 </div>
             </a>

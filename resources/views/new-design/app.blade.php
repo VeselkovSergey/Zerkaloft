@@ -219,6 +219,85 @@
     </style>
 
     <style>
+        .select-1 {
+            padding: 10px 40px 10px 10px;
+            border-radius: 25px;
+            color: white;
+            background-color: var(--main-bg-color);
+            border: 1px solid white;
+            font-size: 20px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .select-2 {
+            padding: 10px 40px 10px 10px;
+            border-radius: 25px;
+            color: white;
+            background-color: var(--main-bg-color);
+            border: 1px solid white;
+            font-size: 16px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .select-3 {
+            height: 40px;
+            padding: 0 40px 0 10px;
+            border-radius: 25px;
+            color: white;
+            background-color: var(--main-bg-color);
+            border: 1px solid white;
+            font-size: 14px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .checkbox-wrapper-1 {
+            height: 40px;
+            padding: 0 10px;
+            border: 1px solid white;
+            border-radius: 25px;
+            font-size: 14px;
+            display: flex;
+        }
+
+        .white-button {
+            background-color: white;
+            color: black;
+            height: 40px;
+            padding: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 25px;
+        }
+
+        .count-item-in-bag {
+            background-color: #ec407a;
+            border-radius: 100px;
+            min-width: 30px;
+            min-height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+
+    <style>
         /*helpers*/
 
         .hide {
@@ -595,72 +674,6 @@
         .cp {
             cursor: pointer;
         }
-    </style>
-
-    <style>
-        .select-1 {
-            padding: 10px 40px 10px 10px;
-            border-radius: 25px;
-            color: white;
-            background-color: var(--main-bg-color);
-            border: 1px solid white;
-            font-size: 20px;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-        }
-
-        .select-2 {
-            padding: 10px 40px 10px 10px;
-            border-radius: 25px;
-            color: white;
-            background-color: var(--main-bg-color);
-            border: 1px solid white;
-            font-size: 16px;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-        }
-
-        .select-3 {
-            height: 40px;
-            padding: 0 40px 0 10px;
-            border-radius: 25px;
-            color: white;
-            background-color: var(--main-bg-color);
-            border: 1px solid white;
-            font-size: 14px;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns= 'http://www.w3.org/2000/svg' viewBox= '0 0 24 24' fill= 'none' stroke= 'white' stroke-width= '2' stroke-linecap= 'round' stroke-linejoin= 'round' %3e%3cpolyline points= '6 9 12 15 18 9' %3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-        }
-
-        .checkbox-wrapper-1 {
-            height: 40px;
-            padding: 0 10px;
-            border: 1px solid white;
-            border-radius: 25px;
-            font-size: 14px;
-            display: flex;
-        }
-
-        .white-button {
-            background-color: white;
-            color: black;
-            height: 40px;
-            padding: 0 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 25px;
-        }
-
     </style>
 
     <style>
