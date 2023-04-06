@@ -245,11 +245,11 @@
             display: flex;
         }
 
-        .block {
+        .block:not(.hide) {
             display: block;
         }
 
-        a.block {
+        a.block:not(.hide) {
             text-decoration: none;
             color: inherit;
         }

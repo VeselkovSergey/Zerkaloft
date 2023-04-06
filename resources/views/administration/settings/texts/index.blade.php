@@ -120,7 +120,7 @@
         <div class="p-10 w-100">
             <label for="fastOrderLink">
                 <input type="checkbox" name="fastOrderLink" id="fastOrderLink" {{$fastMenuSetting->fastOrderLink === 'true' ? ' checked ' : ''}}>
-                Ссылка быстрого заказа
+                Ссылка "Быстрое оформление" (шапка)
             </label>
         </div>
 

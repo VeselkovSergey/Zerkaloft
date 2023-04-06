@@ -85,9 +85,12 @@
             </a>
         </div>
     </div>
+    @php
+        $fastMenuSetting = \App\Http\Controllers\Administration\SettingsController::GetFastMenu();
+    @endphp
     <div class="flex-end-x hide-adaptive">
         <div class="w-25 flex-center-y font-regular">
-            <a href="{{route("fast-order-page")}}" class="block mr-10">Быстрое оформление</a>
+            <a href="{{route("fast-order-page")}}" class="block mr-10 {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}">Быстрое оформление</a>
             <a href="{{route("about-page")}}" class="block">О компании</a>
         </div>
     </div>
