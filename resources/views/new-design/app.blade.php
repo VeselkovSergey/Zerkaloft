@@ -295,6 +295,15 @@
             align-items: center;
         }
 
+        @media screen and (max-width: 540px) {
+            .count-item-in-bag {
+                min-width: 23px;
+                min-height: 23px;
+                top: -3px;
+                right: -5px;
+            }
+        }
+
     </style>
 
     <style>
@@ -338,7 +347,7 @@
             flex-direction: column;
         }
 
-        .flex-wrap {
+        .flex-wrap:not(.hide) {
             display: flex;
             flex-wrap: wrap;
         }
@@ -1271,8 +1280,11 @@
                 <div onclick="{{$actionConditionAuth}}">
                     <img width="30" src="/assets/imgs/profile.svg" alt="profile">
                 </div>
-                <div onclick="location.href='{{route('basket-page')}}'">
+                <div onclick="location.href='{{route('basket-page')}}'" class="pos-rel">
                     <img width="30" src="/assets/imgs/basket.svg" alt="basket">
+                    <div class="count-item-in-bag">
+
+                    </div>
                 </div>
             </div>
         </div>

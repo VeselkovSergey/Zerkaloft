@@ -313,16 +313,18 @@
 
     UpdateCountProductsInBasket();
     function UpdateCountProductsInBasket(reload) {
-        let counterProductsInBasket = document.body.querySelector('.count-item-in-bag');
-        if (counterProductsInBasket) {
-            let countProductsInBasket = getCountProductsInBasket();
-            counterProductsInBasket.innerHTML = countProductsInBasket;
-            if (countProductsInBasket > 0) {
-                counterProductsInBasket.show();
-            } else {
-                counterProductsInBasket.hide();
+        document.body.querySelectorAll('.count-item-in-bag').forEach((counterProductsInBasket) => {
+            if (counterProductsInBasket) {
+                let countProductsInBasket = getCountProductsInBasket();
+                counterProductsInBasket.innerHTML = countProductsInBasket;
+                if (countProductsInBasket > 0) {
+                    counterProductsInBasket.show();
+                } else {
+                    counterProductsInBasket.hide();
+                }
             }
-        }
+
+        })
         UpdateCountProductsInBasketInBack(reload);
     }
 

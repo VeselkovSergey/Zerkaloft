@@ -61,7 +61,7 @@
                 <div class="mb-10">
                     <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
                     @foreach(\App\Models\Categories::all() as $category)
-                        <div class="p-5">{{$category->title}}</div>
+                        <a href="{{route('category', $category->semantic_url)}}" class="p-5 block">{{$category->title}}</a>
                     @endforeach
                 </div>
             </div>

@@ -14,7 +14,7 @@ $bredcrumbs = [
 @section("content")
     <div class="catalog">
         @include("new-design.bredcrumbs", $bredcrumbs)
-        <div class="flex-wrap mb-10 px-0-adaptive-10">
+        <div class="flex-wrap mb-10 px-0-adaptive-10 hide">
             <div class="mr-10">
                 <div class="p-10">Категория</div>
                 <div>
