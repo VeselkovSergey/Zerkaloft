@@ -196,8 +196,8 @@
 
                 <div class="w-25-adaptive-100 flex-column-end-y mb-10">
                     <div class="mb-10" style="border: 1px solid white; border-radius: 25px; padding: 20px;">
-                        <div class="button-create-order mb-20 text-center" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОФОРМИТЬ</div>
-                        <div class="order-payment-button hide mb-20 text-center" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОПЛАТИТЬ</div>
+                        <div class="button-create-order mb-20 text-center cp" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОФОРМИТЬ</div>
+                        <div class="order-payment-button hide mb-20 text-center cp" style="padding: 10px 20px; border: 1px solid black; border-radius: 25px; font-size: 20px; background-color: white; color: black;">ОПЛАТИТЬ</div>
                         <div>
                             <span style="vertical-align: middle; color: var(--pink-color);">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">

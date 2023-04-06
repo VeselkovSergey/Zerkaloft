@@ -591,6 +591,10 @@
         .h5 {
             font-size: 12px;
         }
+
+        .cp {
+            cursor: pointer;
+        }
     </style>
 
     <style>
