@@ -1184,7 +1184,7 @@
                     </svg>
                 </div>
             </div>
-            <div>© {{now()->format("Y")}} Victoria CORP.</div>
+            <div>{{\App\Http\Controllers\Administration\SettingsController::FooterText()->text}}</div>
             <div class="flex">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" viewBox="0 0 48 32" fill="none">
