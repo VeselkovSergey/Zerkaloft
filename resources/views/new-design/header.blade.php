@@ -74,7 +74,7 @@
             <a class="block w-20" href="mailto:{{$mail}}?subject=Вопрос">
                 <img width="50" src="/assets/imgs/email.svg" alt="email">
             </a>
-            <div class="w-20" onclick="{{$actionConditionAuth}}">
+            <div class="w-20 cp" onclick="{{$actionConditionAuth}}">
                 <img width="50" src="/assets/imgs/profile.svg" alt="profile">
             </div>
             <a href="{{route('basket-page')}}" class="block w-20 pos-rel">
