@@ -1,7 +1,7 @@
 <div class="info-block p-20 bg-pink" style="color: black;">
     <a href="{{route("about-page")}}#information" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/info.svg" alt="">
+            <img src="/assets/imgs/info.2.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -14,7 +14,7 @@
     </a>
     <a href="{{route("fast-order-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/online-order.svg" alt="">
+            <img src="/assets/imgs/online-order.2.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -27,7 +27,7 @@
     </a>
     <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/payments.svg" alt="">
+            <img src="/assets/imgs/payments.2.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
@@ -40,7 +40,7 @@
     </a>
     <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/delivered.svg" alt="">
+            <img src="/assets/imgs/delivered.2.svg" alt="">
         </div>
         <div>
             <div class="mb-5" style="padding: 0 40px;">
