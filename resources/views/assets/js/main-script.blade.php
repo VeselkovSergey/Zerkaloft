@@ -903,6 +903,10 @@
                 }
             })
         })
+
+        setInterval(() => {
+            nextButton.click()
+        }, 4000)
     }
 
     document.body.querySelectorAll(".slider").forEach(slider)
