@@ -92,18 +92,26 @@
             <div class="w-60-adaptive-100 order-4-2">
                 <div class="flex-space-x mr-10-adaptive-0">
                     <div class="flex mb-10">
-                        <select name="price" id="price" class="select-3 font-light">
-                            @if(sizeof($product->Prices))
-                                @php($tempProductPrice = [])
-                                @foreach($product->Prices as $productPrice)
-                                    @php($tempProductPrice[$productPrice->id] = $productPrice->toArray())
-                                    <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
-                                @endforeach
-                                @php($product->prices = $tempProductPrice)
+                        @if(sizeof($product->Prices))
+                            @php($tempProductPrice = [])
+                            @if(sizeof($product->Prices) == 1)
+                                @php($tempProductPrice[$product->Prices[0]->id] = $product->Prices[0]->toArray())
+                                <label for="price" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">
+                                    {{$product->Prices[0]->count . ' ' . $product->Prices[0]->price}}
+                                    <input class="hide" type="text" name="price" id="price" value="{{$product->Prices[0]->id}}">
+                                </label>
                             @else
-                                <option disabled>Нет цен</option>
+                                <select name="price" id="price" class="select-3 font-light">
+                                    @foreach($product->Prices as $productPrice)
+                                        @php($tempProductPrice[$productPrice->id] = $productPrice->toArray())
+                                        <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
+                                    @endforeach
+                                </select>
                             @endif
-                        </select>
+                            @php($product->prices = $tempProductPrice)
+                        @else
+                            <div style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Нет цен</div>
+                        @endif
                     </div>
                     <div class="mb-10 w-a-adaptive-100 ml-10">
                         <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center mb-10 cp"
