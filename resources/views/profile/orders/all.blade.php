@@ -27,7 +27,7 @@
                         <div class="p-5" style="display: table-cell; border-right: 1px solid grey; border-bottom: 1px solid grey;">{{$order->OrderStatus()}}</div>
                         <div class="p-5" style="display: table-cell; border-right: 1px solid grey; border-bottom: 1px solid grey;">{{$order->created_at->format('d.m.Y H:i:s')}}</div>
                         <div class="p-5" style="display: table-cell; border-bottom: 1px solid grey;">
-                            <a class="button-blue block" href="{{route('user-order-page', $order->id)}}">Открыть</a>
+                            <a class="button-blue block" style="color: black;" href="{{route('user-order-page', $order->id)}}">Открыть</a>
                         </div>
                     </div>
                 @endforeach
