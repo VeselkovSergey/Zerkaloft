@@ -864,6 +864,10 @@
             insideElement.style.left = "0"
             insideElement.style.opacity = "0"
             insideElement.style.transition = "opacity 1s"
+            insideElement.style.display = "flex"
+            insideElement.style.justifyContent = "center"
+            insideElement.style.alignItems = "center"
+            insideElement.style.width = "100%"
             insideElement.index = index
             if (index === 0) {
                 insideElement.style.opacity = "1"

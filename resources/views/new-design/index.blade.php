@@ -15,8 +15,16 @@
         </div>
         <div class="flex-adaptive-block bg-yellow p-20">
             <div class="w-50-adaptive-100 slider" style="height: 450px;">
-                <img width="100%" src="/assets/imgs/img-1.png" alt="">
-                <img width="100%" src="/img/bg.jpeg" alt="">
+                <div>
+                    <div style="height: 450px;">
+                        <img src="/assets/imgs/img1-mob.png" alt="">
+                    </div>
+                </div>
+                <div>
+                    <div style="height: 450px;">
+                        <img src="/assets/imgs/img2-mob.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
                 <div>
