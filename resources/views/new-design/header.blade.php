@@ -92,8 +92,8 @@
         <div class="w-25 flex-center-y font-regular">
             <a href="{{route("fast-order-page")}}" class="block mr-10 {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}">Быстрое оформление</a>
 {{--            <a class="block mr-10 form-special-order {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Индивидульный заказ</a>--}}
-            <a class="block mr-10 button-back-call {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Обратный звонок</a>
-            <a href="{{route("about-page")}}" class="block">О компании</a>
+            <a href="{{route("about-page")}}" class="block mr-10">О компании</a>
+            <a class="block button-back-call {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Обратный звонок</a>
         </div>
     </div>
 </header>
