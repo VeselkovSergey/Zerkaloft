@@ -102,7 +102,10 @@
                     </div>
                 @endforeach
             </div>
-            <div>Итого: <span class="sum-products-prices-in-basket"></span></div>
+            <div class="flex-center-y">
+                <div class="mr-10">Итого: <span class="sum-products-prices-in-basket"></span></div>
+                <div class="cp button-clear-basket" style="width: fit-content; border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Очистить корзину</div>
+            </div>
             <div class="flex-adaptive-column client-order-information">
                 <div class="w-70-adaptive-100 mb-10" style="margin-right: auto;">
                     <div class="h3 flex-center mb-10">ОФОРМЛЕНИЕ</div>
