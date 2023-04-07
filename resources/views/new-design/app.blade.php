@@ -1145,6 +1145,26 @@
             cursor: pointer;
             background-color: rgb(80, 80, 80);
         }
+
+        .black-input {
+            border: 1px solid white;
+            border-radius: 25px;
+            padding: 10px 10px 10px 20px;
+            width: calc(100% - 35px);
+            background-color: var(--main-bg-color);
+            color: white;
+            font-size: 16px;
+        }
+
+        .detailed-information-user input {
+            border: 1px solid white;
+            border-radius: 25px;
+            padding: 10px 10px 10px 20px;
+            width: calc(100% - 35px);
+            background-color: var(--main-bg-color);
+            color: white;
+            font-size: 16px;
+        }
     </style>
 
 </head>

@@ -2,19 +2,19 @@
     <div class="font-semibold text-center">
         Если вам нужен индивидуальный дизайн, расчёт, подход. Оставьте заявку и наш менеджер с вами свяжется в ближайшее время.
     </div>
-    <div>
+    <div class="flex-column">
         <label for="">Ваше имя</label>
-        <input type="text">
+        <input class="black-input" type="text">
     </div>
-    <div>
+    <div class="flex-column">
         <label for="">Номер телефона или почта</label>
-        <input type="text">
+        <input class="black-input" type="text">
     </div>
-    <div>
+    <div class="flex-column mb-10">
         <label for="">Пожелания</label>
-        <textarea class="w-100"></textarea>
+        <textarea class="black-input"></textarea>
     </div>
     <div>
-        <button class="w-100 button-blue">Отправить заявку</button>
+        <button class="button-blue">Отправить заявку</button>
     </div>
 </div>

@@ -131,7 +131,7 @@
             </label>
         </div>
 
-        <div class="p-10 w-100">
+        <div class="p-10 w-100 hide">
             <label for="onlineOrderLink">
                 <input type="checkbox" name="onlineOrderLink" id="onlineOrderLink" {{$fastMenuSetting->onlineOrderLink === 'true' ? ' checked ' : ''}}>
                 Ссылка онлайн заказ
@@ -145,9 +145,9 @@
             </label>
         </div>
 
-        <div class="p-10 w-100">
+        <div class="p-10 w-100 hide">
             <label for="specialOrderLink">
-                <input type="checkbox" name="specialOrderLink" id="specialOrderLink" {{$fastMenuSetting->buttonUploadDesign === 'true' ? ' checked ' : ''}}>
+                <input type="checkbox" name="buttonUploadDesign" id="buttonUploadDesign" {{$fastMenuSetting->buttonUploadDesign === 'true' ? ' checked ' : ''}}>
                 Кнопка загрузить макеты
             </label>
         </div>

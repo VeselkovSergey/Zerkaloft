@@ -134,6 +134,7 @@
                         <div class="flex-space-x-adaptive-column">
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
                                 <input
+                                    data-type-mask="phone"
                                     type="text"
                                     placeholder="Телефон"
                                     style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"
