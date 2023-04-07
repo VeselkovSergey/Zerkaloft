@@ -89,7 +89,7 @@
         $fastMenuSetting = \App\Http\Controllers\Administration\SettingsController::GetFastMenu();
     @endphp
     <div class="flex-end-x hide-adaptive">
-        <div class="w-25 flex-center-y font-regular">
+        <div class="w-100 flex-center-y font-regular mr-10" style="justify-content: end;">
             <a href="{{route("fast-order-page")}}" class="block mr-10 {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}">Быстрое оформление</a>
 {{--            <a class="block mr-10 form-special-order {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Индивидульный заказ</a>--}}
             <a href="{{route("about-page")}}" class="block mr-10">О компании</a>
