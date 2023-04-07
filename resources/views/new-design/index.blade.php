@@ -14,14 +14,14 @@
             </div>
         </div>
         <div class="flex-adaptive-block bg-yellow p-20">
-            <div class="w-50-adaptive-100 slider" style="height: 450px;">
+            <div class="w-50-adaptive-100 slider" style="height: 350px;">
                 <div>
-                    <div style="height: 450px;">
+                    <div style="height: 350px;">
                         <img src="/assets/imgs/img1-mob.png" alt="">
                     </div>
                 </div>
                 <div>
-                    <div style="height: 450px;">
+                    <div style="height: 350px;">
                         <img src="/assets/imgs/img2-mob.png" alt="">
                     </div>
                 </div>
