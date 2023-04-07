@@ -726,19 +726,19 @@
     document.body.querySelectorAll('.button-back-call').forEach((buttonBackCall) => {
         buttonBackCall.addEventListener('click', () => {
             let callbackWindowContent = CreateElement('div', {
-                class: 'flex-column-center'
+                class: 'flex-column-center flex-column'
             });
             CreateElement('label', {
                 content: 'Имя',
                 class: 'mb-5'
             }, callbackWindowContent);
-            let name = CreateElement('input', {}, callbackWindowContent);
+            let name = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
 
             CreateElement('label', {
-                content: 'Номер телефона для обратной связи',
+                content: 'Номер телефона для связи',
                 class: 'mb-5'
             }, callbackWindowContent);
-            let phone = CreateElement('input', {}, callbackWindowContent);
+            let phone = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
 
             CreateElement('button', {
                 content: 'Отправить',
