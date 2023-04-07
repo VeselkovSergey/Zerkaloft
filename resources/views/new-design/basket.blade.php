@@ -222,11 +222,11 @@
 @endsection
 
 @section("js")
-    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
+{{--    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>--}}
 
     <script>
 
-        const ipay = new IPAY({api_token: sberKey});
+        // const ipay = new IPAY({api_token: sberKey});
 
         const buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         const orderPaymentButton = document.body.querySelector('.order-payment-button');
@@ -235,6 +235,8 @@
             if (!CheckingFieldForEmptiness('client-order-information', true)) {
                 return false;
             }
+
+            return
 
             ipayCheckout({
                     amount: localStorage.getItem('sumProductsPricesInBasket'),
