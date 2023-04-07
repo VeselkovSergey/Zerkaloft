@@ -72,13 +72,13 @@
                 <div><a class="text-center color-white" style="text-decoration: none;" href="tel:{{$additionalPhones}}">{{$additionalPhones}}</a></div>
             </div>
             <a class="block w-20" href="mailto:{{$mail}}?subject=Вопрос">
-                <img width="50" src="/assets/imgs/email.svg" alt="email">
+                <img style="width: 50px;" width="50" src="/assets/imgs/email.svg" alt="email">
             </a>
             <div class="w-20 cp" onclick="{{$actionConditionAuth}}">
-                <img width="50" src="/assets/imgs/profile.svg" alt="profile">
+                <img style="width: 50px;" width="50" src="/assets/imgs/profile.svg" alt="profile">
             </div>
             <a href="{{route('basket-page')}}" class="block w-20 pos-rel">
-                <img width="50" src="/assets/imgs/basket.svg" alt="basket">
+                <img style="width: 50px;" width="50" src="/assets/imgs/basket.svg" alt="basket">
                 <div class="count-item-in-bag">
 
                 </div>
