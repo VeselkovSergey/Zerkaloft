@@ -16,7 +16,7 @@
                             @foreach(\App\Models\Categories::all() as $category)
                                 <div class="menu-categories-container">
                                     <div class="menu-category-container" style="position: relative;">
-                                        <div class="menu-category-title">{{$category->title}}</div>
+                                        <a href="{{$category->Link()}}" class="block menu-category-title">{{$category->title}}</a>
                                         <div class="menu-products-container">
                                             <div class="flex-wrap p-10">
                                                 @foreach($category->ProductsByNotOnlyInCalculator as $product)
