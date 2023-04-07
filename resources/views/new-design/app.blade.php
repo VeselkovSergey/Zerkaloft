@@ -1134,8 +1134,8 @@
             overflow: auto;
         }
 
-        /* подсказки адресов */
-        .container-suggestions {
+        /* подсказки в поиске */
+        .search-container-header .container-suggestions {
             position: absolute;
             left: 0;
             top: 50px;

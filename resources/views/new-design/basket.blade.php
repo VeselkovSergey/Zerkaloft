@@ -184,7 +184,7 @@
                                 type="text"
                                 placeholder="Адрес"
                                 style="border: 1px solid white; border-radius: 25px; padding: 10px 10px 10px 20px; width: calc(100% - 31px); background-color: var(--main-bg-color); color: white; font-size: 16px;"
-                                class="need-validate"
+                                class="need-validate suggestions-address"
                                 id="delivery_address"
                                 name="delivery_address"
                                 value="{{$pickupAddress}}"
