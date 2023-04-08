@@ -14,9 +14,17 @@
 {{--            </div>--}}
 {{--        </div>--}}
         <div class="flex-adaptive-block bg-yellow p-20">
-            <div class="w-50-adaptive-100 slider" style="height: 350px;">
-                <div>
-                    <div style="height: 350px;">
+            <div class="w-50-adaptive-100 slider">
+                <div class="carousel-item">
+                    <div>
+                        <picture>
+                            <source media="(max-width: 540px)" srcset="assets/imgs/img-square.jpg">
+                            <img src="/assets/imgs/img.jpg">
+                        </picture>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div>
                         <picture>
                             <source media="(max-width: 540px)" srcset="assets/imgs/img-square.jpg">
                             <img src="/assets/imgs/img.jpg">

@@ -839,38 +839,30 @@
         const nextSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"> <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path> </svg>`
 
         // const sliderContainer = document.body.querySelector(".slider")
-        sliderContainer.style.position = "relative"
-        sliderContainer.style.overflow = "hidden"
+        sliderContainer.classList.add("carousel-parent")
+
+        if (!document.querySelector('[data-carousel="true"]')) {
+            const styleElement = document.createElement("style")
+            styleElement.dataset.carousel = "true"
+            styleElement.innerHTML = `.carousel-parent { position: relative; overflow: hidden; display: flex; align-items: center; } .carousel-parent .prev-button { position: absolute; top: calc(50% - 24px); left: 12px; } .carousel-parent .next-button { position: absolute; top: calc(50% - 24px); right: 12px; } .carousel-item { position: relative; display: none; float: left; width: 100%; /*min-width: 100%;*/ margin-right: -100%; backface-visibility: hidden; transition: transform .6s ease-in-out; } .carousel-item.active, .carousel-item-next, .carousel-item-prev { display: block; } /* rtl:begin:ignore */ .carousel-item-next:not(.carousel-item-start), .active.carousel-item-end { transform: translateX(100%); } .carousel-item-prev:not(.carousel-item-end), .active.carousel-item-start { transform: translateX(-100%); }`
+            document.head.append(styleElement)
+        }
 
         const prevButton = document.createElement("div")
         prevButton.innerHTML = prevSVG
-        prevButton.style.position = "absolute"
-        prevButton.style.top = "calc(50% - 24px)"
-        prevButton.style.left = "12px"
         prevButton.classList.add("slider-button")
+        prevButton.classList.add("prev-button")
         sliderContainer.append(prevButton)
 
         const nextButton = document.createElement("div")
         nextButton.innerHTML = nextSVG
-        nextButton.style.position = "absolute"
-        nextButton.style.top = "calc(50% - 24px)"
-        nextButton.style.right = "12px"
+        nextButton.classList.add("next-button")
         nextButton.classList.add("slider-button")
         sliderContainer.append(nextButton)
 
         insideElements.forEach((insideElement, index) => {
-            insideElement.style.position = "absolute"
-            insideElement.style.top = "0"
-            insideElement.style.left = "0"
-            insideElement.style.opacity = "0"
-            insideElement.style.transition = "opacity 1s"
-            insideElement.style.display = "flex"
-            insideElement.style.justifyContent = "center"
-            insideElement.style.alignItems = "center"
-            insideElement.style.width = "100%"
             insideElement.index = index
             if (index === 0) {
-                insideElement.style.opacity = "1"
                 insideElement.classList.add("active")
             }
         })
@@ -880,26 +872,51 @@
             let nextIndex = currentImg.index + 1
             nextIndex = nextIndex >= insideElements.length ? 0 : nextIndex
             insideElements.forEach((insideElement) => {
-                insideElement.style.opacity = "0"
-                insideElement.classList.remove("active")
+                if (currentImg.index === insideElement.index) {
+                    insideElement.classList.add("carousel-item-start")
+                    setTimeout(() => {
+                        insideElement.classList.remove("active")
+                        insideElement.classList.remove("carousel-item-start")
+                    }, 1000)
+                }
+
                 if (insideElement.index === nextIndex) {
-                    insideElement.style.opacity = "1"
-                    insideElement.classList.add("active")
+                    insideElement.classList.add("carousel-item-next")
+                    setTimeout(() => {
+                        insideElement.classList.add("carousel-item-start")
+                    }, 10)
+                    setTimeout(() => {
+                        insideElement.classList.add("active")
+                        insideElement.classList.remove("carousel-item-next")
+                        insideElement.classList.remove("carousel-item-start")
+                    }, 1000)
                 }
             })
         })
 
         prevButton.addEventListener("click", () => {
             const currentImg = sliderContainer.querySelector(":scope > .active")
-            console.log(currentImg)
             let prevIndex = currentImg.index - 1
             prevIndex = prevIndex < 0 ? insideElements.length - 1 : prevIndex
             insideElements.forEach((insideElement) => {
-                insideElement.style.opacity = "0"
-                insideElement.classList.remove("active")
+                if (currentImg.index === insideElement.index) {
+                    insideElement.classList.add("carousel-item-end")
+                    setTimeout(() => {
+                        insideElement.classList.remove("active")
+                        insideElement.classList.remove("carousel-item-end")
+                    }, 1000)
+                }
+
                 if (insideElement.index === prevIndex) {
-                    insideElement.style.opacity = "1"
-                    insideElement.classList.add("active")
+                    insideElement.classList.add("carousel-item-prev")
+                    setTimeout(() => {
+                        insideElement.classList.add("carousel-item-end")
+                    }, 10)
+                    setTimeout(() => {
+                        insideElement.classList.add("active")
+                        insideElement.classList.remove("carousel-item-prev")
+                        insideElement.classList.remove("carousel-item-end")
+                    }, 1000)
                 }
             })
         })
