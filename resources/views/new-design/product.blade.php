@@ -90,7 +90,7 @@
                 <p>{{$product->description}}</p>
             </div>
             <div class="w-60-adaptive-100 order-4-2">
-                <div class="flex-space-x mr-10-adaptive-0">
+                <div class="mr-10-adaptive-0" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
                     <div class="flex mb-10">
                         @if(sizeof($product->Prices))
                             @php($tempProductPrice = [])
@@ -113,8 +113,17 @@
                             <div style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Нет цен</div>
                         @endif
                     </div>
-                    <div class="mb-10 w-a-adaptive-100 ml-10">
-                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center mb-10 cp"
+                    <div class="mb-10 w-a-adaptive-100 flex">
+                        @if(\App\Helpers\Utils::isFavourite($product->id))
+                            <div class="add-favourite-button border-radius-25 p-10 mt-a text-center cp mr-10"
+                                 style="background-color: white; color: black;">НРАВИТСЯ
+                            </div>
+                        @else
+                            <div class="remove-favourite-button border-radius-25 p-10 mt-a text-center cp mr-10"
+                                 style="background-color: white; color: black;">НЕ НРАВИТСЯ
+                            </div>
+                        @endif
+                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp"
                              style="background-color: white; color: black;">В КОРЗИНУ
                         </div>
                         <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center cp"
@@ -227,6 +236,22 @@
                 buttonLinkBasketPage.show()
             }
         });
+
+        document.body.querySelector(".add-favourite-button")?.addEventListener("click", () => {
+            Ajax("{{route('add-favourite')}}", 'post', {
+                productId: {{$product->id}},
+            }).then(() => {
+                location.reload()
+            })
+        })
+
+        document.body.querySelector(".remove-favourite-button")?.addEventListener("click", () => {
+            Ajax("{{route('remove-favourite')}}", 'post', {
+                productId: {{$product->id}},
+            }).then(() => {
+                location.reload()
+            })
+        })
 
     </script>
 @endsection

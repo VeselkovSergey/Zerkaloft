@@ -36,6 +36,7 @@ class Products extends Model
         'not_only_calculator',
         'show_main_page',
         'show_add_more',
+        'isPopular',
     ];
 
     public function Category()

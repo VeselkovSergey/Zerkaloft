@@ -47,6 +47,13 @@
 
                 <div class="p-10 w-100 flex">
                     <label class="block">
+                        Показывать в популярном
+                        <input name="isPopular" type="checkbox">
+                    </label>
+                </div>
+
+                <div class="p-10 w-100 flex">
+                    <label class="block">
                         Показывать кнопку добавить +1 в корзину
                         <input name="show_add_more" type="checkbox">
                     </label>
@@ -168,6 +175,11 @@
                         </label>
 
                         <label>
+                            <input type="checkbox" name="fieldsApply[isPopular]" checked>
+                            Показывать в популярном
+                        </label>
+
+                        <label>
                             <input type="checkbox" name="fieldsApply[show_add_more]" checked>
                             Показывать кнопку добавить +1 в корзину
                         </label>
@@ -254,6 +266,7 @@
         const activeProductField = productCombinationContainer.querySelector('input[name="active"]');
         const notOnlyCalculator = productCombinationContainer.querySelector('input[name="not_only_calculator"]');
         const showMainPage = productCombinationContainer.querySelector('input[name="show_main_page"]');
+        const isPopular = productCombinationContainer.querySelector('input[name="isPopular"]');
         const showAddMore = productCombinationContainer.querySelector('input[name="show_add_more"]');
         const productCombinationForDelete = productCombinationContainer.querySelector('input[id="product_combination_for_delete"]');
         const productName = productCombinationContainer.querySelector('input[id="product_name"]');
@@ -449,6 +462,7 @@
                 activeProductField.checked = data.product.active;
                 notOnlyCalculator.checked = data.product.not_only_calculator;
                 showMainPage.checked = data.product.show_main_page;
+                isPopular.checked = data.product.isPopular;
                 showAddMore.checked = data.product.show_add_more;
                 productCombinationForDelete.value = data.product.modification_id;
                 productName.value = data.product.title;

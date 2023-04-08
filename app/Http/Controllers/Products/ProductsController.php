@@ -154,6 +154,7 @@ class ProductsController
         $productActive = !empty($request->active) ? $request->active : null;
         $productNotOnlyCalculator = !empty($request->not_only_calculator) ? $request->not_only_calculator : null;
         $productShowMainPage = !empty($request->show_main_page) ? $request->show_main_page : null;
+        $productIsPopular = !empty($request->isPopular) ? $request->isPopular : null;
         $productShowAddMore = !empty($request->show_add_more) ? $request->show_add_more : null;
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
@@ -243,6 +244,10 @@ class ProductsController
 
         if ($fieldsApply['show_main_page'] === 'true') {
             $fields['show_main_page'] = $productShowMainPage === 'true' ? 1 : 0;
+        }
+
+        if ($fieldsApply['isPopular'] === 'true') {
+            $fields['isPopular'] = $productIsPopular === 'true' ? 1 : 0;
         }
 
         if ($fieldsApply['show_add_more'] === 'true') {
@@ -379,5 +384,21 @@ class ProductsController
 
         return view('new-design.product', compact('product'));
         return view('catalog.product', compact('product'));
+    }
+
+    public function addFavourite(Request $request)
+    {
+        $productId = $request->productId;
+        $favouriteProducts = session()->get("favouriteProducts");
+        array_push($favouriteProducts, $productId);
+        session()->put("favouriteProducts", $favouriteProducts);
+    }
+
+    public function removeFavourite(Request $request)
+    {
+        $productId = $request->productId;
+        $favouriteProducts = session()->get("favouriteProducts");
+        array_splice($favouriteProducts, array_search($productId, $favouriteProducts), 1);
+        session()->put("favouriteProducts", $favouriteProducts);
     }
 }

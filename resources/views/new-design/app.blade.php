@@ -1,5 +1,9 @@
 @php
 
+    if (session()->get("favouriteProducts") === null) {
+        session()->put("favouriteProducts", []);
+    }
+
     $actionConditionAuth = !\Illuminate\Support\Facades\Auth::check() ? 'LoginPage()' : 'UserOrdersPage()';
 
     $phone = \App\Models\Settings::where('type', \App\Models\Settings::TypeByWords['mainPhone'])->first();

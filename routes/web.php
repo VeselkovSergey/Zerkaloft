@@ -343,6 +343,12 @@ Route::group(['prefix' => 'files'], function () {
 
 Route::group(['prefix' => 'catalog'], function () {
 
+    Route::post('/add-favourite', [App\Http\Controllers\Products\ProductsController::class, 'addFavourite'])
+        ->name('add-favourite');
+
+    Route::post('/remove-favourite', [App\Http\Controllers\Products\ProductsController::class, 'removeFavourite'])
+        ->name('remove-favourite');
+
     Route::get('/{category_semantic_url}', [App\Http\Controllers\Categories\CategoriesController::class, 'CategoryPage'])
         ->name('category');
 
@@ -402,9 +408,9 @@ Route::group(['prefix' => 'callback-orders'], function () {
 
 });
 
-Route::get('/debug-phpinfo', function () {
-    phpinfo();
-});
+//Route::get('/debug-phpinfo', function () {
+//    phpinfo();
+//});
 
 Route::get('sitemap.xml', [Controllers\HomeController::class, 'SiteMap'])->name('sitemap');
 
