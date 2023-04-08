@@ -851,12 +851,14 @@
         prevButton.innerHTML = prevSVG
         prevButton.classList.add("slider-button")
         prevButton.classList.add("prev-button")
+        prevButton.classList.add("hide")
         sliderContainer.append(prevButton)
 
         const nextButton = document.createElement("div")
         nextButton.innerHTML = nextSVG
         nextButton.classList.add("next-button")
         nextButton.classList.add("slider-button")
+        nextButton.classList.add("hide")
         sliderContainer.append(nextButton)
 
         insideElements.forEach((insideElement, index) => {
