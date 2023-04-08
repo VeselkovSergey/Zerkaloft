@@ -50,11 +50,11 @@
                     <div class="pos-abs">
                         @if(\App\Helpers\Utils::isFavourite($product->id))
                             <div class="add-favourite-button cp mr-10">
-                                <img style="height: 35px;" src="/assets/imgs/favourite.svg" alt="">
+                                <img style="height: 35px;" src="/assets/imgs/notFavourite.svg" alt="">
                             </div>
                         @else
                             <div class="remove-favourite-button cp mr-10">
-                                <img style="height: 35px;" src="/assets/imgs/notFavourite.svg" alt="">
+                                <img style="height: 35px;" src="/assets/imgs/favourite.svg" alt="">
                             </div>
                         @endif
                     </div>
