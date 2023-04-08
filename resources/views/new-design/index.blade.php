@@ -2,17 +2,17 @@
 
 @section("content")
     <div class="main-page">
-        <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px); display: none;">
-            <div class="w-20">
-                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">
-            </div>
-            <div class="w-20">
-                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">
-            </div>
-            <div class="w-20">
-                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">
-            </div>
-        </div>
+{{--        <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px); display: none;">--}}
+{{--            <div class="w-20">--}}
+{{--                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">--}}
+{{--            </div>--}}
+{{--            <div class="w-20">--}}
+{{--                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">--}}
+{{--            </div>--}}
+{{--            <div class="w-20">--}}
+{{--                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="flex-adaptive-block bg-yellow p-20">
             <div class="w-50-adaptive-100 slider" style="height: 350px;">
                 <div>
