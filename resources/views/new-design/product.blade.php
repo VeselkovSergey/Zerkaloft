@@ -46,19 +46,6 @@
 
         <div class="flex-wrap px-10">
             <div class="w-25-adaptive-100" style="order: 1;">
-                <div class="pos-rel">
-                    <div class="pos-abs">
-                        @if(\App\Helpers\Utils::isFavourite($product->id))
-                            <div class="add-favourite-button cp mr-10">
-                                <img style="height: 35px;" src="/assets/imgs/notFavourite.svg" alt="">
-                            </div>
-                        @else
-                            <div class="remove-favourite-button cp mr-10">
-                                <img style="height: 35px;" src="/assets/imgs/favourite.svg" alt="">
-                            </div>
-                        @endif
-                    </div>
-                </div>
                 <div class="flex-center mb-10 mr-10-adaptive-0">
                     @foreach(unserialize($product->img) as $img)
                         <img style="max-height: calc(65vh);" src="{{route('files', $img)}}" alt="{{$product->title}}">
@@ -127,6 +114,17 @@
                         @endif
                     </div>
                     <div class="mb-10 w-a-adaptive-100 flex">
+                        @if(\App\Helpers\Utils::isFavourite($product->id))
+                            <div class="add-favourite-button cp mr-10 flex-center border-radius-25 px-10" style="border-color: white;">
+                                <img style="height: 25px;" src="/assets/imgs/notFavourite.svg" alt="">
+                                <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
+                            </div>
+                        @else
+                            <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 px-10" style="border-color: white;">
+                                <img style="height: 25px;" src="/assets/imgs/favourite.svg" alt="">
+                                <div class="ml-10">Убрать&nbsp;из&nbsp;избранного</div>
+                            </div>
+                        @endif
                         <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp"
                              style="background-color: white; color: black;">В КОРЗИНУ
                         </div>
