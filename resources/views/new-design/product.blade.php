@@ -115,12 +115,12 @@
                     </div>
                     <div class="mb-10 w-a-adaptive-100 flex">
                         @if(\App\Helpers\Utils::isFavourite($product->id))
-                            <div class="add-favourite-button border-radius-25 p-10 mt-a text-center cp mr-10"
-                                 style="background-color: white; color: black;">НРАВИТСЯ
+                            <div class="add-favourite-button cp mr-10">
+                                <img style="height: 35px;" src="/assets/imgs/favourite.svg" alt="">
                             </div>
                         @else
-                            <div class="remove-favourite-button border-radius-25 p-10 mt-a text-center cp mr-10"
-                                 style="background-color: white; color: black;">НЕ НРАВИТСЯ
+                            <div class="remove-favourite-button cp mr-10">
+                                <img style="height: 35px;" src="/assets/imgs/notFavourite.svg" alt="">
                             </div>
                         @endif
                         <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp"

@@ -17,12 +17,10 @@
             <div class="w-50-adaptive-100 slider" style="height: 350px;">
                 <div>
                     <div style="height: 350px;">
-                        <img src="/assets/imgs/img1-mob.png" alt="">
-                    </div>
-                </div>
-                <div>
-                    <div style="height: 350px;">
-                        <img src="/assets/imgs/img2-mob.png" alt="">
+                        <picture>
+                            <source media="(max-width: 540px)" srcset="assets/imgs/img-square.jpg">
+                            <img src="/assets/imgs/img.jpg">
+                        </picture>
                     </div>
                 </div>
             </div>
