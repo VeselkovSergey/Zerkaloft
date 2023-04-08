@@ -862,6 +862,7 @@
 
         insideElements.forEach((insideElement, index) => {
             insideElement.index = index
+            insideElement.classList.add("carousel-item")
             if (index === 0) {
                 insideElement.classList.add("active")
             }
