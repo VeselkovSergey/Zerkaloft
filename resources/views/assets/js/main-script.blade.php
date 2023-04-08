@@ -868,7 +868,7 @@
         })
 
         nextButton.addEventListener("click", () => {
-            clearTimeout(autoClickTimer)
+            clearInterval(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let nextIndex = currentImg.index + 1
             nextIndex = nextIndex >= insideElements.length ? 0 : nextIndex
@@ -899,7 +899,7 @@
         })
 
         prevButton.addEventListener("click", () => {
-            clearTimeout(autoClickTimer)
+            clearInterval(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let prevIndex = currentImg.index - 1
             prevIndex = prevIndex < 0 ? insideElements.length - 1 : prevIndex
