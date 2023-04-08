@@ -827,7 +827,6 @@
     }
     ToggleShow()
 
-    // указать контейнеру размеры в px
     const slider = (sliderContainer) => {
 
         const insideElements = sliderContainer.querySelectorAll(":scope > *:not(.slider-button)")
@@ -869,6 +868,7 @@
         })
 
         nextButton.addEventListener("click", () => {
+            clearTimeout(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let nextIndex = currentImg.index + 1
             nextIndex = nextIndex >= insideElements.length ? 0 : nextIndex
@@ -893,9 +893,13 @@
                     }, 1000)
                 }
             })
+            autoClickTimer = setInterval(() => {
+                nextButton.click()
+            }, 4000)
         })
 
         prevButton.addEventListener("click", () => {
+            clearTimeout(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let prevIndex = currentImg.index - 1
             prevIndex = prevIndex < 0 ? insideElements.length - 1 : prevIndex
@@ -920,9 +924,12 @@
                     }, 1000)
                 }
             })
+            autoClickTimer = setInterval(() => {
+                nextButton.click()
+            }, 4000)
         })
 
-        setInterval(() => {
+        let autoClickTimer = setInterval(() => {
             nextButton.click()
         }, 4000)
     }
