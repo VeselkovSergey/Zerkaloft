@@ -113,22 +113,22 @@
                             <div style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Нет цен</div>
                         @endif
                     </div>
-                    <div class="mb-10 w-a-adaptive-100 flex">
+                    <div class="mb-10 w-a-adaptive-100 flex" style="flex-wrap: wrap;">
                         @if(\App\Helpers\Utils::isFavourite($product->id))
-                            <div class="add-favourite-button cp mr-10 flex-center border-radius-25 px-10" style="border-color: white;">
-                                <img style="height: 25px;" src="/assets/imgs/notFavourite.svg" alt="">
+                            <div class="add-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
+                                <img style="height: 20px;" src="/assets/imgs/notFavourite.svg" alt="">
                                 <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
                             </div>
                         @else
-                            <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 px-10" style="border-color: white;">
-                                <img style="height: 25px;" src="/assets/imgs/favourite.svg" alt="">
+                            <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
+                                <img style="height: 20px;" src="/assets/imgs/favourite.svg" alt="">
                                 <div class="ml-10">Убрать&nbsp;из&nbsp;избранного</div>
                             </div>
                         @endif
-                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp"
+                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp mb-10"
                              style="background-color: white; color: black;">В КОРЗИНУ
                         </div>
-                        <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center cp"
+                        <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center cp mb-10"
                            style="background-color: white; color: black;"
                            onclick="location.href='{{route('basket-page')}}'">ПЕРЕЙТИ В КОРЗИНУ
                         </div>
