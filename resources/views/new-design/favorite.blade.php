@@ -37,7 +37,7 @@
                 </div>
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                        <div class="border-radius-25 p-10 w-100 mb-10 text-center">{{$product->title}}</div>
+                        <div class="p-10 w-100 mb-10">{{$product->title}}</div>
                         <div class="border-radius-25 p-10 mt-a w-100 text-center"
                              style="background-color: white; color: black">К ТОВАРУ
                         </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="product-description z-1 pos-abs">
                         <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                            <div class="border-radius-25 p-10 w-100 mb-10 text-center">{{$product->title}}</div>
+                            <div class="p-10 w-100 mb-10">{{$product->title}}</div>
                             <div class="border-radius-25 p-10 mt-a w-100 text-center"
                                  style="background-color: white; color: black">К ТОВАРУ
                             </div>
