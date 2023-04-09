@@ -67,6 +67,9 @@
         [data-anchor-relation]:not(.active) {
             display: none;
         }
+        .texts a {
+            color: white;
+        }
     </style>
     <div class="mb-10">
         <div class="flex-adaptive-block">
@@ -74,7 +77,7 @@
                 <div class="mb-10">
                     <div class="wrapper active" data-anchor="about">
                         <div class="block">
-                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 О компании
                             </div>
                         </div>
@@ -83,7 +86,7 @@
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="contacts">
                         <div class="block">
-                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 Контакты
                             </div>
                         </div>
@@ -92,14 +95,14 @@
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="information">
                         <div class="block">
-                            <div style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
                                 Информация
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-50-adaptive-100 border-adaptive-none" style="border-radius: 0 50px 50px 50px;">
+            <div class="w-50-adaptive-100 border-adaptive-none texts" style="border-radius: 0 50px 50px 50px;">
                 <div data-anchor-relation="about" style="padding: 10px 30px;">
                     <h2 class="text-center">О компании</h2>
                     <p>
