@@ -861,6 +861,10 @@
             margin-right: 10px;
         }
 
+        .mr-0-adaptive-10 {
+            margin-right: 0px;
+        }
+
         .px-100-adaptive-10 {
             padding-left: 100px;
             padding-right: 100px;
@@ -1091,6 +1095,10 @@
 
             .mr-10-adaptive-0 {
                 margin-right: 0;
+            }
+
+            .mr-0-adaptive-10 {
+                margin-right: 10px;
             }
         }
     </style>

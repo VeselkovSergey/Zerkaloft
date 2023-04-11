@@ -25,8 +25,8 @@
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($popularProducts as $product)
-            <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container">
-                <div class="show-adaptive w-100 mb-10 text-center" style="color: black;">{{$product->title}}</div>
+            <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container mr-0-adaptive-10">
+                <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
                 <div>
                     @foreach(unserialize($product->img) as $img)
                         <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
@@ -55,8 +55,8 @@
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($favouriteProducts as $product)
-                <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container">
-                    <div class="show-adaptive w-100 mb-10 text-center" style="color: black;">{{$product->title}}</div>
+                <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container mr-0-adaptive-10">
+                    <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
                     <div>
                         @foreach(unserialize($product->img) as $img)
                             <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
