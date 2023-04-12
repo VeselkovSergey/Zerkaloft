@@ -31,7 +31,7 @@
                         <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
                     @endforeach
                 </div>
-                <div class="show-adaptive border-radius-25 p-5 text-center"
+                <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                      style="background-color: white; color: black">К ТОВАРУ
                 </div>
                 <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
@@ -61,7 +61,7 @@
                             <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
                         @endforeach
                     </div>
-                    <div class="show-adaptive border-radius-25 p-5 text-center"
+                    <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                          style="background-color: white; color: black">К ТОВАРУ
                     </div>
                     <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
