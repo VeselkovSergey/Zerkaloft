@@ -16,7 +16,7 @@
 </style>
 @php
     $popularProducts = \App\Models\Products::where('isPopular', 1)->get();
-    $favouriteProducts = \App\Models\Products::whereIn('id', session()->get("favouriteProducts"))->get();
+    $favouriteProducts = \App\Models\Products::whereIn('id', session()->get("favouriteProducts") ?? [])->get();
 @endphp
 <div class="favorite-page {{sizeof($popularProducts) ? "" : " hide "}}">
     <div class="bg-yellow pb-10">
