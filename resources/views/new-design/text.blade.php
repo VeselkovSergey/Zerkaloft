@@ -105,9 +105,9 @@
             <div class="w-50-adaptive-100 border-adaptive-none texts" style="border-radius: 0 50px 50px 50px;">
                 <div data-anchor-relation="about" style="padding: 10px 30px;">
                     <h2 class="text-center">О компании</h2>
-                    <p>
-                        {!! $aboutPage->text !!}
-                    </p>
+                    <pre class="font-regular">
+{!! $aboutPage->text !!}
+                    </pre>
                 </div>
                 <div data-anchor-relation="contacts" style="padding: 10px 30px;">
                     <h2 class="text-center">Контакты</h2>
