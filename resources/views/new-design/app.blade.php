@@ -1292,7 +1292,7 @@
                 </svg>
             </div>
             <div class="mb-5 flex-center">
-                <a class="whatsapp" href="https://api.whatsapp.com/send/?phone={{$whatsappPhone}}">
+                <a class="whatsapp" href="https://wa.me/{{$whatsappPhone}}">
                     <img width="26" src="{{url('icon/whatsapp.svg')}}" alt="">
                 </a>
             </div>
