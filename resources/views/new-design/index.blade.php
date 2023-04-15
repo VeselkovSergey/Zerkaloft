@@ -16,24 +16,26 @@
         <div class="flex-adaptive-block bg-yellow p-20">
             <div class="w-50-adaptive-100 slider">
                 <picture>
-                    <source media="(max-width: 540px)" srcset="assets/imgs/img-square.jpg">
-                    <img src="/assets/imgs/img.jpg">
+                    <source media="(max-width: 540px)" srcset="assets/imgs/img1-sq.png">
+                    <img src="/assets/imgs/img1.png">
                 </picture>
                 <picture>
-                    <source media="(max-width: 540px)" srcset="assets/imgs/img-square.jpg">
-                    <img src="/assets/imgs/img.jpg">
+                    <source media="(max-width: 540px)" srcset="assets/imgs/img2-sq.png">
+                    <img src="/assets/imgs/img2.png">
                 </picture>
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
-                <div>
-                    <div class="text-center">О КОМПАНИИ</div>
-                    <div>1. ПРОЕКТИРУЕМ</div>
-                    <div>2. РЕАЛИЗУЕМ</div>
-                    <div class="show-adaptive">МЫ С УДОВОЛЬСТВИЕМ
-                        ГОТОВЫ РЕАЛИЗОВАТЬ
-                        ВАШЫ
-                        МАРКЕТИНГОВЫЕ ИДЕИ.
-                    </div>
+                <div class="px-20">
+                    Производим и продаем зеркала самых разных разнообразных форм, размеров
+                    и стилей, чтобы помочь вам создать прекасное пространство в доме или офисе
+{{--                    <div class="text-center">О КОМПАНИИ</div>--}}
+{{--                    <div>1. ПРОЕКТИРУЕМ</div>--}}
+{{--                    <div>2. РЕАЛИЗУЕМ</div>--}}
+{{--                    <div class="show-adaptive">МЫ С УДОВОЛЬСТВИЕМ--}}
+{{--                        ГОТОВЫ РЕАЛИЗОВАТЬ--}}
+{{--                        ВАШЫ--}}
+{{--                        МАРКЕТИНГОВЫЕ ИДЕИ.--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
