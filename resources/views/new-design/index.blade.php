@@ -25,7 +25,7 @@
                 </picture>
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
-                <div class="px-20 text-center">
+                <div class="px-20 text-center" style="font-size: 24px;">
                     Добавьте нотку роскоши
                     в ваш интерьер с нашими зеркалами!
 {{--                    <div class="text-center">О КОМПАНИИ</div>--}}
