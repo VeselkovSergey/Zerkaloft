@@ -29,7 +29,7 @@
             </div>
         </div>
     </a>
-    <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
+    <a href="{{route("about-page")}}#payment" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/payments.2.svg" alt="">
         </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </a>
-    <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
+    <a href="{{route("about-page")}}#delivery" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/delivered.2.svg" alt="">
         </div>

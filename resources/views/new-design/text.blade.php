@@ -121,7 +121,7 @@
                     <div class="wrapper" data-anchor="why_we">
                         <div class="block">
                             <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                Почему мы
+                                Почему&nbsp;мы
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                     <div class="wrapper" data-anchor="interesting">
                         <div class="block">
                             <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                Интересные факты
+                                Интересные&nbsp;факты
                             </div>
                         </div>
                     </div>
