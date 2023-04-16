@@ -15,7 +15,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Информация
+                Информация. Интересные факты
             </div>
         </div>
     </a>
