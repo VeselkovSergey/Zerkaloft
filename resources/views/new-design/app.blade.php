@@ -775,6 +775,10 @@
             font-size: 36px;
         }
 
+        .font-36-adaptive-24 {
+            font-size: 36px;
+        }
+
         .show-adaptive, .show-adaptive-flex {
             display: none;
         }
@@ -964,6 +968,11 @@
 
             .font-36-adaptive {
                 font-size: unset;
+            }
+
+
+            .font-36-adaptive-24 {
+                font-size: 24px;
             }
 
             .show-adaptive {
