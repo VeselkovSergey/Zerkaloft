@@ -14,11 +14,8 @@
             <img src="/assets/imgs/info.2.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Информация
-            </div>
             <div class="font-light px-40-adaptive-0">
-                Небольшой рассказ о маркетинге статьи из журналов изменения в закондательстве
+                Информация
             </div>
         </div>
     </a>
@@ -27,11 +24,8 @@
             <img src="/assets/imgs/online-order.2.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Онлайн&nbsp;заказ
-            </div>
             <div class="font-light px-40-adaptive-0">
-                предлагаем вашему вниманию подобранные параметры для быстрого заказа
+                Задайте параметры, не тратьте время на поиски
             </div>
         </div>
     </a>
@@ -40,11 +34,8 @@
             <img src="/assets/imgs/payments.2.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Способ&nbsp;оплаты
-            </div>
             <div class="font-light px-40-adaptive-0">
-                оплачивайте заказ на сайте как физическое лицо или как юридическое
+                Быстро и безопасно оплати свой заказ
             </div>
         </div>
     </a>
@@ -53,11 +44,8 @@
             <img src="/assets/imgs/delivered.2.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Доставка
-            </div>
             <div class="font-light px-40-adaptive-0">
-                оформите доставку у нас на сайте воспользуйтесь услугами наших партнеров
+                Надежная быстрая доставка ваших покупок
             </div>
         </div>
     </a>
@@ -66,9 +54,6 @@
             <img src="/assets/imgs/forum.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Форум
-            </div>
             <div class="font-light px-40-adaptive-0">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
             </div>
@@ -79,9 +64,6 @@
             <img src="/assets/imgs/gallery.svg" alt="">
         </div>
         <div>
-            <div class="mb-5 px-40-adaptive-0">
-                Галерея
-            </div>
             <div class="font-light px-40-adaptive-0">
                 Работы выполненные нашей командой не тратье время на поиски подберите себе готовые идеи
             </div>
