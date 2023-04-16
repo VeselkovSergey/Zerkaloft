@@ -9,7 +9,7 @@
     }
 </style>
 <div class="info-block p-20 bg-pink" style="color: black;">
-    <a href="{{route("about-page")}}#information" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
+    <a href="{{route("about-page")}}#interesting" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/info.2.svg" alt="">
         </div>
