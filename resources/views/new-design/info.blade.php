@@ -13,7 +13,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/info.2.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Информация
             </div>
@@ -23,7 +23,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/online-order.2.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Задайте параметры, не тратьте время на поиски
             </div>
@@ -33,7 +33,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/payments.2.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Быстро и безопасно оплати свой заказ
             </div>
@@ -43,7 +43,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/delivered.2.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Надежная быстрая доставка ваших покупок
             </div>
@@ -53,7 +53,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/forum.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
             </div>
@@ -63,7 +63,7 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/gallery.svg" alt="">
         </div>
-        <div>
+        <div class="mt-10">
             <div class="font-light px-40-adaptive-0">
                 Работы выполненные нашей командой не тратье время на поиски подберите себе готовые идеи
             </div>
