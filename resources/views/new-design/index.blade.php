@@ -26,8 +26,9 @@
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
                 <div class="px-20 text-center font-36-adaptive-24">
-                    Добавьте нотку роскоши
-                    в ваш интерьер с нашими зеркалами!
+                    <div>Добавьте нотку роскоши</div>
+                    <div>в ваш интерьер</div>
+                    <div>с нашими зеркалами!</div>
 {{--                    <div class="text-center">О КОМПАНИИ</div>--}}
 {{--                    <div>1. ПРОЕКТИРУЕМ</div>--}}
 {{--                    <div>2. РЕАЛИЗУЕМ</div>--}}
