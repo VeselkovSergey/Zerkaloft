@@ -161,7 +161,6 @@
         const modifications = "{{$product->modification_id}}".split('-')
 
         Object.keys(categoryProperties).forEach((key) => {
-            console.log(modifications[key])
             const categoryProperty = categoryProperties[key];
             categoryProperty.values.unshift({value: "Выберите значение"});
             let propertySelector = GenerationFormSelect(categoryProperty.values, `property-${key}`, modifications[key], true, true);
