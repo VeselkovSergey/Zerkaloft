@@ -201,7 +201,7 @@
             });
         })
 
-        const product = JSON.parse('@json($product->getAttributes(), JSON_UNESCAPED_UNICODE)');
+        const product = @json($product->getAttributes(), JSON_UNESCAPED_UNICODE);
 
         let productAdded = false;
         let buttonAddInBasket = document.body.querySelector('.button-add-in-basket')
