@@ -897,7 +897,7 @@
             })
             autoClickTimer = setInterval(() => {
                 nextButton.click()
-            }, 4000)
+            }, 5000)
         })
 
         prevButton.addEventListener("click", () => {
@@ -928,12 +928,12 @@
             })
             autoClickTimer = setInterval(() => {
                 nextButton.click()
-            }, 4000)
+            }, 5000)
         })
 
         let autoClickTimer = setInterval(() => {
             nextButton.click()
-        }, 4000)
+        }, 5000)
     }
 
     document.body.querySelectorAll(".slider").forEach(slider)
