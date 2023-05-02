@@ -173,7 +173,7 @@
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
                                 <select name="type_payment" id="type_payment" class="select-3 w-100">
                                     <option value="1">Оплата при получении</option>
-                                    <option value="2">Онлайн оплата</option>
+{{--                                    <option value="2">Онлайн оплата</option>--}}
                                 </select>
                             </div>
                             <div class="mb-10 w-50-adaptive-100">
@@ -226,7 +226,8 @@
 @endsection
 
 @section("js")
-    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
+{{--    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>--}}
+    <script src="https://securecardpayment.ru/payment/docsite/assets/js/ipay.js"></script>
 
     <script>
 
