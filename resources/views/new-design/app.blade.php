@@ -691,6 +691,10 @@
         .cp {
             cursor: pointer;
         }
+
+        .scroll-auto {
+            overflow: auto;
+        }
     </style>
 
     <style>
