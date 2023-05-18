@@ -740,6 +740,12 @@
             }, callbackWindowContent);
             let phone = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
 
+            CreateElement('label', {
+                content: 'Комментарий',
+                class: 'mb-5'
+            }, callbackWindowContent);
+            let comments = CreateElement('textarea', {class: 'mb-10 black-input'}, callbackWindowContent);
+
             CreateElement('button', {
                 content: 'Отправить',
                 class: 'button-blue mt-5',
@@ -752,7 +758,7 @@
                         } else {
                             modalWindow.remove();
                             ModalWindowFlash('Мы скоро с вами свяжемся');
-                            Ajax(createCallbackOrderRequestRoute, "POST", {phone: phone.value, name: name.value});
+                            Ajax(createCallbackOrderRequestRoute, "POST", {phone: phone.value, name: name.value, comments: comments.value});
                         }
                     }
                 }

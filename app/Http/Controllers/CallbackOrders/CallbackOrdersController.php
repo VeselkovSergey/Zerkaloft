@@ -12,17 +12,19 @@ class CallbackOrdersController extends Controller
     {
         $phone = request()->post('phone');
         $name = request()->post('name');
-        return self::CreateCallbackOrder($phone, $name);
+        $comments = request()->post('comments');
+        return self::CreateCallbackOrder($phone, $name, $comments);
     }
 
-    public function CreateCallbackOrder($phone, $name)
+    public function CreateCallbackOrder($phone, $name, $comments = '')
     {
         $newCallbackOrder = CallbackOrders::create([
             'name' => $name,
-            'phone' => $phone
+            'phone' => $phone,
+            'comments' => $comments
         ]);
 
-        $message = '<i>Новый запрос.</i><a href="'.route("all-callback-orders").'">к запросам</a>' . PHP_EOL;
+        $message = '<i>Новый запрос.</i>'.PHP_EOL.'<a href="'.route("all-callback-orders").'">Перейти к запросам</a>';
 
         $telegram = new Telegram();
         $telegram->sendMessage($message, env('TELEGRAM_ORDER_GROUP'));

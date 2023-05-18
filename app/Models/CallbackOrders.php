@@ -13,5 +13,6 @@ class CallbackOrders extends Model
     protected $fillable = [
         'phone',
         'name',
+        'comments',
     ];
 }
