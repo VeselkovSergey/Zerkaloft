@@ -13,7 +13,7 @@
                     >
                         <div class="hide-adaptive">
                             <div class="mr-10" style="width: 40px; height: 40px;">
-                                <img src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
+                                <img src="{{$product->Product->FirstImgUrl()}}" alt="{{$product->title}}">
                             </div>
                         </div>
                         <div class="w-90-adaptive-100">
@@ -22,7 +22,7 @@
                                     <div class="mb-10 flex-center">
                                         <div class="show-adaptive">
                                             <div class="mr-10" style="width: 40px; height: 40px;">
-                                                <img src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
+                                                <img src="{{$product->Product->FirstImgUrl()}}" alt="{{$product->title}}">
                                             </div>
                                         </div>
                                     </div>
