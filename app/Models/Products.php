@@ -54,6 +54,11 @@ class Products extends Model
         return route('product', [$this->Category->semantic_url, $this->semantic_url]);
     }
 
+    public function FirstImgUrl()
+    {
+        return route('files', unserialize($this->img)[0]);
+    }
+
     public function AdditionalServices()
     {
         return $this->belongsToMany(AdditionalServices::class, 'additional_product_services', 'product_id', 'additional_service_id');

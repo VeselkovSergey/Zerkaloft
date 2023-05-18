@@ -27,9 +27,7 @@
             @foreach($popularProducts as $product)
             <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container mr-0-adaptive-10">
                 <div>
-                    @foreach(unserialize($product->img) as $img)
-                        <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
-                    @endforeach
+                    <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                 </div>
                 <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                      style="background-color: white; color: black">К ТОВАРУ
@@ -57,9 +55,7 @@
             @foreach($favouriteProducts as $product)
                 <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container mr-0-adaptive-10">
                     <div>
-                        @foreach(unserialize($product->img) as $img)
-                            <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
-                        @endforeach
+                        <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                     </div>
                     <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                          style="background-color: white; color: black">К ТОВАРУ

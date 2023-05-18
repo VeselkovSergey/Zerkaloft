@@ -827,7 +827,7 @@
     }
     ToggleShow()
 
-    const slider = (sliderContainer) => {
+    const slider = (sliderContainer, autoSlide = true) => {
 
         const insideElements = sliderContainer.querySelectorAll(":scope > *:not(.slider-button)")
         if (insideElements.length < 2) {
@@ -843,7 +843,7 @@
         if (!document.querySelector('[data-carousel="true"]')) {
             const styleElement = document.createElement("style")
             styleElement.dataset.carousel = "true"
-            styleElement.innerHTML = `.carousel-parent { position: relative; overflow: hidden; display: flex; align-items: center; } .carousel-parent .prev-button { cursor: pointer; position: absolute; top: calc(50% - 24px); left: 12px; } .carousel-parent .next-button { cursor: pointer; position: absolute; top: calc(50% - 24px); right: 12px; } .carousel-parent .prev-button:hover, .carousel-parent .next-button:hover { transform: scale(1.1); } .carousel-item { position: relative; display: none; float: left; width: 100%; /*min-width: 100%;*/ margin-right: -100%; backface-visibility: hidden; transition: transform .6s ease-in-out; } .carousel-item.active, .carousel-item-next, .carousel-item-prev { display: block; } /* rtl:begin:ignore */ .carousel-item-next:not(.carousel-item-start), .active.carousel-item-end { transform: translateX(100%); } .carousel-item-prev:not(.carousel-item-end), .active.carousel-item-start { transform: translateX(-100%); }`
+            styleElement.innerHTML = `.carousel-parent { position: relative; overflow: hidden; display: flex; align-items: center; } .carousel-parent .prev-button { cursor: pointer; position: absolute; top: calc(50% - 24px); left: 12px; opacity: 0.3; } .carousel-parent .next-button { cursor: pointer; position: absolute; top: calc(50% - 24px); right: 12px; opacity: 0.3; } .carousel-parent .prev-button:hover, .carousel-parent .next-button:hover { transform: scale(1.1); opacity: 0.8; } .carousel-item { position: relative; display: none; float: left; width: 100%; /*min-width: 100%;*/ margin-right: -100%; backface-visibility: hidden; transition: transform .6s ease-in-out; } .carousel-item.active, .carousel-item-next, .carousel-item-prev { display: block; } /* rtl:begin:ignore */ .carousel-item-next:not(.carousel-item-start), .active.carousel-item-end { transform: translateX(100%); } .carousel-item-prev:not(.carousel-item-end), .active.carousel-item-start { transform: translateX(-100%); }`
             document.head.append(styleElement)
         }
 
@@ -851,14 +851,14 @@
         prevButton.innerHTML = prevSVG
         prevButton.classList.add("slider-button")
         prevButton.classList.add("prev-button")
-        prevButton.classList.add("hide")
+        // prevButton.classList.add("hide")
         sliderContainer.append(prevButton)
 
         const nextButton = document.createElement("div")
         nextButton.innerHTML = nextSVG
         nextButton.classList.add("next-button")
         nextButton.classList.add("slider-button")
-        nextButton.classList.add("hide")
+        // nextButton.classList.add("hide")
         sliderContainer.append(nextButton)
 
         insideElements.forEach((insideElement, index) => {
@@ -895,9 +895,11 @@
                     }, 1000)
                 }
             })
-            autoClickTimer = setInterval(() => {
-                nextButton.click()
-            }, 5000)
+            if (autoSlide) {
+                autoClickTimer = setInterval(() => {
+                    nextButton.click()
+                }, 5000)
+            }
         })
 
         prevButton.addEventListener("click", () => {
@@ -926,16 +928,21 @@
                     }, 1000)
                 }
             })
+            if (autoSlide) {
+                autoClickTimer = setInterval(() => {
+                    nextButton.click()
+                }, 5000)
+            }
+        })
+
+        let autoClickTimer
+        if (autoSlide) {
             autoClickTimer = setInterval(() => {
                 nextButton.click()
             }, 5000)
-        })
-
-        let autoClickTimer = setInterval(() => {
-            nextButton.click()
-        }, 5000)
+        }
     }
 
-    document.body.querySelectorAll(".slider").forEach(slider)
+    document.body.querySelectorAll(".slider").forEach((element) => {slider(element)})
 
 </script>

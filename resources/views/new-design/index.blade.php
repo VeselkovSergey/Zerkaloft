@@ -48,9 +48,7 @@
             @foreach($products as $product)
             <a href="{{$product->Link()}}" class="block w-33-adaptive-100 pos-rel product-container color-white">
                 <div>
-                    @foreach(unserialize($product->img) as $img)
-                        <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
-                    @endforeach
+                    <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                 </div>
                 <div class="product-description z-1 pos-abs-adaptive-static">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">

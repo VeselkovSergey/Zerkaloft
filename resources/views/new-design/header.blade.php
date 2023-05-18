@@ -22,9 +22,7 @@
                                                 @foreach($category->ProductsByNotOnlyInCalculator as $product)
                                                     <a href="{{$product->Link()}}" class="color-white block catalog-product-container w-33 pos-rel">
                                                         <div class="p-5">
-                                                            @foreach(unserialize($product->img) as $img)
-                                                                <img style="" src="{{route('files', $img)}}" alt="{{$product->title}}">
-                                                            @endforeach
+                                                            <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                                                             <div class="pos-abs"
                                                                  style="top: 5px; left: 5px; width: calc(100% - 10px); height: calc(100% - 10px)">
                                                                 <div class="catalog-product-description h-100 w-100">

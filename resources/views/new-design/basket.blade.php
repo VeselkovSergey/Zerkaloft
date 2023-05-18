@@ -12,22 +12,18 @@
                          data-product-container="{{$product->id . '-' . $product->price_id}}"
                     >
                         <div class="hide-adaptive">
-                            @foreach(unserialize($product->img) as $img)
-                                <div class="mr-10" style="width: 40px; height: 40px;">
-                                    <img src="{{route('files', $img)}}" alt="{{$product->title}}">
-                                </div>
-                            @endforeach
+                            <div class="mr-10" style="width: 40px; height: 40px;">
+                                <img src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
+                            </div>
                         </div>
                         <div class="w-90-adaptive-100">
                             <div class="mr-10-adaptive-0">
                                 <div class="flex">
                                     <div class="mb-10 flex-center">
                                         <div class="show-adaptive">
-                                            @foreach(unserialize($product->img) as $img)
-                                                <div class="mr-10" style="width: 40px; height: 40px;">
-                                                    <img src="{{route('files', $img)}}" alt="{{$product->title}}">
-                                                </div>
-                                            @endforeach
+                                            <div class="mr-10" style="width: 40px; height: 40px;">
+                                                <img src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="w-100 mb-10" style="border: 1px solid white; border-radius: 25px; padding: 10px;">

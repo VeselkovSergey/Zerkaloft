@@ -2,6 +2,23 @@
 
 @section('content')
 
+    <style>
+        .product-images {
+            display: flex;
+        }
+        .product-images > .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+
     <div class="mb-10">
         <a href="{{route('products-admin-page')}}" class="button-blue w-fit">назад в продукты</a>
     </div>
@@ -150,7 +167,11 @@
                            style="max-width: 300px; max-height: 300px;">Загрузите картинку (квадратная 800*800 /
                         1000*1000)</label>
                     <input class="hide w-100" id="product_img" name="product_img"
-                           type="file" accept="image/jpeg, image/png, image/bmp">
+                           type="file" multiple accept="image/jpeg, image/png, image/bmp, image/webp">
+                </div>
+
+                <div class="product-images">
+
                 </div>
 
                 <div class="p-10">
@@ -468,7 +489,16 @@
                 productName.value = data.product.title;
                 productDescription.value = data.product.description;
                 searchWords.value = data.product.search_words;
-                PutImgUrlInInput(data.productImgUrl);
+                // PutImgUrlInInput(data.productImgUrl);
+
+                data.productImagesUrls.map((imgUrl) => {
+                    const productImages = document.body.querySelector('.product-images')
+
+                    let image = document.createElement("div")
+                    image.classList.add('image')
+                    image.style.backgroundImage = "url(" + imgUrl + ")"
+                    productImages.append(image)
+                })
 
                 Object.keys(data.product.prices).forEach((key) => {
                     const priceData = data.product.prices[key];

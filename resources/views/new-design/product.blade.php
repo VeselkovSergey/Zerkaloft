@@ -46,7 +46,7 @@
 
         <div class="flex-wrap px-10">
             <div class="w-25-adaptive-100" style="order: 1;">
-                <div class="flex-center mb-10 mr-10-adaptive-0">
+                <div class="mb-10 mr-10-adaptive-0 slider-product">
                     @foreach(unserialize($product->img) as $img)
                         <img style="max-height: calc(65vh);" src="{{route('files', $img)}}" alt="{{$product->title}}">
                     @endforeach
@@ -253,6 +253,8 @@
                 location.reload()
             })
         })
+
+        slider(document.body.querySelector('.slider-product'))
 
     </script>
 @endsection

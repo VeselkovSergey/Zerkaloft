@@ -31,12 +31,8 @@
                             <div class="container-product-in-basket flex-column-center p-5"
                                  data-product-container="{{$product->id . '-' . $product->price_id}}">
 
-                                @foreach(unserialize($product->img) as $img)
-                                    <div>
-                                        <img class="border-radius-10 mb-10" width="300" src="{{route('files', $img)}}"
-                                             alt="Изображение {{$product->title}}">
-                                    </div>
-                                @endforeach
+                                <img class="border-radius-10 mb-10" width="300" src="{{$product->FirstImgUrl()}}"
+                                     alt="Изображение {{$product->title}}">
 
                                     <div class="flex-column-center" style="flex: 1;">
                                         <div class="m-10" style="flex: 1;">

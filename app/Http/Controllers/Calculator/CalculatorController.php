@@ -87,9 +87,16 @@ class CalculatorController
             $tempProductPrice[$productPrice->id] = $productPrice->toArray();
         }
         $product->prices = $tempProductPrice;
+
+        $productImagesUrls = [];
+        foreach (unserialize($product->img) as $img) {
+            $productImagesUrls[] = route('files', $img);
+        }
+
         return ResultGenerate::Success('', [
             'product' => $product->getAttributes(),
             'productImgUrl' => route('files', unserialize($product->img)[0]),
+            'productImagesUrls' => $productImagesUrls,
             'productLink' => $product->Link(),
             'additionalProductServices' => (isset($request->productEdit) && $request->productEdit === "true") ? $product->AdditionalServicesPrice : null,
         ]);

@@ -25,9 +25,7 @@
                 <div class="product-category-page p-10">
                     <div class="smooth-block w-100 pos-rel">
                         <a href="{{route('product', [$category->semantic_url, $product->semantic_url])}}">
-                            @foreach(unserialize($product->img) as $img)
-                                <img style="border-radius: 15px;" src="{{route('files', $img)}}" alt="Изображение {{$product->title}}">
-                            @endforeach
+                            <img style="border-radius: 15px;" src="{{$product->FirstImgUrl()}}" alt="Изображение {{$product->title}}">
                             <div class="shadow-text w-100 h-100 flex-center border-radius-15 pos-abs top-0" style="background-color: rgba(0, 0, 0, 0.2);">
                                 <div class="color-white text-center" style="font-size: 24px;">
                                     {{$product->title}}

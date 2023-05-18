@@ -20,8 +20,8 @@ class StringHelper
 
         $value = mb_strtolower($value);
         $value = strtr($value, $converter);
-        $value = mb_ereg_replace('[^-0-9a-z]', '-', $value);
-        $value = mb_ereg_replace('[-]+', '-', $value);
+        $value = preg_replace('/[^-0-9a-z]/', '-', $value);
+        $value = preg_replace('/[-]+/', '-', $value);
         $value = trim($value, '-');
 
         return $value;
