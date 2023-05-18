@@ -38,7 +38,7 @@
 
     <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
 
-    <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Агентство ' . env('APP_NAME')}}">
+    <meta name="description" content="{{isset($metaDescription) ? $metaDescription : env('APP_NAME')}}">
 
     <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
 
