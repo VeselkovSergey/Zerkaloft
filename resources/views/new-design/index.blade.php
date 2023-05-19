@@ -16,7 +16,7 @@
         @php
             $dataFirstBlock = \App\Http\Controllers\Administration\SettingsController::dataFirstBlockOnMainPage();
         @endphp
-        <div class="flex-adaptive-block bg-yellow p-20">
+        <div class="flex-adaptive-block p-20" style="background-color: {{$dataFirstBlock->bgColor}};">
             <div class="w-50-adaptive-100 slider">
                 @foreach($dataFirstBlock->imageFileId as $key => $imgId)
                     <picture>

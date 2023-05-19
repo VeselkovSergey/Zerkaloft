@@ -123,6 +123,11 @@
         </div>
 
         <div class="p-10 w-100">
+            <label for="footerText">Цвет фона</label>
+            <textarea class="w-100" name="bgColorFirstBlockOnMainPage" id="bgColorFirstBlockOnMainPage">{{$textFirstBlockOnMainPage->bgColor}}</textarea>
+        </div>
+
+        <div class="p-10 w-100">
             <label for="bodyImage">Картинки первого блока на главной страницы</label>
             <input type="file" multiple name="imgFirstBlockOnMainPage" id="imgFirstBlockOnMainPage" accept="image/jpeg, image/png, image/webp">
         </div>

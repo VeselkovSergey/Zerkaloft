@@ -424,6 +424,7 @@ class SettingsController extends Controller
                 'imageFileId' => $fileIds,
                 'imageSquareFileId' => $file2Ids,
                 'text' => $request->get('textFirstBlockOnMainPage'),
+                'bgColor' => $request->get('bgColorFirstBlockOnMainPage'),
             ])
         ]);
 

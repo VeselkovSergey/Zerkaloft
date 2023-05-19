@@ -19,6 +19,7 @@ class AddFirstBlockOnMainPageInSettings extends Migration
                 'text' => 'Текст первого блока на главной страницы',
                 'imageFileId' => [],
                 'imageSquareFileId' => [],
+                'bgColor' => '#e7e537',
             ])
         ]);
     }
