@@ -312,12 +312,6 @@ class SettingsController extends Controller
         return json_decode($footerText->value);
     }
 
-    public static function dataFirstBlockOnMainPage()
-    {
-        $footerText = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
-        return json_decode($footerText->value);
-    }
-
     public function SaveAboutInfo(Request $request)
     {
         $aboutText = $request->aboutText;
@@ -396,10 +390,17 @@ class SettingsController extends Controller
         return ResultGenerate::Success();
     }
 
+    public static function dataFirstBlockOnMainPage()
+    {
+        $footerText = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
+        return json_decode($footerText->value);
+    }
+
     public function firstBlockOnMainPage(Request $request)
     {
         $images = !empty($request->allFiles()) ? $request->allFiles() : null;
         $model = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
+        $dataModel = json_decode($model->value);
 
         $fileIds = [];
         $file2Ids = [];
@@ -421,8 +422,8 @@ class SettingsController extends Controller
 
         $model->update([
             'value' => json_encode([
-                'imageFileId' => $fileIds,
-                'imageSquareFileId' => $file2Ids,
+                'imageFileId' => empty($fileIds) ? $dataModel->imageFileId : $fileIds,
+                'imageSquareFileId' => empty($file2Ids) ? $dataModel->imageSquareFileId : $file2Ids,
                 'text' => $request->get('textFirstBlockOnMainPage'),
                 'bgColor' => $request->get('bgColorFirstBlockOnMainPage'),
             ])
