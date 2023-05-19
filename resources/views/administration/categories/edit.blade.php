@@ -33,7 +33,7 @@
 
             <div style="padding: 10px; width: 100%;">
                 <label class="category-img-label" for="category_img" style="max-width: 300px; max-height: 300px; background-image: url('{{route('files', $img)}}')"></label>
-                <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp" style="width: 100%;">
+                <input id="category_img" type="file" accept="image/jpeg, image/png, image/bmp, image/webp" style="width: 100%;">
             </div>
 
         @endforeach

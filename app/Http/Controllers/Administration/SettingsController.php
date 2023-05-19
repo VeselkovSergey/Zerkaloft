@@ -202,6 +202,7 @@ class SettingsController extends Controller
             'fastOrderPageInfo' => self::FastOrderInfo(),
             'aboutPageInfo' => self::AboutInfo(),
             'footerText' => self::FooterText(),
+            'textFirstBlockOnMainPage' => self::dataFirstBlockOnMainPage(),
             'fastMenuSetting' => self::GetFastMenu(),
         ]);
     }
@@ -311,6 +312,12 @@ class SettingsController extends Controller
         return json_decode($footerText->value);
     }
 
+    public static function dataFirstBlockOnMainPage()
+    {
+        $footerText = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
+        return json_decode($footerText->value);
+    }
+
     public function SaveAboutInfo(Request $request)
     {
         $aboutText = $request->aboutText;
@@ -384,6 +391,40 @@ class SettingsController extends Controller
 
         $model->update([
             'value' => json_encode(['imageFileId' => $fileId])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
+    public function firstBlockOnMainPage(Request $request)
+    {
+        $images = !empty($request->allFiles()) ? $request->allFiles() : null;
+        $model = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
+
+        $fileIds = [];
+        $file2Ids = [];
+        if (!empty($images)) {
+            foreach ($images as $key => $image) {
+                if (in_array($image->getMimeType(), ['image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($image, $this->storagePath, $this->storageDriver);
+                    preg_match("/imgFirstBlockOnMainPage/", $key, $matches);
+                    if (isset($matches[0])) {
+                        $fileIds[] = $saveFile->id;
+                    } else {
+                        $file2Ids[] = $saveFile->id;
+                    }
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
+        $model->update([
+            'value' => json_encode([
+                'imageFileId' => $fileIds,
+                'imageSquareFileId' => $file2Ids,
+                'text' => $request->get('textFirstBlockOnMainPage'),
+            ])
         ]);
 
         return ResultGenerate::Success();

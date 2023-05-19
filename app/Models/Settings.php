@@ -36,6 +36,7 @@ class Settings extends Model
         14 => 'Логотип Заголовка',
         15 => 'Задний фон сайта',
         16 => 'Быстрое меню',
+        17 => 'Картинки первого блока на главной страницы',
     ];
 
     const TypeByWords = [
@@ -55,6 +56,7 @@ class Settings extends Model
         'headerLogo' => 14,
         'bodyImage' => 15,
         'fastMenu' => 16,
+        'firstBlockOnMainPage' => 17,
     ];
 
     public function TypeSetting()

@@ -13,30 +13,23 @@
 {{--                <img class="border-image" width="100%" src="/assets/imgs/img-1.png" alt="">--}}
 {{--            </div>--}}
 {{--        </div>--}}
+        @php
+            $dataFirstBlock = \App\Http\Controllers\Administration\SettingsController::dataFirstBlockOnMainPage();
+        @endphp
         <div class="flex-adaptive-block bg-yellow p-20">
             <div class="w-50-adaptive-100 slider">
-                <picture>
-                    <source media="(max-width: 540px)" srcset="assets/imgs/img1-sq.png">
-                    <img src="/assets/imgs/img1.png">
-                </picture>
-                <picture>
-                    <source media="(max-width: 540px)" srcset="assets/imgs/img2-sq.png">
-                    <img src="/assets/imgs/img2.png">
-                </picture>
+                @foreach($dataFirstBlock->imageFileId as $key => $imgId)
+                    <picture>
+                        @if(isset($dataFirstBlock->imageSquareFileId[$key]))
+                            <source media="(max-width: 540px)" srcset="{{route('files', $dataFirstBlock->imageSquareFileId[$key])}}">
+                        @endif
+                        <img src="{{route('files', $imgId)}}">
+                    </picture>
+                @endforeach
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
                 <div class="px-20 text-center font-36-adaptive-24">
-                    <div>Добавьте нотку роскоши</div>
-                    <div>в Ваш интерьер</div>
-                    <div>с нашими зеркалами!</div>
-{{--                    <div class="text-center">О КОМПАНИИ</div>--}}
-{{--                    <div>1. ПРОЕКТИРУЕМ</div>--}}
-{{--                    <div>2. РЕАЛИЗУЕМ</div>--}}
-{{--                    <div class="show-adaptive">МЫ С УДОВОЛЬСТВИЕМ--}}
-{{--                        ГОТОВЫ РЕАЛИЗОВАТЬ--}}
-{{--                        ВАШЫ--}}
-{{--                        МАРКЕТИНГОВЫЕ ИДЕИ.--}}
-{{--                    </div>--}}
+                    {!! $dataFirstBlock->text !!}
                 </div>
             </div>
         </div>

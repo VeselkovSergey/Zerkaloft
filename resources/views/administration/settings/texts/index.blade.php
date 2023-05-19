@@ -93,7 +93,7 @@
 
         <div class="p-10 w-100">
             <label for="headerLogo">Картинка для логотипа</label>
-            <input type="file" name="headerLogo" id="headerLogo" accept="image/jpeg, image/png">
+            <input type="file" name="headerLogo" id="headerLogo" accept="image/jpeg, image/png, image/webp">
         </div>
 
         <div class="p-5">
@@ -106,11 +106,34 @@
 
         <div class="p-10 w-100">
             <label for="bodyImage">Картинка для фона</label>
-            <input type="file" name="bodyImage" id="bodyImage" accept="image/jpeg, image/png">
+            <input type="file" name="bodyImage" id="bodyImage" accept="image/jpeg, image/png, image/webp">
         </div>
 
         <div class="p-5">
             <button class="save-body-image-button">Сохранить</button>
+        </div>
+
+    </div>
+
+    <div class="firstBlockOnMainPage flex-column w-100">
+
+        <div class="p-10 w-100">
+            <label for="footerText">Текст</label>
+            <textarea class="w-100" name="textFirstBlockOnMainPage" id="textFirstBlockOnMainPage">{{$textFirstBlockOnMainPage->text}}</textarea>
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="bodyImage">Картинки первого блока на главной страницы</label>
+            <input type="file" multiple name="imgFirstBlockOnMainPage" id="imgFirstBlockOnMainPage" accept="image/jpeg, image/png, image/webp">
+        </div>
+
+        <div class="p-10 w-100">
+            <label for="bodyImage">Квадратные картинки первого блока на главной страницы</label>
+            <input type="file" multiple name="imgSquareFirstBlockOnMainPage" id="imgSquareFirstBlockOnMainPage" accept="image/jpeg, image/png, image/webp">
+        </div>
+
+        <div class="p-5">
+            <button class="firstBlockOnMainPageSaveButton">Сохранить</button>
         </div>
 
     </div>
@@ -236,6 +259,17 @@
             let dataForm = GetDataFormContainer('container-body-image');
 
             Ajax("{{route('save-body-image')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.firstBlockOnMainPageSaveButton').addEventListener('click', () => {
+            LoaderShow();
+
+            let dataForm = GetDataFormContainer('firstBlockOnMainPage');
+
+            Ajax("{{route('firstBlockOnMainPage')}}", 'post', dataForm).then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });

@@ -21,7 +21,7 @@
 
         <div class="mb-10">
             <label class="carousel-image-label border" for="carouselImage" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
-            <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp">
+            <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp, image/webp">
         </div>
 
         <div class="container-buttons">
