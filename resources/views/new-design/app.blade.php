@@ -907,6 +907,10 @@
             width: 90%;
         }
 
+        .w-80-adaptive-100 {
+            width: 80%;
+        }
+
         .w-75-adaptive-100 {
             width: 75%;
         }
@@ -931,6 +935,10 @@
             }
 
             .w-90-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-80-adaptive-100 {
                 width: 100%;
             }
 

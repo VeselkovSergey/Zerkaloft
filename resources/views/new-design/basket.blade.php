@@ -11,12 +11,12 @@
                          style="margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid white;"
                          data-product-container="{{$product->id . '-' . $product->price_id}}"
                     >
-                        <div class="hide-adaptive">
-                            <div class="mr-10" style="width: 40px; height: 40px;">
+                        <div class="hide-adaptive w-10">
+                            <div class="mr-10">
                                 <img src="{{$product->Product->FirstImgUrl()}}" alt="{{$product->title}}">
                             </div>
                         </div>
-                        <div class="w-90-adaptive-100">
+                        <div class="w-80-adaptive-100">
                             <div class="mr-10-adaptive-0">
                                 <div class="flex">
                                     <div class="mb-10 flex-center">
