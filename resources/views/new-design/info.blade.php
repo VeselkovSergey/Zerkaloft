@@ -11,7 +11,7 @@
 <div class="info-block p-20">
     <a href="{{route("fast-order-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/online-order.2.svg" alt="">
+            <img src="/assets/imgs/online-order.3.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
@@ -21,7 +21,7 @@
     </a>
     <a href="{{route("about-page")}}#payment" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/payments.2.svg" alt="">
+            <img src="/assets/imgs/payments.3.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
@@ -31,7 +31,7 @@
     </a>
     <a href="{{route("about-page")}}#delivery" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/delivered.2.svg" alt="">
+            <img src="/assets/imgs/delivered.3.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
@@ -51,7 +51,7 @@
     </a>
     <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x" style="display: none;">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/gallery.svg" alt="">
+            <img src="/assets/imgs/gallery.2.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
@@ -61,7 +61,7 @@
     </a>
     <a href="{{route("about-page")}}#interesting" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/info.2.svg" alt="">
+            <img src="/assets/imgs/info.3.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
