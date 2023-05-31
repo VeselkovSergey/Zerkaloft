@@ -21,7 +21,7 @@
 <div class="favorite-page {{sizeof($popularProducts) ? "" : " hide "}}">
     <div class="pb-10">
         <div class="p-20">
-            <div style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
+            <div class="h3" style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($popularProducts as $product)
@@ -49,7 +49,7 @@
 <div class="favorite-page {{sizeof($favouriteProducts) ? "" : " hide "}}">
     <div class="pb-10">
         <div class="p-20">
-            <div style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
+            <div class="h3" style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($favouriteProducts as $product)
