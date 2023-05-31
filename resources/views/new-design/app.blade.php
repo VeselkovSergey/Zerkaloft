@@ -1350,9 +1350,9 @@
             <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;display: flex;flex-direction: column;">
                 <div class="border-radius-25 p-10 mb-10 mt-a" onclick="location.href='{{route("home-page")}}'">Главная</div>
                 <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route('fast-order-page')}}'">Быстрое оформление</div>
-                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#delivery'">Доставка</div>
-                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#payment'">Оплата</div>
-                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route('about-page')}}'" style="margin-bottom: 50px;">О компании</div>
+                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#delivery'; location.reload()">Доставка</div>
+                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#payment'; location.reload()">Оплата</div>
+                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route('about-page')}}'; location.reload()" style="margin-bottom: 50px;">О компании</div>
             </div>
         </div>
     </div>
