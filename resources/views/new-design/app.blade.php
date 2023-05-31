@@ -109,7 +109,7 @@
         }
 
         footer {
-            background-color: var(--blue-color);
+            /*background-color: var(--blue-color);*/
         }
 
         .input-search {
