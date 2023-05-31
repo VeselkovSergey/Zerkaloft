@@ -19,9 +19,9 @@
     $favouriteProducts = \App\Models\Products::whereIn('id', session()->get("favouriteProducts") ?? [])->get();
 @endphp
 <div class="favorite-page {{sizeof($popularProducts) ? "" : " hide "}}">
-    <div class="bg-yellow pb-10">
+    <div class="pb-10">
         <div class="p-20">
-            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
+            <div style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($popularProducts as $product)
@@ -47,9 +47,9 @@
     </div>
 </div>
 <div class="favorite-page {{sizeof($favouriteProducts) ? "" : " hide "}}">
-    <div class="bg-yellow pb-10">
+    <div class="pb-10">
         <div class="p-20">
-            <div style="color: black; border: 1px solid black; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
+            <div style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Понравилось</div>
         </div>
         <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
             @foreach($favouriteProducts as $product)
