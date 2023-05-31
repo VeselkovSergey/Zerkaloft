@@ -32,7 +32,7 @@
                 <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                      style="background-color: white; color: black">К ТОВАРУ
                 </div>
-                <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
+                <div class="show-adaptive w-100 mb-10">{{$product->title}}</div>
                 <div class="product-description z-1 pos-abs">
                     <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                         <div class="p-10 w-100 mb-10">{{$product->title}}</div>
@@ -60,7 +60,7 @@
                     <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
                          style="background-color: white; color: black">К ТОВАРУ
                     </div>
-                    <div class="show-adaptive w-100 mb-10" style="color: black;">{{$product->title}}</div>
+                    <div class="show-adaptive w-100 mb-10">{{$product->title}}</div>
                     <div class="product-description z-1 pos-abs">
                         <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
                             <div class="p-10 w-100 mb-10">{{$product->title}}</div>
