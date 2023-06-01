@@ -263,6 +263,12 @@
             }
         }
 
+        setInterval(() => {
+            if (anchor !== location.hash.substr(1)) {
+                location.reload()
+            }
+        }, 100)
+
 
         const allWrapper = document.body.querySelectorAll(".wrapper")
         allWrapper.forEach((wrapper) => {
