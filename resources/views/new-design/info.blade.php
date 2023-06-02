@@ -31,7 +31,7 @@
     </a>
     <a href="{{route("about-page")}}#delivery" class="block scale-1 w-15-adaptive-40vw flex-column-center-x">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/delivered.5.svg" alt="">
+            <img src="/assets/imgs/delivered.6.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
