@@ -1352,6 +1352,7 @@
                 <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route('fast-order-page')}}'">Быстрое оформление</div>
                 <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#delivery';">Доставка</div>
                 <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#payment';">Оплата</div>
+                <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route("about-page")}}#contacts';">Контакты</div>
                 <div class="border-radius-25 p-10 mb-10" onclick="location.href='{{route('about-page')}}';" style="margin-bottom: 50px;">О компании</div>
             </div>
         </div>
