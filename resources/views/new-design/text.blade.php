@@ -263,8 +263,9 @@
             }
         }
 
-        setInterval(() => {
+        const timer = setInterval(() => {
             if (anchor !== location.hash.substr(1)) {
+                clearInterval(timer)
                 location.reload()
             }
         }, 100)
