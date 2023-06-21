@@ -99,6 +99,11 @@ function Ajax(url, method, formDataRAW) {
         }
 
 
+        if (method === 'get' && formDataRAW) {
+            const searchParams = new URLSearchParams(formDataRAW);
+            url = url + '?' + searchParams.toString()
+        }
+
         var xhr = new XMLHttpRequest();
         xhr.open(method, url, true);
 

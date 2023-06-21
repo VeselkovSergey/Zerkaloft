@@ -24,7 +24,16 @@
         document.body.querySelector('.create-payment-link-button').addEventListener('click', () => {
             console.log(sum.value)
             if (sum.value.length > 0) {
-                linkContainer.value = 'https://3dsec.sberbank.ru/payment/docsite/payform-1.html?token='+sberKey+'&def=%7B%22amount%22:%22'+sum.value+'%22%7D&ask=description&ask=email&lang=ru';
+
+                Ajax("{{route('online-payment.get-payment-link')}}", 'get', {
+                    sum: sum.value
+                }).then((response) => {
+                    linkContainer.value = response.paymentLink
+                }).catch(() => {
+                    ModalWindow('Сегодня онлайн оплата не работает.');
+                });
+
+                // linkContainer.value = 'https://3dsec.sberbank.ru/payment/docsite/payform-1.html?token='+sberKey+'&def=%7B%22amount%22:%22'+sum.value+'%22%7D&ask=description&ask=email&lang=ru';
             }
         });
 

@@ -169,7 +169,7 @@
                             <div class="mb-10 w-50-adaptive-100 mr-10-adaptive-0">
                                 <select name="type_payment" id="type_payment" class="select-3 w-100">
                                     <option value="1">Оплата при получении</option>
-{{--                                    <option value="2">Онлайн оплата</option>--}}
+                                    <option value="2">Онлайн оплата</option>
                                 </select>
                             </div>
                             <div class="mb-10 w-50-adaptive-100">
@@ -223,7 +223,7 @@
 
 @section("js")
 {{--    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>--}}
-    <script src="https://securecardpayment.ru/payment/docsite/assets/js/ipay.js"></script>
+{{--    <script src="https://securecardpayment.ru/payment/docsite/assets/js/ipay.js"></script>--}}
 
     <script>
 
@@ -236,6 +236,18 @@
             if (!CheckingFieldForEmptiness('client-order-information', true)) {
                 return false;
             }
+
+            Ajax("{{route('online-payment.get-payment-link')}}", 'get', {
+                sum: localStorage.getItem('sumProductsPricesInBasket')
+            }).then((response) => {
+                CreateOrder(() => {
+                    window.open(response.paymentLink, '_blank').focus();
+                })
+            }).catch(() => {
+                ModalWindow('Сегодня онлайн оплата не работает. Свяжитесь с нами для уточнения.');
+            });
+
+            return
 
             ipayCheckout({
                     amount: localStorage.getItem('sumProductsPricesInBasket'),
@@ -429,29 +441,33 @@
 
         if (buttonAddProductInBasket !== null) {
             buttonAddProductInBasket.addEventListener('click', (e) => {
+                CreateOrder()
+            });
+        }
 
-                if (!CheckingFieldForEmptiness('client-order-information', true)) {
-                    return false;
+        function CreateOrder(callback) {
+            if (!CheckingFieldForEmptiness('client-order-information', true)) {
+                return false;
+            }
+
+            let dataForm = GetDataFormContainer('client-order-information');
+
+            dataForm['ordered_products'] = GetAllProductsInBasket();
+
+            let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
+            createOrderButton.hide();
+
+            Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
+                if (response.status) {
+                    ClearAllProductsInBasket();
+                    callback && callback()
+                    ModalWindow('Заказ оформлен! С Вами скоро свяжутся!', () => {
+                        location.href = "{{route('home-page')}}";
+                    });
+                } else {
+                    ShowFlashMessage(response.message, 5000);
+                    createOrderButton.show();
                 }
-
-                let dataForm = GetDataFormContainer('client-order-information');
-
-                dataForm['ordered_products'] = GetAllProductsInBasket();
-
-                let createOrderButton = document.body.querySelector('.client-order-information .button-create-order');
-                createOrderButton.hide();
-
-                Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
-                    if (response.status) {
-                        ClearAllProductsInBasket();
-                        ModalWindow('Заказ оформлен! С Вами скоро свяжутся!', () => {
-                            location.href = "{{route('home-page')}}";
-                        });
-                    } else {
-                        ShowFlashMessage(response.message, 5000);
-                        createOrderButton.show();
-                    }
-                });
             });
         }
 

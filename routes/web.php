@@ -411,6 +411,57 @@ Route::group(['prefix' => 'callback-orders'], function () {
 
 });
 
+Route::group(['prefix' => 'online-payment'], function () {
+
+
+    Route::get('/get-payment-link', function () {
+        // https://snipp.ru/php/tinkoff-pay
+        try {
+            // Индификатор терминала.
+            $terminalKey = env('TINKOFF_TERMINAL_KEY');
+
+            // Сумма в рублях.
+            $sum = request()->get('sum') ?? 1;
+
+            // Номер заказа.
+            $orderId = time();
+
+            $data = [
+                "TerminalKey" => $terminalKey,
+                "Amount" => $sum * 100,
+                "OrderId" => $orderId,
+                "SuccessURL" => \route("online-payment.success"),
+                "PayType" => 'O',
+            ];
+
+            $ch = curl_init('https://securepay.tinkoff.ru/v2/Init');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            $res = curl_exec($ch);
+            curl_close($ch);
+
+            $res = json_decode($res);
+
+            $paymentLink = $res->PaymentURL;
+
+            return compact('orderId', 'paymentLink');
+        } catch (Exception $e) {
+            return abort(404);
+        }
+    })->name('online-payment.get-payment-link');
+
+    Route::get('/success', function () {
+        $text = 'Платеж успешно проведен. С вами скоро свяжутся.';
+        $redirectRoute = \route('home-page');
+        return view('layout.text-and-redirect', compact('redirectRoute', 'text'));
+    })->name('online-payment.success');
+
+});
+
 //Route::get('/debug-phpinfo', function () {
 //    phpinfo();
 //});
