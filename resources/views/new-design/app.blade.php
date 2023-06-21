@@ -1235,6 +1235,10 @@
             color: white;
             font-size: 16px;
         }
+
+        main::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 </head>
@@ -1245,7 +1249,7 @@
 
         <div class="flash-message flash-message-error hide"></div>
 
-        <main>
+        <main style="overflow-y: scroll; max-height: calc(100vh - 100px);">
             @yield("content")
         </main>
         <footer class="flex-center-y flex-wrap-evenly-x p-10 color-white">
