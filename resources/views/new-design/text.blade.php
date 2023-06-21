@@ -14,7 +14,7 @@
         .wrapper {
             position: relative;
             border-right: unset;
-            border-radius: 50px 0 0 50px;
+            border-radius: 50px;
             height: 92px;
         }
 
@@ -22,17 +22,18 @@
             padding: 30px;
             width: 87%;
             position: absolute;
-            border-radius: 50px 0 0 50px;
+            border-radius: 50px;
             left: 0;
             top: 0;
         }
 
         .active.wrapper {
             border: 1px solid white;
+            box-shadow: 2px 4px 12px 1px black;
         }
 
         .active.wrapper .block {
-            background-color: var(--main-bg-color);
+            /*background-color: var(--main-bg-color);*/
         }
 
         .wrapper .block > div {
@@ -40,7 +41,7 @@
         }
 
         .active.wrapper .block > div {
-            color: var(--blue-color);
+            /*color: var(--blue-color);*/
             border-color: var(--blue-color);
         }
 
@@ -136,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-50-adaptive-100 border-adaptive-none texts" style="border-radius: 0 50px 50px 50px;">
+            <div class="w-50-adaptive-100 texts">
                 <div data-anchor-relation="about" style="padding: 10px 30px;">
                     <h2 class="text-center">О компании</h2>
                     <pre class="font-regular">
