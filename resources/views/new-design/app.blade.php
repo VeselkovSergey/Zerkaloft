@@ -1125,6 +1125,38 @@
         }
     </style>
 
+    <style>
+        .flash-message {
+            text-align: center;
+            position: fixed;
+            width: auto;
+            right: 10px;
+            padding: 10px 50px;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
+
+        .flash-message-error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .flash-message-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+        .flash-message-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+
     @yield('css')
 
     <script src="{{ asset('resources/js/add.prototypes.js') }}"></script>
