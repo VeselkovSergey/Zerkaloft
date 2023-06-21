@@ -227,7 +227,7 @@
 
     <script>
 
-        const ipay = new IPAY({api_token: sberKey});
+        // const ipay = new IPAY({api_token: sberKey});
 
         const buttonAddProductInBasket = document.body.querySelector('.button-create-order');
         const orderPaymentButton = document.body.querySelector('.order-payment-button');
