@@ -100,7 +100,7 @@
             top: 0;
             width: 100%;
             color: white;
-            background-color: var(--main-bg-color);
+            /*background-color: var(--main-bg-color);*/
             z-index: 2;
         }
 
