@@ -1247,7 +1247,7 @@
 
         @media screen and (max-width: 540px) {
             main {
-                max-height: calc(100vh - 176px);
+                max-height: calc(100vh - 216px);
             }
         }
     </style>
