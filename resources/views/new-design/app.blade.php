@@ -1243,13 +1243,13 @@
 
 </head>
 <body class="font-regular" style="background-image: url({{route('files', \App\Http\Controllers\Administration\SettingsController::GetBodyImage()->imageFileId)}}); background-size: cover; background-attachment: fixed;">
-<div style="min-height: 100vh;">
-    <div style="max-width: 1440px; min-height: 100vh; margin: auto;">
+<div>
+    <div style="max-width: 1440px; margin: auto;">
         @include("new-design.header")
 
         <div class="flash-message flash-message-error hide"></div>
 
-        <main style="overflow-y: scroll; max-height: calc(100vh - 100px);">
+        <main style="overflow-y: scroll; max-height: calc(100vh - 158px);">
             @yield("content")
         </main>
         <footer class="flex-center-y flex-wrap-evenly-x p-10 color-white">

@@ -16,15 +16,11 @@
             border-right: unset;
             border-radius: 50px;
             height: 92px;
+            white-space: nowrap;
         }
 
         .wrapper .block {
             padding: 30px;
-            width: 87%;
-            position: absolute;
-            border-radius: 50px;
-            left: 0;
-            top: 0;
         }
 
         .active.wrapper {
