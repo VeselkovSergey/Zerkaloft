@@ -415,7 +415,11 @@ Route::group(['prefix' => 'online-payment'], function () {
 
 
     Route::get('/get-payment-link', function () {
+
         // toDo https://snipp.ru/php/tinkoff-pay
+
+        // toDo https://www.tinkoff.ru/kassa/develop/api/payments/init-description/
+
         try {
             // Индификатор терминала.
             $terminalKey = env('TINKOFF_TERMINAL_KEY');
