@@ -1210,6 +1210,9 @@
 <div style="min-height: 100vh;">
     <div style="max-width: 1440px; min-height: 100vh; margin: auto;">
         @include("new-design.header")
+
+        <div class="flash-message flash-message-error hide"></div>
+
         <main>
             @yield("content")
         </main>
