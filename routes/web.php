@@ -473,7 +473,7 @@ Route::group(['prefix' => 'online-payment'], function () {
     })->name('online-payment.get-payment-link');
 
     Route::get('/success', function () {
-        $text = 'Платеж успешно проведен. С вами скоро свяжутся.';
+        $text = 'Платеж успешно проведен.<br />С вами скоро свяжутся.';
         $redirectRoute = \route('home-page');
         return view('layout.text-and-redirect', compact('redirectRoute', 'text'));
     })->name('online-payment.success');
