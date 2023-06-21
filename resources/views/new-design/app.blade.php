@@ -765,7 +765,7 @@
 
     <style>
         main {
-            min-height: calc(100vh - 176px);
+            /*min-height: calc(100vh - 176px);*/
         }
 
         img {
@@ -1239,6 +1239,17 @@
         main::-webkit-scrollbar {
             display: none;
         }
+
+        main {
+            max-height: calc(100vh - 158px);
+            overflow-y: scroll;
+        }
+
+        @media screen and (max-width: 540px) {
+            main {
+                max-height: calc(100vh - 176px);
+            }
+        }
     </style>
 
 </head>
@@ -1249,7 +1260,7 @@
 
         <div class="flash-message flash-message-error hide"></div>
 
-        <main style="overflow-y: scroll; max-height: calc(100vh - 158px);">
+        <main>
             @yield("content")
         </main>
         <footer class="flex-center-y flex-wrap-evenly-x p-10 color-white">
