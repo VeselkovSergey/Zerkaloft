@@ -108,7 +108,7 @@ class OrdersController
 
         $this->SendTelegram($request);
 
-        return ResultGenerate::Success('Заказ успешно создан!');
+        return ResultGenerate::Success('Заказ успешно создан!', ['orderId' => $createdOrder->id]);
     }
 
     public function OrdersManagementPage()

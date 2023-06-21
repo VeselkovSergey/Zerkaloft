@@ -237,15 +237,19 @@
                 return false;
             }
 
-            Ajax("{{route('online-payment.get-payment-link')}}", 'get', {
-                sum: localStorage.getItem('sumProductsPricesInBasket')
-            }).then((response) => {
-                CreateOrder(() => {
+            CreateOrder((orderId, sum) => {
+                Ajax("{{route('online-payment.get-payment-link')}}", 'get', {
+                    sum: sum,
+                    orderId: orderId,
+                }).then((response) => {
                     window.open(response.paymentLink, '_blank').focus();
-                })
-            }).catch(() => {
-                ModalWindow('Сегодня онлайн оплата не работает. Свяжитесь с нами для уточнения.');
-            });
+                }).catch(() => {
+                    ModalWindow('Сегодня онлайн оплата не работает. Свяжитесь с нами для уточнения.');
+                });
+
+            })
+
+
 
             return
 
@@ -459,8 +463,8 @@
 
             Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
+                    callback && callback(response.result.orderId, localStorage.getItem('sumProductsPricesInBasket'))
                     ClearAllProductsInBasket();
-                    callback && callback()
                     ModalWindow('Заказ оформлен! С Вами скоро свяжутся!', () => {
                         location.href = "{{route('home-page')}}";
                     });

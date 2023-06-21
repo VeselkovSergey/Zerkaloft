@@ -415,7 +415,7 @@ Route::group(['prefix' => 'online-payment'], function () {
 
 
     Route::get('/get-payment-link', function () {
-        // https://snipp.ru/php/tinkoff-pay
+        // toDo https://snipp.ru/php/tinkoff-pay
         try {
             // Индификатор терминала.
             $terminalKey = env('TINKOFF_TERMINAL_KEY');
@@ -424,7 +424,7 @@ Route::group(['prefix' => 'online-payment'], function () {
             $sum = request()->get('sum') ?? 1;
 
             // Номер заказа.
-            $orderId = time();
+            $orderId = request()->get('orderId') ?? time();
 
             $data = [
                 "TerminalKey" => $terminalKey,
@@ -432,6 +432,20 @@ Route::group(['prefix' => 'online-payment'], function () {
                 "OrderId" => $orderId,
                 "SuccessURL" => \route("online-payment.success"),
                 "PayType" => 'O',
+                "Receipt" => [
+                    "Email" => "not@not.not",
+                    "Taxation" => "usn_income_outcome",
+                    "Items" => [
+                        [
+                            "Name" => "Предоплата в размере 100%",
+                            "Quantity" => 1,
+                            "Amount" => $sum * 100,
+                            "Price" => $sum * 100,
+                            "PaymentMethod " => "full_prepayment ",
+                            "Tax" => "none",
+                        ]
+                    ]
+                ]
             ];
 
             $ch = curl_init('https://securepay.tinkoff.ru/v2/Init');
