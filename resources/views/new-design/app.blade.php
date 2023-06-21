@@ -1238,7 +1238,7 @@
     </style>
 
 </head>
-<body class="font-regular" style="background-image: url({{route('files', \App\Http\Controllers\Administration\SettingsController::GetBodyImage()->imageFileId)}}); background-size: cover;">
+<body class="font-regular" style="background-image: url({{route('files', \App\Http\Controllers\Administration\SettingsController::GetBodyImage()->imageFileId)}}); background-size: cover; background-attachment: fixed;">
 <div style="min-height: 100vh;">
     <div style="max-width: 1440px; min-height: 100vh; margin: auto;">
         @include("new-design.header")
