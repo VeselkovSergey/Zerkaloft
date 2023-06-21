@@ -27,7 +27,7 @@
                     </picture>
                 @endforeach
             </div>
-            <div class="w-50-adaptive-100 flex-center font-36-adaptive" style="color: black">
+            <div class="w-50-adaptive-100 flex-center font-36-adaptive">
                 <div class="px-20 text-center font-36-adaptive-24">
                     {!! $dataFirstBlock->text !!}
                 </div>
