@@ -235,8 +235,16 @@
 
         const timer = setInterval(() => {
             if (anchor !== location.hash.substr(1)) {
-                clearInterval(timer)
-                location.reload()
+                anchor = location.hash.substr(1)
+                const findAnchor = document.body.querySelector(`[data-anchor="${anchor}"]`)
+                if (findAnchor) {
+                    document.body.querySelectorAll(".wrapper").forEach((wrapper2) => {
+                        wrapper2.classList.remove("active")
+                        document.body.querySelector(`[data-anchor-relation='${wrapper2.dataset.anchor}']`)?.classList.remove("active")
+                    })
+                    findAnchor.classList.add("active")
+                    document.body.querySelector(`[data-anchor-relation='${findAnchor.dataset.anchor}']`)?.classList.add("active")
+                }
             }
         }, 100)
 

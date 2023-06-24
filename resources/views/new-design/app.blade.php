@@ -1390,7 +1390,7 @@
                 <div onclick="location.href='mailto:{{$mail}}?subject=Вопрос'">
                     <img width="30" src="/assets/imgs/email.svg" alt="email">
                 </div>
-                <div data-relation-id="mobMenu">
+                <div data-relation-id="mobMenu" data-hide-after-click="true">
                     <img width="30" src="/assets/imgs/catalog.svg" alt="catalog">
                 </div>
                 <div onclick="{{$actionConditionAuth}}">
@@ -1426,7 +1426,13 @@
 <script>
     document.body.querySelectorAll("[data-relation-id]").forEach((element) => {
         element.addEventListener("click", () => {
-            document.body.querySelector("#" + element.dataset.relationId).classList.toggle("hide")
+            const relatedElement = document.body.querySelector("#" + element.dataset.relationId)
+            relatedElement.classList.toggle("hide")
+            if (element.dataset.hideAfterClick) {
+                relatedElement.addEventListener("click", () => {
+                    relatedElement.classList.add("hide")
+                })
+            }
         })
     })
 </script>
