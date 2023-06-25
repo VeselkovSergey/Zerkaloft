@@ -87,7 +87,7 @@
             </div>
             <div class="w-40-adaptive-100" style="order: 3;">
                 <div class="h3">Описание</div>
-                <p>{{$product->description}}</p>
+                <p>{!! $product->description !!}</p>
             </div>
             <div class="w-60-adaptive-100 order-4-2">
                 <div class="mr-10-adaptive-0" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
