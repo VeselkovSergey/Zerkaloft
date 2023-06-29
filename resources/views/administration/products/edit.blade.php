@@ -78,6 +78,12 @@
 
                 <div>
 
+                    <h4 class="p-5">Доп.услуги</h4>
+
+                    @if(!sizeof($allAdditionalServices))
+                        <div class="p-5">---</div>
+                    @endif
+
                     @foreach($allAdditionalServices as $allAdditionalService)
                         <div class="additional-service-id-{{$allAdditionalService->id}}">
                             <label class="hide">
@@ -96,6 +102,34 @@
                                     <label class="block">
                                         <input data-additional-service-id-price="{{$allAdditionalService->id}}"
                                                name="additional_service_price[]" type="text" placeholder="цена">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                <div>
+
+                    <h4 class="p-5">Фильтры</h4>
+
+                    @if(!sizeof($filters))
+                        <div class="p-5">---</div>
+                    @endif
+
+                    @foreach($filters as $filter)
+                        <div class="filter-id-{{$filter->id}}">
+                            <label class="hide">
+                                <input class="hide" name="filter_id[]" type="text"
+                                       value="{{$filter->id}}">
+                            </label>
+                            <div class="flex">
+                                <div class="p-5">
+                                    <label class="block">
+                                        {{$filter->title}}
+                                        <input data-filter-id-activation="{{$filter->id}}"
+                                               name="filter_activation[]" type="checkbox">
                                     </label>
                                 </div>
                             </div>
@@ -208,6 +242,11 @@
                         <label>
                             <input type="checkbox" name="fieldsApply[additional_services]" checked>
                             Доп. услуги
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="fieldsApply[filters]" checked>
+                            Фильтры
                         </label>
 
                         <label>
@@ -478,6 +517,9 @@
             document.body.querySelectorAll('input[name="additional_service_activation[]"]').forEach((input) => {
                 input.checked = 0;
             });
+            document.body.querySelectorAll('input[name="filter_activation[]"]').forEach((input) => {
+                input.checked = 0;
+            });
 
             if (data !== false) {
                 activeProductField.checked = data.product.active;
@@ -509,6 +551,11 @@
                     const additionalProductServices = data.additionalProductServices[key];
                     document.body.querySelector('[data-additional-service-id-activation="' + additionalProductServices.additional_service_id + '"]').checked = 1;
                     document.body.querySelector('[data-additional-service-id-price="' + additionalProductServices.additional_service_id + '"]').value = additionalProductServices.price;
+                });
+
+                Object.keys(data.filtersProducts).forEach((key) => {
+                    const filterProduct = data.filtersProducts[key];
+                    document.body.querySelector('[data-filter-id-activation="' + filterProduct.filter_id + '"]').checked = 1;
                 });
 
                 document.body.querySelector('.combination-checkbox[name="product_combination['+data.product.modification_id+']"]').checked = 1;

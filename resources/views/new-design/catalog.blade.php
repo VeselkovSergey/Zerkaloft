@@ -1,39 +1,34 @@
 @php
 $bredcrumbs = [
     "Главная" => route("home-page"),
-    $category->title => route('category', $category->semantic_url),
 ];
+
+if (isset($category)) {
+    $bredcrumbs[$category->title] = route('category', $category->semantic_url);
+    $title_page = $category->title;
+    $metaDescription = $category->title . '. ' . $category->title;
+}
+
 @endphp
-
-@php($title_page = $category->title)
-
-@php($metaDescription = $category->title . '. ' . $category->title)
 
 @extends("new-design.app")
 
 @section("content")
     <div class="catalog">
         @include("new-design.bredcrumbs", $bredcrumbs)
-        <div class="flex-wrap mb-10 px-0-adaptive-10 hide">
-            <div class="mr-10">
-                <div class="p-10">Категория</div>
-                <div>
-                    <select name="" id="" class="select-3 font-light">
-                        <option value="123" selected>Объемные буквы</option>
-                    </select>
+        <div class="flex-wrap filters-container">
+            @foreach($filters as $filter)
+                <div class="checkbox-wrapper-1 mb-10 mr-10" style="width: min-content;">
+                    <input id="filter-{{$filter->id}}" type="checkbox" name="{{$filter->id}}" class="custom-checkbox filter" {{in_array($filter->id, request()->keys()) ? " checked " : ""}} value="{{$filter->id}}">
+                    <label for="filter-{{$filter->id}}">{{$filter->title}}</label>
                 </div>
-            </div>
-            <div class="mr-10">
-                <div class="p-10">Тип</div>
-                <div>
-                    <select name="" id="" class="select-3 font-light">
-                        <option value="123" selected>Объемные буквы</option>
-                    </select>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="flex-wrap-adaptive-block">
-            @foreach($productsByNotOnlyInCalculator as $product)
+            @if(!sizeof($products))
+                <h3>Нет товаров удовлетвряющих фильтрам</h3>
+            @endif
+            @foreach($products as $product)
                 <a href="{{$product->Link()}}" class="block w-33-adaptive-100 pos-rel product-container color-white">
                     <div>
                         <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
@@ -55,4 +50,18 @@ $bredcrumbs = [
         </div>
         @include("new-design.info")
     </div>
+@endsection
+
+@section('js')
+    <script>
+        document.body.querySelector('.filters-container').querySelectorAll('.filter').forEach((filter) => {
+            filter.addEventListener('change', () => {
+                let checkedFilters = []
+                document.body.querySelector('.filters-container').querySelectorAll('.filter:checked').forEach((checkedFilter) => {
+                    checkedFilters.push(`${checkedFilter.value}=${checkedFilter.value}`)
+                })
+                location.href = "{{route('catalog')}}?" + checkedFilters.join("&")
+            })
+        })
+    </script>
 @endsection

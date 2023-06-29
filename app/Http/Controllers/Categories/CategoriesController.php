@@ -9,6 +9,7 @@ use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Filters\Filters;
 use App\Models\Products;
 use App\Models\PropertiesCategories\PropertiesCategories;
 use App\Models\Relations\RelationsCategoriesAndPropertiesCategories;
@@ -176,11 +177,36 @@ class CategoriesController extends Controller
     {
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
         $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
-        $categoryAdditionalLinks = explode(';', $category->additional_links);
+//        $categoryAdditionalLinks = explode(';', $category->additional_links);
+        $filters = Filters::all();
         return view('new-design.catalog', [
+            'category' => $category,
+            'products' => $productsByNotOnlyInCalculator,
+//            'categoryAdditionalLinks' => $categoryAdditionalLinks,
+            'filters' => $filters
+        ]);
+        return view('catalog.category', [
             'category' => $category,
             'productsByNotOnlyInCalculator' => $productsByNotOnlyInCalculator,
             'categoryAdditionalLinks' => $categoryAdditionalLinks
+        ]);
+    }
+
+    public function CatalogPage(Request $request)
+    {
+        if (sizeof(\request()->keys())) {
+            $products = Products::query()->whereHas("filtersProducts", function ($q) {
+                foreach (\request()->keys() as $filterId) {
+                    $q->where('filter_id', $filterId);
+                }
+            })->get();
+        } else {
+            $products = Products::query()->where('not_only_calculator', 1)->get();
+        }
+        $filters = Filters::all();
+        return view('new-design.catalog', [
+            'products' => $products,
+            'filters' => $filters
         ]);
         return view('catalog.category', [
             'category' => $category,

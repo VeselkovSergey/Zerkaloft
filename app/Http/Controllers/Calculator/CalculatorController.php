@@ -99,6 +99,7 @@ class CalculatorController
             'productImagesUrls' => $productImagesUrls,
             'productLink' => $product->Link(),
             'additionalProductServices' => (isset($request->productEdit) && $request->productEdit === "true") ? $product->AdditionalServicesPrice : null,
+            'filtersProducts' => (isset($request->productEdit) && $request->productEdit === "true") ? $product->filtersProducts : null,
         ]);
     }
 }

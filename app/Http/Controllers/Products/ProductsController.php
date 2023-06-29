@@ -11,6 +11,8 @@ use App\Helpers\StringHelper;
 use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
 use App\Models\Categories;
+use App\Models\Filters\Filters;
+use App\Models\Filters\FiltersProducts;
 use App\Models\Products;
 use App\Models\ProductsPrices;
 use App\Models\PropertiesCategories\PropertiesCategories;
@@ -92,8 +94,9 @@ class ProductsController
         $combination = self::ProductCombinations($category);
         $completeCombinations = $combination->completeCombinations;
         $allAdditionalServices = $combination->allAdditionalServices;
+        $filters = $combination->filters;
 
-        return view('administration.products.edit', compact('category', 'categoryPropertiesWithValues', 'completeCombinations', 'allAdditionalServices'));
+        return view('administration.products.edit', compact('category', 'categoryPropertiesWithValues', 'completeCombinations', 'allAdditionalServices', 'filters'));
     }
 
     public static function ProductCombinations(Categories $category)
@@ -140,6 +143,7 @@ class ProductsController
         return (object)[
             'completeCombinations' => $completeCombinations,
             'allAdditionalServices' => AdditionalServices::all(),
+            'filters' => Filters::all(),
         ];
     }
 
@@ -164,6 +168,8 @@ class ProductsController
         $productAdditionalServices = !empty($request->additional_service_id) ? $request->additional_service_id : null;
         $productAdditionalServicesActivation = !empty($request->additional_service_activation) ? $request->additional_service_activation : null;
         $productAdditionalServicesPrice = !empty($request->additional_service_price) ? $request->additional_service_price : null;
+        $productFilters = !empty($request->filter_id) ? $request->filter_id : null;
+        $productFiltersActivation = !empty($request->filter_activation) ? $request->filter_activation : null;
         $fieldsApply = !empty($request->fieldsApply) ? $request->fieldsApply : null;
 
         $arrCombinations = [];
@@ -298,6 +304,19 @@ class ProductsController
                         }
                     }
 
+                    if ($fieldsApply['filters'] === 'true') {
+                        FiltersProducts::where('product_id', $productFind->id)->delete();
+                        if ($productFilters) {
+                            foreach ($productFilters as $key => $filter) {
+                                if ($productFiltersActivation[$key] === 'true') {
+                                    $fieldsFilters['product_id'] = $productFind->id;
+                                    $fieldsFilters['filter_id'] = $filter;
+                                    FiltersProducts::create($fieldsFilters);
+                                }
+                            }
+                        }
+                    }
+
                     //return ResultGenerate::Success('Продукт обновлен успешно!');
                 }
                 //return ResultGenerate::Error('Ошибка обновления продукта!');
@@ -322,6 +341,17 @@ class ProductsController
                                 $fieldsPrices['price'] = $productAdditionalServicesPrice[$key];
                                 $fieldsPrices['additional_service_id'] = $productAdditionalService;
                                 AdditionalProductServices::create($fieldsPrices);
+                            }
+                        }
+                    }
+
+                    FiltersProducts::where('product_id', $productID)->delete();
+                    if ($productFilters) {
+                        foreach ($productFilters as $key => $filter) {
+                            if ($productFiltersActivation[$key] === 'true') {
+                                $fieldsFilters['product_id'] = $productID;
+                                $fieldsFilters['filter_id'] = $filter;
+                                FiltersProducts::create($fieldsFilters);
                             }
                         }
                     }

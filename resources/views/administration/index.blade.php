@@ -87,6 +87,19 @@
                 ],
             ],
             [
+                'title' => 'Фильтры',
+                'subMenu' => [
+                    [
+                        'title' => 'Все фильтры',
+                        'link' => route('filters-admin-page'),
+                    ],
+                    [
+                        'title' => 'Новый фильтр',
+                        'link' => route('create-filters-page'),
+                    ],
+                ],
+            ],
+            [
                 'title' => 'Настройки системы',
                 'subMenu' => [
                     [

@@ -170,6 +170,24 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('delete-additional-service-admin');
     });
 
+    Route::group(['prefix' => 'filters'], function () {
+
+        Route::get('/', [Controllers\Filters\FiltersController::class, 'FiltersAdminPage'])
+            ->name('filters-admin-page');
+
+        Route::get('/create', [Controllers\Filters\FiltersController::class, 'CreateFiltersAdminPage'])
+            ->name('create-filters-page');
+
+        Route::get('/edit/{id}', [Controllers\Filters\FiltersController::class, 'EditFiltersAdminPage'])
+            ->name('edit-filters-page');
+
+        Route::post('/save', [Controllers\Filters\FiltersController::class, 'SaveFilters'])
+            ->name('save-filters-admin');
+
+        Route::post('/delete', [Controllers\Filters\FiltersController::class, 'DeleteFilters'])
+            ->name('delete-filters-admin');
+    });
+
     Route::group(['prefix' => 'products'], function () {
 
         Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
@@ -351,6 +369,9 @@ Route::group(['prefix' => 'catalog'], function () {
 
     Route::post('/remove-favourite', [App\Http\Controllers\Products\ProductsController::class, 'removeFavourite'])
         ->name('remove-favourite');
+
+    Route::get('/', [App\Http\Controllers\Categories\CategoriesController::class, 'CatalogPage'])
+        ->name('catalog');
 
     Route::get('/{category_semantic_url}', [App\Http\Controllers\Categories\CategoriesController::class, 'CategoryPage'])
         ->name('category');

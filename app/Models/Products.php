@@ -6,6 +6,8 @@ namespace App\Models;
 
 use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\AdditionalServices\AdditionalServices;
+use App\Models\Filters\Filters;
+use App\Models\Filters\FiltersProducts;
 use App\Models\PropertiesCategories\PropertiesCategoriesValues;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +18,8 @@ use Illuminate\Notifications\Notifiable;
  * @mixin Builder
  * @property AdditionalProductServices AdditionalServicesPrice
  * @property AdditionalServices AdditionalServices
+ * @property FiltersProducts filtersProducts
+ * @property Filters filters
  * @property Categories Category
  * @property ProductsPrices Prices
  */
@@ -67,6 +71,16 @@ class Products extends Model
     public function AdditionalServicesPrice()
     {
         return $this->hasMany(AdditionalProductServices::class, 'product_id', 'id');
+    }
+
+    public function filters()
+    {
+        return $this->belongsToMany(Filters::class, 'filters_products', 'product_id', 'filter_id');
+    }
+
+    public function filtersProducts()
+    {
+        return $this->hasMany(FiltersProducts::class, 'product_id', 'id');
     }
 
     public function Properties()
