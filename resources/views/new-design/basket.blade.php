@@ -463,6 +463,7 @@
 
             Ajax("{{route('create-order')}}", 'post', dataForm).then((response) => {
                 if (response.status) {
+                    ym(93122517,'reachGoal','order-sent')
                     callback && callback(response.result.orderId, localStorage.getItem('sumProductsPricesInBasket'))
                     ClearAllProductsInBasket();
                     ModalWindow('Заказ оформлен! С Вами скоро свяжутся!', () => {

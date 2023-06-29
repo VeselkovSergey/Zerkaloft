@@ -756,9 +756,16 @@
                         } else if (name.value.length < 1) {
                             ModalWindowFlash('Укажите имя');
                         } else {
-                            modalWindow.remove();
-                            ModalWindowFlash('Мы скоро с вами свяжемся');
-                            Ajax(createCallbackOrderRequestRoute, "POST", {phone: phone.value, name: name.value, comments: comments.value});
+                            modalWindow.remove()
+                            ModalWindowFlash("Мы скоро с вами свяжемся")
+                            Ajax(createCallbackOrderRequestRoute, "POST", {
+                                phone: phone.value,
+                                name: name.value,
+                                comments: comments.value,
+                            }).then(() => {
+                                ym(93122517, "reachGoal", "call-order")
+                            })
+
                         }
                     }
                 }
