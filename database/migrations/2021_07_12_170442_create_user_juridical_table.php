@@ -21,7 +21,7 @@ class CreateUserJuridicalTable extends Migration
             $table->string('phone_org')->comment('Телефон сотрудника');
             $table->string('surname_worker')->comment('Фамилия сотрудника');
             $table->string('name_worker')->comment('Имя сотрудника');
-            $table->string('patronymic_worker')->nullable()->comment('Отчетсво сотрудника');
+            $table->string('patronymic_worker')->nullable()->comment('Отчество сотрудника');
             $table->string('address_juridical_org')->nullable()->comment('Юридический адрес организации');
             $table->string('address_physical_org')->nullable()->comment('Физический адрес организации');
             $table->string('bank_org')->nullable()->comment('Банк организации');
@@ -30,7 +30,7 @@ class CreateUserJuridicalTable extends Migration
             $table->string('correspondent_account_org')->nullable()->comment('Корреспондентский счёт');
             $table->string('surname_director')->nullable()->comment('Имя директора');
             $table->string('name_director')->nullable()->comment('Фамилия директора');
-            $table->string('patronymic_director')->nullable()->comment('Отчетсво директора');
+            $table->string('patronymic_director')->nullable()->comment('Отчество директора');
             $table->timestamps();
         });
     }
