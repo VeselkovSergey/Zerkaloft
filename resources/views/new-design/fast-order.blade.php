@@ -16,6 +16,15 @@
         "Быстрое оформление" => route("fast-order-page"),
     ];
 
+    $info = \App\Http\Controllers\Administration\SettingsController::CalculatorPageInfo();
+    $text = $info->text;
+    $fileId = $info->imageFileId;
+    if(isset($fastOrder) && $fastOrder === true) {
+        $info = \App\Http\Controllers\Administration\SettingsController::FastOrderInfo();
+        $text = $info->text;
+        $fileId = $info->imageFileId;
+    }
+
 @endphp
 
 @extends("new-design.app")
@@ -73,6 +82,10 @@
                 </div>
             </div>
 
+            <div class="container-text-from-settings pl-20 w-40-adaptive-100">
+                {!! $text !!}
+            </div>
+
             <div class="container-found-product hide w-40-adaptive-100">
                 <div class="flex-column">
                     <div class="flex mb-10 m-a-adaptive" style="order: 1">
@@ -126,11 +139,13 @@
         document.body.querySelector('.container-categories').append(selectorCategories);
         let containerCategoriesProperties = document.body.querySelector('.container-categories-properties');
         let containerFoundProduct = document.body.querySelector('.container-found-product');
+        let containerTextFromSettings = document.body.querySelector('.container-text-from-settings');
 
         let containerCalculator = document.body.querySelector('.container-calculator');
         let filedCategory = containerCalculator.querySelector('select[name="category"]');
         filedCategory.addEventListener('change', (event) => {
             containerFoundProduct.hide()
+            containerTextFromSettings.show()
             {{--containerFoundProduct.innerHTML = '<div class="container-found-product-container"> <div class="container-found-product-container-text"> {{$text}} </div> @if($fileId !== -1) <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt=""> @endif </div>';--}}
             let select = event.target;
             let categoryId = select.value;
@@ -221,6 +236,7 @@
                                 document.body.querySelector('.fast-order-product-link').href = res.productLink
 
                                 containerFoundProduct.show()
+                                containerTextFromSettings.hide()
                                 // containerFoundProduct.append(selectorPrices);
 
                                 // let addInBasketButton = CreateElement('button', {
