@@ -26,6 +26,6 @@ class MailSender extends Mailable
     {
         $password = $this->password;
         $email = $this->to[0]['address'];
-        return $this->view('mail.view', compact('password', 'email'))->subject('VivePro.ru');
+        return $this->view('mail.view', compact('password', 'email'))->subject(env('APP_NAME'));
     }
 }
