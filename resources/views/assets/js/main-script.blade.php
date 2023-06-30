@@ -888,9 +888,6 @@
             if (index === 0) {
                 insideElement.classList.add("active")
             }
-            insideElement.addEventListener('click', () => {
-                ModalWindow(insideElement.cloneNode(true))
-            })
         })
 
         let nextBlock = false

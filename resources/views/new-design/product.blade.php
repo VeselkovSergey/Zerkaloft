@@ -38,13 +38,13 @@
         }
     </style>
 
-    <div>
+    <div class="px-10">
 
         @include("new-design.bredcrumbs", $bredcrumbs)
 
         <div data-product-id="{{$product->id}}" class="product-id hide">{{$product->id}}</div>
 
-        <div class="flex-wrap px-10">
+        <div class="flex-wrap">
             <div class="w-25-adaptive-100">
                 <div class="mb-10 mr-10-adaptive-0 slider-product">
                     @foreach(unserialize($product->img) as $img)

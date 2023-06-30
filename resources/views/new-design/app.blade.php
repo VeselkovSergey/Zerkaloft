@@ -607,6 +607,11 @@
             padding-right: 10px;
         }
 
+        .py-20 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
         .pl-20 {
             padding-left: 20px;
         }

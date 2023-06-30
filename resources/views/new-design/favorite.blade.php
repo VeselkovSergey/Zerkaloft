@@ -19,11 +19,11 @@
     $favouriteProducts = \App\Models\Products::whereIn('id', session()->get("favouriteProducts") ?? [])->get();
 @endphp
 <div class="favorite-page {{sizeof($popularProducts) ? "" : " hide "}}">
-    <div class="pb-10">
-        <div class="p-20">
+    <div>
+        <div class="py-20">
             <div class="h3" style="border: 1px solid white; border-radius: 30px; padding: 10px; width: max-content;">Популярное</div>
         </div>
-        <div class="flex wrap-adaptive-nowrap mx-10 mr-10-children">
+        <div class="flex wrap-adaptive-nowrap mr-10-children">
             @foreach($popularProducts as $product)
             <a href="{{$product->Link()}}" class="block w-33-adaptive-40vw pos-rel product-container mr-0-adaptive-10">
                 <div>
