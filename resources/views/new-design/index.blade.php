@@ -28,9 +28,9 @@
                 @endforeach
             </div>
             <div class="w-50-adaptive-100 flex-center font-36-adaptive">
-                <div class="px-20 text-center font-36-adaptive-24">
+                <h1 class="px-20 text-center font-36-adaptive-24">
                     {!! $dataFirstBlock->text !!}
-                </div>
+                </h1>
             </div>
         </div>
         @include("new-design.info")
