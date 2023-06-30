@@ -53,9 +53,11 @@
                 </div>
             </div>
             @if($product->tech_properties)
-                <div class="w-35-adaptive-100 order-2-4 mb-10 mr-10-adaptive-0">
-                    <h3 class="h3">Характеристики</h3>
-                    <p>{!! $product->tech_properties !!}</p>
+                <div class="w-35-adaptive-100 order-2-4 mb-10 mr-10-adaptive-0 flex-center">
+                    <div>
+                        <h3 class="h3">Характеристики</h3>
+                        <p>{!! $product->tech_properties !!}</p>
+                    </div>
                 </div>
             @endif
             <div class="w-35-adaptive-100 order-2-4 mb-10">
@@ -131,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="" style="order: 3;">
+            <div class="w-60-adaptive-100" style="order: 3;">
                 <h3 class="h3">Описание</h3>
                 <p>{!! $product->description !!}</p>
             </div>
