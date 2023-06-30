@@ -18,22 +18,22 @@
 
     <style>
 
-        .order-2-4 {
-            order: 2;
+        .order-1-2 {
+            order: 1;
         }
 
-        .order-4-2 {
-            order: 4;
+        .order-2-1 {
+            order: 2;
         }
 
         @media screen and (max-width: 540px) {
 
-            .order-2-4 {
-                order: 4;
+            .order-1-2 {
+                order: 2;
             }
 
-            .order-4-2 {
-                order: 2;
+            .order-2-1 {
+                order: 1;
             }
         }
     </style>
@@ -45,7 +45,7 @@
         <div data-product-id="{{$product->id}}" class="product-id hide">{{$product->id}}</div>
 
         <div class="flex-wrap px-10">
-            <div class="w-25-adaptive-100" style="order: 1;">
+            <div class="w-25-adaptive-100">
                 <div class="mb-10 mr-10-adaptive-0 slider-product">
                     @foreach(unserialize($product->img) as $img)
                         <img style="max-height: calc(65vh);" src="{{route('files', $img)}}" alt="{{$product->title}}">
@@ -53,21 +53,21 @@
                 </div>
             </div>
             @if($product->tech_properties)
-                <div class="w-35-adaptive-100 order-2-4 mb-10 mr-10-adaptive-0 flex-center">
+                <div class="w-35-adaptive-100 mb-10 mr-10-adaptive-0 flex-center">
                     <div>
                         <h3 class="h3">Характеристики</h3>
                         <p>{!! $product->tech_properties !!}</p>
                     </div>
                 </div>
             @endif
-            <div class="w-35-adaptive-100 order-2-4 mb-10">
-                <div class="mr-10-adaptive-0 mb-20">
+            <div class="w-35-adaptive-100 mb-10 flex-column">
+                <div class="mr-10-adaptive-0 mb-20 order-1-2">
                     <div class="h3">ИЗМЕНИТЬ ПАРАМЕТРЫ</div>
                     <div class="container-categories-properties">
                         <!-- props -->
                     </div>
                 </div>
-                <div class="order-4-2">
+                <div class="order-2-1 mb-10">
                     <div class="mr-10-adaptive-0" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
                         <div class="flex mb-10">
                             @if(sizeof($product->Prices))
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-60-adaptive-100" style="order: 3;">
+            <div class="w-60-adaptive-100">
                 <h3 class="h3">Описание</h3>
                 <p>{!! $product->description !!}</p>
             </div>
