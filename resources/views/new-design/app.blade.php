@@ -192,7 +192,7 @@
         .menu-products-container {
             display: none;
             position: absolute;
-            width: calc(100vw - 40vw);
+            width: calc(100vw - 50vw);
             left: 100%;
             top: 0;
             background-color: rgba(0, 0, 0, 0.8);
