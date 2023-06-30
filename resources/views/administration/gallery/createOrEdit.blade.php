@@ -53,7 +53,7 @@
         <div class="p-10 w-100">
             <label class="category-img-label" for="gallery_img"
                    style="max-width: 300px; max-height: 300px; border: 1px solid black;">Загрузите картинку</label>
-            <input id="gallery_img" type="file" accept="image/jpeg, image/png, image/bmp, image/webp" class="w-100">
+            <input id="gallery_img" type="file" accept="image/jpeg, image/png, image/bmp, image/webp" multiple class="w-100">
         </div>
 
         @if(isset($item))

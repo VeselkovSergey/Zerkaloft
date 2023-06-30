@@ -73,6 +73,7 @@
 
 @section("js")
     <script>
+        slider(document.body.querySelector('.slider-product'))
         document.body.querySelector('.request-same-product').addEventListener('click', () => {
             requestCallBack(`Понравился данный товар: ${location.href} Прошу связаться со мной для уточнения параметров.`)
         })
