@@ -18,7 +18,7 @@ if (isset($category)) {
         @include("new-design.bredcrumbs", $bredcrumbs)
         <div class="flex-wrap filters-container">
             @foreach($filters as $filter)
-                <div class="checkbox-wrapper-1 mb-10 mr-10" style="width: min-content;">
+                <div class="checkbox-wrapper-1 mb-10 mr-20" style="width: min-content;">
                     <input id="filter-{{$filter->id}}" type="checkbox" name="{{$filter->id}}" class="custom-checkbox filter" {{in_array($filter->id, request()->keys()) ? " checked " : ""}} value="{{$filter->id}}">
                     <label for="filter-{{$filter->id}}" style="white-space: nowrap;">{{$filter->title}}</label>
                 </div>
