@@ -12,7 +12,7 @@
                     <div class="border-radius-25"
                          style="margin: 5px 0 0 5px; border: 1px solid #ffffff; width: 25vw; background-color: rgba(0,0,0,0.8)">
                         <div class="p-20">
-                            <div class="border-radius-25 p-10 font-regular">Группа</div>
+                            <div class="border-radius-25 p-10 font-regular">Каталог</div>
                             @foreach(\App\Models\Categories::all() as $category)
                                 <div class="menu-categories-container">
                                     <div class="menu-category-container" style="position: relative;">
