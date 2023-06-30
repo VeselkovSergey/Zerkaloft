@@ -52,99 +52,81 @@
                     @endforeach
                 </div>
             </div>
+            @if($product->tech_properties)
+                <div class="w-35-adaptive-100 order-2-4 mb-10 mr-10-adaptive-0">
+                    <h3 class="h3">Характеристики</h3>
+                    <p>{!! $product->tech_properties !!}</p>
+                </div>
+            @endif
             <div class="w-35-adaptive-100 order-2-4 mb-10">
-                <div class="mr-10-adaptive-0">
+                <div class="mr-10-adaptive-0 mb-20">
                     <div class="h3">ИЗМЕНИТЬ ПАРАМЕТРЫ</div>
                     <div class="container-categories-properties">
-                        <!--
-                        <div>
-                            <div class="p-10 h3">Подсветка</div>
-                            <div>
-                                <select name="" id="" class="select-3 w-100 font-light">
-                                    <option value="123" selected>123</option>
-                                </select>
+                        <!-- props -->
+                    </div>
+                </div>
+                <div class="order-4-2">
+                    <div class="mr-10-adaptive-0" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                        <div class="flex mb-10">
+                            @if(sizeof($product->Prices))
+                                @php($tempProductPrice = [])
+                                @if(sizeof($product->Prices) == 1)
+                                    @php($tempProductPrice[$product->Prices[0]->id] = $product->Prices[0]->toArray())
+                                    <label for="price" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">
+                                        {{$product->Prices[0]->count . ' ' . $product->Prices[0]->price}}
+                                        <input class="hide" type="text" name="price" id="price" value="{{$product->Prices[0]->id}}">
+                                    </label>
+                                @else
+                                    <select name="price" id="price" class="select-3 font-light">
+                                        @foreach($product->Prices as $productPrice)
+                                            @php($tempProductPrice[$productPrice->id] = $productPrice->toArray())
+                                            <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
+                                @php($product->prices = $tempProductPrice)
+                            @else
+                                <div style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Нет цен</div>
+                            @endif
+                        </div>
+                        <div class="mb-10 w-a-adaptive-100 flex" style="flex-wrap: wrap;">
+                            @if(\App\Helpers\Utils::isFavourite($product->id))
+                                <div class="add-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
+                                    <img style="height: 20px;" src="/assets/imgs/notFavourite.svg" alt="">
+                                    <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
+                                </div>
+                            @else
+                                <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
+                                    <img style="height: 20px;" src="/assets/imgs/favourite.svg" alt="">
+                                    <div class="ml-10">Убрать&nbsp;из&nbsp;избранного</div>
+                                </div>
+                            @endif
+                            <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp mb-10"
+                                 style="background-color: white; color: black;">В КОРЗИНУ
+                            </div>
+                            <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center cp mb-10"
+                                 style="background-color: white; color: black;"
+                                 onclick="location.href='{{route('basket-page')}}'">ПЕРЕЙТИ В КОРЗИНУ
                             </div>
                         </div>
-                        <div>
-                            <div class="p-10 h3">Размер</div>
-                            <div>
-                                <select name="" id="" class="select-3 w-100 font-light">
-                                    <option value="123" selected>123</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="flex-space-x-adaptive-column additional-services-container">
+                        <div class="font-light">
+                            @foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice)
+                                <div class="checkbox-wrapper-1 mb-10">
+                                    <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
+                                    <label for="color-{{$key}}">{{$additionalServicePrice->AdditionalServices->title}} - {{$additionalServicePrice->price}}</label>
+                                </div>
+                            @endforeach
                         </div>
-                        <div>
-                            <div class="p-10 h3">Материал</div>
-                            <div>
-                                <select name="" id="" class="select-3 w-100 font-light">
-                                    <option value="123" selected>123</option>
-                                </select>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
-            <div class="w-40-adaptive-100" style="order: 3;">
-                <div class="h3">Описание</div>
+            <div class="" style="order: 3;">
+                <h3 class="h3">Описание</h3>
                 <p>{!! $product->description !!}</p>
             </div>
-            <div class="w-60-adaptive-100 order-4-2">
-                <div class="mr-10-adaptive-0" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-                    <div class="flex mb-10">
-                        @if(sizeof($product->Prices))
-                            @php($tempProductPrice = [])
-                            @if(sizeof($product->Prices) == 1)
-                                @php($tempProductPrice[$product->Prices[0]->id] = $product->Prices[0]->toArray())
-                                <label for="price" style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">
-                                    {{$product->Prices[0]->count . ' ' . $product->Prices[0]->price}}
-                                    <input class="hide" type="text" name="price" id="price" value="{{$product->Prices[0]->id}}">
-                                </label>
-                            @else
-                                <select name="price" id="price" class="select-3 font-light">
-                                    @foreach($product->Prices as $productPrice)
-                                        @php($tempProductPrice[$productPrice->id] = $productPrice->toArray())
-                                        <option value="{{$productPrice->id}}" @if(($product->Prices)[0]->id == $productPrice->id) selected @endif >{{$productPrice->count . ' ' . $productPrice->price}}</option>
-                                    @endforeach
-                                </select>
-                            @endif
-                            @php($product->prices = $tempProductPrice)
-                        @else
-                            <div style="border: 1px solid white; border-radius: 25px; padding: 10px; margin-bottom: 10px;">Нет цен</div>
-                        @endif
-                    </div>
-                    <div class="mb-10 w-a-adaptive-100 flex" style="flex-wrap: wrap;">
-                        @if(\App\Helpers\Utils::isFavourite($product->id))
-                            <div class="add-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
-                                <img style="height: 20px;" src="/assets/imgs/notFavourite.svg" alt="">
-                                <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
-                            </div>
-                        @else
-                            <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
-                                <img style="height: 20px;" src="/assets/imgs/favourite.svg" alt="">
-                                <div class="ml-10">Убрать&nbsp;из&nbsp;избранного</div>
-                            </div>
-                        @endif
-                        <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp mb-10"
-                             style="background-color: white; color: black;">В КОРЗИНУ
-                        </div>
-                        <div class="button-link-basket-page hide border-radius-25 p-10 mt-a text-center cp mb-10"
-                           style="background-color: white; color: black;"
-                           onclick="location.href='{{route('basket-page')}}'">ПЕРЕЙТИ В КОРЗИНУ
-                        </div>
-                    </div>
-                </div>
-                <div class="flex-space-x-adaptive-column additional-services-container">
-                    <div class="font-light">
-                        @foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice)
-                        <div class="checkbox-wrapper-1 mb-10">
-                            <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
-                            <label for="color-{{$key}}">{{$additionalServicePrice->AdditionalServices->title}} - {{$additionalServicePrice->price}}</label>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+
         </div>
         @include("new-design.favorite")
         @include("new-design.info")

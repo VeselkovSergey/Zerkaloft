@@ -35,6 +35,7 @@ class Products extends Model
         'semantic_url',
         'price',
         'description',
+        'tech_properties',
         'search_words',
         'active',
         'not_only_calculator',

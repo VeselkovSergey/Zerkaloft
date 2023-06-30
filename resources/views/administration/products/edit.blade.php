@@ -155,7 +155,12 @@
 
                 <div class="p-10 w-100">
                     <label for="product_description" class="block w-100">Описание</label>
-                    <textarea class="w-100" name="product_description" id="product_description"></textarea>
+                    <textarea class="w-100" rows="5" name="product_description" id="product_description"></textarea>
+                </div>
+
+                <div class="p-10 w-100">
+                    <label for="product_tech_properties" class="block w-100">Описание</label>
+                    <textarea class="w-100" rows="5" name="product_tech_properties" id="product_tech_properties"></textarea>
                 </div>
 
                 <div class="p-10 w-100">
@@ -258,6 +263,10 @@
                             <input type="checkbox" name="fieldsApply[product_description]" checked>
                             Описание
                         </label>
+                        <label>
+                            <input type="checkbox" name="fieldsApply[product_tech_properties]" checked>
+                            Описание
+                        </label>
 
                         <label>
                             <input type="checkbox" name="fieldsApply[search_words]" checked>
@@ -331,6 +340,7 @@
         const productCombinationForDelete = productCombinationContainer.querySelector('input[id="product_combination_for_delete"]');
         const productName = productCombinationContainer.querySelector('input[id="product_name"]');
         const productDescription = productCombinationContainer.querySelector('textarea[name="product_description"]');
+        const productTechProperties = productCombinationContainer.querySelector('textarea[name="product_tech_properties"]');
         const searchWords = productCombinationContainer.querySelector('textarea[name="search_words"]');
         const labelProductImg = productCombinationContainer.querySelector('.product-img-label');
 
@@ -530,6 +540,7 @@
                 productCombinationForDelete.value = data.product.modification_id;
                 productName.value = data.product.title;
                 productDescription.value = data.product.description;
+                productTechProperties.value = data.product.tech_properties;
                 searchWords.value = data.product.search_words;
                 // PutImgUrlInInput(data.productImgUrl);
 
@@ -568,6 +579,7 @@
                 productCombinationForDelete.value = '';
                 productName.value = '';
                 productDescription.value = '';
+                productTechProperties.value = '';
                 searchWords.value = '';
                 AddPrice(productCombinationContainer, 0, 0);
                 PutImgUrlInInput();

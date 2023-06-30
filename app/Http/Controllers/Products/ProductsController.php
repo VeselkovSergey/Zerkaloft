@@ -163,6 +163,7 @@ class ProductsController
         $productCount = !empty($request->count) ? $request->count : null;
         $productPrices = !empty($request->price) ? $request->price : null;
         $productDescription = !empty($request->product_description) ? $request->product_description : null;
+        $productTechProperties = !empty($request->product_tech_properties) ? $request->product_tech_properties : null;
         $productSearchWords = !empty($request->search_words) ? $request->search_words : null;
         $productFiles = !empty($request->allFiles()) ? $request->allFiles() : [];
         $productAdditionalServices = !empty($request->additional_service_id) ? $request->additional_service_id : null;
@@ -209,6 +210,10 @@ class ProductsController
             return ResultGenerate::Error('Ошибка! Укажите описание!');
         }
 
+        if (!$productTechProperties) {
+            return ResultGenerate::Error('Ошибка! Укажите характеристики!');
+        }
+
         if (!$productSearchWords) {
             return ResultGenerate::Error('Ошибка! Укажите слова для поиска!');
         }
@@ -234,6 +239,10 @@ class ProductsController
 
         if ($fieldsApply['product_description'] === 'true') {
             $fields['description'] = $productDescription;
+        }
+
+        if ($fieldsApply['product_description'] === 'true') {
+            $fields['tech_properties'] = $productTechProperties;
         }
 
         if ($fieldsApply['search_words'] === 'true') {

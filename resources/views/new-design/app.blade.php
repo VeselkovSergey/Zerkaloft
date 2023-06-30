@@ -679,6 +679,7 @@
 
         .h3 {
             font-size: 20px;
+            margin: 0;
         }
 
         .h4 {
