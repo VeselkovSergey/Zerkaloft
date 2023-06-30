@@ -57,7 +57,7 @@
         <div id="mobCatalog" class="hide" style="position: absolute; top: 60px; left: 0; background-color: rgba(0,0,0,0.8); width: 100vw; height: calc(100vh - 60px);">
             <div style="overflow: scroll;height: calc(100% - 20px);padding: 10px;">
                 <div class="mb-10">
-                    <div class="border-radius-25 p-10 mb-10 mt-10">Группа</div>
+                    <div class="border-radius-25 p-10 mb-10 mt-10">Каталог</div>
                     @foreach(\App\Models\Categories::all() as $category)
                         <a href="{{route('category', $category->semantic_url)}}" class="p-5 block">{{$category->title}}</a>
                     @endforeach

@@ -170,7 +170,7 @@
         }
 
         .menu-category-container {
-            margin-top: 5px;
+            padding-top: 5px;
         }
 
         .menu-category-container:hover .menu-products-container {
