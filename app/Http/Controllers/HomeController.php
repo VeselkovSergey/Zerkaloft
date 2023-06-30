@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Files;
 use App\Models\Categories;
+use App\Models\Filters\Filters;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class HomeController
 
         }
         ksort($carouselImages);
-        return view('new-design.index', compact('carouselImages', 'searchQuery'));
+        $filters = Filters::all();
+        return view('new-design.index', compact('carouselImages', 'searchQuery', 'filters'));
         return view('home.index', compact('carouselImages', 'searchQuery'));
     }
 
