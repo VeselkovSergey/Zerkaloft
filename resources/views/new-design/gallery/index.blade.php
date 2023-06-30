@@ -35,7 +35,7 @@
                     </div>
                     <div class="product-description z-1 pos-abs-adaptive-static">
                         <div class="flex-column-center p-20" style="height: calc(100% - 40px)">
-                            <div class="border-radius-25 show-adaptive p-10 w-100 mb-a text-center">{{--{{$item->description}}--}}</div>
+{{--                            <div class="border-radius-25 show-adaptive p-10 w-100 mb-a text-center">--}}{{--{{$item->description}}--}}{{--</div>--}}
                             <div class="hide-adaptive p-10 w-100 mb-a">{{--{{$item->description}}--}}</div>
                             {{--                            @foreach($product->Category->Properties as $property)--}}
                             {{--                                <div class="font-light">{{$property->title}}</div>--}}
