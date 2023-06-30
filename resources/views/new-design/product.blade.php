@@ -113,9 +113,18 @@
                     <div class="flex-space-x-adaptive-column additional-services-container">
                         <div class="font-light">
                             @foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice)
+
+                                <?php
+                                    $additionalServiceTitle = trim($additionalServicePrice->AdditionalServices->title);
+                                    preg_match('/(#.*)$/', $additionalServiceTitle, $matches);
+                                    $color = sizeof($matches) ? $matches[0] : null;
+                                    $title = isset($color) ? preg_replace("/$color/", '', $additionalServiceTitle) : $additionalServiceTitle;
+                                    $title = trim($title)
+                                ?>
+
                                 <div class="checkbox-wrapper-1 mb-10">
                                     <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
-                                    <label for="color-{{$key}}">{{$additionalServicePrice->AdditionalServices->title}} - {{$additionalServicePrice->price}}</label>
+                                    <label for="color-{{$key}}">{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}}</label>
                                 </div>
                             @endforeach
                         </div>
