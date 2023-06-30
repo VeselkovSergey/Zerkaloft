@@ -10,11 +10,12 @@ use App\Http\Controllers\Authorization\AuthorizationController;
 use App\Models\AdditionalServices\AdditionalProductServices;
 use App\Models\FilesOrders;
 use App\Models\Orders;
-use App\Models\Products;
 use App\Models\ProductsPrices;
 use App\Models\User;
+use App\Services\Mailable\NewOrderForClient;
 use App\Services\Telegram\Telegram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController
 {
@@ -107,6 +108,7 @@ class OrdersController
         }
 
         $this->SendTelegram($request);
+        $this->SendEmail($request);
 
         return ResultGenerate::Success('Заказ успешно создан!', ['orderId' => $createdOrder->id]);
     }
@@ -288,6 +290,13 @@ class OrdersController
 
         $telegram = new Telegram();
         $telegram->sendMessage($message, env('TELEGRAM_ORDER_GROUP'));
+    }
+
+    public function SendEmail(Request $request)
+    {
+        $order = $request;
+        $order->client_email = "s-vesel94@ya.ru";
+        Mail::to($order->client_email)->send(new NewOrderForClient($order));
     }
 
     public function NewOrderFile (Request $request)
