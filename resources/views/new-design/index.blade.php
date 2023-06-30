@@ -44,7 +44,11 @@
         </div>
         <div class="flex-wrap-adaptive-block">
             @php
-                $products = \App\Models\Products::where('show_main_page', 1)->get();
+                if (isset($searchQuery)) {
+                    $products = \App\Models\Products::where('search_words', 'like', '%' . $searchQuery . '%')->get();
+                } else {
+                    $products = \App\Models\Products::where('show_main_page', 1)->get();
+                }
             @endphp
             @foreach($products as $product)
             <a href="{{$product->Link()}}" class="block w-33-adaptive-100 pos-rel product-container color-white">
@@ -67,7 +71,11 @@
             @endforeach
             <div class="flex-wrap-adaptive-block">
                 @php
-                    $categories = \App\Models\Categories::orderBy('sequence')->get();
+                    if (isset($searchQuery)) {
+                        $categories = \App\Models\Categories::where('search_words', 'like', '%' . $searchQuery . '%')->get();
+                    } else {
+                        $categories = \App\Models\Categories::orderBy('sequence')->get();
+                    }
                 @endphp
                 @foreach($categories as $category)
                 <a href="{{route('category', $category->semantic_url)}}" class="block color-white w-50-adaptive-100 category-container pos-rel">

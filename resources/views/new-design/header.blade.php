@@ -48,7 +48,7 @@
         <div class="mr-10" style="flex: 1">
             <div class="border-radius-25 flex-center-y search-container search-container-header pos-rel">
                 <img class="img-search" src="/assets/imgs/search.svg" alt="search">
-                <input class="w-100 input-search main-search-input" type="text">
+                <input class="w-100 input-search main-search-input" type="text" value="{{$searchQuery ?? ""}}">
             </div>
         </div>
         <div class="show-adaptive-flex mr-10" data-relation-id="mobCatalog">

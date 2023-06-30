@@ -83,7 +83,6 @@
         } else {
             document.body.querySelector('.delete-value-search-input')?.hide();
         }
-
     });
 
     function changeRadioEffect(type) {
