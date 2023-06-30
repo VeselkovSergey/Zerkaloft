@@ -127,7 +127,7 @@
                     <div class="wrapper" data-anchor="interesting">
                         <div class="block">
                             <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
-                                Интересные&nbsp;факты
+                                Полезная&nbsp;информация
                             </div>
                         </div>
                     </div>
