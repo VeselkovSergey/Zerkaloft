@@ -81,54 +81,54 @@
                 <div class="mb-10">
                     <div class="wrapper active" data-anchor="about">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 О компании
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="contacts">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 Контакты
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="delivery">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 Доставка
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="payment">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 Оплата
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="why_we">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 Почему&nbsp;мы
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="mb-10">
                     <div class="wrapper" data-anchor="interesting">
                         <div class="block">
-                            <div class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px;">
+                            <h3 class="cp" style="border: 1px solid; border-radius: 25px; padding: 5px 25px; margin: 0;">
                                 Полезная&nbsp;информация
-                            </div>
+                            </h3>
                         </div>
                     </div>
                 </div>
