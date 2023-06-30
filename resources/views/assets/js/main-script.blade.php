@@ -758,12 +758,11 @@
                         } else {
                             modalWindow.remove()
                             ModalWindowFlash("Мы скоро с вами свяжемся")
+                            ym(93122517, "reachGoal", "call-order")
                             Ajax(createCallbackOrderRequestRoute, "POST", {
                                 phone: phone.value,
                                 name: name.value,
                                 comments: comments.value,
-                            }).then(() => {
-                                ym(93122517, "reachGoal", "call-order")
                             })
 
                         }
