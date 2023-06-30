@@ -49,13 +49,13 @@
             </div>
         </div>
     </a>
-    <a href="{{route("about-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20" style="display: none;">
+    <a href="{{route("gallery")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/gallery.12.svg" alt="">
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Работы выполненные нашей командой не тратье время на поиски подберите себе готовые идеи
+                Готовые идеи для Вас. Работы выполненные нашей командой
             </div>
         </div>
     </a>

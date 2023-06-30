@@ -100,6 +100,19 @@
                 ],
             ],
             [
+                'title' => 'Галерея',
+                'subMenu' => [
+                    [
+                        'title' => 'Галерея',
+                        'link' => route('gallery-admin-page'),
+                    ],
+                    [
+                        'title' => 'Новая работа',
+                        'link' => route('create-gallery-page'),
+                    ],
+                ],
+            ],
+            [
                 'title' => 'Настройки системы',
                 'subMenu' => [
                     [

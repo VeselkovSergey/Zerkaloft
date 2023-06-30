@@ -501,7 +501,8 @@ main {
     background-position: center;
 }
 
-#category_img {
+#category_img,
+#gallery_img {
     display: none;
 }
 

@@ -188,6 +188,24 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('delete-filters-admin');
     });
 
+    Route::group(['prefix' => 'gallery'], function () {
+
+        Route::get('/', [Controllers\Gallery\GalleryController::class, 'GalleryAdminPage'])
+            ->name('gallery-admin-page');
+
+        Route::get('/create', [Controllers\Gallery\GalleryController::class, 'CreateGalleryAdminPage'])
+            ->name('create-gallery-page');
+
+        Route::get('/edit/{id}', [Controllers\Gallery\GalleryController::class, 'EditGalleryAdminPage'])
+            ->name('edit-gallery-page');
+
+        Route::post('/save', [Controllers\Gallery\GalleryController::class, 'SaveGallery'])
+            ->name('save-gallery-admin');
+
+        Route::post('/delete', [Controllers\Gallery\GalleryController::class, 'DeleteGallery'])
+            ->name('delete-gallery-admin');
+    });
+
     Route::group(['prefix' => 'products'], function () {
 
         Route::get('/', [Controllers\Products\ProductsController::class, 'ProductsAdminPage'])
@@ -378,6 +396,16 @@ Route::group(['prefix' => 'catalog'], function () {
 
     Route::get('/{category_semantic_url}/{product_semantic_url}', [App\Http\Controllers\Products\ProductsController::class, 'ProductPage'])
         ->name('product');
+
+});
+
+Route::group(['prefix' => 'gallery'], function () {
+
+    Route::get('/', [Controllers\Gallery\GalleryController::class, 'IndexGallery'])
+        ->name('gallery');
+
+    Route::get('/{id}', [Controllers\Gallery\GalleryController::class, 'ItemGallery'])
+        ->name('gallery-item');
 
 });
 

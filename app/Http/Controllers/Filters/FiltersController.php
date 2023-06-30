@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Filters;
 use App\Helpers\ResultGenerate;
 use App\Models\Filters\FiltersProducts;
 use App\Models\Filters\Filters;
+use App\Models\Gallery\FiltersGallery;
 use Illuminate\Http\Request;
 
 class FiltersController
@@ -66,11 +67,12 @@ class FiltersController
     {
         $filterId = \request()->post('id');
         $used = FiltersProducts::where('filter_id', $filterId)->first();
-        if (!$used) {
+        $used2 = FiltersGallery::where('filter_id', $filterId)->first();
+        if (!$used && !$used2) {
             Filters::where('id', $filterId)->delete();
             return ResultGenerate::Success();
         }
-        return ResultGenerate::Error('Услуги используются! Сначала уберите связь!');
+        return ResultGenerate::Error('Используются! Сначала уберите связь!');
 
     }
 }

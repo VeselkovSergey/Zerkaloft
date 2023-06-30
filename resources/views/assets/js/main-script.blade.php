@@ -724,53 +724,57 @@
 
     document.body.querySelectorAll('.button-back-call').forEach((buttonBackCall) => {
         buttonBackCall.addEventListener('click', () => {
-            let callbackWindowContent = CreateElement('div', {
-                class: 'flex-column-center flex-column'
-            });
-            CreateElement('label', {
-                content: 'Имя',
-                class: 'mb-5'
-            }, callbackWindowContent);
-            let name = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
-
-            CreateElement('label', {
-                content: 'Номер телефона для связи',
-                class: 'mb-5'
-            }, callbackWindowContent);
-            let phone = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
-
-            CreateElement('label', {
-                content: 'Комментарий',
-                class: 'mb-5'
-            }, callbackWindowContent);
-            let comments = CreateElement('textarea', {class: 'mb-10 black-input'}, callbackWindowContent);
-
-            CreateElement('button', {
-                content: 'Отправить',
-                class: 'button-blue mt-5',
-                events: {
-                    click: () => {
-                        if (phone.value.length < 10) {
-                            ModalWindowFlash('Не верный номер');
-                        } else if (name.value.length < 1) {
-                            ModalWindowFlash('Укажите имя');
-                        } else {
-                            modalWindow.remove()
-                            ModalWindowFlash("Мы скоро с вами свяжемся")
-                            ym(93122517, "reachGoal", "call-order")
-                            Ajax(createCallbackOrderRequestRoute, "POST", {
-                                phone: phone.value,
-                                name: name.value,
-                                comments: comments.value,
-                            })
-
-                        }
-                    }
-                }
-            }, callbackWindowContent);
-            let modalWindow = ModalWindow(callbackWindowContent);
+            requestCallBack()
         });
     });
+
+    function requestCallBack(comment = '') {
+        let callbackWindowContent = CreateElement('div', {
+            class: 'flex-column-center flex-column'
+        });
+        CreateElement('label', {
+            content: 'Имя',
+            class: 'mb-5'
+        }, callbackWindowContent);
+        let name = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
+
+        CreateElement('label', {
+            content: 'Номер телефона для связи',
+            class: 'mb-5'
+        }, callbackWindowContent);
+        let phone = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
+
+        CreateElement('label', {
+            content: 'Комментарий',
+            class: 'mb-5'
+        }, callbackWindowContent);
+        let comments = CreateElement('textarea', {class: 'mb-10 black-input', content: comment, attr: {cols: 30, rows: 7}}, callbackWindowContent);
+
+        CreateElement('button', {
+            content: 'Отправить',
+            class: 'button-blue mt-5',
+            events: {
+                click: () => {
+                    if (phone.value.length < 10) {
+                        ModalWindowFlash('Не верный номер');
+                    } else if (name.value.length < 1) {
+                        ModalWindowFlash('Укажите имя');
+                    } else {
+                        modalWindow.remove()
+                        ModalWindowFlash("Мы скоро с вами свяжемся")
+                        ym(93122517, "reachGoal", "call-order")
+                        Ajax(createCallbackOrderRequestRoute, "POST", {
+                            phone: phone.value,
+                            name: name.value,
+                            comments: comments.value,
+                        })
+
+                    }
+                }
+            }
+        }, callbackWindowContent);
+        let modalWindow = ModalWindow(callbackWindowContent);
+    }
 
     function ContainerSuggestionsGeneration(result, inputSuggestions, callback, additionalData) {
         result = JSON.parse(result).suggestions;
