@@ -38,7 +38,7 @@
             @foreach($filters as $filter)
                 <div class="checkbox-wrapper-1 mb-10 mr-10" style="width: min-content;">
                     <input id="filter-{{$filter->id}}" type="checkbox" name="{{$filter->id}}" class="custom-checkbox filter" {{in_array($filter->id, request()->keys()) ? " checked " : ""}} value="{{$filter->id}}">
-                    <label for="filter-{{$filter->id}}">{{$filter->title}}</label>
+                    <label for="filter-{{$filter->id}}" style="white-space: nowrap;">{{$filter->title}}</label>
                 </div>
             @endforeach
         </div>
