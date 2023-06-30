@@ -882,9 +882,17 @@
             if (index === 0) {
                 insideElement.classList.add("active")
             }
+            insideElement.addEventListener('click', () => {
+                ModalWindow(insideElement.cloneNode(true))
+            })
         })
 
+        let nextBlock = false
         nextButton.addEventListener("click", () => {
+            if (nextBlock) {
+                return
+            }
+            nextBlock = true
             clearInterval(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let nextIndex = currentImg.index + 1
@@ -895,6 +903,7 @@
                     setTimeout(() => {
                         insideElement.classList.remove("active")
                         insideElement.classList.remove("carousel-item-start")
+                        nextBlock = false
                     }, 1000)
                 }
 
@@ -907,6 +916,7 @@
                         insideElement.classList.add("active")
                         insideElement.classList.remove("carousel-item-next")
                         insideElement.classList.remove("carousel-item-start")
+                        nextBlock = false
                     }, 1000)
                 }
             })
@@ -917,7 +927,12 @@
             }
         })
 
+        let prevBlock = false
         prevButton.addEventListener("click", () => {
+            if (prevBlock) {
+                return
+            }
+            prevBlock = true
             clearInterval(autoClickTimer)
             const currentImg = sliderContainer.querySelector(":scope > .active")
             let prevIndex = currentImg.index - 1
@@ -928,6 +943,7 @@
                     setTimeout(() => {
                         insideElement.classList.remove("active")
                         insideElement.classList.remove("carousel-item-end")
+                        prevBlock = false
                     }, 1000)
                 }
 
@@ -940,6 +956,7 @@
                         insideElement.classList.add("active")
                         insideElement.classList.remove("carousel-item-prev")
                         insideElement.classList.remove("carousel-item-end")
+                        prevBlock = false
                     }, 1000)
                 }
             })
