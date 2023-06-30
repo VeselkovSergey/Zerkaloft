@@ -932,7 +932,7 @@
 
         let prevBlock = false
         prevButton.addEventListener("click", () => {
-            if (prevBlock) {
+            if (prevBlock || nextBlock) {
                 return
             }
             prevBlock = true
