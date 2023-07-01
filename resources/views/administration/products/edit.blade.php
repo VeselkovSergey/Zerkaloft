@@ -159,7 +159,7 @@
                 </div>
 
                 <div class="p-10 w-100">
-                    <label for="product_tech_properties" class="block w-100">Описание</label>
+                    <label for="product_tech_properties" class="block w-100">Характеристики</label>
                     <textarea class="w-100" rows="5" name="product_tech_properties" id="product_tech_properties"></textarea>
                 </div>
 
