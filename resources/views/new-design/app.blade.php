@@ -34,8 +34,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="yandex-verification" content="f23e503553472595" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/favicon.svg?update=1">
-    <link rel="icon" href="/favicon.svg?update=1">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
 
