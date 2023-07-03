@@ -241,7 +241,7 @@ class ProductsController
             $fields['description'] = $productDescription;
         }
 
-        if ($fieldsApply['product_description'] === 'true') {
+        if ($fieldsApply['product_tech_properties'] === 'true') {
             $fields['tech_properties'] = $productTechProperties;
         }
 
