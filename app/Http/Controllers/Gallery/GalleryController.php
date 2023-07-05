@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Gallery;
 
+use App\Helpers\ArrayHelper;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Models\Filters\Filters;
@@ -130,17 +131,21 @@ class GalleryController
 
     public function IndexGallery()
     {
-        if (sizeof(\request()->keys())) {
-            $items = Gallery::query()->whereHas("filters", function ($q) {
-                foreach (\request()->keys() as $filterId) {
-                    $q->where('filter_id', $filterId);
+        $filters = Filters::all();
+        if (\request()->get('filters')) {
+            $requestedArrayOfFilters = explode(',', \request()->get('filters'));
+            $items = Gallery::query()->whereHas("filters", function ($q) use ($requestedArrayOfFilters, $filters) {
+                foreach ($requestedArrayOfFilters as $filterId) {
+                    $filterId = (int)$filterId;
+                    if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
+                        $q->where('filter_id', $filterId);
+                    }
                 }
             })->get();
         } else {
             $items = Gallery::all();
         }
 
-        $filters = Filters::all();
         return view('new-design.gallery.index', compact('items', 'filters'));
     }
 

@@ -196,9 +196,11 @@ class CategoriesController extends Controller
     public function CatalogPage(Request $request)
     {
         $filters = Filters::all();
-        if (sizeof(\request()->keys())) {
-            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($filters) {
-                foreach (\request()->keys() as $filterId) {
+        if (\request()->get('filters')) {
+            $requestedArrayOfFilters = explode(',', \request()->get('filters'));
+            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+                foreach ($requestedArrayOfFilters as $filterId) {
+                    $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
                         $q->where('filter_id', $filterId);
                     }
