@@ -56,4 +56,14 @@ class ArrayHelper
 
         return $combinations;
     }
+
+    public static function findAndCheckPropertyInObject($arrayObjects, $propertyName, $propertyValue)
+    {
+        foreach ($arrayObjects as $object) {
+            if (isset($object->$propertyName) && $object->$propertyName === $propertyValue) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

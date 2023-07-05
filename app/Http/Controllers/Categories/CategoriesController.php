@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Categories;
 use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Helpers\StringHelper;
+use App\Helpers\ArrayHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Filters\Filters;
@@ -194,11 +195,11 @@ class CategoriesController extends Controller
 
     public function CatalogPage(Request $request)
     {
-        $excludeParams = ['yclid'];
+        $filters = Filters::all();
         if (sizeof(\request()->keys())) {
-            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($excludeParams) {
+            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($filters) {
                 foreach (\request()->keys() as $filterId) {
-                    if (!in_array($filterId, $excludeParams)) {
+                    if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
                         $q->where('filter_id', $filterId);
                     }
                 }
@@ -206,7 +207,6 @@ class CategoriesController extends Controller
         } else {
             $products = Products::query()->where('not_only_calculator', 1)->get();
         }
-        $filters = Filters::all();
         return view('new-design.catalog', [
             'products' => $products,
             'filters' => $filters
