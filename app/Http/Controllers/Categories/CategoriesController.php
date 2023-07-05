@@ -176,11 +176,27 @@ class CategoriesController extends Controller
 
     public function CategoryPage(Request $request)
     {
+        $requestedArrayOfFilters = explode(',', \request()->get('filters'));
+        $filters = Filters::all();
+
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
+        $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator();
+        if (\request()->get('filters')) {
+            $productsByNotOnlyInCalculator = $productsByNotOnlyInCalculator->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+                foreach ($requestedArrayOfFilters as $filterId) {
+                    $filterId = (int)$filterId;
+                    if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
+                        $q->where('filter_id', $filterId);
+                    }
+                }
+            })->get();
+        } else {
+            $productsByNotOnlyInCalculator = $productsByNotOnlyInCalculator->get();
+        }
+
 //        $categoryAdditionalLinks = explode(';', $category->additional_links);
         $filters = Filters::all();
-        return view('new-design.catalog', [
+        return view('new-design.category', [
             'category' => $category,
             'products' => $productsByNotOnlyInCalculator,
 //            'categoryAdditionalLinks' => $categoryAdditionalLinks,
