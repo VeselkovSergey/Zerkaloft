@@ -181,14 +181,29 @@ class CategoriesController extends Controller
 
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
         if (\request()->get('filters')) {
-            $productsByNotOnlyInCalculator = $category->Products()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+            $productsQuery = $category->Products()->with('filters')->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
                     $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
-                        $q->where('filter_id', $filterId);
+                        $q->whereOr('filter_id', $filterId);
                     }
                 }
             })->get();
+
+            // продукт должен содержать все выбранные фильтры
+            $productsByNotOnlyInCalculator = [];
+            foreach ($productsQuery as $product) {
+                $requiredFilterCount = sizeof($requestedArrayOfFilters);
+                $localFilterCount = 0;
+                foreach ($product->filters as $filter) {
+                    if (in_array($filter->id, $requestedArrayOfFilters)) {
+                        $localFilterCount++;
+                    }
+                }
+                if ($localFilterCount === $requiredFilterCount) {
+                    $productsByNotOnlyInCalculator[] = $product;
+                }
+            }
         } else {
             $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
         }
@@ -213,14 +228,30 @@ class CategoriesController extends Controller
         $filters = Filters::all();
         if (\request()->get('filters')) {
             $requestedArrayOfFilters = explode(',', \request()->get('filters'));
-            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+            $productsQuery = Products::query()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
                     $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
-                        $q->where('filter_id', $filterId);
+                        $q->whereOr('filter_id', $filterId);
                     }
                 }
             })->get();
+
+            // продукт должен содержать все выбранные фильтры
+            $products = [];
+            foreach ($productsQuery as $product) {
+                $requiredFilterCount = sizeof($requestedArrayOfFilters);
+                $localFilterCount = 0;
+                foreach ($product->filters as $filter) {
+                    if (in_array($filter->id, $requestedArrayOfFilters)) {
+                        $localFilterCount++;
+                    }
+                }
+                if ($localFilterCount === $requiredFilterCount) {
+                    $products[] = $product;
+                }
+            }
+
         } else {
             $products = Products::query()->where('not_only_calculator', 1)->get();
         }

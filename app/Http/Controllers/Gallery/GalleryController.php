@@ -134,14 +134,29 @@ class GalleryController
         $filters = Filters::all();
         if (\request()->get('filters')) {
             $requestedArrayOfFilters = explode(',', \request()->get('filters'));
-            $items = Gallery::query()->whereHas("filters", function ($q) use ($requestedArrayOfFilters, $filters) {
+            $productsQuery = Gallery::query()->whereHas("filters", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
                     $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
-                        $q->where('filter_id', $filterId);
+                        $q->whereOr('filter_id', $filterId);
                     }
                 }
             })->get();
+
+            // продукт должен содержать все выбранные фильтры
+            $items = [];
+            foreach ($productsQuery as $product) {
+                $requiredFilterCount = sizeof($requestedArrayOfFilters);
+                $localFilterCount = 0;
+                foreach ($product->filters as $filter) {
+                    if (in_array($filter->id, $requestedArrayOfFilters)) {
+                        $localFilterCount++;
+                    }
+                }
+                if ($localFilterCount === $requiredFilterCount) {
+                    $items[] = $product;
+                }
+            }
         } else {
             $items = Gallery::all();
         }
