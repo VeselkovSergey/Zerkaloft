@@ -17,7 +17,8 @@
                 document.body.querySelector('.filters-container').querySelectorAll('.filter:checked').forEach((checkedFilter) => {
                     checkedFilters.push(`${checkedFilter.value}`)
                 })
-                location.href = "{{$route}}?filters=" + checkedFilters.join(", ")
+                console.log(checkedFilters)
+                location.href = "{{$route}}?filters=" + checkedFilters.join(",")
             })
         })
     </script>
