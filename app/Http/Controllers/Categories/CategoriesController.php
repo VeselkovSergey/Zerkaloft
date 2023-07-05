@@ -180,7 +180,7 @@ class CategoriesController extends Controller
         $filters = Filters::all();
 
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator();
+        $productsByNotOnlyInCalculator = $category->Products();
         if (\request()->get('filters')) {
             $productsByNotOnlyInCalculator = $productsByNotOnlyInCalculator->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
