@@ -194,10 +194,13 @@ class CategoriesController extends Controller
 
     public function CatalogPage(Request $request)
     {
+        $excludeParams = ['yclid'];
         if (sizeof(\request()->keys())) {
-            $products = Products::query()->whereHas("filtersProducts", function ($q) {
+            $products = Products::query()->whereHas("filtersProducts", function ($q) use ($excludeParams) {
                 foreach (\request()->keys() as $filterId) {
-                    $q->where('filter_id', $filterId);
+                    if (!in_array($filterId, $excludeParams)) {
+                        $q->where('filter_id', $filterId);
+                    }
                 }
             })->get();
         } else {
