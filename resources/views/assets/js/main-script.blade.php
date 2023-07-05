@@ -846,9 +846,11 @@
 
         const insideElements = sliderContainer.querySelectorAll(":scope > *:not(.slider-button)")
         insideElements.forEach((insideElement) => {
-            insideElement.addEventListener('click', () => {
-                ModalWindow(insideElement.cloneNode(true))
-            })
+            if (sliderContainer.dataset.notZoom !== 'true') {
+                insideElement.addEventListener('click', () => {
+                    ModalWindow(insideElement.cloneNode(true))
+                })
+            }
         })
 
         if (insideElements.length < 2) {

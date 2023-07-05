@@ -17,7 +17,7 @@
             $dataFirstBlock = \App\Http\Controllers\Administration\SettingsController::dataFirstBlockOnMainPage();
         @endphp
         <div class="flex-adaptive-block p-20" style="background-color: {{$dataFirstBlock->bgColor}};">
-            <div class="w-50-adaptive-100 slider">
+            <div class="w-50-adaptive-100 slider" data-not-zoom="true">
                 @foreach($dataFirstBlock->imageFileId as $key => $imgId)
                     <picture>
                         @if(isset($dataFirstBlock->imageSquareFileId[$key]))
