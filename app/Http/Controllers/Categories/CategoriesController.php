@@ -180,9 +180,8 @@ class CategoriesController extends Controller
         $filters = Filters::all();
 
         $category = Categories::where('semantic_url', $request->category_semantic_url)->firstOrFail();
-        $productsByNotOnlyInCalculator = $category->Products();
         if (\request()->get('filters')) {
-            $productsByNotOnlyInCalculator = $productsByNotOnlyInCalculator->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+            $productsByNotOnlyInCalculator = $category->Products()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
                     $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
@@ -191,7 +190,7 @@ class CategoriesController extends Controller
                 }
             })->get();
         } else {
-            $productsByNotOnlyInCalculator = $productsByNotOnlyInCalculator->get();
+            $productsByNotOnlyInCalculator = $category->ProductsByNotOnlyInCalculator;
         }
 
 //        $categoryAdditionalLinks = explode(';', $category->additional_links);
