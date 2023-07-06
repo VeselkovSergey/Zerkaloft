@@ -736,13 +736,13 @@
             content: 'Имя',
             class: 'mb-5'
         }, callbackWindowContent);
-        let name = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
+        let name = CreateElement("input", {class: "mb-10 black-input", attr: {name: "name"}}, callbackWindowContent)
 
         CreateElement('label', {
             content: 'Номер телефона для связи',
             class: 'mb-5'
         }, callbackWindowContent);
-        let phone = CreateElement('input', {class: 'mb-10 black-input'}, callbackWindowContent);
+        let phone = CreateElement('input', {class: 'mb-10 black-input', attr: {name: "phone"}}, callbackWindowContent);
 
         CreateElement('label', {
             content: 'Комментарий',
