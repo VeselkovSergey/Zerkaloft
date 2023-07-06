@@ -295,7 +295,6 @@ class OrdersController
     public function SendEmail(Request $request)
     {
         $order = $request;
-        $order->client_email = "s-vesel94@ya.ru";
         Mail::to($order->client_email)->send(new NewOrderForClient($order));
     }
 
