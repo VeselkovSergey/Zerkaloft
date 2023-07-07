@@ -143,8 +143,8 @@
                 <div data-anchor-relation="contacts" style="padding: 10px 30px;">
                     <h2 class="text-center">Контакты</h2>
                     <p>Отдел продаж:</p>
-{{--                    <p style="padding-left: 150px;">+7 4957607606</p>--}}
-{{--                    <p style="padding-left: 150px;">+7 9857607606</p>--}}
+                    <p style="padding-left: 150px;">+7 4957607606</p>
+                    <p style="padding-left: 150px;">+7 9857607606</p>
                     <p style="padding-left: 150px;"><span><a href="mailto:Info@zerkaloft.ru">Info@zerkaloft.ru</a></span></p>
                     <p>Для отзывов и предложений</p>
                     <p style="padding-left: 150px;"><span><a href="mailto:zerkaloft@mail.ru">zerkaloft@mail.ru</a></span></p>
