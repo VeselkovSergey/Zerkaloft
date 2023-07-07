@@ -142,25 +142,28 @@
                 </div>
                 <div data-anchor-relation="contacts" style="padding: 10px 30px;">
                     <h2 class="text-center">Контакты</h2>
-                    <p>Отдел продаж&nbsp; +7 4957607606</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;+7 9857607606</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="mailto:Info@zerkaloft.ru">Info@zerkaloft.ru</a></span></p>
+                    <p>Отдел продаж:</p>
+                    <p style="padding-left: 150px;">+7 4957607606</p>
+                    <p style="padding-left: 150px;">+7 9857607606</p>
+                    <p style="padding-left: 150px;"><span><a href="mailto:Info@zerkaloft.ru">Info@zerkaloft.ru</a></span></p>
                     <p>Для отзывов и предложений</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="mailto:zerkaloft@mail.ru">zerkaloft@mail.ru</a></span></p>
+                    <p style="padding-left: 150px;"><span><a href="mailto:zerkaloft@mail.ru">zerkaloft@mail.ru</a></span></p>
                     <p>Адрес для самовывоза:</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span>Фабричная ул., 1, микрорайон Пироговский, Мытищи (подъезд 3)</span></p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                    <p style="padding-left: 150px;"><span>Фабричная ул., 1, микрорайон Пироговский, Мытищи (подъезд 3)</span></p>
+                    <p></p>
                     <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/1/moscow-and-moscow-oblast/house/fabrichnaya_ulitsa_1/Z04YcQNjS0cOQFtvfXV2eX9iYw==/?ll=37.743229%2C55.978317&utm_medium=mapframe&utm_source=maps&z=16.65" style="color:#eee;font-size:12px;position:absolute;top:14px;">Фабричная улица, 1 — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.743229%2C55.978317&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjgzMDQ0NxKOAdCg0L7RgdGB0LjRjywg0JzQvtGB0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsINCc0YvRgtC40YnQuCwg0LzQuNC60YDQvtGA0LDQudC-0L0g0J_QuNGA0L7Qs9C-0LLRgdC60LjQuSwg0KTQsNCx0YDQuNGH0L3QsNGPINGD0LvQuNGG0LAsIDEiCg0Q-RZCFczpX0I%2C&z=16.65" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                    <p></p>
                     <p>График работы:</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Пн &ndash;Вс 10:00 &ndash; 18 00</p>
-                    <p>Юридический адрес: 119048, г. Москва ул. Зеленодольская д.7</p>
-                    <p>Реквизиты: ИП &laquo;Саргсян Т.С.&raquo;&nbsp;</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ИНН 711110539427&nbsp; &nbsp; &nbsp;</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ОГРН 315502700020690</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ПАО &laquo;Сбербанк России&raquo;</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; БИК банка: 044525225</p>
-                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Р/с. 40802810538000022211</p>
+                    <p style="padding-left: 150px;">Пн - Вс 10:00 - 18 00</p>
+                    <p>Юридический адрес:</p>
+                    <p style="padding-left: 150px;">119048, г. Москва ул. Зеленодольская д.7</p>
+                    <p>Реквизиты:</p>
+                    <p style="padding-left: 150px;">ИП «Саргсян Т.С.»</p>
+                    <p style="padding-left: 150px;">ИНН 711110539427</p>
+                    <p style="padding-left: 150px;">ГРН 315502700020690</p>
+                    <p style="padding-left: 150px;">АО «Сбербанк России»</p>
+                    <p style="padding-left: 150px;">ИК банка: 044525225</p>
+                    <p style="padding-left: 150px;">Р/с. 40802810538000022211</p>
                 </div>
                 <div data-anchor-relation="delivery" style="padding: 10px 30px;">
                     <h2 class="text-center">Доставка</h2>
