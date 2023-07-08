@@ -571,12 +571,12 @@ Route::get('sitemap.xml', [Controllers\HomeController::class, 'SiteMap'])->name(
 //    Route::get('/', [Controllers\TestController::class, 'index'])
 //        ->name('test');
 //
-//    Route::get('/mail', function () {
-//        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new MailSender(User::PasswordGenerate()));
-//    });
+    Route::get('/mail', function () {
+        \Illuminate\Support\Facades\Mail::to('s-vesel94@ya.ru')->send(new MailSender(User::PasswordGenerate()));
+    });
 //
-//    Route::get('/mail-view', function () {
-//        return view('mail.view', ['email' => 's-vesel94@ya.ru', 'password' => '123']);
-//    });
+    Route::get('/mail-view', function () {
+        return view('mail.view', ['email' => 's-vesel94@ya.ru', 'password' => '123']);
+    });
 //
 //});
