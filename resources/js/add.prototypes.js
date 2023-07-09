@@ -60,7 +60,7 @@ function GenerationFormSelect(obj, name, selected = 0, disableFirstOption = fals
 
     Object.keys(obj).forEach((key) => {
         if (obj[key]?.is_default_value) {
-            selected = key
+            selected = obj[key].id
         }
     });
 
