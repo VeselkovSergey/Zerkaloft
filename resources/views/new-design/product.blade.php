@@ -93,14 +93,14 @@
                         </div>
                         <div class="mb-10 w-a-adaptive-100 flex" style="flex-wrap: wrap;">
                             @if(\App\Helpers\Utils::isFavourite($product->id))
-                                <div class="add-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
-                                    <img style="height: 20px;" src="/assets/imgs/notFavourite.svg" alt="">
-                                    <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
-                                </div>
-                            @else
                                 <div class="remove-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
                                     <img style="height: 20px;" src="/assets/imgs/favourite.svg" alt="">
                                     <div class="ml-10">Убрать&nbsp;из&nbsp;избранного</div>
+                                </div>
+                            @else
+                                <div class="add-favourite-button cp mr-10 flex-center border-radius-25 p-10 mb-10" style="border-color: white;">
+                                    <img style="height: 20px;" src="/assets/imgs/notFavourite.svg" alt="">
+                                    <div class="ml-10">Добавить&nbsp;в&nbsp;избранное</div>
                                 </div>
                             @endif
                             <div class="button-add-in-basket border-radius-25 p-10 mt-a text-center cp mb-10"
@@ -121,11 +121,12 @@
                                     preg_match('/(#.*)$/', $additionalServiceTitle, $matches);
                                     $color = sizeof($matches) ? $matches[0] : null;
                                     $title = isset($color) ? preg_replace("/$color/", '', $additionalServiceTitle) : $additionalServiceTitle;
-                                    $title = trim($title)
+                                    $title = trim($title);
+                                    $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
                                 ?>
 
                                 <div class="checkbox-wrapper-1 mb-10">
-                                    <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
+                                    <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
                                     <label for="color-{{$key}}">{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
                                 </div>
                             @endforeach
@@ -232,8 +233,16 @@
         });
 
         document.body.querySelector(".add-favourite-button")?.addEventListener("click", () => {
+            let additionalServicesSelection = [];
+            let additionalServices = document.body.querySelectorAll('.additional-services-container input');
+            additionalServices.forEach((additionalService) => {
+                if (additionalService.checked) {
+                    additionalServicesSelection.push(additionalService.dataset.additionalServiceId);
+                }
+            });
             Ajax("{{route('add-favourite')}}", 'post', {
                 productId: {{$product->id}},
+                "additionalServicesSelection[]": additionalServicesSelection,
             }).then(() => {
                 location.reload()
             })

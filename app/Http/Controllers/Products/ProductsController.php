@@ -431,6 +431,10 @@ class ProductsController
         $favouriteProducts = session()->get("favouriteProducts");
         array_push($favouriteProducts, $productId);
         session()->put("favouriteProducts", $favouriteProducts);
+
+        $additionalServicesSelectionByProducts = session()->get("additionalServicesSelectionByProducts");
+        $additionalServicesSelectionByProducts[$productId] = $request->get('additionalServicesSelection');
+        session()->put("additionalServicesSelectionByProducts", $additionalServicesSelectionByProducts);
     }
 
     public function removeFavourite(Request $request)
@@ -439,5 +443,9 @@ class ProductsController
         $favouriteProducts = session()->get("favouriteProducts");
         array_splice($favouriteProducts, array_search($productId, $favouriteProducts), 1);
         session()->put("favouriteProducts", $favouriteProducts);
+
+        $additionalServicesSelectionByProducts = session()->get("additionalServicesSelectionByProducts");
+        unset($additionalServicesSelectionByProducts[$productId]);
+        session()->put("additionalServicesSelectionByProducts", $additionalServicesSelectionByProducts);
     }
 }
