@@ -1174,7 +1174,7 @@
 
     @yield('css')
 
-    <script src="{{ asset('resources/js/add.prototypes.js') }}"></script>
+    <script src="{{ asset('resources/js/add.prototypes.js?v=2023-07-10') }}"></script>
 
     <style>
         /*toDo*/
