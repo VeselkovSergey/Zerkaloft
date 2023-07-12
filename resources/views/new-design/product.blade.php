@@ -126,8 +126,8 @@
                                 ?>
 
                                 <div class="checkbox-wrapper-1 mb-10">
-                                    <input id="color-{{$key}}" type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
-                                    <label for="color-{{$key}}">{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
+                                    <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
+                                    <label>{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
                                 </div>
                             @endforeach
                         </div>

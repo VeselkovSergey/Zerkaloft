@@ -283,6 +283,7 @@
             border-radius: 25px;
             font-size: 14px;
             display: flex;
+            position: relative;
         }
 
         .white-button {
@@ -717,8 +718,10 @@
         /* для элемента input c type="checkbox" */
         .custom-checkbox {
             position: absolute;
-            z-index: -1;
             opacity: 0;
+            top: 10px;
+            left: 7px;
+            transform: scale(1.5);
         }
 
         /* для элемента label, связанного с .custom-checkbox */
