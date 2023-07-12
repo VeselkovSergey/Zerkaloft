@@ -228,11 +228,11 @@ Route::group(['prefix' => 'admin'], function () {
             $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . PHP_EOL;
             $products = \App\Models\Products::all();
             foreach ($products as $product) {
-                $csvContent .= $product->Category->title . ';';
-                $csvContent .= $product->title . ';';
-                $csvContent .= $product->id . ';';
-                $csvContent .= $product->description . ';';
-                $csvContent .= $product->Prices()->first()->price . ';';
+                $csvContent .= strip_tags($product->Category->title) . ';';
+                $csvContent .= strip_tags($product->title) . ';';
+                $csvContent .= strip_tags($product->id) . ';';
+                $csvContent .= strip_tags($product->description) . ';';
+                $csvContent .= strip_tags($product->Prices()->first()->price) . ';';
                 $csvContent .= PHP_EOL;
             }
 
