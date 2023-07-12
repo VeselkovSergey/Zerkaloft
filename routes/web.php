@@ -225,13 +225,14 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/to-csv', function () {
             $csvContent = chr(239) . chr(187) . chr(191);
-            $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . PHP_EOL;
+            $csvContent .= 'Категория;Название;Идентификатор;Описание;Характеристики;Цена;' . PHP_EOL;
             $products = \App\Models\Products::all();
             foreach ($products as $product) {
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Category->title)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->title)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->id)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->description)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->tech_properties)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)) . ';';
                 $csvContent .= PHP_EOL;
             }
