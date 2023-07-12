@@ -227,13 +227,13 @@ Route::group(['prefix' => 'admin'], function () {
             $csvContent = chr(239) . chr(187) . chr(191);
             $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . PHP_EOL;
             $products = \App\Models\Products::all();
-            dd($products, $products->first());
+//            dd($products, $products->first());
             foreach ($products as $product) {
-                $csvContent .= str_replace(";", ".", strip_tags($product->Category->title)) . ';';
-                $csvContent .= str_replace(";", ".", strip_tags($product->title)) . ';';
-                $csvContent .= str_replace(";", ".", strip_tags($product->id)) . ';';
-                $csvContent .= str_replace(";", ".", strip_tags($product->description)) . ';';
-                $csvContent .= str_replace(";", ".", strip_tags($product->Prices()->first()->price)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Category->title)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->title)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->id)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->description)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)) . ';';
                 $csvContent .= PHP_EOL;
             }
 
@@ -565,61 +565,61 @@ Route::get('sitemap.xml', [Controllers\HomeController::class, 'SiteMap'])->name(
 //
 //});
 
-Route::get('/test', function () {
-
-    header('Content-Type:application/json');
-    $url = "https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/";
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-
-    $res = curl_exec($ch);
-
-    curl_close($ch);
-
-    $dom = new DomDocument();
-    @ $dom->loadHTML($res);
-
-    $table = $dom->getElementsByTagName('h1'); //DOMElement
-    foreach( $table as $h2 ) {
-        echo $h2->textContent . "\n";
-    }
-    return;
-//    $child_elements = $table->getElementsByTagName('tr'); //DOMNodeList
-//    $row_count = $child_elements->length - 1;
-
-    echo "No. of rows in the table is " . $row_count;
-
-
-
-
-
-    $httpClient = new \GuzzleHttp\Client();
-    $response = $httpClient->get("https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/");
-    $htmlString = (string)$response->getBody();
-//add this line to suppress any warnings
-    libxml_use_internal_errors(true);;
-    $doc = new DOMDocument();
-    $doc->loadHTML($htmlString);
-    $xpath = new DOMXPath($doc);
-
-//    $titles = $xpath->evaluate('//ol[@class="row"]//li//article//h3/a');
-    $titles = $xpath->query('//*[@id="content"]/div[5]/div[1]/div[2]/table/tbody');
-    $extractedTitles = [];
-    foreach ($titles as $title) {
-        dd($title, $xpath->query('/td'), $title);
-        foreach ($title->childNodes as $children) {
-            dd($children);
-        }
-        $extractedTitles[] = $title->textContent . PHP_EOL;
-        echo $title->textContent . PHP_EOL;
-    }
-
-    dd($extractedTitles);
-
-});
+//Route::get('/test', function () {
+//
+//    header('Content-Type:application/json');
+//    $url = "https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/";
+//
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL, $url);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+//
+//    $res = curl_exec($ch);
+//
+//    curl_close($ch);
+//
+//    $dom = new DomDocument();
+//    @ $dom->loadHTML($res);
+//
+//    $table = $dom->getElementsByTagName('h1'); //DOMElement
+//    foreach( $table as $h2 ) {
+//        echo $h2->textContent . "\n";
+//    }
+//    return;
+////    $child_elements = $table->getElementsByTagName('tr'); //DOMNodeList
+////    $row_count = $child_elements->length - 1;
+//
+//    echo "No. of rows in the table is " . $row_count;
+//
+//
+//
+//
+//
+//    $httpClient = new \GuzzleHttp\Client();
+//    $response = $httpClient->get("https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2023/");
+//    $htmlString = (string)$response->getBody();
+////add this line to suppress any warnings
+//    libxml_use_internal_errors(true);;
+//    $doc = new DOMDocument();
+//    $doc->loadHTML($htmlString);
+//    $xpath = new DOMXPath($doc);
+//
+////    $titles = $xpath->evaluate('//ol[@class="row"]//li//article//h3/a');
+//    $titles = $xpath->query('//*[@id="content"]/div[5]/div[1]/div[2]/table/tbody');
+//    $extractedTitles = [];
+//    foreach ($titles as $title) {
+//        dd($title, $xpath->query('/td'), $title);
+//        foreach ($title->childNodes as $children) {
+//            dd($children);
+//        }
+//        $extractedTitles[] = $title->textContent . PHP_EOL;
+//        echo $title->textContent . PHP_EOL;
+//    }
+//
+//    dd($extractedTitles);
+//
+//});
 
 
 //Route::group(['prefix' => 'test'], function () {
