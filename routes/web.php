@@ -227,7 +227,7 @@ Route::group(['prefix' => 'admin'], function () {
             $csvContent = chr(239) . chr(187) . chr(191);
             $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . PHP_EOL;
             $products = \App\Models\Products::all();
-            dd($products);
+            dd($products, $products->first());
             foreach ($products as $product) {
                 $csvContent .= str_replace(";", ".", strip_tags($product->Category->title)) . ';';
                 $csvContent .= str_replace(";", ".", strip_tags($product->title)) . ';';
