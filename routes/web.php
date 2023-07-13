@@ -232,14 +232,14 @@ Route::group(['prefix' => 'admin'], function () {
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->title)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->id)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->description)) . ';';
-                //$csvContent .= str_replace([";", "\r", "\n", "&nbsp"], ".", strip_tags($product->tech_properties)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->tech_properties)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)) . ';';
                 $csvContent .= PHP_EOL;
             }
 
             return \response($csvContent)
                 ->header('Content-Type', 'text/csv; charset=utf-8')
-                ->header('Content-Disposition', 'attachment; filename="Файл.csv');
+                ->header('Content-Disposition', 'attachment; filename="Товары.csv');
         })->name('products-to-csv');
     });
 
