@@ -232,7 +232,7 @@ Route::group(['prefix' => 'admin'], function () {
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->title)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->id)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->description)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->tech_properties)) . ';';
+                $csvContent .= str_replace([";", "\r", "\n", "&nbsp"], ".", strip_tags($product->tech_properties)) . ';';
                 $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)) . ';';
                 $csvContent .= PHP_EOL;
             }
