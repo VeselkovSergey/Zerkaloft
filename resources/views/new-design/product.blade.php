@@ -122,7 +122,7 @@
                                     $color = sizeof($matches) ? $matches[0] : null;
                                     $title = isset($color) ? preg_replace("/$color/", '', $additionalServiceTitle) : $additionalServiceTitle;
                                     $title = trim($title);
-                                    $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
+                                    $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
                                 ?>
 
                                 <div class="checkbox-wrapper-1 mb-10">
