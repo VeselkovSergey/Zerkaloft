@@ -845,13 +845,15 @@
     const slider = (sliderContainer, autoSlide = true) => {
 
         const insideElements = sliderContainer.querySelectorAll(":scope > *:not(.slider-button)")
-        insideElements.forEach((insideElement) => {
-            if (sliderContainer.dataset.notZoom !== 'true') {
-                insideElement.addEventListener('click', () => {
-                    ModalWindow(insideElement.cloneNode(true))
-                })
-            }
-        })
+        if (window.screen.width > 768) {
+            insideElements.forEach((insideElement) => {
+                if (sliderContainer.dataset.notZoom !== 'true') {
+                    insideElement.addEventListener('click', () => {
+                        ModalWindow(insideElement.cloneNode(true))
+                    })
+                }
+            })
+        }
 
         if (insideElements.length < 2) {
             return
