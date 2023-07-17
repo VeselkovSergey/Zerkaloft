@@ -19,6 +19,16 @@
             </div>
         </div>
     </a>
+    <a href="{{route("gallery")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20">
+        <div class="img-120-adaptive-70">
+            <img src="/assets/imgs/gallery.12.svg" alt="">
+        </div>
+        <div class="mt-10">
+            <div class="font-light px-20-adaptive-0">
+                Готовые идеи для Вас. Работы выполненные нашей командой
+            </div>
+        </div>
+    </a>
     <a href="{{route("about-page")}}#payment" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20">
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/payments.12.svg" alt="">
@@ -46,16 +56,6 @@
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
-            </div>
-        </div>
-    </a>
-    <a href="{{route("gallery")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20">
-        <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/gallery.12.svg" alt="">
-        </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
-                Готовые идеи для Вас. Работы выполненные нашей командой
             </div>
         </div>
     </a>
