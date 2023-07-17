@@ -443,6 +443,7 @@ class SettingsController extends Controller
         $fastOrderLink = $request->fastOrderLink;
         $calculatorLink = $request->calculatorLink;
         $onlineOrderLink = $request->onlineOrderLink;
+        $galleryHeaderLink = $request->galleryHeaderLink;
         $specialOrderLink = $request->specialOrderLink;
         $buttonUploadDesign = $request->buttonUploadDesign;
         $model = Settings::where('type', Settings::TypeByWords['fastMenu'])->first();
@@ -453,7 +454,8 @@ class SettingsController extends Controller
                 'calculatorLink',
                 'onlineOrderLink',
                 'specialOrderLink',
-                'buttonUploadDesign'
+                'buttonUploadDesign',
+                'galleryHeaderLink',
             ))
         ]);
 

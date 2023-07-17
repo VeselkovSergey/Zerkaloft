@@ -153,6 +153,13 @@
         </div>
 
         <div class="p-10 w-100">
+            <label for="galleryHeaderLink">
+                <input type="checkbox" name="galleryHeaderLink" id="galleryHeaderLink" {{isset($fastMenuSetting->galleryHeaderLink) && $fastMenuSetting->galleryHeaderLink === 'true' ? ' checked ' : ''}}>
+                Ссылка "Галерея" (шапка)
+            </label>
+        </div>
+
+        <div class="p-10 w-100">
             <label for="calculatorLink">
                 <input type="checkbox" name="calculatorLink" id="calculatorLink" {{$fastMenuSetting->calculatorLink === 'true' ? ' checked ' : ''}}>
                 Ссылка онлайн калькулятора
