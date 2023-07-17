@@ -32,32 +32,8 @@
 @section("content")
 
     <style>
-        .order-2-4 {
-            order: 2;
-        }
-
-        .order-3-2 {
-            order: 3;
-        }
-
-        .order-4-3 {
-            order: 4;
-        }
 
         @media screen and (max-width: 540px) {
-
-            .order-2-4 {
-                order: 4;
-            }
-
-            .order-3-2 {
-                order: 2;
-            }
-
-            .order-4-3 {
-                order: 3;
-            }
-
             .m-a-adaptive {
                 margin-left: auto;
                 margin-right: auto;
@@ -88,18 +64,12 @@
 
             <div class="container-found-product hide w-40-adaptive-100">
                 <div class="flex-column">
-                    <div class="flex mb-10 m-a-adaptive" style="order: 1">
+                    <div class="flex mb-10 m-a-adaptive" style="">
                         <div style="width: 300px; height: 300px;">
                             <img class="fast-order-product-img" src="" alt="">
                         </div>
                     </div>
-                    <div class="font-light order-2-4">
-                        <div class="h3 fast-order-product-title">Title</div>
-                        <p class="fast-order-product-description">
-                            description
-                        </p>
-                    </div>
-                    <div class="flex-space-x mr-10-adaptive-0 order-3-2 w-100">
+                    <div class="flex-space-x mr-10-adaptive-0  w-100">
                         <div class="flex mb-10 prices-container">
                             <select name="" id="" class="select-3 font-light">
                                 <option value="123" selected>1 шт - 745 р</option>
@@ -110,6 +80,12 @@
                                style="background-color: white; color: black;">К ТОВАРУ
                             </a>
                         </div>
+                    </div>
+                    <div class="font-light ">
+                        <div class="h3 fast-order-product-title">Title</div>
+                        <p class="fast-order-product-description">
+                            description
+                        </p>
                     </div>
                 </div>
             </div>
