@@ -88,7 +88,7 @@
     @endphp
     <div class="flex-end-x hide-adaptive">
         <div class="w-100 flex-center-y font-regular mr-10" style="justify-content: end;">
-            <a href="{{route("gallery")}}" class="block mr-20 {{isset($fastMenuSetting->galleryHeaderLink) && $fastMenuSetting->galleryHeaderLink === 'true' ? '' : ' hide '}}">Галерея</a>
+            <a href="{{route("gallery")}}" class="block mr-20 {{isset($fastMenuSetting->galleryHeaderLink) && $fastMenuSetting->galleryHeaderLink === 'true' ? '' : ' hide '}}">Наши работы</a>
             <a href="{{route("fast-order-page")}}" class="block mr-20 {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}">Быстрое оформление</a>
 {{--            <a class="block mr-10 form-special-order {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Индивидульный заказ</a>--}}
             <a href="{{route("about-page")}}" class="block mr-20">О компании</a>

@@ -100,10 +100,10 @@
                 ],
             ],
             [
-                'title' => 'Галерея',
+                'title' => 'Наши работы',
                 'subMenu' => [
                     [
-                        'title' => 'Галерея',
+                        'title' => 'Наши работы',
                         'link' => route('gallery-admin-page'),
                     ],
                     [

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="font-semibold p-10">Галерея</div>
+    <div class="font-semibold p-10">Наши работы</div>
     @if(sizeof($allGallery))
         <div class="flex-wrap">
             @foreach($allGallery as $gallery)

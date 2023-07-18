@@ -155,7 +155,7 @@
         <div class="p-10 w-100">
             <label for="galleryHeaderLink">
                 <input type="checkbox" name="galleryHeaderLink" id="galleryHeaderLink" {{isset($fastMenuSetting->galleryHeaderLink) && $fastMenuSetting->galleryHeaderLink === 'true' ? ' checked ' : ''}}>
-                Ссылка "Галерея" (шапка)
+                Ссылка "Наши работы" (шапка)
             </label>
         </div>
 

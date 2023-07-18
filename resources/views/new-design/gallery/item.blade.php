@@ -1,7 +1,7 @@
 @php
     $bredcrumbs = [
         "Главная" => route("home-page"),
-        'Галерея' => route('gallery'),
+        'Наши работы' => route('gallery'),
         'Выполненная работа' => $item->link(),
     ];
 @endphp

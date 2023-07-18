@@ -4,8 +4,8 @@
     ];
 
     if (isset($category)) {
-        $bredcrumbs['Галерея'] = route('gallery');
-        $title_page = 'Галерея';
+        $bredcrumbs['Наши работы'] = route('gallery');
+        $title_page = 'Наши работы';
         $metaDescription = 'Выполненные работы';
     }
 
