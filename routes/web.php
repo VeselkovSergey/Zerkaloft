@@ -224,16 +224,54 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('delete-product-admin');
 
         Route::get('/to-csv', function () {
-            $csvContent = chr(239) . chr(187) . chr(191);
-            $csvContent .= 'Категория;Название;Идентификатор;Описание;Характеристики;Цена;' . PHP_EOL;
             $products = \App\Models\Products::all();
+
+            $productsArray = [];
+            $propArray = [];
+            $propsStr = [];
+
             foreach ($products as $product) {
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Category->title)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->title)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->id)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->description)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n", "&nbsp"], ".", strip_tags($product->tech_properties)) . ';';
-                $csvContent .= str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)) . ';';
+                $arrayTechProperties = explode("\r\n", str_replace(["&nbsp;"], "", strip_tags($product->tech_properties)));
+
+                $arrayProductProps = [];
+
+                foreach ($arrayTechProperties as $techProperty) {
+                    $prop = explode(':', $techProperty);
+                    $propName = $prop[0];
+                    $propValue = $prop[1] ?? "-";
+
+                    if (!isset($propArray[$propName])) {
+                        $propArray[$propName] = "-";
+                        $propsStr[] = $propName;
+                    }
+
+                    $arrayProductProps[$propName] = $propValue;
+                }
+
+                $productsArray[] = (object)[
+                    "productCategoryTitle" => str_replace([";", "\r", "\n"], ".", strip_tags($product->Category->title)),
+                    "productTitle" => str_replace([";", "\r", "\n"], ".", strip_tags($product->title)),
+                    "productId" => str_replace([";", "\r", "\n"], ".", strip_tags($product->id)),
+                    "productDescription" => str_replace([";", "\r", "\n"], ".", strip_tags($product->description)),
+                    "productCost" => str_replace([";", "\r", "\n"], ".", strip_tags($product->Prices()->first()->price)),
+                    "productTechProperties" => $arrayProductProps,
+                ];
+            }
+
+
+            $csvContent = chr(239) . chr(187) . chr(191);
+            $csvContent .= 'Категория;Название;Идентификатор;Описание;Цена;' . implode(';', $propsStr) . PHP_EOL;
+
+            foreach ($productsArray as $product) {
+                $csvContent .= $product->productCategoryTitle . ';';
+                $csvContent .= $product->productTitle . ';';
+                $csvContent .= $product->productId . ';';
+                $csvContent .= $product->productDescription . ';';
+                $csvContent .= $product->productCost . ';';
+
+                foreach ($propArray as $prop => $defValue) {
+                    $csvContent .= $product->productTechProperties[$prop] ?? "-" . ';';
+                }
                 $csvContent .= PHP_EOL;
             }
 
