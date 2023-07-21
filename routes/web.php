@@ -231,7 +231,7 @@ Route::group(['prefix' => 'admin'], function () {
             $propsStr = [];
 
             foreach ($products as $product) {
-                $arrayTechProperties = explode("\r\n", str_replace(["&nbsp;"], "", strip_tags($product->tech_properties)));
+                $arrayTechProperties = explode("\r\n", str_replace(["&nbsp;", "&Oslash;"], "", strip_tags($product->tech_properties)));
 
                 $arrayProductProps = [];
 
@@ -270,7 +270,7 @@ Route::group(['prefix' => 'admin'], function () {
                 $csvContent .= $product->productCost . ';';
 
                 foreach ($propArray as $prop => $defValue) {
-                    $csvContent .= $product->productTechProperties[$prop] ?? "-" . ';';
+                    $csvContent .= ($product->productTechProperties[$prop] ?? "-") . ';';
                 }
                 $csvContent .= PHP_EOL;
             }
