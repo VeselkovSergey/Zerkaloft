@@ -53,7 +53,7 @@
                 </div>
             </div>
             @if($product->tech_properties)
-                <div class="w-35-adaptive-100 mb-10 mr-10-adaptive-0 flex-center-horizontal">
+                <div class="w-35-adaptive-100 mb-10 mr-10-adaptive-0 flex-center-x">
                     <div>
                         <h3 class="h3">Характеристики</h3>
                         <p>{!! $product->tech_properties !!}</p>
