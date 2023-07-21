@@ -53,7 +53,7 @@
                 </div>
             </div>
             @if($product->tech_properties)
-                <div class="w-35-adaptive-100 mb-10 mr-10-adaptive-0 flex-center">
+                <div class="w-35-adaptive-100 mb-10 mr-10-adaptive-0 flex-center-horizontal">
                     <div>
                         <h3 class="h3">Характеристики</h3>
                         <p>{!! $product->tech_properties !!}</p>
@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="flex-space-x-adaptive-column additional-services-container">
-                        <div class="font-light">
+                        <div class="font-light flex-wrap">
                             @foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice)
 
                                 <?php
@@ -125,7 +125,7 @@
                                     $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
                                 ?>
 
-                                <div class="checkbox-wrapper-1 mb-10">
+                                <div class="checkbox-wrapper-1 mb- mr-5">
                                     <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
                                     <label>{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
                                 </div>
