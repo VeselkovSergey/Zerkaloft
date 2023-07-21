@@ -217,7 +217,7 @@
 
     @endif
 
-    <div class="basket-empty @if(sizeof($allProductsInBasket)) hide @endif">В корзине пусто</div>
+    <h1 class="basket-empty @if(sizeof($allProductsInBasket)) hide @endif">В корзине пусто</h1>
 
 @endsection
 
