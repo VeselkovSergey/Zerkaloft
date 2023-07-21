@@ -125,7 +125,7 @@
                                     $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
                                 ?>
 
-                                <div class="checkbox-wrapper-1 mb- mr-5">
+                                <div class="checkbox-wrapper-1 mb-10 mr-10">
                                     <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
                                     <label>{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
                                 </div>
