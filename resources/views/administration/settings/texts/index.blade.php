@@ -48,12 +48,12 @@
     <div class="container-fast-order-text flex-column w-100">
 
         <div class="p-10 w-100">
-            <label for="fastOrderText">Текст для быстрого оформления</label>
+            <label for="fastOrderText">Текст для конфигуратор зеркал</label>
             <textarea class="w-100" name="fastOrderText" id="fastOrderText">{{$fastOrderPageInfo->text}}</textarea>
         </div>
 
         <div class="p-10 w-100">
-            <label for="fastOrderImage">Картинка для быстрого оформления</label>
+            <label for="fastOrderImage">Картинка для конфигуратор зеркал</label>
             <input type="file" name="fastOrderImage" id="fastOrderImage">
         </div>
 
@@ -148,7 +148,7 @@
         <div class="p-10 w-100">
             <label for="fastOrderLink">
                 <input type="checkbox" name="fastOrderLink" id="fastOrderLink" {{$fastMenuSetting->fastOrderLink === 'true' ? ' checked ' : ''}}>
-                Ссылка "Быстрое оформление" (шапка)
+                Ссылка "Конфигуратор зеркал" (шапка)
             </label>
         </div>
 

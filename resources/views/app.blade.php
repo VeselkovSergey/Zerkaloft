@@ -102,7 +102,7 @@
                         @endphp
                     <div class="fast-menu-in-left-menu">
                         <div class="flex-column p-5">
-                            <a class="p-5 w-100 color-black cp {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}" href="{{route('fast-order-page')}}">Быстрое оформление</a>
+                            <a class="p-5 w-100 color-black cp {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}" href="{{route('fast-order-page')}}">Конфигуратор зеркал</a>
                             <a class="p-5 w-100 color-black cp {{$fastMenuSetting->onlineOrderLink === 'true' ? '' : ' hide '}}" href="{{route('online-order')}}">Онлайн заказ</a>
                             <a class="p-5 w-100 color-black cp {{$fastMenuSetting->calculatorLink === 'true' ? '' : ' hide '}}" href="{{route('calculator-page')}}">Онлайн калькулятор</a>
                             <a class="p-5 w-100 color-black cp" href="{{route('about-page')}}">О компании</a>

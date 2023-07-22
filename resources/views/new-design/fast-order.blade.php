@@ -13,7 +13,7 @@
 
     $bredcrumbs = [
         "Главная" => route("home-page"),
-        "Быстрое оформление" => route("fast-order-page"),
+        "Конфигуратор зеркал" => route("fast-order-page"),
     ];
 
     $info = \App\Http\Controllers\Administration\SettingsController::CalculatorPageInfo();
