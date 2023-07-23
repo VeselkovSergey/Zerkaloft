@@ -1,6 +1,15 @@
 @extends("new-design.app")
 
 @section("content")
+    @if(isset($carouselImages) && count($carouselImages))
+        <div>
+            <div class="w-100 slider" data-not-zoom="true">
+                @foreach($carouselImages as $carouselImage)
+                    <img src="{{route('files', $carouselImage->fileId)}}">
+                @endforeach
+            </div>
+        </div>
+    @endif
     <div class="main-page">
 {{--        <div class="flex-wrap-evenly-x flex-center-y hide-adaptive" style="min-height: calc(100vh - 120px); display: none;">--}}
 {{--            <div class="w-20">--}}
