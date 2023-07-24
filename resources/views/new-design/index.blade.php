@@ -5,7 +5,9 @@
         <div>
             <div class="w-100 slider" data-not-zoom="true">
                 @foreach($carouselImages as $carouselImage)
-                    <img src="{{route('files', $carouselImage->fileId)}}">
+                    <a href="{{$carouselImage->link}}">
+                        <img src="{{route('files', $carouselImage->fileId)}}" alt="акция">
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -32,7 +34,7 @@
                         @if(isset($dataFirstBlock->imageSquareFileId[$key]))
                             <source media="(max-width: 540px)" srcset="{{route('files', $dataFirstBlock->imageSquareFileId[$key])}}">
                         @endif
-                        <img src="{{route('files', $imgId)}}">
+                        <img src="{{route('files', $imgId)}}" alt="о нас">
                     </picture>
                 @endforeach
             </div>
