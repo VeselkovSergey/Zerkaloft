@@ -11,6 +11,9 @@
 
 @php
 
+    $title_page = 'Кофигуратор зеркал.';
+    $metaDescription = 'Конструктор зеркал. Зеркало на заказ.';
+
     $bredcrumbs = [
         "Главная" => route("home-page"),
         "Конфигуратор зеркал" => route("fast-order-page"),

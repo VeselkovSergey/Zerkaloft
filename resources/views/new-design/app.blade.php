@@ -48,7 +48,11 @@
 
     <title>{{ isset($title_page) ? $title_page : env('APP_NAME') }}</title>
 
-    <meta name="description" content="{{isset($metaDescription) ? $metaDescription : 'Магазин зеркал ' . env('APP_NAME')}}">
+    <meta name="description" content="
+    Заказать зеркало в Москве?
+    Мы готовы выполнить любой заказ по Москве и за ее пределами.
+    Zerkaloft или зеркалофт уже выполнил множетсво дизайнерских решений которые вы можете посмотреть у нас в галерее.
+    {{isset($metaDescription) ? $metaDescription : 'Магазин зеркал ' . env('APP_NAME')}}">
 
     <link href="{{asset('resources/css/modal.css')}}" rel="stylesheet">
 

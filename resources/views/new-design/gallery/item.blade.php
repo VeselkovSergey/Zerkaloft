@@ -4,6 +4,9 @@
         'Наши работы' => route('gallery'),
         'Выполненная работа' => $item->link(),
     ];
+
+    $title_page = 'Выполненная работа';
+    $metaDescription = 'Одна из наших работ';
 @endphp
 
 @extends("new-design.app")

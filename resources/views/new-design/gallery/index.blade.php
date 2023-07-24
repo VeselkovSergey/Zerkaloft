@@ -1,14 +1,11 @@
 @php
     $bredcrumbs = [
         "Главная" => route("home-page"),
+        "Наши работы" => route('gallery'),
     ];
 
-    if (isset($category)) {
-        $bredcrumbs['Наши работы'] = route('gallery');
-        $title_page = 'Наши работы';
-        $metaDescription = 'Выполненные работы';
-    }
-
+    $title_page = 'Наши работы';
+    $metaDescription = 'Здесь находятся наши выполненные работы по зеркалам. Zerkaloft или зеркалофт готов исполнить любое ваше решение. Мы профессионалы в своем деле.';
 @endphp
 
 @extends("new-design.app")
