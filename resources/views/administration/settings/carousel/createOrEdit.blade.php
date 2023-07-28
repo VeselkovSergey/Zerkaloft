@@ -20,8 +20,13 @@
         </div>
 
         <div class="mb-10">
-            <label class="carousel-image-label border" for="carouselImage" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
+            <label class="carousel-image-label border" for="carouselImage" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId[0]) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
             <input id="carouselImage" type="file" accept="image/jpeg, image/png, image/bmp, image/webp">
+        </div>
+
+        <div class="mb-10">
+            <label class="carousel-image-label border" for="carouselImage2" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId[1]) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
+            <input id="carouselImage2" type="file" accept="image/jpeg, image/png, image/bmp, image/webp">
         </div>
 
         <div class="container-buttons">
@@ -42,7 +47,17 @@
         document.getElementById('carouselImage').addEventListener('input', (event) => {
             let fileReader = new FileReader();
             fileReader.addEventListener("load", () => {
-                let labelProductImg = document.querySelector(".carousel-image-label");
+                let labelProductImg = document.body.querySelector('label[for="carouselImage"]');
+                labelProductImg.innerHTML = '';
+                labelProductImg.style.backgroundImage = "url(" + fileReader.result + ")";
+            }, false);
+            fileReader.readAsDataURL(event.target.files[0]);
+        });
+
+        document.getElementById('carouselImage2').addEventListener('input', (event) => {
+            let fileReader = new FileReader();
+            fileReader.addEventListener("load", () => {
+                let labelProductImg = document.body.querySelector('label[for="carouselImage2"]');
                 labelProductImg.innerHTML = '';
                 labelProductImg.style.backgroundImage = "url(" + fileReader.result + ")";
             }, false);
@@ -69,7 +84,7 @@
             });
         });
 
-        document.body.querySelector('.delete-carousel-image-btn').addEventListener('click', () => {
+        document.body.querySelector('.delete-carousel-image-btn')?.addEventListener('click', () => {
             LoaderShow();
             let dataForm = GetDataFormContainer('container-create-carousel-image');
 

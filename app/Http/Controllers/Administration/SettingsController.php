@@ -133,9 +133,11 @@ class SettingsController extends Controller
             return ResultGenerate::Error('Ошибка! Загрузите картинку!');
         }
 
+        $saveFileIds = [];
         foreach ($carouselImages as $CarouselImage) {
             if (in_array($CarouselImage->getMimeType(), ['image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp'])) {
                 $saveFile = Files::SaveFile($CarouselImage, $this->storagePath . '/carousel', $this->storageDriver);
+                $saveFileIds[] = $saveFile->id;
             } else {
                 return ResultGenerate::Error('Ошибка! Не верный формат файла!');
             }
@@ -147,7 +149,7 @@ class SettingsController extends Controller
             $saveCarouselImages->update([
                 'type' => Settings::TypeByWords['carouselImage'],
                 'value' => json_encode([
-                    'fileId' => !empty($saveFile) ? $saveFile->id : json_decode($saveCarouselImages->value)->fileId,
+                    'fileId' => !empty($saveFileIds) ? $saveFileIds : json_decode($saveCarouselImages->value)->fileId,
                     'sequence' => $carouselImageSequence,
                     'link' => $carouselImageLink,
                 ]),
@@ -156,7 +158,7 @@ class SettingsController extends Controller
             $saveCarouselImages = Settings::create([
                 'type' => Settings::TypeByWords['carouselImage'],
                 'value' => json_encode([
-                    'fileId' => $saveFile->id,
+                    'fileId' => $saveFileIds,
                     'sequence' => $carouselImageSequence,
                     'link' => $carouselImageLink,
                 ]),

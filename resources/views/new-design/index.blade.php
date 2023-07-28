@@ -6,7 +6,12 @@
             <div class="w-100 slider" data-not-zoom="true">
                 @foreach($carouselImages as $carouselImage)
                     <a href="{{$carouselImage->link}}">
-                        <img src="{{route('files', $carouselImage->fileId)}}" alt="акция">
+                        <picture>
+                            @if(isset($carouselImage->fileId[1]))
+                                <source media="(max-width: 540px)" srcset="{{route('files', $carouselImage->fileId[1])}}">
+                            @endif
+                                <img src="{{route('files', $carouselImage->fileId)}}" alt="акция">
+                        </picture>
                     </a>
                 @endforeach
             </div>
