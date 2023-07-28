@@ -859,6 +859,10 @@
             width: 25%;
         }
 
+        .w-25-adaptive-50 {
+            width: 25%;
+        }
+
         .flex-wrap-adaptive-block {
             display: flex;
             flex-wrap: wrap;
@@ -1072,6 +1076,10 @@
 
             .w-25-adaptive-100 {
                 width: 100%;
+            }
+
+            .w-25-adaptive-50 {
+                width: 50%;
             }
 
             .flex-wrap-adaptive-block {
