@@ -134,7 +134,6 @@
         .product-container,
         .category-container {
             transition: transform 200ms;
-            height: 56%;
         }
 
         .product-description,
@@ -1117,6 +1116,11 @@
             .product-container:hover, .category-container:hover {
                 transform: unset;
                 z-index: unset;
+            }
+
+            .product-container,
+            .category-container {
+                height: 56%;
             }
 
             .category-container .category-description {
