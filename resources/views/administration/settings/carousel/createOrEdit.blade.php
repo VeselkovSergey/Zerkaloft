@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-10">
-            <label class="carousel-image-label border" for="carouselImage2" style="width: 80%; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId[1]) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
+            <label class="carousel-image-label border" for="carouselImage2" style="width: 350px; height: 350px; {{!empty($carouselImageValue) ? 'background-image: url("' . route('files', $carouselImageValue->fileId[1]) . '")' : ''}}">{{!empty($carouselImageValue) ? '' : 'Загрузите картинку'}}</label>
             <input id="carouselImage2" type="file" accept="image/jpeg, image/png, image/bmp, image/webp">
         </div>
 
