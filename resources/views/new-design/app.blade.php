@@ -1122,8 +1122,7 @@
                 z-index: unset;
             }
 
-            .product-container,
-            .category-container {
+            .product-container {
                 height: 56%;
             }
 
