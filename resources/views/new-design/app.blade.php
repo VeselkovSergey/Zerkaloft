@@ -356,7 +356,7 @@
             display: block;
         }
 
-        a.block:not(.hide) {
+        a.block:not(.hide), a.flex:not(.hide) {
             text-decoration: none;
             color: inherit;
         }
