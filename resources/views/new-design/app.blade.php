@@ -134,6 +134,7 @@
         .product-container,
         .category-container {
             transition: transform 200ms;
+            height: 56%;
         }
 
         .product-description,
