@@ -716,6 +716,10 @@
         .scroll-auto {
             overflow: auto;
         }
+
+        .font-size-12 {
+            font-size: 12px;
+        }
     </style>
 
     <style>
