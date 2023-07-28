@@ -22,7 +22,7 @@ if (isset($category)) {
                 <h3>Нет товаров удовлетвряющих фильтрам</h3>
             @endif
             @foreach($products as $product)
-                    <a href="{{$product->Link()}}" class="w-25-adaptive-50 color-white">
+                    <a href="{{$product->Link()}}" class="flex w-25-adaptive-50 color-white">
                         <div class="p-10">
                             <div class="product-container pos-rel">
                                 <div>
