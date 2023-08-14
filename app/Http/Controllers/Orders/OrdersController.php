@@ -108,7 +108,7 @@ class OrdersController
         }
 
         $this->SendTelegram($request);
-        $this->SendEmail($request);
+        //$this->SendEmail($request);
 
         return ResultGenerate::Success('Заказ успешно создан!', ['orderId' => $createdOrder->id]);
     }
