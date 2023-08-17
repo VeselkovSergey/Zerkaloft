@@ -15,7 +15,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Задайте параметры, не тратьте время на поиски
+                Конфигуратор
             </div>
         </div>
     </a>
@@ -25,7 +25,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Готовые идеи для Вас. Работы выполненные нашей командой
+                Наши работы
             </div>
         </div>
     </a>

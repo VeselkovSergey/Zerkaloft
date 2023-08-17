@@ -63,7 +63,7 @@
             </div>
             <div class="order-3-2 mb-10 w-100 flex" style="flex-wrap: wrap;">
                 <div class="request-same-product border-radius-25 p-10 mt-a text-center cp mb-10"
-                     style="background-color: white; color: black;">Хочу так же
+                     style="background-color: white; color: black;">Запросить цену
                 </div>
             </div>
         </div>
