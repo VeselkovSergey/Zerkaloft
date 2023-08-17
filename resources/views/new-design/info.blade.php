@@ -35,7 +35,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Быстро и безопасно оплатите свой заказ
+                Оплата
             </div>
         </div>
     </a>
@@ -45,7 +45,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Надежная быстрая доставка ваших покупок
+                Доставка
             </div>
         </div>
     </a>
@@ -65,7 +65,7 @@
         </div>
         <div class="mt-10">
             <div class="font-light px-20-adaptive-0">
-                Полезная информация. Интересные факты
+                Информация
             </div>
         </div>
     </a>
