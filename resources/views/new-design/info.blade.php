@@ -14,7 +14,7 @@
             <img src="/assets/imgs/online-order.12.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Конфигуратор
             </div>
         </div>
@@ -24,7 +24,7 @@
             <img src="/assets/imgs/gallery.12.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Наши работы
             </div>
         </div>
@@ -34,7 +34,7 @@
             <img src="/assets/imgs/payments.12.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Оплата
             </div>
         </div>
@@ -44,7 +44,7 @@
             <img src="/assets/imgs/delivered.12.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Доставка
             </div>
         </div>
@@ -54,7 +54,7 @@
             <img src="/assets/imgs/forum.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
             </div>
         </div>
@@ -64,7 +64,7 @@
             <img src="/assets/imgs/info.12.svg" alt="">
         </div>
         <div class="mt-20">
-            <div class="font-light px-20-adaptive-0 text-center">
+            <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
                 Информация
             </div>
         </div>
