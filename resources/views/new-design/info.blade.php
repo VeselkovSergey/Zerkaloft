@@ -13,8 +13,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/online-order.12.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Конфигуратор
             </div>
         </div>
@@ -23,8 +23,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/gallery.12.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Наши работы
             </div>
         </div>
@@ -33,8 +33,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/payments.12.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Оплата
             </div>
         </div>
@@ -43,8 +43,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/delivered.12.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Доставка
             </div>
         </div>
@@ -53,8 +53,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/forum.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Расскажите свои истории делитесь своим опытом задавайте вопросы
             </div>
         </div>
@@ -63,8 +63,8 @@
         <div class="img-120-adaptive-70">
             <img src="/assets/imgs/info.12.svg" alt="">
         </div>
-        <div class="mt-10">
-            <div class="font-light px-20-adaptive-0">
+        <div class="mt-20">
+            <div class="font-light px-20-adaptive-0 text-center">
                 Информация
             </div>
         </div>

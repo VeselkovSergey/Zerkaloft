@@ -611,6 +611,10 @@
             margin-top: 10px;
         }
 
+        .mt-20 {
+            margin-top: 20px;
+        }
+
         .px-20 {
             padding-left: 20px;
             padding-right: 20px;
