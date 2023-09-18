@@ -38,7 +38,7 @@ class Categories extends Model
 
     public function ProductsByNotOnlyInCalculator()
     {
-        return $this->hasMany(Products::class, 'category_id', 'id')->where('not_only_calculator', 1);
+        return $this->hasMany(Products::class, 'category_id', 'id')->where('not_only_calculator', 1)->with('Prices');
     }
 
     public function Properties()

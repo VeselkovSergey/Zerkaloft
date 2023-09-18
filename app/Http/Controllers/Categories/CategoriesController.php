@@ -228,7 +228,7 @@ class CategoriesController extends Controller
         $filters = Filters::all();
         if (\request()->get('filters')) {
             $requestedArrayOfFilters = explode(',', \request()->get('filters'));
-            $productsQuery = Products::query()->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
+            $productsQuery = Products::query()->with('Prices')->whereHas("filtersProducts", function ($q) use ($requestedArrayOfFilters, $filters) {
                 foreach ($requestedArrayOfFilters as $filterId) {
                     $filterId = (int)$filterId;
                     if (ArrayHelper::findAndCheckPropertyInObject($filters, 'id', $filterId)) {
@@ -253,7 +253,7 @@ class CategoriesController extends Controller
             }
 
         } else {
-            $products = Products::query()->where('not_only_calculator', 1)->get();
+            $products = Products::query()->where('not_only_calculator', 1)->with('Prices')->get();
         }
         return view('new-design.catalog', [
             'products' => $products,

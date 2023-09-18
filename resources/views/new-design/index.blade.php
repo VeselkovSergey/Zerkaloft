@@ -54,9 +54,9 @@
         <div class="flex-wrap">
             @php
                 if (isset($searchQuery)) {
-                    $products = \App\Models\Products::where('search_words', 'like', '%' . $searchQuery . '%')->get();
+                    $products = \App\Models\Products::where('search_words', 'like', '%' . $searchQuery . '%')->with('Prices')->get();
                 } else {
-                    $products = \App\Models\Products::where('show_main_page', 1)->get();
+                    $products = \App\Models\Products::where('show_main_page', 1)->with('Prices')->get();
                 }
             @endphp
             @foreach($products->shuffle() as $product)
@@ -74,7 +74,7 @@
                                 {{--                            <div class="font-light">{{$property->value}}</div>--}}
                                 {{--                        @endforeach--}}
                                 <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                                     style="background-color: white; color: black">К ТОВАРУ
+                                     style="background-color: white; color: black">ОТ {{$product->Prices->first()->price}} ₽
                                 </div>
                             </div>
                         </div>
