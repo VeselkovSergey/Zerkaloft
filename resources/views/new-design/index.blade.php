@@ -33,6 +33,7 @@
             $dataFirstBlock = \App\Http\Controllers\Administration\SettingsController::dataFirstBlockOnMainPage();
         @endphp
         <div class="flex-adaptive-block p-20" style="background-color: {{$dataFirstBlock->bgColor}};">
+            @if($dataFirstBlock->imageFileId)
             <div class="w-50-adaptive-100 slider" data-not-zoom="true">
                 @foreach($dataFirstBlock->imageFileId as $key => $imgId)
                     <picture>
@@ -43,7 +44,8 @@
                     </picture>
                 @endforeach
             </div>
-            <div class="w-50-adaptive-100 flex-center font-36-adaptive">
+            @endif
+            <div class="@if($dataFirstBlock->imageFileId) w-50-adaptive-100 @else w-100 @endif flex-center font-36-adaptive">
                 <h1 class="px-20 text-center font-36-adaptive-24">
                     {!! $dataFirstBlock->text !!}
                 </h1>

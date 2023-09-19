@@ -434,6 +434,23 @@ class SettingsController extends Controller
         return ResultGenerate::Success();
     }
 
+    public function firstBlockOnMainPageDeleteImg(Request $request)
+    {
+        $model = Settings::where('type', Settings::TypeByWords['firstBlockOnMainPage'])->first();
+        $dataModel = json_decode($model->value);
+
+        $model->update([
+            'value' => json_encode([
+                'imageFileId' => null,
+                'imageSquareFileId' => null,
+                'text' => $dataModel->text,
+                'bgColor' => $dataModel->bgColor,
+            ])
+        ]);
+
+        return ResultGenerate::Success();
+    }
+
     public static function GetBodyImage()
     {
         $model = Settings::where('type', Settings::TypeByWords['bodyImage'])->first();

@@ -337,6 +337,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/firstBlockOnMainPage', [Controllers\Administration\SettingsController::class, 'firstBlockOnMainPage'])
                 ->name('firstBlockOnMainPage');
 
+            Route::post('/firstBlockOnMainPageDeleteImg', [Controllers\Administration\SettingsController::class, 'firstBlockOnMainPageDeleteImg'])
+                ->name('firstBlockOnMainPageDeleteImg');
+
             Route::post('/save-fast-menu', [Controllers\Administration\SettingsController::class, 'SaveFastMenu'])
                 ->name('save-fast-menu');
 

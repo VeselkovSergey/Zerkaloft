@@ -138,6 +138,10 @@
         </div>
 
         <div class="p-5">
+            <button class="firstBlockOnMainPageDeleteImgButton">Удалить картинки</button>
+        </div>
+
+        <div class="p-5">
             <button class="firstBlockOnMainPageSaveButton">Сохранить</button>
         </div>
 
@@ -282,6 +286,15 @@
             let dataForm = GetDataFormContainer('firstBlockOnMainPage');
 
             Ajax("{{route('firstBlockOnMainPage')}}", 'post', dataForm).then((response) => {
+                LoaderHide();
+                ShowFlashMessage(response.message);
+            });
+        });
+
+        document.body.querySelector('.firstBlockOnMainPageDeleteImgButton').addEventListener('click', () => {
+            LoaderShow();
+
+            Ajax("{{route('firstBlockOnMainPageDeleteImg')}}", 'post').then((response) => {
                 LoaderHide();
                 ShowFlashMessage(response.message);
             });
