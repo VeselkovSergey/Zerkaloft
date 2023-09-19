@@ -74,7 +74,7 @@
                                 {{--                            <div class="font-light">{{$property->value}}</div>--}}
                                 {{--                        @endforeach--}}
                                 <div class="border-radius-25 p-10 mt-a w-100 text-center mt-10"
-                                     style="background-color: white; color: black">ОТ {{$product->Prices->first()->price}}
+                                     style="background-color: white; color: black">от {{$product->Prices->first()->price}}
                                 </div>
                             </div>
                         </div>
