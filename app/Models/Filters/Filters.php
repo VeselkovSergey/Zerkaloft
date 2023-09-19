@@ -14,5 +14,6 @@ class Filters extends Model
 
     protected $fillable = [
         'title',
+        'group',
     ];
 }

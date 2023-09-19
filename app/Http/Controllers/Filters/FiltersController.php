@@ -35,12 +35,14 @@ class FiltersController
     {
         $filterId = !empty($request->filter_id) ? $request->filter_id : null;
         $filterTitle = !empty($request->filter_title) ? $request->filter_title : null;
+        $filterGroup = !empty($request->filter_group) ? $request->filter_group : null;
 
         if (!$filterTitle) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
         $fields['title'] = $filterTitle;
+        $fields['group'] = $filterGroup;
 
         if ($filterId) {
             $foundAdditionalService = Filters::find($filterId);

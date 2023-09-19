@@ -8,6 +8,10 @@
             <label for="filter_title">Название</label>
             <input class="need-validate" id="filter_title" type="text" value="{{isset($filter->title) ? $filter->title : ''}}">
         </div>
+        <div class="mb-10">
+            <label for="filter_group">Группа</label>
+            <input class="need-validate" id="filter_group" type="text" value="{{isset($filter->group) ? $filter->group : ''}}">
+        </div>
         <div>
             <button class="save-filter-btn container-btn">Сохранить</button>
             @if(isset($filter->id))

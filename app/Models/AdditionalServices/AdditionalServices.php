@@ -14,5 +14,6 @@ class AdditionalServices extends Model
 
     protected $fillable = [
         'title',
+        'group',
     ];
 }

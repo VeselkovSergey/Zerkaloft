@@ -34,12 +34,14 @@ class AdditionalServicesController
     {
         $additionalServiceId = !empty($request->additional_service_id) ? $request->additional_service_id : null;
         $additionalServiceTitle = !empty($request->additional_service_title) ? $request->additional_service_title : null;
+        $additionalServiceGroup = !empty($request->additional_service_group) ? $request->additional_service_group : null;
 
         if (!$additionalServiceTitle) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
         $fields['title'] = $additionalServiceTitle;
+        $fields['group'] = $additionalServiceGroup;
 
         if ($additionalServiceId) {
             $foundAdditionalService = AdditionalServices::find($additionalServiceId);

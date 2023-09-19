@@ -8,6 +8,10 @@
             <label for="additional_service_title">Название дополнительной услуги</label>
             <input class="need-validate" id="additional_service_title" type="text" value="{{isset($additionalService->title) ? $additionalService->title : ''}}">
         </div>
+        <div class="mb-10">
+            <label for="additional_service_group">Группа</label>
+            <input class="need-validate" id="additional_service_group" type="text" value="{{isset($additionalService->group) ? $additionalService->group : ''}}">
+        </div>
         <div>
             <button class="save-additional-service-btn container-btn">Сохранить</button>
             @if(isset($additionalService->id))
