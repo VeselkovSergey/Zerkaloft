@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'github'], function () {
 
-    Route::post('/push', [\App\Http\Controllers\Api\GitHubController::class, 'Push'])
+    Route::any('/push', [\App\Http\Controllers\Api\GitHubController::class, 'Push'])
         ->name('github-push');
 
 });
