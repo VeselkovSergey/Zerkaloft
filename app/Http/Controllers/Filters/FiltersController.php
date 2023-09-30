@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Filters;
 
+use App\Helpers\Files;
 use App\Helpers\ResultGenerate;
 use App\Models\Filters\FiltersProducts;
 use App\Models\Filters\Filters;
@@ -10,6 +11,10 @@ use Illuminate\Http\Request;
 
 class FiltersController
 {
+
+    public string $storagePath = 'img/setting';
+    public string $storageDriver = 'local';
+
     public function FiltersAdminPage()
     {
         return view('administration.filters.index', [
@@ -36,18 +41,33 @@ class FiltersController
         $filterId = !empty($request->filter_id) ? $request->filter_id : null;
         $filterTitle = !empty($request->filter_title) ? $request->filter_title : null;
         $filterGroup = !empty($request->filter_group) ? $request->filter_group : null;
+        $images = !empty($request->allFiles()) ? $request->allFiles() : null;
 
         if (!$filterTitle) {
             return ResultGenerate::Error('Ошибка! Название не может быть пустым!');
         }
 
+        $fileIds = [];
+        if (!empty($images)) {
+            foreach ($images as $key => $image) {
+                if (in_array($image->getMimeType(), ['image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'])) {
+                    $saveFile = Files::SaveFile($image, $this->storagePath, $this->storageDriver);
+                    $fileIds[] = $saveFile->id;
+                } else {
+                    return ResultGenerate::Error('Ошибка! Не верный формат файла!');
+                }
+            }
+        }
+
         $fields['title'] = $filterTitle;
         $fields['group'] = $filterGroup;
+        $fields['file_id'] = $fileIds[0] ?? null;
 
         if ($filterId) {
-            $foundAdditionalService = Filters::find($filterId);
-            if ($foundAdditionalService) {
-                $updatedAdditionalService = $foundAdditionalService->update($fields);
+            $foundFilter = Filters::find($filterId);
+            if ($foundFilter) {
+                $fields['file_id'] = $fileIds[0] ?? $foundFilter->file_id;
+                $updatedAdditionalService = $foundFilter->update($fields);
                 if ($updatedAdditionalService) {
                     return ResultGenerate::Success('Обновлено успешно!');
                 }
@@ -55,8 +75,8 @@ class FiltersController
             }
 
         } else {
-            $createdAdditionalService = Filters::create($fields);
-            if ($createdAdditionalService) {
+            $createdFilter = Filters::create($fields);
+            if ($createdFilter) {
                 return ResultGenerate::Success('Создано успешно!');
             }
             return ResultGenerate::Error('Ошибка создания!');

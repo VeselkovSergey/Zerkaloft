@@ -114,22 +114,55 @@
                     </div>
                     <div class="flex-space-x-adaptive-column additional-services-container">
                         <div class="font-light">
-                            @foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice)
 
-                                <?php
-                                    $additionalServiceTitle = trim($additionalServicePrice->AdditionalServices->title);
-                                    preg_match('/(#.*)$/', $additionalServiceTitle, $matches);
-                                    $color = sizeof($matches) ? $matches[0] : null;
-                                    $title = isset($color) ? preg_replace("/$color/", '', $additionalServiceTitle) : $additionalServiceTitle;
-                                    $title = trim($title);
-                                    $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
-                                ?>
+                            <?php
+                                $additionalService = [];
+                                foreach($product->AdditionalServicesPrice as $key => $additionalServicePrice) {
+                                   $additionalService[$additionalServicePrice->AdditionalServices->group][] =  $additionalServicePrice;
+                                }
+                            ?>
 
-                                <div class="checkbox-wrapper-1 mb-10">
-                                    <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
-                                    <label>{{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!} - {{$additionalServicePrice->price}} ₽</label>
+                            @foreach($additionalService as $groupTitle => $additionalServiceGroup)
+
+                                <div>
+
+                                    <div class="mb-10">{{empty($groupTitle) ? "Дополнительно" : $groupTitle}}</div>
+
+                                    <div class="flex-wrap">
+
+                                        @foreach($additionalServiceGroup as $key => $additionalServicePrice)
+                                            <?php
+                                                $additionalServiceTitle = trim($additionalServicePrice->AdditionalServices->title);
+                                                $additionalServiceFileId = trim($additionalServicePrice->AdditionalServices->file_id);
+                                                preg_match('/(#.*)$/', $additionalServiceTitle, $matches);
+                                                $color = sizeof($matches) ? $matches[0] : null;
+                                                $title = isset($color) ? preg_replace("/$color/", '', $additionalServiceTitle) : $additionalServiceTitle;
+                                                $title = trim($title);
+                                                $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
+                                            ?>
+
+                                            <div class="checkbox-wrapper-1 mb-10 mr-10">
+                                                <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
+                                                <label>
+                                                    @if($additionalServiceFileId)
+                                                        <span style="width: 32px; height: 32px;">
+                                                            <img src="{{route("files", $additionalServiceFileId)}}" alt="">
+                                                        </span>
+                                                    @else
+                                                        {{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!}
+                                                    @endif
+
+                                                    @if($additionalServicePrice->price !== "0") - {{$additionalServicePrice->price}} ₽ @endif
+                                                </label>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+
                                 </div>
+
                             @endforeach
+
                         </div>
                     </div>
                 </div>

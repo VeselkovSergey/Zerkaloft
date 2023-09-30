@@ -12,6 +12,10 @@
             <label for="filter_group">Группа</label>
             <input class="need-validate" id="filter_group" type="text" value="{{isset($filter->group) ? $filter->group : ''}}">
         </div>
+        <div class="mb-10">
+            <label for="filter_icon">Иконка 32*32</label>
+            <input class="need-validate" id="filter_icon" type="file" accept="'image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'">
+        </div>
         <div>
             <button class="save-filter-btn container-btn">Сохранить</button>
             @if(isset($filter->id))

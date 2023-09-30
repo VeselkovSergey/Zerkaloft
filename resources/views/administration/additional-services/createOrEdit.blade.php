@@ -12,6 +12,10 @@
             <label for="additional_service_group">Группа</label>
             <input class="need-validate" id="additional_service_group" type="text" value="{{isset($additionalService->group) ? $additionalService->group : ''}}">
         </div>
+        <div class="mb-10">
+            <label for="additional_service_icon">Иконка 32*32</label>
+            <input class="need-validate" id="additional_service_icon" type="file" accept="'image/svg+xml', 'image/jpg', 'image/jpeg', 'image/webp', 'image/png', 'image/bmp', 'image/gif'">
+        </div>
         <div>
             <button class="save-additional-service-btn container-btn">Сохранить</button>
             @if(isset($additionalService->id))

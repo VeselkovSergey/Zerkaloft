@@ -15,5 +15,6 @@ class Filters extends Model
     protected $fillable = [
         'title',
         'group',
+        'file_id',
     ];
 }

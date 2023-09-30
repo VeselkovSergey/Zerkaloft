@@ -25,7 +25,12 @@ class ProfileController
 
     public function UserOrdersPage(Request $request)
     {
-        $userOrders = auth()->user()->Orders;
+        $user = auth()->user();
+        $userOrders = [];
+        if ($user) {
+            $userOrders = auth()->user()->Orders;
+        }
+
         return view('profile.orders.all', [
             'userOrders' => $userOrders
         ]);
