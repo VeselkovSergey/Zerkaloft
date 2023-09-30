@@ -70,13 +70,13 @@
                 <div><a class="text-center color-white" style="text-decoration: none;" href="tel:{{$additionalPhones}}">{{$additionalPhones}}</a></div>
             </div>
             <a class="block w-20" href="mailto:{{$mail}}?subject=Вопрос">
-                <img style="width: 50px;" width="50" src="/assets/imgs/email.svg" alt="email">
+                <img style="width: 36px;" width="36" src="/assets/imgs/email.svg" alt="email">
             </a>
             <div class="w-20 cp" onclick="{{$actionConditionAuth}}">
-                <img style="width: 50px;" width="50" src="/assets/imgs/profile.svg" alt="profile">
+                <img style="width: 36px;" width="36" src="/assets/imgs/profile.svg" alt="profile">
             </div>
             <a href="{{route('basket-page')}}" class="block w-20 pos-rel">
-                <img style="width: 50px;" width="50" src="/assets/imgs/basket.svg" alt="basket">
+                <img style="width: 36px;" width="36" src="/assets/imgs/basket.svg" alt="basket">
                 <div class="count-item-in-bag">
 
                 </div>
@@ -92,7 +92,19 @@
             <a href="{{route("fast-order-page")}}" class="block mr-20 {{$fastMenuSetting->fastOrderLink === 'true' ? '' : ' hide '}}">Конфигуратор зеркал</a>
 {{--            <a class="block mr-10 form-special-order {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Индивидульный заказ</a>--}}
             <a href="{{route("about-page")}}" class="block mr-20">О компании</a>
-            <a class="block button-back-call {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" href="#special-order">Обратный звонок</a>
+            <a class="block button-back-call {{$fastMenuSetting->specialOrderLink === 'true' ? '' : ' hide '}}" style="margin-right: 32px;" href="#special-order">Обратный звонок</a>
+
+            <div class="mb-5 flex-center">
+                <a class="whatsapp" style="width: 36px; margin-right: 32px;" href="https://wa.me/{{$whatsappPhone}}">
+                    <img width="36" src="{{url('icon/whatsapp.svg')}}" alt="">
+                </a>
+            </div>
+            <div class="mb-5 flex-center">
+                <a class="telegram" style="width: 36px; margin-right: 32px;" href="https://t.me/{{$telegramPhone}}">
+                    <img width="36" src="{{url('icon/telegram.svg')}}" alt="">
+                </a>
+            </div>
+
         </div>
     </div>
 </header>
