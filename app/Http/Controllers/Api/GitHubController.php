@@ -17,7 +17,7 @@ class GitHubController extends ApiController
         echo 'git pull complete' . PHP_EOL;
 
         echo 'php artisan migrate start' . PHP_EOL;
-        Artisan::call('migrate');
+        Artisan::call('migrate --force');
         echo 'php artisan migrate complete' . PHP_EOL;
 
     }
