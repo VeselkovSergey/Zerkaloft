@@ -118,7 +118,7 @@
         }
 
         main {
-            margin-top: 100px;
+            margin-top: 122px;
             color: white;
         }
 
