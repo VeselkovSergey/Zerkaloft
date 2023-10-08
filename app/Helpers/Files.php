@@ -49,6 +49,10 @@ class Files
 
     public static function GetFileHTTP(Request $request)
     {
+        if ($request->file_id === 0) {
+            return abort(403);
+        }
+
         $file = FilesDB::find($request->file_id);
         if ($file) {
             $filePath = Storage::disk($file->disk)->get($file->path . '/' . $file->hash_name);
