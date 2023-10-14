@@ -141,9 +141,9 @@
                                                 $additionalServiceIsFavourite = \App\Helpers\Utils::isFavourite($product->id) && isset(session()->get('additionalServicesSelectionByProducts')[$product->id]) && in_array($additionalServicePrice->additional_service_id, session()->get('additionalServicesSelectionByProducts')[$product->id]);
                                             ?>
 
-                                            <div class="checkbox-wrapper-1 mb-10 mr-10">
-                                                <input type="checkbox" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
-                                                <label>
+                                            <div class="checkbox-wrapper-1 mb-10 mr-10 {{$additionalServiceFileId ? " backlight " : ""}}">
+                                                <input type="checkbox" id="{{"additionalService_$additionalServicePrice->id"}}" name="additionalService[]" class="custom-checkbox" {{$additionalServiceIsFavourite ? " checked " : ""}} data-additional-service-id="{{$additionalServicePrice->additional_service_id}}" data-additional-service-price="{{$additionalServicePrice->price}}">
+                                                <label for="{{"additionalService_$additionalServicePrice->id"}}" class="{{$additionalServiceFileId ? " backlight " : ""}} p-10 cp">
                                                     @if($additionalServiceFileId)
                                                         <span style="width: 32px; height: 32px;">
                                                             <img src="{{route("files", $additionalServiceFileId)}}" alt="">
@@ -152,7 +152,7 @@
                                                         {{$title}} {!! $color ? "<span style='margin: 0 10px; width: 15px; height: 15px; background-color: $color'></span>" : '' !!}
                                                     @endif
 
-                                                    @if($additionalServicePrice->price !== "0") - {{$additionalServicePrice->price}} ₽ @endif
+                                                    @if($additionalServicePrice->price !== "0") <span style="padding-left: 5px;">- {{$additionalServicePrice->price}} ₽</span> @endif
                                                 </label>
                                             </div>
                                         @endforeach
