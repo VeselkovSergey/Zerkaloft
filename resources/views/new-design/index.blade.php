@@ -34,7 +34,7 @@
         @endphp
         <div class="flex-adaptive-block p-20" style="background-color: {{$dataFirstBlock->bgColor}};">
             @if($dataFirstBlock->imageFileId)
-            <div class="w-50-adaptive-100 slider" data-not-zoom="true">
+            <div class="@if($dataFirstBlock->text) w-50-adaptive-100 @else w-100 @endif slider" data-not-zoom="true">
                 @foreach($dataFirstBlock->imageFileId as $key => $imgId)
                     <picture>
                         @if(isset($dataFirstBlock->imageSquareFileId[$key]))
@@ -45,11 +45,13 @@
                 @endforeach
             </div>
             @endif
-            <div class="@if($dataFirstBlock->imageFileId) w-50-adaptive-100 @else w-100 @endif flex-center font-36-adaptive">
-                <h1 class="px-20 text-center font-36-adaptive-24">
-                    {!! $dataFirstBlock->text !!}
-                </h1>
-            </div>
+            @if($dataFirstBlock->text)
+                <div class="@if($dataFirstBlock->imageFileId) w-50-adaptive-100 @else w-100 @endif flex-center font-36-adaptive">
+                    <h1 class="px-20 text-center font-36-adaptive-24">
+                        {!! $dataFirstBlock->text !!}
+                    </h1>
+                </div>
+            @endif
         </div>
         @include("new-design.info")
         @include("new-design.assets.filters", ['route' => route('catalog')])
