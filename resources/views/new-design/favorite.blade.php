@@ -30,7 +30,7 @@
                     <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                 </div>
                 <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
-                     style="background-color: white; color: black">К ТОВАРУ
+                     style="background-color: white; color: black">от {{$product->Prices->first()->price}}
                 </div>
                 <div class="show-adaptive w-100 mb-10">{{$product->title}}</div>
                 <div class="product-description z-1 pos-abs">
@@ -58,7 +58,7 @@
                         <img style="" src="{{$product->FirstImgUrl()}}" alt="{{$product->title}}">
                     </div>
                     <div class="show-adaptive border-radius-25 mb-10 p-5 text-center"
-                         style="background-color: white; color: black">К ТОВАРУ
+                         style="background-color: white; color: black">от {{$product->Prices->first()->price}}
                     </div>
                     <div class="show-adaptive w-100 mb-10">{{$product->title}}</div>
                     <div class="product-description z-1 pos-abs">
