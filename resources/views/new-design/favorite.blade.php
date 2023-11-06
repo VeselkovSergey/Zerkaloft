@@ -74,3 +74,12 @@
         </div>
     </div>
 </div>
+
+<div class="flex-center mt-20">
+    <div class="w-60-adaptive-100" style="height:600px;overflow:hidden;position:relative;">
+        <iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:10px;box-sizing:border-box; border: unset;"
+                src="https://yandex.ru/maps-reviews-widget/137015034255?comments&theme=dark"></iframe>
+        <a href="https://yandex.ru/maps/org/loft_magazin_zerkal/137015034255/" target="_blank"
+           style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box">Loft
+            магазин зеркал на карте Москвы — Яндекс Карты</a></div>
+</div>
