@@ -94,63 +94,67 @@
                 <div style="border-bottom: 1px solid white; flex: 1;"></div>
             </div>
             <div class="flex-wrap" style="border-top: 1px solid white; border-bottom: 1px solid white;">
-                <div class="container-calculator p-20 w-30-adaptive-100">
-                    <h3>Категория</h3>
-                    <div class="container-categories">
-                        @foreach($allCategories as $category)
-                            <label class="block mb-5">
-                                <input type="radio" value="{{$category->id}}" name="category">
-                                <span>{{$category->title}}</span>
-                            </label>
-                        @endforeach
-                    </div>
-                    <div class="container-categories-properties">
+                <div class="w-30-adaptive-100">
+                    <div class="container-calculator p-20">
+                        <h3>Категория</h3>
+                        <div class="container-categories">
+                            @foreach($allCategories as $category)
+                                <label class="block mb-5">
+                                    <input type="radio" value="{{$category->id}}" name="category">
+                                    <span>{{$category->title}}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                        <div class="container-categories-properties">
 
+                        </div>
                     </div>
                 </div>
-                <div class="container-text-from-settings-wrap p-20 w-70-adaptive-100">
+                <div class="w-70-adaptive-100">
+                    <div class="container-text-from-settings-wrap p-20">
 
-                    <div class="container-text-from-settings pl-20">
-                        <div class="text-center mb-20">
-                            {!! $text !!}
+                        <div class="container-text-from-settings pl-20">
+                            <div class="text-center mb-20">
+                                {!! $text !!}
+                            </div>
+
+                            <div>
+                                @if($fileId !== -1)
+                                    <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt="">
+                                @endif
+                            </div>
+
                         </div>
 
-                        <div>
-                            @if($fileId !== -1)
-                                <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt="">
-                            @endif
-                        </div>
-
-                    </div>
-
-                    <div class="container-found-product hide">
-                        <div class="flex-column">
-                            <div class="flex mb-10 m-a-adaptive" style="">
-                                <div style="width: 300px; height: 300px;">
-                                    <img class="fast-order-product-img" src="" alt="">
+                        <div class="container-found-product hide">
+                            <div class="flex-column">
+                                <div class="flex mb-10 m-a-adaptive" style="">
+                                    <div style="width: 300px; height: 300px;">
+                                        <img class="fast-order-product-img" src="" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-space-x mr-10-adaptive-0  w-100">
-                                <div class="flex mb-10 prices-container">
-                                    <select name="" id="" class="select-3 font-light">
-                                        <option value="123" selected>1 шт - 745 р</option>
-                                    </select>
+                                <div class="flex-space-x mr-10-adaptive-0  w-100">
+                                    <div class="flex mb-10 prices-container">
+                                        <select name="" id="" class="select-3 font-light">
+                                            <option value="123" selected>1 шт - 745 р</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-10 w-a-adaptive-100 ml-10">
+                                        <a href="#"
+                                           class="fast-order-product-link block border-radius-25 p-10 mt-a text-center"
+                                           style="background-color: white; color: black;">К ТОВАРУ
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="mb-10 w-a-adaptive-100 ml-10">
-                                    <a href="#"
-                                       class="fast-order-product-link block border-radius-25 p-10 mt-a text-center"
-                                       style="background-color: white; color: black;">К ТОВАРУ
-                                    </a>
+                                <div class="font-light ">
+                                    <div class="h3 fast-order-product-title">Title</div>
+                                    <p class="fast-order-product-description">
+                                        description
+                                    </p>
+                                    <p class="fast-order-product-tech-properties">
+                                        tech-properties
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="font-light ">
-                                <div class="h3 fast-order-product-title">Title</div>
-                                <p class="fast-order-product-description">
-                                    description
-                                </p>
-                                <p class="fast-order-product-tech-properties">
-                                    tech-properties
-                                </p>
                             </div>
                         </div>
                     </div>
