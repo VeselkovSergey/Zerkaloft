@@ -94,7 +94,7 @@
                         {!! $text !!}
                     </div>
 
-                    <div class="container-found-product hide w-40-adaptive-100">
+                    <div class="container-found-product hide">
                         <div class="flex-column">
                             <div class="flex mb-10 m-a-adaptive" style="">
                                 <div style="width: 300px; height: 300px;">
