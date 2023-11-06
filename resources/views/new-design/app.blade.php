@@ -949,6 +949,10 @@
             width: 70%;
         }
 
+        .w-30-adaptive-100 {
+            width: 30%;
+        }
+
         .w-10-adaptive-100 {
             width: 10%;
         }
@@ -997,6 +1001,10 @@
             }
 
             .w-70-adaptive-100 {
+                width: 100%;
+            }
+
+            .w-30-adaptive-100 {
                 width: 100%;
             }
 

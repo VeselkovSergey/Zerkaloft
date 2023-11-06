@@ -36,10 +36,29 @@
 
     <style>
 
+        .container-calculator {
+            margin-left: 120px;
+            border-left: 1px solid white;
+        }
+
+        .container-text-from-settings-wrap {
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+            margin-right: 120px;
+        }
+
         @media screen and (max-width: 540px) {
             .m-a-adaptive {
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .container-calculator {
+                margin-left: unset;
+            }
+
+            .container-text-from-settings-wrap {
+                margin-right: unset;
             }
         }
 
@@ -69,12 +88,13 @@
         <div>
             <div class="flex-center">
                 <div style="border-bottom: 1px solid white; flex: 1;"></div>
-                <div class="flex-center" style="background-image: url('./img/img-1.svg'); width: 400px; height: 400px;"><div style="font-size: 32px;">КОНФИГУРАТОР</div></div>
+                <div class="flex-center" style="background-image: url('./img/img-1.svg'); width: 400px; height: 400px;">
+                    <div style="font-size: 32px;">КОНФИГУРАТОР</div>
+                </div>
                 <div style="border-bottom: 1px solid white; flex: 1;"></div>
             </div>
-            <div class="flex" style="border-top: 1px solid white; border-bottom: 1px solid white;">
-                <div class="container-calculator p-20"
-                     style="border-left: 1px solid white; margin-left: 120px; width: 415px;">
+            <div class="flex-wrap" style="border-top: 1px solid white; border-bottom: 1px solid white;">
+                <div class="container-calculator p-20 w-30-adaptive-100">
                     <h3>Категория</h3>
                     <div class="container-categories">
                         @foreach($allCategories as $category)
@@ -88,7 +108,7 @@
 
                     </div>
                 </div>
-                <div style="border-left: 1px solid white; border-right: 1px solid white; width: 100%; margin-right: 120px;" class="p-20">
+                <div class="container-text-from-settings-wrap p-20 w-70-adaptive-100">
 
                     <div class="container-text-from-settings pl-20">
                         <div class="text-center mb-20">
@@ -254,7 +274,7 @@
                 }
 
                 let res = response.result
-                window.history.pushState({}, '', res.productLink)
+                window.history.pushState({}, "", res.productLink)
 
                 document.body.querySelector(".fast-order-product-title").innerHTML = res.product.title
                 document.body.querySelector(".fast-order-product-description").innerHTML = res.product.description
