@@ -45,9 +45,9 @@ class CalculatorController
         foreach ($categoryProperties as $categoryProperty) {
 
             $propertyValues = [
-                0 => (object)[
-                    'value' => 'Выберите значение'
-                ]
+//                0 => (object)[
+//                    'value' => 'Выберите значение'
+//                ]
             ];
 
             foreach ($categoryProperty
