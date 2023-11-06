@@ -91,7 +91,16 @@
                 <div style="border-left: 1px solid white; border-right: 1px solid white; width: 100%; margin-right: 120px;" class="p-20">
 
                     <div class="container-text-from-settings pl-20">
-                        {!! $text !!}
+                        <div class="text-center mb-20">
+                            {!! $text !!}
+                        </div>
+
+                        <div>
+                            @if($fileId !== -1)
+                                <img class="product-img-in-calculator" src="{{route('files', $fileId)}}" alt="">
+                            @endif
+                        </div>
+
                     </div>
 
                     <div class="container-found-product hide">
