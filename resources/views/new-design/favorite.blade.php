@@ -76,7 +76,7 @@
 </div>
 
 <div class="flex-center mt-20">
-    <div class="w-60-adaptive-100" style="height:600px;overflow:hidden;position:relative;">
+    <div class="w-50-adaptive-100" style="height:600px;overflow:hidden;position:relative;">
         <iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:10px;box-sizing:border-box; border: unset;"
                 src="https://yandex.ru/maps-reviews-widget/137015034255?comments&theme=dark"></iframe>
         <a href="https://yandex.ru/maps/org/loft_magazin_zerkal/137015034255/" target="_blank"
