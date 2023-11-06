@@ -82,7 +82,7 @@
         }
     </style>
 
-    <div>
+    <div class="px-10">
         @include("new-design.bredcrumbs", $bredcrumbs)
 
         <div>
@@ -162,7 +162,6 @@
             </div>
         </div>
 
-    </div>
     @include("new-design.favorite")
     @include("new-design.info")
     </div>
