@@ -204,7 +204,7 @@
                     const isManyValues = Object.keys(obj[key].propertyValues).length > 4
 
                     const containerProp = document.createElement("div")
-                    containerProp.className = obj[key].propertyIsProfessional === 1 ? "hide" : ("block" + (isManyValues ? " flex-wrap-center" : ""))
+                    containerProp.className = obj[key].propertyIsProfessional === 1 ? "hide" : (isManyValues ? " flex-wrap-center-x" : "block")
 
                     const labelProp = document.createElement("h3")
                     labelProp.innerHTML = obj[key].propertyTitle
