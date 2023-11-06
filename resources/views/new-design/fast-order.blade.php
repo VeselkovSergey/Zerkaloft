@@ -249,7 +249,7 @@
 
                 document.body.querySelector(".fast-order-product-title").innerHTML = res.product.title
                 document.body.querySelector(".fast-order-product-description").innerHTML = res.product.description
-                document.body.querySelector(".fast-order-product-tech-properties").innerHTML = res.product.tech_properties
+                document.body.querySelector(".fast-order-product-tech-properties").innerHTML = `<p><b>Характеристики:</b></p>${res.product.tech_properties}`
                 document.body.querySelector(".fast-order-product-img").src = res.productImgUrl
 
                 let options = ""
