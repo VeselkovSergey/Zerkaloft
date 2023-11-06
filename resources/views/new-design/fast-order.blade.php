@@ -90,7 +90,7 @@
                 </div>
                 <div style="border-left: 1px solid white; border-right: 1px solid white; width: 100%; margin-right: 120px;" class="p-20">
 
-                    <div class="container-text-from-settings pl-20 w-40-adaptive-100">
+                    <div class="container-text-from-settings pl-20">
                         {!! $text !!}
                     </div>
 
