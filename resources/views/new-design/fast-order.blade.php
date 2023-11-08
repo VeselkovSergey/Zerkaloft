@@ -178,6 +178,9 @@
             })
         })
 
+        triggerEvent(document.body.querySelector(`input[name="category"]`), "change")
+        document.body.querySelector(`input[name="category"]`).setAttribute("checked", "checked")
+
         let containerCategoriesProperties = document.body.querySelector(".container-categories-properties")
         let containerFoundProduct = document.body.querySelector(".container-found-product")
         let containerTextFromSettings = document.body.querySelector(".container-text-from-settings")
