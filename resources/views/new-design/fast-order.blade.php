@@ -60,6 +60,10 @@
             .container-text-from-settings-wrap {
                 margin-right: unset;
             }
+
+            label.square {
+                min-width: 40%;
+            }
         }
 
         label.square {
