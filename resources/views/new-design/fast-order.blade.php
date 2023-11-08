@@ -53,7 +53,7 @@
             margin-right: 10px;
             border-radius: 5px;
             cursor: pointer;
-            min-width: 40%;
+            min-width: 35%;
             text-align: center;
             margin-bottom: 10px;
         }
