@@ -47,25 +47,6 @@
             margin-right: 120px;
         }
 
-        @media screen and (max-width: 540px) {
-            .m-a-adaptive {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .container-calculator {
-                margin-left: unset;
-            }
-
-            .container-text-from-settings-wrap {
-                margin-right: unset;
-            }
-
-            label.square {
-                min-width: 40%;
-            }
-        }
-
         label.square {
             background-color: #A1A1A1;
             padding: 10px;
@@ -83,6 +64,25 @@
 
         label.square.--checked {
             box-shadow: 0 0 25px 5px #1998AE;
+        }
+
+        @media screen and (max-width: 540px) {
+            .m-a-adaptive {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .container-calculator {
+                margin-left: unset;
+            }
+
+            .container-text-from-settings-wrap {
+                margin-right: unset;
+            }
+
+            label.square {
+                min-width: 40%;
+            }
         }
     </style>
 
