@@ -53,7 +53,7 @@
             margin-right: 10px;
             border-radius: 5px;
             cursor: pointer;
-            min-width: 50px;
+            min-width: 40%;
             text-align: center;
             margin-bottom: 10px;
         }
@@ -78,10 +78,6 @@
 
             .container-text-from-settings-wrap {
                 margin-right: unset;
-            }
-
-            label.square {
-                min-width: 40%;
             }
         }
     </style>
