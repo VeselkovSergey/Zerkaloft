@@ -94,7 +94,7 @@
                 <div style="border-bottom: 1px solid white; flex: 1;"></div>
             </div>
             <div class="flex-wrap" style="border-top: 1px solid white; border-bottom: 1px solid white;">
-                <div class="w-30-adaptive-100">
+                <div class="w-40-adaptive-100">
                     <div class="container-calculator p-20">
                         <h3>Категория</h3>
                         <div class="container-categories">
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-70-adaptive-100">
+                <div class="w-60-adaptive-100">
                     <div class="container-text-from-settings-wrap p-20">
 
                         <div class="container-text-from-settings pl-20">
