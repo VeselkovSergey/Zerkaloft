@@ -43,6 +43,13 @@
 
                 <div class="p-10 w-100 flex">
                     <label class="block">
+                        CODE
+                        <span class="code"></span>
+                    </label>
+                </div>
+
+                <div class="p-10 w-100 flex">
+                    <label class="block">
                         Активный
                         <input name="active" type="checkbox">
                     </label>
@@ -487,6 +494,7 @@
         });
 
         function GetValuesOnAllSelects(categoryProperties) {
+
             let modification = [];
             let allSelected = true;
             categoryProperties.forEach((select) => {
@@ -496,6 +504,7 @@
                 }
             });
             if (allSelected === true) {
+                document.body.querySelector(".code").innerHTML = `${modification.join("-")}`
                 Ajax("{{route('product-modification')}}", 'post', {
                     categoryId: {{$category->id}},
                     'modification[]': modification,
