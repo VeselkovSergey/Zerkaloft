@@ -314,7 +314,7 @@
                             <label class="items-apply-container">
                                 <input type="checkbox" class="combination-checkbox" name="product_combination[{{$combination->id}}]"
                                        value="{{$combination->id}}">
-                                <span class="item-apply">{{$category->title . ' ' . $combination->title}}</span>
+                                <span class="item-apply">{{$category->title . ' ' . $combination->title}} ({{$combination->id}})</span>
                             </label>
                         @endforeach
 
