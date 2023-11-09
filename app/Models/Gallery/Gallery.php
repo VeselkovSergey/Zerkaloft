@@ -33,6 +33,6 @@ class Gallery extends Model
 
     public function FirstImgUrl()
     {
-        return route('files', unserialize($this->img)[0]);
+        return route('files', unserialize($this->img)[0] ?? 0);
     }
 }
