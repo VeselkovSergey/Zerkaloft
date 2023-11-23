@@ -137,7 +137,12 @@
                             <div class="flex-column">
                                 <div class="flex mb-10 m-a-adaptive" style="">
                                     <div style="width: 300px; height: 300px;">
-                                        <img class="fast-order-product-img" src="" alt="">
+                                        <div class="mb-10 mr-10-adaptive-0 slider-product fast-order-product-img">
+                                            @foreach(unserialize($product->img) as $img)
+{{--                                                <img style="max-height: calc(65vh);" src="{{route('files', $img)}}" alt="{{$product->title}}">--}}
+                                            @endforeach
+                                        </div>
+{{--                                        <img class="fast-order-product-img" src="" alt="">--}}
                                     </div>
                                 </div>
                                 <div class="flex-space-x mr-10-adaptive-0  w-100">
@@ -299,7 +304,13 @@
                 document.body.querySelector(".fast-order-product-title").innerHTML = res.product.title
                 document.body.querySelector(".fast-order-product-description").innerHTML = res.product.description
                 document.body.querySelector(".fast-order-product-tech-properties").innerHTML = `<p><b>Характеристики:</b></p>${res.product.tech_properties}`
-                document.body.querySelector(".fast-order-product-img").src = res.productImgUrl
+                document.body.querySelector(".fast-order-product-img").innerHTML = ""
+                res.productImagesUrls.map((item) => {
+                    const imgEl = document.createElement("img")
+                    imgEl.src = item
+                    document.body.querySelector(".fast-order-product-img").append(imgEl)
+                })
+                slider(document.body.querySelector(".fast-order-product-img"))
 
                 let options = ""
                 let i = 0
