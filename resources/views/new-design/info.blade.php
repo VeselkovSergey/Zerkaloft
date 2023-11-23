@@ -11,7 +11,7 @@
 <div class="info-block p-20">
     <a href="{{route("fast-order-page")}}" class="block scale-1 w-15-adaptive-40vw flex-column-center-x mr-20">
         <div class="img-120-adaptive-70">
-            <img src="/assets/imgs/online-order.12.svg" alt="">
+            <img src="/assets/imgs/img-100.svg" alt="">
         </div>
         <div class="mt-20">
             <div class="font-light px-20-adaptive-0 text-center font-18-adaptive">
