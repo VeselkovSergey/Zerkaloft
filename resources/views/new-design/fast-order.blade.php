@@ -37,14 +37,13 @@
     <style>
 
         .container-calculator {
-            margin-left: 120px;
-            border-left: 1px solid white;
+
         }
 
         .container-text-from-settings-wrap {
             border-left: 1px solid white;
             border-right: 1px solid white;
-            margin-right: 120px;
+            /*margin-right: 50px;*/
         }
 
         label.square {
@@ -66,6 +65,10 @@
             box-shadow: 0 0 25px 5px #1998AE;
         }
 
+        .w-20-adaptive-100 {
+            width: 20%;
+        }
+
         @media screen and (max-width: 540px) {
             .m-a-adaptive {
                 margin-left: auto;
@@ -78,6 +81,10 @@
 
             .container-text-from-settings-wrap {
                 margin-right: unset;
+            }
+
+            .w-20-adaptive-100 {
+                width: 100%;
             }
         }
     </style>
@@ -93,8 +100,8 @@
                 </div>
                 <div style="border-bottom: 1px solid white; flex: 1;"></div>
             </div>
-            <div class="flex-wrap" style="border-top: 1px solid white; border-bottom: 1px solid white;">
-                <div class="w-40-adaptive-100">
+            <div class="flex-wrap" style="border: 1px solid white;">
+                <div class="w-20-adaptive-100">
                     <div class="container-calculator p-20">
                         <h3>Категория</h3>
                         <div class="container-categories">
@@ -147,10 +154,6 @@
                                     </div>
                                 </div>
                                 <div class="font-light ">
-                                    <div class="h3 fast-order-product-title">Title</div>
-                                    <p class="fast-order-product-description">
-                                        description
-                                    </p>
                                     <p class="fast-order-product-tech-properties">
                                         tech-properties
                                     </p>
@@ -158,6 +161,15 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="w-20-adaptive-100 container-found-product-text-container hide">
+                    <div class="p-20">
+                        <div class="h3 fast-order-product-title">Title</div>
+                        <p class="fast-order-product-description">
+                            description
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -183,6 +195,7 @@
 
         let containerCategoriesProperties = document.body.querySelector(".container-categories-properties")
         let containerFoundProduct = document.body.querySelector(".container-found-product")
+        let containerFoundProductTextContainer = document.body.querySelector(".container-found-product-text-container")
         let containerTextFromSettings = document.body.querySelector(".container-text-from-settings")
 
         let containerCalculator = document.body.querySelector(".container-calculator")
@@ -261,6 +274,7 @@
                     getProduct(document.querySelector(`input[name="category"]:checked`).value, modification)
                 } else {
                     containerFoundProduct.hide()
+                    containerFoundProductTextContainer.hide()
                     containerTextFromSettings.show()
                 }
             }, 100)
@@ -306,6 +320,7 @@
                 document.body.querySelector(".fast-order-product-link").href = res.productLink
 
                 containerFoundProduct.show()
+                containerFoundProductTextContainer.show()
                 containerTextFromSettings.hide()
             })
         }
