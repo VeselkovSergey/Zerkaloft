@@ -138,11 +138,8 @@
                                 <div class="flex mb-10 m-a-adaptive" style="">
                                     <div style="width: 300px; height: 300px;">
                                         <div class="mb-10 mr-10-adaptive-0 slider-product fast-order-product-img">
-                                            @foreach(unserialize($product->img) as $img)
-{{--                                                <img style="max-height: calc(65vh);" src="{{route('files', $img)}}" alt="{{$product->title}}">--}}
-                                            @endforeach
+
                                         </div>
-{{--                                        <img class="fast-order-product-img" src="" alt="">--}}
                                     </div>
                                 </div>
                                 <div class="flex-space-x mr-10-adaptive-0  w-100">
