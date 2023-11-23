@@ -87,6 +87,25 @@
                 width: 100%;
             }
         }
+
+        .more-props {
+            transition: all 300ms;
+            transform: rotate(90deg);
+        }
+
+        .more-props.open {
+            transform: rotate(0deg);
+        }
+
+        .props-container {
+            height: 90px;
+            overflow: hidden;
+            transition: all 300ms;
+        }
+
+        .props-container.open {
+            height: auto;
+        }
     </style>
 
     <div class="px-10">
@@ -229,6 +248,10 @@
 
                     containerProp.append(labelProp)
 
+                    const propValueContainer = document.createElement("div")
+                    propValueContainer.className = "flex-wrap-center-x props-container"
+                    containerProp.append(propValueContainer)
+
                     Object.keys(obj[key].propertyValues).forEach((key1) => {
                         const obj1 = obj[key].propertyValues[key1]
 
@@ -256,8 +279,24 @@
                         labelEl.append(inputEl)
                         labelEl.append(spanEl)
 
-                        containerProp.append(labelEl)
+                        propValueContainer.append(labelEl)
                     })
+
+                    if (Object.keys(obj[key].propertyValues).length > 4) {
+                      const morePropsButton = document.createElement("div")
+                      morePropsButton.className = "more-props ml-a"
+                      morePropsButton.innerHTML = "<img src='./assets/imgs/img-101.svg' alt=''>"
+                      containerProp.append(morePropsButton)
+
+                      morePropsButton.addEventListener("click", () => {
+                        morePropsButton.classList.toggle('open')
+                        if (morePropsButton.classList.contains("open")) {
+                          morePropsButton.parentElement.querySelector(".props-container").classList.add("open")
+                        } else {
+                          morePropsButton.parentElement.querySelector(".props-container").classList.remove("open")
+                        }
+                      })
+                    }
 
                     containerCategoriesProperties.append(containerProp)
                 })
